@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+
+    <com.common.view.MyPreference
+        android:key="am_runningspeed"
+        android:persistent="false"
+        android:title="@string/am_runningspeed" />
+    <com.common.view.MyPreference
+        android:key="engine_speed55"
+        android:persistent="false"
+        android:title="@string/engine_speed55" />
+    <com.common.view.MyPreference
+        android:key="averagespeed"
+        android:persistent="false"
+        android:title="@string/averagespeed" />
+    <com.common.view.MyPreference
+        android:key="traveltime"
+        android:persistent="false"
+        android:title="@string/traveltime" />
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage" />
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:title="@string/averagefuel" />
+    <com.common.view.MyPreference
+        android:key="historyfuel"
+        android:persistent="false"
+        android:title="@string/historyfuel" />
+
+</PreferenceScreen>

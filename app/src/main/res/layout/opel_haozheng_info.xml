@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/CarInfoTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/odyssey1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#cc444444"
+        android:orientation="vertical"
+        android:paddingBottom="0px"
+        android:paddingLeft="20px"
+        android:paddingRight="15px"
+        android:paddingTop="0px" >
+
+        <TextView
+            android:id="@+id/title0"
+            style="@style/CarInfoTextView2"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:id="@+id/title1"
+            style="@style/CarInfoTextView2"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:id="@+id/title2"
+            style="@style/CarInfoTextView2"
+            android:layout_width="match_parent" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <Button
+                android:id="@+id/driving_page1"
+                style="@style/CarInfoTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="68px"
+                android:background="@drawable/button_click_back1"
+                android:text="@string/driving_page1" />
+
+            <LinearLayout
+                android:id="@+id/driving_page1_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/fulecons" />
+
+                    <TextView
+                        android:id="@+id/fulecons1"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/driving_mileage" />
+
+                    <TextView
+                        android:id="@+id/driving_mileage"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <!-- <View -->
+                <!-- android:layout_width="match_parent" -->
+                <!-- android:layout_height="1px" -->
+                <!-- android:background="#ff000000" /> -->
+
+
+                <!-- <Button -->
+                <!-- android:id="@+id/booking_mileage" -->
+                <!-- style="@style/CarInfoTextView3" -->
+                <!-- android:layout_width="match_parent" -->
+                <!-- android:layout_height="68px" -->
+                <!-- android:background="@drawable/button_click_back1" -->
+                <!-- android:paddingBottom="5px" -->
+                <!-- android:paddingLeft="20px" -->
+                <!-- android:paddingRight="15px" -->
+                <!-- android:paddingTop="5px" -->
+                <!-- android:text="@string/booking_mileage" /> -->
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <Button
+                android:id="@+id/driving_page2"
+                style="@style/CarInfoTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="68px"
+                android:background="@drawable/button_click_back1"
+                android:text="@string/driving_page2" />
+
+            <LinearLayout
+                android:id="@+id/driving_page2_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/fulecons" />
+
+                    <TextView
+                        android:id="@+id/fulecons2"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/averagefuel" />
+
+                    <TextView
+                        android:id="@+id/averagefuel"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/averageapeed" />
+
+                    <TextView
+                        android:id="@+id/averageapeed1"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/mileage1" />
+
+                    <TextView
+                        android:id="@+id/mileage1"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <Button
+                    android:id="@+id/fuelclear1"
+                    style="@style/CarInfoTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="68px"
+                    android:background="@drawable/button_click_back1"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px"
+                    android:text="@string/fuelclear" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <Button
+                android:id="@+id/driving_page3"
+                style="@style/CarInfoTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="68px"
+                android:background="@drawable/button_click_back1"
+                android:text="@string/driving_page3" />
+
+            <LinearLayout
+                android:id="@+id/driving_page3_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/fulecons" />
+
+                    <TextView
+                        android:id="@+id/fulecons3"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/averagefuel" />
+
+                    <TextView
+                        android:id="@+id/averagefuel3"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/averageapeed" />
+
+                    <TextView
+                        android:id="@+id/averageapeed2"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px" >
+
+                    <TextView
+                        style="@style/CarInfoTextView1"
+                        android:text="@string/mileage1" />
+
+                    <TextView
+                        android:id="@+id/mileage2"
+                        style="@style/CarInfoTextView2" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <Button
+                    android:id="@+id/fuelclear2"
+                    style="@style/CarInfoTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="68px"
+                    android:background="@drawable/button_click_back1"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px"
+                    android:text="@string/fuelclear" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,1855 @@
+<resources>
+
+    <string-array name="enwarning_control">
+        <item>關閉</item>
+        <item>慢速</item>
+        <item>中速</item>
+        <item>急促</item>
+        <item>自動</item>
+    </string-array>
+    <string-array name="enturn_lights_sets_set">
+        <item>一次閃爍</item>
+        <item>三次閃爍</item>
+    </string-array>
+    <string-array name="enremote_start_air">
+        <item>手動</item>
+        <item>自動</item>
+    </string-array>
+    <string-array name="enlfRight">
+        <item>左</item>
+        <item>右</item>
+    </string-array>
+    <string-array name="enadaptive">
+        <item>角落和彎道</item>
+        <item>智能</item>
+    </string-array>
+    <string-array name="smartdoorlock_entries">
+        <item>所有座位</item>
+        <item>司機座位</item>
+    </string-array>
+    <string-array name="closedoortime_entries">
+        <item>關</item>
+        <item>30s</item>
+        <item>60s</item>
+        <item>120s</item>
+    </string-array>
+    <string-array name="timeswitchlight_entries">
+        <item>關</item>
+        <item>30s</item>
+        <item>60s</item>
+        <item>90s</item>
+    </string-array>
+    <string-array name="lightingime_entries">
+        <item>關</item>
+        <item>7.5s</item>
+        <item>15s</item>
+        <item>30s</item>
+    </string-array>
+    <string-array name="Kcommonage_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="commonage_entries">
+        <item>關</item>
+        <item>7.5s</item>
+        <item>15s</item>
+        <item>30s</item>
+        <item>開</item>
+        <item>0 RPM</item>
+        <item>0.00 KM/H</item>
+        <item>0.00 V</item>
+        <item>0.0 ℃</item>
+        <item>0 KM</item>
+        <item>0 L</item>
+    </string-array>
+    <string-array name="radarrange_entries">
+        <item>遠</item>
+        <item>近</item>
+    </string-array>
+    <string-array name="automodewindlevel_entries">
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="automodewindlevel_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="airqualitysensor_entry">
+        <item>關閉</item>
+        <item>低靈敏度</item>
+        <item>高靈敏度</item>
+    </string-array>
+    <string-array name="airpartition_entries">
+        <item>統一設置</item>
+        <item>分區設置</item>
+        <item>按上次設置</item>
+    </string-array>
+    <string-array name="langauage5_entries">
+        <item>簡體中文</item>
+        <item>英語</item>
+    </string-array>
+    <string-array name="headlightdelay_entries">
+        <item>關</item>
+        <item>30 秒</item>
+        <item>1 分鐘</item>
+        <item>2 分鐘</item>
+    </string-array>
+    <string-array name="parkunlock_entries">
+        <item>關</item>
+        <item>駕駛員門</item>
+        <item>所有門</item>
+    </string-array>
+    <string-array name="remotelock5_entries">
+        <item>僅燈光</item>
+        <item>燈光與喇叭</item>
+        <item>僅喇叭</item>
+        <item>關</item>
+    </string-array>
+    <string-array name="remotedoorunlock_entries">
+        <item>駕駛員門</item>
+        <item>所有門</item>
+    </string-array>
+    <string-array name="centrallock_entries">
+        <item>車輛側門</item>
+        <item>單個車門</item>
+        <item>所有車門</item>
+    </string-array>
+    <string-array name="windowsopen_entries">
+        <item>關閉</item>
+        <item>駕駛員側車窗</item>
+        <item>全部車窗</item>
+    </string-array>
+    <string-array name="accrdriveprogram_entries">
+        <item>標準</item>
+        <item>運動</item>
+        <item>經濟</item>
+    </string-array>
+    <string-array name="accvehicle_entries">
+        <item>極小</item>
+        <item>小</item>
+        <item>中等</item>
+        <item>大</item>
+        <item>極大</item>
+    </string-array>
+
+
+    <string-array name="honda_entries">
+        <item>60</item>
+        <item>0 MPG</item>
+        <item>0.0 MPG</item>
+        <item>0.0 KM</item>
+        <item>開</item>
+        <item>0 RPM</item>
+        <item>0.00 KM/H</item>
+        <item>0.00 V</item>
+        <item>0.0 ℃</item>
+        <item>0 KM</item>
+        <item>0 L</item>
+    </string-array>
+    <string-array name="honda_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="open_close">
+        <item>關</item>
+        <item>開</item>
+    </string-array>
+    <string-array name="open_closevaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="kong">
+        <item>--------</item>
+        <item></item>
+    </string-array>
+    <string-array name="kongvaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="automatic">
+        <item>關</item>
+        <item>切入駐車擋僅駕駛員車門解鎖</item>
+        <item>切入駐車擋所有車門解鎖</item>
+    </string-array>
+    <string-array name="automatic_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="auto_hand">
+        <item>關</item>
+        <item>拔出所有開關鑰匙僅駕駛員車門解鎖</item>
+        <item>拔出點火開關鑰匙所有車門解鎖</item>
+    </string-array>
+    <string-array name="auto_hand_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="remote_lock">
+        <item>僅燈光</item>
+        <item>燈光與喇叭</item>
+        <item>僅喇叭</item>
+        <item>關</item>
+    </string-array>
+    <string-array name="remote_lock_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="remote_unlock">
+        <item>僅駕駛員門</item>
+        <item>所有門</item>
+    </string-array>
+    <string-array name="remote_unlock_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enIntelligence_car">
+        <item>關</item>
+        <item>開</item>
+        <item>喇叭鳴叫啟用</item>
+    </string-array>
+    <string-array name="enIntelligence_car_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="ensliding_door">
+        <item>解鎖所有門</item>
+        <item>解鎖側滑門</item>
+    </string-array>
+    <string-array name="ensliding_door_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enheadlight">
+        <item>關</item>
+        <item>30 秒</item>
+        <item>60 秒</item>
+        <item>120 秒</item>
+    </string-array>
+    <string-array name="enheadlight_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entrailer">
+        <item>關</item>
+        <item>開</item>
+        <item>拖車補償</item>
+    </string-array>
+    <string-array name="entrailer_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm">
+        <item>鐘鳴警告</item>
+        <item>座椅</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enair_register">
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="enair_register_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enair_onoff">
+        <item>關</item>
+        <item>開</item>
+        <item>上次設定</item>
+    </string-array>
+    <string-array name="enair_onoff_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enair_quality">
+        <item>低靈敏度</item>
+        <item>高靈敏度</item>
+    </string-array>
+    <string-array name="enair_quality_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enautomatic">
+        <item>統一設置</item>
+        <item>分區設置</item>
+        <item>上次設定</item>
+    </string-array>
+    <string-array name="enautomatic_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enback_temperature">
+        <item>關閉</item>
+        <item>後座同前座設定</item>
+        <item>上次設定</item>
+    </string-array>
+    <string-array name="enback_temperature_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enrear_window">
+        <item>手動</item>
+        <item>自動</item>
+    </string-array>
+    <string-array name="enrear_window_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enremote_start_air_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enair_quality_air">
+        <item>低靈敏度</item>
+        <item>高靈敏度</item>
+    </string-array>
+    <string-array name="enair_quality_air_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ento_turn_to">
+        <item>關</item>
+        <item>收縮</item>
+        <item>提升</item>
+        <item>收縮和提升</item>
+    </string-array>
+    <string-array name="ento_turn_to_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enspeed_display">
+        <item>全部</item>
+        <item>局部</item>
+    </string-array>
+    <string-array name="enspeed_display_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enengine_state">
+        <item>運行</item>
+        <item>正常</item>
+    </string-array>
+    <string-array name="enengine_state_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enignition_conditions">
+        <item>熄火</item>
+        <item>ACC開始模式</item>
+        <item>運行模式</item>
+        <item>打火模式</item>
+        <item>無效模式</item>
+    </string-array>
+    <string-array name="enignition_conditions_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="engear">
+        <item>無效</item>
+        <item>P 擋</item>
+        <item>N 擋</item>
+        <item>R 擋</item>
+        <item>D 擋</item>
+    </string-array>
+    <string-array name="engear_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enrange">
+        <item>km</item>
+        <item>mls</item>
+    </string-array>
+    <string-array name="enrange_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enlang">
+        <item>Deutsch</item>
+        <item>English UK</item>
+        <item>English US</item>
+        <item>Espanol</item>
+        <item>Italiano</item>
+        <item>Francais</item>
+    </string-array>
+    <string-array name="enlang_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="enage_full">
+        <item>l/100km</item>
+        <item>mpg(US)</item>
+        <item>mpg(UK)</item>
+        <item>km/L</item>
+    </string-array>
+    <string-array name="enage_full_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entemp">
+        <item>攝氏</item>
+        <item>華氏</item>
+    </string-array>
+    <string-array name="entemp_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="entimes">
+        <item>12小時</item>
+        <item>24小時</item>
+    </string-array>
+    <string-array name="entimes_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enautomatic_latch">
+        <item>關閉</item>
+        <item>打開</item>
+        <item>喇叭鳴叫時啟用</item>
+    </string-array>
+    <string-array name="enautomatic_latch_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="encar_unlocked">
+        <item>所有門</item>
+        <item>駕駛員門</item>
+    </string-array>
+    <string-array name="encar_unlocked_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="open_close47">
+        <item>關</item>
+        <item>開</item>
+    </string-array>
+    <string-array name="open_closevaues47">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="engohome">
+        <item>10 S</item>
+        <item>20 S</item>
+        <item>30 S</item>
+    </string-array>
+    <string-array name="enleavehome">
+        <item>關</item>
+        <item>10 S</item>
+        <item>20 S</item>
+        <item>30 S</item>
+    </string-array>
+    <string-array name="enleavehome_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enall">
+        <item>僅駕駛員車門</item>
+        <item>所有</item>
+    </string-array>
+    <string-array name="enall_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envol">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="envol_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="enrange47">
+        <item>km</item>
+        <item>m</item>
+    </string-array>
+    <string-array name="enspeed">
+        <item>km/h</item>
+        <item>m/h</item>
+    </string-array>
+    <string-array name="enspeed_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="entemp47">
+        <item>DegC</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="entemp47_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envolume">
+        <item>l</item>
+        <item>gal(us)</item>
+        <item>gal(uk)</item>
+    </string-array>
+    <string-array name="enenergy">
+        <item>l/100km</item>
+        <item>km/l</item>
+        <item>mpg(us)</item>
+        <item>mpg(uk)</item>
+    </string-array>
+    <string-array name="entpms">
+        <item>kpa</item>
+        <item>bar</item>
+        <item>psi</item>
+    </string-array>
+    <string-array name="entpms_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enwiper">
+        <item>不在</item>
+        <item>在</item>
+    </string-array>
+    <string-array name="enwiper_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enauto_cmd">
+        <item>弱</item>
+        <item>中</item>
+        <item>強</item>
+    </string-array>
+    <string-array name="enauto_cmd_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enwind_speed">
+        <item>關</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="enwind_speed_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="enlamp_no">
+        <item>關閉</item>
+        <item>15 S</item>
+        <item>30 S</item>
+        <item>60 S</item>
+    </string-array>
+    <string-array name="enlamp_no_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enlighting">
+        <item>關閉</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="enlighting_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="ensound">
+        <item>經典音效</item>
+        <item>水晶音律</item>
+        <item>都市節奏</item>
+        <item>叢林夢幻</item>
+    </string-array>
+    <string-array name="enoil">
+        <item>KM/L</item>
+        <item>L/100KM</item>
+    </string-array>
+    <string-array name="enoil_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <!-- <string-array name="enlanguages"> -->
+    <!-- <item>英文</item> -->
+    <!-- <item>中文</item> -->
+    <!-- </string-array> -->
+    <string-array name="enlanguages_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ensetdoor">
+        <item>駕駛門</item>
+        <item>所有車門</item>
+    </string-array>
+    <string-array name="ensetdoor_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="encar_languages">
+        <item>英語</item>
+        <item>美式英語</item>
+        <item>德語</item>
+        <item>義大利</item>
+        <item>法國</item>
+        <item>法語(美版)</item>
+        <item>西班牙</item>
+        <item>西班牙語(美版)</item>
+        <item>土耳其</item>
+        <item>俄國</item>
+        <item>荷蘭</item>
+        <item>波蘭</item>
+        <item>瑞典</item>
+        <item>葡萄牙</item>
+        <item>簡體中文</item>
+    </string-array>
+    <string-array name="encar_languages_vaues">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>14</item>
+        <item>18</item>
+        <item>22</item>
+        <item>27</item>
+    </string-array>
+    <string-array name="enlfRight_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enadaptive_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enari_mode">
+        <item>關閉</item>
+        <item>打開</item>
+        <item>按照上次設置</item>
+    </string-array>
+    <string-array name="enari_mode_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enremote_seat">
+        <item>關閉</item>
+        <item>打開</item>
+        <!-- <item>駕駛員</item> -->
+    </string-array>
+    <string-array name="enremote_seat_vaues">
+        <item>0</item>
+        <item>1</item>
+        <!-- <item>2</item> -->
+    </string-array>
+    <string-array name="enauto_collision">
+        <item>關閉</item>
+        <item>報警</item>
+        <item>報警和自動</item>
+    </string-array>
+    <string-array name="enauto_collision_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enparking_mode">
+        <item>都不顯示</item>
+        <item>倒車入庫</item>
+        <item>路邊停車</item>
+    </string-array>
+    <string-array name="enparking_mode_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="endistance">
+        <item>極小</item>
+        <item>小</item>
+        <item>中等</item>
+        <item>大</item>
+        <item>極大</item>
+    </string-array>
+    <string-array name="endistance_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enrunning">
+        <item>經濟</item>
+        <item>標準</item>
+        <item>運動</item>
+    </string-array>
+    <string-array name="enrunning_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enconnect_time">
+        <item>提前</item>
+        <item>適時</item>
+        <item>延後</item>
+    </string-array>
+    <string-array name="enconnect_time_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="entravel_pattern">
+        <item>靠左行駛</item>
+        <item>靠右行駛</item>
+    </string-array>
+    <string-array name="entravel_pattern_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enmeter_switch">
+        <item>最小</item>
+        <item>10%</item>
+        <item>20%</item>
+        <item>30%</item>
+        <item>40%</item>
+        <item>50%</item>
+        <item>60%</item>
+        <item>70%</item>
+        <item>80%</item>
+        <item>90%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="enmeter_switch_vaues">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="enhome">
+        <item>關閉</item>
+        <item>5s</item>
+        <item>10s</item>
+        <item>15s</item>
+        <item>20s</item>
+        <item>25s</item>
+        <item>30s</item>
+    </string-array>
+    <string-array name="enhome_vaues">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="enconvenient_open">
+        <item>全部車窗</item>
+        <item>駕駛員車窗</item>
+        <item>關閉</item>
+    </string-array>
+    <string-array name="enconvenient_open_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="endoor_unlock">
+        <item>全部車門</item>
+        <item>單個車門</item>
+        <item>車輛側</item>
+    </string-array>
+    <string-array name="endoor_unlock_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="envolumes">
+        <item>L</item>
+        <item>gal(US)</item>
+        <item>gal(UK)</item>
+    </string-array>
+    <string-array name="envolume_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="entireunit">
+        <item>kPa</item>
+        <item>bar</item>
+        <item>psi</item>
+    </string-array>
+    <string-array name="entireunit_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enspeed1">
+        <item>km/h</item>
+        <item>m/h</item>
+    </string-array>
+    <string-array name="enspeed1_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enfulecons">
+        <item>L/100km</item>
+        <item>km/l</item>
+        <item>mpg(US)</item>
+        <item>mpg(UK)</item>
+    </string-array>
+    <string-array name="enfulecons_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="ensetdoor1">
+        <item>所有車門</item>
+        <item>駕駛門</item>
+    </string-array>
+    <string-array name="ensetdoor1_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envol_radar">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="envol_radar_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enradar_dis">
+        <item>1格</item>
+        <item>2格</item>
+    </string-array>
+    <string-array name="enradar_dis_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enheadlamps">
+        <item>等級1</item>
+        <item>等級2</item>
+        <item>等級3</item>
+        <item>等級4</item>
+        <item>等級5</item>
+    </string-array>
+    <string-array name="enheadlamps_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enlight_Off_time">
+        <item>無效</item>
+        <item>7.5s</item>
+        <item>15s</item>
+        <item>30s</item>
+    </string-array>
+    <string-array name="enlight_Off_time_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entoyota">
+        <item>霸道</item>
+        <item>銳志</item>
+        <item>RAV4</item>
+        <item>凱美瑞</item>
+        <item>卡羅拉</item>
+        <item>2015 款漢蘭達</item>
+    </string-array>
+    <string-array name="entoyota_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="enlanguages61">
+        <item>英文</item>
+        <item>中文</item>
+        <item>俄語</item>
+        <item>法語</item>
+        <item>德語</item>
+    </string-array>
+    <string-array name="enlanguages71">
+        <item>英文</item>
+        <item>中文</item>
+        <item>法語</item>
+    </string-array>
+
+    <!-- <string-array name="enlanguages61_vaues"> -->
+    <!-- <item>0</item> -->
+    <!-- <item>1</item> -->
+    <!-- <item>2</item> -->
+    <!-- <item>3</item> -->
+    <!-- <item>4</item> -->
+    <!-- </string-array> -->
+    <string-array name="entrumpchi">
+        <item>GA3</item>
+        <item>GA3S</item>
+        <item>GS4</item>
+        <item>GS5</item>
+        <item>GS5 高配</item>
+        <item>GS5 速博</item>
+        <item>GA6</item>
+        <item>GS8</item>
+    </string-array>
+    <string-array name="entrumpchi_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="enari_comfortable">
+        <item>緩慢</item>
+        <item>正常</item>
+        <item>快速</item>
+    </string-array>
+    <string-array name="enari_comfortable_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enrear_window1">
+        <item>自動</item>
+        <item>手動</item>
+    </string-array>
+    <string-array name="enrear_window1_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ensteering_mode">
+        <item>運動</item>
+        <item>標準</item>
+        <item>舒適</item>
+    </string-array>
+    <string-array name="ensteering_mode_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enremote_unlock">
+        <item>所有車門</item>
+        <item>僅左前門</item>
+    </string-array>
+    <string-array name="enremote_unlock_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enmyhome">
+        <item>關閉</item>
+        <item>僅近光燈</item>
+        <item>近光後霧</item>
+    </string-array>
+    <string-array name="enmyhome_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="en_cartype">
+        <item>九代雅閣中高配</item>
+        <item>九代雅閣低配</item>
+        <item>淩派</item>
+        <item>傑德</item>
+        <item>2012 款 CRV</item>
+        <item>2012 款思域</item>
+        <item>2014 款思域</item>
+        <item>歌詩圖</item>
+        <item>2015 款奧德賽</item>
+        <item>繽智</item>
+        <item>2015 款 CRV</item>
+    </string-array>
+    <string-array name="en_cartype_vaues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+    <string-array name="enturn_lights_set">
+        <item>閃爍一次</item>
+        <item>閃爍三次</item>
+    </string-array>
+    <string-array name="enturn_lights_set_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enwarning_control_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enmileage_unit">
+        <item>KM</item>
+        <item>MILE</item>
+    </string-array>
+    <string-array name="enmileage_unit_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enparksense">
+        <item>聲音</item>
+        <item>聲音+顯示</item>
+    </string-array>
+    <string-array name="enparksense_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enheadlights_off">
+        <item>0S</item>
+        <item>30S</item>
+        <item>60S</item>
+        <item>90S</item>
+    </string-array>
+    <string-array name="enpower_off">
+        <item>0S</item>
+        <item>45S</item>
+        <item>5M</item>
+        <item>10M</item>
+    </string-array>
+    <string-array name="enunit_set">
+        <item>公制</item>
+        <item>美制</item>
+    </string-array>
+    <string-array name="enlane_warning">
+        <item>早</item>
+        <item>中</item>
+        <item>遲</item>
+    </string-array>
+    <string-array name="enlane_warning_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="endis_suspension">
+        <item>所有</item>
+        <item>警告</item>
+    </string-array>
+    <string-array name="endis_suspension_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enbusy_warning">
+        <item>關閉</item>
+        <item>車燈</item>
+        <item>車燈+報警</item>
+    </string-array>
+    <string-array name="enbusy_warning_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enfor_warning">
+        <item>近</item>
+        <item>遠</item>
+    </string-array>
+    <string-array name="enfor_warning_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enoutseat_heating">
+        <item>關閉</item>
+        <item>遠程</item>
+        <item>全部</item>
+    </string-array>
+    <string-array name="enoutseat_heating_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="entrip">
+        <item>與加油聯動</item>
+        <item>點火開關時</item>
+        <item>手動</item>
+    </string-array>
+    <string-array name="entrip_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="eninterior">
+        <item>15 S</item>
+        <item>30 S</item>
+        <item>60 S</item>
+    </string-array>
+    <string-array name="eninterior_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enauto_light">
+        <item>最低</item>
+        <item>較低</item>
+        <item>中間</item>
+        <item>較高</item>
+        <item>最高</item>
+    </string-array>
+    <string-array name="enauto_light_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enlock_with">
+        <item>vehicle speed</item>
+        <item>shift from P</item>
+        <item>OFF</item>
+    </string-array>
+    <string-array name="enlock_with_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enunlock_with">
+        <item>DRIVER’ S DOOR OPENS</item>
+        <item>SHIFTED TO PARK</item>
+        <item>IGNITION SWITCHED OFF</item>
+        <item>OFF</item>
+    </string-array>
+    <string-array name="enunlock_with_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="ensecurity">
+        <item>30 S</item>
+        <item>60 S</item>
+        <item>90 S</item>
+    </string-array>
+    <string-array name="ensecurity_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enscreen1">
+        <item>琥珀色</item>
+        <item>紅色</item>
+        <item>紫羅蘭色</item>
+        <item>藍色</item>
+    </string-array>
+    <string-array name="enscreen1_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enscreen2">
+        <item>正常</item>
+        <item>變暗</item>
+        <item>全滅</item>
+    </string-array>
+    <string-array name="enscreen2_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enauto_avoidance">
+        <item>關閉</item>
+        <item>報警</item>
+        <item>報警和制動</item>
+    </string-array>
+    <string-array name="enauto_avoidance_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enhome_time">
+        <item>30S</item>
+        <item>1M</item>
+        <item>1M 30S</item>
+        <item>2M</item>
+        <item>2M 30S</item>
+        <item>3M</item>
+        <item>3M 30S</item>
+        <item>4M</item>
+        <item>4M 30S</item>
+        <item>5M</item>
+    </string-array>
+    <string-array name="enhome_time_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="enion_generator">
+        <item>關</item>
+        <item>正離子</item>
+        <item>負離子</item>
+    </string-array>
+    <string-array name="enion_generator_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enprompt_volume">
+        <item>1等級</item>
+        <item>2等級</item>
+        <item>3等級</item>
+    </string-array>
+    <string-array name="eninstrument_color">
+        <item>綠色</item>
+        <item>紅色</item>
+        <item>藍色</item>
+        <item>紫色</item>
+        <item>橙色</item>
+    </string-array>
+    <string-array name="eninstrument_style">
+        <item>樣式 1</item>
+        <item>樣式 2</item>
+        <item>樣式 3</item>
+        <item>樣式 4</item>
+    </string-array>
+    <string-array name="enparking_system">
+        <item>無效</item>
+        <item>側方</item>
+        <item>直角</item>
+        <item>斜向</item>
+    </string-array>
+    <string-array name="enparking_system_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enalarm_vol">
+        <item>高</item>
+        <item>中</item>
+        <item>低</item>
+    </string-array>
+    <string-array name="enalarm_vol_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enspeed_distance_units">
+        <item>km/h km</item>
+        <item>mph miles</item>
+    </string-array>
+    <string-array name="enspeed_distance_units_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envoice_alarm">
+        <item>低</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="endanger_ahead">
+        <item>遠</item>
+        <item>中</item>
+        <item>近</item>
+    </string-array>
+    <string-array name="endanger_ahead_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="endeviate">
+        <item>中</item>
+        <item>寬闊</item>
+        <item>僅警告</item>
+    </string-array>
+    <string-array name="endeviate_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enindividual_steering">
+        <item>正常</item>
+        <item>運動</item>
+    </string-array>
+    <string-array name="enindividual_steering_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enindividual_engine">
+        <item>正常</item>
+        <item>運動</item>
+        <item>ECO</item>
+    </string-array>
+    <string-array name="enindividual_engine_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enindividual_climate">
+        <item>正常</item>
+        <item>ECO</item>
+    </string-array>
+    <string-array name="enindividual_climate_vaues">
+        <item>0</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enoil1">
+        <item>L/100KM</item>
+        <item>KM/L</item>
+    </string-array>
+    <string-array name="enoil1_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="entireunit1">
+        <item>bar</item>
+        <item>kPa</item>
+        <item>psi</item>
+    </string-array>
+    <string-array name="entireunit1_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enlock_beep">
+        <item>再次按下</item>
+        <item>首次按下</item>
+        <item>關閉</item>
+    </string-array>
+    <string-array name="enlock_beep_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enengine_power">
+        <item>0S</item>
+        <item>45S</item>
+        <item>5M</item>
+        <item>10M</item>
+    </string-array>
+    <string-array name="enengine_power_values">
+        <item>0</item>
+        <item>3</item>
+        <item>20</item>
+        <item>40</item>
+    </string-array>
+    <string-array name="entrailer_m">
+        <item>刹車1</item>
+        <item>刹車2</item>
+        <item>刹車3</item>
+        <item>刹車4</item>
+    </string-array>
+    <string-array name="entrailer_m_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entrailer_type">
+        <item>輕型電動</item>
+        <item>重型電動</item>
+        <item>輕型電動液壓以上</item>
+        <item>重型電機液壓以上</item>
+    </string-array>
+    <string-array name="entrailer_type_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="ensetting_color">
+        <item>碧綠色</item>
+        <item>藍綠色</item>
+        <item>深橙色</item>
+        <item>螢光橙色</item>
+    </string-array>
+    <string-array name="ensetting_color_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enback_camera_path">
+        <item>動態軌跡線</item>
+        <item>靜態軌跡線</item>
+        <item>警告線</item>
+    </string-array>
+    <string-array name="encell_back_door">
+        <item>1 檔</item>
+        <item>2 檔</item>
+        <item>3 檔</item>
+        <item>4 檔</item>
+        <item>5 檔</item>
+    </string-array>
+    <string-array name="encell_back_door_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enramp">
+        <item>標準</item>
+        <item>高級</item>
+    </string-array>
+    <string-array name="enramp_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enfort_tips">
+        <item>喇叭</item>
+        <item>燈光</item>
+        <item>燈光和喇叭</item>
+    </string-array>
+    <string-array name="enfort_tips_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="encar_line">
+        <item>關</item>
+        <item>靜態</item>
+        <item>靜態+動態</item>
+    </string-array>
+    <string-array name="encar_line_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enoil_unit">
+        <item>L/100km</item>
+        <item>MPG</item>
+        <item>KM/L</item>
+    </string-array>
+    <string-array name="enoil_unit_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enwelcome_lig">
+        <item>關閉</item>
+        <item>15S</item>
+        <item>30S</item>
+        <item>60S</item>
+    </string-array>
+    <string-array name="enwelcome_lig_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enrear_door">
+        <item>尾門</item>
+        <item>尾門+車門</item>
+    </string-array>
+    <string-array name="enrear_door_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enparking_mode1">
+        <item>普通</item>
+        <item>平行</item>
+        <item>關閉</item>
+        <item>無效</item>
+    </string-array>
+    <string-array name="enparking_mode1_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enlock_beep1">
+        <item>關閉</item>
+        <item>首次按下</item>
+        <item>再次按下</item>
+    </string-array>
+    <string-array name="enlock_beep1_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="entireunit2">
+        <item>psi</item>
+        <item>kpa</item>
+        <item>bar</item>
+    </string-array>
+    <string-array name="entireunit2_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enage_full2">
+        <item>mpg(US)</item>
+        <item>mpg(UK)</item>
+        <item>l/100km</item>
+        <item>km/L</item>
+    </string-array>
+    <string-array name="enage_full2_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enrange2">
+        <item>mi</item>
+        <item>km</item>
+    </string-array>
+    <string-array name="enrange2_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="reverse_mode">
+        <item>垂直模式</item>
+        <item>側邊模式</item>
+        <item>俯視模式</item>
+        <item>窄巷模式</item>
+    </string-array>
+    <string-array name="ambient_lighting_tones">
+        <item>關閉</item>
+        <item>暖白色</item>
+        <item>綠色</item>
+        <item>藍色</item>
+        <item>白色</item>
+    </string-array>
+    <string-array name="psa_simple_16">
+        <item>寶石藍</item>
+        <item>鹿皮棕</item>
+    </string-array>
+    <string-array name="psa_simple_17">
+        <item>行車電腦資訊/發動機轉速</item>
+        <item>行車電腦資訊/機油溫度</item>
+        <item>發動機轉速/行車電腦</item>
+        <item>發動機轉速/機油溫度</item>
+        <item>機油溫度/行車電腦資訊</item>
+        <item>機油溫度/發動機轉速</item>
+    </string-array>
+    <string-array name="array_driver_attention_monitor">
+        <item>關閉</item>
+        <item>視覺警報</item>
+        <item>觸覺和視覺警報</item>
+    </string-array>
+    <string-array name="array_remote_control_open_condition">
+        <item>任何時候</item>
+        <item>解鎖後</item>
+    </string-array>
+    <string-array name="array_alert_prompt">
+        <item>關閉</item>
+        <item>延後</item>
+        <item>適時</item>
+        <item>提前</item>
+    </string-array>
+    <string-array name="interior_space_light_color">
+        <item>關閉</item>
+        <item>白色</item>
+        <item>橙色</item>
+        <item>藍色</item>
+        <item>紅色</item>
+        <item>橘黃色</item>
+        <item>黃色</item>
+        <item>淺綠色</item>
+        <item>寶石藍</item>
+        <item>深藍色</item>
+        <item>粉色</item>
+    </string-array>    
+
+
+    <string-array name="array_speaker_volue">
+        <item>尋車和門未關閉鎖</item>
+        <item>尋車</item>
+        <item>門未關閉鎖</item>
+        <item>關閉</item>
+    </string-array>
+    <string-array name="tpms_set_msg">
+        <item>胎壓將在行駛過程中進行重置</item>
+        <item>胎壓重置失敗，請停車重試</item>
+        <item>胎壓重置成功</item>
+        <item>胎壓重置進行中</item>
+    </string-array>
+    <string-array name="tpms_waring_msg">        
+        <item>高壓警告</item>
+        <item>低壓警告</item>
+        <item>系統故障</item>
+        <item>溫度警告</item>
+        <item>快速洩漏</item>
+        <item>感測器丟失</item>
+        <item>感測器電池電量低</item>
+        <item>感測器故障</item>
+    </string-array>
+    
+    
+    <string-array name="mazda3_backwindowdefog">        
+        <item>自動關閉</item>
+        <item>連續</item>
+    </string-array>
+        <string-array name="mazda3_3">
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+        <item>關閉</item>
+    </string-array>
+        <string-array name="mazda3_4">
+        <item>類型 1</item>
+        <item>類型 2</item>
+        <item>關閉</item>
+    </string-array>
+    
+    <string-array name="oushang_1c">
+        <item>關閉</item>
+        <item>僅識別提示</item>
+        <item>僅消失提示</item>
+        <item>識別和消失均提示</item>
+    </string-array>
+    
+    <string-array name="oushang_1e">
+        <item>高</item>
+        <item>標準</item>
+        <item>低</item>
+    </string-array>
+    
+    <string-array name="oushang_20">
+        <item>高</item>
+        <item>標準</item>
+    </string-array> 
+    
+   <string-array name="oushang_21">
+        <item>僅預警</item>
+        <item>僅糾偏</item>
+        <item>預警 糾偏</item>
+        <item>關閉</item>
+    </string-array>
+    
+    <string-array name="oushang_22">
+        <item>聲音</item>
+        <item>振動</item>
+        <item>聲音 振動</item>
+    </string-array>
+    
+    
+    <string-array name="oushang_32">
+        <item>紅色</item>    
+        <item>紫色</item>    
+        <item>藍色</item>    
+        <item>白色</item>    
+        <item>橙色</item>    
+        <item>寶藍色</item>    
+        <item>綠色</item>    
+    </string-array>
+    
+        <string-array name="oushang_37">
+        <item>行車期間調暗</item>    
+        <item>行車期間關閉</item> 
+    </string-array>
+            <string-array name="oushang_3a">
+        <item>自動</item>    
+        <item>經典</item> 
+        <item>運動</item> 
+        <item>科技</item> 
+    </string-array>
+    
+                       <string-array name="oushang_3f">
+        <item>舒適</item>    
+        <item>運動</item> 
+        <item>經濟</item>
+    </string-array>
+    
+                        <string-array name="oushang_40">
+        <item>舒適</item>    
+        <item>運動</item> 
+        <item>輕便</item>
+    </string-array>
+    
+                           <string-array name="oushang_41">
+        <item>關閉</item>    
+        <item>透氣</item> 
+        <item>打開</item>
+    </string-array>
+    
+                               <string-array name="oushang_42">
+        <item>舒適</item>    
+        <item>運動</item> 
+        <item>經濟</item>
+        <item>自訂</item>
+    </string-array>
+    
+      <string-array name="oushang_43">
+        <item>關閉</item>    
+        <item>默認</item> 
+        <item>自訂</item>
+    </string-array>
+    
+         
+      <string-array name="season_set">
+        <item>無</item>    
+        <item>夏令時</item> 
+        <item>冬令時</item>
+    </string-array>
+    
+          <string-array name="background_lighting_mazda">
+        <item>關閉</item>
+        <item>昏暗</item>
+        <item>中等</item>
+        <item>明亮</item>
+    </string-array>
+            <string-array name="mazda3_2020_settings_7">
+        <item>關閉</item>
+        <item>低</item>
+        <item>高</item>
+    </string-array>
+    
+            
+
+    
+    <string-array name="mazda3_2020_settings_d">
+        <item>關閉</item>
+        <item>視覺</item>
+        <item>視覺和聽覺</item>
+    </string-array>
+    
+    <string-array name="launage_entries4">
+        <item>中文</item>
+        <item>英文</item>
+        <item>保加利亞</item>
+        <item>阿拉伯</item>
+        <item>克羅埃西亞</item>
+        <item>捷克</item>
+        <item>丹麥</item>
+        <item>荷蘭</item>
+        <item>英語</item>
+        <item>愛沙尼亞</item>
+        <item>芬蘭</item>
+        <item>比利時</item>
+        <item>法語</item>
+        <item>德語</item>
+        <item>希臘</item>
+        <item>以色列</item>
+        <item>匈牙利</item>
+        <item>印度</item>
+        <item>伊朗</item>
+        <item>義大利</item>
+        <item>日本</item>
+        <item>奧地利</item>
+        <item>立陶宛</item>
+        <item>挪威</item>
+        <item>波蘭</item>
+        <item>巴西葡萄牙</item>
+        <item>葡萄牙</item>
+        <item>羅馬尼奧</item>
+        <item>俄羅斯</item>
+        <item>塞爾維亞</item>
+        <item>斯洛伐克</item>
+        <item>斯洛維尼亞</item>
+        <item>西班牙</item>
+        <item>墨西哥西班牙</item>
+        <item>瑞典</item>
+        <item>土耳其</item>
+        <item>烏克蘭</item>
+    </string-array>
+    
+</resources>

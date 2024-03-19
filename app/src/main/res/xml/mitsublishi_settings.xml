@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_1"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_1"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_1" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_2"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_2"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_2" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_3"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_3"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_3" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_4"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_4"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_4" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_4"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_5"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_5" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_6"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_6"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_6" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_7"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_7"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_7" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_4"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_8"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_8" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_9"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_9"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_9" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_10"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_10"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_10" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_11"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_11"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_11" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_12"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_12"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_12" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_13"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_13"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_13" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_14"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_14"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_14" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_4"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_15"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_15" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_16"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_16"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_16" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_17"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_17"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_17" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_18"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_18"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_18" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_19"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_19"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_19" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_20"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_20"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_20" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_20"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_21"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_21" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_22"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_22"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_22" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_23"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_23"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_23" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_4"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_24"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_24" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_25"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_25"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_25" />
+    <ListPreference
+        android:entries="@array/mitsubishi_settings_26"
+        android:entryValues="@array/alarm_vol"
+        android:key="mitsubishi_settings_26"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_26" />
+    
+        <PreferenceScreen
+        android:key="mitsubishi_settings_0"
+        android:persistent="false"
+        android:title="@string/mitsubishi_settings_0" />
+    
+        
+        
+    <ListPreference
+        android:entries="@array/car_type_cmd_mitsubishi"
+        android:entryValues="@array/car_type_cmd_values"
+        android:key="car_type_cmd"
+        android:persistent="false"
+        android:title="@string/car_type_cmd" />
+
+</PreferenceScreen>

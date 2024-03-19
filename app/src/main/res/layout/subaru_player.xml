@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/toyaota_car_bk"
+    android:padding="20px"
+    android:paddingBottom="160px" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#ffffff"
+        android:textSize="30px" />
+
+    <LinearLayout
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/raido_status"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="30px" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300px"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/freq_baud"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="30px" />
+
+            <TextView
+                android:id="@+id/freq_text"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="60px" />
+
+            <TextView
+                android:id="@+id/freq_unit"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="30px" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cd"
+        android:layout_width="match_parent"
+        android:layout_height="300px"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/playstatus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="32px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2.8"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0dip"
+                android:fadingEdge="none"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50px"
+                                android:layout_gravity="center" >
+
+                                <TextView
+                                    style="@style/shadowTextCommonStyleFonts"
+                                    android:layout_width="0px"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="right"
+                                    android:text="@string/str_current_dish"
+                                    android:textSize="34px" />
+
+                                <TextView
+                                    android:id="@+id/song"
+                                    style="@style/shadowTextCommonStyleFonts"
+                                    android:layout_width="0px"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:ellipsize="end"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="20px"
+                                    android:singleLine="true"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="34px" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50px"
+                            android:layout_gravity="center" >
+
+                            <TextView
+                                style="@style/shadowTextCommonStyleFonts"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="right"
+                                android:text="@string/str_current_song"
+                                android:textSize="34px" />
+
+                            <TextView
+                                android:id="@+id/albums"
+                                style="@style/shadowTextCommonStyleFonts"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20px"
+                                android:singleLine="true"
+                                android:textColor="#ffffffff"
+                                android:textSize="34px" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50px"
+                            android:layout_gravity="center" >
+
+                            <TextView
+                                style="@style/shadowTextCommonStyleFonts"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="right"
+                                android:text="@string/str_play_time"
+                                android:textSize="34px" />
+
+                            <TextView
+                                android:id="@+id/time"
+                                style="@style/shadowTextCommonStyleFonts"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20px"
+                                android:singleLine="true"
+                                android:textColor="#ffffffff"
+                                android:textSize="34px" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="0.4"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="32px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="0.4"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/repeat_tag"
+                        android:layout_width="37px"
+                        android:layout_height="27px"
+                        android:layout_marginLeft="10px"
+                        android:src="@drawable/common_repeat_tag"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/shuffle_tag"
+                        android:layout_width="37px"
+                        android:layout_height="27px"
+                        android:layout_marginLeft="10px"
+                        android:src="@drawable/common_shuffle_tag"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

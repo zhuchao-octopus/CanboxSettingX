@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="volbackdoor_entries">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="volbackdoor_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="smartdoorlock_entries">
+        <item>Все двери</item>
+        <item>Водитель</item>
+    </string-array>
+    <string-array name="smartdoorlock_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="autolight_entries">
+        <item>-2</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>+1</item>
+        <item>+2</item>
+    </string-array>
+    <string-array name="autolight_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="closedoortime_entries">
+        <item>Выкл.</item>
+        <item>30с</item>
+        <item>60с</item>
+        <item>120с</item>
+    </string-array>
+    <string-array name="closedoortime_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="timeswitchlight_entries">
+        <item>Выкл.</item>
+        <item>30с</item>
+        <item>60с</item>
+        <item>90с</item>
+    </string-array>
+    <string-array name="timeswitchlight_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="lightingime_entries">
+        <item>Выкл.</item>
+        <item>7,5 сек.</item>
+        <item>15 сек.</item>
+        <item>30 сек.</item>
+    </string-array>
+    <string-array name="lightingime_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="Kcommonage_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="commonage_entries">
+        <item>Выкл</item>
+        <item>7.5s</item>
+        <item>15s</item>
+        <item>30s</item>
+        <item>Вкл.</item>
+        <item>0 RPM</item>
+        <item>0.00 KM/H</item>
+        <item>0.00 V</item>
+        <item>0.0 ℃</item>
+        <item>0 KM</item>
+        <item>0 L</item>
+    </string-array>
+    <string-array name="radarvol_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="radarvol_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="radarvol_entryValues1">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="radarrange_entries">
+        <item>ДАЛЕКО</item>
+        <item>БЛИЗКО</item>
+    </string-array>
+    <string-array name="radarrange_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="radarrange_entries1">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="radarrange_entryValues1">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="autodoorlockmode14_entries">
+        <item>Выкл.</item>
+        <item>Блокировка при движении</item>
+        <item>Блокировка: разбл.при вожд: IGN выкл.</item>
+        <item>Блокировка при перекл.в режим P</item>
+        <item>Блокировка: при перекл.в режим P разбл.</item>
+    </string-array>
+    <string-array name="autodoorlockmode14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="unlockmode14_entries">
+        <item>Нажмите один раз-Все двери</item>
+        <item>Нажмите один раз-дверь вод. Дважды-Все двери</item>
+    </string-array>
+    <string-array name="unlockmode14_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="autorelocktime14_entries">
+        <item>90c</item>
+        <item>60c</item>
+        <item>30c</item>
+    </string-array>
+    <string-array name="autorelocktime14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="lockbeepvol14_entries">
+        <item>Высокий</item>
+        <item>Средний</item>
+        <item>Низкий</item>
+        <item>Выключить</item>
+    </string-array>
+    <string-array name="lockbeepvol14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="inlighttimedooroutopen14_entries">
+        <item>60 минут</item>
+        <item>30 минут</item>
+        <item>10 минут</item>
+    </string-array>
+    <string-array name="inlighttimedooroutopen14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="inlighttimedooroutclose14_entries">
+        <item>60 c</item>
+        <item>30 c</item>
+        <item>15 c</item>
+        <item>7.5 c</item>
+    </string-array>
+    <string-array name="inlighttimedooroutclose14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="headlightofftime14_entries">
+        <item>120 c</item>
+        <item>90 c</item>
+        <item>60 c</item>
+        <item>30 c</item>
+        <item>0 c</item>
+    </string-array>
+    <string-array name="headlightofftime14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="autoheadlighton14_entries">
+        <item>Светло</item>
+        <item>Средне-светло</item>
+        <item>Средне</item>
+        <item>Средне-темно</item>
+        <item>Темно</item>
+    </string-array>
+    <string-array name="autoheadlighton14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="Language14_entries">
+        <item>Английский (США)</item>
+        <item>Франц.</item>
+        <item>Испан.</item>
+        <item>Голосовое упр.навигацией</item>
+        <item>Голосового упр.Аудио/Тел.</item>
+    </string-array>
+    <string-array name="language14_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="automodewindlevel_entries">
+        <item>Низко</item>
+        <item>Средне</item>
+        <item>Высоко</item>
+    </string-array>
+    <string-array name="automodewindlevel_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="airqualitysensor_entry">
+        <item>Выкл.</item>
+        <item>Низкая чувствительность</item>
+        <item>Высокая</item>
+    </string-array>
+    <string-array name="airqualitysensor_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="airpartition_entries">
+        <item>Единые настройки</item>
+        <item>Зонные настройки</item>
+        <item>Последние настройки</item>
+    </string-array>
+    <string-array name="airpartition_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="langauage5_entries">
+        <item>Упрощенный китайский</item>
+        <item>Английский</item>
+    </string-array>
+    <string-array name="langauage5_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="headlightdelay_entries">
+        <item>Выкл.</item>
+        <item>30 секунд</item>
+        <item>1 минута</item>
+        <item>2 минута</item>
+    </string-array>
+    <string-array name="headlightdelay_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="parkunlock_entries">
+        <item>Выкл.</item>
+        <item>Дверь водителя</item>
+        <item>Все двери</item>
+    </string-array>
+    <string-array name="parkunlock_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="remotelock5_entries">
+        <item>Только свет</item>
+        <item>Свет и динамик</item>
+        <item>Только динамик</item>
+        <item>Выкл.</item>
+    </string-array>
+    <string-array name="remotelock5_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="remotedoorunlock_entries">
+        <item>Дверь водителя</item>
+        <item>Все двери</item>
+    </string-array>
+    <string-array name="remotedoorunlock_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="frontbearvol_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="frontbearvol_entryValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="turnontime_entries">
+        <item>Рано</item>
+        <item>Средне</item>
+        <item>Поздно</item>
+    </string-array>
+    <string-array name="homemode_entries">
+        <item>0c</item>
+        <item>5c</item>
+        <item>10c</item>
+        <item>15c</item>
+        <item>20c</item>
+        <item>25c</item>
+        <item>30c</item>
+    </string-array>
+    <string-array name="homemode_entryValues">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="switchlight_entries">
+        <item>0%</item>
+        <item>10%</item>
+        <item>20%</item>
+        <item>30%</item>
+        <item>40%</item>
+        <item>50%</item>
+        <item>60%</item>
+        <item>70%</item>
+        <item>80%</item>
+        <item>90%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="centrallock_entries">
+        <item>Автомобиль</item>
+        <item>Одна дверь</item>
+        <item>Все двери</item>
+    </string-array>
+    <string-array name="centrallock_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="speedunits_entries">
+        <item>км/ч</item>
+        <item>миль/ч</item>
+        <item></item>
+    </string-array>
+    <string-array name="speedunits_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="volume_entries">
+        <item>L</item>
+        <item>gal(UK)</item>
+        <item>gal(US)</item>
+    </string-array>
+    <string-array name="volume_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="miunit_entries">
+        <item>км</item>
+        <item>миль</item>
+    </string-array>
+    <string-array name="miunit_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="tireunit_entries">
+        <item>bar</item>
+        <item>psi</item>
+        <item>kPa</item>
+    </string-array>
+    <string-array name="tireunit_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="speedunits1_entries">
+        <item>км/ч</item>
+        <item>миль/ч</item>
+    </string-array>
+    <string-array name="speedunits1_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="fulecons_entries">
+        <item>mpg(UK)</item>
+        <item>Л/100км</item>
+        <item>mpg(US)</item>
+        <item>км/л</item>
+    </string-array>
+    <string-array name="fulecons_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="temperature_entries">
+        <item>℃</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="temperature_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="windowsopen_entries">
+        <item>ВЫКЛ.</item>
+        <item>Окно водителя</item>
+        <item>Все окна</item>
+    </string-array>
+    <string-array name="windowsopen_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="accrdriveprogram_entries">
+        <item>Нормальный</item>
+        <item>Спорт</item>
+        <item>Эко</item>
+    </string-array>
+    <string-array name="accrdriveprogram_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="travlemode_entries">
+        <item>Левостороннее</item>
+        <item>Правостороннее</item>
+    </string-array>
+    <string-array name="travlemode_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="accvehicle_entries">
+        <item>Очень близко</item>
+        <item>Закрыть</item>
+        <item>Средний</item>
+        <item>Далеко</item>
+        <item>Очень далеко</item>
+    </string-array>
+    <string-array name="launage_entries">
+        <item>Deutsch</item>
+        <item>English(UK)</item>
+        <item>English(US)</item>
+        <item>Français</item>
+        <item>Italiano</item>
+        <item>Español</item>
+        <item>Português</item>
+        <item>Polski</item>
+        <item>čeština</item>
+        <item>Svenska</item>
+        <item>Nederlands</item>
+        <item>Pусский</item>
+        <item>Chinese(simple)</item>
+        <item>Türk</item>
+        <item>Norwegian</item>
+    </string-array>
+
+    <string-array name="honda_entries">
+        <item>60</item>
+        <item>0 MPG</item>
+        <item>0.0 MPG</item>
+        <item>0.0 км</item>
+        <item>Открыть</item>
+        <item>0 об/мин</item>
+        <item>0.00 км/ч</item>
+        <item>0.00 В</item>
+        <item>0.0 ℃</item>
+        <item>0 км</item>
+        <item>0 л</item>
+    </string-array>
+    <string-array name="honda_entryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="open_close">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+    </string-array>
+    <string-array name="open_closevaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="kong">
+        <item>--------</item>
+        <item></item>
+    </string-array>
+    <string-array name="kongvaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="automatic">
+        <item>Вкл.</item>
+        <item>Aвто-разбл.при перекл.в режим P двери водителя</item>
+        <item>Авто-разбл.при перекл.в режим P всех дверей</item>
+    </string-array>
+    <string-array name="automatic_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="auto_hand">
+        <item>Выкл.</item>
+        <item>Удал. разбл.двери водителя</item>
+        <item>Удал. разбл.всех дверей</item>
+    </string-array>
+    <string-array name="auto_hand_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="en_remote_lock">
+        <item>Только свет</item>
+        <item>Свет и сигнал</item>
+        <item>Только сигнал</item>
+        <item>Выкл.</item>
+    </string-array>
+    <string-array name="en_remote_lock_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="remote_lock">
+        <item>Только свет</item>
+        <item>Свет и сигнал</item>
+        <item>Только сигнал</item>
+        <item>Выкл.</item>
+    </string-array>
+    <string-array name="remote_lock_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="remote_unlock">
+        <item>Все двери</item>
+        <item>Звуковой сигнал</item>
+    </string-array>
+    <string-array name="remote_unlock_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enIntelligence_car">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+        <item>Звуковой сигнал</item>
+    </string-array>
+    <string-array name="enIntelligence_car_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="ensliding_door">
+        <item>Разбл. все двери</item>
+        <item>Разбл. раздвижные двери</item>
+    </string-array>
+    <string-array name="ensliding_door_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enheadlight">
+        <item>Выкл.</item>
+        <item>30 c</item>
+        <item>60 c</item>
+        <item>120 c</item>
+    </string-array>
+    <string-array name="enheadlight_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entrailer">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+        <item>Трейлер смещение</item>
+    </string-array>
+    <string-array name="entrailer_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm">
+        <item>Сигнализация</item>
+        <item>Сиденье</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enair_register">
+        <item>Низк.</item>
+        <item>Средн.</item>
+        <item>Выс.</item>
+    </string-array>
+    <string-array name="enair_register_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enair_onoff">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+        <item>Последняя настройка</item>
+    </string-array>
+    <string-array name="enair_onoff_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enair_quality">
+        <item>Низкая чувствительность</item>
+        <item>Высокая чувствительность</item>
+    </string-array>
+    <string-array name="enair_quality_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enautomatic">
+        <item>Одна зона</item>
+        <item>Двойная зона</item>
+        <item>Последняя настройка</item>
+    </string-array>
+    <string-array name="enautomatic_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enback_temperature">
+        <item>Выкл.</item>
+        <item>Имитировать</item>
+        <item>Последняя настройка</item>
+    </string-array>
+    <string-array name="enback_temperature_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enrear_window">
+        <item>Ручн.</item>
+        <item>АВТО</item>
+    </string-array>
+    <string-array name="enrear_window_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enremote_start_air">
+        <item>Ручн.</item>
+        <item>АВТО</item>
+    </string-array>
+    <string-array name="enremote_start_air_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enair_quality_air">
+        <item>Низкая чувствительность</item>
+        <item>Высокая чувствительность</item>
+    </string-array>
+    <string-array name="enair_quality_air_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ento_turn_to">
+        <item>Выкл.</item>
+        <item>Сокращать</item>
+        <item>Выдвигать</item>
+        <item>Выдвигать и сокращать</item>
+    </string-array>
+    <string-array name="ento_turn_to_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enspeed_display">
+        <item>Полный</item>
+        <item>Частичный</item>
+    </string-array>
+    <string-array name="enspeed_display_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enengine_state">
+        <item>Running</item>
+        <item>Normal</item>
+    </string-array>
+    <string-array name="enengine_state_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enignition_conditions">
+        <item>IGN выкл.</item>
+        <item>Зажигание</item>
+        <item>Зажигание вкл.</item>
+        <item>Включить зажигание</item>
+        <item>Недейств.</item>
+    </string-array>
+    <string-array name="enignition_conditions_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="engear">
+        <item>Недейств.</item>
+        <item>P</item>
+        <item>N</item>
+        <item>R</item>
+        <item>D</item>
+    </string-array>
+    <string-array name="engear_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enrange">
+        <item>км</item>
+        <item>мили</item>
+    </string-array>
+    <string-array name="enrange_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enlang">
+        <item>Deutsch</item>
+        <item>English UK</item>
+        <item>English US</item>
+        <item>Espanol</item>
+        <item>Italiano</item>
+        <item>Francais</item>
+    </string-array>
+    <string-array name="enlang_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="enage_full">
+        <item>л/100км</item>
+        <item>mpg(US)</item>
+        <item>mpg(UK)</item>
+        <item>км/л</item>
+    </string-array>
+    <string-array name="enage_full_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entemp">
+        <item>℃</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="entemp_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="entimes">
+        <item>12часов</item>
+        <item>24часа</item>
+    </string-array>
+    <string-array name="entimes_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enautomatic_latch">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+        <item>Усиление динамиков</item>
+    </string-array>
+    <string-array name="enautomatic_latch_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enautomatic_latch_vaues_2">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="encar_unlocked">
+        <item>Одна дверь</item>
+        <item>Все двери</item>
+    </string-array>
+    <string-array name="encar_unlocked_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="en">
+        <item>-1</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="en_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="open_close47">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+    </string-array>
+    <string-array name="open_closevaues47">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="engohome">
+        <item>10 C</item>
+        <item>20 C</item>
+        <item>30 C</item>
+    </string-array>
+    <string-array name="enleavehome">
+        <item>Выкл.</item>
+        <item>10 C</item>
+        <item>20 C</item>
+        <item>30 C</item>
+    </string-array>
+    <string-array name="enleavehome_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enall">
+        <item>Дверь водителя</item>
+        <item>Все</item>
+    </string-array>
+    <string-array name="enall_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envol">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="envol_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="enrange47">
+        <item>км</item>
+        <item>m</item>
+    </string-array>
+    <string-array name="enspeed">
+        <item>km/h</item>
+        <item>m/h</item>
+    </string-array>
+    <string-array name="enspeed_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="entemp47">
+        <item>C</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="entemp47_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envolume">
+        <item>l</item>
+        <item>gal(us)</item>
+        <item>gal(uk)</item>
+    </string-array>
+    <string-array name="enenergy">
+        <item>л/100км</item>
+        <item>км/л</item>
+        <item>mpg(us)</item>
+        <item>mpg(uk)</item>
+    </string-array>
+    <string-array name="entpms">
+        <item>kpa</item>
+        <item>bar</item>
+        <item>psi</item>
+    </string-array>
+    <string-array name="entpms_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enwiper">
+        <item>В</item>
+        <item>Вне</item>
+    </string-array>
+    <string-array name="enwiper_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enauto_cmd">
+        <item>Слабо</item>
+        <item>В</item>
+        <item>Сильно</item>
+    </string-array>
+    <string-array name="enauto_cmd_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enwind_speed">
+        <item>Выкл</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="enwind_speed_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="enlamp_no">
+        <item>Выкл.</item>
+        <item>15 s</item>
+        <item>30 s</item>
+        <item>60 s</item>
+    </string-array>
+    <string-array name="enlamp_no_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="enlighting">
+        <item>Выкл.</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="enlighting_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="ensound">
+        <item>Классический звук</item>
+        <item>Кристальный темперамент</item>
+        <item>Ритмы города</item>
+        <item>Фэнтези</item>
+    </string-array>
+    <string-array name="enoil">
+        <item>КМ/Л</item>
+        <item>Л/100КМ</item>
+    </string-array>
+    <string-array name="enoil_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enlanguages_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ensetdoor">
+        <item>Дверь</item>
+        <item>Все двери</item>
+    </string-array>
+    <string-array name="ensetdoor_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enlfRight">
+        <item>Лево</item>
+        <item>Право</item>
+    </string-array>
+    <string-array name="enlfRight_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enadaptive">
+        <item>Угол освещения</item>
+        <item>Умный свет</item>
+    </string-array>
+    <string-array name="enadaptive_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enari_mode">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+        <item>Последняя настройка</item>
+    </string-array>
+    <string-array name="enari_mode_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enremote_seat">
+        <item>Выкл.</item>
+        <item>Вкл.</item>
+<!--         <item>Pilot</item> -->
+    </string-array>
+    <string-array name="enremote_seat_vaues">
+        <item>0</item>
+        <item>1</item>
+<!--         <item>2</item> -->
+    </string-array>
+    <string-array name="enauto_collision">
+        <item>Выкл.</item>
+        <item>Вызовите полицию</item>
+        <item>Сигнализации и автоматического</item>
+    </string-array>
+    <string-array name="enauto_collision_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enparking_mode">
+        <item>Не показывай</item>
+        <item>Задняя хранения</item>
+        <item>Уличная парковка</item>
+    </string-array>
+    <string-array name="enparking_mode_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="endistance">
+        <item>очень близко</item>
+        <item>Закрыть</item>
+        <item>средний</item>
+        <item>далеко</item>
+        <item>Очень далеко</item>
+    </string-array>
+    <string-array name="endistance_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enrunning">
+        <item>экономика</item>
+        <item>стандарт</item>
+        <item>движение</item>
+    </string-array>
+    <string-array name="enrunning_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enconnect_time">
+        <item>Рано</item>
+        <item>средний</item>
+        <item>поздно</item>
+    </string-array>
+    <string-array name="enconnect_time_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="entravel_pattern">
+        <item>Оставил</item>
+        <item>Правильно</item>
+    </string-array>
+    <string-array name="entravel_pattern_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enmeter_switch">
+        <item>Наименее</item>
+        <item>10%</item>
+        <item>20%</item>
+        <item>30%</item>
+        <item>40%</item>
+        <item>50%</item>
+        <item>60%</item>
+        <item>70%</item>
+        <item>80%</item>
+        <item>90%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="enmeter_switch_vaues">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="enhome">
+        <item>ВЫКЛ</item>
+        <item>5s</item>
+        <item>10s</item>
+        <item>15s</item>
+        <item>20s</item>
+        <item>25s</item>
+        <item>30s</item>
+    </string-array>
+    <string-array name="enhome_vaues">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="enconvenient_open">
+        <item>Все окна</item>
+        <item>окно драйвера</item>
+        <item>Выкл.</item>
+    </string-array>
+    <string-array name="enconvenient_open_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="endoor_unlock">
+        <item>все двери</item>
+        <item>одна дверь</item>
+        <item>бортовой автомобиль</item>
+    </string-array>
+    <string-array name="endoor_unlock_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="envolumes">
+        <item>L</item>
+        <item>gal(US)</item>
+        <item>gal(UK)</item>
+    </string-array>
+    <string-array name="envolume_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="entireunit">
+        <item>kPa</item>
+        <item>bar</item>
+        <item>psi</item>
+    </string-array>
+    <string-array name="entireunit_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enspeed1">
+        <item>km/h</item>
+        <item>m/h</item>
+    </string-array>
+    <string-array name="enspeed1_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enfulecons">
+        <item>L/100km</item>
+        <item>km/l</item>
+        <item>mpg(US)</item>
+        <item>mpg(UK)</item>
+    </string-array>
+    <string-array name="enfulecons_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="ensetdoor1">
+        <item>все двери</item>
+        <item>Привод дверей</item>
+    </string-array>
+    <string-array name="ensetdoor1_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="envol_radar">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="envol_radar_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enradar_dis">
+        <item>1 сетка</item>
+        <item>2 сетка</item>
+    </string-array>
+    <string-array name="enradar_dis_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enheadlamps">
+        <item>класс 1</item>
+        <item>класс 2</item>
+        <item>класс 3</item>
+        <item>класс 4</item>
+        <item>класс 5</item>
+    </string-array>
+    <string-array name="enheadlamps_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="enlight_Off_time">
+        <item>Инвалид</item>
+        <item>7.5s</item>
+        <item>15s</item>
+        <item>30s</item>
+    </string-array>
+    <string-array name="enlight_Off_time_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entoyota">
+        <item>властный</item>
+        <item>Reiz</item>
+        <item>RAV4</item>
+        <item>Camry</item>
+        <item>Карола</item>
+        <item>2015 горец</item>
+    </string-array>
+    <string-array name="entoyota_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+<!--     <string-array name="enlanguages61"> -->
+<!--         <item>English</item> -->
+<!--         <item>Chinese</item> -->
+<!--         <item>Russian</item> -->
+<!--         <item>French</item> -->
+<!--         <item>Germa</item> -->
+<!--     </string-array> -->
+<!--     <string-array name="enlanguages61_vaues"> -->
+<!--         <item>0</item> -->
+<!--         <item>1</item> -->
+<!--         <item>2</item> -->
+<!--         <item>3</item> -->
+<!--         <item>4</item> -->
+<!--     </string-array> -->
+    <string-array name="enari_comfortable">
+        <item>Медленный</item>
+        <item>Нормальный</item>
+        <item>Быстро</item>
+    </string-array>
+    <string-array name="enari_comfortable_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enrear_window1">
+        <item>Авто</item>
+        <item>Вручную</item>
+    </string-array>
+    <string-array name="enrear_window1_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ensteering_mode">
+        <item>движение</item>
+        <item>стандарт</item>
+        <item>уютный</item>
+    </string-array>
+    <string-array name="ensteering_mode_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="enremote_unlock">
+        <item>Все двери</item>
+        <item>левой двери</item>
+    </string-array>
+    <string-array name="enremote_unlock_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enmyhome">
+        <item>ВЫКЛ.</item>
+        <item>Рядом только света</item>
+        <item>Луч задний противотуманный</item>
+    </string-array>
+    <string-array name="enmyhome_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="en_cartype">
+        <item>Accord high with</item>
+        <item>Accord UW</item>
+        <item>Ling faction</item>
+        <item>Jed</item>
+        <item>2012 CRV</item>
+        <item>2012 Civic</item>
+        <item>2014 Civic</item>
+        <item>Geshitu</item>
+        <item>2015 Odyssey</item>
+        <item>VEZEL</item>
+        <item>2015 CRV</item>
+    </string-array>
+    <string-array name="en_cartype_vaues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+    <string-array name="enfor_warning">
+        <item>БЛИЗКО</item>
+        <item>ДАЛЕКО</item>
+    </string-array>    
+     <string-array name="power_consumption_select">
+        <item>KWh_100km</item>
+        <item>KWh_km</item>
+    </string-array>
+</resources>

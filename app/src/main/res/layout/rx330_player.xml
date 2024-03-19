@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/off"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="38px"
+        android:paddingTop="10px" >
+
+        <TextView
+            android:id="@+id/car_status"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="20px"
+            android:singleLine="true"
+            android:text="@string/off"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/to_fm1"
+            style="@style/ButtonStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/com_button12"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:singleLine="true"
+            android:text="@string/button_text_fm1"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/to_fm2"
+            style="@style/ButtonStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/com_button12"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:singleLine="true"
+            android:text="@string/button_text_fm2"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/to_am"
+            style="@style/ButtonStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/com_button12"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:singleLine="true"
+            android:text="@string/button_text_am"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/to_disc"
+            style="@style/ButtonStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/com_button12"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:singleLine="true"
+            android:text="@string/button_text_disc"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/to_aux"
+            style="@style/ButtonStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/com_button12"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:singleLine="true"
+            android:text="@string/aux"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/to_usb"
+            style="@style/ButtonStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/com_button12"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:singleLine="true"
+            android:text="@string/usb"
+            android:textColor="#ffffff"
+            android:textSize="38px" />
+    </LinearLayout>
+
+    <include layout="@layout/rx330_usb_player" />
+    <include layout="@layout/rx330_radio_player" />
+
+    <include layout="@layout/rx330_dvd_player" />
+    
+    
+
+</LinearLayout>

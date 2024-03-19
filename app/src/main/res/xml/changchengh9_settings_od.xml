@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:persistent="false" >
+
+    <ListPreference
+        android:entries="@array/top_light_delayed_time_entries"
+        android:entryValues="@array/four_values"
+        android:key="top_light_delayed_time"
+        android:title="@string/top_light_delayed_time" />
+
+    <ListPreference
+        android:entries="@array/go_home_entries_delayed_time_entries"
+        android:entryValues="@array/six_values"
+        android:key="go_home_delayed_time"
+        android:title="@string/go_home_delayed_time" />
+    <ListPreference
+        android:entries="@array/economize_on_electricity_entries"
+        android:entryValues="@array/six_values"
+        android:key="economize_on_electricity"
+        android:title="@string/economize_on_electricity" />
+    <ListPreference
+        android:entries="@array/rain_light_sensor_settings_entries"
+        android:entryValues="@array/two_values"
+        android:key="rain_light_sensor_settings"
+        android:title="@string/rain_light_sensor_settings" />
+    <ListPreference
+        android:entries="@array/als_brightness_setting"
+        android:entryValues="@array/two_values"
+        android:key="headlamp_brightness_setting"
+        android:title="@string/headlamp_brightness_setting" />
+    <ListPreference
+        android:entries="@array/rearview_mirror_autofolding"
+        android:entryValues="@array/two_values"
+        android:key="automatic_folding_of_rearview_mirror_key"
+        android:title="@string/automatic_folding_of_rearview_mirror" />
+
+    <SwitchPreference
+        android:key="trailer_settings"
+        android:persistent="false"
+        android:title="@string/trailer_settings" />
+
+    <ListPreference
+        android:entries="@array/gwm_temporary_normal"
+        android:entryValues="@array/two_values"
+        android:key="headlight_mode_key"
+        android:title="@string/gwm_headlight_mode" />
+
+    <SwitchPreference
+        android:key="seat_memory_key"
+        android:persistent="false"
+        android:title="@string/gwm_seat_memory" />
+
+    <ListPreference
+        android:entries="@array/gwm_rearview_mirror_autofolding"
+        android:entryValues="@array/two_values"
+        android:key="parking_setting_key"
+        android:title="@string/gwm_parking_setting" />
+    <ListPreference
+        android:entries="@array/gwm_saving_time_entries"
+        android:entryValues="@array/four_values"
+        android:key="antitheft_prevention_key"
+        android:title="@string/gwm_antitheft_prevention" />
+    <ListPreference
+        android:entries="@array/gwm_unlock_doors"
+        android:entryValues="@array/two_values"
+        android:key="gate_setting_key"
+        android:title="@string/gwm_gate_setting" />
+
+    <SwitchPreference
+        android:key="electric_sidestepping_system_key"
+        android:persistent="false"
+        android:title="@string/gwm_electric_sidestepping_system" />
+    <SwitchPreference
+        android:key="roof_mode_key"
+        android:persistent="false"
+        android:title="@string/gwm_roof_mode" />
+    <SwitchPreference
+        android:key="full_terrain_key"
+        android:persistent="false"
+        android:title="@string/gwm_full_terrain" />
+    <SwitchPreference
+        android:key="precollision_warning_system_key"
+        android:persistent="false"
+        android:title="@string/gwm_precollision_warning_system" />
+    <SwitchPreference
+        android:key="automatic_emergency_braking_system_key"
+        android:persistent="false"
+        android:title="@string/gwm_automatic_emergency_braking_system" />
+
+    
+    <PreferenceScreen
+        android:entries="@array/three_values"
+        android:entryValues="@array/three_values"
+        android:key="driving_buttocks_massage"
+        android:title="@string/driving_buttocks_massage" />
+    
+    
+    <PreferenceScreen
+        android:entries="@array/three_values"
+        android:entryValues="@array/three_values"
+        android:key="copilot_buttocks_massage"
+        android:title="@string/copilot_buttocks_massage" />
+    
+    <PreferenceScreen
+        android:entries="@array/three_values"
+        android:entryValues="@array/three_values"
+        android:key="driving_waist_massage"
+        android:title="@string/driving_waist_massage" />
+    
+    <PreferenceScreen
+        android:entries="@array/three_values"
+        android:entryValues="@array/three_values"
+        android:key="side_drive_massage"
+        android:title="@string/side_drive_massage" />
+    
+    
+</PreferenceScreen>

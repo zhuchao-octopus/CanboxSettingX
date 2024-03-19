@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout="@layout/preference_list_fragment" >
+
+    <ListPreference
+        android:entries="@array/canbox_select_manufacturer"
+        android:entryValues="@array/canbox_manufacturer_values"
+        android:key="canbox_manufacturer"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_settings_manufacturer" />
+    <ListPreference
+        android:entries="@array/canbox_select"
+        android:key="canbox_setting"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_settings_title" />
+    <ListPreference
+        android:key="canbox_car_type"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_car_type" />
+    
+    <ListPreference
+        android:key="canbox_car_type2"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_special_settings" />
+        
+    <ListPreference
+        android:key="canbox_key_mode"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_key_mode" />
+    <ListPreference
+        android:key="canbox_eq_mode"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_eq_mode" />
+    <ListPreference
+        android:key="canbox_air"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_air" />
+    <MultiSelectListPreference
+        android:key="canbox_key_change_ex"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_key_change" />
+    <ListPreference
+        android:key="canbox_front_door"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_front_door" />
+    <ListPreference
+        android:key="canbox_rear_door"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_rear_door" />
+
+    <MultiSelectListPreference
+        android:key="canbox_other_settings"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/other" />
+
+    <PreferenceScreen
+        android:key="canbox_eq_volume"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/car_amplifier_volume" />
+
+</PreferenceScreen>

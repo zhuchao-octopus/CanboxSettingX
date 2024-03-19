@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="mileage1"
+        android:persistent="false"
+        android:title="@string/mileage1" />
+    <com.common.view.MyPreference
+        android:key="mileage17"
+        android:persistent="false"
+        android:title="@string/mileage17" />
+    <com.common.view.MyPreference
+        android:key="averagefuel24"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+    <com.common.view.MyPreference
+        android:key="beoilmass"
+        android:persistent="false"
+        android:title="@string/beoilmass" />
+
+<!--     <PreferenceScreen -->
+<!--         android:key="tpms" -->
+<!--         android:title="@string/tireinfo" > -->
+<!--         <com.common.view.MyPreference2 -->
+<!--             android:key="tpms_content" -->
+<!--             android:layout="@layout/type_info" /> -->
+<!--     </PreferenceScreen> -->
+
+</PreferenceScreen>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+    android:title="@string/controlset" >
+    <SwitchPreference
+        android:key="steering_assist_photography"
+        android:persistent="false"
+        android:title="@string/steering_assist_photography" />
+    <SwitchPreference
+        android:key="turning_lighting"
+        android:persistent="false"
+        android:title="@string/turning_lighting" />
+    <SwitchPreference
+        android:key="blind_spot_warning"
+        android:persistent="false"
+        android:title="@string/blind_spot_warning" />
+    <SwitchPreference
+        android:key="show_when_reversing"
+        android:persistent="false"
+        android:title="@string/show_when_reversing" />
+     <SwitchPreference
+        android:key="close_the_window_rainy_day"
+        android:persistent="false"
+        android:title="@string/close_the_window_rainy_day" />
+</PreferenceScreen>

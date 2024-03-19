@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.clw.vehicleinfos"
+    android:persistent="false" >
+
+    <ListPreference
+        android:entries="@array/individual_steering_values"
+        android:entryValues="@array/two_values"
+        android:key="stability_control_mode"
+        android:persistent="false"
+        android:title="@string/stability_control_mode" />
+
+    <SwitchPreference
+        android:key="economic_driving"
+        android:persistent="false"
+        android:title="@string/economic_driving" />
+    <SwitchPreference
+        android:key="key_flow_me_home"
+        android:persistent="false"
+        android:title="@string/flow_me_home" />
+
+     <ListPreference
+        android:entries="@array/saic_search_car_indicator_type_entries"
+        android:entryValues="@array/two_values"
+        android:key="key_search_car_indicator_type"
+        android:title="@string/search_car_indicator_type" />
+
+    <SwitchPreference
+        android:key="body_stability_control"
+        android:persistent="false"
+        android:title="@string/body_stability_control" />
+
+    <ListPreference
+        android:entries="@array/saic_dunjun_steering_handle"
+        android:entryValues="@array/three_values"
+        android:key="key_steering_handle"
+        android:title="@string/steering_handle" />
+
+     <ListPreference
+        android:entries="@array/time_format"
+        android:entryValues="@array/two_values"
+        android:key="time_format"
+        android:persistent="false"
+        android:title="@string/time_format" />
+  
+</PreferenceScreen>

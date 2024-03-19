@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/hiworld_atmosphere_light_color_entries"
+        android:entryValues="@array/entrumpchi_vaues"
+        android:key="atmosphere_light_color"
+        android:persistent="false"
+        android:title="@string/atmosphere_light_color" />
+
+</PreferenceScreen>

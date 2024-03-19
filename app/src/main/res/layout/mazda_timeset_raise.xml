@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15px" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/airControlTextNormal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/app_vehicle_clock" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingLeft="80px"
+        android:paddingRight="80px" >
+
+        <Button
+            android:id="@+id/time_clock"
+            style="@style/airControlTextNormal"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/mazda_clock_clock" />
+
+<!--         <Button -->
+<!--             android:id="@+id/time_set" -->
+<!--             style="@style/airControlTextNormal" -->
+<!--             android:layout_width="0px" -->
+<!--             android:layout_height="fill_parent" -->
+<!--             android:layout_weight="1" -->
+<!--             android:text="@string/mazda_clock_set" /> -->
+
+        <Button
+            android:id="@+id/time_h"
+            style="@style/airControlTextNormal"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/mazda_clock_hour" />
+
+        <Button
+            android:id="@+id/time_m"
+            style="@style/airControlTextNormal"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/mazda_clock_min" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

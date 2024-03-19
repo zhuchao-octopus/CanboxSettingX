@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res-auto"
+    android:title="@string/controlset" >
+	<PreferenceScreen
+	    android:key  ="units_main"
+	    android:title="@string/units" >
+      	<ListPreference
+               android:entries="@array/temperature_unit"
+               android:entryValues="@array/enrange47_vaues"
+               android:key="temp47"
+               android:persistent="false"
+               android:title="@string/temp47" />
+      	<ListPreference
+               android:entries="@array/enenergy1"
+               android:entryValues="@array/enprompt_volume_vaues"
+               android:key="consumption"
+               android:persistent="false"
+               android:title="@string/consumption" />
+      	<ListPreference 
+               android:entries="@array/gac_units_entries"
+               android:entryValues="@array/envoice_alarm_vaues_s"
+               android:key="units"
+               android:persistent="false"
+               android:title="@string/units" />
+      	<ListPreference 
+               android:entries="@array/gac_pressure_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="tireunit"
+               android:persistent="false"
+               android:title="@string/tireunit" />
+	</PreferenceScreen>	
+	<PreferenceScreen
+	    android:key  ="gac_cat_safety_assistance"
+	    android:title="@string/gac_cat_safety_assistance" >
+       	<ListPreference 
+               android:entries="@array/gac_parksense_entries"
+               android:entryValues="@array/common_s2"
+               android:key="gac_settings_parksense"
+               android:persistent="false"
+               android:title="@string/gac_settings_parksense" />
+       	<ListPreference 
+               android:entries="@array/low_speed_warning_tone_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="gac_settings_lane_departure_correction"
+               android:persistent="false"
+               android:title="@string/gac_settings_lane_departure_correction" />
+       	<ListPreference 
+               android:entries="@array/departure_waring_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="gac_settings_departure_waring"
+               android:persistent="false"
+               android:title="@string/gac_settings_departure_waring" />
+      	<SwitchPreference
+	    	android:key="gac_settings_front_collision_alarm_auto_brake"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_front_collision_alarm_auto_brake" />
+      	<ListPreference 
+               android:entries="@array/camry_radar_distance_entries"
+               android:entryValues="@array/distance_values"
+               android:key="forward_collision_waring"
+               android:persistent="false"
+               android:title="@string/forward_collision_waring" />
+      	<SwitchPreference
+	    	android:key="gac_settings_ramp_start_auxiliary"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_ramp_start_auxiliary" />
+      	<ListPreference 
+               android:entries="@array/autorelockdoors"
+               android:entryValues="@array/distance_values"
+               android:key="gac_settings_rain_sensor_wipper"
+               android:persistent="false"
+               android:title="@string/gac_settings_rain_sensor_wipper" />
+      	<SwitchPreference
+	    	android:key="gac_settings_park_view_dynamic_guide_line"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_park_view_dynamic_guide_line" />
+      	<SwitchPreference
+	    	android:key="gac_settings_park_view_static_guide_line"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_park_view_static_guide_line" />
+      	<ListPreference 
+               android:entries="@array/busy_point_alram_entries"
+               android:entryValues="@array/conv_opening_values"
+               android:key="gac_settings_busy_point_alarm"
+               android:persistent="false"
+               android:title="@string/gac_settings_busy_point_alarm" />
+       <SwitchPreference
+	    	android:key="gac_settings_rear_parksense"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_rear_parksense" />
+       <ListPreference 
+               android:entries="@array/low_speed_warning_tone_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="b_parksense"
+               android:persistent="false"
+               android:title="@string/b_parksense" />
+       <ListPreference 
+               android:entries="@array/low_speed_warning_tone_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="f_parksense"
+               android:persistent="false"
+               android:title="@string/f_parksense" />
+       <SwitchPreference
+	    	android:key="radar_sound_switch"
+	        android:persistent="false"
+	        android:title="@string/radar_sound_switch" />
+       <ListPreference 
+               android:entries="@array/forward_collision_warning_abroad"
+               android:entryValues="@array/pressure_values"
+               android:key="forward_collision_warning_abroad"
+               android:persistent="false"
+               android:title="@string/forward_collision_warning_abroad" />
+    	<ListPreference 
+               android:entries="@array/forward_collision_sensitivity"
+               android:entryValues="@array/pressure_values"
+               android:key="forward_collision_sensitivity_abroad"
+               android:persistent="false"
+               android:title="@string/forward_collision_sensitivity_abroad" />
+    	<ListPreference 
+               android:entries="@array/side_distance_waring"
+               android:entryValues="@array/switch_on_time_values"
+               android:key="side_distance_waring"
+               android:persistent="false"
+               android:title="@string/side_distance_waring" />
+    	<ListPreference 
+               android:entries="@array/trumpche_level_entries"
+               android:entryValues="@array/switch_on_time_values"
+               android:key="side_distance_warning_volume"
+               android:persistent="false"
+               android:title="@string/side_distance_warning_volume" />
+    	<SwitchPreference
+	    	android:key="active_parkview_backup"
+	        android:persistent="false"
+	        android:title="@string/active_parkview_backup" />
+    	<SwitchPreference
+	    	android:key="traffic_sign_assist"
+	        android:persistent="false"
+	        android:title="@string/traffic_sign_assist" />
+    	<SwitchPreference
+	    	android:key="greeting_light"
+	        android:persistent="false"
+	        android:title="@string/greeting_light" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="gac_cat_lights"
+	    android:title="@string/gac_cat_lights" >
+       	<SwitchPreference
+	    	android:key="cornering_lights"
+	        android:persistent="false"
+	        android:title="@string/cornering_lights" />
+      	<ListPreference 
+               android:entries="@array/dongfeng_delaylight_entries"
+               android:entryValues="@array/for_values"
+               android:key="gac_settings_illuminated_approach"
+               android:persistent="false"
+               android:title="@string/gac_settings_illuminated_approach" />
+      	<ListPreference 
+               android:entries="@array/dongfeng_delaylight_entries"
+               android:entryValues="@array/for_values"
+               android:key="headlights_off"
+               android:persistent="false"
+               android:title="@string/headlights_off" />
+      	<ListPreference 
+               android:entries="@array/headlight_distance_adjustment_values"
+               android:entryValues="@array/headlight_distance_adjustment_values"
+               android:key="car_in_light"
+               android:persistent="false"
+               android:title="@string/car_in_light" />
+      	<SwitchPreference
+	    	android:key="gac_settings_flash_lights_w_lock"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_flash_lights_w_lock" />
+      	<SwitchPreference
+	    	android:key="day_light"
+	        android:persistent="false"
+	        android:title="@string/day_light" />
+      	<SwitchPreference
+	    	android:key="gac_settings_anti_glare_auto_high_beam"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_anti_glare_auto_high_beam" />
+      	<SwitchPreference
+	    	android:key="gac_settings_light_when_wiper"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_light_when_wiper" />
+      	<SwitchPreference
+	    	android:key="unlock_open_lamp"
+	        android:persistent="false"
+	        android:title="@string/unlock_open_lamp" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="audio_settings"
+	    android:title="@string/gac_cat_door_lock" >
+	    <ListPreference 
+               android:entries="@array/gac_horn_when_lock_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="gac_settings_horn_when_lock"
+               android:persistent="false"
+               android:title="@string/gac_settings_horn_when_lock" />
+	   <SwitchPreference
+	    	android:key="gac_settings_door_alarm"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_door_alarm" />
+	   <SwitchPreference
+	    	android:key="gac_settings_passive_enter"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_passive_enter" />
+	    <ListPreference 
+               android:entries="@array/gac_doors_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="first_press_of_key_unlocks"
+               android:persistent="false"
+               android:title="@string/first_press_of_key_unlocks" /> 
+       <SwitchPreference
+	    	android:key="gac_settings_auto_unlock_on_exit"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_auto_unlock_on_exit" />
+	   <SwitchPreference
+	    	android:key="gac_settings_auto_door_locks"
+	        android:persistent="false"
+	        android:title="@string/gac_settings_auto_door_locks" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="sonar_settings"
+	    android:title="@string/gac_cat_engine_off_option" >
+	    <ListPreference
+               android:entries="@array/gac_settings_engine_off_power_delay_entries"
+               android:entryValues="@array/inner_lights_close_time_values"
+               android:key="gac_settings_engine_off_power_delay"
+               android:persistent="false"
+               android:title="@string/gac_settings_engine_off_power_delay" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="gac_cat_brake"
+	    android:title="@string/gac_cat_brake" >
+	    <SwitchPreference
+	    	android:key="retract_park_brake_to_allow_for_brake_system_service"
+	        android:persistent="false"
+	        android:title="@string/retract_park_brake_to_allow_for_brake_system_service" />
+	    <SwitchPreference
+	    	android:key="gac_brake_auto_brake"
+	        android:persistent="false"
+	        android:title="@string/gac_brake_auto_brake" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="other_settings"
+	    android:title="@string/other_settings" >
+	     <ListPreference
+               android:entries="@array/seat_heat_entries"
+               android:entryValues="@array/switch_on_time_values"
+               android:key="auto_heat_driver_seat_when_car_start"
+               android:persistent="false"
+               android:title="@string/auto_heat_driver_seat_when_car_start" />
+	     <SwitchPreference
+	    	android:key="rearview_mirror_adjust_lens"
+	        android:persistent="false"
+	        android:title="@string/rearview_mirror_adjust_lens" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="gac_compass_setting"
+	    android:title="@string/gac_compass_setting" >
+	    <com.common.view.MyPreferenceSeekBar
+	            android:key="compass_offset_setting"
+	            android:persistent="false"
+	            android:title="@string/compass_offset_setting"
+	            vehicle:max="15"
+	            vehicle:min="1"
+	            vehicle:step="1" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="performance_dsp_info"
+	    android:title="@string/performance_dsp_info" >
+	    <ListPreference
+               android:entries="@array/speed_linkage_volume_adjustment_entries"
+               android:entryValues="@array/trumpche_num_level_entries"
+               android:key="speed_compensated_vol"
+               android:persistent="false"
+               android:title="@string/speed_compensated_vol" />
+	    <SwitchPreference
+	    	android:key="surround_volume"
+	        android:persistent="false"
+	        android:title="@string/surround_volume" />
+	</PreferenceScreen>
+</PreferenceScreen>

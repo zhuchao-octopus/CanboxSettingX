@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="360px"
+        android:layout_height="360px"
+        android:layout_centerInParent="true"
+        android:background="@drawable/pm_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="95.0px"
+            android:gravity="center"
+            android:text="@string/_pm2_5"
+            android:textColor="@android:color/white"
+            android:textSize="20.0sp" />
+
+        <TextView
+            android:id="@+id/pm25"
+            android:layout_width="100.0dip"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="140.0px"
+            android:gravity="center"
+            android:text="@string/_0_"
+            android:textColor="@android:color/white"
+            android:textSize="45.0sp" />
+
+        <TextView
+            android:id="@+id/pm25_level"
+            android:layout_width="100.0dip"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220.0px"
+            android:gravity="center"
+            android:text="@string/excellent"
+            android:textColor="#ff00ff90"
+            android:textSize="30.0sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/warning_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dip"
+        android:text="@string/no_warm"
+        android:textColor="@android:color/white"
+        android:textSize="20.0sp" />
+
+</RelativeLayout>

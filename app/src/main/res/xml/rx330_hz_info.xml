@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="speed"
+        android:persistent="false"
+        android:title="@string/speed" />
+    <com.common.view.MyPreference
+        android:key="enginespeed"
+        android:persistent="false"
+        android:title="@string/enginespeed" />
+    <com.common.view.MyPreference
+        android:key="instant"
+        android:persistent="false"
+        android:title="@string/instant" />
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage24" />
+    <com.common.view.MyPreference
+        android:key="averageapeed"
+        android:persistent="false"
+        android:title="@string/averageapeed" />
+    <com.common.view.MyPreference
+        android:key="mileage1"
+        android:persistent="false"
+        android:title="@string/mileage1" />
+
+</PreferenceScreen>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="420px"
+    android:gravity="center" >
+ 
+    <RelativeLayout
+        android:layout_width="713px"
+        android:layout_height="348px"
+        android:background="@drawable/canbus8_car_bg" >
+
+        <View
+            android:id="@+id/canbus8_arrow_set"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/canbus8_arrow_set"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/canbus8_battery_motor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/canbus8_battery_motor"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/canbus8_img_lf2_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/canbus8_img_lf2_1"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/canbus8_motor_battery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/canbus8_motor_battery"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/canbus8_motor_wheel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/canbus8_motor_wheel"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/canbus8_wheel_motor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/canbus8_wheel_motor"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/battery"
+            android:layout_width="118px"
+            android:layout_height="148px"
+            android:layout_marginLeft="507px"
+            android:layout_marginTop="88px"
+            android:background="@drawable/battery_level" />
+    </RelativeLayout>
+
+</RelativeLayout>

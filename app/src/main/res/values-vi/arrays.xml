@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="enwarning_control">
+        <item>"Đóng cửa"</item>
+        <item>"Chậm"</item>
+        <item>"Ở giữa"</item>
+        <item>"Nhanh"</item>
+        <item>"Tự động"</item>
+    </string-array>
+    <string-array name="enturn_lights_sets_set">
+        <item>"Một"</item>
+        <item>"Số ba"</item>
+    </string-array>
+    <string-array name="enremote_start_air">
+        <item>"Thủ công"</item>
+        <item>"Tự động"</item>
+    </string-array>
+    <string-array name="enlfRight">
+        <item>"Trái"</item>
+        <item>"Đúng"</item>
+    </string-array>
+    <string-array name="enadaptive">
+        <item>"Chiếu sáng góc và uốn cong"</item>
+        <item>"Phân tán ánh sáng thông minh"</item>
+    </string-array>
+    <string-array name="smartdoorlock_entries">
+        <item>"Tất cả các cửa"</item>
+        <item>"Cửa lái xe"</item>
+    </string-array>
+    <string-array name="radarrange_entries">
+        <item>"xa"</item>
+        <item>"ở gần"</item>
+    </string-array>
+    <string-array name="autodoorlockmode14_entries">
+        <item>"Tắt"</item>
+        <item>"Khóa khi lái xe"</item>
+        <item>"Tắt"</item>
+        <item>"Khóa: lái xe Mở khóa: tắt IGN"</item>
+        <item>"Khóa khi tách ra khỏi P"</item>
+        <item>"Khóa: chuyển từ P Mở khóa: trong P"</item>
+    </string-array>
+    <string-array name="unlockmode14_entries">
+        <item>"Chạm một lần; Tất cả các cửa"</item>
+        <item>"Một lần: người lái xe; Hai lần: Tất cả các cửa"</item>
+    </string-array>
+    <string-array name="lockbeepvol14_entries">
+        <item>"Cao"</item>
+        <item>"Trung bình"</item>
+        <item>"Thấp"</item>
+        <item>"Tắt"</item>
+    </string-array>
+    <string-array name="autoheadlighton14_entries">
+        <item>"Ánh sáng"</item>
+        <item>"Ánh sáng trung bình"</item>
+        <item>"Trung bình"</item>
+        <item>"Tối vừa"</item>
+        <item>"Tối"</item>
+    </string-array>
+    <string-array name="Language14_entries">
+        <item>"Tiếng Anh (Mỹ)"</item>
+        <item>"Fran"</item>
+        <item>"Espan"</item>
+        <item>"Điều khiển bằng giọng nói điều hướng"</item>
+        <item>"Điều khiển bằng giọng nói Âm thanh / Điện thoại"</item>
+    </string-array>
+    <string-array name="automodewindlevel_entries">
+        <item>"Thấp"</item>
+        <item>"Ở giữa"</item>
+        <item>"Cao"</item>
+    </string-array>
+    <string-array name="airqualitysensor_entry">
+        <item>"Tắt"</item>
+        <item>"Độ nhạy thấp"</item>
+        <item>"Cao"</item>
+    </string-array>
+    <string-array name="airpartition_entries">
+        <item>"Cài đặt hợp nhất"</item>
+        <item>"Cài đặt khoanh vùng"</item>
+        <item>"Cài đặt cuối cùng"</item>
+    </string-array>
+    <string-array name="parkunlock_entries">
+        <item>"Tắt"</item>
+        <item>"Cửa tài xế"</item>
+        <item>"Tất cả các cửa"</item>
+    </string-array>
+    <string-array name="remotelock5_entries">
+        <item>"Chỉ ánh sáng"</item>
+        <item>"Đèn và loa"</item>
+        <item>"Chỉ người nói"</item>
+        <item>"Tắt"</item>
+    </string-array>
+    <string-array name="remotedoorunlock_entries">
+        <item>"Cửa tài xế"</item>
+        <item>"Tất cả các cửa"</item>
+    </string-array>
+    <string-array name="turnontime_entries">
+        <item>"Sớm"</item>
+        <item>"Trung bình"</item>
+        <item>"Muộn"</item>
+    </string-array>
+    <string-array name="centrallock_entries">
+        <item>"Phương tiện"</item>
+        <item>"Cửa đơn"</item>
+        <item>"Tất cả các cửa"</item>
+    </string-array>
+    <string-array name="windowsopen_entries">
+        <item>"TẮT"</item>
+        <item>"Cửa sổ trình điều khiển"</item>
+        <item>"Tất cả cửa sổ"</item>
+    </string-array>
+    <string-array name="accrdriveprogram_entries">
+        <item>"Bình thường"</item>
+        <item>"Thể thao"</item>
+        <item>"Sinh thái"</item>
+    </string-array>
+    <string-array name="travlemode_entries">
+        <item>"Giao thông phù hợp"</item>
+        <item>"Giao thông bên trái"</item>
+    </string-array>
+    <string-array name="accvehicle_entries">
+        <item>"Rất gần"</item>
+        <item>"Đóng"</item>
+        <item>"Trung bình"</item>
+        <item>"Xa"</item>
+        <item>"Rất xa"</item>
+    </string-array>
+    <string-array name="open_close">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+    </string-array>
+    <string-array name="automatic">
+        <item>"TẮT"</item>
+        <item>"Tự động mở khóa bằng cách chuyển sang cửa tài xế P Chỉ"</item>
+        <item>"Tự động mở khóa bằng cách Shift sang P Tất cả các cửa"</item>
+    </string-array>
+    <string-array name="auto_hand">
+        <item>"TẮT"</item>
+        <item>"Mở khóa tự động chỉ bằng cách tháo chìa khóa cửa trình điều khiển"</item>
+        <item>"Tự động mở khóa bằng cách xóa chìa khóa tất cả các cửa"</item>
+    </string-array>
+    <string-array name="en_remote_lock">
+        <item>"Chỉ đèn"</item>
+        <item>"Đèn và còi"</item>
+        <item>"Horn Only"</item>
+        <item>"TẮT"</item>
+    </string-array>
+    <string-array name="remote_lock">
+        <item>"Chỉ đèn"</item>
+        <item>"Đèn và còi"</item>
+        <item>"Horn Only"</item>
+        <item>"TẮT"</item>
+    </string-array>
+    <string-array name="remote_unlock">
+        <item>"Tất cả các cửa"</item>
+        <item>"Bíp còi"</item>
+    </string-array>
+    <string-array name="enIntelligence_car">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+        <item>"Bíp còi"</item>
+    </string-array>
+    <string-array name="ensliding_door">
+        <item>"Mở khóa tất cả các cửa"</item>
+        <item>"Mở khóa cửa trượt"</item>
+    </string-array>
+    <string-array name="entrailer">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+        <item>"Phần bù đoạn giới thiệu"</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm">
+        <item>"Cảnh báo báo động"</item>
+        <item>"Ghế"</item>
+    </string-array>
+    <string-array name="enair_register">
+        <item>"Thấp"</item>
+        <item>"Giữa"</item>
+        <item>"Cao"</item>
+    </string-array>
+    <string-array name="enair_onoff">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+        <item>"Cài đặt cuối cùng"</item>
+    </string-array>
+    <string-array name="enair_quality">
+        <item>"Độ nhạy thấp"</item>
+        <item>"Độ nhạy cao"</item>
+    </string-array>
+    <string-array name="enautomatic">
+        <item>"Khu đơn"</item>
+        <item>"Khu kép"</item>
+        <item>"Cài đặt cuối cùng"</item>
+    </string-array>
+    <string-array name="enback_temperature">
+        <item>"TẮT"</item>
+        <item>"Mặt trước bắt chước phía sau"</item>
+        <item>"Cài đặt cuối cùng"</item>
+    </string-array>
+    <string-array name="enrear_window">
+        <item>"Thủ công"</item>
+        <item>"TỰ ĐỘNG"</item>
+    </string-array>
+    <string-array name="enair_quality_air">
+        <item>"Độ nhạy thấp"</item>
+        <item>"Độ nhạy cao"</item>
+    </string-array>
+    <string-array name="ento_turn_to">
+        <item>"TẮT"</item>
+        <item>"Co rút"</item>
+        <item>"Khuyến khích"</item>
+        <item>"Thu nhỏ và thúc đẩy"</item>
+    </string-array>
+    <string-array name="enspeed_display">
+        <item>"Đầy"</item>
+        <item>"Một phần"</item>
+    </string-array>
+    <string-array name="enengine_state">
+        <item>"Đang chạy"</item>
+        <item>"Bình thường"</item>
+    </string-array>
+    <string-array name="enignition_conditions">
+        <item>"BỎ QUA"</item>
+        <item>"ACC"</item>
+        <item>"ACC BẬT"</item>
+        <item>"Đánh lửa BẬT"</item>
+        <item>"không hợp lệ"</item>
+    </string-array>
+    <string-array name="enautomatic_latch">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+        <item>"Loa lớn"</item>
+    </string-array>
+    <string-array name="encar_unlocked">
+        <item>"Tất cả các cửa"</item>
+        <item>"Cửa tài xế"</item>
+    </string-array>
+    <string-array name="open_close47">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+    </string-array>
+    <string-array name="enall">
+        <item>"Cửa trình điều khiển"</item>
+        <item>"Tất cả"</item>
+    </string-array>
+    <string-array name="enwiper">
+        <item>"Ngoài"</item>
+        <item>"Trong"</item>
+    </string-array>
+    <string-array name="enauto_cmd">
+        <item>"Yếu"</item>
+        <item>"Trong"</item>
+        <item>"Mạnh"</item>
+    </string-array>
+    <string-array name="ensound">
+        <item>"Âm thanh cổ điển"</item>
+        <item>"Tinh khí"</item>
+        <item>"Nhịp điệu của thành phố"</item>
+        <item>"Jungle Fantasy"</item>
+    </string-array>
+    <string-array name="ensetdoor">
+        <item>"Cửa"</item>
+        <item>"Tất cả các cửa"</item>
+    </string-array>
+    <string-array name="enari_mode">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+        <item>"Tập cuối cùng"</item>
+    </string-array>
+    <string-array name="enremote_seat">
+        <item>"TẮT"</item>
+        <item>"TRÊN"</item>
+    </string-array>
+    <string-array name="enauto_collision">
+        <item>"TẮT"</item>
+        <item>"Gọi cảnh sát"</item>
+        <item>"Báo thức và tự động"</item>
+    </string-array>
+    <string-array name="enparking_mode">
+        <item>"Không hiển thị"</item>
+        <item>"Kho phía sau"</item>
+        <item>"Đậu xe đường phố"</item>
+    </string-array>
+    <string-array name="endistance">
+        <item>"Rất gần"</item>
+        <item>"Đóng"</item>
+        <item>"Trung bình"</item>
+        <item>"Xa"</item>
+        <item>"Rất xa"</item>
+    </string-array>
+    <string-array name="enrunning">
+        <item>"Nên kinh tê"</item>
+        <item>"Tiêu chuẩn"</item>
+        <item>"Chuyển động"</item>
+    </string-array>
+    <string-array name="enconnect_time">
+        <item>"Sớm"</item>
+        <item>"Trung bình"</item>
+        <item>"Muộn"</item>
+    </string-array>
+    <string-array name="entravel_pattern">
+        <item>"Trái"</item>
+        <item>"Đúng"</item>
+    </string-array>
+    <string-array name="enconvenient_open">
+        <item>"Tất cả cửa sổ"</item>
+        <item>"cửa sổ trình điều khiển"</item>
+        <item>"TẮT"</item>
+    </string-array>
+    <string-array name="endoor_unlock">
+        <item>"tất cả các cửa"</item>
+        <item>"Cửa đơn"</item>
+        <item>"phụ xe"</item>
+    </string-array>
+    <string-array name="ensetdoor1">
+        <item>"tất cả các cửa"</item>
+        <item>"Cửa lái xe"</item>
+    </string-array>
+    <string-array name="enari_comfortable">
+        <item>"Chậm"</item>
+        <item>"Bình thường"</item>
+        <item>"Nhanh"</item>
+    </string-array>
+    <string-array name="enrear_window1">
+        <item>"Tự động"</item>
+        <item>"Thủ công"</item>
+    </string-array>
+    <string-array name="ensteering_mode">
+        <item>"Chuyển động"</item>
+        <item>"Tiêu chuẩn"</item>
+        <item>"Ấm cúng"</item>
+    </string-array>
+    <string-array name="enremote_unlock">
+        <item>"Tất cả các cửa"</item>
+        <item>"Cửa trái"</item>
+    </string-array>
+    <string-array name="enmyhome">
+        <item>"TẮT"</item>
+        <item>"Ánh sáng gần chỉ"</item>
+        <item>"Chùm sương mù phía sau"</item>
+    </string-array>
+    <string-array name="enturn_lights_set">
+        <item>"Nhấp nháy một lần"</item>
+        <item>"Nhấp nháy ba"</item>
+    </string-array>
+    <string-array name="enparksense">
+        <item>"Âm thanh"</item>
+        <item>"Âm thanh + Hiển thị"</item>
+    </string-array>
+    <string-array name="enunit_set">
+        <item>"Hệ mét"</item>
+        <item>"Người Mỹ"</item>
+    </string-array>
+    <string-array name="enlane_warning">
+        <item>"sớm"</item>
+        <item>"trong"</item>
+        <item>"muộn"</item>
+    </string-array>
+    <string-array name="endis_suspension">
+        <item>"tất cả"</item>
+        <item>"báo trước"</item>
+    </string-array>
+    <string-array name="enbusy_warning">
+        <item>"TẮT"</item>
+        <item>"Đèn pha"</item>
+        <item>"Đèn báo +"</item>
+    </string-array>
+    <string-array name="enfor_warning">
+        <item>"Ở gần"</item>
+        <item>"Xa"</item>
+    </string-array>
+    <string-array name="enoutseat_heating">
+        <item>"TẮT"</item>
+        <item>"Từ xa"</item>
+        <item>"Toàn bộ"</item>
+    </string-array>
+    <string-array name="entrip">
+        <item>"tiếp nhiên liệu"</item>
+        <item>"đốt cháy"</item>
+        <item>"thủ công"</item>
+    </string-array>
+    <string-array name="enauto_light">
+        <item>"min"</item>
+        <item>"Thấp"</item>
+        <item>"giữa"</item>
+        <item>"cao"</item>
+        <item>"tối đa"</item>
+    </string-array>
+    <string-array name="enlock_with">
+        <item>"tốc độ phương tiện"</item>
+        <item>"chuyển từ P"</item>
+        <item>"TẮT"</item>
+    </string-array>
+    <string-array name="enunlock_with">
+        <item>"MỞ CỬA LÁI XE"</item>
+        <item>"CHUYỂN ĐẾN CÔNG VIÊN"</item>
+        <item>"CHUYỂN ĐỔI BẬT LỬA"</item>
+        <item>"TẮT"</item>
+    </string-array>
+    <string-array name="enscreen1">
+        <item>"Hổ phách"</item>
+        <item>"Đỏ"</item>
+        <item>"màu tím"</item>
+        <item>"Màu xanh da trời"</item>
+    </string-array>
+    <string-array name="enscreen2">
+        <item>"Bình thường"</item>
+        <item>"Làm tối"</item>
+        <item>"Quanmie"</item>
+    </string-array>
+    <string-array name="enauto_avoidance">
+        <item>"TẮT"</item>
+        <item>"báo thức"</item>
+        <item>"Báo thức và phanh"</item>
+    </string-array>
+    <string-array name="enion_generator">
+        <item>"TẮT"</item>
+        <item>"Các ion dương"</item>
+        <item>"Anion"</item>
+    </string-array>
+    <string-array name="enprompt_volume">
+        <item>"Cấp độ 1"</item>
+        <item>"Cấp độ 2"</item>
+        <item>"Cấp 3"</item>
+    </string-array>
+    <string-array name="eninstrument_color">
+        <item>"màu xanh lá"</item>
+        <item>"đỏ"</item>
+        <item>"màu xanh da trời"</item>
+        <item>"màu tím"</item>
+        <item>"trái cam"</item>
+    </string-array>
+    <string-array name="eninstrument_style">
+        <item>"kiểu 1"</item>
+        <item>"kiểu 2"</item>
+        <item>"phong cách 3"</item>
+        <item>"phong cách 4"</item>
+    </string-array>
+    <string-array name="enparking_system">
+        <item>"không hợp lệ"</item>
+        <item>"Mặt bên"</item>
+        <item>"Góc phải"</item>
+        <item>"Gián tiếp"</item>
+    </string-array>
+    <string-array name="enalarm_vol">
+        <item>"Cao"</item>
+        <item>"Trung bình"</item>
+        <item>"Thấp"</item>
+    </string-array>
+    <string-array name="envoice_alarm">
+        <item>"Thấp"</item>
+        <item>"Cao"</item>
+    </string-array>
+    <string-array name="endanger_ahead">
+        <item>"Xa"</item>
+        <item>"Trung bình"</item>
+        <item>"Ở gần"</item>
+    </string-array>
+    <string-array name="endeviate">
+        <item>"Trung bình"</item>
+        <item>"Rộng"</item>
+        <item>"Chỉ cảnh báo"</item>
+    </string-array>
+    <string-array name="enindividual_steering">
+        <item>"Bình thường"</item>
+        <item>"Thể thao"</item>
+    </string-array>
+    <string-array name="enindividual_engine">
+        <item>"Bình thường"</item>
+        <item>"Thể thao"</item>
+        <item>"ECO"</item>
+    </string-array>
+    <string-array name="enindividual_climate">
+        <item>"Bình thường"</item>
+        <item>"ECO"</item>
+    </string-array>
+    <string-array name="enlock_beep">
+        <item>"Nhấn lại"</item>
+        <item>"Lần nhấn đầu tiên"</item>
+        <item>"TẮT"</item>
+    </string-array>
+    <string-array name="entrailer_m">
+        <item>"Đoạn giới thiệu1"</item>
+        <item>"Trailer2"</item>
+        <item>"Đoạn giới thiệu3"</item>
+        <item>"Đoạn giới thiệu4"</item>
+    </string-array>
+    <string-array name="entrailer_type">
+        <item>"Điện nhẹ"</item>
+        <item>"Điện nặng"</item>
+        <item>"Điện nhẹ trên thủy lực"</item>
+        <item>"Điện nặng trên thủy lực"</item>
+    </string-array>
+    <string-array name="ensetting_color">
+        <item>"Trong xanh"</item>
+        <item>"Xanh ngọc trong veo"</item>
+        <item>"Cam đậm"</item>
+        <item>"Cam rạng rỡ"</item>
+    </string-array>
+    <string-array name="enback_camera_path">
+        <item>"Quỹ đạo động"</item>
+        <item>"Quỹ đạo tĩnh"</item>
+        <item>"Dòng cảnh báo"</item>
+    </string-array>
+    <string-array name="enramp">
+        <item>"Tiêu chuẩn"</item>
+        <item>"Cao cấp"</item>
+    </string-array>
+    <string-array name="enfort_tips">
+        <item>"Diễn giả"</item>
+        <item>"đèn"</item>
+        <item>"Đèn và loa"</item>
+    </string-array>
+    <string-array name="encar_line">
+        <item>"TẮT"</item>
+        <item>"Tĩnh"</item>
+        <item>"Tĩnh + động"</item>
+    </string-array>
+    <string-array name="enrear_door">
+        <item>"Cổng đuôi"</item>
+        <item>"Cổng đuôi + cửa"</item>
+    </string-array>
+    <string-array name="enparking_mode1">
+        <item>"Bình thường"</item>
+        <item>"Song song, tương đông"</item>
+        <item>"Tắt"</item>
+        <item>"không hợp lệ"</item>
+    </string-array>
+    <string-array name="enlock_beep1">
+        <item>"TẮT"</item>
+        <item>"Lần nhấn đầu tiên"</item>
+        <item>"Nhấn lại"</item>
+    </string-array>
+    <string-array name="air_con_profile_entries">
+        <item>"Ánh sáng"</item>
+        <item>"Trung bình"</item>
+        <item>"Mạnh"</item>
+    </string-array>
+    <string-array name="reverse_mode">
+        <item>"Chế độ dọc"</item>
+        <item>"Chế độ bên"</item>
+        <item>"Chế độ nhìn ra"</item>
+        <item>"Chế độ ngõ hẹp"</item>
+    </string-array>
+    <string-array name="ambient_lighting_tones">
+        <item>"TẮT"</item>
+        <item>"Màu trắng ấm áp"</item>
+        <item>"màu xanh lá"</item>
+        <item>"Màu xanh da trời"</item>
+        <item>"trắng"</item>
+    </string-array>
+    <string-array name="psa_simple_16">
+        <item>"Màu xanh da trời"</item>
+        <item>"nâu"</item>
+    </string-array>
+    <string-array name="psa_simple_17">
+        <item>"Thông tin máy tính giao thông / Tốc độ động cơ"</item>
+        <item>"Thông tin máy tính giao thông / Nhiệt độ dầu"</item>
+        <item>"Tốc độ động cơ / Máy tính lái xe"</item>
+        <item>"Tốc độ động cơ / Nhiệt độ dầu"</item>
+        <item>"Nhiệt độ dầu / Thông tin máy tính giao thông"</item>
+        <item>"Nhiệt độ dầu / Tốc độ động cơ"</item>
+    </string-array>
+    <string-array name="array_driver_attention_monitor">
+        <item>"TẮT"</item>
+        <item>"Báo động trực quan"</item>
+        <item>"Cảnh báo xúc giác và hình ảnh"</item>
+    </string-array>
+    <string-array name="array_remote_control_open_condition">
+        <item>"Bất cứ lúc nào"</item>
+        <item>"Sau khi mở khóa"</item>
+    </string-array>
+    <string-array name="car_type_cmd_mitsubishi">
+        <item>"Loại 1"</item>
+        <item>"Loại 2"</item>
+    </string-array>
+    <string-array name="enalarm_mode">
+        <item>"Đèn"</item>
+        <item>"Diễn giả"</item>
+        <item>"Đèn và loa"</item>
+    </string-array>
+    <string-array name="enlock_beep2">
+        <item>"TẮT"</item>
+        <item>"Thấp"</item>
+        <item>"Ở giữa"</item>
+        <item>"Cao"</item>
+    </string-array>
+    <string-array name="enouto_lock_mode">
+        <item>"TẮT"</item>
+        <item>"Khi đi du lịch"</item>
+        <item>"Chế độ 1"</item>
+        <item>"Chế độ 2"</item>
+        <item>"Bỏ xe"</item>
+    </string-array>
+    <string-array name="encar_light_off">
+        <item>"TẮT"</item>
+        <item>"Thấp"</item>
+        <item>"Cao"</item>
+    </string-array>
+    <string-array name="endriver_monitor">
+        <item>"Tắt"</item>
+        <item>"Cảnh báo trực quan"</item>
+        <item>"Cảnh báo xúc giác và hình ảnh"</item>
+    </string-array>
+    <string-array name="enremote_setting">
+        <item>"Bất cứ lúc nào"</item>
+        <item>"Sau khi mở khóa"</item>
+    </string-array>
+    <string-array name="eninstrument_color2">
+        <item>"Phong cách 1"</item>
+        <item>"Phong cách 2"</item>
+    </string-array>
+    <string-array name="eninstrument_style2">
+        <item>"Phong cách 1"</item>
+        <item>"Phong cách 2"</item>
+        <item>"Phong cách 3"</item>
+        <item>"Phong cách 4"</item>
+        <item>"Phong cách 5"</item>
+    </string-array>
+    <string-array name="enattention">
+        <item>"TẮT"</item>
+        <item>"Cảnh báo trực quan"</item>
+        <item>"Cảnh báo xúc giác và hình ảnh"</item>
+    </string-array>
+    <string-array name="enactionstate">
+        <item>"TẮT"</item>
+        <item>"Đã kích hoạt"</item>
+        <item>"ESC"</item>
+    </string-array>
+    <string-array name="endoor_lock">
+        <item>"TẮT"</item>
+        <item>"Bằng cách chuyển từ P"</item>
+        <item>"Theo tốc độ"</item>
+    </string-array>
+    <string-array name="endoor_unlock1">
+        <item>"TẮT"</item>
+        <item>"Bằng cửa lái xe"</item>
+        <item>"Bằng cách chuyển sang P"</item>
+    </string-array>
+    <string-array name="enconvenience">
+        <item>"TẮT"</item>
+        <item>"BẬT trong khi dừng lại"</item>
+        <item>"TRÊN"</item>
+    </string-array>
+    <string-array name="enfor_outo_warning">
+        <item>"TẮT"</item>
+        <item>"Chỉ phanh"</item>
+        <item>"Chỉ báo thức"</item>
+        <item>"Báo động và phanh"</item>
+    </string-array>
+</resources>

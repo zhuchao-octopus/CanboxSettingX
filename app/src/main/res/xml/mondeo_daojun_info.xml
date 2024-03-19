@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="speed47"
+        android:persistent="false"
+        android:title="@string/speed47" />
+    <com.common.view.MyPreference
+        android:key="engine_speed55"
+        android:persistent="false"
+        android:title="@string/engine_speed55" />
+
+</PreferenceScreen>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:persistent="false" >
+
+    <PreferenceScreen
+        android:key="airconditioning_setting"
+        android:persistent="false"
+        android:title="@string/str_airconditioning_setting" >
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="auto_compressor_status"
+            android:persistent="false"
+            android:title="@string/str_auto_compressor_status" />
+
+        <ListPreference
+            android:dependency="auto_compressor_status"
+            android:entries="@array/trumpche_auto_cycle_mode_entries"
+            android:entryValues="@array/two_values"
+            android:key="auto_cycle_mode"
+            android:title="@string/str_auto_cycle_mode" />
+        <ListPreference
+            android:entries="@array/trumpche_speed_level_entries"
+            android:entryValues="@array/three_values"
+            android:key="ac_comfort_setting"
+            android:title="@string/str_ac_comfort_setting" />
+
+   
+
+        <ListPreference
+            android:entries="@array/trumpche_sensitivity_entries"
+            android:entryValues="@array/three_values"
+            android:key="air_quality_sensor"
+            android:title="@string/str_air_quality_sensor" />
+        <ListPreference
+            android:entries="@array/trumpche_level_entries"
+            android:entryValues="@array/three_values"
+            android:key="air_automatic_mode"
+            android:title="@string/str_air_volume_setting_in_automatic_mode" />
+        
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="key_unlock_ventilation"
+            android:persistent="false"
+            android:title="@string/key_unlock_ventilation" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="air_conditioning_set_air_conditioning_self_drying"
+            android:persistent="false"
+            android:title="@string/air_conditioning_set_air_conditioning_self_drying" />
+        
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="seat_setting"
+        android:persistent="false"
+        android:title="@string/str_seat_setting" >
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="seat_welcome"
+            android:persistent="false"
+            android:title="@string/str_seat_welcome" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="auto_seat_recog"
+            android:persistent="false"
+            android:title="@string/str_auto_seat_recog" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="auto_heat"
+            android:persistent="false"
+            android:title="@string/auto_heat" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="fu_auto_heat"
+            android:persistent="false"
+            android:title="@string/fu_auto_heat" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="drive_assit"
+        android:persistent="false"
+        android:title="@string/str_drive_assit" >
+        <com.common.view.MyPreferenceSeekBar
+            android:key="over_speed_alert"
+            android:persistent="false"
+            android:title="@string/str_over_speed_alert" />
+
+        <ListPreference
+            android:entries="@array/trumpche_level_entries"
+            android:entryValues="@array/three_values"
+            android:key="alart_volume"
+            android:title="@string/str_alart_volume" />
+
+        <com.common.view.MyPreferenceSeekBar
+            android:key="power_on_time"
+            android:persistent="false"
+            android:title="@string/str_power_on_time" />
+        <com.common.view.MyPreferenceSeekBar
+            android:key="start_time"
+            android:persistent="false"
+            android:title="@string/str_start_time" />
+
+        <ListPreference
+            android:entries="@array/trumpche_turn_mode_entries"
+            android:entryValues="@array/three_values"
+            android:key="turn_mode"
+            android:title="@string/str_turn_mode" />
+
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="right_side_line_assist"
+            android:persistent="false"
+            android:title="@string/str_right_side_line_assist" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="left_side_line_assist"
+            android:persistent="false"
+            android:title="@string/str_left_side_line_assist" />
+
+        <ListPreference
+            android:entries="@array/luggage_sensor_open_entries"
+            android:entryValues="@array/three_values"
+            android:key="luggage_sensor_open"
+            android:title="@string/luggage_sensor_open" />
+
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="automatic_wiper"
+            android:persistent="false"
+            android:title="@string/automatic_wiper" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="accessory"
+        android:persistent="false"
+        android:title="@string/str_accessory" >
+        <ListPreference
+            android:entries="@array/trumpche_door_unlock_entries"
+            android:entryValues="@array/two_values"
+            android:key="remote_unlock"
+            android:title="@string/str_remote_unlock" />
+
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="speed_lock"
+            android:persistent="false"
+            android:title="@string/str_speed_lock" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="auto_unlock"
+            android:persistent="false"
+            android:title="@string/str_auto_unlock" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="remote_control_left_skylight"
+            android:persistent="false"
+            android:title="@string/str_remote_control_left_skylight" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="front_wiper_maintain"
+            android:persistent="false"
+            android:title="@string/str_front_wiper_maintain" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="rear_wiper_auto"
+            android:persistent="false"
+            android:title="@string/str_rear_wiper_auto" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="outside_rearview"
+            android:persistent="false"
+            android:title="@string/str_outside_rearview" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="unlock_the_lock_tone"
+            android:persistent="false"
+            android:title="@string/str_unlock_the_lock_tone" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="intelligent_active_locking"
+            android:persistent="false"
+            android:title="@string/str_intelligent_active_locking" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="intelligent_active_unlocking"
+            android:persistent="false"
+            android:title="@string/str_intelligent_active_unlocking" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="external_mirror_angle_automatic_adjustment"
+            android:persistent="false"
+            android:title="@string/str_external_mirror_angle_automatic_adjustment" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="external_mirror_angle_manual_adjustment"
+            android:persistent="false"
+            android:title="@string/str_external_mirror_angle_manual_adjustment" />
+        
+        
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="automatically_close_the_window"
+            android:persistent="false"
+            android:title="@string/automatically_close_the_window" />
+        
+        
+        
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="light_control"
+        android:persistent="false"
+        android:title="@string/str_light_control" >
+        <ListPreference
+            android:entries="@array/trumpche_go_home_entries"
+            android:entryValues="@array/three_values"
+            android:key="go_home"
+            android:title="@string/str_go_home" />
+
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="foglamp_turn"
+            android:persistent="false"
+            android:title="@string/str_foglamp_turn" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="daytime_running_lamp"
+            android:persistent="false"
+            android:title="@string/str_daytime_running_lamp" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="intelligent_welcome_light"
+            android:persistent="false"
+            android:title="@string/str_intelligent_welcome_light" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="ambient_light_control"
+            android:persistent="false"
+            android:title="@string/str_ambient_light_control" />
+
+        <ListPreference
+            android:entries="@array/trumpche_level_entries"
+            android:entryValues="@array/three_values"
+            android:key="auto_light_sensitivity"
+            android:title="@string/str_auto_light_sensitivity" />
+
+        <com.common.view.MyPreferenceSeekBar
+            android:key="ambient_light_brightness"
+            android:persistent="false"
+            android:title="@string/ambient_light_brightness" />
+        <com.common.view.MyPreferenceSeekBar
+            android:key="atmosphere_light_color"
+            android:persistent="false"
+            android:title="@string/atmosphere_light_color" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/other" >
+<!--         <SwitchPreference -->
+<!--             android:disableDependentsState="false" -->
+<!--             android:key="avm" -->
+<!--             android:persistent="false" -->
+<!--             android:title="@string/str_avm" /> -->
+
+<!--         <ListPreference -->
+<!--             android:entries="@array/trumpche_avm_entries" -->
+<!--             android:entryValues="@array/seven_values" -->
+<!--             android:key="avm_setting" -->
+<!--             android:title="@string/str_avm_setting" /> -->
+
+        <com.common.view.MyPreferenceDialog
+            android:key="factory_reset"
+            android:persistent="false"
+            android:title="@string/str_reset_factory" />
+
+<!--         <SwitchPreference -->
+<!--             android:disableDependentsState="false" -->
+<!--             android:key="ambient_light_setting" -->
+<!--             android:persistent="false" -->
+<!--             android:title="@string/ambient_light" /> -->
+    </PreferenceScreen>
+
+</PreferenceScreen>

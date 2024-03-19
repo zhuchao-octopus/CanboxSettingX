@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="FocuseButtonStyle1">
+        <item name="android:background">@drawable/button_click_back1</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_height">127px</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="ButtonStyle2">
+        <item name="android:background">@drawable/list_button0</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">200px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24.0px</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="CommonStyleFonts">
+        <item name="android:fontFamily">casual</item>
+    </style>
+
+    <style name="ButonStyleNum" parent="CommonStyleFonts">
+        <item name="android:background">@drawable/button_click_back2</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">90px</item>
+        <item name="android:layout_height">68px</item>
+        <item name="android:textSize">26.0px</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="listStyle" parent="CommonStyleFonts">
+        <item name="android:background">@drawable/list_button0</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">68px</item>
+        <item name="android:textSize">26.0px</item>
+        <item name="android:paddingLeft">20.0px</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+        <!-- API 19 theme customizations can go here. -->
+        <!-- <item name="android:windowContentOverlay">@null</item> -->
+        <!-- <item name="android:windowTranslucentStatus">true</item> -->
+        <!-- <item name="android:windowTranslucentNavigation">true</item> -->
+        <!-- Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色 -->
+
+
+        <!-- <item name="android:windowBackground">@null</item> -->
+        <!-- <item name="android:statusBarColor">@android:color/transparent</item> -->
+    </style>
+
+    <style name="ButonStyleNumSync3" parent="CommonStyleFonts">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">90px</item>
+        <item name="android:tag">ak_paramter=100,50</item>
+        <item name="android:layout_height">50px</item>
+        <item name="android:background">@drawable/sub_background2</item>
+        <item name="android:textSize">26.0px</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">5px</item>
+    </style>
+
+</resources>

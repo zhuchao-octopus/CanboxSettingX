@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="4"
+        android:background="#3b3b3b"
+        android:orientation="horizontal"
+        android:paddingTop="10px" >
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5px" >
+
+            <Button
+                android:id="@id/update_stations_list"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:background="@drawable/com_button12"
+                android:onClick="onClick"
+                android:text="@string/update_stations_list" />
+
+            <ListView
+                android:id="@id/liststations"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="40px"
+                android:paddingRight="40px" >
+
+                <TextView
+                    android:id="@+id/status"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="bottom"
+                    android:onClick="onClick"
+                    android:scaleType="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="40px"
+                android:paddingRight="40px" >
+
+                <ImageView
+                    android:id="@+id/radio_step_up_button"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_step_pre_normal" />
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/freq_baud"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="30px" />
+
+                    <TextView
+                        android:id="@+id/freq_text"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="60px" />
+
+                    <TextView
+                        android:id="@+id/freq_unit"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="30px" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/radio_step_down_button"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_step_next_normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="40px"
+                android:paddingRight="40px" >
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/panel"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="0.9"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/radio_function_button_scan"
+            style="@style/ButtonStyle1"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:scaleType="center"
+            android:src="@drawable/radio_btn_search_normal" />
+
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="#cccccc" />
+
+        <ImageView
+            android:id="@+id/radio_prev"
+            style="@style/ButtonStyle1"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:scaleType="center"
+            android:src="@drawable/prev" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="#cccccc" />
+
+        <ImageView
+            android:id="@+id/radio_next"
+            style="@style/ButtonStyle1"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:scaleType="center"
+            android:src="@drawable/next" />
+    </LinearLayout>
+
+</LinearLayout>

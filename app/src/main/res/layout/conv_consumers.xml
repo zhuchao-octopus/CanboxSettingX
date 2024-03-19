@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/conv_consumers"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:paddingTop="20px" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/conv_item_margin_left"
+        android:paddingRight="@dimen/conv_item_margin_left" >
+
+        <TextView
+            android:id="@id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.4"
+            android:gravity="center"
+            android:text="@string/conv_consumers"
+            android:textSize="@dimen/conv_title_text_size" />
+
+        <TextView
+            android:id="@+id/conv_consumers_msg1"
+            android:layout_width="wrap_content"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="@dimen/conv_normal_text_size" />
+
+        <TextView
+            android:id="@+id/conv_consumers_msg2"
+            android:layout_width="wrap_content"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="@dimen/conv_normal_text_size" />
+
+        <TextView
+            android:id="@+id/conv_consumers_msg3"
+            android:layout_width="wrap_content"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="@dimen/conv_normal_text_size" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="3.0"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@id/consumption"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:text="@string/consumption"
+                android:textSize="@dimen/conv_normal_text_size" />
+
+            <RelativeLayout
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30.0sp"
+                android:layout_weight="2.0" >
+
+                <TextView
+                    android:id="@id/unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/conv_normal_text_size" />
+
+                <ProgressBar
+                    android:id="@id/progressbar"
+                    style="?android:progressBarStyleHorizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/unit"
+                    android:max="1000" />
+
+                <TextView
+                    android:id="@id/progress_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/progressbar"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_normal_text_size" />
+
+                <TextView
+                    android:id="@id/progress_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/progress_min"
+                    android:layout_below="@id/progressbar"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_normal_text_size" />
+
+                <TextView
+                    android:id="@id/progress_max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/progress_min"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/progressbar"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_normal_text_size" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

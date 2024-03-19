@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+      <com.common.view.MyPreference
+            android:key="speed"
+            android:persistent="false"
+            android:title="@string/speed" />
+        <com.common.view.MyPreference
+            android:key="enginespeed"
+            android:persistent="false"
+            android:title="@string/enginespeed" />
+        <com.common.view.MyPreference
+            android:key="coolant_temp"
+            android:persistent="false"
+            android:title="@string/coolant_temp" />
+        
+        <com.common.view.MyPreference
+            android:key="battery_voltage"
+            android:persistent="false"
+            android:title="@string/battery_voltage" />
+        
+        
+        
+        <com.common.view.MyPreference
+            android:key="transmission_oil_temperature"
+            android:persistent="false"
+            android:title="@string/transmission_oil_temperature" />
+     
+</PreferenceScreen>

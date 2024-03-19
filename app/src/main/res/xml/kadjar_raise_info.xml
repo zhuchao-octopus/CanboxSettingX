@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:selectable="false"
+        android:title="@string/averagefuel" />
+    <com.common.view.MyPreference
+        android:key="averageapeed"
+        android:persistent="false"
+        android:selectable="false"
+        android:title="@string/averageapeed" />
+    <com.common.view.MyPreference
+        android:key="running_distance"
+        android:persistent="false"
+        android:selectable="false"
+        android:title="@string/running_distance" />
+
+    <PreferenceScreen
+        android:key="vehicle_reset"
+        android:persistent="false"
+        android:title="@string/vehicle_reset" />
+
+</PreferenceScreen>

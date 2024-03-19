@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res-auto"
+    xmlns:my="http://schemas.android.com/apk/res-auto"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreferenceProgress
+        android:key="oil_data"
+        android:persistent="false"
+        my:max="8"
+        android:title="@string/oil_data" />
+    <com.common.view.MyPreference
+        android:key="mkm"
+        android:persistent="false"
+        android:title="@string/mkm" />
+    <com.common.view.MyPreference
+        android:key="mday"
+        android:persistent="false"
+        android:title="@string/mday" />
+    <com.common.view.MyPreference
+        android:key="cycle_km"
+        android:persistent="false"
+        android:title="@string/cycle_km" />
+    <com.common.view.MyPreference
+        android:key="cycle_day"
+        android:persistent="false"
+        android:title="@string/cycle_day" />
+
+</PreferenceScreen>

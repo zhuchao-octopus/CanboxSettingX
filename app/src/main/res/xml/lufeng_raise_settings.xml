@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+    android:title="@string/controlset" >
+	<SwitchPreference
+        android:key="automatic_folding_outer_rearview_mirror"
+        android:persistent="false"
+        android:title="@string/automatic_folding_outer_rearview_mirror" />
+    <SwitchPreference
+        android:key="str_avm"
+        android:persistent="false"
+        android:title="@string/str_avm" />
+    <SwitchPreference
+        android:key="welcome_lamp"
+        android:persistent="false"
+        android:title="@string/welcome_lamp" />
+    <ListPreference
+        android:entries="@array/landwind_Accompany_me_home"
+        android:entryValues="@array/five_values"
+        android:key="flow_me_home_keep_light_time"
+        android:persistent="false"
+        android:title="@string/flow_me_home_keep_light_time" />
+    <ListPreference
+        android:entries="@array/landwind_unlock_doors"
+        android:entryValues="@array/smartdoorlock_entryValues"
+        android:key="smartunlock"
+        android:persistent="false"
+        android:title="@string/smartunlock" />
+    <SwitchPreference
+        android:key="remote_lift_window"
+        android:persistent="false"
+        android:title="@string/remote_lift_window" />
+    <SwitchPreference
+        android:key="str_daytime_running_lamp"
+        android:persistent="false"
+        android:title="@string/str_daytime_running_lamp" />
+    <PreferenceScreen
+            android:key="restore"
+            android:title="@string/restore" />
+</PreferenceScreen>

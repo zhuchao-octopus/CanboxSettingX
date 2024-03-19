@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Theme.SettingsBase" parent="@android:style/Theme.Material" />
+
+    <style name="Theme.Settings" parent="Theme.SettingsBase">
+        <item name="android:paddingTop">0dp</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+
+        <!-- API 19 theme customizations can go here. -->
+        <!-- <item name="android:windowContentOverlay">@null</item> -->
+        <!-- <item name="android:windowTranslucentStatus">true</item> -->
+        <!-- <item name="android:windowTranslucentNavigation">true</item> -->
+        <!-- Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色 -->
+
+
+        <!-- <item name="android:windowBackground">@null</item> -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="TranslucentTheme2" parent="@android:style/Theme.DeviceDefault.Wallpaper.NoTitleBar">
+
+        <!-- API 19 theme customizations can go here. -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+        <!-- Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色 -->
+
+
+        <!-- <item name="android:windowBackground">@null</item> -->
+        <!-- <item name="android:statusBarColor">@android:color/transparent</item> -->
+    </style>
+
+    <style name="CommonStyleFonts">
+        <item name="android:fontFamily">casual</item>
+    </style>
+
+    <style name="shadowText">
+        <item name="android:shadowColor">#ff000000</item>
+        <item name="android:shadowRadius">3</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+
+    <style name="shadowTextCommonStyleFonts" parent="shadowText">
+        <item name="android:fontFamily">casual</item>
+    </style>
+
+    <style name="CarInfoTextView1" parent="CommonStyleFonts">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">62px</item>
+    </style>
+
+    <style name="CarInfoTextView2" parent="CarInfoTextView1">
+        <item name="android:layout_width">220px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#88000000</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <style name="CarInfoTextView3" parent="CommonStyleFonts">
+        <item name="android:textColor">#ffcccccc</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">54px</item>
+        <item name="android:paddingLeft">10px</item>
+    </style>
+
+    <style name="CarInfoTextView4" parent="CommonStyleFonts">
+        <item name="android:textColor">#ffff0000</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">62px</item>
+        <item name="android:paddingLeft">15px</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TypeTextView1" parent="CommonStyleFonts">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">32.0px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60px</item>
+    </style>
+
+    <style name="TypeTextView2" parent="CommonStyleFonts">
+        <item name="android:textColor">#ffff0000</item>
+        <item name="android:textSize">32.0px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50px</item>
+    </style>
+
+    <style name="ButtonStyle1">
+        <item name="android:background">@drawable/button_click_back1</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_height">104px</item>
+        <item name="android:layout_width">174px</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textSize">46px</item>
+        <item name="android:tag">ak_paramter=100,50</item>
+    </style>
+
+    <style name="CommonButtonStyle">
+        <item name="android:background">@drawable/button_click_back1</item>
+        <item name="android:shadowColor">#555555</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">24px</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:layout_marginStart">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tag">ak_paramter=100,50</item>
+    </style>
+
+    <style name="AirButtonStyle1">
+        <item name="android:background">@drawable/button_air3</item>
+        <item name="android:shadowColor">#555555</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">24px</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:layout_marginStart">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tag">ak_paramter=100,50</item>
+    </style>
+
+    <style name="AirButtonStyleNoClick">
+        <item name="android:background">@drawable/button_air3</item>
+        <item name="android:shadowColor">#555555</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">24px</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">@null</item>
+        <item name="android:clickable">false</item>
+        <item name="android:layout_marginStart">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="AirButtonStyle2">
+        <item name="android:shadowColor">#555555</item>
+        <item name="android:textColor">@drawable/air_control_text_selector</item>
+        <item name="android:textSize">24px</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:layout_marginStart">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tag">ak_paramter=100,50</item>
+    </style>
+
+    <style name="ButtonStyleDvdKeyBoard">
+        <item name="android:textColor">#BEBEBE</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">120px</item>
+        <item name="android:tag">ak_paramter=100,50</item>
+        <item name="android:textSize">28px</item>
+        <item name="android:background">@drawable/com_button12</item>
+    </style>
+
+    <style name="amp_seekbar">
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">4.0</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="amp_seekbar_left">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_weight">1.2</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="amp_seekbar_right">
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_weight">0.8</item>
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="airControlTextNormal">
+        <item name="android:textSize">@dimen/air_control_normal_text_size</item>
+        <item name="android:textColor">@drawable/air_control_text_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="FocuseButtonStyle1">
+        <item name="android:background">@drawable/button_click_back1</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_height">84px</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="ButtonStyle2">
+        <item name="android:background">@drawable/list_button0</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">132px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24.0px</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="ButonStyleNum" parent="CommonStyleFonts">
+        <item name="android:background">@drawable/button_click_back2</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">90px</item>
+        <item name="android:layout_height">50px</item>
+        <item name="android:textSize">26.0px</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="listStyle" parent="CommonStyleFonts">
+        <item name="android:background">@drawable/list_button0</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48px</item>
+        <item name="android:textSize">22.0px</item>
+        <item name="android:paddingLeft">10.0px</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+
+    <style name="WhiteBigText">
+        <item name="android:textSize">28.0dip</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="WhiteSmallText">
+        <item name="android:textSize">24.0dip</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="WhiteText">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CarInfoTextView5" parent="CarInfoTextView1">
+        <item name="android:layout_width">220px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/button_click_back4</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <style name="BaicEnvironmentalStyelTv">
+        <item name="android:textSize">@dimen/baic_environmental_tv_text</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaicEnvironmentalStyelDtv">
+        <item name="android:textSize">@dimen/baic_environmental_dtv_text</item>
+        <item name="android:textColor">@android:color/holo_green_light</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	 <string-array name="enwarning_control">   
+		<item>"Zatvorené"</item>
+		<item>"Pomaly"</item>
+		<item>"Stredný"</item>
+		<item>"Rýchly"</item>
+		<item>"Auto"</item>
+	 </string-array>
+	 <string-array name="enturn_lights_sets_set">
+		<item>"Jeden"</item>
+		<item>"Tri"</item>
+	 </string-array>
+	 <string-array name="enremote_start_air">
+		<item>"Manuálne"</item>
+		<item>"Auto"</item>
+	 </string-array>
+	 <string-array name="enlfRight">
+		<item>"Ľavý"</item>
+		<item>"Správne"</item>
+	 </string-array>
+	 <string-array name="enadaptive">
+		<item>"Rohové a ohybové osvetlenie"</item>
+		<item>"Inteligentné rozloženie svetla"</item>
+	 </string-array>
+	 <string-array name="smartdoorlock_entries">
+		<item>"Všetky dvere"</item>
+		<item>"Dvere vodiča"</item>
+	 </string-array>
+	 <string-array name="radarrange_entries">
+		<item>"ďaleko"</item>
+		<item>"blízko"</item>
+	 </string-array>
+	 <string-array name="autodoorlockmode14_entries">
+		<item>"Vypnuté"</item>
+		<item>"Počas jazdy uzamknúť"</item>
+		<item>"Vypnuté"</item>
+		<item>"Uzamknutie: jazda Odomknutie: IGN vypnuté"</item>
+		<item>"Pri radení z polohy P uzamknite"</item>
+		<item>"Uzamknutie: preradenie z P Odomknutie: v P"</item>
+	 </string-array>
+	 <string-array name="unlockmode14_entries">
+		<item>"Raz sa dotknite; Všetky dvere"</item>
+		<item>"Raz: Vodičové; Dvakrát: Všetky dvere"</item>
+	 </string-array>
+	 <string-array name="lockbeepvol14_entries">
+		<item>"Vysoké"</item>
+		<item>"Stredné"</item>
+		<item>"Nízke"</item>
+		<item>"Vypnuté"</item>
+	 </string-array>
+	 <string-array name="autoheadlighton14_entries">
+		<item>"Svetlé"</item>
+		<item>"Polosvetlé"</item>
+		<item>"Stredné"</item>
+		<item>"Polotmavé"</item>
+		<item>"Tmavé"</item>
+	 </string-array>
+	 <string-array name="Language14_entries">
+		<item>"Anglicky(US)"</item>
+		<item>"Fran"</item>
+		<item>"Špan"</item>
+		<item>"Hlasové ovládanie navigácie"</item>
+		<item>"Hlasové ovládanie zvuku/telefónu"</item>
+	 </string-array>
+	 <string-array name="automodewindlevel_entries">
+		<item>"Nízke"</item>
+		<item>"Stredné"</item>
+		<item>"Vysoké"</item>
+	 </string-array>
+	 <string-array name="airqualitysensor_entry">
+		<item>"Vypnuté"</item>
+		<item>"Nízka citlivosť"</item>
+		<item>"Vysoká"</item>
+	 </string-array>
+	 <string-array name="airpartition_entries">
+		<item>"Zjednotené nastavenia"</item>
+		<item>"Zónové nastavenia"</item>
+		<item>"Posledné nastavenia"</item>
+	 </string-array>
+	 <string-array name="parkunlock_entries">
+		<item>"Vypnuté"</item>
+		<item>"Dvere vodiča"</item>
+		<item>"Všetky dvere"</item>
+	 </string-array>
+	 <string-array name="remotelock5_entries">
+		<item>"Iba svetlo"</item>
+		<item>"Svetlo a reproduktor"</item>
+		<item>"Iba reproduktor"</item>
+		<item>"Vypnuté"</item>
+	 </string-array>
+	 <string-array name="remotedoorunlock_entries">
+		<item>"Dvere vodiča"</item>
+		<item>"Všetky dvere"</item>
+	 </string-array>
+	 <string-array name="turnontime_entries">
+		<item>"Skoro"</item>
+		<item>"Stredne"</item>
+		<item>"Neskoro"</item>
+	 </string-array>
+	 <string-array name="centrallock_entries">
+		<item>"Vozidlo"</item>
+		<item>"Jedny dvere"</item>
+		<item>"Všetky dvere"</item>
+	 </string-array>
+	 <string-array name="windowsopen_entries">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Okno vodiča"</item>
+		<item>"Všetky okná"</item>
+	 </string-array>
+	 <string-array name="accrdriveprogram_entries">
+		<item>"Normál"</item>
+		<item>"Šport"</item>
+		<item>"Eko"</item>
+	 </string-array>
+	 <string-array name="travlemode_entries">
+		<item>"Pravá premávka"</item>
+		<item>"Ľavá premávka"</item>
+	 </string-array>
+	 <string-array name="accvehicle_entries">
+		<item>"Veľmi blízko"</item>
+		<item>"Zatvoriť"</item>
+		<item>"Stredné"</item>
+		<item>"Ďaleko"</item>
+		<item>"Veľmi ďaleko"</item>
+	 </string-array>
+	 <string-array name="open_close">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+	 </string-array>
+	 <string-array name="automatic">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Automatické Odomknutie Preradením Do P Iba Dvere Vodiča"</item>
+		<item>"Automatické Odomknutie Preradením Do P Všetky Dvere"</item>
+	 </string-array>
+	 <string-array name="auto_hand">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Automatické Odomknutie Vytiahnutím Kľúča Iba Dvere Vodiča"</item>
+		<item>"Automatické Odomknutie Vytiahnutím Kľúča Všetky Dvere"</item>
+	 </string-array>
+	 <string-array name="en_remote_lock">
+		<item>"Iba Svetlá"</item>
+		<item>"Svetlá a Klaksón"</item>
+		<item>"Iba Klaksón"</item>
+		<item>"VYPNUTÉ:"</item>
+	 </string-array>
+	 <string-array name="remote_lock">
+		<item>"Iba Svetlá"</item>
+		<item>"Svetlá a Klaksón"</item>
+		<item>"Iba Klaksón"</item>
+		<item>"VYPNUTÉ:"</item>
+	 </string-array>
+	 <string-array name="remote_unlock">
+		<item>"Všetky Dvere"</item>
+		<item>"Pípnutie Klaksónu"</item>
+	 </string-array>
+	 <string-array name="enIntelligence_car">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+		<item>"Pípnutie Klaksónu"</item>
+	 </string-array>
+	 <string-array name="ensliding_door">
+		<item>"Odomknúť Všetky Dvere"</item>
+		<item>"Odomknúť Posuvné Dvere"</item>
+	 </string-array>
+	 <string-array name="entrailer">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+		<item>"Vyváženie prívesu"</item>
+	 </string-array>
+	 <string-array name="enanti_collision_alarm">
+		<item>"Výstraha alarmu"</item>
+		<item>"sedadla"</item>
+	 </string-array>
+	 <string-array name="enair_register">
+		<item>"Nízke"</item>
+		<item>"Stredné"</item>
+		<item>"Vysoké"</item>
+	 </string-array>
+	 <string-array name="enair_onoff">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+		<item>"Posledné nastavenie"</item>
+	 </string-array>
+	 <string-array name="enair_quality">
+		<item>"Nízka citlivosť"</item>
+		<item>"Vysoká citlivosť"</item>
+	 </string-array>
+	 <string-array name="enautomatic">
+		<item>"Samostatná Zóna"</item>
+		<item>"Duálna Zóna"</item>
+		<item>"Posledné nastavenie"</item>
+	 </string-array>
+	 <string-array name="enback_temperature">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Zadný napodobňujúci predný"</item>
+		<item>"Posledné nastavenie"</item>
+	 </string-array>
+	 <string-array name="enrear_window">
+		<item>"Manuálne"</item>
+		<item>"AUTO"</item>
+	 </string-array>
+	 <string-array name="enair_quality_air">
+		<item>"Nízka citlivosť"</item>
+		<item>"Vysoká citlivosť"</item>
+	 </string-array>
+	 <string-array name="ento_turn_to">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Úbytok"</item>
+		<item>"Postup"</item>
+		<item>"Úbytok a Postup"</item>
+	 </string-array>
+	 <string-array name="enspeed_display">
+		<item>"Plný"</item>
+		<item>"Čiastočný"</item>
+	 </string-array>
+	 <string-array name="enengine_state">
+		<item>"Spustený"</item>
+		<item>"Normál"</item>
+	 </string-array>
+	 <string-array name="enignition_conditions">
+		<item>"ZAPAĽ. VYPN."</item>
+		<item>"ACC"</item>
+		<item>"ACC ZAPNUTÉ"</item>
+		<item>"Zapaľovanie ZAPNUTÉ"</item>
+		<item>"Neplatný"</item>
+	 </string-array>
+	 <string-array name="enautomatic_latch">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+		<item>"Reproduktor"</item>
+	 </string-array>
+	 <string-array name="encar_unlocked">
+		<item>"Všetky dvere"</item>
+		<item>"Dvere vodiča"</item>
+	 </string-array>
+	 <string-array name="open_close47">
+		<item>"VYPNUTÉ"</item>
+		<item>"ZAPNUTÉ"</item>
+	 </string-array>
+	 <string-array name="enall">
+		<item>"Dvere vodiča"</item>
+		<item>"Všetci"</item>
+	 </string-array>
+	 <string-array name="enwiper">
+		<item>"Vonku"</item>
+		<item>"Vo vnútri"</item>
+	 </string-array>
+	 <string-array name="enauto_cmd">
+		<item>"Slabé"</item>
+		<item>"Vo vnútri"</item>
+		<item>"Silný"</item>
+	 </string-array>
+	 <string-array name="ensound">
+		<item>"Klasický Zvuk"</item>
+		<item>"Krištáľový temperament"</item>
+		<item>"Rytmus mesta"</item>
+		<item>"Fantázia džungle"</item>
+	 </string-array>
+	 <string-array name="ensetdoor">
+		<item>"Dvere"</item>
+		<item>"Všetky dvere"</item>
+	 </string-array>
+	 <string-array name="enari_mode">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+		<item>"Posledné nastavenie"</item>
+	 </string-array>
+	 <string-array name="enremote_seat">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ"</item>
+	 </string-array>
+	 <string-array name="enauto_collision">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Zavolajte políciu"</item>
+		<item>"Alarm a automatické"</item>
+	 </string-array>
+	 <string-array name="enparking_mode">
+		<item>"Nezobrazovať"</item>
+		<item>"Zadné úložne miesto"</item>
+		<item>"Parkovanie na ulici"</item>
+	 </string-array>
+	 <string-array name="endistance">
+		<item>"Veľmi blízko"</item>
+		<item>"Zatvoriť"</item>
+		<item>"Stredné"</item>
+		<item>"Ďaleko"</item>
+		<item>"Veľmi ďaleko"</item>
+	 </string-array>
+	 <string-array name="enrunning">
+		<item>"Economy"</item>
+		<item>"Štandardná"</item>
+		<item>"Pohyb"</item>
+	 </string-array>
+	 <string-array name="enconnect_time">
+		<item>"Skoro"</item>
+		<item>"Stredne"</item>
+		<item>"Neskoro"</item>
+	 </string-array>
+	 <string-array name="entravel_pattern">
+		<item>"Ľavý"</item>
+		<item>"Správne"</item>
+	 </string-array>
+	 <string-array name="enconvenient_open">
+		<item>"Všetky Okná"</item>
+		<item>"Okno vodiča"</item>
+		<item>"VYPNUTÉ:"</item>
+	 </string-array>
+	 <string-array name="endoor_unlock">
+		<item>"všetky dvere"</item>
+		<item>"jedny dvere"</item>
+		<item>"strana vozidla"</item>
+	 </string-array>
+	 <string-array name="ensetdoor1">
+		<item>"všetky dvere"</item>
+		<item>"Dvere vodiča"</item>
+	 </string-array>
+	 <string-array name="enari_comfortable">
+		<item>"Pomaly"</item>
+		<item>"Normál"</item>
+		<item>"Rýchly"</item>
+	 </string-array>
+	 <string-array name="enrear_window1">
+		<item>"Auto"</item>
+		<item>"Manuálne"</item>
+	 </string-array>
+	 <string-array name="ensteering_mode">
+		<item>"Pohyb"</item>
+		<item>"Štandardný"</item>
+		<item>"Pohodlný"</item>
+	 </string-array>
+	 <string-array name="enremote_unlock">
+		<item>"Všetky dvere"</item>
+		<item>"Ľavé dvere"</item>
+	 </string-array>
+	 <string-array name="enmyhome">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Iba blízke svetlo"</item>
+		<item>"Zadné hmlové svetlo"</item>
+	 </string-array>
+	 <string-array name="enturn_lights_set">
+		<item>"Zabliká raz"</item>
+		<item>"Zabliká trikrát"</item>
+	 </string-array>
+	 <string-array name="enparksense">
+		<item>"Zvuk"</item>
+		<item>"Zvuk + Šou"</item>
+	 </string-array>
+	 <string-array name="enunit_set">
+		<item>"Metrický systém"</item>
+		<item>"Americký"</item>
+	 </string-array>
+	 <string-array name="enlane_warning">
+		<item>"skoro"</item>
+		<item>"vo vnútri"</item>
+		<item>"neskoro"</item>
+	 </string-array>
+	 <string-array name="endis_suspension">
+		<item>"všetko"</item>
+		<item>"upozornenie"</item>
+	 </string-array>
+	 <string-array name="enbusy_warning">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Svetlomet"</item>
+		<item>"Výstražné svetlá +"</item>
+	 </string-array>
+	 <string-array name="enfor_warning">
+		<item>"Blízko"</item>
+		<item>"Ďaleko"</item>
+	 </string-array>
+	 <string-array name="enoutseat_heating">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Vzdialene"</item>
+		<item>"Celý"</item>
+	 </string-array>
+	 <string-array name="entrip">
+		<item>"natankovať"</item>
+		<item>"vypnúť zapaľovanie"</item>
+		<item>"manuálne"</item>
+	 </string-array>
+	 <string-array name="enauto_light">
+		<item>"min"</item>
+		<item>"nízke"</item>
+		<item>"stredné"</item>
+		<item>"vysoké"</item>
+		<item>"max"</item>
+	 </string-array>
+	 <string-array name="enlock_with">
+		<item>"rýchlosť vozidla"</item>
+		<item>"preradiť z P"</item>
+		<item>"VYPNUTÉ:"</item>
+	 </string-array>
+	 <string-array name="enunlock_with">
+		<item>"DVERE VODIČA OTVORENÉ"</item>
+		<item>"PRERADENÉ NA PARKOVANIE"</item>
+		<item>"ZAPAĽOVANIE VYPNUTÉ"</item>
+		<item>"VYPNUTÉ:"</item>
+	 </string-array>
+	 <string-array name="enscreen1">
+		<item>"Jantárový"</item>
+		<item>"Červený"</item>
+		<item>"Fialový"</item>
+		<item>"Modrá"</item>
+	 </string-array>
+	 <string-array name="enscreen2">
+		<item>"Normál"</item>
+		<item>"Stmavieť"</item>
+		<item>"Quanmie"</item>
+	 </string-array>
+	 <string-array name="enauto_avoidance">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Alarm"</item>
+		<item>"Alarmy a brzda"</item>
+	 </string-array>
+	 <string-array name="enion_generator">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Kladné ióny"</item>
+		<item>"Anión"</item>
+	 </string-array>
+	 <string-array name="enprompt_volume">
+		<item>"Úroveň  1."</item>
+		<item>"Úroveň  2."</item>
+		<item>"Úroveň  3."</item>
+	 </string-array>
+	 <string-array name="eninstrument_color">
+		<item>"zelená"</item>
+		<item>"červená"</item>
+		<item>"modrá"</item>
+		<item>"purpurová"</item>
+		<item>"Oranžová"</item>
+	 </string-array>
+	 <string-array name="eninstrument_style">
+		<item>"štýl 1"</item>
+		<item>"štýl 2"</item>
+		<item>"štýl 3"</item>
+		<item>"štýl 4"</item>
+	 </string-array>
+	 <string-array name="enparking_system">
+		<item>"neplatný"</item>
+		<item>"Táto strana"</item>
+		<item>"Pravý Uhol"</item>
+		<item>"Šikmo"</item>
+	 </string-array>
+	 <string-array name="enalarm_vol">
+		<item>"Vysoké"</item>
+		<item>"Stredné"</item>
+		<item>"Nízke"</item>
+	 </string-array>
+	 <string-array name="envoice_alarm">
+		<item>"Nízke"</item>
+		<item>"Vysoké"</item>
+	 </string-array>
+	 <string-array name="endanger_ahead">
+		<item>"Ďaleko"</item>
+		<item>"Stredné"</item>
+		<item>"Blízko"</item>
+	 </string-array>
+	 <string-array name="endeviate">
+		<item>"Stredné"</item>
+		<item>"široké"</item>
+		<item>"Len upozornenia"</item>
+	 </string-array>
+	 <string-array name="enindividual_steering">
+		<item>"Normál"</item>
+		<item>"Šport"</item>
+	 </string-array>
+	 <string-array name="enindividual_engine">
+		<item>"Normál"</item>
+		<item>"Šport"</item>
+		<item>"ECO"</item>
+	 </string-array>
+	 <string-array name="enindividual_climate">
+		<item>"Normál"</item>
+		<item>"ECO"</item>
+	 </string-array>
+	 <string-array name="enlock_beep">
+		<item>"Stlačte znova"</item>
+		<item>"Najprv zatlačte"</item>
+		<item>"VYPNUTÉ:"</item>
+	 </string-array>
+	 <string-array name="entrailer_m">
+		<item>"Príves1"</item>
+		<item>"Príves2"</item>
+		<item>"Príves3"</item>
+		<item>"Príves4"</item>
+	 </string-array>
+	 <string-array name="entrailer_type">
+		<item>"Ľahko elektrický"</item>
+		<item>"Ťažko elektrický"</item>
+		<item>"Ľahko elektrický až hydraulický"</item>
+		<item>"Ťažko elektrický až hydraulický"</item>
+	 </string-array>
+	 <string-array name="ensetting_color">
+		<item>"Jasná modrá"</item>
+		<item>"Jasná tyrkysová"</item>
+		<item>"Sýto oranžová"</item>
+		<item>"Žiarivá oranžová"</item>
+	 </string-array>
+	 <string-array name="enback_camera_path">
+		<item>"Dynamická trajektória"</item>
+		<item>"Statická trajektória"</item>
+		<item>"Výstražná čiara"</item>
+	 </string-array>
+	 <string-array name="enramp">
+		<item>"Štandardná"</item>
+		<item>"Senior"</item>
+	 </string-array>
+	 <string-array name="enfort_tips">
+		<item>"Reproduktory"</item>
+		<item>"svetlá"</item>
+		<item>"Svetlá a reproduktory"</item>
+	 </string-array>
+	 <string-array name="encar_line">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Statická"</item>
+		<item>"Statická + dynamická"</item>
+	 </string-array>
+	 <string-array name="enrear_door">
+		<item>"Zadná brána"</item>
+		<item>"Zadné brány + dvere"</item>
+	 </string-array>
+	 <string-array name="enparking_mode1">
+		<item>"Obyčajný"</item>
+		<item>"Paralelný"</item>
+		<item>"Vypnuté"</item>
+		<item>"neplatný"</item>
+	 </string-array>
+	 <string-array name="enlock_beep1">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Najskôr zatlačte"</item>
+		<item>"Stlačte znova"</item>
+	 </string-array>
+	 <string-array name="air_con_profile_entries">
+		<item>"Svetlo"</item>
+		<item>"Stredné"</item>
+		<item>"Silný"</item>
+	 </string-array>
+	 <string-array name="reverse_mode">
+		<item>"Vertikálny režim"</item>
+		<item>"Bočný režim"</item>
+		<item>"Režim prehliadania"</item>
+		<item>"Režim úzkeho jazdného pruhu"</item>
+	 </string-array>
+	 <string-array name="ambient_lighting_tones">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Teplá biela"</item>
+		<item>"Zelená"</item>
+		<item>"Modrá"</item>
+		<item>"Biela"</item>
+	 </string-array>
+	 <string-array name="psa_simple_16">
+		<item>"Modrá"</item>
+		<item>"Hnedá"</item>
+	 </string-array>
+	 <string-array name="psa_simple_17">
+		<item>"Informácie palubného počítača/Otáčky motora"</item>
+		<item>"Informácie palubného počítača/Teplota oleja"</item>
+		<item>"Otáčky motora / Jazdný počítač"</item>
+		<item>"Otáčky motora / Teplota oleja"</item>
+		<item>"Teplota oleja/Informácie palubného počítača"</item>
+		<item>"Teplota oleja/Otáčky motora"</item>
+	 </string-array>
+	 <string-array name="array_driver_attention_monitor">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Vizuálny alarm"</item>
+		<item>"Hmatové a vizuálne výstrahy"</item>
+	 </string-array>
+	 <string-array name="array_remote_control_open_condition">
+		<item>"Kedykoľvek"</item>
+		<item>"Po odomknutí"</item>
+	 </string-array>
+	 <string-array name="car_type_cmd_mitsubishi">
+		<item>"Typ 1"</item>
+		<item>"Typ 2"</item>
+	 </string-array>
+	 <string-array name="enalarm_mode">
+		<item>"Svetlá"</item>
+		<item>"Reproduktory"</item>
+		<item>"Svetlá a reproduktory"</item>
+	 </string-array>
+	 <string-array name="enlock_beep2">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Nízke"</item>
+		<item>"Stredné"</item>
+		<item>"Vysoké"</item>
+	 </string-array>
+	 <string-array name="enouto_lock_mode">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Pri cestovaní"</item>
+		<item>"Režim 1:"</item>
+		<item>"Režim 2:"</item>
+		<item>"Ukončiť parkovanie"</item>
+	 </string-array>
+	 <string-array name="encar_light_off">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Nízke"</item>
+		<item>"Vysoké"</item>
+	 </string-array>
+	 <string-array name="endriver_monitor">
+		<item>"Vypnuté"</item>
+		<item>"Vizuálne výstrahy"</item>
+		<item>"Hmatové a vizuálne výstrahy"</item>
+	 </string-array>
+	 <string-array name="enremote_setting">
+		<item>"Kedykoľvek"</item>
+		<item>"Po odomknutí"</item>
+	 </string-array>
+	 <string-array name="eninstrument_color2">
+		<item>"Štýl 1"</item>
+		<item>"Štýl 2"</item>
+	 </string-array>
+	 <string-array name="eninstrument_style2">
+		<item>"Štýl 1"</item>
+		<item>"Štýl 2"</item>
+		<item>"Štýl 3"</item>
+		<item>"Štýl 4"</item>
+		<item>"Štýl 5"</item>
+	 </string-array>
+	 <string-array name="enattention">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Vizuálne výstrahy"</item>
+		<item>"Hmatové a vizuálne výstrahy"</item>
+	 </string-array>
+	 <string-array name="enactionstate">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Aktivované"</item>
+		<item>"ESC"</item>
+	 </string-array>
+	 <string-array name="endoor_lock">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Preradením z P"</item>
+		<item>"Rýchlosťou"</item>
+	 </string-array>
+	 <string-array name="endoor_unlock1">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Dverami vodiča"</item>
+		<item>"Preradením do P"</item>
+	 </string-array>
+	 <string-array name="enconvenience">
+		<item>"VYPNUTÉ:"</item>
+		<item>"ZAPNUTÉ pri zastavení"</item>
+		<item>"ZAPNUTÉ"</item>
+	 </string-array>
+	 <string-array name="enfor_outo_warning">
+		<item>"VYPNUTÉ:"</item>
+		<item>"Len brzda"</item>
+		<item>"Len alarm"</item>
+		<item>"Alarm a brzda"</item>
+	 </string-array>
+
+</resources>

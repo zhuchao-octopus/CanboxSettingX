@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_marginBottom="5px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="5px"
+        android:layout_weight="3"
+        android:background="@drawable/air_back2"
+        android:orientation="vertical"
+        android:padding="2px" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0px"
+            android:layout_marginEnd="1.0dip"
+            android:layout_marginStart="1.0dip"
+            android:layout_marginTop="1.0dip"
+            android:layout_weight="2"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0.0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/con_left_temp_up"
+                    style="@style/AirButtonStyle1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/button_air3"
+                    android:src="@drawable/img_air_temp_up" />
+
+                <TextView
+                    android:id="@+id/left_temp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_marginTop="1.0dip"
+                    android:layout_weight="1.0"
+                    android:ellipsize="none"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="29.0sp" />
+
+                <ImageButton
+                    android:id="@+id/con_left_temp_down"
+                    style="@style/AirButtonStyle1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_marginTop="1.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/button_air3"
+                    android:src="@drawable/img_air_temp_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="4.0"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0px"
+                    android:layout_marginTop="0dip"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="fill_parent"
+                        android:layout_marginTop="0dip"
+                        android:layout_weight="4.2"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/wind_minus"
+                            style="@style/AirButtonStyle1"
+                            android:src="@drawable/wind_minus" />
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@id/wind_rate_1"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+
+                            <ImageView
+                                android:id="@id/wind_rate_2"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+
+                            <ImageView
+                                android:id="@id/wind_rate_3"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+
+                            <ImageView
+                                android:id="@id/wind_rate_4"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+
+                            <ImageView
+                                android:id="@id/wind_rate_5"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+
+                            <ImageView
+                                android:id="@id/wind_rate_6"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+
+                            <ImageView
+                                android:id="@id/wind_rate_7"
+                                android:layout_width="0px"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/air_wind" >
+                            </ImageView>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/wind_add"
+                            style="@style/AirButtonStyle1"
+                            android:src="@drawable/wind_add" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/ac"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_ac_1" />
+
+                    <ImageView
+                        android:id="@+id/inner_loop_out"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_inner_loop_0" />
+
+                    <ImageView
+                        android:id="@+id/inner_loop_in"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_inner_loop_1" />
+
+                    <ImageView
+                        android:id="@+id/dual"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_dual" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1.0dip"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/mode"
+                        style="@style/AirButtonStyle1"
+                        android:text="@string/mode" />
+
+                    <ImageView
+                        android:id="@+id/ac_auto"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_auto_mid" />
+
+                    <ImageView
+                        android:id="@+id/max"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_max" />
+
+                    <ImageView
+                        android:id="@+id/rear"
+                        style="@style/AirButtonStyle1"
+                        android:src="@drawable/air_title_ce_rear" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0.0dip"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1.0dip"
+                android:layout_weight="1.5"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/con_right_temp_up"
+                    style="@style/AirButtonStyle1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/button_air3"
+                    android:src="@drawable/img_air_temp_up" />
+
+                <TextView
+                    android:id="@+id/right_temp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_marginTop="1.0dip"
+                    android:layout_weight="1.0"
+                    android:ellipsize="none"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="29.0sp" />
+
+                <ImageButton
+                    android:id="@+id/con_right_temp_down"
+                    style="@style/AirButtonStyle1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.0dip"
+                    android:layout_marginTop="1.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/button_air3"
+                    android:src="@drawable/img_air_temp_down" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="1.0dip"
+        android:layout_weight="1"
+        android:background="@drawable/air_control_bottom_bg"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/power"
+            style="@style/AirButtonStyle1"
+            android:src="@drawable/icon_power" />
+
+        <ImageView
+            android:id="@+id/wind_horizontal1"
+            style="@style/AirButtonStyle1"
+            android:onClick="onClick"
+            android:src="@drawable/canbus21_mode1" />
+
+        <ImageView
+            android:id="@+id/wind_down1"
+            style="@style/AirButtonStyle1"
+            android:onClick="onClick"
+            android:src="@drawable/canbus21_mode3" />
+
+        <ImageView
+            android:id="@+id/wind_up1"
+            style="@style/AirButtonStyle1"
+            android:src="@drawable/canbus21_mode5" />
+    </LinearLayout>
+
+</LinearLayout>

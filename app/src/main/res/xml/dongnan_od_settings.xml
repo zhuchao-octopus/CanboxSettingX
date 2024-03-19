@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+    android:title="@string/controlset" >
+    <SwitchPreference
+        android:key="steering_assist_photography"
+        android:persistent="false"
+        android:title="@string/steering_assist_photography" />
+    <SwitchPreference
+        android:key="turning_lighting"
+        android:persistent="false"
+        android:title="@string/turning_lighting" />
+    <SwitchPreference
+        android:key="automatic_high_beam"
+        android:persistent="false"
+        android:title="@string/automatic_high_beam" />
+    <SwitchPreference
+        android:key="ford_warning_67"
+        android:persistent="false"
+        android:title="@string/ford_warning_67" />
+     <SwitchPreference
+        android:key="close_the_window_rainy_day"
+        android:persistent="false"
+        android:title="@string/close_the_window_rainy_day" />
+</PreferenceScreen>

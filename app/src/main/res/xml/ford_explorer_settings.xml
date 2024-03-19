@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <ListPreference
+        android:entries="@array/temp_dis_t"
+        android:entryValues="@array/common_s2"
+        android:key="temp_dis_k"
+        android:title="@string/temp_dis" />
+<!--     <ListPreference -->
+<!--         android:entries="@array/mileage_unit_t" -->
+<!--         android:entryValues="@array/common_s2" -->
+<!--         android:key="mileage_unit" -->
+<!--         android:title="@string/mileage_unit" /> -->
+</PreferenceScreen>

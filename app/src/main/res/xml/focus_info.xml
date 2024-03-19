@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="speed"
+        android:persistent="false"
+        android:title="@string/speed" />
+    <com.common.view.MyPreference
+        android:key="enginespeed"
+        android:persistent="false"
+        android:title="@string/enginespeed" />
+    <com.common.view.MyPreference
+        android:key="tyre_speed"
+        android:persistent="false"
+        android:title="@string/tyre_speed" />
+<!--     <com.common.view.MyPreference -->
+<!--         android:key="engine_hot" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/engine_hot" /> -->
+<!--     <com.common.view.MyPreference -->
+<!--         android:key="driving_fuel_mode" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/driving_fuel_mode" /> -->
+<!--     <com.common.view.MyPreference -->
+<!--         android:key="speed_fuel_mode" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/speed_fuel_mode" /> -->
+
+</PreferenceScreen>

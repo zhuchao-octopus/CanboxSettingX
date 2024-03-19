@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="currentfuel"
+        android:persistent="false"
+        android:title="@string/currentfuel" />
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:title="@string/averagefuel" />
+    <com.common.view.MyPreference
+        android:key="enginespeed"
+        android:persistent="false"
+        android:title="@string/enginespeed" />
+    <com.common.view.MyPreference
+        android:key="cellvoltage"
+        android:persistent="false"
+        android:title="@string/cellvoltage" />
+    <com.common.view.MyPreference
+        android:key="the_temperature_value"
+        android:persistent="false"
+        android:title="@string/the_temperature_value" />
+    <com.common.view.MyPreference
+        android:key="oil_temp"
+        android:persistent="false"
+        android:title="@string/oil_temp" />
+    <com.common.view.MyPreference
+        android:key="driving_mileage"
+        android:persistent="false"
+        android:title="@string/driving_mileage" />
+    <com.common.view.MyPreference
+        android:key="trip_a1"
+        android:persistent="false"
+        android:title="@string/trip_a1" />
+    <com.common.view.MyPreference
+        android:key="trip_b1"
+        android:persistent="false"
+        android:title="@string/trip_b1" />
+    <com.common.view.MyPreference
+        android:key="mileage_sum"
+        android:persistent="false"
+        android:title="@string/mileage_sum" />
+    <com.common.view.MyPreference
+        android:key="speed"
+        android:persistent="false"
+        android:title="@string/speed" />
+    <com.common.view.MyPreference
+        android:key="averagespeed"
+        android:persistent="false"
+        android:title="@string/averagespeed" />
+    <com.common.view.MyPreference
+        android:key="frame_number_info"
+        android:persistent="false"
+        android:title="@string/frame_number_info" />
+
+</PreferenceScreen>

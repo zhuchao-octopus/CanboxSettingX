@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+     android:id="@+id/type1"
+    android:gravity="center" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="414px"
+        android:gravity="center" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal" >
+
+            <RelativeLayout
+                android:layout_width="600px"
+                android:layout_height="360px"
+                android:gravity="center_horizontal"
+                android:scaleType="center" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="center"
+                    android:src="@drawable/car" >
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#44000000"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="30px" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160px"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="300px"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingRight="60px" >
+
+                            <TextView
+                                android:id="@+id/type11_num"
+                                style="@style/TypeTextView1" />
+
+                            <TextView
+                                android:id="@+id/type11_info"
+                                style="@style/TypeTextView2" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:background="#ff000000" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="300px"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingLeft="60px" >
+
+                            <TextView
+                                android:id="@+id/type12_num"
+                                style="@style/TypeTextView1" />
+
+                            <TextView
+                                android:id="@+id/type12_info"
+                                style="@style/TypeTextView2" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:background="#ff000000" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160px"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="300px"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingRight="50px" >
+
+                            <TextView
+                                android:id="@+id/type21_num"
+                                style="@style/TypeTextView1" />
+
+                            <TextView
+                                android:id="@+id/type21_info"
+                                style="@style/TypeTextView2" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:background="#ff000000" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="300px"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingLeft="50px" >
+
+                            <TextView
+                                android:id="@+id/type22_num"
+                                style="@style/TypeTextView1" />
+
+                            <TextView
+                                android:id="@+id/type22_info"
+                                style="@style/TypeTextView2" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:background="#ff000000" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110px"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/type30_num"
+                style="@style/TypeTextView1" />
+
+            <TextView
+                android:id="@+id/type30_info"
+                style="@style/TypeTextView2" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

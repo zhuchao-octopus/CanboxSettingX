@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+		android:title="@string/controlset" >
+		<PreferenceScreen
+	        android:icon ="@drawable/tyre"
+	        android:key  ="str_light_control"
+	        android:title="@string/str_light_control" >
+	        <SwitchPreference
+	                android:key="inner_outer_auto"
+	                android:persistent="false"
+	                android:title="@string/inner_outer_auto" />
+	        <SwitchPreference
+	                android:key="air_auto"
+	                android:persistent="false"
+	                android:title="@string/air_auto" />
+	        <ListPreference
+	                android:entries="@array/autolight_entryValues"
+	                android:entryValues="@array/autolight_entryValues"
+	                android:key="auto_adjust_head_light_sensity"
+	                android:persistent="false"
+	                android:title="@string/auto_adjust_head_light_sensity" />
+	       	<ListPreference
+	                android:entries="@array/inner_lights_close_time_entries"
+	                android:entryValues="@array/inner_lights_close_time_values"
+	                android:key="inner_lights_close_time"
+	                android:persistent="false"
+	                android:title="@string/inner_lights_close_time" />
+	       	<ListPreference
+	                android:entries="@array/inner_lights_close_time_entries"
+	                android:entryValues="@array/inner_lights_close_time_values"
+	                android:key="outside_lights_close_time"
+	                android:persistent="false"
+	                android:title="@string/outside_lights_close_time" />
+	        <SwitchPreference
+	                android:key="radar_display"
+	                android:persistent="false"
+	                android:title="@string/radar_display" />
+	        <ListPreference
+	                android:entries="@array/camry_radar_distance_entries"   
+	                android:entryValues="@array/radarrange_entries1"
+	                android:key="radar_distance"
+	                android:persistent="false"
+	                android:title="@string/radar_distance" />
+	        <ListPreference
+	                android:entries="@array/envol_radar"
+	                android:entryValues="@array/envol_radar"
+	                android:key="alarm_volume"
+	                android:persistent="false"
+	                android:title="@string/alarm_volume" />
+	        <ListPreference
+	                android:entries="@array/camry_radar_distance_entries"
+	                android:entryValues="@array/radarrange_entries1"
+	                android:key="front_radar_distance"
+	                android:persistent="false"
+	                android:title="@string/front_radar_distance" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	        android:icon ="@drawable/tyre"
+	        android:key  ="str_light_control"
+	        android:title="@string/lock" >
+	        <SwitchPreference
+	                android:key="auto_lock_by_speed"
+	                android:persistent="false"
+	                android:title="@string/auto_lock_by_speed" />
+	        <SwitchPreference
+	                android:key="cardoorautomatic"
+	                android:persistent="false"
+	                android:title="@string/cardoorautomatic" />
+	        <SwitchPreference
+	                android:key="plinkage"
+	                android:persistent="false"
+	                android:title="@string/plinkage" />
+	        <SwitchPreference
+	                android:key="unlock_double_operate"
+	                android:persistent="false"
+	                android:title="@string/unlock_double_operate" />
+	        <SwitchPreference
+	                android:key="lock_unlock_blink"
+	                android:persistent="false"
+	                android:title="@string/lock_unlock_blink" />
+	        <SwitchPreference
+	                android:key="auto_lock_and_one_key_start"
+	                android:persistent="false"
+	                android:title="@string/auto_lock_and_one_key_start" />
+	        <ListPreference
+	                android:entries="@array/auto_lock_entries"
+	                android:entryValues="@array/ensetdoor1_vaues"
+	                android:key="smartdoorlock"
+	                android:persistent="false"
+	                android:title="@string/smartdoorlock" />
+	       	<SwitchPreference
+	                android:key="unlock_driver_door_open"
+	                android:persistent="false"
+	                android:title="@string/unlock_driver_door_open" />
+	        <SwitchPreference
+	                android:key="unlock_double_key"
+	                android:persistent="false"
+	                android:title="@string/unlock_double_key" />
+	    </PreferenceScreen>
+<!-- 		<PreferenceScreen -->
+<!-- 	        android:icon ="@drawable/tyre" -->
+<!-- 	        android:key  ="CarSettings" -->
+<!-- 	        android:title="@string/app_name_settings" > -->
+<!-- 	        <SwitchPreference -->
+<!-- 	                android:key="rear_system_lock" -->
+<!-- 	                android:persistent="false" -->
+<!-- 	                android:title="@string/rear_system_lock" /> -->
+<!-- 	        <SwitchPreference -->
+<!-- 	                android:key="rear_row_picture" -->
+<!-- 	                android:persistent="false" -->
+<!-- 	                android:title="@string/rear_row_picture" /> -->
+<!-- 	        <ListPreference -->
+<!-- 	                android:entries="@array/toyota_language_entries" -->
+<!-- 	                android:entryValues="@array/fiat_headlight_sensitivity" -->
+<!-- 	                android:key="language" -->
+<!-- 	                android:persistent="false" -->
+<!-- 	                android:title="@string/language" /> -->
+<!-- 	    </PreferenceScreen> -->
+	    <PreferenceScreen
+	        android:icon ="@drawable/tyre"
+	        android:key  ="power_amplifier_settings"
+	        android:title="@string/power_amplifier_settings" >
+	        <SwitchPreference
+	                android:key="speed_linkage_volume"
+	                android:persistent="false"
+	                android:title="@string/speed_linkage_volume" />
+	        <SwitchPreference
+	                android:key="surround_volume"
+	                android:persistent="false"
+	                android:title="@string/surround_volume" />
+	    </PreferenceScreen>
+</PreferenceScreen>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+        <ListPreference
+        android:entries="@array/launage_entries2"
+        android:entryValues="@array/launage_entryValues2"
+        android:key="langauage"
+        android:persistent="false"
+        android:title="@string/langauage5" />
+        
+    <ListPreference
+        android:entries="@array/enunit_set"
+        android:entryValues="@array/enunit_set_vaues"
+        android:key="unit"
+        android:persistent="false"
+        android:title="@string/unit" />
+    <ListPreference
+        android:entries="@array/enenergy1"
+        android:entryValues="@array/enenergy_vaues1"
+        android:key="oil_unit"
+        android:persistent="false"
+        android:title="@string/oil_unit" />
+    <ListPreference
+        android:entries="@array/miunit_entries"
+        android:entryValues="@array/miunit_entryValues"
+        android:key="mileage_unit"
+        android:persistent="false"
+        android:title="@string/mileage_unit" />
+    <ListPreference
+        android:entries="@array/temperature_entries"
+        android:entryValues="@array/temperature_entryValues"
+        android:key="temp"
+        android:persistent="false"
+        android:title="@string/temp" />
+
+    <SwitchPreference
+        android:key="fuel_saver"
+        android:persistent="false"
+        android:title="@string/fuel_saver" />
+    <SwitchPreference
+        android:key="dis_trip_b"
+        android:persistent="false"
+        android:title="@string/dis_trip_b" />
+    <SwitchPreference
+        android:key="hill_start"
+        android:persistent="false"
+        android:title="@string/hill_start" />
+
+    <PreferenceCategory android:title="@string/lights" />
+
+    <SwitchPreference
+        android:key="lights_wipers"
+        android:persistent="false"
+        android:title="@string/lights_wipers" />
+    <SwitchPreference
+        android:key="flash_lights"
+        android:persistent="false"
+        android:title="@string/flash_lights" />
+
+    <ListPreference
+        android:entries="@array/enheadlights_off"
+        android:entryValues="@array/enheadlights_off_vaues"
+        android:key="headlight_off"
+        android:persistent="false"
+        android:title="@string/headlight_off" />
+    <ListPreference
+        android:entries="@array/enheadlights_off"
+        android:entryValues="@array/enheadlights_off_vaues"
+        android:key="illuminated"
+        android:persistent="false"
+        android:title="@string/illuminated" />
+
+    <SwitchPreference
+        android:key="daytime"
+        android:persistent="false"
+        android:title="@string/daytime" />
+
+    <PreferenceCategory android:title="@string/door_lock" />
+
+    <SwitchPreference
+        android:key="auto_door"
+        android:persistent="false"
+        android:title="@string/auto_door" />
+    <SwitchPreference
+        android:key="auto_unlock_on"
+        android:persistent="false"
+        android:title="@string/auto_unlock_on" />
+    <SwitchPreference
+        android:key="door_flash_lights"
+        android:persistent="false"
+        android:title="@string/door_flash_lights" />
+    <SwitchPreference
+        android:key="horn_lock"
+        android:persistent="false"
+        android:title="@string/horn_lock" />
+    <SwitchPreference
+        android:key="remote_door"
+        android:persistent="false"
+        android:title="@string/remote_door" />
+    <SwitchPreference
+        android:key="autoclose"
+        android:persistent="false"
+        android:title="@string/autoclose" />
+
+    <ListPreference
+        android:entries="@array/enheadlights_off"
+        android:entryValues="@array/enheadlights_off_vaues"
+        android:key="headlight_off1"
+        android:persistent="false"
+        android:title="@string/headlight_off" />
+    <ListPreference
+        android:entries="@array/enengine_power"
+        android:entryValues="@array/enengine_power_values"
+        android:key="engine_power"
+        android:persistent="false"
+        android:title="@string/engine_power" />
+
+    <PreferenceCategory android:title="@string/trailer_brake" />
+
+    <ListPreference
+        android:entries="@array/entrailer_m"
+        android:entryValues="@array/entrailer_m_values"
+        android:key="trailer_m"
+        android:persistent="false"
+        android:title="@string/trailer_m" />
+    <ListPreference
+        android:entries="@array/entrailer_type"
+        android:entryValues="@array/entrailer_type_values"
+        android:key="trailer_type"
+        android:persistent="false"
+        android:title="@string/trailer_type" />
+
+    <PreferenceCategory android:title="@string/time" />
+
+    <SwitchPreference
+        android:key="show_time"
+        android:persistent="false"
+        android:title="@string/show_time" />
+    <SwitchPreference
+        android:key="sync_time"
+        android:persistent="false"
+        android:title="@string/sync_time" />
+
+</PreferenceScreen>

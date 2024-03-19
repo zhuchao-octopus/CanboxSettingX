@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toyota_info_height">540px</dimen>
+
+    <color name="list_normal_colre">#FFFFFFFF</color>
+    <color name="list_hilight_colre">#FF0000FF</color>
+
+    <dimen name="abc_action_bar_content_inset_material">16.0dip</dimen>
+    <dimen name="abc_action_bar_content_inset_with_nav">72.0dip</dimen>
+    <dimen name="abc_action_bar_default_height_material">56.0dip</dimen>
+    <dimen name="abc_action_bar_default_padding_end_material">0.0dip</dimen>
+    <dimen name="abc_action_bar_default_padding_start_material">0.0dip</dimen>
+    <dimen name="abc_action_bar_elevation_material">4.0dip</dimen>
+    <dimen name="abc_action_bar_icon_vertical_padding_material">16.0dip</dimen>
+    <dimen name="abc_action_bar_overflow_padding_end_material">10.0dip</dimen>
+    <dimen name="abc_action_bar_overflow_padding_start_material">6.0dip</dimen>
+    <dimen name="abc_action_bar_progress_bar_size">40.0dip</dimen>
+    <dimen name="abc_action_bar_stacked_max_height">48.0dip</dimen>
+    <dimen name="abc_action_bar_stacked_tab_max_width">180.0dip</dimen>
+    <dimen name="abc_action_bar_subtitle_bottom_margin_material">5.0dip</dimen>
+    <dimen name="abc_action_bar_subtitle_top_margin_material">-3.0dip</dimen>
+    <dimen name="abc_action_button_min_height_material">48.0dip</dimen>
+    <dimen name="abc_action_button_min_width_material">48.0dip</dimen>
+    <dimen name="abc_action_button_min_width_overflow_material">36.0dip</dimen>
+    <dimen name="abc_alert_dialog_button_bar_height">48.0dip</dimen>
+
+    <item name="abc_button_inset_horizontal_material" type="dimen">@dimen/abc_control_inset_material</item>
+
+    <dimen name="abc_button_inset_vertical_material">6.0dip</dimen>
+    <dimen name="abc_button_padding_horizontal_material">8.0dip</dimen>
+
+    <item name="abc_button_padding_vertical_material" type="dimen">@dimen/abc_control_padding_material</item>
+
+    <dimen name="abc_cascading_menus_min_smallest_width">720.0dip</dimen>
+    <dimen name="abc_config_prefDialogWidth">320.0dip</dimen>
+    <dimen name="abc_control_corner_material">2.0dip</dimen>
+    <dimen name="abc_control_inset_material">4.0dip</dimen>
+    <dimen name="abc_control_padding_material">4.0dip</dimen>
+
+    <item name="abc_dialog_fixed_height_major" type="dimen">79.99999%</item>
+    <item name="abc_dialog_fixed_height_minor" type="dimen">100.0%</item>
+
+    <dimen name="abc_dialog_fixed_width_major">320.0dip</dimen>
+    <dimen name="abc_dialog_fixed_width_minor">320.0dip</dimen>
+    <dimen name="abc_dialog_list_padding_bottom_no_buttons">8.0dip</dimen>
+    <dimen name="abc_dialog_list_padding_top_no_title">8.0dip</dimen>
+
+    <item name="abc_dialog_min_width_major" type="dimen">65.0%</item>
+    <item name="abc_dialog_min_width_minor" type="dimen">95.00001%</item>
+
+    <dimen name="abc_dialog_padding_material">24.0dip</dimen>
+    <dimen name="abc_dialog_padding_top_material">18.0dip</dimen>
+    <dimen name="abc_dialog_title_divider_material">8.0dip</dimen>
+
+    <item name="abc_disabled_alpha_material_dark" type="dimen">0.3</item>
+    <item name="abc_disabled_alpha_material_light" type="dimen">0.26</item>
+
+    <dimen name="abc_dropdownitem_icon_width">32.0dip</dimen>
+    <dimen name="abc_dropdownitem_text_padding_left">8.0dip</dimen>
+    <dimen name="abc_dropdownitem_text_padding_right">8.0dip</dimen>
+    <dimen name="abc_edit_text_inset_bottom_material">7.0dip</dimen>
+    <dimen name="abc_edit_text_inset_horizontal_material">4.0dip</dimen>
+    <dimen name="abc_edit_text_inset_top_material">10.0dip</dimen>
+    <dimen name="abc_floating_window_z">16.0dip</dimen>
+
+    <item name="abc_list_item_padding_horizontal_material" type="dimen">@dimen/abc_action_bar_content_inset_material</item>
+
+    <dimen name="abc_panel_menu_list_width">296.0dip</dimen>
+    <dimen name="abc_progress_bar_height_material">4.0dip</dimen>
+    <dimen name="abc_search_view_preferred_height">48.0dip</dimen>
+    <dimen name="abc_search_view_preferred_width">320.0dip</dimen>
+    <dimen name="abc_seekbar_track_background_height_material">2.0dip</dimen>
+    <dimen name="abc_seekbar_track_progress_height_material">2.0dip</dimen>
+    <dimen name="abc_select_dialog_padding_start_material">20.0dip</dimen>
+    <dimen name="abc_switch_padding">0.0px</dimen>
+    <dimen name="abc_text_size_body_1_material">14.0sp</dimen>
+    <dimen name="abc_text_size_body_2_material">14.0sp</dimen>
+    <dimen name="abc_text_size_button_material">14.0sp</dimen>
+    <dimen name="abc_text_size_caption_material">12.0sp</dimen>
+    <dimen name="abc_text_size_display_1_material">34.0sp</dimen>
+    <dimen name="abc_text_size_display_2_material">45.0sp</dimen>
+    <dimen name="abc_text_size_display_3_material">56.0sp</dimen>
+    <dimen name="abc_text_size_display_4_material">112.0sp</dimen>
+    <dimen name="abc_text_size_headline_material">24.0sp</dimen>
+    <dimen name="abc_text_size_large_material">22.0sp</dimen>
+    <dimen name="abc_text_size_medium_material">18.0sp</dimen>
+    <dimen name="abc_text_size_menu_header_material">14.0sp</dimen>
+    <dimen name="abc_text_size_menu_material">16.0sp</dimen>
+    <dimen name="abc_text_size_small_material">14.0sp</dimen>
+    <dimen name="abc_text_size_subhead_material">16.0sp</dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">16.0dip</dimen>
+    <dimen name="abc_text_size_title_material">20.0sp</dimen>
+    <dimen name="abc_text_size_title_material_toolbar">20.0dip</dimen>
+    <dimen name="air_alert_normal_text_size">16.0sp</dimen>
+    <dimen name="air_alert_temp_width">101.0sp</dimen>
+    <dimen name="air_alert_text_size">24.0sp</dimen>
+    <dimen name="air_control_air_switch_margin_left">105.0dip</dimen>
+    <dimen name="air_control_bottom_height">80.0dip</dimen>
+    <dimen name="air_control_btn_width">105.0dip</dimen>
+    <dimen name="air_control_content_padding_left">12.0dip</dimen>
+    <dimen name="air_control_content_padding_right">12.0dip</dimen>
+    <dimen name="air_control_content_padding_top">10.0dip</dimen>
+    <dimen name="air_control_fan_mode_height">65.0dip</dimen>
+    <dimen name="air_control_fan_mode_heights">45.0dip</dimen>
+    <dimen name="air_control_height">250.0dip</dimen>
+    <dimen name="air_control_mode_margin_left">199.0dip</dimen>
+    <dimen name="air_control_normal_text_size">30.0px</dimen>
+    <dimen name="air_control_progress_padding_bottom">4.0dip</dimen>
+    <dimen name="air_control_progress_padding_top">3.0dip</dimen>
+    <dimen name="air_control_temp_width">150.0dip</dimen>
+    <dimen name="air_control_text_size">5.0sp</dimen>
+    <dimen name="air_control_wind_level_height">99.0dip</dimen>
+    <dimen name="air_control_wind_level_width">445.0px</dimen>
+    <dimen name="air_wind_level_pingtop">45.0px</dimen>
+    <dimen name="aircondition_bottom_height">100.0dip</dimen>
+    <dimen name="amp_amprectview_height">150.0dip</dimen>
+    <dimen name="amp_amprectview_marginleft">180.0dip</dimen>
+    <dimen name="amp_amprectview_margintop">80.0dip</dimen>
+    <dimen name="amp_amprectview_paddingleft">50.0dip</dimen>
+    <dimen name="amp_amprectview_paddingright">50.0dip</dimen>
+    <dimen name="amp_amprectview_width">180.0dip</dimen>
+    <dimen name="amp_btn_down_margintop">240.0dip</dimen>
+    <dimen name="amp_btn_height">60.0sp</dimen>
+    <dimen name="amp_btn_left_marginleft">120.0dip</dimen>
+    <dimen name="amp_btn_left_margintop">130.0dip</dimen>
+    <dimen name="amp_btn_right_marginleft">400.0dip</dimen>
+    <dimen name="amp_btn_up_margintop">10.0dip</dimen>
+    <dimen name="amp_btn_width">80.0sp</dimen>
+    <dimen name="amp_linelayout_marginleft">100.0dip</dimen>
+    <dimen name="amp_linelayout_marginright">70.0dip</dimen>
+    <dimen name="amp_linelayout_width">600.0dip</dimen>
+    <dimen name="baic_consumption_left">75.0dip</dimen>
+    <dimen name="baic_environmental_already_driving_marginTop">16.0dip</dimen>
+    <dimen name="baic_environmental_dtv_text">15.0dip</dimen>
+    <dimen name="baic_environmental_icon_view_height">180.0dip</dimen>
+    <dimen name="baic_environmental_icon_view_width">260.0dip</dimen>
+    <dimen name="baic_environmental_text_view_height">280.0dip</dimen>
+    <dimen name="baic_environmental_text_view_width">760.0dip</dimen>
+    <dimen name="baic_environmental_tv_text">18.0dip</dimen>
+    <dimen name="band_text">78.0sp</dimen>
+    <dimen name="benz_vehicle_top">50.0dip</dimen>
+    <dimen name="bmw_control_normal_text_size">18.0sp</dimen>
+    <dimen name="bmw_original_vehicle_margin_left">25.0dip</dimen>
+    <dimen name="bmw_original_vehicle_time">470.0dip</dimen>
+    <dimen name="bmw_small_text_size">12.0sp</dimen>
+    <dimen name="bmw_view_margin_left">20.0dip</dimen>
+    <dimen name="bmw_view_text_margin_left">6.0dip</dimen>
+    <dimen name="bottom_bar_height">100.0sp</dimen>
+    <dimen name="bottom_height">100.0dip</dimen>
+    <dimen name="btn_apply_height">50.0dip</dimen>
+    <dimen name="btn_apply_width">100.0dip</dimen>
+    <dimen name="btn_size">27.0sp</dimen>
+    <dimen name="btn_top_margin">70.0sp</dimen>
+    <dimen name="btn_width">120.0dip</dimen>
+    <dimen name="compat_button_inset_horizontal_material">4.0dip</dimen>
+    <dimen name="compat_button_inset_vertical_material">6.0dip</dimen>
+    <dimen name="compat_button_padding_horizontal_material">8.0dip</dimen>
+    <dimen name="compat_button_padding_vertical_material">4.0dip</dimen>
+    <dimen name="compat_control_corner_material">2.0dip</dimen>
+    <dimen name="content_padding">60.0dip</dimen>
+    <dimen name="content_padding_left">80.0px</dimen>
+    <dimen name="conv_item_margin_left">80.0px</dimen>
+    <dimen name="conv_normal_text_size">30px</dimen>
+    <dimen name="conv_number_text_size">34px</dimen>
+    <dimen name="conv_title_text_size">38px</dimen>
+    <dimen name="dialog_list_item_height">64.0dip</dimen>
+    <dimen name="dialog_list_item_text_padding_left">20.0dip</dimen>
+    <dimen name="direction_high">90.0sp</dimen>
+
+    <item name="disabled_alpha_material_dark" type="dimen">0.3</item>
+    <item name="disabled_alpha_material_light" type="dimen">0.26</item>
+
+    <dimen name="driving_center_item_width">200.0sp</dimen>
+    <dimen name="driving_data_margin_bottom">0.0dip</dimen>
+    <dimen name="driving_data_margin_unit_bottom">32.0dip</dimen>
+    <dimen name="driving_data_vehicle_end_location">652.0dip</dimen>
+    <dimen name="driving_distance_layout_width">100.0dip</dimen>
+    <dimen name="freq_text">100.0sp</dimen>
+    <dimen name="front_tire_text_margin_vertical">86.0dip</dimen>
+    <dimen name="gac_cd_control_btn_padding_top">5.0dip</dimen>
+    <dimen name="gac_cd_heigh">114.0px</dimen>
+    <dimen name="gac_cd_width">97.0px</dimen>
+    <dimen name="gm_onstar_top_text">30.0dip</dimen>
+    <dimen name="gm_opel_panel_key_width">80.0dip</dimen>
+    <dimen name="gm_rear_air_speed_hight">170.0dip</dimen>
+    <dimen name="gm_vehicle_infos_item_padding">16.0sp</dimen>
+    <dimen name="golf_topsize">26.0dip</dimen>
+    <dimen name="h_size">240.0dip</dimen>
+    <dimen name="heater_info_height">480.0dip</dimen>
+    <dimen name="height_size">290.0dip</dimen>
+
+    <item name="highlight_alpha_material_colored" type="dimen">0.26</item>
+    <item name="highlight_alpha_material_dark" type="dimen">0.2</item>
+    <item name="highlight_alpha_material_light" type="dimen">0.12</item>
+    <item name="hint_alpha_material_dark" type="dimen">0.5</item>
+    <item name="hint_alpha_material_light" type="dimen">0.38</item>
+    <item name="hint_pressed_alpha_material_dark" type="dimen">0.7</item>
+    <item name="hint_pressed_alpha_material_light" type="dimen">0.54</item>
+
+    <dimen name="honda_gap">5.0dip</dimen>
+    <dimen name="honda_radio_button_stations_margintop">10.0dip</dimen>
+    <dimen name="honda_radio_liststations_height">240.0dip</dimen>
+    <dimen name="honda_radio_liststations_width">90.0dip</dimen>
+    <dimen name="hz_text">56.0sp</dimen>
+    <dimen name="info_car_x">600.0dip</dimen>
+    <dimen name="info_left_info_width">720.0dip</dimen>
+    <dimen name="input_onsatr_left">118.0dip</dimen>
+    <dimen name="input_onsatr_top">5.0dip</dimen>
+    <dimen name="key_button_ripple_max_width">80.0dip</dimen>
+    <dimen name="korea_amp_bal_btn_down_top">287.0dip</dimen>
+    <dimen name="korea_amp_bal_btn_left_left">8.0dip</dimen>
+    <dimen name="korea_amp_bal_btn_left_top">160.0dip</dimen>
+    <dimen name="korea_amp_bal_btn_right_left">275.0dip</dimen>
+    <dimen name="korea_amp_bal_btn_up_top">16.0dip</dimen>
+    <dimen name="korea_amp_balance_width">404.0dip</dimen>
+    <dimen name="korea_amp_eq_gap">75.0dip</dimen>
+    <dimen name="korea_amp_eq_top">78.0dip</dimen>
+    <dimen name="korea_amp_rect_view_height">201.0dip</dimen>
+    <dimen name="korea_amp_rect_view_left">128.0dip</dimen>
+    <dimen name="korea_amp_rect_view_padding_h">6.0dip</dimen>
+    <dimen name="korea_amp_rect_view_padding_v">16.0dip</dimen>
+    <dimen name="korea_amp_rect_view_top">86.0dip</dimen>
+    <dimen name="korea_amp_rect_view_width">147.0dip</dimen>
+    <dimen name="large_text">27.0sp</dimen>
+    <dimen name="lef_size">20.0dip</dimen>
+    <dimen name="left_info_width">730.0dip</dimen>
+    <dimen name="left_size">100.0dip</dimen>
+    <dimen name="lf_size">15.0dip</dimen>
+    <dimen name="list_item_height">84.0dip</dimen>
+    <dimen name="list_item_text_padding_right">10.0dip</dimen>
+    <dimen name="mbq_tire_lf_marginleft">305.0dip</dimen>
+    <dimen name="mbq_tire_lf_margintop">140.0dip</dimen>
+    <dimen name="mbq_tire_lr_margintop">385.0dip</dimen>
+    <dimen name="mbq_tire_rr_marginleft">450.0dip</dimen>
+    <dimen name="navigation_bar_controll_line1_width">410.0dip</dimen>
+    <dimen name="navigation_bar_controll_line2_width">360.0dip</dimen>
+    <dimen name="navigation_bar_key_width">80.0dip</dimen>
+    <dimen name="navigation_bar_temp_width">55.0dip</dimen>
+    <dimen name="navigation_bar_text_height">50.0dip</dimen>
+    <dimen name="navigation_bar_text_size">24.0sp</dimen>
+    <dimen name="navigation_bar_text_width">90.0dip</dimen>
+    <dimen name="normal_text">22.0sp</dimen>
+    <dimen name="normal_text_size">26.0sp</dimen>
+    <dimen name="notification_action_icon_size">32.0dip</dimen>
+    <dimen name="notification_action_text_size">13.0sp</dimen>
+    <dimen name="notification_big_circle_margin">12.0dip</dimen>
+    <dimen name="notification_content_margin_start">0.0dip</dimen>
+    <dimen name="notification_large_icon_height">64.0dip</dimen>
+    <dimen name="notification_large_icon_width">64.0dip</dimen>
+    <dimen name="notification_main_column_padding_top">0.0dip</dimen>
+    <dimen name="notification_media_narrow_margin">12.0dip</dimen>
+    <dimen name="notification_right_icon_size">16.0dip</dimen>
+    <dimen name="notification_right_side_padding_top">4.0dip</dimen>
+    <dimen name="notification_small_icon_background_padding">3.0dip</dimen>
+    <dimen name="notification_small_icon_size_as_large">24.0dip</dimen>
+    <dimen name="notification_subtext_size">13.0sp</dimen>
+    <dimen name="notification_top_pad">10.0dip</dimen>
+    <dimen name="notification_top_pad_large_text">5.0dip</dimen>
+    <dimen name="onstar_text_size">16.0sp</dimen>
+    <dimen name="original_vehicle_car_x">519.0dip</dimen>
+    <dimen name="original_vehicle_infos_width">415.0dip</dimen>
+    <dimen name="original_vehicle_large_text_size">24.0sp</dimen>
+    <dimen name="original_vehicle_margin_left">36.0dip</dimen>
+    <dimen name="original_vehicle_normal_interval">16.0dip</dimen>
+    <dimen name="original_vehicle_small_interval">10.0dip</dimen>
+    <dimen name="original_vehicle_small_text_size">20.0sp</dimen>
+    <dimen name="psa_position_marginleft_size">10.0dip</dimen>
+    <dimen name="psa_position_margintop_size">60.0dip</dimen>
+    <dimen name="rear_tire_text_margin_vertical">196.0dip</dimen>
+    <dimen name="right_size">500.0dip</dimen>
+    <dimen name="rire_rf_marginLeft">470.0dip</dimen>
+    <dimen name="service_marging_top">50.0dip</dimen>
+    <dimen name="service_padding_left">60.0dip</dimen>
+    <dimen name="small_text">24.0sp</dimen>
+    <dimen name="small_text_size">16.0sp</dimen>
+    <dimen name="summary_button_height">60.0dip</dimen>
+    <dimen name="summary_button_title_width">60.0dip</dimen>
+    <dimen name="summary_button_width">400.0dip</dimen>
+    <dimen name="sync_btn_arrow_width">90.0dip</dimen>
+    <dimen name="sync_btn_height">43.0dip</dimen>
+    <dimen name="sync_btn_width">105.0dip</dimen>
+    <dimen name="sync_content_margin_left">10.0dip</dimen>
+    <dimen name="sync_content_margin_top">12.0dip</dimen>
+    <dimen name="sync_icon_interval">1.0dip</dimen>
+    <dimen name="sync_icon_padding_left">10.0dip</dimen>
+    <dimen name="sync_icon_width">32.0dip</dimen>
+    <dimen name="sync_key_interval">3.0dip</dimen>
+    <dimen name="sync_key_panel_padding_left">4.0dip</dimen>
+    <dimen name="sync_key_panel_padding_top">6.0dip</dimen>
+    <dimen name="sync_menu_btns_interval">12.0dip</dimen>
+    <dimen name="sync_menu_btns_margin_left">257.0dip</dimen>
+    <dimen name="sync_menu_btns_margin_top">209.0dip</dimen>
+    <dimen name="sync_menu_item_content_margin_left">40.0dip</dimen>
+    <dimen name="sync_menu_item_content_margin_right">8.0dip</dimen>
+    <dimen name="sync_menu_item_content_padding">10.0dip</dimen>
+    <dimen name="sync_menu_item_content_text_width">333.0dip</dimen>
+    <dimen name="sync_menu_item_height">38.0dip</dimen>
+    <dimen name="sync_menu_item_time_margin_left">220.0dip</dimen>
+    <dimen name="sync_menu_item_width">413.0dip</dimen>
+    <dimen name="sync_menu_list_magin_left">58.0dip</dimen>
+    <dimen name="sync_menu_list_magin_top">8.0dip</dimen>
+    <dimen name="sync_menu_progress_height">160.0dip</dimen>
+    <dimen name="sync_menu_progress_margin_left">30.0dip</dimen>
+    <dimen name="sync_menu_progress_width">40.0dip</dimen>
+    <dimen name="sync_progress_rect_height">6.0dip</dimen>
+    <dimen name="sync_text_size">20.0sp</dimen>
+    <dimen name="tire_dialog_lf_margin_left">80.0dip</dimen>
+    <dimen name="tire_dialog_lf_margin_top">42.0dip</dimen>
+    <dimen name="tire_dialog_rr_margin_left">505.0dip</dimen>
+    <dimen name="tire_dialog_rr_margin_top">229.0dip</dimen>
+    <dimen name="tire_ic_lf_margin_left">295.0dip</dimen>
+    <dimen name="tire_ic_lf_margin_top">101.0dip</dimen>
+    <dimen name="tire_ic_rr_margin_left">486.0dip</dimen>
+    <dimen name="tire_ic_rr_margin_top">286.0dip</dimen>
+    <dimen name="tire_info_size_1">18.0sp</dimen>
+    <dimen name="tire_info_size_2">16.0sp</dimen>
+    <dimen name="tire_paddingtop">7.0dip</dimen>
+    <dimen name="tire_text_margin_horizontal">260.0dip</dimen>
+    <dimen name="tire_text_spare_margin_horizontal">310.0dip</dimen>
+    <dimen name="tire_text_spare_margin_vertical">250.0dip</dimen>
+    <dimen name="tooltip_corner_radius">2.0dip</dimen>
+    <dimen name="tooltip_horizontal_padding">16.0dip</dimen>
+    <dimen name="tooltip_margin">8.0dip</dimen>
+    <dimen name="tooltip_precise_anchor_extra_offset">8.0dip</dimen>
+    <dimen name="tooltip_precise_anchor_threshold">96.0dip</dimen>
+    <dimen name="tooltip_vertical_padding">6.5dip</dimen>
+    <dimen name="tooltip_y_offset_non_touch">0.0dip</dimen>
+    <dimen name="tooltip_y_offset_touch">16.0dip</dimen>
+    <dimen name="topsize">40.0dip</dimen>
+    <dimen name="toyota_lf_size">610.0dip</dimen>
+    <dimen name="toyota_top_size">170.0dip</dimen>
+    <dimen name="vehicle_padding_left">80.0dip</dimen>
+    <dimen name="vw_info_car_front_left_door_x">568.0dip</dimen>
+    <dimen name="vw_info_car_front_left_door_y">130.0dip</dimen>
+    <dimen name="vw_info_car_front_right_door_x">668.0dip</dimen>
+    <dimen name="vw_info_car_front_right_door_y">130.0dip</dimen>
+    <dimen name="vw_info_car_rear_left_door_x">568.0dip</dimen>
+    <dimen name="vw_info_car_rear_left_door_y">202.0dip</dimen>
+    <dimen name="vw_info_car_rear_right_door_x">668.0dip</dimen>
+    <dimen name="vw_info_car_rear_right_door_y">202.0dip</dimen>
+    <dimen name="vw_info_car_x">515.0dip</dimen>
+    <dimen name="vw_info_car_y">4.0dip</dimen>
+    <dimen name="vw_info_door_state_x">550.0dip</dimen>
+    <dimen name="vw_info_door_state_y">350.0dip</dimen>
+    <dimen name="vw_info_infos_door_state_text_size">20.0sp</dimen>
+    <dimen name="vw_info_infos_unit_margin_bottom">12.0sp</dimen>
+    <dimen name="vw_info_infos_unit_margin_left">0.0sp</dimen>
+    <dimen name="vw_info_infos_unit_margin_top">0.0sp</dimen>
+    <dimen name="vw_info_item_image_margin_left">29.0sp</dimen>
+    <dimen name="vw_info_item_state_image_margin_left">16.0sp</dimen>
+    <dimen name="vw_info_item_state_image_margin_right">16.0sp</dimen>
+    <dimen name="vw_info_item_text_value_margin_left">14.0sp</dimen>
+    <dimen name="vw_info_left_info_width">500.0dip</dimen>
+    <dimen name="vw_info_margin_bottom">37.0dip</dimen>
+    <dimen name="vw_info_margin_left">54.0dip</dimen>
+    <dimen name="vw_info_margin_top">43.0dip</dimen>
+    <dimen name="vw_info_normal_interval_h">13.0dip</dimen>
+    <dimen name="vw_info_normal_interval_v">12.0dip</dimen>
+    <dimen name="vw_info_normal_interval_v_other">29.0dip</dimen>
+    <dimen name="vw_info_other_infos_line_margin_top">24.0dip</dimen>
+    <dimen name="vw_info_other_infos_text_large">28.0sp</dimen>
+    <dimen name="vw_info_other_infos_text_middle">16.0sp</dimen>
+    <dimen name="vw_info_other_infos_text_small">14.0sp</dimen>
+    <dimen name="vw_info_state_text_size">20.0sp</dimen>
+    <dimen name="vw_info_state_text_size_unit">16.0sp</dimen>
+    <dimen name="vw_info_text_size">18.0sp</dimen>
+    <dimen name="vw_info_warning_state_width">235.0dip</dimen>
+    <dimen name="w_size">25.0dip</dimen>
+    <dimen name="wid_size">96.0dip</dimen>
+    <dimen name="width_size">80.0dip</dimen>
+    <dimen name="car_info_bottom_height">110px</dimen>
+    <dimen name="pop_menu_x">115px</dimen>
+
+</resources>

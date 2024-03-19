@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <PreferenceCategory android:title="@string/safe_driving" />
+
+    <ListPreference
+        android:entries="@array/enparksense"
+        android:entryValues="@array/enparksense_vaues"
+        android:key="parksense"
+        android:persistent="false"
+        android:title="@string/parksense" />
+    <ListPreference
+        android:entries="@array/enair_register"
+        android:entryValues="@array/enair_register_vaues"
+        android:key="b_parksense"
+        android:persistent="false"
+        android:title="@string/b_parksense" />
+    <ListPreference
+        android:entries="@array/enair_register"
+        android:entryValues="@array/enair_register_vaues"
+        android:key="f_parksense"
+        android:persistent="false"
+        android:title="@string/f_parksense" />
+
+    <SwitchPreference
+        android:key="backview"
+        android:persistent="false"
+        android:title="@string/backview" />
+    <SwitchPreference
+        android:key="parkView"
+        android:persistent="false"
+        android:title="@string/parkView" />
+    <SwitchPreference
+        android:key="wipers_induction"
+        android:persistent="false"
+        android:title="@string/wipers_induction" />
+    <SwitchPreference
+        android:key="ramp"
+        android:persistent="false"
+        android:title="@string/ramp" />
+    <SwitchPreference
+        android:key="image_parkView"
+        android:persistent="false"
+        android:title="@string/image_parkView" />
+    <SwitchPreference
+        android:key="radar_parking"
+        android:persistent="false"
+        android:title="@string/radar_parking" />
+    <SwitchPreference
+        android:key="parking_brake"
+        android:persistent="false"
+        android:title="@string/parking_brake" />
+
+    <ListPreference
+        android:entries="@array/enlane_warning"
+        android:entryValues="@array/enlane_warning_vaues"
+        android:key="lane_warning"
+        android:persistent="false"
+        android:title="@string/lane_warning" />
+    <ListPreference
+        android:entries="@array/enair_register"
+        android:entryValues="@array/enair_register_vaues"
+        android:key="deviation_correction"
+        android:persistent="false"
+        android:title="@string/deviation_correction" />
+    <ListPreference
+        android:entries="@array/enbusy_warning"
+        android:entryValues="@array/enbusy_warning_vaues"
+        android:key="busy_warning"
+        android:persistent="false"
+        android:title="@string/busy_warning" />
+
+    <SwitchPreference
+        android:key="for_outo_warning"
+        android:persistent="false"
+        android:title="@string/for_outo_warning" />
+
+    <ListPreference
+        android:entries="@array/enfor_warning"
+        android:entryValues="@array/enfor_warning_vaues"
+        android:key="for_warning"
+        android:persistent="false"
+        android:title="@string/for_warning" />
+
+    <SwitchPreference
+        android:key="rear_parkSense"
+        android:persistent="false"
+        android:title="@string/rear_parkSense" />
+
+    <PreferenceCategory android:title="@string/lights" />
+
+    <ListPreference
+        android:entries="@array/enheadlights_off"
+        android:entryValues="@array/enheadlights_off_vaues"
+        android:key="headlights_off"
+        android:persistent="false"
+        android:title="@string/headlights_off" />
+    <ListPreference
+        android:entries="@array/enheadlights_off"
+        android:entryValues="@array/enheadlights_off_vaues"
+        android:key="bright_headlights"
+        android:persistent="false"
+        android:title="@string/bright_headlights" />
+
+    <SwitchPreference
+        android:key="wipers_start"
+        android:persistent="false"
+        android:title="@string/wipers_start" />
+    <SwitchPreference
+        android:key="running_lights"
+        android:persistent="false"
+        android:title="@string/running_lights" />
+    <SwitchPreference
+        android:key="lights_flash"
+        android:persistent="false"
+        android:title="@string/lights_flash" />
+    <SwitchPreference
+        android:key="outhigh_beam"
+        android:persistent="false"
+        android:title="@string/outhigh_beam" />
+    <SwitchPreference
+        android:key="welcome_light"
+        android:persistent="false"
+        android:title="@string/welcome_light" />
+    <SwitchPreference
+        android:key="turn_lights_set"
+        android:persistent="false"
+        android:title="@string/turn_lights_set" />
+    <SwitchPreference
+        android:key="rearview_dimming"
+        android:persistent="false"
+        android:title="@string/rearview_dimming" />
+     <SwitchPreference
+        android:key="rearview_auto_folding"
+        android:persistent="false"
+        android:title="@string/rearview_auto_folding" />
+     
+     <SwitchPreference
+        android:key="high_beam_control"
+        android:persistent="false"
+        android:title="@string/high_beam_control" />
+
+    <ListPreference
+        android:entries="@array/front_light"
+        android:entryValues="@array/front_light"
+        android:key="front_light"
+        android:persistent="false"
+        android:title="@string/front_light" />
+
+    <PreferenceCategory android:title="@string/door_lock" />
+
+    <SwitchPreference
+        android:key="driving_auto"
+        android:persistent="false"
+        android:title="@string/driving_auto" />
+    <SwitchPreference
+        android:key="unlock_driving"
+        android:persistent="false"
+        android:title="@string/unlock_driving" />
+    <SwitchPreference
+        android:key="door_lights_flash"
+        android:persistent="false"
+        android:title="@string/lights_flash" />
+    <SwitchPreference
+        android:key="beep_lock"
+        android:persistent="false"
+        android:title="@string/beep_lock" />
+
+    <ListPreference
+        android:entries="@array/encar_unlocked"
+        android:entryValues="@array/encar_unlocked_vaues"
+        android:key="key_unlock"
+        android:persistent="false"
+        android:title="@string/key_unlock" />
+
+    <SwitchPreference
+        android:key="keyless_entry"
+        android:persistent="false"
+        android:title="@string/keyless_entry" />
+    <SwitchPreference
+        android:key="personalise"
+        android:persistent="false"
+        android:title="@string/personalise" />
+    <!-- <SwitchPreference -->
+    <!-- android:key="power_alarm" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/power_alarm" /> -->
+    <SwitchPreference
+        android:key="door_alarm"
+        android:persistent="false"
+        android:title="@string/door_alarm" />
+    <SwitchPreference
+        android:key="remote_lock"
+        android:persistent="false"
+        android:title="@string/remote_lock1" />
+    <SwitchPreference
+        android:key="remote_unlock"
+        android:persistent="false"
+        android:title="@string/remote_unlock" />
+
+    <PreferenceCategory android:title="@string/tail_off" />
+
+    <ListPreference
+        android:entries="@array/enheadlights_off"
+        android:entryValues="@array/enheadlights_off_vaues"
+        android:key="tail_headlights_off"
+        android:persistent="false"
+        android:title="@string/headlights_off" />
+
+    <SwitchPreference
+        android:key="seat"
+        android:persistent="false"
+        android:title="@string/seat_convenient_access" />
+
+    <ListPreference
+        android:entries="@array/enpower_off"
+        android:entryValues="@array/enpower_off_vaues"
+        android:key="power_off"
+        android:persistent="false"
+        android:title="@string/power_off" />
+
+    <PreferenceCategory android:title="@string/other" />
+
+    <SwitchPreference
+        android:key="auto_adjustment"
+        android:persistent="false"
+        android:title="@string/automatic_adjustment" />
+    <SwitchPreference
+        android:key="tire_mode"
+        android:persistent="false"
+        android:title="@string/tire_mode" />
+    <SwitchPreference
+        android:key="transport_mode"
+        android:persistent="false"
+        android:title="@string/transport_mode" />
+    <SwitchPreference
+        android:key="wheel_mode"
+        android:persistent="false"
+        android:title="@string/wheel_mode" />
+
+    <ListPreference
+        android:entries="@array/endis_suspension"
+        android:entryValues="@array/endis_suspension_vaues"
+        android:key="dis_suspension"
+        android:persistent="false"
+        android:title="@string/dis_suspension" />
+    <ListPreference
+        android:entries="@array/enunit_set"
+        android:entryValues="@array/enunit_set_vaues"
+        android:key="unit_set"
+        android:persistent="false"
+        android:title="@string/unit_set" />
+    <ListPreference
+        android:entries="@array/enoutseat_heating"
+        android:entryValues="@array/enoutseat_heating_vaues"
+        android:key="outseat_heating"
+        android:persistent="false"
+        android:title="@string/outseat_heating" />
+
+    <!-- <SwitchPreference -->
+    <!-- android:key="buzzer" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/buzzer" /> -->
+
+    <ListPreference
+        android:entries="@array/enfulecons"
+        android:entryValues="@array/enfulecons_values"
+        android:key="fulecons"
+        android:persistent="false"
+        android:title="@string/fulecons" />
+    <ListPreference
+        android:entries="@array/entireunit1"
+        android:entryValues="@array/entireunit1_values"
+        android:key="tireunit"
+        android:persistent="false"
+        android:title="@string/tireunit" />
+    <ListPreference
+        android:entries="@array/enrange47"
+        android:entryValues="@array/enspeed_vaues"
+        android:key="range"
+        android:persistent="false"
+        android:title="@string/range" />
+    <ListPreference
+        android:entries="@array/temperature_entries"
+        android:entryValues="@array/enrange47_vaues"
+        android:key="temperature"
+        android:persistent="false"
+        android:title="@string/temperature" />
+
+    <!-- <SwitchPreference -->
+    <!-- android:key="electronic_park" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/electronic_park" /> -->
+
+
+    <!-- <ListPreference -->
+    <!-- android:key="car_in_light" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/car_in_light" -->
+    <!-- android:entries="@array/en" -->
+    <!-- android:entryValues="@array/en_vaues" /> -->
+
+
+    <!-- <ListPreference -->
+    <!-- android:key="lock_beep" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/lock_beep" -->
+    <!-- android:entries="@array/enlock_beep" -->
+    <!-- android:entryValues="@array/enlock_beep_values" /> -->
+
+
+    <!-- <SwitchPreference -->
+    <!-- android:key="unlock_light" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/unlock_light" /> -->
+    <SwitchPreference
+        android:key="auto_parking"
+        android:persistent="false"
+        android:title="@string/auto_parking" />
+
+    
+    <ListPreference
+        android:entries="@array/parking_sound_type_entries"
+        android:entryValues="@array/endanger_ahead_vaues"
+        android:key="car_type"
+        android:persistent="false"
+        android:title="@string/car_type64" />
+    <ListPreference
+        android:entries="@array/jeep_launage_entries"
+        android:entryValues="@array/thirteen_high_values"
+        android:key="langauage5"
+        android:persistent="false"
+        android:title="@string/langauage5" />
+        
+    <!-- <SwitchPreference -->
+    <!-- android:key="brake_service" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/brake_service" /> -->
+
+</PreferenceScreen>

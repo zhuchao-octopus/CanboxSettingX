@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyPreference">
+        <attr name="type" format="string" />
+    </declare-styleable>
+    <declare-styleable name="MyPreferenceSeekBar">
+        <attr name="min" format="integer" />
+        <attr name="step" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="unit" format="string" />
+    </declare-styleable>
+    
+        <attr name="outCircleColor" format="color" ></attr>
+    <attr name="circleRadiu" format="dimension" ></attr>
+    <attr name="dashWidth" format="integer" ></attr>
+    <attr name="firstColor" format="color"/>
+    <attr name="secondColor" format="color"/>
+    <attr name="top_arc_value_count" format="integer"/>
+    
+    <declare-styleable name="DashCircle">
+       <attr name="outCircleColor"></attr>
+        <attr name="circleRadiu"></attr>
+        <attr name="dashWidth"></attr>
+        <attr name="firstColor"/>
+        <attr name="secondColor"/>
+        <attr name="top_arc_value_count"/>
+        
+        <attr name="top_arc_count" format="integer" />
+        <attr name="top_arc_degree_start" format="integer" />
+         <attr name="top_arc_degree_end" format="integer" />
+        <attr name="top_arc_value_max" format="integer" />
+        <attr name="top_arc_value_min" format="integer" />
+    </declare-styleable>
+
+        <declare-styleable name="VerticalSeekBar">
+        <attr name="height_" format="integer" />
+        <attr name="width_" format="integer" />
+        <attr name="thumbWidth_" format="integer" />
+    </declare-styleable>
+    
+</resources>

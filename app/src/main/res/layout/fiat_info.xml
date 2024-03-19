@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="center"
+        android:src="@drawable/phone"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/mic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="center"
+        android:src="@drawable/mic"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/usb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_marginTop="10px"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="38px" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/usb" />
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="118px"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/radio_bottom_bg"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/prev"
+                    style="@style/ButtonStyle1"
+                    android:clickable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/prev" />
+
+                <ImageView
+                    android:id="@+id/pp"
+                    style="@style/ButtonStyle1"
+                    android:clickable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/play_level" />
+
+                <ImageView
+                    android:id="@+id/next"
+                    style="@style/ButtonStyle1"
+                    android:clickable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/next" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

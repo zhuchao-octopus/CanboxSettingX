@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+     <com.common.view.MyPreference
+        android:key="estimate_range"
+        android:persistent="false"
+        android:title="@string/estimate_range" />
+     <com.common.view.MyPreference
+        android:key="total_mileage"
+        android:persistent="false"
+        android:title="@string/total_mileage" />
+      <com.common.view.MyPreference
+        android:key="instant_fuel"
+        android:persistent="false"
+        android:title="@string/instant_fuel" />
+</PreferenceScreen>

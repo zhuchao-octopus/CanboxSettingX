@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="drivingmileage"
+        android:persistent="false"
+        android:title="@string/driving_mileage" />
+    <com.common.view.MyPreference
+        android:key="enginespeed"
+        android:persistent="false"
+        android:title="@string/enginespeed" />
+    <com.common.view.MyPreference
+        android:key="mileage_sum"
+        android:persistent="false"
+        android:title="@string/mileage_sum" />
+    <com.common.view.MyPreference
+        android:key="averageapeed"
+        android:persistent="false"
+        android:title="@string/averageapeed" />
+    <com.common.view.MyPreference
+        android:key="fulecons1"
+        android:persistent="false"
+        android:title="@string/fulecons" />
+    <com.common.view.MyPreference
+        android:key="fulecons2"
+        android:persistent="false"
+        android:title="@string/fulecons" />
+    <com.common.view.MyPreference
+        android:key="hdc"
+        android:persistent="false"
+        android:title="@string/hdc" />
+    <com.common.view.MyPreference
+        android:key="driving_mode"
+        android:persistent="false"
+        android:title="@string/driving_mode" />
+    <com.common.view.MyPreference
+        android:key="high_low_gear"
+        android:persistent="false"
+        android:title="@string/high_low_gear" />
+    <com.common.view.MyPreference
+        android:key="air_suspension_mode"
+        android:persistent="false"
+        android:title="@string/air_suspension_mode" />
+    <com.common.view.MyPreference
+        android:key="tire_distance_1"
+        android:persistent="false"
+        android:title="@string/tire_distance_1" />
+    <com.common.view.MyPreference
+        android:key="tire_distance_2"
+        android:persistent="false"
+        android:title="@string/tire_distance_2" />
+    <com.common.view.MyPreference
+        android:key="tire_distance_3"
+        android:persistent="false"
+        android:title="@string/tire_distance_3" />
+    <com.common.view.MyPreference
+        android:key="tire_distance_4"
+        android:persistent="false"
+        android:title="@string/tire_distance_4" />
+
+</PreferenceScreen>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="controlset"
+    android:title="@string/controlset" >
+
+<!--     <SwitchPreference -->
+<!--         android:key="eq" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/there_is_no_indication_of_the_original_car_amplifier" /> -->
+    <SwitchPreference
+        android:key="parking_assist"
+        android:persistent="false"
+        android:title="@string/parking_assist" />
+    <SwitchPreference
+        android:key="bwiper"
+        android:persistent="false"
+        android:title="@string/bwiper" />
+
+    <ListPreference
+        android:entries="@array/enlighting"
+        android:entryValues="@array/enlighting_vaues"
+        android:key="atmosphere_lighting"
+        android:persistent="false"
+        android:title="@string/atmosphere_lighting" />
+
+    <SwitchPreference
+        android:key="radar_stop"
+        android:persistent="false"
+        android:title="@string/radar_stop" />
+
+    <ListPreference
+        android:entries="@array/enlamp_no"
+        android:entryValues="@array/enlamp_no_vaues"
+        android:key="home_lighting"
+        android:persistent="false"
+        android:title="@string/home_lighting" />
+    <ListPreference
+        android:entries="@array/enlamp_no"
+        android:entryValues="@array/enlamp_no_vaues"
+        android:key="welcome_lig"
+        android:persistent="false"
+        android:title="@string/welcome_lig" />
+
+    <SwitchPreference
+        android:key="daytime_lights"
+        android:persistent="false"
+        android:title="@string/daytime_lights" />
+
+    <ListPreference
+        android:entries="@array/ensound"
+        android:entryValues="@array/ensound_vaues"
+        android:key="sound"
+        android:persistent="false"
+        android:title="@string/sound" />
+    <ListPreference
+        android:entries="@array/enoil"
+        android:entryValues="@array/enoil_vaues"
+        android:key="oil_unit"
+        android:persistent="false"
+        android:title="@string/oil_unit" />
+    
+<!--         <ListPreference -->
+<!--         android:entries="@array/entemp" -->
+<!--         android:entryValues="@array/entemp_vaues" -->
+<!--         android:key="temp" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/temp" /> -->
+        
+    <ListPreference
+        android:entries="@array/enlanguages61"
+        android:entryValues="@array/enlanguages61_vaues"
+        android:key="languages"
+        android:persistent="false"
+        android:title="@string/languages" />
+
+    <SwitchPreference
+        android:key="blind_detection"
+        android:persistent="false"
+        android:title="@string/blind_detection" />
+    <SwitchPreference
+        android:key="engine_stop"
+        android:persistent="false"
+        android:title="@string/engine_stop" />
+    <SwitchPreference
+        android:key="welcome_cmd"
+        android:persistent="false"
+        android:title="@string/welcome_cmd" />
+
+    <ListPreference
+        android:entries="@array/ensetdoor"
+        android:entryValues="@array/ensetdoor_vaues"
+        android:key="setdoor"
+        android:persistent="false"
+        android:title="@string/setdoor" />
+    <ListPreference
+        android:entries="@array/enlamp_no"
+        android:entryValues="@array/enlamp_no_vaues"
+        android:key="lamp_no"
+        android:persistent="false"
+        android:title="@string/lamp_no" />
+
+    <SwitchPreference
+        android:key="unlock_trunk_only"
+        android:persistent="false"
+        android:title="@string/unlock_trunk_only" />
+    <SwitchPreference
+        android:key="psa_simple_14"
+        android:persistent="false"
+        android:title="@string/psa_simple_14" />
+    <SwitchPreference
+        android:key="psa_simple_15"
+        android:persistent="false"
+        android:title="@string/psa_simple_15" />
+
+    <ListPreference
+        android:entries="@array/psa_simple_16"
+        android:entryValues="@array/psa_simple_16_vaues"
+        android:key="psa_simple_16"
+        android:persistent="false"
+        android:title="@string/psa_simple_16" />
+    <ListPreference
+        android:entries="@array/psa_simple_17"
+        android:entryValues="@array/psa_simple_17_vaues"
+        android:key="psa_simple_17"
+        android:persistent="false"
+        android:title="@string/psa_simple_17" />
+
+    <SwitchPreference
+        android:key="psa_simple_19"
+        android:persistent="false"
+        android:title="@string/psa_simple_19" />
+    <SwitchPreference
+        android:key="psa_simple_1a"
+        android:persistent="false"
+        android:title="@string/psa_simple_1a" />
+    <SwitchPreference
+        android:key="psa_simple_18"
+        android:persistent="false"
+        android:title="@string/psa_simple_18" />
+
+    <PreferenceScreen
+        android:key="tpms_cal"
+        android:persistent="false"
+        android:title="@string/tpms_cal" />
+
+    <SwitchPreference
+        android:key="memory_speed"
+        android:persistent="false"
+        android:title="@string/memory_speed" />
+
+    <com.common.view.MyPreferenceEdit
+        android:entries="@array/en"
+        android:entryValues="@array/en_vaues"
+        android:key="speed1"
+        android:persistent="false"
+        android:title="@string/speed1" />
+    <com.common.view.MyPreferenceEdit
+        android:entries="@array/en"
+        android:entryValues="@array/en_vaues"
+        android:key="speed2"
+        android:persistent="false"
+        android:title="@string/speed2" />
+    <com.common.view.MyPreferenceEdit
+        android:entries="@array/en"
+        android:entryValues="@array/en_vaues"
+        android:key="speed3"
+        android:persistent="false"
+        android:title="@string/speed3" />
+    <com.common.view.MyPreferenceEdit
+        android:entries="@array/en"
+        android:entryValues="@array/en_vaues"
+        android:key="speed4"
+        android:persistent="false"
+        android:title="@string/speed4" />
+    <com.common.view.MyPreferenceEdit
+        android:entries="@array/en"
+        android:entryValues="@array/en_vaues"
+        android:key="speed5"
+        android:persistent="false"
+        android:title="@string/speed5" />
+
+    
+    
+    <SwitchPreference
+        android:key="oushang_1d"
+        android:persistent="false"
+        android:title="@string/oushang_1d" />
+    
+    <ListPreference
+        android:entries="@array/psa_simple_1"
+        android:entryValues="@array/three_values"
+        android:key="oushang_1e"
+        android:persistent="false"
+        android:title="@string/oushang_1e" />
+    
+        <SwitchPreference
+        android:key="speed_recommendation"
+        android:persistent="false"
+        android:title="@string/speed_recommendation" />
+        
+    
+    <SwitchPreference
+        android:key="dynamic_bend"
+        android:persistent="false"
+        android:title="@string/dynamic_bend" />
+    
+    
+    
+    <SwitchPreference
+        android:key="automatic_rearview_mirror_folding"
+        android:persistent="false"
+        android:title="@string/automatic_rearview_mirror_folding" />
+    
+    <PreferenceScreen
+        android:key="keyboard"
+        android:title="@string/panel_buttons" >
+        <com.common.view.MyPreference2
+            android:key="keyboard_content"
+            android:layout="@layout/psa_keyboard" />
+    </PreferenceScreen>
+    
+</PreferenceScreen>

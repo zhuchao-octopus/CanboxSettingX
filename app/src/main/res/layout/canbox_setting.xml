@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80px"
+        android:layout_weight="1"
+        android:drawSelectorOnTop="false" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="76px"
+        android:layout_alignParentBottom="true"
+        android:background="#212121"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="192px"
+            android:layout_height="fill_parent"
+            android:paddingTop="10px"
+            android:text="@string/cancel"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_advanced"
+            android:layout_width="192px"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="30dp"
+            android:paddingTop="10px"
+            android:text="@string/advanced_settings"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="192px"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="30dp"
+            android:paddingTop="10px"
+            android:text="@string/ok"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</RelativeLayout>

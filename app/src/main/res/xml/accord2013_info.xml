@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <PreferenceCategory android:title="@string/realtime_consumption_and_mileage_information" >        
+        <com.common.view.MyPreference
+            android:key="instant"
+            android:persistent="false"
+            android:title="@string/instant_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="average"
+            android:persistent="false"
+            android:title="@string/the_average_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="historical"
+            android:persistent="false"
+            android:title="@string/the_historical_average_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="ages"
+            android:persistent="false"
+            android:title="@string/average_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="tripaoilwear"
+            android:persistent="false"
+            android:title="@string/tripa_oil_wear" />
+        <com.common.view.MyPreference
+            android:key="drivingmileage"
+            android:persistent="false"
+            android:title="@string/driving_mileage" />
+        <com.common.view.MyPreference
+            android:key="fuelrange"
+            android:persistent="false"
+            android:title="@string/fuel_range" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/history_information" >
+        <com.common.view.MyPreference
+            android:key="hjourney1"
+            android:persistent="false"
+            android:title="@string/the_historical_journey1" />
+        <com.common.view.MyPreference
+            android:key="hjourney2"
+            android:persistent="false"
+            android:title="@string/the_historical_journey2" />
+        <com.common.view.MyPreference
+            android:key="hjourney3"
+            android:persistent="false"
+            android:title="@string/the_historical_journey3" />
+        <com.common.view.MyPreference
+            android:key="thistorical1"
+            android:persistent="false"
+            android:title="@string/the_historical_journey_wasted1" />
+        <com.common.view.MyPreference
+            android:key="thistorical2"
+            android:persistent="false"
+            android:title="@string/the_historical_journey_wasted2" />
+        <com.common.view.MyPreference
+            android:key="thistorical3"
+            android:persistent="false"
+            android:title="@string/the_historical_journey_wasted3" />
+        <com.common.view.MyPreference
+            android:key="hfuelrange"
+            android:persistent="false"
+            android:title="@string/fuel_range" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

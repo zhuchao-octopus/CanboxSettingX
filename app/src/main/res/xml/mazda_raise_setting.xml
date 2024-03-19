@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <PreferenceScreen android:title="@string/controlsettings" >
+        <ListPreference
+            android:entries="@array/enheadlight_off_timer"
+            android:entryValues="@array/radarvol_entryValues"
+            android:key="homeinmode"
+            android:persistent="false"
+            android:title="@string/homeinmode" />
+
+        <SwitchPreference
+            android:key="homeoutmode"
+            android:persistent="false"
+            android:title="@string/homeoutmode" />
+
+        <ListPreference
+            android:entries="@array/mazda3_backwindowdefog"
+            android:entryValues="@array/height_value"
+            android:key="backwindowdefog"
+            android:persistent="false"
+            android:title="@string/backwindowdefog" />
+        <ListPreference
+            android:entries="@array/enheadlight_off_timer"
+            android:entryValues="@array/height_value"
+            android:key="mazda3_2020_settings_1"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_1" />
+
+        <SwitchPreference
+            android:key="mazda3_2020_settings_2"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_2" />
+
+        <ListPreference
+            android:entries="@array/mazda3_3"
+            android:entryValues="@array/mazda3_2020_settings_3_value"
+            android:key="mazda3_2020_settings_3"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_3" />
+        <ListPreference
+            android:entries="@array/mazda3_4"
+            android:entryValues="@array/height_value"
+            android:key="psa_simple_17"
+            android:persistent="false"
+            android:title="@string/psa_simple_17" />
+        <ListPreference
+            android:entries="@array/automodewindlevel_entries"
+            android:entryValues="@array/height_value"
+            android:key="mazda3_2020_settings_4"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_4" />
+
+        <SwitchPreference
+            android:key="mazda3_2020_settings_5"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_5" />
+        <SwitchPreference
+            android:key="mazda3_2020_settings_6"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_6" />
+        <SwitchPreference
+            android:key="rear_view"
+            android:persistent="false"
+            android:title="@string/rear_view" />
+        <SwitchPreference
+            android:key="daylight"
+            android:persistent="false"
+            android:title="@string/daylight" />
+
+        <ListPreference
+            android:entries="@array/enmileage_unit"
+            android:entryValues="@array/enspeed_vaues"
+            android:key="range"
+            android:persistent="false"
+            android:title="@string/range" />
+        <ListPreference
+            android:entries="@array/entemp"
+            android:entryValues="@array/entemp_vaues"
+            android:key="temp"
+            android:persistent="false"
+            android:title="@string/temp" />
+        <ListPreference
+            android:entries="@array/background_lighting_mazda"
+            android:entryValues="@array/enwind_speed_vaues"
+            android:key="background_lighting"
+            android:persistent="false"
+            android:title="@string/background_lighting" />
+        <ListPreference
+            android:entries="@array/mazda3_2020_settings_7"
+            android:entryValues="@array/enwind_speed_vaues"
+            android:key="mazda3_2020_settings_7"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_7" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/driving_display" >
+        <ListPreference
+            android:entries="@array/height"
+            android:entryValues="@array/height_value"
+            android:key="height"
+            android:persistent="false"
+            android:title="@string/height" />
+        <ListPreference
+            android:entries="@array/brightness_control"
+            android:entryValues="@array/brightness_control_value"
+            android:key="brightness_control"
+            android:persistent="false"
+            android:title="@string/brightness" />
+        <ListPreference
+            android:entries="@array/height2"
+            android:entryValues="@array/height2_value"
+            android:key="height2"
+            android:persistent="false"
+            android:title="@string/calibration" />
+
+        <SwitchPreference
+            android:key="active_display"
+            android:persistent="false"
+            android:title="@string/active_display" />
+
+        <ListPreference
+            android:entries="@array/enrear_window1"
+            android:entryValues="@array/enrear_window1_vaues"
+            android:key="calibration"
+            android:persistent="false"
+            android:title="@string/brightness_control" />
+        
+                <ListPreference
+            android:entries="@array/mazda3_2020_settings_13"
+            android:entryValues="@array/envol_vaues"
+            android:key="mazda3_2020_settings_13"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_13" />
+                
+                        <ListPreference
+            android:entries="@array/adjust_outside"
+            android:entryValues="@array/honda_entryValues"
+            android:key="mazda3_2020_settings_14"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_14" />
+        
+             <PreferenceScreen android:key="display_reset"
+            android:title="@string/restore_factory_settings5" />
+             
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/door_open" >
+        <ListPreference
+            android:entries="@array/enauto_lights_off"
+            android:entryValues="@array/enauto_lights_off_vaues"
+            android:key="auto_lights_off"
+            android:persistent="false"
+            android:title="@string/auto_lights_off" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/door_close" >
+        <ListPreference
+            android:entries="@array/enauto_lights_off2"
+            android:entryValues="@array/enauto_lights_off2_vaues"
+            android:key="auto_lights_off2"
+            android:persistent="false"
+            android:title="@string/auto_lights_off" />
+    </PreferenceScreen>
+    
+    <PreferenceScreen android:title="@string/mazda3_2020_settings_b" >
+        <SwitchPreference
+            android:key="mazda3_2020_settings_c"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_c" />
+
+        <ListPreference
+            android:entries="@array/mazda3_2020_settings_d"
+            android:entryValues="@array/oushange_array123"
+            android:key="mazda3_2020_settings_d"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_d" />
+        <ListPreference
+            android:entries="@array/enconnect_time"
+            android:entryValues="@array/oushange_array123"
+            android:key="mazda3_2020_settings_e"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_e" />
+        
+        <PreferenceScreen android:key="safe_reset"
+            android:title="@string/restore_factory_settings5" />
+        
+    </PreferenceScreen>
+        
+     <PreferenceScreen android:title="@string/mazda3_2020_settings_f" >
+        <SwitchPreference
+            android:key="mazda3_2020_settings_10"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_10" />
+
+        <ListPreference
+            android:entries="@array/mazda3_2020_settings_d"
+            android:entryValues="@array/oushange_array123"
+            android:key="mazda3_2020_settings_11"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_11" />
+        <ListPreference
+            android:entries="@array/mazda3_2020_settings_12"
+            android:entryValues="@array/oushange_array123"
+            android:key="mazda3_2020_settings_12"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_12" />
+        
+        <PreferenceScreen android:key="speed_warning_reset"
+            android:title="@string/restore_factory_settings5" />
+        
+    </PreferenceScreen>
+    
+    <PreferenceScreen android:title="@string/fuel_economy" >
+        <SwitchPreference
+            android:key="sync_avg"
+            android:persistent="false"
+            android:title="@string/sync_avg" />
+
+        <PreferenceScreen
+            android:key="reset_avg"
+            android:persistent="false"
+            android:title="@string/reset_avg" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/other" >
+        <SwitchPreference
+            android:key="wipers_induction"
+            android:persistent="false"
+            android:title="@string/wipers_induction" />
+
+        <ListPreference
+            android:entries="@array/enlock_beep2"
+            android:entryValues="@array/enlock_beep2_vaues"
+            android:key="lock_beep"
+            android:persistent="false"
+            android:title="@string/lock_beep" />
+        <ListPreference
+            android:entries="@array/enouto_lock_mode"
+            android:entryValues="@array/enouto_lock_mode_vaues"
+            android:key="outo_lock_mode"
+            android:persistent="false"
+            android:title="@string/outo_lock_mode" />
+        <ListPreference
+            android:entries="@array/ensecurity"
+            android:entryValues="@array/ensecurity_vaues"
+            android:key="security"
+            android:persistent="false"
+            android:title="@string/security" />
+        <ListPreference
+            android:entries="@array/encar_unlocked"
+            android:entryValues="@array/encar_unlocked_vaues"
+            android:key="lock_mode"
+            android:persistent="false"
+            android:title="@string/lock_mode" />
+
+        <SwitchPreference
+            android:key="automatic_latch"
+            android:persistent="false"
+            android:title="@string/automatic_latch" />
+        <SwitchPreference
+            android:key="three_signal"
+            android:persistent="false"
+            android:title="@string/three_signal" />
+
+        <ListPreference
+            android:entries="@array/automodewindlevel_entries"
+            android:entryValues="@array/automodewindlevel_entryValues"
+            android:key="turn_volume"
+            android:persistent="false"
+            android:title="@string/turn_volume" />
+
+        <SwitchPreference
+            android:key="adaptive"
+            android:persistent="false"
+            android:title="@string/adaptive" />
+
+        <ListPreference
+            android:entries="@array/encar_light_off"
+            android:entryValues="@array/encar_light_off_vaues"
+            android:key="car_light_off"
+            android:persistent="false"
+            android:title="@string/car_light_off" />
+        <ListPreference
+            android:entries="@array/enheadlight_off_timer"
+            android:entryValues="@array/enheadlight_off_timer_vaues"
+            android:key="headlight_off_timer"
+            android:persistent="false"
+            android:title="@string/headlight_off_timer" />
+        <ListPreference
+            android:entries="@array/enheadlight_off_timer_vaues"
+            android:entryValues="@array/enheadlight_off_timer_vaues"
+            android:key="auto_light_open"
+            android:persistent="false"
+            android:title="@string/auto_light_open" />
+
+        <!-- <SwitchPreference -->
+        <!-- android:key="intelligent_brake" -->
+        <!-- android:persistent="false" -->
+        <!-- android:title="@string/intelligent_brake" /> -->
+
+
+        <!-- <ListPreference -->
+        <!-- android:entries="@array/encar_light_off" -->
+        <!-- android:entryValues="@array/encar_light_off_vaues" -->
+        <!-- android:key="monitor_volume" -->
+        <!-- android:persistent="false" -->
+        <!-- android:title="@string/monitor_volume" /> -->
+
+        <SwitchPreference
+            android:key="leavehome"
+            android:persistent="false"
+            android:title="@string/leavehome" />     
+            <SwitchPreference
+            android:key="touch_switch"
+            android:persistent="false"
+            android:title="@string/touch_switch" />
+
+        <PreferenceScreen
+            android:key="default_all"
+            android:persistent="false"
+            android:title="@string/default_all" />
+    </PreferenceScreen>
+    <PreferenceScreen 
+            android:key="text_360"
+            android:title="@string/text_360" >
+        <SwitchPreference
+            android:key="mazda3_2020_settings_8"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_8" />
+        <SwitchPreference
+            android:key="mazda3_2020_settings_9"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_9" />
+        <SwitchPreference
+            android:key="mazda3_2020_settings_a"
+            android:persistent="false"
+            android:title="@string/mazda3_2020_settings_a" />
+    </PreferenceScreen>
+
+</PreferenceScreen>

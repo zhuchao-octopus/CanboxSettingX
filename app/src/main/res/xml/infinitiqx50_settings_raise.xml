@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+    android:title="@string/controlset" >
+    <ListPreference
+               android:entries="@array/setting_auto_light_sensitivity"
+               android:entryValues="@array/four_high_values"
+               android:key="setting_auto_light_sensitivity"
+               android:persistent="false"
+               android:title="@string/setting_auto_light_sensitivity" />
+    <SwitchPreference
+            android:key="select_unlock"
+            android:persistent="false"
+            android:title="@string/select_unlock" />
+    <SwitchPreference
+            android:key="smart_key_lock_fuction"
+            android:persistent="false"
+            android:title="@string/smart_key_lock_fuction" />
+    <SwitchPreference
+            android:key="car_light_auto"
+            android:persistent="false"
+            android:title="@string/car_light_auto" />
+    <ListPreference
+               android:entries="@array/automatic_lighting_time_setting"
+               android:entryValues="@array/eight_values"
+               android:key="automatic_lighting_time_setting"
+               android:persistent="false"
+               android:title="@string/automatic_lighting_time_setting" />
+</PreferenceScreen>

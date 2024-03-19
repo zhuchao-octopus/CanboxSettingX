@@ -1,0 +1,45 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/enrange"
+        android:entryValues="@array/enrange_vaues"
+        android:key="range"
+        android:persistent="false"
+        android:title="@string/range" />
+    <ListPreference
+        android:entries="@array/enlang"
+        android:entryValues="@array/enlang_vaues"
+        android:key="lang"
+        android:persistent="false"
+        android:title="@string/lang" />
+    <ListPreference
+        android:entries="@array/enage_full"
+        android:entryValues="@array/enage_full_vaues"
+        android:key="age_full"
+        android:persistent="false"
+        android:title="@string/age_full" />
+    <ListPreference
+        android:entries="@array/entemp"
+        android:entryValues="@array/entemp_vaues"
+        android:key="temp"
+        android:persistent="false"
+        android:title="@string/temp" />
+
+    <PreferenceCategory android:title="@string/panel_buttons" />
+
+    <PreferenceScreen
+        android:key="lef_hot"
+        android:title="@string/lef_hot" />
+    <PreferenceScreen
+        android:key="rif_hot"
+        android:title="@string/rif_hot" />
+    <PreferenceScreen
+        android:key="redar"
+        android:title="@string/redar" />
+    <PreferenceScreen
+        android:key="curtain"
+        android:title="@string/curtain" />
+
+</PreferenceScreen>

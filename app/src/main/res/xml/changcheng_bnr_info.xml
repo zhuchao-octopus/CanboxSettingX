@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="atmosphere_pressure"
+        android:persistent="false"
+        android:title="@string/atmosphere_pressure" />
+    <com.common.view.MyPreference
+        android:key="engine_temp"
+        android:persistent="false"
+        android:title="@string/engine_temp" />
+    <com.common.view.MyPreference
+        android:key="transmission_oil_temperature"
+        android:persistent="false"
+        android:title="@string/transmission_oil_temperature" />
+    <com.common.view.MyPreference
+        android:key="battery_voltage"
+        android:persistent="false"
+        android:title="@string/battery_voltage" />
+    <com.common.view.MyPreference
+        android:key="front_wheel_torque_ratio"
+        android:persistent="false"
+        android:title="@string/front_wheel_torque_ratio" />
+    <com.common.view.MyPreference
+        android:key="trailer_status"
+        android:persistent="false"
+        android:title="@string/trailer_status" />
+
+    
+    <com.common.view.MyPreference
+        android:key="left_and_right_inclination"
+        android:persistent="false"
+        android:title="@string/left_and_right_inclination" />
+    
+    <com.common.view.MyPreference
+        android:key="back_and_forth_tilt"
+        android:persistent="false"
+        android:title="@string/back_and_forth_tilt" />
+    
+         
+</PreferenceScreen>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+    <PreferenceScreen android:title="@string/lock" >
+        <SwitchPreference
+            android:key="cardoorspeed"
+            android:persistent="false"
+            android:title="@string/cardoorspeed" />
+        <SwitchPreference
+            android:key="cardoorautomatic"
+            android:persistent="false"
+            android:title="@string/cardoorautomatic" />
+        <SwitchPreference
+            android:key="plinkage"
+            android:persistent="false"
+            android:title="@string/plinkage" />
+
+        <!-- <PreferenceCategory -->
+        <!-- android:key="remote_cmd" -->
+        <!-- android:title="@string/remote_cmd" /> -->
+
+        <SwitchPreference
+            android:key="remoteunlock"
+            android:persistent="false"
+            android:title="@string/remoteunlock" />
+
+        <ListPreference
+            android:entries="@array/smartdoorlock_entries"
+            android:entryValues="@array/smartdoorlock_entryValues"
+            android:key="smartdoorlock"
+            android:persistent="false"
+            android:title="@string/smartdoorlock" />
+
+        <SwitchPreference
+            android:key="lockakey"
+            android:persistent="false"
+            android:title="@string/lockakey" />
+        <SwitchPreference
+            android:key="opendoorflash"
+            android:persistent="false"
+            android:title="@string/opendoorflash" />
+
+        <ListPreference
+            android:entries="@array/volbackdoor_entries"
+            android:entryValues="@array/volbackdoor_entryValues"
+            android:key="doorlockvol"
+            android:persistent="false"
+            android:title="@string/volbackdoor" />
+
+        <SwitchPreference
+            android:key="twokeyunlock"
+            android:persistent="false"
+            android:title="@string/twokeyunlock" />
+        <SwitchPreference
+            android:key="linkagedoorlock"
+            android:persistent="false"
+            android:title="@string/linkagedoorlock" />
+
+        <ListPreference
+            android:entries="@array/closedoortime_entries"
+            android:entryValues="@array/closedoortime_entryValues"
+            android:key="closedoortime"
+            android:persistent="false"
+            android:title="@string/closedoortime" />
+    </PreferenceScreen>
+    <!-- <PreferenceCategory -->
+    <!-- android:key="climate_settings" -->
+    <!-- android:title="@string/climate_settings" /> -->
+    <PreferenceScreen android:title="@string/air_light" >
+        <SwitchPreference
+            android:key="airautokey"
+            android:persistent="false"
+            android:title="@string/airautokey" />
+        <SwitchPreference
+            android:key="airswitchautokey"
+            android:persistent="false"
+            android:title="@string/airswitchautokey" />
+
+        <!-- <PreferenceCategory -->
+        <!-- android:key="lights_setting" -->
+        <!-- android:title="@string/lights_setting" /> -->
+
+        <ListPreference
+            android:entries="@array/autolight_entries"
+            android:entryValues="@array/autolight_entryValues"
+            android:key="autolight"
+            android:persistent="false"
+            android:title="@string/autolight" />
+        <ListPreference
+            android:entries="@array/timeswitchlight_entries"
+            android:entryValues="@array/timeswitchlight_entryValues"
+            android:key="timeswitchlight"
+            android:persistent="false"
+            android:title="@string/timeswitchlight" />
+        <ListPreference
+            android:entries="@array/lightingime_entries"
+            android:entryValues="@array/lightingime_entryValues"
+            android:key="lightingtime"
+            android:persistent="false"
+            android:title="@string/lightingime" />
+
+        <SwitchPreference
+            android:key="daylight"
+            android:persistent="false"
+            android:title="@string/daylight" />
+    </PreferenceScreen>
+    <!-- <ListPreference -->
+    <!-- android:key="lightingtime_wai" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/lightingime_wai" -->
+    <!-- android:entries="@array/lightingime_entries" -->
+    <!-- android:entryValues="@array/lightingime_entryValues" /> -->
+
+    <PreferenceScreen android:title="@string/other" >
+        <ListPreference
+            android:entries="@array/radarvol_entries"
+            android:entryValues="@array/radarvol_entryValues1"
+            android:key="radarvol"
+            android:persistent="false"
+            android:title="@string/radarvol" />
+
+        <SwitchPreference
+            android:key="radardisplay"
+            android:persistent="false"
+            android:title="@string/radardisplay" />
+
+        <ListPreference
+            android:entries="@array/enfor_warning"
+            android:entryValues="@array/enfor_warning_vaues"
+            android:key="radarrange"
+            android:persistent="false"
+            android:title="@string/radarrange" />
+        <ListPreference
+            android:entries="@array/ensetting_color"
+            android:entryValues="@array/ensetting_color_values"
+            android:key="setting_color"
+            android:persistent="false"
+            android:title="@string/setting_color" />
+        <ListPreference
+            android:entries="@array/enoil"
+            android:entryValues="@array/enoil_vaues"
+            android:key="setings_unit"
+            android:persistent="false"
+            android:title="@string/setings_unit" />
+        <!-- <ListPreference -->
+        <!-- android:entries="@array/enback_camera_path" -->
+        <!-- android:entryValues="@array/enback_camera_path_values" -->
+        <!-- android:key="back_camera_path" -->
+        <!-- android:persistent="false" -->
+        <!-- android:title="@string/back_camera_path" /> -->
+        <ListPreference
+            android:entries="@array/encell_back_door"
+            android:entryValues="@array/encell_back_door_values"
+            android:key="cell_back_door"
+            android:persistent="false"
+            android:title="@string/cell_back_door" />
+        <ListPreference
+            android:entries="@array/car_type_cmd"
+            android:entryValues="@array/car_type_cmd_values"
+            android:key="car_type_cmd"
+            android:persistent="false"
+            android:title="@string/car_type_cmd" />
+    </PreferenceScreen>
+
+</PreferenceScreen>

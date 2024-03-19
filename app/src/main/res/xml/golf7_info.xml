@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+    <Preference android:title="@string/tireinfo" >
+        <intent
+            android:targetClass="com.canboxsetting.TPMSActivity"
+            android:targetPackage="com.canboxsetting" />
+    </Preference>
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage17" />
+    <com.common.view.MyPreference
+        android:key="since_start"
+        android:persistent="false"
+        android:title="@string/distance_since_start" />
+    <com.common.view.MyPreference
+        android:key="since_refueling"
+        android:persistent="false"
+        android:title="@string/since_refueling" />
+    <com.common.view.MyPreference
+        android:key="long_term"
+        android:persistent="false"
+        android:title="@string/distance_long_term" />
+    <com.common.view.MyPreference
+        android:key="avg_start"
+        android:persistent="false"
+        android:title="@string/avg_start" />
+    <com.common.view.MyPreference
+        android:key="avrefueling"
+        android:persistent="false"
+        android:title="@string/avrefueling" />
+    <com.common.view.MyPreference
+        android:key="avlong_term"
+        android:persistent="false"
+        android:title="@string/avlong_term" />
+    <com.common.view.MyPreference
+        android:key="avspeed_start"
+        android:persistent="false"
+        android:title="@string/avspeed_start" />
+    <com.common.view.MyPreference
+        android:key="speeds_refueling"
+        android:persistent="false"
+        android:title="@string/speeds_refueling" />
+    <com.common.view.MyPreference
+        android:key="speed_long"
+        android:persistent="false"
+        android:title="@string/speed_long" />
+    <com.common.view.MyPreference
+        android:key="travelling_time"
+        android:persistent="false"
+        android:title="@string/travelling_time" />
+    <com.common.view.MyPreference
+        android:key="ttsr"
+        android:persistent="false"
+        android:title="@string/ttsr" />
+    <com.common.view.MyPreference
+        android:key="tt_long_term"
+        android:persistent="false"
+        android:title="@string/tt_long_term" />
+    <com.common.view.MyPreference
+        android:key="conv_consumers"
+        android:persistent="false"
+        android:title="@string/conv_consumers" />
+    <com.common.view.MyPreference
+        android:key="instant"
+        android:persistent="false"
+        android:title="@string/instant" />
+
+    
+    <com.common.view.MyPreference
+        android:key="speed"
+        android:persistent="false"
+        android:title="@string/speed" />
+    
+    <PreferenceCategory android:title="@string/service" >
+        <com.common.view.MyPreference
+            android:key="vi_days"
+            android:persistent="false"
+            android:title="@string/vi_days" />
+        <com.common.view.MyPreference
+            android:key="vi_distance"
+            android:persistent="false"
+            android:title="@string/vi_distance" />
+        <com.common.view.MyPreference
+            android:key="oil_days"
+            android:persistent="false"
+            android:title="@string/oil_days" />
+        <com.common.view.MyPreference
+            android:key="oil_change"
+            android:persistent="false"
+            android:title="@string/oil_change" />
+    </PreferenceCategory>
+
+    <Preference
+        android:key="vehicle"
+        android:persistent="false"
+        android:title="@string/vehicle" />
+
+</PreferenceScreen>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res-auto"
+    android:title="@string/controlset" >
+
+    <SwitchPreference
+        android:key="seat_courtesy"
+        android:persistent="false"
+        android:title="@string/seat_courtesy" />
+    <SwitchPreference
+        android:key="ambient_light"
+        android:persistent="false"
+        android:title="@string/ambient_light" />
+
+    <com.common.view.MyPreferenceSeekBar
+        android:key="ambient_light_brightness"
+        android:persistent="false"
+        android:title="@string/ambient_light_brightness"
+        vehicle:max="8"
+        vehicle:min="1"
+        vehicle:step="1" />
+
+    <SwitchPreference
+        android:key="flow_me_home"
+        android:persistent="false"
+        android:title="@string/flow_me_home" />
+
+    <com.common.view.MyPreferenceSeekBar
+        android:key="flow_me_home_times"
+        android:persistent="false"
+        android:title="@string/flow_me_home_times"
+        vehicle:max="280"
+        vehicle:min="20"
+        vehicle:step="20" />
+
+    <SwitchPreference
+        android:key="gac_settings_departure_waring"
+        android:persistent="false"
+        android:title="@string/gac_settings_departure_waring" />
+
+    <ListPreference
+        android:entries="@array/lock_sound_setting_entries"
+        android:entryValues="@array/enlamp_no_vaues"
+        android:key="headlight_height"
+        android:persistent="false"
+        android:title="@string/headlight_height" />
+    <!-- 环境照明 -->
+    <SwitchPreference
+        android:key="ambient_lighting"
+        android:persistent="false"
+        android:title="@string/ambient_lighting" />
+    <!-- 照明亮度 -->
+    <ListPreference
+        android:entries="@array/ambient_lighting_brightness_entries"
+        android:entryValues="@array/enenergy_vaues"
+        android:key="ambient_lighting_brightness"
+        android:persistent="false"
+        android:title="@string/ambient_lighting_brightness" />
+    <ListPreference
+        android:entries="@array/zotye_ambient_lighting_color_entries"
+        android:entryValues="@array/radarvol_entries"
+        android:key="ambient_lighting_color"
+        android:persistent="false"
+        android:title="@string/ambient_lighting_color" />
+    
+    <PreferenceCategory
+        android:key="original_car_sound_source"
+        android:title="@string/original_car_sound_source" >
+        <ListPreference
+            android:entries="@array/scbs_entries"
+            android:entryValues="@array/two_values"
+            android:key="original_car_cd_source_switch"
+            android:persistent="false"
+            android:title="@string/original_car_cd_source_switch" />
+
+        <PreferenceScreen
+            android:key="volume_plus"
+            android:persistent="false"
+            android:title="@string/volume_plus" />
+        <PreferenceScreen
+            android:key="volume_min"
+            android:persistent="false"
+            android:title="@string/volume_min" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+	 <PreferenceScreen
+        android:icon="@drawable/asr"
+        android:title="@string/lamp_setting" >
+        <ListPreference
+            android:entries="@array/dome_delay_entries"
+            android:entryValues="@array/enauto_lights_off2_vaues"
+            android:key="dome_delay"
+            android:persistent="false"
+            android:title="@string/dome_delay" />
+         <ListPreference
+            android:entries="@array/gwm_economize_on_electricity_entries"
+            android:entryValues="@array/enauto_lights_off_vaues"
+            android:key="saving_time"
+            android:persistent="false"
+            android:title="@string/saving_time" />
+    </PreferenceScreen>
+     <PreferenceScreen
+        android:icon="@drawable/asr"
+        android:title="@string/center_locking_settings" >
+        <SwitchPreference
+                android:key="str_speed_lock"
+                android:persistent="false"
+                android:title="@string/str_speed_lock" />
+        <SwitchPreference
+                android:key="the_automatic_lock"
+                android:persistent="false"
+                android:title="@string/the_automatic_lock" />
+        <ListPreference
+            android:entries="@array/saic_search_car_indicator_type_entries"
+            android:entryValues="@array/temperature_values"
+            android:key="remote_lock_feedback"
+            android:persistent="false"
+            android:title="@string/remote_lock_feedback" />
+        <ListPreference
+            android:entries="@array/remote_window_closing"
+            android:entryValues="@array/temperature_values"
+            android:key="remote_window_closing"
+            android:persistent="false"
+            android:title="@string/remote_window_closing" />
+          <SwitchPreference
+                android:key="rear_view"
+                android:persistent="false"
+                android:title="@string/rear_view" />
+    </PreferenceScreen>
+</PreferenceScreen>

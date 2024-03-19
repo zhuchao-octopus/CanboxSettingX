@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <SwitchPreference
+        android:key="outo_lock_mode"
+        android:persistent="false"
+        android:title="@string/outo_lock_mode" />
+    <SwitchPreference
+        android:key="back_wiper"
+        android:persistent="false"
+        android:title="@string/back_wiper" />
+
+</PreferenceScreen>

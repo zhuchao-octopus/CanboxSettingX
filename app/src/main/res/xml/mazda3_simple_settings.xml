@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/enouto_lock_mode_s"
+        android:entryValues="@array/enouto_lock_mode_vaues"
+        android:key="outo_lock_mode"
+        android:persistent="false"
+        android:title="@string/outo_lock_mode" />
+    <ListPreference
+        android:entries="@array/enlock_beep2_s"
+        android:entryValues="@array/enlock_beep2_vaues"
+        android:key="lock_beep"
+        android:persistent="false"
+        android:title="@string/lock_beep" />
+    <ListPreference
+        android:entries="@array/ensecurity"
+        android:entryValues="@array/ensecurity_vaues_s"
+        android:key="security"
+        android:persistent="false"
+        android:title="@string/security" />
+    <ListPreference
+        android:entries="@array/encar_unlocked"
+        android:entryValues="@array/encar_unlocked_vaues_s"
+        android:key="lock_mode"
+        android:persistent="false"
+        android:title="@string/lock_mode" />
+
+    <SwitchPreference
+        android:key="car_lock"
+        android:persistent="false"
+        android:title="@string/car_lock" />
+    <SwitchPreference
+        android:key="three_signal"
+        android:persistent="false"
+        android:title="@string/three_signal" />
+
+    <ListPreference
+        android:entries="@array/envoice_alarm"
+        android:entryValues="@array/envoice_alarm_vaues_s"
+        android:key="turn_volume"
+        android:persistent="false"
+        android:title="@string/turn_volume" />
+    <ListPreference
+        android:entries="@array/enauto_lights_off"
+        android:entryValues="@array/enauto_lights_off_vaues_s"
+        android:key="auto_lights_off2"
+        android:persistent="false"
+        android:title="@string/auto_lights_off" />
+    <ListPreference
+        android:entries="@array/enauto_lights_off2"
+        android:entryValues="@array/enauto_lights_off2_vaues_s"
+        android:key="auto_lights_off3"
+        android:persistent="false"
+        android:title="@string/auto_lights_off3" />
+    <ListPreference
+        android:entries="@array/encar_light_off"
+        android:entryValues="@array/encar_light_off_vaues_s"
+        android:key="car_light_off"
+        android:persistent="false"
+        android:title="@string/car_light_off" />
+
+</PreferenceScreen>

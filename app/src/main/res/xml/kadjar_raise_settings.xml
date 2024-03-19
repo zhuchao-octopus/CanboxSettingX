@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+    <SwitchPreference
+        android:key="front_parking"
+        android:persistent="false"
+        android:title="@string/front_parking" />
+    <SwitchPreference
+        android:key="back_parking"
+        android:persistent="false"
+        android:title="@string/back_parking" />
+    <SwitchPreference
+        android:key="air_loop"
+        android:persistent="false"
+        android:title="@string/air_loop" />
+    <SwitchPreference
+        android:key="car_start"
+        android:persistent="false"
+        android:title="@string/car_start" />
+
+    <ListPreference
+        android:entries="@array/enion_generator"
+        android:entryValues="@array/enion_generator_vaues"
+        android:key="ion_generator"
+        android:persistent="false"
+        android:title="@string/ion_generator" />
+
+    <SwitchPreference
+        android:key="indicator"
+        android:persistent="false"
+        android:title="@string/indicator" />
+    <SwitchPreference
+        android:key="wiper_back"
+        android:persistent="false"
+        android:title="@string/wiper_back" />
+    <SwitchPreference
+        android:key="auto_cabin"
+        android:persistent="false"
+        android:title="@string/auto_cabin" />
+    <SwitchPreference
+        android:key="external_welcome"
+        android:persistent="false"
+        android:title="@string/external_welcome" />
+    
+       <SwitchPreference
+        android:key="inside_light"
+        android:persistent="false"
+        android:title="@string/inside_light" />
+    <SwitchPreference
+        android:key="door_aut"
+        android:persistent="false"
+        android:title="@string/door_aut" />
+
+    <ListPreference
+        android:entries="@array/enprompt_volume"
+        android:entryValues="@array/enprompt_volume_vaues"
+        android:key="prompt_volume"
+        android:persistent="false"
+        android:title="@string/prompt_volume" />
+
+            <ListPreference
+        android:entries="@array/launage_entries4"
+        android:entryValues="@array/launage_entryValues4"
+        android:key="langauage"
+        android:persistent="false"
+        android:title="@string/langauage5" />
+            
+    <!-- <PreferenceScreen -->
+    <!-- android:key="user_reset" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/user_reset" /> -->
+    <ListPreference
+        android:entries="@array/eninstrument_color"
+        android:entryValues="@array/eninstrument_color_vaues"
+        android:key="instrument_color"
+        android:persistent="false"
+        android:title="@string/instrument_color" />
+    <ListPreference
+        android:entries="@array/eninstrument_style"
+        android:entryValues="@array/eninstrument_style_vaues"
+        android:key="instrument_style"
+        android:persistent="false"
+        android:title="@string/instrument_style" />
+    <ListPreference
+        android:entries="@array/instrument_light_value"
+        android:entryValues="@array/instrument_light_value"
+        android:key="instrument_light"
+        android:persistent="false"
+        android:title="@string/instrument_light" />
+
+<!--     <PreferenceScreen -->
+<!--         android:key="language_dialog" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/language_dialog" /> -->
+
+    <SwitchPreference
+        android:key="blind_zone"
+        android:persistent="false"
+        android:title="@string/blind_zone" />
+    <SwitchPreference
+        android:key="lateral_parking"
+        android:persistent="false"
+        android:title="@string/lateral_parking" />
+
+    <ListPreference
+        android:entries="@array/enparking_system"
+        android:entryValues="@array/enparking_system_vaues"
+        android:key="parking_system"
+        android:persistent="false"
+        android:title="@string/parking_system" />
+
+</PreferenceScreen>

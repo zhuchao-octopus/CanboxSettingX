@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.clw.vehicleinfos"
+    android:id="@+id/infos"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/toyaota_car_bk"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/page0"
+            android:layout_width="1024px"
+            android:layout_height="400px"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/baic_energy_background" >
+
+                <RelativeLayout
+                    android:layout_width="@dimen/baic_environmental_icon_view_width"
+                    android:layout_height="@dimen/baic_environmental_icon_view_height"
+                    android:layout_centerInParent="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/baic_energy_fragment_car" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/baic_energy_fragment_co2" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/baic_energy_fragment_leaf" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/baic_energy_fragment_tree" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true" >
+
+                    <TextView
+                        android:id="@id/km_tv"
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="180.0dip"
+                        android:layout_marginTop="58.0dip"
+                        android:text="@string/km" />
+
+                    <TextView
+                        android:id="@id/already_driving"
+                        style="@style/BaicEnvironmentalStyelDtv"
+                        android:layout_width="100.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="72.0dip"
+                        android:layout_marginTop="85px" />
+
+                    <TextView
+                        android:id="@id/already_driving_tv"
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="85.0dip"
+                        android:layout_marginTop="95.0dip"
+                        android:text="@string/already_driving" />
+
+                    <TextView
+                        android:id="@id/kg_tv"
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/km_tv"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="32.0dip"
+                        android:text="@string/kg" />
+
+                    <TextView
+                        android:id="@id/reduce_CO2_emissions"
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/already_driving_tv"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="60.0dip"
+                        android:text="@string/reduce_CO2_emissions" />
+
+                    <TextView
+                        android:id="@id/co2"
+                        style="@style/BaicEnvironmentalStyelDtv"
+                        android:layout_width="100.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/already_driving"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="70.0dip" />
+
+                    <TextView
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/already_driving_tv"
+                        android:layout_alignParentBottom="true"
+                        android:text="@string/environmental_grade" />
+
+                    <TextView
+                        android:id="@id/environmental_grade"
+                        style="@style/BaicEnvironmentalStyelDtv"
+                        android:layout_width="100.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/already_driving"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="54.0dip" />
+
+                    <TextView
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/environmental_grade"
+                        android:layout_alignLeft="@id/kg_tv"
+                        android:text="@string/tree" />
+
+                    <TextView
+                        style="@style/BaicEnvironmentalStyelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/reduce_CO2_emissions"
+                        android:layout_alignParentBottom="true"
+                        android:text="@string/equivalent_to_planting" />
+
+                    <TextView
+                        android:id="@id/tree"
+                        style="@style/BaicEnvironmentalStyelDtv"
+                        android:layout_width="100.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/environmental_grade"
+                        android:layout_alignLeft="@id/co2" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/page1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/vehicle_status" />
+
+                <TextView
+                    android:id="@+id/vehicle_status"
+                    style="@style/CarInfoTextView2"
+                    android:background="#44444444" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    android:id="@+id/gs4_energy_recovery_title"
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/gs4_energy_recovery" />
+
+                <TextView
+                    android:id="@+id/gs4_energy_recovery"
+                    style="@style/CarInfoTextView2"
+                    android:background="#44444444" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <LinearLayout
+                    android:id="@+id/warning_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/warning_msg"
+                        style="@style/CommonButtonStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0px"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:textColor="#ff0000"
+                        android:textSize="46px" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0px"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <Button
+                            android:id="@+id/warning_cancel"
+                            android:layout_width="140px"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:onClick="onClick"
+                            android:text="@string/cancel"
+                            android:textSize="24px" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/baic_car" >
+                    </ImageView>
+
+                    <SeekBar
+                        android:id="@+id/enag"
+                        android:layout_width="116px"
+                        android:layout_height="54px"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/baic_energy"
+                        android:max="10"
+                        android:paddingBottom="5px"
+                        android:paddingLeft="5px"
+                        android:paddingRight="15px"
+                        android:paddingTop="5px"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/seekbar"
+                        android:scaleType="centerInside"
+                        android:thumb="@null" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/page2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingBottom="5px"
+                android:paddingLeft="80px"
+                android:paddingRight="80px"
+                android:paddingTop="5px" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="360px" >
+
+                    <com.car.view.LineGraphicView
+                        android:id="@+id/line_graphic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20px"
+                        android:layout_marginLeft="40px"
+                        android:layout_marginBottom="50px" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="20px"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:paddingLeft="40px" >
+
+                        <TextView
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="20"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="40"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="60"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="80"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="100"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100px"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="10px" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="@string/degree_100_km"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+                        
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:text="50"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:text="40"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:text="30"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:text="20"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:text="10"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="18px" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#88888888" >
+    </View>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/charging_settings"
+            style="@style/CommonButtonStyle"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/environmental_contribution"
+            android:textSize="24px" >
+        </TextView>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#88888888" >
+        </View>
+
+        <TextView
+            android:id="@+id/energy_information"
+            style="@style/CommonButtonStyle"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/flow_of_energy"
+            android:textSize="24px" >
+        </TextView>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#88888888" >
+        </View>
+
+        <TextView
+            android:id="@+id/energy_statistics"
+            style="@style/CommonButtonStyle"
+            android:layout_width="0px"
+            android:visibility="gone"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/energy_statistics"
+            android:textSize="24px" >
+        </TextView>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#88888888" >
+        </View>
+    </LinearLayout>
+
+</LinearLayout>

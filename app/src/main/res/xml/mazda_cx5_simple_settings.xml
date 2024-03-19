@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/autodoorlockmode14_entries"
+        android:entryValues="@array/autodoorlockmode14_entryValues"
+        android:key="autodoorlockmode"
+        android:persistent="false"
+        android:title="@string/autodoorlockmode14" />
+    <ListPreference
+        android:entries="@array/unlockmode14_entries"
+        android:entryValues="@array/unlockmode14_entryValues"
+        android:key="unlockmode"
+        android:persistent="false"
+        android:title="@string/unlockmode14" />
+    <ListPreference
+        android:entries="@array/autorelocktime14_entries"
+        android:entryValues="@array/autorelocktime14_entryValues"
+        android:key="autorelocktime"
+        android:persistent="false"
+        android:title="@string/autorelocktime14" />
+    <ListPreference
+        android:entries="@array/lockbeepvol14_entries"
+        android:entryValues="@array/lockbeepvol14_entryValues"
+        android:key="lockbeepvol"
+        android:persistent="false"
+        android:title="@string/lockbeepvol14" />
+
+    <SwitchPreference
+        android:key="walkalwaylock"
+        android:persistent="false"
+        android:title="@string/walkalwaylock14" />
+
+    <ListPreference
+        android:entries="@array/inlighttimedooroutopen14_entries"
+        android:entryValues="@array/inlighttimedooroutopen14_entryValues"
+        android:key="opendoortime"
+        android:persistent="false"
+        android:title="@string/opendoortime14" />
+    <ListPreference
+        android:entries="@array/inlighttimedooroutclose14_entries"
+        android:entryValues="@array/inlighttimedooroutclose14_entryValues"
+        android:key="closedoortime"
+        android:persistent="false"
+        android:title="@string/closedoortime14" />
+
+    <SwitchPreference
+        android:key="flashturnsigal"
+        android:persistent="false"
+        android:title="@string/flashturnsigal14" />
+
+    <ListPreference
+        android:entries="@array/headlightofftime14_entries"
+        android:entryValues="@array/headlightofftime14_entryValues"
+        android:key="headlightofftime"
+        android:persistent="false"
+        android:title="@string/headlightofftime14" />
+    <ListPreference
+        android:entries="@array/autoheadlighton14_entries"
+        android:entryValues="@array/autoheadlighton14_entryValues"
+        android:key="autoheadlighton"
+        android:persistent="false"
+        android:title="@string/autoheadlighton14" />
+
+    <SwitchPreference
+        android:key="wipers"
+        android:persistent="false"
+        android:title="@string/wipers14" />
+
+<!--     <ListPreference -->
+<!--         android:entries="@array/Language14_entries" -->
+<!--         android:entryValues="@array/language14_entryValues" -->
+<!--         android:key="langauage" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/langauage14" /> -->
+
+</PreferenceScreen>

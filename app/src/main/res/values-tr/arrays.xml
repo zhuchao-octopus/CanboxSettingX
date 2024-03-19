@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="enwarning_control">
+        <item>"Kapalı"</item>
+        <item>"Yavaş"</item>
+        <item>"Orta"</item>
+        <item>"Hızlı"</item>
+        <item>"Otomatik"</item>
+    </string-array>
+    <string-array name="enturn_lights_sets_set">
+        <item>"Bir"</item>
+        <item>"Üç"</item>
+    </string-array>
+    <string-array name="enremote_start_air">
+        <item>"Manuel"</item>
+        <item>"Otomatik"</item>
+    </string-array>
+    <string-array name="enlfRight">
+        <item>"Sol"</item>
+        <item>"Sağ"</item>
+    </string-array>
+    <string-array name="enadaptive">
+        <item>"Köşe ve viraj aydınlatması"</item>
+        <item>"Akıllı Işık Dağıtımı"</item>
+    </string-array>
+    <string-array name="smartdoorlock_entries">
+        <item>"Tüm kapılar"</item>
+        <item>"Sürücü kapısı"</item>
+    </string-array>
+    <string-array name="radarrange_entries">
+        <item>"Uzak"</item>
+        <item>"Yakın"</item>
+    </string-array>
+    <string-array name="autodoorlockmode14_entries">
+        <item>"Kapat"</item>
+        <item>"Araba sürerken kilitle"</item>
+        <item>"Kilit: sürüş Kilit açma: IGN kapalı"</item>
+        <item>"P'den kaydırırken kilitle"</item>
+        <item>"Kilit: P'den kaydırma Kilit açma: P'de"</item>
+    </string-array>
+    <string-array name="unlockmode14_entries">
+        <item>"Bir kez dokunun; Tüm kapılar"</item>
+        <item>"Bir kez: sürücü; İki kere: Tüm kapılar"</item>
+    </string-array>
+    <string-array name="lockbeepvol14_entries">
+        <item>"Yüksek"</item>
+        <item>"Orta"</item>
+        <item>"Düşük"</item>
+        <item>"Kapalı"</item>
+    </string-array>
+    <string-array name="autoheadlighton14_entries">
+        <item>"Aydınlatma"</item>
+        <item>"Orta aydınlatma"</item>
+        <item>"Orta"</item>
+        <item>"Orta  koyu"</item>
+        <item>"Karanlık"</item>
+    </string-array>
+    <string-array name="Language14_entries">
+        <item>"İngilizce (US)"</item>
+        <item>"Fransızca"</item>
+        <item>"İspanyolca"</item>
+        <item>"Navigasyon sesli komut"</item>
+        <item>"Ses/Telefon sesli komut"</item>
+    </string-array>
+    <string-array name="automodewindlevel_entries">
+        <item>"Düşük"</item>
+        <item>"Orta"</item>
+        <item>"Yüksek"</item>
+    </string-array>
+    <string-array name="airqualitysensor_entry">
+        <item>"Kapalı"</item>
+        <item>"Düşük hassasiyet"</item>
+        <item>"Yüksek"</item>
+    </string-array>
+    <string-array name="airpartition_entries">
+        <item>"Birleştirilmiş ayarlar"</item>
+        <item>"Bölgesel ayarlar"</item>
+        <item>"Son ayarlar"</item>
+    </string-array>
+    <string-array name="parkunlock_entries">
+        <item>"Kapalı"</item>
+        <item>"Sürücü kapısı"</item>
+        <item>"Tüm kapılar"</item>
+    </string-array>
+    <string-array name="remotelock5_entries">
+        <item>"Sadece ışık"</item>
+        <item>"Işık ve ses"</item>
+        <item>"Sadece ses"</item>
+        <item>"Kapalı"</item>
+    </string-array>
+    <string-array name="remotedoorunlock_entries">
+        <item>"Sürücü kapısı"</item>
+        <item>"Tüm kapılar"</item>
+    </string-array>
+    <string-array name="turnontime_entries">
+        <item>"Erken"</item>
+        <item>"Orta"</item>
+        <item>"Geç"</item>
+    </string-array>
+    <string-array name="centrallock_entries">
+        <item>"Araç"</item>
+        <item>"Tek kapı"</item>
+        <item>"Tüm kapılar"</item>
+    </string-array>
+    <string-array name="windowsopen_entries">
+        <item>"Kapalı"</item>
+        <item>"Sürücü penceresi"</item>
+        <item>"Tüm pencereler"</item>
+    </string-array>
+    <string-array name="accrdriveprogram_entries">
+        <item>"Normal"</item>
+        <item>"Sport"</item>
+        <item>"Eco"</item>
+    </string-array>
+    <string-array name="travlemode_entries">
+        <item>"Sağdan  sürüş"</item>
+        <item>"Soldan sürüş"</item>
+    </string-array>
+    <string-array name="accvehicle_entries">
+        <item>"Çok yakın"</item>
+        <item>"Yakın"</item>
+        <item>"Mesafeli"</item>
+        <item>"Uzak"</item>
+        <item>"Çok uzak"</item>
+    </string-array>
+    <string-array name="open_close">
+        <item>"Kapat"</item>
+        <item>"Aç"</item>
+    </string-array>
+    <string-array name="automatic">
+        <item>"Kapalı"</item>
+        <item>"Yalnızca P Sürücü Kapısına Kaydırılarak Otomatik Kilit Açma"</item>
+        <item>"Tüm Kapılara Geçiş Yaparak Otomatik Kilit Açma"</item>
+    </string-array>
+    <string-array name="auto_hand">
+        <item>"KAPALI"</item>
+        <item>"Sadece Anahtar Sürücü Kapısının Çıkarılmasıyla Otomatik Kilit Açma"</item>
+        <item>"Otomatik kilit açma ile  Tüm Kapıları Kaldır"</item>
+    </string-array>
+    <string-array name="en_remote_lock">
+        <item>"Sadece ışıklar"</item>
+        <item>"Işıklar ve Korna"</item>
+        <item>"Sadece Horn"</item>
+        <item>"KAPALI"</item>
+    </string-array>
+    <string-array name="remote_lock">
+        <item>"Sadece ışıklar"</item>
+        <item>"Işıklar ve Korna"</item>
+        <item>"Sadece Horn"</item>
+        <item>"KAPALI"</item>
+    </string-array>
+    <string-array name="remote_unlock">
+        <item>"Tüm kapılar"</item>
+        <item>"Korna Bip"</item>
+    </string-array>
+    <string-array name="enIntelligence_car">
+        <item>"KAPALI"</item>
+        <item>"AÇIK"</item>
+        <item>"Korna Bip"</item>
+    </string-array>
+    <string-array name="ensliding_door">
+        <item>"Tüm Kapıların Kilidini Aç"</item>
+        <item>"Sürgülü Kapıların Kilidini Aç"</item>
+    </string-array>
+    <string-array name="entrailer">
+        <item>"KAPALI"</item>
+        <item>"AÇIK"</item>
+        <item>"Treyler Ofseti"</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm">
+        <item>"Alarm Uyarısı"</item>
+        <item>"Koltuklar"</item>
+    </string-array>
+    <string-array name="enair_register">
+        <item>"Düşük"</item>
+        <item>"Orta"</item>
+        <item>"Yüksek"</item>
+    </string-array>
+    <string-array name="enair_onoff">
+        <item>"KAPALI"</item>
+        <item>"AÇIK"</item>
+        <item>"Son ayar"</item>
+    </string-array>
+    <string-array name="enair_quality">
+        <item>"Düşük Hassasiyet"</item>
+        <item>"Yüksek hassasiyet"</item>
+    </string-array>
+    <string-array name="enautomatic">
+        <item>"Tek bölge"</item>
+        <item>"Çift bölge"</item>
+        <item>"Son ayar"</item>
+    </string-array>
+    <string-array name="enback_temperature">
+        <item>"KAPALI"</item>
+        <item>"Arka Mimik Ön"</item>
+        <item>"Son ayar"</item>
+    </string-array>
+    <string-array name="enrear_window">
+        <item>"Manuel"</item>
+        <item>"Otomatik"</item>
+    </string-array>
+    <string-array name="enair_quality_air">
+        <item>"Düşük Hassasiyet"</item>
+        <item>"Yüksek hassasiyet"</item>
+    </string-array>
+    <string-array name="ento_turn_to">
+        <item>"KAPALI"</item>
+        <item>"Büzülme"</item>
+        <item>"Destekleme"</item>
+        <item>"Çekme ve Tanıtma"</item>
+    </string-array>
+    <string-array name="enspeed_display">
+        <item>"Tam"</item>
+        <item>"Kısmi"</item>
+    </string-array>
+    <string-array name="enengine_state">
+        <item>"Hızlı"</item>
+        <item>"Normal"</item>
+    </string-array>
+    <string-array name="enignition_conditions">
+        <item>"Kontak kapalı"</item>
+        <item>"Kontak"</item>
+        <item>"Kontak açık"</item>
+        <item>"Ateşleme"</item>
+        <item>"Geçersiz"</item>
+    </string-array>
+    <string-array name="enautomatic_latch">
+        <item>"Kapalı"</item>
+        <item>"Açık"</item>
+        <item>"Hoparlör"</item>
+    </string-array>
+    <string-array name="encar_unlocked">
+        <item>"Tüm kapılar"</item>
+        <item>"Sürücü kapısı"</item>
+    </string-array>
+    <string-array name="open_close47">
+        <item>"Açık"</item>
+        <item>"Kapalı"</item>
+    </string-array>
+    <string-array name="enall">
+        <item>"Sürücü kapısı"</item>
+        <item>"Tüm kapılar"</item>
+    </string-array>
+    <string-array name="enwiper">
+        <item>"Dış"</item>
+        <item>"İç"</item>
+    </string-array>
+    <string-array name="enauto_cmd">
+        <item>"Zayıf"</item>
+        <item>"Normal"</item>
+        <item>"Güçlü"</item>
+    </string-array>
+    <string-array name="ensound">
+        <item>"Klasik Ses"</item>
+        <item>"Kristal Ses"</item>
+        <item>"Kentin ritmi"</item>
+        <item>"Orman Fantezisi"</item>
+    </string-array>
+    <string-array name="ensetdoor">
+        <item>"Kapı"</item>
+        <item>"Tüm kapılar"</item>
+    </string-array>
+    <string-array name="enari_mode">
+        <item>"KAPALI"</item>
+        <item>"AÇIK"</item>
+        <item>"Son ayar"</item>
+    </string-array>
+    <string-array name="enremote_seat">
+        <item>"KAPALI"</item>
+        <item>"AÇIK"</item>
+    </string-array>
+    <string-array name="enauto_collision">
+        <item>"KAPALI"</item>
+        <item>"Polisi ara"</item>
+        <item>"Alarm ve otomatik"</item>
+    </string-array>
+    <string-array name="enparking_mode">
+        <item>"Gösterme"</item>
+        <item>"Arka saklama yeri"</item>
+        <item>"Sokak park yeri"</item>
+    </string-array>
+    <string-array name="endistance">
+        <item>"Çok yakın"</item>
+        <item>"Kapat"</item>
+        <item>"Orta"</item>
+        <item>"uzak"</item>
+        <item>"Çok uzak"</item>
+    </string-array>
+    <string-array name="enrunning">
+        <item>"ekonomi"</item>
+        <item>"Standart"</item>
+        <item>"Hareket"</item>
+    </string-array>
+    <string-array name="enconnect_time">
+        <item>"erken"</item>
+        <item>"Orta"</item>
+        <item>"Geç"</item>
+    </string-array>
+    <string-array name="entravel_pattern">
+        <item>"Ayrıldı"</item>
+        <item>"Sağ"</item>
+    </string-array>
+    <string-array name="enconvenient_open">
+        <item>"Tüm pencere"</item>
+        <item>"sürücü penceresi"</item>
+        <item>"KAPALI"</item>
+    </string-array>
+    <string-array name="endoor_unlock">
+        <item>"tüm kapılar"</item>
+        <item>"tek kapı"</item>
+        <item>"araç tarafı"</item>
+    </string-array>
+    <string-array name="ensetdoor1">
+        <item>"tüm kapılar"</item>
+        <item>"Sürücü kapı"</item>
+    </string-array>
+    <string-array name="enari_comfortable">
+        <item>"Yavaş"</item>
+        <item>"Normal"</item>
+        <item>"Hızlı"</item>
+    </string-array>
+    <string-array name="enrear_window1">
+        <item>"Oto"</item>
+        <item>"el ile"</item>
+    </string-array>
+    <string-array name="ensteering_mode">
+        <item>"Hareket"</item>
+        <item>"Standart"</item>
+        <item>"Rahat"</item>
+    </string-array>
+    <string-array name="enremote_unlock">
+        <item>"Tüm kapılar"</item>
+        <item>"Sol kapı"</item>
+    </string-array>
+    <string-array name="enmyhome">
+        <item>"KAPALI"</item>
+        <item>"Yakındaysa  sadece ışık"</item>
+        <item>"Arka sis"</item>
+    </string-array>
+    <string-array name="enturn_lights_set">
+        <item>"Bir kez yansın"</item>
+        <item>"Üç yanıp sönsün"</item>
+    </string-array>
+    <string-array name="enparksense">
+        <item>"Ses"</item>
+        <item>"Ses + Gösteri"</item>
+    </string-array>
+    <string-array name="enunit_set">
+        <item>"Metrik sistemi"</item>
+        <item>"Amerikan"</item>
+    </string-array>
+    <string-array name="enlane_warning">
+        <item>"Erken"</item>
+        <item>"Zamanında"</item>
+        <item>"Geç"</item>
+    </string-array>
+    <string-array name="endis_suspension">
+        <item>"Hepsi"</item>
+        <item>"Uyarı"</item>
+    </string-array>
+    <string-array name="enbusy_warning">
+        <item>"KAPALI"</item>
+        <item>"Far"</item>
+        <item>"Alarm ışıkları +"</item>
+    </string-array>
+    <string-array name="enfor_warning">
+        <item>"Yakın"</item>
+        <item>"Uzak"</item>
+    </string-array>
+    <string-array name="enoutseat_heating">
+        <item>"KAPALI"</item>
+        <item>"Uzaktan"</item>
+        <item>"Hepsi"</item>
+    </string-array>
+    <string-array name="entrip">
+        <item>"Yakıt ikmali yapın"</item>
+        <item>"Kontak kapat"</item>
+        <item>"Manuel"</item>
+    </string-array>
+    <string-array name="enauto_light">
+        <item>"En az"</item>
+        <item>"Düşük"</item>
+        <item>"Orta"</item>
+        <item>"Yüksek"</item>
+        <item>"En fazla"</item>
+    </string-array>
+    <string-array name="enlock_with">
+        <item>"araç hızı"</item>
+        <item>"P'den kayma"</item>
+        <item>"KAPALI"</item>
+    </string-array>
+    <string-array name="enunlock_with">
+        <item>"SÜRÜCÜ'NÜN KAPISI AÇILIR"</item>
+        <item>"PARK'A DEĞİŞTİRİLDİ"</item>
+        <item>"Ateşleme kapalı"</item>
+        <item>"KAPALI"</item>
+    </string-array>
+    <string-array name="enscreen1">
+        <item>"Kehribar"</item>
+        <item>"Kırmızı"</item>
+        <item>"Menekşe"</item>
+        <item>"Mavi"</item>
+    </string-array>
+    <string-array name="enscreen2">
+        <item>"Normal"</item>
+        <item>"Karartma"</item>
+        <item>"Quartz"</item>
+    </string-array>
+    <string-array name="enauto_avoidance">
+        <item>"KAPALI"</item>
+        <item>"Alarm"</item>
+        <item>"Alarmlar ve fren"</item>
+    </string-array>
+    <string-array name="enion_generator">
+        <item>"KAPALI"</item>
+        <item>"Pozitif iyonlar"</item>
+        <item>"Anyon"</item>
+    </string-array>
+    <string-array name="enprompt_volume">
+        <item>"Seviye 1"</item>
+        <item>"Seviye 2"</item>
+        <item>"3. seviye"</item>
+    </string-array>
+    <string-array name="eninstrument_color">
+        <item>"Yeşil"</item>
+        <item>"Kırmızı"</item>
+        <item>"Mavi"</item>
+        <item>"Mor"</item>
+        <item>"Turuncu"</item>
+    </string-array>
+    <string-array name="eninstrument_style">
+        <item>"stil 1"</item>
+        <item>"stil 2"</item>
+        <item>"stil 3"</item>
+        <item>"stil 4"</item>
+    </string-array>
+    <string-array name="enparking_system">
+        <item>"Geçersiz"</item>
+        <item>"Yan"</item>
+        <item>"Dik açı"</item>
+        <item>"Eğik"</item>
+    </string-array>
+    <string-array name="enalarm_vol">
+        <item>"Yüksek"</item>
+        <item>"Orta"</item>
+        <item>"Düşük"</item>
+    </string-array>
+    <string-array name="envoice_alarm">
+        <item>"Düşük"</item>
+        <item>"Yüksek"</item>
+    </string-array>
+    <string-array name="endanger_ahead">
+        <item>"Uzak"</item>
+        <item>"Orta"</item>
+        <item>"Yakın"</item>
+    </string-array>
+    <string-array name="endeviate">
+        <item>"Orta"</item>
+        <item>"Geniş"</item>
+        <item>"Sadece uyarılar"</item>
+    </string-array>
+    <string-array name="enindividual_steering">
+        <item>"Normal"</item>
+        <item>"Spor"</item>
+    </string-array>
+    <string-array name="enindividual_engine">
+        <item>"Normal"</item>
+        <item>"Spor"</item>
+        <item>"ECO"</item>
+    </string-array>
+    <string-array name="enindividual_climate">
+        <item>"Normal"</item>
+        <item>"ECO"</item>
+    </string-array>
+    <string-array name="enlock_beep">
+        <item>"Tekrar basın"</item>
+        <item>"İlk basın"</item>
+        <item>"Kapalı"</item>
+    </string-array>
+    <string-array name="entrailer_m">
+        <item>"Treyler 1"</item>
+        <item>"Treyler 2"</item>
+        <item>"Treyler 3"</item>
+        <item>"Treyler 4"</item>
+    </string-array>
+    <string-array name="entrailer_type">
+        <item>"Hafif Elektrik"</item>
+        <item>"Ağır elektrik"</item>
+        <item>"Hidrolik Üzeri Hafif Elektrik"</item>
+        <item>"Hidrolik Üzeri Ağır Elektrik"</item>
+    </string-array>
+    <string-array name="ensetting_color">
+        <item>"Temiz mavi"</item>
+        <item>"Temiz turkuaz"</item>
+        <item>"Derin turuncu"</item>
+        <item>"Parlak turuncu"</item>
+    </string-array>
+    <string-array name="enback_camera_path">
+        <item>"Dinamik yörünge"</item>
+        <item>"Statik yörünge"</item>
+        <item>"Uyarı hattı"</item>
+    </string-array>
+    <string-array name="enramp">
+        <item>"Standart"</item>
+        <item>"Gelişmiş"</item>
+    </string-array>
+    <string-array name="enfort_tips">
+        <item>"Hoparlörler"</item>
+        <item>"ışıklar"</item>
+        <item>"Işıklar ve hoparlörler"</item>
+    </string-array>
+    <string-array name="encar_line">
+        <item>"KAPALI"</item>
+        <item>"Statik"</item>
+        <item>"Statik + dinamik"</item>
+    </string-array>
+    <string-array name="enrear_door">
+        <item>"Bagaj kapısı"</item>
+        <item>"Bagaj kapıları + kapılar"</item>
+    </string-array>
+    <string-array name="enparking_mode1">
+        <item>"Sıradan"</item>
+        <item>"Paralel"</item>
+        <item>"Kapalı"</item>
+        <item>"Geçersiz"</item>
+    </string-array>
+    <string-array name="enlock_beep1">
+        <item>"KAPALI"</item>
+        <item>"İlk basın"</item>
+        <item>"Tekrar basın"</item>
+    </string-array>
+    <string-array name="air_con_profile_entries">
+        <item>"Hafif"</item>
+        <item>"Orta"</item>
+        <item>"Kuvvetli"</item>
+    </string-array>
+    <string-array name="reverse_mode">
+        <item>"Dikey mod"</item>
+        <item>"Yan mod"</item>
+        <item>"İleri bakış modu"</item>
+        <item>"Dar Şerit modu"</item>
+    </string-array>
+    <string-array name="ambient_lighting_tones">
+        <item>"KAPALI"</item>
+        <item>"Sıcak beyaz"</item>
+        <item>"Yeşil"</item>
+        <item>"Mavi"</item>
+        <item>"Beyaz"</item>
+    </string-array>
+    <string-array name="psa_simple_16">
+        <item>"Mavi"</item>
+        <item>"Kahverengi"</item>
+    </string-array>
+    <string-array name="psa_simple_17">
+        <item>"Trafik bilgisayarı bilgisi / Motor devri"</item>
+        <item>"Trafik bilgisayarı bilgisi / Yağ sıcaklığı"</item>
+        <item>"Motor hızı / sürüş bilgisayarı"</item>
+        <item>"Motor devri / Yağ sıcaklığı"</item>
+        <item>"Yağ sıcaklığı / Trafik bilgisayarı bilgisi"</item>
+        <item>"Yağ sıcaklığı / Motor hızı"</item>
+    </string-array>
+    <string-array name="array_driver_attention_monitor">
+        <item>"KAPALI"</item>
+        <item>"Görsel alarm"</item>
+        <item>"Dokunsal ve görsel uyarılar"</item>
+    </string-array>
+    <string-array name="array_remote_control_open_condition">
+        <item>"İstediğin zaman"</item>
+        <item>"Kilit açtıktan sonra"</item>
+    </string-array>
+    <string-array name="car_type_cmd_mitsubishi">
+        <item>"Tip 1"</item>
+        <item>"Tip 2"</item>
+    </string-array>
+    <string-array name="enalarm_mode">
+        <item>"ışıklar"</item>
+        <item>"Hoparlörler"</item>
+        <item>"Işıklar ve hoparlörler"</item>
+    </string-array>
+    <string-array name="enlock_beep2">
+        <item>"KAPALI"</item>
+        <item>"Düşük"</item>
+        <item>"Orta"</item>
+        <item>"Yüksek"</item>
+    </string-array>
+    <string-array name="enouto_lock_mode">
+        <item>"KAPALI"</item>
+        <item>"Seyahat ederken"</item>
+        <item>"Mod 1"</item>
+        <item>"Mod 2"</item>
+        <item>"Park etmeyi bırak"</item>
+    </string-array>
+    <string-array name="encar_light_off">
+        <item>"KAPALI"</item>
+        <item>"Düşük"</item>
+        <item>"Yüksek"</item>
+    </string-array>
+    <string-array name="endriver_monitor">
+        <item>"kapalı"</item>
+        <item>"Görsel uyarı"</item>
+        <item>"Dokunsal ve görsel uyarılar"</item>
+    </string-array>
+    <string-array name="enremote_setting">
+        <item>"İstediğin zaman"</item>
+        <item>"Kilit açtıktan sonra"</item>
+    </string-array>
+    <string-array name="eninstrument_color2">
+        <item>"Stil 1"</item>
+        <item>"Tarzı 2"</item>
+    </string-array>
+    <string-array name="eninstrument_style2">
+        <item>"Stil 1"</item>
+        <item>"Tarzı 2"</item>
+        <item>"Stil 3"</item>
+        <item>"Tarzı 4"</item>
+        <item>"Tarzı 5"</item>
+    </string-array>
+    <string-array name="enattention">
+        <item>"KAPALI"</item>
+        <item>"Görsel uyarı"</item>
+        <item>"Dokunsal ve görsel uyarılar"</item>
+    </string-array>
+    <string-array name="enactionstate">
+        <item>"KAPALI"</item>
+        <item>"Aktive"</item>
+        <item>"ESC"</item>
+    </string-array>
+    <string-array name="endoor_lock">
+        <item>"KAPALI"</item>
+        <item>"P kayması ile"</item>
+        <item>"Hız"</item>
+    </string-array>
+    <string-array name="endoor_unlock1">
+        <item>"KAPALI"</item>
+        <item>"Sürücü kapısından"</item>
+        <item>"P'ye geçerek"</item>
+    </string-array>
+    <string-array name="enconvenience">
+        <item>"KAPALI"</item>
+        <item>"Dururken açık"</item>
+        <item>"AÇIK"</item>
+    </string-array>
+    <string-array name="enfor_outo_warning">
+        <item>"KAPALI"</item>
+        <item>"Sadece fren"</item>
+        <item>"Sadece alarm"</item>
+        <item>"Alarm ve fren"</item>
+    </string-array>
+</resources>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/original_vehicle_margin_left"
+    android:paddingRight="@dimen/original_vehicle_margin_left" >
+
+    <LinearLayout
+        android:id="@id/line1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:id="@id/two"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/dynamical_fuel"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/dynamical_fuel"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/three"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/average_fuel"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/average_fuel"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/four"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/total_mileage"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/total_mileage"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <Space
+            android:id="@id/space"
+            android:layout_width="10.0dip"
+            android:layout_height="@dimen/original_vehicle_normal_interval" />
+
+        <LinearLayout
+            android:id="@id/air_exterior_temp_layout"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/estimate_range"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/estimate_range"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="10.0dip"
+        android:layout_height="@dimen/original_vehicle_normal_interval" />
+
+    <LinearLayout
+        android:id="@id/line2"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="2.0" >
+
+        <LinearLayout
+            android:id="@id/six"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_1_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_1_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/senvn"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_2_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_2_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/eight"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_3_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_3_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/nine"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_4_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_4_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/ten"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_5_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_5_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="10.0dip"
+        android:layout_height="@dimen/original_vehicle_normal_interval" />
+
+    <LinearLayout
+        android:id="@id/line3"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="2.0" >
+
+        <LinearLayout
+            android:id="@id/tenone"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_6_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_6_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/tentwo"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_7_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_7_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/tenthree"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_8_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_8_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/threefour"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_9_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_9_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/tenfive"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/air_button_back2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/gm_vehicle_infos_item_padding" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/historical_10_average_fuel_consumption"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@id/historical_10_average_fuel_consumption"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include layout="@layout/aux_player" />
+
+    <LinearLayout
+        android:id="@+id/dvd_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#cc000000"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/home"
+                style="@style/ButtonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/radio_left_home"
+                android:tag="80" />
+
+            <ImageView
+                android:id="@+id/navi"
+                style="@style/ButtonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/navi"
+                android:tag="20" />
+
+            <ImageView
+                android:id="@+id/bt"
+                style="@style/ButtonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/bt"
+                android:tag="27" />
+
+            <ImageView
+                android:id="@+id/radio"
+                style="@style/ButtonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/radio"
+                android:tag="7" />
+
+            <ImageView
+                android:id="@+id/music"
+                style="@style/ButtonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/music"
+                android:tag="97" />
+
+            <ImageView
+                android:id="@+id/back"
+                style="@style/ButtonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:scaleType="center"
+                android:src="@drawable/radio_left_back"
+                android:tag="6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="5"
+                android:gravity="center" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:background="#cc000000"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/pre"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/prev"
+                    android:tag="2" />
+
+                <ImageView
+                    android:id="@+id/next"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/next"
+                    android:tag="3" />
+
+                <TextView
+                    android:id="@+id/key_vol_a"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:tag="23"
+                    android:text="@string/key_vol_a"
+                    android:textSize="22px" />
+
+                <TextView
+                    android:id="@+id/key_vol_m"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:tag="24"
+                    android:text="@string/key_vol_m"
+                    android:textSize="22px" />
+
+                <TextView
+                    android:id="@+id/key_sel_a"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:tag="25"
+                    android:text="@string/key_sel_a"
+                    android:textSize="22px" />
+
+                <TextView
+                    android:id="@+id/key_sel_m"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:tag="26"
+                    android:text="@string/key_sel_m"
+                    android:textSize="22px" />
+
+                <TextView
+                    android:id="@+id/ok"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:tag="8"
+                    android:text="@android:string/ok"
+                    android:textSize="22px" />
+
+                <ImageView
+                    android:id="@+id/power"
+                    style="@style/ButtonStyle1"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_power"
+                    android:tag="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

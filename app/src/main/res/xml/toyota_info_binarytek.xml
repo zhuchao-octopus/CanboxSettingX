@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+	<PreferenceScreen
+        android:key="carbodyinfo"
+        android:title="@string/carbodyinfo" >
+        <com.common.view.MyPreference
+            android:key="am_runningspeed"
+            android:persistent="false"
+            android:title="@string/am_runningspeed" />
+        <com.common.view.MyPreference
+            android:key="engine_speed55"
+            android:persistent="false"
+            android:title="@string/engine_speed55" />
+    </PreferenceScreen>
+    
+    <PreferenceScreen
+        android:key="fuelinfo"
+        android:title="@string/fuelinfo" >
+        <com.common.view.MyPreference
+            android:key="averagespeed"
+            android:persistent="false"
+            android:title="@string/averagespeed" />
+        <com.common.view.MyPreference
+            android:key="traveltime"
+            android:persistent="false"
+            android:title="@string/traveltime" />
+        <com.common.view.MyPreference
+            android:key="mileage"
+            android:persistent="false"
+            android:title="@string/mileage" />
+            
+        <com.common.view.MyPreference
+            android:key="instant"
+            android:persistent="false"
+            android:title="@string/instant" />
+        <com.common.view.MyPreference
+            android:key="historyfuel"
+            android:persistent="false"
+            android:title="@string/historyfuel" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="tpms"
+        android:title="@string/tireinfo" >
+        <com.common.view.MyPreference2
+            android:key="tpms_content"
+            android:layout="@layout/type_info2" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="hybrid"
+        android:title="@string/hybrid" >
+        <com.common.view.MyPreference2
+            android:key="hybrid_content"
+            android:layout="@layout/toyota_battery" />
+    </PreferenceScreen>
+
+</PreferenceScreen>

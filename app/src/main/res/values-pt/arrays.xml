@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="enwarning_control">
+        <item>"Fechadas"</item>
+        <item>"Lento"</item>
+        <item>"Meio"</item>
+        <item>"Rápido"</item>
+        <item>"Auto"</item>
+    </string-array>
+    <string-array name="enturn_lights_sets_set">
+        <item>"1"</item>
+        <item>"Três"</item>
+    </string-array>
+    <string-array name="enremote_start_air">
+        <item>"Manual"</item>
+        <item>"Auto"</item>
+    </string-array>
+    <string-array name="enlfRight">
+        <item>"Esquerda"</item>
+        <item>"Certo"</item>
+    </string-array>
+    <string-array name="enadaptive">
+        <item>"Iluminação de canto e dobra"</item>
+        <item>"Distribuição inteligente de luz"</item>
+    </string-array>
+    <string-array name="smartdoorlock_entries">
+        <item>"Todas as portas"</item>
+        <item>"Porta do motorista"</item>
+    </string-array>
+    <string-array name="radarrange_entries">
+        <item>"longe"</item>
+        <item>"perto"</item>
+    </string-array>
+    <string-array name="autodoorlockmode14_entries">
+        <item>"Fora"</item>
+        <item>"Bloquear ao dirigir"</item>
+        <item>"Fora"</item>
+        <item>"Bloquear: condução Desbloquear: IGN desativado"</item>
+        <item>"Bloquear ao sair de P"</item>
+        <item>"Bloquear: mudar de P Desbloquear: em P"</item>
+    </string-array>
+    <string-array name="unlockmode14_entries">
+        <item>"Toque uma vez; Todas as portas"</item>
+        <item>"Uma vez: motorista; duas vezes: todas as portas"</item>
+    </string-array>
+    <string-array name="lockbeepvol14_entries">
+        <item>"Alto"</item>
+        <item>"Médio"</item>
+        <item>"Baixo"</item>
+        <item>"Fora"</item>
+    </string-array>
+    <string-array name="autoheadlighton14_entries">
+        <item>"Luz"</item>
+        <item>"Luz média"</item>
+        <item>"Médio"</item>
+        <item>"Escuro médio"</item>
+        <item>"Sombrio"</item>
+    </string-array>
+    <string-array name="Language14_entries">
+        <item>"Inglês (EUA)"</item>
+        <item>"Fran"</item>
+        <item>"Espan"</item>
+        <item>"Controle de voz por navegação"</item>
+        <item>"Controle de voz por áudio / telefone"</item>
+    </string-array>
+    <string-array name="automodewindlevel_entries">
+        <item>"Baixo"</item>
+        <item>"Meio"</item>
+        <item>"Alto"</item>
+    </string-array>
+    <string-array name="airqualitysensor_entry">
+        <item>"Fora"</item>
+        <item>"Baixa sensibilidade"</item>
+        <item>"Alto"</item>
+    </string-array>
+    <string-array name="airpartition_entries">
+        <item>"Configurações unificadas"</item>
+        <item>"Configurações zoneadas"</item>
+        <item>"Últimas configurações"</item>
+    </string-array>
+    <string-array name="parkunlock_entries">
+        <item>"Fora"</item>
+        <item>"Porta do motorista"</item>
+        <item>"Todas as portas"</item>
+    </string-array>
+    <string-array name="remotelock5_entries">
+        <item>"Somente luz"</item>
+        <item>"Luz e alto-falante"</item>
+        <item>"Somente orador"</item>
+        <item>"Fora"</item>
+    </string-array>
+    <string-array name="remotedoorunlock_entries">
+        <item>"Porta do motorista"</item>
+        <item>"Todas as portas"</item>
+    </string-array>
+    <string-array name="turnontime_entries">
+        <item>"Cedo"</item>
+        <item>"Médio"</item>
+        <item>"Atrasado"</item>
+    </string-array>
+    <string-array name="centrallock_entries">
+        <item>"Veículo"</item>
+        <item>"Porta única"</item>
+        <item>"All door"</item>
+    </string-array>
+    <string-array name="windowsopen_entries">
+        <item>"FORA"</item>
+        <item>"Janela do driver"</item>
+        <item>"Toda a janela"</item>
+    </string-array>
+    <string-array name="accrdriveprogram_entries">
+        <item>"Normal"</item>
+        <item>"Esporte"</item>
+        <item>"Eco"</item>
+    </string-array>
+    <string-array name="travlemode_entries">
+        <item>"Tráfego certo"</item>
+        <item>"Trânsito esquerdo"</item>
+    </string-array>
+    <string-array name="accvehicle_entries">
+        <item>"Muito perto"</item>
+        <item>"Fechar"</item>
+        <item>"Médio"</item>
+        <item>"Longe"</item>
+        <item>"Muito longe"</item>
+    </string-array>
+    <string-array name="open_close">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+    </string-array>
+    <string-array name="automatic">
+        <item>"FORA"</item>
+        <item>"Desbloqueio Automático por Shift To P Driver Door Only"</item>
+        <item>"Desbloqueio Automático por Shift Para P Todas as Portas"</item>
+    </string-array>
+    <string-array name="auto_hand">
+        <item>"FORA"</item>
+        <item>"Desbloqueio Automático Somente por Remover Porta do Driver Chave"</item>
+        <item>"Desbloqueio Automático Ao Remover Chave Todas as Portas"</item>
+    </string-array>
+    <string-array name="en_remote_lock">
+        <item>"Apenas luzes"</item>
+        <item>"Luzes e buzina"</item>
+        <item>"Apenas chifre"</item>
+        <item>"FORA"</item>
+    </string-array>
+    <string-array name="remote_lock">
+        <item>"Apenas luzes"</item>
+        <item>"Luzes e buzina"</item>
+        <item>"Apenas chifre"</item>
+        <item>"FORA"</item>
+    </string-array>
+    <string-array name="remote_unlock">
+        <item>"All Doors"</item>
+        <item>"Horn Beep"</item>
+    </string-array>
+    <string-array name="enIntelligence_car">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+        <item>"Horn Beep"</item>
+    </string-array>
+    <string-array name="ensliding_door">
+        <item>"Destranque todas as portas"</item>
+        <item>"Destrancar portas deslizantes"</item>
+    </string-array>
+    <string-array name="entrailer">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+        <item>"Deslocamento do trailer"</item>
+    </string-array>
+    <string-array name="enanti_collision_alarm">
+        <item>"Aviso de alarme"</item>
+        <item>"Assento"</item>
+    </string-array>
+    <string-array name="enair_register">
+        <item>"Baixo"</item>
+        <item>"Meados"</item>
+        <item>"Alto"</item>
+    </string-array>
+    <string-array name="enair_onoff">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+        <item>"Última configuração"</item>
+    </string-array>
+    <string-array name="enair_quality">
+        <item>"Baixa sensibilidade"</item>
+        <item>"Alta sensibilidade"</item>
+    </string-array>
+    <string-array name="enautomatic">
+        <item>"Zona Única"</item>
+        <item>"Zona dupla"</item>
+        <item>"Última configuração"</item>
+    </string-array>
+    <string-array name="enback_temperature">
+        <item>"FORA"</item>
+        <item>"Rear Mimic Front"</item>
+        <item>"Última configuração"</item>
+    </string-array>
+    <string-array name="enrear_window">
+        <item>"Manual"</item>
+        <item>"AUTO"</item>
+    </string-array>
+    <string-array name="enair_quality_air">
+        <item>"Baixa sensibilidade"</item>
+        <item>"Alta sensibilidade"</item>
+    </string-array>
+    <string-array name="ento_turn_to">
+        <item>"FORA"</item>
+        <item>"Encolhimento"</item>
+        <item>"Promover"</item>
+        <item>"Encolhimento e Promoção"</item>
+    </string-array>
+    <string-array name="enspeed_display">
+        <item>"Cheio"</item>
+        <item>"Parcial"</item>
+    </string-array>
+    <string-array name="enengine_state">
+        <item>"Corrida"</item>
+        <item>"Normal"</item>
+    </string-array>
+    <string-array name="enignition_conditions">
+        <item>"IGN OFF"</item>
+        <item>"ACC"</item>
+        <item>"ACC ON"</item>
+        <item>"Ignição ligada"</item>
+        <item>"Inválido"</item>
+    </string-array>
+    <string-array name="enautomatic_latch">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+        <item>"Alto-falante"</item>
+    </string-array>
+    <string-array name="encar_unlocked">
+        <item>"Todas as portas"</item>
+        <item>"Porta do motorista"</item>
+    </string-array>
+    <string-array name="open_close47">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+    </string-array>
+    <string-array name="enall">
+        <item>"Porta do motorista"</item>
+        <item>"Todos"</item>
+    </string-array>
+    <string-array name="enwiper">
+        <item>"Fora"</item>
+        <item>"Dentro"</item>
+    </string-array>
+    <string-array name="enauto_cmd">
+        <item>"Fraco"</item>
+        <item>"Dentro"</item>
+        <item>"Forte"</item>
+    </string-array>
+    <string-array name="ensound">
+        <item>"Som clássico"</item>
+        <item>"Temperamento de cristal"</item>
+        <item>"Ritmo da cidade"</item>
+        <item>"Jungle Fantasy"</item>
+    </string-array>
+    <string-array name="ensetdoor">
+        <item>"Porta"</item>
+        <item>"Todas as portas"</item>
+    </string-array>
+    <string-array name="enari_mode">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+        <item>"Último conjunto"</item>
+    </string-array>
+    <string-array name="enremote_seat">
+        <item>"FORA"</item>
+        <item>"EM"</item>
+    </string-array>
+    <string-array name="enauto_collision">
+        <item>"FORA"</item>
+        <item>"Chame a polícia"</item>
+        <item>"Alarme e automático"</item>
+    </string-array>
+    <string-array name="enparking_mode">
+        <item>"Não mostre"</item>
+        <item>"Armazenamento traseiro"</item>
+        <item>"Estacionamento na rua"</item>
+    </string-array>
+    <string-array name="endistance">
+        <item>"Muito perto"</item>
+        <item>"Fechar"</item>
+        <item>"Médio"</item>
+        <item>"Longe"</item>
+        <item>"Muito longe"</item>
+    </string-array>
+    <string-array name="enrunning">
+        <item>"Economia"</item>
+        <item>"Padrão"</item>
+        <item>"Movimento"</item>
+    </string-array>
+    <string-array name="enconnect_time">
+        <item>"Cedo"</item>
+        <item>"Médio"</item>
+        <item>"Atrasado"</item>
+    </string-array>
+    <string-array name="entravel_pattern">
+        <item>"Esquerda"</item>
+        <item>"Certo"</item>
+    </string-array>
+    <string-array name="enconvenient_open">
+        <item>"All Window"</item>
+        <item>"janela do motorista"</item>
+        <item>"FORA"</item>
+    </string-array>
+    <string-array name="endoor_unlock">
+        <item>"todas as portas"</item>
+        <item>"porta única"</item>
+        <item>"lado do veículo"</item>
+    </string-array>
+    <string-array name="ensetdoor1">
+        <item>"todas as portas"</item>
+        <item>"Porta da unidade"</item>
+    </string-array>
+    <string-array name="enari_comfortable">
+        <item>"Lento"</item>
+        <item>"Normal"</item>
+        <item>"Rápido"</item>
+    </string-array>
+    <string-array name="enrear_window1">
+        <item>"Auto"</item>
+        <item>"Manualmente"</item>
+    </string-array>
+    <string-array name="ensteering_mode">
+        <item>"Movimento"</item>
+        <item>"Padrão"</item>
+        <item>"Acolhedor"</item>
+    </string-array>
+    <string-array name="enremote_unlock">
+        <item>"Todas as portas"</item>
+        <item>"Porta esquerda"</item>
+    </string-array>
+    <string-array name="enmyhome">
+        <item>"FORA"</item>
+        <item>"Perto apenas da luz"</item>
+        <item>"Feixe traseiro de nevoeiro"</item>
+    </string-array>
+    <string-array name="enturn_lights_set">
+        <item>"Piscando uma vez"</item>
+        <item>"Pisca três"</item>
+    </string-array>
+    <string-array name="enparksense">
+        <item>"Som"</item>
+        <item>"Som + Show"</item>
+    </string-array>
+    <string-array name="enunit_set">
+        <item>"Sistema métrico"</item>
+        <item>"americano"</item>
+    </string-array>
+    <string-array name="enlane_warning">
+        <item>"cedo"</item>
+        <item>"dentro"</item>
+        <item>"atrasado"</item>
+    </string-array>
+    <string-array name="endis_suspension">
+        <item>"todos"</item>
+        <item>"embargo"</item>
+    </string-array>
+    <string-array name="enbusy_warning">
+        <item>"FORA"</item>
+        <item>"Farol"</item>
+        <item>"Luzes de alarme +"</item>
+    </string-array>
+    <string-array name="enfor_warning">
+        <item>"Perto"</item>
+        <item>"Longe"</item>
+    </string-array>
+    <string-array name="enoutseat_heating">
+        <item>"FORA"</item>
+        <item>"Remotamente"</item>
+        <item>"Todo"</item>
+    </string-array>
+    <string-array name="entrip">
+        <item>"reabastecer"</item>
+        <item>"acender"</item>
+        <item>"manualmente"</item>
+    </string-array>
+    <string-array name="enauto_light">
+        <item>"min"</item>
+        <item>"baixo"</item>
+        <item>"meio"</item>
+        <item>"Alto"</item>
+        <item>"max"</item>
+    </string-array>
+    <string-array name="enlock_with">
+        <item>"velocidade do veiculo"</item>
+        <item>"mudar de P"</item>
+        <item>"FORA"</item>
+    </string-array>
+    <string-array name="enunlock_with">
+        <item>"A PORTA DO MOTORISTA ABRE"</item>
+        <item>"MUDADO PARA O PARQUE"</item>
+        <item>"IGNIÇÃO DESLIGADA"</item>
+        <item>"FORA"</item>
+    </string-array>
+    <string-array name="enscreen1">
+        <item>"Âmbar"</item>
+        <item>"Vermelho"</item>
+        <item>"Tolet"</item>
+        <item>"Azul"</item>
+    </string-array>
+    <string-array name="enscreen2">
+        <item>"Normal"</item>
+        <item>"Escurecer"</item>
+        <item>"Quanmie"</item>
+    </string-array>
+    <string-array name="enauto_avoidance">
+        <item>"FORA"</item>
+        <item>"Alarme"</item>
+        <item>"Alarmes e freio"</item>
+    </string-array>
+    <string-array name="enion_generator">
+        <item>"FORA"</item>
+        <item>"Íons positivos"</item>
+        <item>"Anion"</item>
+    </string-array>
+    <string-array name="enprompt_volume">
+        <item>"Nível 1"</item>
+        <item>"Nível 2"</item>
+        <item>"Nível 3"</item>
+    </string-array>
+    <string-array name="eninstrument_color">
+        <item>"verde"</item>
+        <item>"vermelho"</item>
+        <item>"azul"</item>
+        <item>"roxa"</item>
+        <item>"laranja"</item>
+    </string-array>
+    <string-array name="eninstrument_style">
+        <item>"estilo 1"</item>
+        <item>"estilo 2"</item>
+        <item>"estilo 3"</item>
+        <item>"estilo 4"</item>
+    </string-array>
+    <string-array name="enparking_system">
+        <item>"inválido"</item>
+        <item>"O lado"</item>
+        <item>"Ângulo certo"</item>
+        <item>"Obliquamente"</item>
+    </string-array>
+    <string-array name="enalarm_vol">
+        <item>"Alto"</item>
+        <item>"Médio"</item>
+        <item>"Baixo"</item>
+    </string-array>
+    <string-array name="envoice_alarm">
+        <item>"Baixo"</item>
+        <item>"Alto"</item>
+    </string-array>
+    <string-array name="endanger_ahead">
+        <item>"Longe"</item>
+        <item>"Médio"</item>
+        <item>"Perto"</item>
+    </string-array>
+    <string-array name="endeviate">
+        <item>"Médio"</item>
+        <item>"Largo"</item>
+        <item>"Apenas avisos"</item>
+    </string-array>
+    <string-array name="enindividual_steering">
+        <item>"Normal"</item>
+        <item>"Esporte"</item>
+    </string-array>
+    <string-array name="enindividual_engine">
+        <item>"Normal"</item>
+        <item>"Esporte"</item>
+        <item>"ECO"</item>
+    </string-array>
+    <string-array name="enindividual_climate">
+        <item>"Normal"</item>
+        <item>"ECO"</item>
+    </string-array>
+    <string-array name="enlock_beep">
+        <item>"Pressione novamente"</item>
+        <item>"Primeira imprensa"</item>
+        <item>"FORA"</item>
+    </string-array>
+    <string-array name="entrailer_m">
+        <item>"Trailer1"</item>
+        <item>"Trailer2"</item>
+        <item>"Trailer3"</item>
+        <item>"Trailer4"</item>
+    </string-array>
+    <string-array name="entrailer_type">
+        <item>"Light Electric"</item>
+        <item>"Heavy Electric"</item>
+        <item>"Elétrico leve sobre hidráulico"</item>
+        <item>"Elétrico pesado sobre hidráulico"</item>
+    </string-array>
+    <string-array name="ensetting_color">
+        <item>"Azul limpo"</item>
+        <item>"Turquesa claro"</item>
+        <item>"Laranja profundo"</item>
+        <item>"Laranja radiante"</item>
+    </string-array>
+    <string-array name="enback_camera_path">
+        <item>"Trajetória dinâmica"</item>
+        <item>"Trajetória estática"</item>
+        <item>"Linha de aviso"</item>
+    </string-array>
+    <string-array name="enramp">
+        <item>"Padrão"</item>
+        <item>"Senior"</item>
+    </string-array>
+    <string-array name="enfort_tips">
+        <item>"caixas de som"</item>
+        <item>"luzes"</item>
+        <item>"Luzes e alto-falantes"</item>
+    </string-array>
+    <string-array name="encar_line">
+        <item>"FORA"</item>
+        <item>"Estático"</item>
+        <item>"Estático + dinâmico"</item>
+    </string-array>
+    <string-array name="enrear_door">
+        <item>"Portão de cauda"</item>
+        <item>"Portões traseiros + portas"</item>
+    </string-array>
+    <string-array name="enparking_mode1">
+        <item>"Comum"</item>
+        <item>"Paralelo"</item>
+        <item>"Fora"</item>
+        <item>"inválido"</item>
+    </string-array>
+    <string-array name="enlock_beep1">
+        <item>"FORA"</item>
+        <item>"Primeira imprensa"</item>
+        <item>"Pressione novamente"</item>
+    </string-array>
+    <string-array name="air_con_profile_entries">
+        <item>"Luz"</item>
+        <item>"Médio"</item>
+        <item>"Forte"</item>
+    </string-array>
+    <string-array name="reverse_mode">
+        <item>"Modo vertical"</item>
+        <item>"Modo lateral"</item>
+        <item>"Modo de negligência"</item>
+        <item>"Modo de faixa estreita"</item>
+    </string-array>
+    <string-array name="ambient_lighting_tones">
+        <item>"FORA"</item>
+        <item>"Branco quente"</item>
+        <item>"Verde"</item>
+        <item>"Azul"</item>
+        <item>"Branco"</item>
+    </string-array>
+    <string-array name="psa_simple_16">
+        <item>"Azul"</item>
+        <item>"Castanho"</item>
+    </string-array>
+    <string-array name="psa_simple_17">
+        <item>"Informações do computador de tráfego / velocidade do motor"</item>
+        <item>"Informações sobre o computador de trânsito / Temperatura do óleo"</item>
+        <item>"Velocidade do motor / Computador de condução"</item>
+        <item>"Velocidade do motor / temperatura do óleo"</item>
+        <item>"Informações sobre a temperatura do óleo / computador de trânsito"</item>
+        <item>"Temperatura do óleo / velocidade do motor"</item>
+    </string-array>
+    <string-array name="array_driver_attention_monitor">
+        <item>"FORA"</item>
+        <item>"Alarme visual"</item>
+        <item>"Alertas visuais e táteis"</item>
+    </string-array>
+    <string-array name="array_remote_control_open_condition">
+        <item>"A qualquer momento"</item>
+        <item>"Após o desbloqueio"</item>
+    </string-array>
+    <string-array name="car_type_cmd_mitsubishi">
+        <item>"Tipo 1"</item>
+        <item>"Tipo 2"</item>
+    </string-array>
+    <string-array name="enalarm_mode">
+        <item>"Luzes"</item>
+        <item>"caixas de som"</item>
+        <item>"Luzes e alto-falantes"</item>
+    </string-array>
+    <string-array name="enlock_beep2">
+        <item>"FORA"</item>
+        <item>"Baixo"</item>
+        <item>"Meio"</item>
+        <item>"Alto"</item>
+    </string-array>
+    <string-array name="enouto_lock_mode">
+        <item>"FORA"</item>
+        <item>"Ao viajar"</item>
+        <item>"Modo 1"</item>
+        <item>"Modo 2"</item>
+        <item>"Sair do estacionamento"</item>
+    </string-array>
+    <string-array name="encar_light_off">
+        <item>"FORA"</item>
+        <item>"Baixo"</item>
+        <item>"Alto"</item>
+    </string-array>
+    <string-array name="endriver_monitor">
+        <item>"Fora"</item>
+        <item>"Aviso visual"</item>
+        <item>"Avisos táteis e visuais"</item>
+    </string-array>
+    <string-array name="enremote_setting">
+        <item>"A qualquer momento"</item>
+        <item>"Após o desbloqueio"</item>
+    </string-array>
+    <string-array name="eninstrument_color2">
+        <item>"Estilo 1"</item>
+        <item>"Estilo 2"</item>
+    </string-array>
+    <string-array name="eninstrument_style2">
+        <item>"Estilo 1"</item>
+        <item>"Estilo 2"</item>
+        <item>"Estilo 3"</item>
+        <item>"Estilo 4"</item>
+        <item>"Estilo 5"</item>
+    </string-array>
+    <string-array name="enattention">
+        <item>"FORA"</item>
+        <item>"Aviso visual"</item>
+        <item>"Avisos táteis e visuais"</item>
+    </string-array>
+    <string-array name="enactionstate">
+        <item>"FORA"</item>
+        <item>"ativado"</item>
+        <item>"ESC"</item>
+    </string-array>
+    <string-array name="endoor_lock">
+        <item>"FORA"</item>
+        <item>"Por mudança de P"</item>
+        <item>"Por velocidade"</item>
+    </string-array>
+    <string-array name="endoor_unlock1">
+        <item>"FORA"</item>
+        <item>"Pela porta do motorista"</item>
+        <item>"Por mudança para P"</item>
+    </string-array>
+    <string-array name="enconvenience">
+        <item>"FORA"</item>
+        <item>"LIGADO enquanto parado"</item>
+        <item>"EM"</item>
+    </string-array>
+    <string-array name="enfor_outo_warning">
+        <item>"FORA"</item>
+        <item>"Apenas freio"</item>
+        <item>"Apenas alarme"</item>
+        <item>"Alarme e freio"</item>
+    </string-array>
+
+</resources>

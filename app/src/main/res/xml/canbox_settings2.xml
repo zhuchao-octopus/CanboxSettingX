@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout="@layout/preference_list_fragment" >
+
+    <ListPreference
+        android:key="manufacturer"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/title_manufacturer" />
+    <ListPreference
+        android:key="category"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/title_category" />
+    <ListPreference
+        android:key="model"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/title_model" />
+    <ListPreference
+        android:key="configuration"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/title_configuration" />
+
+    
+  	<MultiSelectListPreference
+        android:key="pg_switch_settings"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/car_settings" />
+  	
+    <MultiSelectListPreference
+        android:key="canbox_key_change_ex"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_key_change" />
+
+    <MultiSelectListPreference
+        android:key="canbox_air_ex"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_air" />
+    <ListPreference
+        android:key="canbox_front_door"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_front_door" />
+    <ListPreference
+        android:key="canbox_rear_door"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_rear_door" />
+    
+        <ListPreference
+        android:key="canbox_car_type2"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/canbox_car_type2" />
+        
+    <MultiSelectListPreference
+        android:key="canbox_other_settings"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/other" />
+
+
+          <ListPreference
+        android:entries="@array/obd_view_spinner_values"
+        android:entryValues="@array/four_values"
+        android:key="external_radar"
+        android:layout="@layout/preference_car_settings_submenu"
+        android:title="@string/notes" />
+          
+          
+</PreferenceScreen>

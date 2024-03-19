@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="averagespeed"
+        android:persistent="false"
+        android:title="@string/averagespeed" />
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage" />
+    <com.common.view.MyPreference
+        android:key="mileage1"
+        android:persistent="false"
+        android:title="@string/mileage1" />
+    <com.common.view.MyPreference
+        android:key="curfuel"
+        android:persistent="false"
+        android:title="@string/curfuel" />
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:title="@string/averagefuel" />
+
+</PreferenceScreen>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<!--     <PreferenceScreen android:title="@string/vehicle_settings" > -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="information_tone_volume"
+            android:title="@string/information_tone" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="warning_tone"
+            android:title="@string/warning_tone" />
+
+        <ListPreference
+            android:entries="@array/enturn_lights_sets_set"
+            android:entryValues="@array/common_s2"
+            android:key="turn_lights_set"
+            android:title="@string/turn_lights_set" />
+        <ListPreference
+            android:entries="@array/mileage_unit_t"
+            android:entryValues="@array/common_s2"
+            android:key="mileage_unit"
+            android:title="@string/mileage_unit" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="control_system"
+            android:title="@string/control_system" />
+        <SwitchPreference
+            android:key="off_Warning_info"
+            android:title="@string/off_Warning_info" />
+<!--         <SwitchPreference -->
+<!--             android:defaultValue="false" -->
+<!--             android:key="wipers_induction" -->
+<!--             android:title="@string/wipers_induction" /> -->
+<!--         <SwitchPreference -->
+<!--             android:defaultValue="false" -->
+<!--             android:key="incar_light" -->
+<!--             android:title="@string/buzzer_alarm" /> -->
+
+<!--         <ListPreference -->
+<!--             android:entries="@array/temp_dis_t" -->
+<!--             android:entryValues="@array/common_s2" -->
+<!--             android:key="temp_dis_k" -->
+<!--             android:title="@string/temp_dis" /> -->
+<!--         <ListPreference -->
+<!--             android:entries="@array/enremote_start_air" -->
+<!--             android:entryValues="@array/common_s2" -->
+<!--             android:key="brightness" -->
+<!--             android:title="@string/brightness" /> -->
+
+<!--         <SwitchPreference -->
+<!--             android:key="enhanced_assistance" -->
+<!--             android:title="@string/enhanced_assistance" /> -->
+<!--     </PreferenceScreen> -->
+<!--     <PreferenceScreen android:title="@string/mirrors_and_wipers" > -->
+<!--     </PreferenceScreen> -->
+    
+<!--     <PreferenceScreen android:title="@string/safety_warning" > -->
+<!--     </PreferenceScreen> -->
+
+     
+<!--     <PreferenceScreen android:title="@string/str_drive_assit" > -->
+<!--     </PreferenceScreen> -->
+    
+     
+<!--     <PreferenceScreen android:title="@string/key_car_lock" > -->
+<!--     </PreferenceScreen> -->
+     
+<!--     <PreferenceScreen android:title="@string/light_settings" > -->
+<!--     </PreferenceScreen> -->
+    
+       
+<!--     <PreferenceScreen android:title="@string/amplifier_status" > -->
+<!--     </PreferenceScreen> -->
+         
+<!--     <PreferenceScreen android:title="@string/seat_massage" > -->
+<!--     </PreferenceScreen> -->
+    
+</PreferenceScreen>

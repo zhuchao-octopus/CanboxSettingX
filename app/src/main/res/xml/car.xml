@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plist>
+    <categorys>
+        <category name="通用机" value="0">
+            <model name="通用机" value="0" />
+            <model name="其他带空调控制兼容车型" value="98" />
+            <model name="其他兼容车型" value="99" />
+        </category>
+        <category name="大众" value="1">
+            <model name="大众通用" value="0" />
+            <model name="高尔夫7" value="1" />
+            <model name="明锐" value="2" />
+            <model name="斯柯达速派" value="3" />
+            <model name="凌渡" value="4" />
+            <model name="17款迈腾" value="5" />
+            <model name="17款嘉旅" value="6" />
+            <model name="17款途观L" value="7" />
+            <model name="17款途昂" value="8" />
+            <model name="17款斯柯达柯迪亚克" value="9" />
+            <model name="18款迈腾" value="10" />
+            <model name="13款途锐" value="11" />
+            <model name="18款速派" value="12" />
+            <model name="18款途安L" value="13" />
+            <model name="17款西亚特" value="14" />
+            <model name="2018款探歌" value="15" />
+            <model name="探岳" value="16" />
+            <model name="18款朗逸" value="17" />
+            <model name="19款帕萨特" value="18" />
+            <model name="新途锐" value="19" />
+            <model name="途昂X" value="20" />
+            <model name="混动途观L" value="21" />
+            <model name="19款迈腾" value="22" />
+            <model name="20款途观L" value="23" />
+            <model name="巴西捷达" value="24" />
+            <model name="土耳其斯柯达SUPERB" value="25" />
+            <model name="捷达VS7" value="26" />
+            <model name="20款宝来" value="27" />
+            <model name="19款辉昂" value="28" />
+            <model name="20款高尔夫纯电" value="29" />
+            <model name="20款宝来纯电" value="30" />
+            <model name="20款迈腾" value="31" />
+            <model name="19款朗逸纯电动" value="32" />
+            <model name="老款途锐2010年以前" value="33" />
+            <model name="辉昂" value="34" />
+            <model name="大众迈特威" value="35" />
+            <model name="辉腾" value="36" />
+            <model name="11-17款途锐" value="37" />
+            <model name="VILORAN" value="38" />
+            <model name="19-20款帕萨特混动" value="39" />
+            <model name="20款途观L混动" value="40" />      
+            <model name="16款明锐(罗马尼亚)" value="41" />     
+            <model name="21款辉昂" value="42" />  
+            <model name="21高尔夫8" value="43" />
+           </category>
+        <category name="通用" value="2">
+            <model name="07-17款科鲁兹" value="0" />
+            <model name="15款新赛欧" value="1" />
+            <model name="11-14款爱唯欧" value="2" />
+            <model name="13-19款昂科拉" value="3" />
+            <model name="10-19款英朗" value="4" />
+            <model name="13-19款昂科威" value="5" />
+            <model name="18款凯越" value="6" />
+            <model name="09-19款君威" value="7" />
+            <model name="15-19款威朗" value="8" />
+            <model name="11-15款GL8" value="9" />
+            <model name="12-18款迈锐宝" value="12" />
+            <model name="16-19款迈锐宝XL" value="13" />
+            <model name="13款昂科雷" value="14" />
+            <model name="16-18款乐风RV" value="15" />
+            <model name="16款科沃兹" value="16" />
+            <model name="14-18款创酷" value="17" />
+            <model name="09-19款君越" value="18" />
+            <model name="2017款GL8" value="19" />
+            <model name="2017款探界者" value="20" />
+            <model name="旧款欧宝" value="21" />
+            <model name="2017款GL8(25S)" value="22" />
+            <model name="2016ChevroletTahoe" value="23" />
+            <model name="2014GMCYukon(Denali)" value="24" />
+            <model name="2018款GL6" value="25" />
+            <model name="2014款GL8" value="26" />
+            <model name="18-19款沃兰多" value="27" />
+            <model name="2015-2018款塞欧3" value="28" />
+            <model name="13款科鲁兹" value="29" />
+            <model name="12-17科帕奇" value="30" />
+            <model name="19款探界者" value="31" />
+            <model name="17-18款GL8ES" value="32" />
+            <model name="19款创酷" value="33" />
+            <model name="20款昂科拉" value="34" />
+            <model name="19款创界" value="35" />
+            <model name="19款科鲁泽" value="36" />
+            <model name="凯迪拉克SRX" value="37" />
+            <model name="凯迪拉克ATS-L" value="38" />
+            <model name="20款开拓者" value="39" />
+            <model name="11-17款AstraJ" value="40" />
+            <model name="凯迪拉克CTS" value="41" />
+            <model name="17-19款CousaE" value="42" />
+            <model name="15-19款Insignia" value="43" />
+            <model name="08-10款AstraH" value="44" />
+            <model name="11款CorsaD" value="45" />
+            <model name="08款Combo" value="46" />
+            <model name="19款英朗" value="47" />
+            <model name="20款GL8 652T" value="48" />
+            <model name="新君威" value="49" />
+            <model name="20款畅巡" value="50" />
+            <model name="21款科鲁泽" value="51" />
+            <model name="林荫大道" value="52" />
+            <model name="21款英朗保留原车屏" value="53" />
+            <model name="21款英朗不保留原车屏" value="54" />
+            <model name="21款君越" value="55" />  
+            <model name="21款英朗" value="56" />  
+            <model name="MOST" value="57" />   
+            <model name="赛欧3" value="58" />          
+            </category>
+        <category name="福特" value="3">
+            <model name="2012款福克斯" value="1" />
+            <model name="2013款翼虎" value="2" />
+            <model name="2013款翼搏" value="3" />
+            <model name="2013款嘉年华" value="4" />
+            <model name="2015款福克斯" value="5" />
+            <model name="2013款锐界" value="6" />
+            <model name="2013款猛禽F-150" value="7" />
+            <model name="2013款探险者" value="8" />
+            <model name="2013款金牛座" value="9" />
+            <model name="2013款蒙迪欧(自动空调)" value="10" />
+            <model name="2015款锐界" value="11" />
+            <model name="征服者" value="12" />
+            <model name="进口野马" value="13" />
+            <model name="2017款翼虎" value="14" />
+            <model name="2017款翼搏" value="15" />
+            <model name="07-13款蒙迪欧致胜" value="16" />
+            <model name="麦柯斯" value="17" />
+            <model name="2016款撼路者" value="18" />
+            <model name="2018款翼博(自动空调)" value="19" />
+            <model name="2018款翼虎" value="20" />
+            <model name="2019款福克斯" value="21" />
+            <model name="2018款猛禽F-150" value="22" />
+            <model name="途睿欧" value="23" />
+            <model name="2017款蒙迪欧" value="24" />
+            <model name="08-12款嘉年华" value="25" />
+            <model name="2018款锐界" value="26" />
+            <model name="2013款蒙迪欧(手动空调)" value="27" />
+            <model name="2018款翼博(手动空调)" value="28" />
+            <model name="2018款蒙迪欧" value="29" />
+            <model name="19-20款领界" value="30" />
+            <model name="探险者" value="31" />
+            <model name="18款撼路者" value="32" />
+            <model name="12-15款福克斯" value="33" />
+            <model name="14款新蒙迪欧" value="34" />
+            <model name="12-17款翼虎" value="35" />
+            <model name="2013款蒙迪欧" value="36" />
+            <model name="RANGER海外" value="37" />
+            <model name="18款林肯MKC" value="38" />
+            <model name="19款林肯航海家" value="39" />
+            <model name="19款林肯MKZ" value="40" /> 　
+            <model name="09-15款嘉年华" value="41" />
+            <model name="15款翼虎" value="42" />
+            <model name="2020款福克斯" value="43" />
+            <model name="2019款翼虎" value="44" />
+            <model name="保留原车CD" value="45" />
+            <model name="2020款锐界" value="46" />
+            <model name="2020款蒙迪欧" value="47" />
+            <model name="2019款翼博" value="48" />
+            <model name="2019款金牛座" value="49" />
+            <model name="2019款F150" value="50" />
+            <model name="2019款福睿斯" value="51" />
+            <model name="2019款中规野马" value="52" />
+            <model name="2019款蒙迪欧混动" value="53" />
+            <model name="2020款锐际" value="54" />
+            <model name="2021款全顺" value="55" />
+            <model name="S-Max" value="56" />
+            <model name="TOURNEO COURIER" value="57" />
+            <model name="2010 F150" value="58" />
+            <model name="拆SYNC" value="59" />
+             </category>
+        <category name="丰田" value="4">
+            <model name="15款凯美瑞" value="0" />
+            <model name="RAV4" value="1" />
+            <model name="普拉多(霸道)" value="2" />
+            <model name="汉兰达" value="3" />
+            <model name="卡罗拉" value="4" />
+            <model name="雷凌" value="5" />
+            <model name="锐志" value="6" />
+            <model name="16款RAV4" value="7" />
+            <model name="16款普拉多(霸道)" value="8" />
+            <model name="12款凯美瑞" value="9" />
+            <model name="V6" value="10" />
+            <model name="HILUX" value="11" />
+            <model name="18款凯美瑞" value="12" />
+            <model name="18款霸道(普拉多)" value="13" />
+            <model name="13款皇冠" value="14" />
+            <model name="18款汉兰达" value="15" />
+            <model name="12款皇冠" value="16" />
+            <model name="CHR(弈泽)" value="17" />
+            <model name="18款RAV4" value="18" />
+            <model name="塞纳" value="19" />
+            <model name="12款皇冠(竖屏)" value="20" />
+            <model name="14代皇冠" value="21" />
+            <model name="02-09款霸道" value="22" />
+            <model name="07-09款酷路泽" value="23" />
+            <model name="07-15款酷路泽" value="24" />
+            <model name="16款酷路泽" value="25" />
+            <model name="11款埃尔法" value="26" />
+            <model name="15款埃尔法" value="27" />
+            <model name="10-17款霸道" value="28" />
+            <model name="07-13款卡罗拉" value="29" />
+            <model name="14-17款卡罗拉" value="30" />
+            <model name="09-13款经典凯美瑞" value="31" />
+            <model name="12-16款凯美瑞" value="32" />
+            <model name="13款汉兰达" value="33" />
+            <model name="15款汉兰达" value="34" />
+            <model name="09-12款RAV4" value="35" />
+            <model name="05-09款锐志" value="36" />
+            <model name="10-16款锐志" value="37" />
+            <model name="19款大霸王" value="38" />
+            <model name="06-15款大霸王" value="39" />
+            <model name="06款埃尔法" value="40" />
+            <model name="04款雷克萨斯RX300" value="41" />
+            <model name="20款RAV4" value="42" />
+            <model name="19款卡罗拉" value="43" />
+            <model name="12款兰酷" value="44" />
+            <model name="16款兰酷" value="45" />
+            <model name="09款汉兰达" value="46" />
+            <model name="14款坦途" value="47" />
+            <model name="07-15款兰酷" value="48" />
+            <model name="海狮" value="49" />
+            <model name="19款RAV4(台湾)" value="50" />
+            <model name="海拉克斯" value="51" />
+            <model name="20款威兰达" value="52" />
+            <model name="亚洲龙" value="53" />
+            <model name="20款CHR-EV(纯电动)" value="54" />
+            <model name="21款雷凌" value="55" />
+            <model name="12款陆巡" value="56" />
+            <model name="20款奔跑者" value="57" />
+            <model name="14款霸道" value="58" />
+            <model name="10款霸道" value="59" />
+            <model name="15款锐志" value="60" />
+            <model name="16款汉兰达" value="61" />
+            <model name="12款汉兰达" value="62" />
+            <model name="12款锐志" value="63" />
+            <model name="10款霸道手动空调" value="64" />
+            <model name="09款凯美瑞" value="65" />
+            <model name="14款霸道手动空调" value="66" />
+            <model name="15款汉兰达手动空调" value="67" />
+            <model name="09款汉兰达手动空调" value="68" />
+            <model name="07款卡罗拉" value="69" />
+            <model name="14款卡罗拉" value="70" />
+            <model name="14款坦途手动空调" value="71" />
+            <model name="18款霸道手动空调" value="72" />
+            <model name="埃尔法" value="73" />
+            <model name="13款凯美瑞" value="74" />
+            <model name="16款陆巡自动空调" value="75" />
+            <model name="16款陆巡手动空调" value="76" />
+            <model name="12款锐志自动空调" value="77" />
+            <model name="12款锐志手动空调" value="78" />
+            <model name="21款塞纳" value="79" />
+            <model name="LC100" value="80" />
+            <model name="奔跑者" value="81" />
+            <model name="22款陆放" value="82" />
+            <model name="18-21款凯美瑞" value="83" />
+            <model name="21款亚洲狮" value="84" />
+            <model name="22款汉兰达" value="85" />
+            <model name="22款塞纳" value="86" />
+            <model name="22款凌放" value="87" />
+            <model name="22款锐放" value="88" />
+            <model name="22款锋兰达" value="89" />
+            <model name="22款威飒" value="90" />
+              </category>
+        <category name="现代-起亚" value="5">
+            <model name="现代IX35" value="0" />
+            <model name="现代IX45" value="1" />
+            <model name="索纳塔8" value="2" />
+            <model name="15款索兰托" value="3" />
+            <model name="索纳塔9" value="4" />
+            <model name="16款起亚K5" value="5" />
+            <model name="16款起亚KX5" value="6" />
+            <model name="16款现代名图" value="7" />
+            <model name="16款现代领动" value="8" />
+            <model name="16款起亚K3" value="9" />
+            <model name="新途胜" value="10" />
+            <model name="17款起亚KX7" value="11" />
+            <model name="18款索纳塔9" value="12" />
+            <model name="18款起亚智跑" value="13" />
+            <model name="18款现代昂希诺" value="14" />
+            <model name="15款现代IX45" value="15" />
+            <model name="17款索纳塔9" value="16" />
+            <model name="17款起亚K4/凯绅" value="17" />
+            <model name="19款胜达" value="18" />
+            <model name="19款现代菲斯塔" value="19" />
+            <model name="19款现代胜达IX45" value="20" />
+            <model name="19款现代途胜" value="21" />
+            <model name="15款嘉华" value="22" />
+            <model name="19款起亚KX5" value="23" />
+            <model name="海外KX5" value="24" />
+            <model name="19款起亚K3" value="25" />
+            <model name="18款现代索纳塔九混动" value="26" />
+            <model name="20款起亚KX3傲跑" value="27" />
+            <model name="新雅尊" value="28" />
+            <model name="起亚K7" value="29" />
+            <model name="索兰托L" value="30" />
+            <model name="19款k3新能源" value="31" />
+            <model name="19款k5新能源" value="32" />
+            <model name="19款现代名图" value="33" />
+            <model name="19款现代领动" value="34" />
+            <model name="19款起亚智跑" value="35" />
+            <model name="20款现代昂希诺" value="36" />
+            <model name="21款现代伊兰特" value="37" />
+            <model name="13款索兰托" value="38" />
+            <model name="10款劳恩斯" value="39" />
+              </category>
+        <category name="本田" value="6">
+            <model name="12款CRV" value="0" />
+            <model name="15款CRV" value="8" />
+            <model name="雅阁9(2.0)" value="1" />
+            <model name="凌派" value="2" />
+            <model name="杰德" value="3" />
+            <model name="歌诗图" value="4" />
+            <model name="缤智" value="5" />
+            <model name="奥德赛" value="6" />
+            <model name="飞度" value="7" />
+            <model name="15款锋范" value="9" />
+            <model name="16款凌派" value="10" />
+            <model name="16款思域" value="11" />
+            <model name="思域" value="12" />
+            <model name="XRV" value="13" />
+            <model name="哥瑞" value="14" />
+            <model name="16款CRV" value="15" />
+            <model name="雅阁7" value="16" />
+            <model name="17款竟瑞" value="17" />
+            <model name="雅阁9(2.4)" value="18" />
+            <model name="冠道" value="19" />
+            <model name="17款CRV" value="20" />
+            <model name="12-15款艾力绅" value="21" />
+            <model name="18款雅阁10" value="22" />
+            <model name="18款奥德赛" value="23" />
+            <model name="雅阁8" value="24" />
+            <model name="19款凌派" value="25" />
+            <model name="15款思铂睿" value="26" />
+            <model name="19款英斯派" value="27" />
+            <model name="本田12思域" value="28" />
+            <model name="本田14思域" value="29" />
+            <model name="享域" value="30" />
+            <model name="19款CRV" value="31" />
+            <model name="15款奥德赛" value="32" />
+            <model name="04-08款奥德赛" value="33" />
+            <model name="雅阁9(13-15款2.0)" value="34" />
+            <model name="雅阁9(13-15款2.4)" value="35" />
+            <model name="雅阁9(16款混动2.0)" value="36" />
+            <model name="15款CRV2.4" value="37" />
+            <model name="16-19款思域" value="38" />
+            <model name="12CRV/15CRV(2.0)" value="39" />
+            <model name="2019款XRV" value="40" />
+            <model name="12款思域" value="41" />
+            <model name="14款思域/15款CRV2.4" value="42" />
+            <model name="雅阁9(16款2.4)" value="43" />
+            <model name="雅阁9(16款2.0)" value="44" />
+            <model name="20款皓影" value="45" />
+            <model name="讴歌" value="46" />
+            <model name="04-16款思域" value="47" />
+            <model name="12款思铂睿" value="48" />
+            <model name="19款艾力绅" value="49" />
+            <model name="19款享域" value="50" />
+            <model name="本田理念EV1" value="51" />
+            <model name="09-14款奥德赛" value="52" />
+            <model name="20-21款思域" value="53" />
+            <model name="20-21款CRV" value="54" />
+            <model name="雅阁7(双驱空调)" value="55" />
+            <model name="雅阁7(单驱空调)" value="56" />
+            <model name="21款飞度" value="57" />
+            <model name="19款艾力绅(原车360)" value="58" />
+            <model name="17URV" value="59" />
+            <model name="20款理念VE1" value="60" />
+            <model name="21CRV" value="61" />
+            <model name="21款皓影" value="62" />
+            <model name="22款思域" value="63" />
+            <model name="22款雅阁" value="64" />
+            <model name="22款凌派" value="65" />
+            <model name="15奥德赛高配(原车360)" value="66" />
+            <model name="15奥德赛高配(原车360吸顶屏)" value="67" />            
+            <model name="12思域CRV-14思域低配-15CRV低配(全兼容)" value="68" /> 
+            <model name="雅阁7(9600)" value="69" />        
+            <model name="21-22款CRV混动" value="70" />    
+            <model name="21款皓影混动" value="71" />        
+            <model name="21-22款CRV-插电混动" value="72" />      
+            <model name="21款皓影-插电混动" value="73" />  
+            <model name="21-22款飞度" value="74" />    
+            <model name="22款奥德赛" value="75" />   
+            <model name="22 ZRV" value="76" />   
+            <model name="22 艾力绅" value="77" />   
+            <model name="22 CRV" value="78" /> 
+        </category>
+        <category name="日产" value="7">
+            <model name="天籁" value="0" />
+            <model name="奇骏" value="1" />
+            <model name="楼兰" value="2" />
+            <model name="蓝鸟" value="3" />
+            <model name="逍客" value="4" />
+            <model name="16款西玛" value="5" />
+            <model name="2008款天籁" value="6" />
+            <model name="2017款奇峻" value="7" />
+            <model name="2017款逍客" value="8" />
+            <model name="2019款天籁" value="9" />
+            <model name="2018款途达" value="10" />
+            <model name="2014款新奇骏" value="11" />
+            <model name="2016款新逍客" value="12" />
+            <model name="2013款新天籁" value="13" />
+            <model name="08-12款天籁" value="14" />
+            <model name="11-16款新骐达" value="15" />
+            <model name="16款天籁" value="16" />
+            <model name="04-07款天籁" value="17" />
+            <model name="20款纳瓦拉" value="18" />
+            <model name="19款骐达" value="19" />
+            <model name="19款劲客" value="20" />
+            <model name="19款逍客" value="21" />
+            <model name="19款楼兰" value="22" />
+            <model name="台版08~12款天籁" value="23" />
+            <model name="20款轩逸" value="24" />
+            <model name="途乐SE/LE" value="25" />
+            <model name="16款途乐" value="26" />
+            <model name="16款奇骏(中东)" value="27" />
+            <model name="20款天籁" value="28" />
+            <model name="御轩" value="29" />
+            <model name="探路者" value="30" />
+            <model name="2008款天籁(右舵)" value="31" />
+            <model name="天籁公爵" value="32" />
+            <model name="17款途乐" value="33" />
+            <model name="11款天籁公爵" value="34" />
+            <model name="2019款奇峻" value="35" />
+            <model name="2014款新奇骏(手动空调)" value="36" />
+            <model name="2017款奇峻(手动空调)" value="37" />    
+            <model name="2019款奇峻(手动空调)" value="38" />   
+            <model name="05-07风雅" value="39" />     
+            <model name="08-13EX35" value="40" />    
+            <model name="09-14FX35" value="41" />    
+            <model name="09-14QX60" value="42" />    
+            <model name="11-15款贵士" value="43" />   
+            <model name="2021款奇骏" value="44" />  
+            <model name="19-21款天籁" value="45" />   
+            <model name="2019款奇骏(台湾)" value="46" />  
+            <model name="2019款奇骏(海外)" value="47" />   
+            <model name="17款劲客" value="48" />
+            <model name="16款轩逸" value="49" />
+            <model name="18款途乐" value="50" />
+            <model name="21 Magnite" value="51" />
+            <model name="22款天籁" value="52" /> 
+        </category>
+        <category name="标致雪铁龙" value="8">
+            <model name="爱丽舍" value="0" />
+            <model name="世嘉" value="1" />
+            <model name="DS5LS" value="2" />
+            <model name="C4L" value="3" />
+            <model name="2008" value="4" />
+            <model name="3008" value="5" />
+            <model name="14款408" value="6" />
+            <model name="301" value="7" />
+            <model name="C3XR" value="8" />
+            <model name="16款308" value="9" />
+            <model name="DS5" value="10" />
+            <model name="DS4" value="11" />
+            <model name="508" value="12" />
+            <model name="4008" value="13" />
+            <model name="保留屏车型" value="14" />
+            <model name="18款天逸" value="15" />
+            <model name="15款508" value="16" />
+            <model name="C4" value="17" />
+            <model name="C5" value="18" />
+            <model name="2013款C5" value="19" />
+            <model name="307" value="20" />
+            <model name="308" value="21" />
+            <model name="408" value="22" />
+            <model name="308S" value="23" />
+            <model name="19款408" value="24" />
+            <model name="19款C3XR" value="25" />
+            <model name="新C4L" value="26" />
+            <model name="19款508L" value="27" />
+            <model name="20款天逸C5" value="28" />
+            <model name="DS6" value="29" />
+            <model name="19款海外Rifter" value="30" />
+            <model name="19款海外301" value="31" />
+            <model name="MPV_Tepee" value="32" />
+            <model name="04_13款307" value="33" />
+            <model name="10_13款408" value="34" />
+            <model name="408SW" value="35" />
+            <model name="408CC" value="36" />
+            <model name="13_19款3008" value="37" />
+            <model name="马来西亚508" value="38" />
+            <model name="RZC" value="39" />
+            <model name="巴西C4" value="40" />
+            <model name="19款5008" value="41" />
+            <model name="19款4008" value="42" />
+            <model name="14_19款408拆空调" value="43" />
+            <model name="20款2008" value="44" />
+            <model name="206" value="64" />
+            <model name="17款4008" value="65" />
+             </category>
+        <category name="奇瑞" value="9">
+            <model name="A3" value="0" />
+            <model name="艾瑞泽5" value="1" />
+            <model name="瑞虎" value="2" />
+            <model name="16款瑞虎3X" value="3" />
+            <model name="瑞虎5" value="4" />
+            <model name="16款瑞虎7" value="5" />
+            <model name="16款艾瑞泽7" value="6" />
+            <model name="18款艾瑞泽GX" value="7" />
+            <model name="艾瑞泽GX/EX" value="8" />
+            <model name="2018款捷途X70" value="9" />
+            <model name="瑞虎5X" value="10" />
+            <model name="18款瑞虎7" value="11" />
+            <model name="18款瑞虎8" value="12" />
+            <model name="16款艾瑞泽5" value="13" />
+            <model name="16款瑞虎3" value="14" />
+            <model name="19款艾瑞泽5" value="15" />
+            <model name="19款瑞虎5X" value="16" />
+            <model name="20款捷途X70M" value="17" />
+            <model name="20款瑞虎7" value="18" />
+            <model name="凯翼X3" value="19" />
+            <model name="20款瑞虎3X" value="20" />
+            <model name="20款瑞虎8" value="21" />
+            <model name="15款瑞虎5" value="22" />
+            <model name="20款瑞虎5X" value="23" />
+            <model name="21款瑞虎3X" value="24" />
+            <model name="QQ冰淇淋" value="25" />
+            <model name="21款小蚂蚁EQ1" value="26" />
+            <model name="19款捷途 X90" value="27" />
+            </category>
+        <category name="马自达" value="10">
+            <model name="Mazda6" value="0" />
+            <model name="17款MazdaCX5" value="1" />
+            <model name="Mazda5" value="2" />
+            <model name="Mazda8" value="3" />
+            <model name="MazdaCX7" value="4" />
+            <model name="Mazda3" value="5" />
+            <model name="MazdaCX4" value="6" />
+            <model name="睿翼" value="7" />
+            <model name="14Mazda3" value="8" />
+            <model name="17款阿特兹" value="9" />
+            <model name="Mazda7" value="10" />
+            <model name="昂克塞拉" value="11" />
+            <model name="MazdaCX9" value="12" />
+            <model name="17款马自达3" value="13" />
+            <model name="台湾版马自达3" value="14" />
+            <model name="18款台湾版CX-3" value="15" />
+            <model name="19款台湾版CX-5" value="16" />
+            <model name="19款CX-5" value="17" />
+            <model name="马来西亚版CX-5" value="18" />
+            <model name="马来西亚版CX-3" value="19" />
+            <model name="马来西亚版马自达3" value="20" />
+            <model name="20款马自达3" value="21" />
+            <model name="14款MazdaCX7" value="22" />
+            <model name="马自达BT-50" value="23" />
+            <model name="马自达CX-9" value="24" />
+            <model name="20款昂科赛拉" value="25" />
+            <model name="20款阿特兹" value="26" />
+            <model name="MazdaCX5" value="27" />
+            <model name="Mazda-Opel" value="28" />
+            <model name="Mazda-BT50" value="29" />
+            <model name="14-19款昂科赛拉" value="30" />
+             </category>
+        <category name="奔腾" value="11">
+            <model name="B50" value="0" />
+            <model name="B70" value="1" />
+            <model name="X80" value="2" />
+            <model name="16款B50" value="3" />
+            <model name="16款B30" value="4" />
+            <model name="17款X80" value="5" />
+            <model name="17款X40" value="6" />
+            <model name="18款森雅R9" value="7" />
+            <model name="18款CX65" value="8" />
+            <model name="19款B50" value="9" />
+            <model name="12款B90" value="10" />
+            <model name="14款B70" value="11" />
+            <model name="13款B50" value="12" />
+            <model name="09款B50" value="13" />
+            <model name="11款B70" value="14" />
+            <model name="19款红旗H5" value="15" />
+              </category>
+        <category name="传祺" value="14">
+            <model name="GA3/GA3S" value="0" />
+            <model name="GS5" value="1" />
+            <model name="GA6" value="2" />
+            <model name="GS4" value="3" />
+            <model name="16款GS4" value="4" />
+            <model name="17款GS8" value="5" />
+            <model name="17款GS3" value="6" />
+            <model name="GA4" value="7" />
+            <model name="2017款GS7" value="8" />
+            <model name="2018款GS4" value="9" />
+            <model name="2018款GE3" value="10" />
+            <model name="2018款GS4混动版" value="12" />
+            <model name="吉奥星朗" value="13" />
+            <model name="GS5全景" value="15" />
+            <model name="2019款GS4" value="16" />
+            <model name="20款GS4" value="17" />
+            <model name="2019款祺智EV" value="18" />
+            <model name="2019款GS8" value="19" />
+            <model name="2019款GM6" value="20" />
+            <model name="2019款GA6" value="21" />
+            <model name="20款GM8" value="22" />
+            <model name="20款GS5" value="23" />
+            <model name="21款GS3" value="25" />
+            <model name="20款GS8" value="26" />
+            <model name="20款GS4混动" value="27" />
+            <model name="22款GS4" value="28" />
+            <model name="21 M8" value="29" />
+        </category>
+        <category name="海马" value="15">
+            <model name="14款海马M5" value="0" />
+            <model name="13-15款海马S7" value="1" />
+            <model name="M8" value="2" />
+            <model name="14款海马M3" value="3" />
+            <model name="16款海马M3" value="4" />
+            <model name="17款海马V70" value="5" />
+            <model name="福美来3代" value="6" />
+            <model name="17款福美来" value="7" />
+            <model name="17款海马S7" value="8" />
+            <model name="17款S5young" value="9" />
+            <model name="19款海马S5" value="10" />
+            <model name="18款福美来F5" value="11" />
+            <model name="16款海马S7" value="12" />
+            <model name="海马S5" value="13" />
+            <model name="16款海马M6" value="14" />
+            <model name="17款海马" value="15" />
+            <model name="18款福美来" value="16" />
+            </category>
+        <category name="吉利" value="16">
+            <model name="GC7" value="0" />
+            <model name="14EC7" value="1" />
+            <model name="远景" value="2" />
+            <model name="16款博越" value="3" />
+            <model name="16款帝豪GS" value="4" />
+            <model name="16款帝豪GL" value="5" />
+            <model name="帝豪远景X6" value="6" />
+            <model name="帝豪远景X1" value="7" />
+            <model name="博瑞" value="8" />
+            <model name="18款远景SUV" value="9" />
+            <model name="18款博越" value="10" />
+            <model name="帝豪远景X3" value="11" />
+            <model name="14款帝豪" value="12" />
+            <model name="15款远景" value="13" />
+            <model name="16款远景SUV" value="14" />
+            <model name="18款远景" value="15" />
+            <model name="18款帝豪GS" value="16" />
+            <model name="18款帝豪GL" value="17" />
+            <model name="19款帝豪" value="18" />
+            <model name="19款帝豪GL混动" value="19" />
+            <model name="18款帝豪" value="20" />
+            <model name="19款帝豪纯电动" value="21" /> 　
+            <model name="18款远景S1" value="22" /> 　
+            <model name="19款吉利GS" value="23" /> 　
+            <model name="19-20款远景X3" value="24" /> 　
+            <model name="15款宝腾PERSONA" value="25" /> 　
+            <model name="19款吉利GL" value="26" /> 　
+            <model name="20款远景X6" value="27" />
+            <model name="19-20款缤越" value="28" />
+            <model name="20款吉利GL" value="29" />
+            <model name="20款博越Pro" value="30" />
+            <model name="20款远景" value="31" />
+            <model name="15款宝腾" value="32" />
+            <model name="20款博越" value="33" />
+            <model name="17款远景" value="34" />
+            <model name="20款GS" value="35" />
+            <model name="19-21款帝豪" value="36" />
+            <model name="20款吉利Gse" value="37" />
+            <model name="21款嘉际" value="38" />
+            <model name="20款缤瑞" value="39" />
+            <model name="20款豪越" value="40" />
+              </category>
+        <category name="中华" value="17">
+            <model name="H530" value="0" />
+            <model name="V5" value="1" />
+            <model name="16款V3" value="2" />
+            <model name="17款H3" value="3" />
+            <model name="18款V6 自动豪华版" value="4" />
+            <model name="18款V6 自动尊贵版" value="5" />
+            <model name="18款V6 手动都市版" value="6" />
+            <model name="18款V6 自动旗舰版" value="7" />
+            <model name="17 V5" value="8" />
+               </category>
+        <category name="长安" value="21">
+            <model name="悦翔V7" value="0" />
+            <model name="CS75" value="1" />
+            <model name="奔奔" value="2" />
+            <model name="17款CS75" value="3" />
+            <model name="17款欧尚" value="4" />
+            <model name="17款CX70" value="5" />
+            <model name="17款CS55" value="6" />
+            <model name="17款CS15" value="7" />
+            <model name="18款逸动DT" value="8" />
+            <model name="17款A800" value="9" />
+            <model name="17款X70A" value="10" />
+            <model name="18款A600" value="11" />
+            <model name="18款凌轩" value="12" />
+            <model name="18款科赛" value="13" />
+            <model name="CX70自动空调" value="14" />
+            <model name="CX70手动空调" value="15" />
+            <model name="19款科赛" value="16" />
+            <model name="19款欧尚A800" value="17" />
+            <model name="18款CS55" value="18" />
+            <model name="18款CS75" value="19" />
+            <model name="18款悦翔" value="20" />
+            <model name="20款欧尚X7" value="21" />
+            <model name="19款悦翔" value="22" />
+            <model name="19款CS15" value="23" />
+            <model name="19款逸动" value="24" />
+            <model name="20款CS75" value="25" />
+            <model name="19款CS35 PLUS" value="26" />
+            <model name="19款长安欧尚科尚" value="27" />
+            <model name="19款长安悦翔低配" value="28" />
+            <model name="18款X70A" value="29" />
+            <model name="18款长安欧尚科赛" value="30" />
+            <model name="CX70" value="31" />
+            <model name="欧尚" value="32" />
+            <model name="16悦翔V7" value="33" />
+            <model name="CS35" value="34" />
+            <model name="CS95" value="35" />
+              </category>
+        <category name="北汽" value="22">
+            <model name="威旺M20" value="0" />
+            <model name="14款绅宝D60" value="1" />
+            <model name="M30" value="3" />
+            <model name="幻速H2" value="4" />
+            <model name="幻速S2" value="5" />
+            <model name="幻速S3" value="6" />
+            <model name="16款绅宝X55" value="7" />
+            <model name="15-17款绅宝X25" value="8" />
+            <model name="幻速S6" value="9" />
+            <model name="16款BJ20" value="10" />
+            <model name="17款威旺M50F" value="11" />
+            <model name="EC180" value="12" />
+            <model name="16款BJ40" value="13" />
+            <model name="16款绅宝X35" value="14" />
+            <model name="17款昌河Q35" value="15" />
+            <model name="16款幻速S3L" value="16" />
+            <model name="15款绅宝X35" value="17" />
+            <model name="17款绅宝X35" value="18" />            
+            <model name="18款绅宝X35" value="19" />
+            <model name="威旺M30" value="20" />
+            <model name="18款幻速S7" value="21" />
+            <model name="19款北汽智行" value="22" />
+            <model name="绅宝X65" value="23" />
+            <model name="绅宝D70" value="24" />
+            <model name="幻速S5" value="25" />
+            <model name="19款新能源EC5" value="26" />
+            <model name="18款新能源EU5" value="27" />        
+            <model name="18款绅宝D50" value="28" />     
+            <model name="18北京X5" value="29" />     
+            <model name="18北京X3" value="30" />                 
+            <model name="19款绅宝D50" value="31" />              
+            <model name="18-21款绅宝X55" value="32" />           
+            <model name="19-21款绅宝X35" value="33" />   
+            <model name="幻速H3" value="34" />
+            <model name="S3" value="35" />
+            <model name="S5" value="36" />
+              </category>
+        <category name="长城" value="24">
+            <model name="2014款哈弗H2" value="0" />
+            <model name="风骏6" value="1" />
+            <model name="C30" value="2" />
+            <model name="2016款哈弗H6" value="3" />
+            <model name="2017款风骏6" value="4" />
+            <model name="17-18款哈弗H2蓝标" value="5" />
+            <model name="17-18款哈弗H2红标" value="6" />
+            <model name="2017款哈弗H2s红标/蓝标" value="7" />
+            <model name="2016款哈弗H6Coupe" value="8" />
+            <model name="2018款哈弗H6" value="9" />
+            <model name="哈弗H9" value="10" />
+            <model name="2017款哈弗H6" value="11" />
+            <model name="2018款哈弗M6" value="12" />
+            <model name="2017款哈弗H6Coupe红标" value="13" />
+            <model name="2017款哈弗H6Coupe蓝标" value="14" />
+            <model name="2018款哈弗H6-换代" value="15" />
+            <model name="2017款哈弗H6运动版" value="16" />
+            <model name="2017款哈弗M6/2019款哈弗M6" value="17" />
+            <model name="2016款哈弗H1" value="18" />
+            <model name="2018款哈弗H6Coupe" value="19" />
+            <model name="2018款哈弗H6运动版" value="20" />
+            <model name="2019款哈弗H6Coupe" value="21" />
+            <model name="20款风骏7" value="22" />
+            <model name="2018款哈弗H2" value="23" />
+            <model name="2019款哈弗F7" value="24" />
+            <model name="2019款哈弗H6-换代" value="25" />
+            <model name="2019款哈弗H6黑标" value="26" />
+            <model name="哈弗H8" value="27" />
+            <model name="2019款长城炮" value="28" />
+            <model name="16-17款H9" value="29" />
+            <model name="19款哈佛H7" value="30" />
+            <model name="19款H6运动版" value="31" />
+            <model name="20款哈佛H6-换代" value="32" />
+            <model name="20款哈佛H6Coupe" value="33" />
+            <model name="哈弗H7" value="34" />
+            <model name="哈弗H6" value="35" />
+            <model name="18-19款哈佛H4" value="36" />
+            <model name="20款哈弗H4" value="37" />
+            <model name="欧拉" value="38" /> 　
+            <model name="20款哈弗F7" value="39" />
+            <model name="15-16款H6Coupe(全兼容)" value="40" />
+            <model name="17-18H6Coupe(全兼容)" value="41" />
+            <model name="H2(全兼容)" value="42" />
+            <model name="17-20款H4" value="43" />
+            <model name="20款哈弗H9" value="44" />
+            <model name="18款哈弗H4" value="45" />
+            <model name="17款哈弗H7" value="46" />
+            <model name="2019款哈弗F7(不带座椅通风)" value="47" />
+            <model name="22款金刚炮" value="48" />
+            <model name="15H8" value="49" />
+            <model name="18款H7蓝标" value="50" />
+              </category>
+        <category name="东风" value="25">
+            <model name="风光360" value="0" />
+            <model name="风光330S" value="1" />
+            <model name="2015款风神AX7" value="2" />
+            <model name="风光580" value="3" />
+            <model name="景逸X5" value="4" />
+            <model name="2016款风神AX5" value="5" />
+            <model name="2016款风神AX7" value="6" />
+            <model name="2016款风度MX5" value="7" />
+            <model name="风光370" value="8" />
+            <model name="2018款锐琪6" value="9" />
+            <model name="风光S560" value="10" />
+            <model name="16-18款风神AX7" value="11" />
+            <model name="18款风神AX7全景" value="12" />
+            <model name="景逸S50" value="13" />
+            <model name="2019景逸X5" value="14" />
+            <model name="18款330S" value="15" />
+            <model name="18款580" value="16" />
+            <model name="19款易至EV3" value="17" />
+            <model name="2017景逸X5" value="18" />
+            <model name="2019风神AX3" value="19" />
+            <model name="2018风光580" value="20" />
+            <model name="14-17款纳智捷" value="21" />
+            <model name="东风风度MX6" value="22" />
+            <model name="20款风神AX7" value="23" />
+            <model name="18款景逸X5" value="24" />
+            <model name="20款低配不带悬浮屏风行T5" value="25" />
+            <model name="2019低配不带悬浮屏景逸X5" value="26" />
+            <model name="18款江铃E400" value="27" />
+            <model name="18款S560" value="28" />
+            <model name="19款AX7" value="29" />
+            <model name="20款580" value="30" />
+            <model name="纳智捷" value="31" />
+            <model name="20款风神奕炫" value="32" />
+            <model name="17款风神MX5" value="33" />
+            <model name="风神AX全系" value="34" />
+            <model name="19款SX6" value="35" />
+            <model name="20-21款S560" value="36" />
+            <model name="21款580" value="37" />
+            <model name="21款500" value="38" />
+            <model name="19款风光E3" value="39" />
+            <model name="21款景逸S50" value="40" />
+            <model name="21款景逸S50EV" value="41" />
+            <model name="21款景逸SX6" value="42" />
+            <model name="风光500" value="43" />
+            <model name="22EX1" value="44" />
+            <model name="22FEV" value="45" />
+        </category>
+        <category name="众泰" value="26">
+            <model name="T600" value="0" />
+            <model name="大迈X5" value="1" />
+            <model name="大迈X7" value="2" />
+            <model name="2018款众泰T500" value="3" />
+            <model name="2018款众泰T300" value="4" />
+            <model name="黄海N2" value="5" />
+            <model name="2017款众泰SR9" value="6" />
+            <model name="2018款君马S70" value="7" />
+            <model name="2017款众泰SR7" value="8" />
+            <model name="18 D50" value="9" />
+            <model name="SR7" value="10" />
+            <model name="15款路虎发现" value="11" />
+            <model name="18款众泰E200" value="12" />
+            <model name="潍柴U60V" value="13" />
+            <model name="2019款野马博骏" value="14" />
+            <model name="12款路虎极光" value="15" />
+            <model name="20款潍柴U70V" value="16" />
+        </category>
+        <category name="上汽" value="27">
+            <model name="2014款宝骏730" value="0" />
+            <model name="2015款宝骏560" value="1" />
+            <model name="2012款荣威550" value="2" />
+            <model name="2015款名爵锐腾" value="3" />
+            <model name="名爵6" value="4" />
+            <model name="荣威360" value="5" />
+            <model name="2016款宝骏730" value="6" />
+            <model name="2017款宝骏730" value="7" />
+            <model name="2017款名爵ZS" value="8" />
+            <model name="荣威RX5" value="9" />
+            <model name="2017款宝骏510" value="10" />
+            <model name="2018款宝骏530" value="11" />
+            <model name="2018款五菱宏光S3" value="12" />
+            <model name="11-12款荣威550/名爵6" value="13" />
+            <model name="13-15款荣威550/名爵6" value="14" />
+            <model name="大通T60/V80" value="15" />
+            <model name="18-19款大通G10" value="16" />
+            <model name="2017款锐腾" value="17" />
+            <model name="2018款荣威RX3" value="18" />
+            <model name="荣威I6" value="19" />
+            <model name="2013款荣威550" value="20" />
+            <model name="名爵ZS" value="21" />
+            <model name="19款荣威EI5" value="22" />
+            <model name="2019款大通EV30" value="23" />
+            <model name="2019款大通G50" value="24" />
+            <model name="2018款大通V80" value="25" />
+            <model name="2016款T60" value="26" />
+            <model name="大通T60" value="27" />
+            <model name="2020款名爵ZS" value="28" />
+            <model name="17-18款荣威i6" value="29" />
+            <model name="16-18款荣威RX5" value="30" />
+            <model name="19款名爵HS" value="31" />
+            <model name="19款荣威i5" value="32" />
+            <model name="19款荣威i6" value="33" />
+            <model name="19款EZS" value="34" />
+            <model name="19款荣威RX8" value="35" />
+            <model name="16款名爵锐腾" value="36" />
+            <model name="18款名爵6" value="37" />
+            <model name="19款大通T70" value="38" />
+            <model name="19款大通V90" value="39" />
+            <model name="2018款宝骏510" value="40" />
+            <model name="2019款宝骏510" value="41" />
+            <model name="2019款宝骏530" value="42" />
+            <model name="2015款宝骏730" value="43" />
+            <model name="2016款宝骏560" value="44" />
+            <model name="2017款宝骏560" value="45" />
+            <model name="2018款宝骏360" value="46" />
+            <model name="2019款宝骏730" value="47" />
+            <model name="2020款宝骏RS-3" value="48" />
+            <model name="2019款MG6" value="49" />
+            <model name="2017款荣威Ei6混动" value="50" />
+            <model name="2018款荣威RX8" value="51" />
+            <model name="2019款荣威950" value="52" />
+            <model name="2020 I5" value="53" />
+            <model name="2020 ZS" value="54" />
+            <model name="2020 RX5" value="55" />
+            <model name="2020 I6" value="56" />
+            <model name="2020 RX3" value="57" />
+            <model name="2020 MG6" value="58" />
+            <model name="2020 HS" value="59" />
+            <model name="2019 ZS" value="60" />
+            <model name="2017 I6" value="61" />
+            <model name="2015 360(SAF1)" value="62" />
+            <model name="2016 RX5;2017 MG6;2017 I6(SAF1)" value="63" />
+            <model name="2015名爵锐腾(SAF1)" value="64" />
+            <model name="2017名爵锐腾(SAF1)" value="65" />
+            <model name="2017-ZS(SAF1)" value="66" />
+        </category>
+        <category name="江淮" value="28">
+            <model name="S3" value="0" />
+            <model name="S2" value="1" />
+            <model name="S5" value="2" />
+            <model name="2017款S3" value="3" />
+            <model name="2016款M4" value="4" />
+            <model name="2017S2MINI" value="5" />
+            <model name="2017S2" value="6" />
+            <model name="S2_S3_S5全兼容" value="7" />
+            <model name="S2_MINI" value="8" />
+            <model name="IEV6E" value="9" />
+            <model name="19款S4" value="10" />
+            <model name="江淮T8" value="11" />
+            <model name="瑞风S7" value="12" />
+            <model name="17-20款瑞风S7" value="13" />
+            <model name="2014款S3" value="14" />
+            <model name="2015款S2" value="15" />
+            <model name="18款R3" value="16" />
+            <model name="18款带小屏 IEV6E" value="20" />
+            <model name="19款带小屏 IEV6E" value="21" />
+             </category>
+        <category name="力帆" value="29">
+            <model name="力帆X60" value="0" />
+            <model name="力帆X70" value="3" />
+            <model name="力帆X720" value="1" />
+            <model name="力帆X820" value="2" />
+            <model name="13款力帆720" value="4" />
+            <model name="18款力帆650EV" value="5" />
+             </category>
+        <category name="菲亚特" value="30">
+            <model name="菲翔" value="0" />
+            <model name="菲亚特博悦" value="2" />
+            <model name="2012款领雅" value="3" />
+            <model name="2009款菲奥里诺" value="4" />
+            <model name="12款菲翔" value="5" />
+            <model name="Fiorino" value="6" />
+            <model name="Doblo" value="7" />
+            <model name="Egea" value="8" />
+            <model name="14-15款致悦" value="9" />
+            <model name="TORO" value="10" />
+            <model name="EGE" value="11" />
+            <model name="13款500L" value="12" />
+            <model name="19款500L" value="13" />
+            <model name="18款Aegea" value="14" />
+            <model name="19款Aegea" value="15" />
+            <model name="FLORLNO" value="16" />
+            <model name="LINEA" value="17" />
+            <model name="PUNTO" value="18" />
+            <model name="Ducato" value="19" />
+            <model name="17款PANDA" value="20" />
+            <model name="Ram1500" value="21" />
+            <model name="16-Aegea" value="22" />
+            <model name="13-500L" value="23" />
+            <model name="19-500L" value="24" />
+            <model name="菲跃" value="25" />
+            <model name="IDEA" value="26" />
+              </category>
+        <category name="启辰" value="31">
+            <model name="2015款T70" value="0" />
+            <model name="2016款T70" value="1" />
+            <model name="2017款T90" value="2" />
+            <model name="2018款D60" value="3" />
+            <model name="2018款T70" value="4" />
+            <model name="2017款D60" value="5" />
+            <model name="2017款M50V" value="6" />
+            <model name="2020款T60" value="7" />
+            <model name="2020款T70" value="8" />
+             </category>
+        <category name="吉普" value="32">
+            <model name="10-13款牧马人" value="0" />
+            <model name="2016款自由光" value="1" />
+            <model name="2016款自由侠" value="2" />
+            <model name="11-15款指南者" value="3" />
+            <model name="2017款指南者" value="4" />
+            <model name="自由客" value="5" />
+            <model name="2017款大切诺基" value="6" />
+            <model name="2018款牧马人" value="7" />
+            <model name="2018款自由侠" value="8" />
+            <model name="菲亚特Aegea" value="9" />
+            <model name="2018款指挥官" value="10" />
+            <model name="老指南者" value="11" />
+            <model name="19款挑战者" value="12" />
+            <model name="2019款自由光" value="13" />
+            <model name="07-10款指南者/牧马人" value="14" />
+            <model name="2020款指南者" value="15" />
+            <model name="2020款指挥官" value="16" />
+            <model name="2020款牧马人" value="17" />
+            <model name="2020款自由光" value="18" />
+            <model name="2020款自由侠" value="19" />
+            <model name="国外2019款自由侠" value="20" />
+            <model name="国外2019款菲亚特500L" value="21" />
+            <model name="2004大切诺基" value="22" />
+            <model name="2005大捷龙" value="23" />
+            <model name="300c" value="24" />
+            <model name="道奇" value="25" />
+             </category>
+        <category name="英菲尼迪" value="33">
+            <model name="QX50" value="0" />
+            <model name="15款Q70" value="1" />
+            <model name="14款QX60" value="2" />
+            <model name="16款Q50L" value="3" />
+            <model name="10款G37" value="4" />
+            <model name="17款日产途乐" value="5" />
+             </category>
+        <category name="奔驰" value="35">
+            <model name="Smart" value="0" />
+            <model name="B200" value="1" />
+            <model name="威霆" value="2" />
+            <model name="斯宾特" value="3" />
+            <model name="ML" value="4" />
+            <model name="R300" value="5" />
+            <model name="ML320" value="6" />
+            <model name="ML350CDI" value="7" />
+            <model name="全系列" value="8" />
+            <model name="G350" value="9" />
+            <model name="G55" value="10" />
+            <model name="16款威霆METRIS" value="11" />
+            <model name="GLK300" value="12" />
+            <model name="A180" value="13" />
+            <model name="A级2004-2012款" value="14" />
+            <model name="B级2005-2011款" value="15" />
+            <model name="R级2006-2014款" value="16" />
+            <model name="ML级2005-2011款" value="17" />
+            <model name="GL级2005-2013款" value="18" />
+            <model name="GL级2003-2013款" value="19" />
+            <model name="威雅诺2010-至今" value="20" />
+            <model name="Vinao" value="21" />
+            <model name="S350" value="22" />
+            <model name="ML350" value="23" />
+            <model name="19款Sprinter" value="24" />
+            <model name="E260L" value="25" />
+            <model name="C200" value="26" />
+            <model name="C200(保留原车主机)" value="27" />
+              </category>
+        <category name="东南" value="36">
+            <model name="DX7" value="0" />
+            <model name="V5" value="1" />
+            <model name="V6" value="2" />
+            <model name="18款DX3" value="3" />
+            <model name="20款A5翼舞" value="4" />
+            <model name="19款DX5" value="5" />
+             </category>
+        <category name="雷诺" value="37">
+            <model name="16_17款科雷嘉" value="0" />
+            <model name="2015款卡缤" value="1" />
+            <model name="新梅甘娜" value="2" />
+            <model name="2017款科雷傲" value="3" />
+            <model name="16款达斯特" value="4" />
+            <model name="2018款科雷傲" value="5" />
+            <model name="2016款科雷傲" value="6" />
+            <model name="梅甘娜2" value="7" />
+            <model name="梅甘娜3" value="8" />
+            <model name="梅甘娜4" value="9" />
+            <model name="Fluence" value="10" />
+            <model name="Duster" value="11" />
+            <model name="09-16款科雷傲" value="12" />
+            <model name="2018款科雷嘉" value="13" /> 　　　 
+            <model name="土耳其MEGANE" value="14" />
+            <model name="巴西版SANDERO" value="15" />
+            <model name="巴西版DUSTER" value="16" />
+            <model name="巴西版CAPTURE" value="17" />
+            <model name="土耳其CLIO" value="18" />
+            <model name="土耳其KADJAR" value="19" />
+            <model name="土耳其CAPTURE" value="20" />
+            <model name="纬度" value="21" />
+            <model name="Dacia" value="22" />
+            <model name="Dacia-Vesta" value="23" />
+            <model name="Sandero" value="24" />
+            <model name="Lodgy" value="25" />
+            <model name="Logan" value="26" />
+            <model name="Dokker" value="27" />
+            <model name="Captur" value="28" />
+            <model name="Clio" value="29" />
+            <model name="Symbol" value="30" />
+            <model name="Kwid" value="31" />
+            <model name="Sandero" value="32" />
+            <model name="2019科雷缤" value="33" />
+            <model name="金杯观境" value="34" />
+            <model name="21Sandero" value="35" />
+        </category>
+        <category name="UAZ" value="38">
+            <model name="PATRIOT" value="0" />
+            <model name="PICKUP" value="1" />
+        </category>
+        <category name="比速" value="39">
+            <model name="M3" value="0" />
+            <model name="T3" value="1" />
+            <model name="T5" value="2" />
+        </category>
+        <category name="江西五十铃" value="40">
+            <model name="17款瑞迈" value="0" />
+            <model name="17款D-MAX" value="1" />
+            <model name="19款瑞迈" value="2" />
+            <model name="18-20款mu-X牧游侠" value="3" />
+            <model name="达咖" value="4" />
+            <model name="20款铃拓" value="5" />
+            <model name="18款庆铃" value="6" />
+            <model name="21款庆铃-达咖" value="7" />
+        </category>
+        <category name="博融" value="41">
+            <model name="M40" value="1" />
+        </category>
+        <category name="宝马" value="42">
+            <model name="E39" value="0" />
+            <model name="E90" value="1" />
+            <model name="09-15款X1" value="2" />
+            <model name="07-12款X3" value="3" />
+            <model name="04-11款320" value="4" />
+            <model name="12款MINI" value="5" />
+            <model name="新3系" value="6" />
+            <model name="1系" value="7" />
+            <model name="NBT-EVO全系" value="8" />
+            <model name="06-10款宝马老X3" value="9" />
+            <model name="宝马老3系/老5系/老X5" value="10" />
+            <model name="宝马120/130/318/320/325/X1" value="11" />
+            <model name="E60" value="12" />
+            <model name="宝马E46/E39/E53" value="13" />
+            <model name="宝马E90-X1" value="14" />
+            <model name="MINI" value="30" />
+            <model name="05-12 318i" value="31" />
+            <model name="05-12 320i" value="32" />
+            <model name="12-15 X1" value="33" />
+            <model name="CIC" value="34" />
+            <model name="NBT" value="35" />
+            <model name="CCC" value="36" />
+        </category>
+        <category name="奥迪" value="43">
+            <model name="A3" value="0" />
+            <model name="A4" value="1" />
+            <model name="05-09款A6" value="2" />
+            <model name="08-16款A4L" value="3" />
+            <model name="08-18款Q5" value="4" />
+            <model name="Q3" value="5" />
+            <model name="A3/S3 (2003-2013)" value="6" />
+            <model name="A4/S4(2002-2008)" value="7" />
+            <model name="奥迪TT(2006-2012)" value="8" />
+            <model name="05-11款A6" value="9" />
+            <model name="TT 08-13款" value="10" />
+            <model name="A3 04-12款" value="11" />
+            <model name="A4 03-07款" value="12" />
+            <model name="Q3 13-18款" value="13" />
+            <model name="Q5 10-18款" value="14" />
+            <model name="A6" value="15" />
+            <model name="TT" value="16" />
+        </category>
+        <category name="汉腾" value="44">
+            <model name="16款x7" value="0" />
+            <model name="18款x5" value="1" />
+        </category>
+        <category name="IAP升级" value="45">
+            <model name="IAP升级" value="0" />
+        </category>
+        <category name="比亚迪" value="46">
+            <model name="12-15款比亚迪F3" value="0" />
+            <model name="比亚迪S6" value="1" />
+            <model name="16-18款比亚迪元" value="2" />
+            <model name="12-16款速锐" value="3" />
+            <model name="比亚迪E5" value="4" />
+            <model name="速锐" value="5" />
+            <model name="比亚迪全兼容" value="6" />
+            <model name="比亚迪S1/S2/E1/E2/E3/秦/唐" value="7" />
+            <model name="比亚迪G6" value="8" />
+            <model name="比亚迪M6" value="9" />
+            <model name="比亚迪F6" value="10" />
+            <model name="比亚迪G5" value="11" />
+            <model name="比亚迪全兼容(老协议盒)" value="12" />
+            <model name="宋元新能源" value="13" />
+            <model name="宋元燃油" value="14" />
+            <model name="唐/s7新能源" value="15" />
+            <model name="唐/s7燃油" value="16" />
+            <model name="比亚迪秦" value="17" />
+            <model name="比亚迪E1/E2" value="18" />
+            <model name="S7" value="19" />
+            <model name="E6" value="20" />
+            <model name="宋" value="21" />
+            <model name="宋Max" value="22" />
+        </category>
+        <category name="雷克萨斯" value="47">
+            <model name="06款雷克萨斯" value="0" />
+            <model name="06-12IS" value="5" />
+            <model name="09-14RX" value="6" />
+            <model name="06-12ES" value="7" />
+            <model name="LC100" value="8" />
+            <model name="05-09丰田锐志" value="9" />
+            <model name="04-06LS430" value="10" />
+            <model name="04-05LX470" value="11" />
+            <model name="LS460" value="12" />
+            <model name="LS430" value="13" />
+            <model name="4500" value="14" />
+            <model name="RX350" value="15" />
+            <model name="LX570" value="16" />  
+            <model name="NX" value="17" />  
+            <model name="RX" value="18" />            
+        </category>
+        <category name="金杯" value="48">
+            <model name="X30L" value="0" />
+            <model name="18款海狮S" value="1" />
+            <model name="格瑞斯" value="2" />
+        </category>
+        <category name="三菱" value="49">
+            <model name="2014款欧蓝德" value="0" />
+            <model name="2019款欧蓝德" value="1" />
+            <model name="2018款欧蓝德" value="2" />
+            <model name="2018款奕歌" value="3" />
+            <model name="2018款帕杰罗" value="4" />
+            <model name="2019款奕歌台湾版" value="5" />
+            <model name="2020款帕杰罗运动版" value="6" />
+            <model name="2020款帕杰罗劲畅" value="7" />
+            <model name="2020款欧蓝德" value="8" />
+            <model name="2020TRITON" value="9" />
+            <model name="帕杰罗" value="10" />
+        </category>
+        <category name="观致" value="50">
+            <model name="观致3" value="0">
+                <model name="观致5" value="1" />
+            </model>
+        </category>
+        <category name="野马" value="51">
+            <model name="17款野马T80" value="0" />
+        </category>
+        <category name="大运" value="52">
+            <model name="重卡" value="0" />
+        </category>
+        <category name="陆风" value="53">
+            <model name="逍遥" value="0" />
+            <model name="X7" value="1" />
+        </category>
+        <category name="保时捷" value="54">
+            <model name="2009款卡宴" value="0" />
+            <model name="03-10款卡宴" value="1" />
+        </category>
+        <category name="原车改装" value="55">
+            <model name="CAN协议" value="0" />
+            <model name="巴谷" value="1" />
+        </category>
+        <category name="斯威" value="56">
+            <model name="18款斯威G01" value="0" />
+            <model name="19款斯威G01" value="1" />
+            <model name="20款潍柴U70" value="2" />
+        </category>
+        <category name="卡威" value="57">
+            <model name="K150" value="0" />
+        </category>
+        <category name="欧宝" value="58">
+            <model name="安德拉2006-2012" value="0" />
+            <model name="赛飞利2006-2008" value="1" />
+            <model name="雅特2005-2008" value="2" />
+            <model name="安德拉2006-2012(保留原车主机)" value="3" />
+        </category>
+        <category name="大乘" value="59">
+            <model name="19款G70S" value="0" />
+            <model name="Tu auto" value="1" />
+        </category>
+        <category name="铃木" value="60">
+            <model name="天语SX4/英格尼斯" value="0" />
+        </category>
+        <category name="斯巴鲁" value="61">
+            <model name="斯巴鲁XV" value="0" />
+            <model name="斯巴鲁驰鹏" value="1" />
+            <model name="森林人" value="2" />
+        </category>
+        <category name="福田" value="62">
+            <model name="拓陆者" value="0" />
+            <model name="蒙派克" value="1" />
+        </category>
+        <category name="乔治巴顿" value="63">
+            <model name="战车" value="0" />
+        </category>
+        <category name="沃尔沃" value="64">
+            <model name="V60" value="0" />
+            <model name="S60" value="1" />
+            <model name="08-18XC60" value="2" />
+            <model name="04-13XC90" value="3" />
+            <model name="S40" value="4" />
+            <model name="10-13款XC60全系" value="5" />
+        </category>
+        <category name="江铃" value="65">
+            <model name="牧游侠" value="0" />
+            <model name="14-17款陆丰X7" value="1" />
+            <model name="易至EV3-E300" value="2" />
+            <model name="E200N" value="3" />
+            <model name="驭胜" value="4" />
+        </category>
+        <category name="双龙" value="66">
+            <model name="蒂维拉" value="0" />
+        </category>
+        <category name="道奇" value="67">
+            <model name="酷威" value="0" />
+            <model name="酷威(保留原车屏)" value="1" />
+        </category>
+        <category name="新特" value="68">
+            <model name="新特" value="0" />
+        </category>
+        <category name="华泰" value="69">
+            <model name="圣达菲" value="0" />
+        </category>
+        <category name="按键板" value="70">
+            <model name="通用1" value="0" />
+            <model name="通用2" value="1" />
+        </category>
+        <category name="法拉利" value="71">
+            <model name="2020款法拉利" value="0" />
+        </category>
+        <category name="合众" value="72">
+            <model name="哪吒" value="0" />
+        </category>        
+        <category name="林肯" value="73">
+            <model name="17领航员" value="0" />
+            <model name="17大陆" value="1" />
+        </category>
+        <category name="常发" value="74">
+            <model name="农用机" value="0" />
+        </category>  
+         <category name="潍柴" value="75">
+            <model name="18 D50" value="9" />
+            <model name="潍柴U60V" value="13" />
+            <model name="20款潍柴U70" value="2" />
+        </category>
+        <category name="塔塔" value="76">
+            <model name="Nexon" value="0" />
+            <model name="Altroz" value="1" />
+            <model name="Tiago" value="2" />
+            <model name="Hexa" value="3" />
+        </category>
+        <category name="阿尔法罗密欧" value="77">
+            <model name="阿尔法罗密欧" value="0" />
+        </category>
+         <category name="马恒达" value="78">
+            <model name="Scorpio S11" value="0" />
+        </category>
+        <category name="知豆" value="79">
+            <model name="D2" value="0" />
+        </category>
+        <category name="霍顿" value="80">
+            <model name="准将VF(单驱空调)" value="0" />
+            <model name="准将VF(双驱空调)" value="1" />
+        </category>
+        <category name="其它" value="81">
+            <model name="DL1025" value="0" />
+            <model name="Test" value="1" />
+        </category>
+        <category name="纳智捷" value="82">
+            <model name="U6" value="0" />
+        </category>
+        <category name="创维" value="95">
+            <model name="ET5" value="0" />
+        </category>
+        <category name="悍马" value="96">
+            <model name="H2" value="0" />
+        </category>
+        <category name="路虎" value="97">           
+            <model name="LandRover" value="0" /> 
+            <model name="神行者2" value="1" />     
+            <model name="发现4" value="2" /> 
+            <model name="12款极光" value="3" />
+        </category>
+        <category name="依维柯" value="98">           
+            <model name="依维柯" value="0" />
+        </category>
+        <category name="凯迪拉克" value="99">           
+            <model name="凯雷德" value="0" />       
+            <model name="赛威" value="1" />
+        </category>
+       
+    </categorys>
+    
+    <configs>
+        <config name="低配" value="0" />
+        <config name="中配" value="1" />
+        <config name="高配" value="2" />
+    </configs>
+
+</plist>

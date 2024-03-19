@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:key="tpms" >
+
+    <com.common.view.MyPreference2
+        android:key="tpms_content"
+        android:layout="@layout/type_info" />
+
+</PreferenceScreen>

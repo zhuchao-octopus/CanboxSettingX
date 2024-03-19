@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15px" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/airControlTextNormal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/app_vehicle_clock" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:paddingLeft="80px"
+        android:paddingRight="80px" >
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/hour_a"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/add"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+
+            <TextView
+                style="@style/airControlTextNormal"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/mazda_clock_hour" />
+
+            <Button
+                android:id="@+id/hour_m"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/minus"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="80px"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/min_a"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/add"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+
+            <TextView
+                style="@style/airControlTextNormal"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/mazda_clock_min" />
+
+            <Button
+                android:id="@+id/min_m"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/minus"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="30px"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+
+            <Button
+                android:id="@+id/set24"
+                style="@style/airControlTextNormal"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/time24" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="30px"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+
+            <Button
+                android:id="@+id/set12"
+                style="@style/airControlTextNormal"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:text="@string/time12" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

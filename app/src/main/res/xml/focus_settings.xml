@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <SwitchPreference
+        android:key="information_tone_volume"
+        android:defaultValue="false"
+        android:title="@string/information_tone" />
+
+    
+    <SwitchPreference
+        android:key="warning_tone"
+        android:defaultValue="false"
+        android:title="@string/warning_tone" />
+    
+    <ListPreference
+        android:entries="@array/enwarning_control"
+        android:entryValues="@array/common_s5"
+        android:key="warning_contorl"
+        android:title="@string/warning_contorl" />
+    <ListPreference
+        android:entries="@array/temp_dis_t"
+        android:entryValues="@array/common_s2"
+        android:key="temp_dis_k"
+        android:title="@string/temp_dis" />
+    <ListPreference
+        android:entries="@array/enturn_lights_sets_set"
+        android:entryValues="@array/common_s2"
+        android:key="turn_lights_set"
+        android:title="@string/turn_lights_set" />
+    <ListPreference
+        android:entries="@array/mileage_unit_t"
+        android:entryValues="@array/common_s2"
+        android:key="mileage_unit"
+        android:title="@string/mileage_unit" />
+    <ListPreference
+        android:entries="@array/enremote_start_air"
+        android:entryValues="@array/common_s2"
+        android:key="brightness"
+        android:title="@string/brightness" />
+
+    <SwitchPreference
+        android:key="control_system"
+        android:defaultValue="false"
+        android:title="@string/control_system" />
+<!--     <SwitchPreference -->
+<!--         android:key="disc_indicator" -->
+<!--         android:title="@string/disc_indicator" /> -->
+<!--     <SwitchPreference -->
+<!--         android:key="acoustic_key" -->
+<!--         android:title="@string/acoustic_key" /> -->
+<!--     <SwitchPreference -->
+<!--         android:key="five_key" -->
+<!--         android:title="@string/five_key" /> -->
+    <SwitchPreference
+        android:key="off_Warning_info"
+        android:title="@string/off_Warning_info" />
+    <SwitchPreference
+        android:key="wipers_induction"
+        android:defaultValue="false"
+        android:title="@string/wipers_induction" />
+    <SwitchPreference
+        android:key="incar_light"
+        android:defaultValue="false"
+        android:title="@string/incar_light" />
+    <SwitchPreference
+        android:key="parking_mode"
+        android:defaultValue="false"
+        android:title="@string/parking_mode" />
+    
+    <SwitchPreference
+        android:key="ramp"
+        android:title="@string/ramp" />
+    <SwitchPreference
+        android:key="reverse_zoom"
+        android:title="@string/reverse_zoom" />
+    <SwitchPreference
+        android:key="enhanced_assistance"
+        android:title="@string/enhanced_assistance" />
+
+      <PreferenceScreen
+          android:key="tyre_monitor"
+          android:persistent="false"
+          android:title="@string/tyre_monitor" />
+      
+</PreferenceScreen>

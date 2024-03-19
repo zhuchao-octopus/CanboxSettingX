@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceScreen android:title="@string/air_settings" >
+        <ListPreference
+            android:entries="@array/automodewindlevel_entries"
+            android:entryValues="@array/automodewindlevel_entryValues"
+            android:key="automodewindlevel"
+            android:persistent="false"
+            android:title="@string/automodewindlevel" />
+        <ListPreference
+            android:entries="@array/airqualitysensor_entry"
+            android:entryValues="@array/airqualitysensor_entryValues"
+            android:key="airqualitysensor"
+            android:persistent="false"
+            android:title="@string/airqualitysensor" />
+        <ListPreference
+            android:entries="@array/airpartition_entries"
+            android:entryValues="@array/airpartition_entryValues"
+            android:key="airpartition"
+            android:persistent="false"
+            android:title="@string/airpartition" />
+
+        <SwitchPreference
+            android:key="backwindowdefog"
+            android:persistent="false"
+            android:title="@string/backwindowdefog" />
+        <SwitchPreference
+            android:key="frontwindowdefog"
+            android:persistent="false"
+            android:title="@string/frontwindowdefog" />
+
+        <ListPreference
+            android:entries="@array/enremote_seat"
+            android:entryValues="@array/enremote_seat_vaues"
+            android:key="remote_seat"
+            android:persistent="false"
+            android:title="@string/remote_seat" />
+        <ListPreference
+            android:entries="@array/enari_mode"
+            android:entryValues="@array/enari_mode_vaues"
+            android:key="ari_mode"
+            android:persistent="false"
+            android:title="@string/ari_mode" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/car_normal_settings" >
+        <SwitchPreference
+            android:key="blind"
+            android:persistent="false"
+            android:title="@string/blind" />
+
+
+
+        <SwitchPreference
+            android:key="folding"
+            android:persistent="false"
+            android:title="@string/folding" />
+<!--         <SwitchPreference -->
+<!--             android:key="rtmirror" -->
+<!--             android:persistent="false" -->
+<!--             android:title="@string/rtmirror" /> -->
+        <SwitchPreference
+            android:key="easyeeat"
+            android:persistent="false"
+            android:title="@string/easyeeat" />
+        <SwitchPreference
+            android:key="memory"
+            android:persistent="false"
+            android:title="@string/memory" />
+        <SwitchPreference
+            android:key="auto_wipers"
+            android:persistent="false"
+            android:title="@string/auto_wipers" />
+
+        <ListPreference
+            android:entries="@array/enauto_collision"
+            android:entryValues="@array/enauto_collision_vaues"
+            android:key="auto_collision"
+            android:persistent="false"
+            android:title="@string/auto_collision" />
+
+        <SwitchPreference
+            android:key="status_notifi"
+            android:persistent="false"
+            android:title="@string/status_notifi" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/light_settings" >
+        <SwitchPreference
+            android:key="findlight"
+            android:persistent="false"
+            android:title="@string/findlight" />
+
+        <ListPreference
+            android:entries="@array/headlightdelay_entries"
+            android:entryValues="@array/headlightdelay_entryValues"
+            android:key="headlightdelay"
+            android:persistent="false"
+            android:title="@string/headlightdelay" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/center_locking_settings" >
+        <SwitchPreference
+            android:key="dooropenlock"
+            android:persistent="false"
+            android:title="@string/dooropenlock" />
+        <SwitchPreference
+            android:key="startlatch"
+            android:persistent="false"
+            android:title="@string/startlatch" />
+
+        <ListPreference
+            android:entries="@array/parkunlock_entries"
+            android:entryValues="@array/parkunlock_entryValues"
+            android:key="parkunlock"
+            android:persistent="false"
+            android:title="@string/parkunlock" />
+
+        <SwitchPreference
+            android:key="delaylock"
+            android:persistent="false"
+            android:title="@string/delaylock" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/smart_remote_settings" >
+        <SwitchPreference
+            android:key="remoteunlock5"
+            android:persistent="false"
+            android:title="@string/remoteunlock5" />
+
+        <ListPreference
+            android:entries="@array/remotelock5_entries"
+            android:entryValues="@array/remotelock5_entryValues"
+            android:key="remotelock5"
+            android:persistent="false"
+            android:title="@string/remotelock5" />
+        <ListPreference
+            android:entries="@array/remotedoorunlock_entries"
+            android:entryValues="@array/remotedoorunlock_entryValues"
+            android:key="remoteunlocksettings"
+            android:persistent="false"
+            android:title="@string/remoteunlocksettings" />
+        <ListPreference
+            android:entries="@array/encar_unlocked"
+            android:entryValues="@array/encar_unlocked_vaues"
+            android:key="car_unlocked"
+            android:persistent="false"
+            android:title="@string/car_unlocked" />
+        <ListPreference
+            android:entries="@array/enautomatic_latch"
+            android:entryValues="@array/enautomatic_latch_vaues"
+            android:key="automatic_latch"
+            android:persistent="false"
+            android:title="@string/automatic_latch" />
+
+        <SwitchPreference
+            android:key="wipers"
+            android:persistent="false"
+            android:title="@string/wipers55" />
+        <SwitchPreference
+            android:key="remote_start"
+            android:persistent="false"
+            android:title="@string/remote_start55" />
+        <SwitchPreference
+            android:key="unkey"
+            android:persistent="false"
+            android:title="@string/unkey" />
+        <SwitchPreference
+            android:key="by_drive"
+            android:persistent="false"
+            android:title="@string/by_drive" />
+        <SwitchPreference
+            android:key="auto_relock"
+            android:persistent="false"
+            android:title="@string/auto_relock" />
+        <SwitchPreference
+            android:key="window_control"
+            android:persistent="false"
+            android:title="@string/window_control" />
+    </PreferenceScreen>
+    <!-- <PreferenceScreen android:title="@string/collision_detection_settings" > -->
+    <!-- </PreferenceScreen> -->
+    <PreferenceScreen android:title="@string/other" >
+        <SwitchPreference
+            android:key="radarswitch"
+            android:title="@string/radarswitch" />
+
+        <!-- <ListPreference -->
+        <!-- android:entries="@array/enlfRight" -->
+        <!-- android:entryValues="@array/enlfRight_vaues" -->
+        <!-- android:key="lfRight" -->
+        <!-- android:title="@string/lfRight" /> -->
+        <!-- <ListPreference -->
+        <!-- android:entries="@array/enadaptive" -->
+        <!-- android:entryValues="@array/enadaptive_vaues" -->
+        <!-- android:key="adaptive" -->
+        <!-- android:title="@string/adaptive" /> -->
+        <ListPreference
+            android:entries="@array/alarm_vol"
+            android:entryValues="@array/alarm_vol_value"
+            android:key="alarm_vol"
+            android:title="@string/alarm_vol" />
+
+        <Preference
+            android:key="restore"
+            android:title="@string/restore" />
+    </PreferenceScreen>
+
+    <!-- <SwitchPreference -->
+    <!-- android:key="radarswitch" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/radarswitch" /> -->
+
+
+    <!-- <ListPreference -->
+    <!-- android:entries="@array/en" -->
+    <!-- android:entryValues="@array/en_vaues" -->
+    <!-- android:key="alarm_vol" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/alarm_vol" /> -->
+
+
+    <!-- <PreferenceScreen -->
+    <!-- android:key="factory_settings" -->
+    <!-- android:persistent="false" -->
+    <!-- android:title="@string/restore_factory_settings5" /> -->
+
+
+    <!-- <SwitchPreference -->
+    <!-- android:key="remote_start55" -->
+    <!-- android:title="@string/remote_start55" /> -->
+
+</PreferenceScreen>

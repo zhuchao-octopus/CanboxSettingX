@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <PreferenceCategory android:title="@string/realtime_consumption_and_mileage_information" >        
+        <com.common.view.MyPreference
+            android:key="instant"
+            android:persistent="false"
+            android:title="@string/instant_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="tripA_average_fuel_consumption"
+            android:persistent="false"
+            android:title="@string/tripA_average_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="tripB_average_fuel_consumption"
+            android:persistent="false"
+            android:title="@string/tripB_average_fuel_consumption" />
+        <com.common.view.MyPreference
+            android:key="avg_speed_1"
+            android:persistent="false"
+            android:title="@string/avg_speed_1" />
+        <com.common.view.MyPreference
+            android:key="mileage17"
+            android:persistent="false"
+            android:title="@string/mileage17" />
+        <com.common.view.MyPreference
+            android:key="mileage_sum"
+            android:persistent="false"
+            android:title="@string/mileage_sum" />
+        <com.common.view.MyPreference
+            android:key="driving_time"
+            android:persistent="false"
+            android:title="@string/driving_time" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

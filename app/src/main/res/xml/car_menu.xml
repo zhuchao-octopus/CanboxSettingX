@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plist>
+    <menus>
+        <menu name="通用机" value="0">
+            <sub name="通用机">
+                <mods>all</mods>
+            </sub>
+        </menu>
+        <menu name="睿志诚" value="3">
+            <sub name="大众">
+                <mods>大众通用,高尔夫7,明锐,斯柯达速派,凌渡,17款迈腾,17款嘉旅,17款途观L,17款途昂,17款斯柯达柯迪亚克,18款迈腾,2018款探歌,探岳,18款朗逸,19款帕萨特,途昂X,混动途观L,19款迈腾,13款途锐,20款途观L,巴西捷达,土耳其斯柯达SUPERB,捷达VS7,20款宝来,19款辉昂,20款高尔夫纯电,20款宝来纯电,20款迈腾,19款朗逸纯电动,VILORAN,19-20款帕萨特混动,20款途观L混动,16款明锐(罗马尼亚),21款辉昂,21高尔夫8</mods>
+            </sub>
+            <sub name="通用">
+                <mods>07-17款科鲁兹,15款新赛欧,11-14款爱唯欧,13-19款昂科拉,10-19款英朗,13-19款昂科威,18款凯越,09-19款君威,15-19款威朗,11-15款GL8,12-18款迈锐宝,16-19款迈锐宝XL,16-18款乐风RV,16款科沃兹,2017款GL8,2017款探界者,2017款GL8(25S),09-19款君越,18-19款沃兰多,2015-2018款塞欧3,19款探界者,17-18款GL8ES,19款创酷,20款昂科拉,19款创界,19款科鲁泽,20款开拓者,凯迪拉克SRX,凯迪拉克CTS,凯迪拉克ATS-L,17-19款CousaE,15-19款Insignia,08-10款AstraH,11款CorsaD,08款Combo,11-17款AstraJ,20款GL8 652T,20款畅巡,21款科鲁泽,21款英朗保留原车屏,21款英朗不保留原车屏,21款君越</mods>
+            </sub>
+             <sub name="福特">
+                <mods>2012款福克斯,2013款翼虎,2013款翼搏,2013款嘉年华,2013款锐界,2013款金牛座,2013款蒙迪欧(自动空调),07-13款蒙迪欧致胜,2015款福克斯,2015款锐界,2017款翼虎,2017款翼搏,2017款蒙迪欧,2018款翼虎,2018款翼博(自动空调),2019款福克斯,途睿欧,08-12款嘉年华,19-20款领界,探险者,2018款锐界,进口野马,2020款福克斯,2019款翼虎,保留原车CD,2020款锐界,2020款蒙迪欧,2019款翼博,2019款金牛座,2010 F1502019款F150,2019款福睿斯,2019款中规野马,2019款蒙迪欧混动,2020款锐际,2021款全顺,S-Max,TOURNEO COURIER,2010 F150,拆SYNC</mods>
+            </sub>              
+            <sub name="丰田">
+                <mods>RAV4,卡罗拉,雷凌,亚洲龙,12款凯美瑞,15款凯美瑞,汉兰达,CHR(弈泽),16款RAV4,18款霸道(普拉多),锐志,普拉多(霸道),18款凯美瑞,18款汉兰达,18款RAV4,13款皇冠,05-09款锐志,07-15款酷路泽,16款酷路泽,13款皇冠,19款大霸王,06-15款大霸王,06款埃尔法,04款雷克萨斯RX300,20款RAV4,20款威兰达,20款CHR-EV(纯电动),21款雷凌,22款陆放,18-21款凯美瑞,21款亚洲狮,22款汉兰达,22款塞纳,22款凌放,22款锐放,22款锋兰达,22款威飒</mods>
+            </sub>         
+            <sub name="现代-起亚">
+                <mods>现代IX35,现代IX45,索纳塔8,索纳塔9,16款起亚K5,16款起亚KX5,16款现代名图,16款现代领动,16款起亚K3,17款起亚KX7,18款起亚智跑,19款现代菲斯塔,19款现代胜达IX45,19款现代途胜,17款起亚K4/凯绅,15款嘉华,19款起亚KX5,19款起亚K3,18款现代索纳塔九混动,20款起亚KX3傲跑,19款k3新能源,19款k5新能源,19款现代名图,19款现代领动,19款起亚智跑,20款现代昂希诺,21款现代伊兰特,10款劳恩斯,15款索兰托,13款索兰托</mods>
+            </sub>              
+            <sub name="本田">
+                <mods>12款CRV,15款CRV,凌派,杰德,歌诗图,缤智,思域,XRV,奥德赛,飞度,12-15款艾力绅,15款锋范,15款奥德赛,16款凌派,16款思域,16款CRV,17款竟瑞,17款CRV,雅阁9(2.0),雅阁9(2.4),18款雅阁10,18款奥德赛,19款凌派,19款英斯派,享域,19款CRV,2019款XRV,20款皓影,本田理念EV1,09-14款奥德赛,15奥德赛高配(原车360),16-19款思域,20-21款思域,21-22款飞度,冠道,21-22款CRV混动,21-22款CRV-插电混动,21款皓影混动,21款皓影-插电混动,22款奥德赛,22款思域,22 ZRV,22 艾力绅,22 CRV</mods>
+            </sub>
+            <sub name="日产">
+                <mods>天籁,奇骏,楼兰,蓝鸟,逍客,16款西玛,2017款奇峻,2018款途达,04-07款天籁,08-12款天籁,2019款天籁,19款骐达,19款劲客,19款逍客,19款楼兰,台版08~12款天籁,20款轩逸,16款奇骏(中东),20款天籁,11款天籁公爵,22款天籁</mods>
+            </sub>
+           	<sub name="标致雪铁龙">
+                <mods>爱丽舍,世嘉,DS5LS,C4L,C3XR,2008,3008,14款408,301,16款308,4008,保留屏车型,18款天逸,C4,C5,308S,508,19款408,DS4,DS5,15款508,408,307,308,2013款C5,19款C3XR,新C4L,19款508L,MPV_Tepee,04_13款307,10_13款408,408SW,408CC,13_19款3008,马来西亚508,RZC,巴西C4,19款5008,19款4008,14_19款408拆空调,20款2008</mods>
+            </sub> 
+            <sub name="奇瑞">
+                <mods>艾瑞泽5,16款瑞虎3X,16款瑞虎7,16款艾瑞泽7,18款艾瑞泽GX,瑞虎,瑞虎5,艾瑞泽GX/EX,瑞虎5X,2018款捷途X70,18款瑞虎7,18款瑞虎8,16款艾瑞泽5,16款瑞虎3,19款艾瑞泽5,19款瑞虎5X,20款捷途X70M,20款瑞虎7,20款瑞虎3X,20款瑞虎8,15款瑞虎5,20款瑞虎5X,21款瑞虎3X,21款小蚂蚁EQ1,QQ冰淇淋,19款捷途 X90</mods>
+            </sub>
+            <sub name="马自达">
+                <mods>Mazda3,Mazda5,Mazda6,MazdaCX7,睿翼,MazdaCX4,17款马自达3,台湾版马自达3,18款台湾版CX-3,19款台湾版CX-5,19款CX-5,17款阿特兹,马来西亚版CX-5,马来西亚版CX-3,17款MazdaCX5,14-19款昂科赛拉,20款马自达3,20款阿特兹</mods>
+            </sub>
+            <sub name="奔腾">
+                <mods>B50,B70,X80,16款B50,17款X80,17款X40,18款森雅R9,18款CX65,14款B70,19款B50,16款B30</mods>
+            </sub>
+            <sub name="传祺">
+                <mods>all</mods>
+            </sub> 
+            <sub name="海马">
+                <mods>福美来3代,14款海马M3,17款海马,海马S5,13-15款海马S7,16款海马M6,14款海马M5,16款海马M3,17款海马V70,18款福美来F5,M8,17款福美来,17款海马S7,17款S5young,19款海马S5</mods>
+            </sub>
+            <sub name="吉利">
+                <mods>all</mods>
+            </sub>
+            <sub name="中华">
+                <mods>16款V3,17款H3,18款V6 自动豪华版,18款V6 自动尊贵版,18款V6 手动都市版,18款V6 自动旗舰版,H530,V5</mods>
+            </sub>
+            <sub name="长安">
+                <mods>悦翔V7,CS75,奔奔,17款CS75,17款欧尚,17款CX70,17款CS55,17款CS15,18款逸动DT,17款A800,17款X70A,18款A600,18款凌轩,18款科赛,18款CS75,18款悦翔,18款X70A,18款长安欧尚科赛,20款欧尚X7,19款悦翔,19款CS15,19款逸动,20款CS75,19款CS35 PLUS,19款长安欧尚科尚,19款长安悦翔低配</mods>
+            </sub>            
+            <sub name="北汽">
+                <mods>威旺M20,14款绅宝D60,M30,幻速H2,幻速S2,幻速S3,16款绅宝X55,15-17款绅宝X25,16款BJ20,17款威旺M50F,16款BJ40,15款绅宝X35,16款绅宝X35,17款绅宝X35,17款昌河Q35,威旺M30,18款幻速S7,EC180,19款新能源EC5,18款新能源EU5,18款绅宝D50</mods>
+            </sub>           
+            <sub name="长城">
+                <mods>2014款哈弗H2</mods>
+                <mods>15H8</mods>
+                <mods>风骏6</mods>
+                <mods>C30</mods>
+                <mods>2016款哈弗H6</mods>
+                <mods>2016款哈弗H6Coupe</mods>
+                <mods>2017款哈弗H6</mods>
+                <mods>2017款哈弗H6运动版</mods>
+                <mods>2017款风骏6</mods>
+                <mods>17-18款哈弗H2蓝标</mods>
+                <mods>17-18款哈弗H2红标</mods>
+                <mods>2017款哈弗H2s红标/蓝标</mods>
+                <mods>2017款哈弗M6/2019款哈弗M6</mods>
+                <mods>2017款哈弗H6Coupe蓝标</mods>
+                <mods>2017款哈弗H6Coupe红标</mods>
+                <mods>2018款哈弗H6</mods>
+                <mods>2018款哈弗H6-换代</mods>
+                <mods>18款H7蓝标</mods>
+                <mods>哈弗H9</mods>
+                <mods>2019款哈弗H6-换代</mods>
+                <mods>2019款哈弗H6黑标</mods>
+                <mods>2019款长城炮</mods>
+                <mods>19款哈佛H7</mods>
+                <mods>19款H6运动版</mods>
+                <mods>20款哈佛H6-换代</mods>
+                <mods>20款哈佛H6Coupe</mods>
+                <mods>20款哈弗F7</mods>
+                <mods>20款哈弗H4</mods>
+                <mods>20款哈弗H9</mods>
+                <mods>18款哈弗H4</mods>
+                <mods>17款哈弗H7</mods>
+                <mods>2019款哈弗F7</mods>
+                <mods>22款金刚炮</mods>
+            </sub>
+             <sub name="东风">
+                <mods>风光360,风光330S,2015款风神AX7,风光580,景逸X5,2016款风神AX5,2016款风神AX7,2016款风度MX5,风光370,风光S560,16-18款风神AX7,18款风神AX7全景,18款330S,18款580,19款易至EV3,2019风神AX3,2018风光580,20款风神AX7,18款景逸X5,20款低配不带悬浮屏风行T5,2019低配不带悬浮屏景逸X5,18款江铃E400,18款S560,19款AX7,20款580,20款风神奕炫,17款风神MX5,风神AX全系,19款SX6,20-21款S560,21款580,21款500,19款风光E3,21款景逸S50,21款景逸S50EV,21款景逸SX6</mods>
+            </sub>            
+            <sub name="众泰">
+                <mods>all</mods>
+            </sub>
+            <sub name="上汽">
+                <mods>2014款宝骏730,2015款宝骏560,2012款荣威550,2013款荣威550,2015款名爵锐腾,名爵6,荣威360,2016款宝骏730,2017款宝骏730,2017款名爵ZS,荣威RX5,2017款宝骏510,2018款宝骏530,2018款五菱宏光S3,大通T60/V80,18-19款大通G10,2017款锐腾,2018款荣威RX3,2019款大通EV30,2019款大通G50,2018款大通V80,2016款T60,2020款名爵ZS,16款名爵锐腾,2015款名爵锐腾,19款名爵HS,19款EZS,19款荣威EI5,19款荣威i5,19款荣威i6,16-18款荣威RX5,19款荣威RX8,19款大通T70,19款大通V90,2018款宝骏510,2019款宝骏510,2019款宝骏530,2015款宝骏730,2016款宝骏560,2017款宝骏560,2018款宝骏360,2019款宝骏730,2019款MG6,2017款荣威Ei6混动,2020款宝骏RS-3,2018款荣威RX8</mods>
+            </sub>  
+            <sub name="江淮">
+                <mods>all</mods>
+            </sub> 
+            <sub name="力帆">
+                <mods>all</mods>
+            </sub> 
+            <sub name="菲亚特">
+                <mods>12款菲翔,14-15款致悦,TORO,Doblo,EGE,Fiorino,FLORLNO,13款500L,19款500L,LINEA,PUNTO,Egea</mods>
+            </sub>  
+             <sub name="启辰">
+                <mods>2015款T70</mods>
+                <mods>2016款T70</mods>
+                <mods>2017款T90</mods>
+                <mods>2018款D60</mods>
+                <mods>2018款T70</mods>
+                <mods>2017款M50V</mods>
+                <mods>2020款T60</mods>
+                <mods>2020款T70</mods>
+            </sub>                       
+            <sub name="吉普">
+                <mods>2016款自由光</mods>
+                <mods>2016款自由侠</mods>
+                <mods>2017款指南者</mods>
+                <mods>2017款大切诺基</mods>
+                <mods>2018款牧马人</mods>
+                <mods>2018款指挥官</mods>
+                <mods>19款挑战者</mods>
+                <mods>2019款自由光</mods>
+                <mods>2020款指南者</mods>
+                <mods>2020款指挥官</mods>
+                <mods>2020款牧马人</mods>
+                <mods>2020款自由光</mods>
+                <mods>2020款自由侠</mods>
+            </sub>
+            <sub name="英菲尼迪">
+                <mods>QX50</mods>
+            </sub>          
+            <sub name="奔驰">
+                <mods>威霆,斯宾特,ML,R300,ML320,ML350CDI,GLK300,A180,A级2004-2012款,B级2005-2011款,R级2006-2014款,ML级2005-2011款,GL级2005-2013款,GL级2003-2013款,威雅诺2010-至今</mods>
+            </sub>            
+            <sub name="路虎">
+                <mods>发现4,12款极光</mods>
+            </sub>  
+            <sub name="东南">
+                <mods>DX7,18款DX3,19款DX5</mods>
+            </sub>                 
+            <sub name="雷诺">
+                <mods>16_17款科雷嘉,2015款卡缤,2017款科雷傲,2018款科雷傲,09-16款科雷傲,土耳其MEGANE,巴西版SANDERO,巴西版DUSTER,巴西版CAPTURE,土耳其CLIO,土耳其KADJAR,土耳其CAPTURE</mods>
+            </sub>
+            <sub name="比速">
+                <mods>all</mods>
+            </sub>
+            <sub name="江西五十铃">
+                <mods>all</mods>
+            </sub>
+            <sub name="奥迪">
+                <mods>Q3,TT 08-13款,A3 04-12款,A4 03-07款,Q3 13-18款,Q5 10-18款</mods>
+            </sub>           
+          	<sub name="宝马">
+                <mods>05-12 318i,05-12 320i,12-15 X1,宝马老3系/老5系/老X5,CIC,NBT,CCC</mods>
+            </sub>
+            <sub name="汉腾">
+                <mods>all</mods>
+            </sub>
+            <sub name="金杯">
+                <mods>X30L</mods>
+            </sub>
+            <sub name="三菱">
+                <mods>2018款奕歌,2019款欧蓝德,2018款帕杰罗,2019款奕歌台湾版,2020款帕杰罗运动版,2020款帕杰罗劲畅</mods>
+            </sub>
+            <sub name="陆风">
+                <mods>逍遥</mods>
+            </sub>             
+            <sub name="纳智捷">
+                <mods>U6</mods>
+            </sub>              
+            <sub name="斯威">
+                <mods>18款斯威G01,19款斯威G01,20款潍柴U70</mods>
+            </sub>          
+            <sub name="沃尔沃">
+                <mods>10-13款XC60全系</mods>
+            </sub>  
+            <sub name="林肯">
+                <mods>17领航员,17大陆</mods>
+            </sub>          
+            <sub name="比亚迪">
+                <mods>12-15款比亚迪F3,速锐</mods>
+            </sub> 
+             <sub name="常发">
+                <mods>农用机</mods>
+            </sub>              
+            <sub name="按键板">
+                <mods>通用1</mods>
+            </sub>
+            <sub name="IAP升级">
+                <mods>IAP升级</mods>
+            </sub>
+        </menu>
+        
+        <menu name="威驰" value="2">            
+            <sub name="大众">
+                <mods>大众通用,高尔夫7,明锐,斯柯达速派,凌渡,17款迈腾,17款途观L,17款途昂,17款斯柯达柯迪亚克,18款迈腾,13款途锐,18款速派,18款途安L,2018款探歌,探岳,19款帕萨特,新途锐,18款朗逸</mods>
+            </sub>
+            <sub name="丰田">
+                <mods>15款凯美瑞,RAV4,普拉多(霸道),汉兰达,卡罗拉,雷凌,锐志,16款RAV4,18款凯美瑞,18款霸道(普拉多),13款皇冠,18款汉兰达,19款卡罗拉,亚洲龙,14代皇冠,12款凯美瑞,10-16款锐志,09-13款经典凯美瑞,12款陆巡,15款汉兰达,09款汉兰达,07-13款卡罗拉,14-17款卡罗拉,02-09款霸道,09-12款RAV4,15款埃尔法,20款奔跑者,09款汉兰达手动空调,13款凯美瑞,15款锐志,16款陆巡自动空调,16款陆巡手动空调,12款锐志自动空调,12款锐志手动空调,21款塞纳,22款凌放,22款汉兰达,22款陆放,22款锐放,22款锋兰达</mods>
+            </sub>
+            <sub name="现代-起亚">
+                <mods>现代IX35,现代IX45,索纳塔8,索纳塔9,16款现代名图,新途胜,16款现代领动,16款起亚K5,16款起亚KX5,15款索兰托,17款索纳塔9,15款现代IX45,17款起亚KX7,18款索纳塔9,18款现代昂希诺,18款起亚智跑,19款胜达,海外KX5</mods>
+            </sub>
+            <sub name="本田">
+                <mods>12款CRV,15款CRV,本田14思域,凌派,杰德,XRV,缤智,奥德赛,飞度,15款锋范,哥瑞,16款思域,17URV,雅阁9(2.0),冠道,17款CRV,思域,15款思铂睿,12-15款艾力绅,18款雅阁10,19款凌派,本田12思域,19款CRV,15款奥德赛,15奥德赛高配(原车360),15奥德赛高配(原车360吸顶屏),18款奥德赛,04-08款奥德赛,12思域CRV-14思域低配-15CRV低配(全兼容),19款艾力绅,19款艾力绅(原车360),19款享域,19款英斯派,20款理念VE1,21CRV,21款皓影,21款飞度,22款思域,22款雅阁,22款凌派</mods>
+            </sub>
+            <sub name="日产">
+                <mods>天籁,奇骏,楼兰,蓝鸟,逍客,16款轩逸,17款劲客,16款西玛,08-12款天籁,2017款奇峻,2017款奇峻(手动空调),2018款途达,19-21款天籁,20款轩逸,2013款新天籁,2014款新奇骏,2014款新奇骏(手动空调),2016款新逍客,20款纳瓦拉,2008款天籁(右舵),17款途乐,2019款奇峻,2019款奇峻(手动空调),2021款奇骏,2019款奇骏(台湾),2019款奇骏(海外),21 Magnite</mods>
+            </sub>
+             <sub name="通用">
+                <mods>07-17款科鲁兹,15款新赛欧,11-14款爱唯欧,13-19款昂科拉,10-19款英朗,赛欧3,13-19款昂科威,18款凯越,09-19款君威,15-19款威朗,11-15款GL8,12-18款迈锐宝,16-19款迈锐宝XL,2017款GL8,2018款GL6,2017款探界者,2017款GL8(25S),18-19款沃兰多,19款英朗,20款GL8 652T,21款英朗</mods>
+            </sub>
+            <sub name="福特">
+                <mods>麦柯斯,07-13款蒙迪欧致胜,2012款福克斯,2013款蒙迪欧(自动空调),2013款蒙迪欧(手动空调),2013款嘉年华,2015款锐界,2015款福克斯,2016款撼路者,2017款翼虎,2017款翼搏,2017款蒙迪欧,2018款翼博(自动空调),2018款翼博(手动空调),2019款福克斯,2018款锐界,2018款蒙迪欧,18款撼路者,RANGER海外,18款林肯MKC,19款林肯航海家,19款林肯MKZ,15款翼虎,2019款福睿斯,08-12款嘉年华</mods>
+            </sub>
+            <sub name="吉普">
+                <mods>10-13款牧马人</mods>
+                <mods>11-15款指南者</mods>
+                <mods>2016款自由光</mods>
+                <mods>2016款自由侠</mods>
+                <mods>2017款指南者</mods>
+                <mods>2018款自由侠</mods>
+                <mods>2018款牧马人</mods>
+                <mods>老指南者</mods>
+                <mods>国外2019款自由侠</mods>
+                <mods>国外2019款菲亚特500L</mods>
+            </sub>
+            <sub name="雷克萨斯">
+                <mods>06-12IS,LS460</mods>
+            </sub> 
+            <sub name="奇瑞">
+                <mods>瑞虎,16款瑞虎3X,艾瑞泽5,瑞虎5,16款瑞虎7,艾瑞泽GX/EX,2018款捷途X70,16款艾瑞泽7,瑞虎5X,18款艾瑞泽GX,16款瑞虎3</mods>
+            </sub>
+            <sub name="众泰">
+                <mods>T600,大迈X5</mods>
+            </sub>
+            <sub name="中华">
+                <mods>V5,16款V3,17款H3</mods>
+            </sub>
+            <sub name="北汽">
+                <mods>16款绅宝X55,幻速S6,16款BJ20,16款幻速S3L,16款绅宝X35,18款绅宝X35,17款威旺M50F,19款北汽智行</mods>
+            </sub>
+            <sub name="海马">
+                <mods>13-15款海马S7,16款海马S7,17款海马S7,14款海马M3,16款海马M3,17款海马V70,17款福美来</mods>
+            </sub>
+            <sub name="江淮">
+                <mods>S2_S3_S5全兼容,S2_MINI,江淮T8</mods>
+            </sub>
+           
+            <sub name="雷诺">
+                <mods>2015款卡缤,16_17款科雷嘉,2017款科雷傲,2018款科雷傲,梅甘娜2,梅甘娜3,梅甘娜4,Fluence,Duster,2019科雷缤,金杯观境,Clio,21Sandero</mods>
+            </sub>
+            <sub name="东风">
+                <mods>风光580,风光S560,2018款锐琪6,16-18款风神AX7,2016款风神AX5,18款风神AX7全景,景逸X5,景逸S50,2019景逸X5,2017景逸X5,2018风光580,2016款风度MX5,东风风度MX6,20款风神AX7</mods>
+            </sub>
+            <sub name="标致雪铁龙">
+                <mods>世嘉,C4,C4L,C5,2013款C5,307,308,408,508,3008,DS5,DS5LS,2008,DS4,14款408,308S,16款308,保留屏车型,301,爱丽舍,C3XR,4008,15款508,20款天逸C5,19款海外Rifter,DS6,19款海外301</mods>
+            </sub>
+            <sub name="长城">
+                <mods>2014款哈弗H2,2016款哈弗H1,2016款哈弗H6Coupe,2016款哈弗H6,2017款哈弗H6,2018款哈弗H6,2018款哈弗M6,2018款哈弗H6Coupe,2018款哈弗H6运动版,2019款哈弗H6Coupe,20款风骏7,2017款哈弗H2s红标/蓝标,2018款哈弗H2,2019款哈弗F7,2019款哈弗F7(不带座椅通风),16-17款H9,哈弗H8,15-16款H6Coupe(全兼容),17-18H6Coupe(全兼容),H2(全兼容),17-20款H4,2019款长城炮,22款金刚炮</mods>
+            </sub>
+            <sub name="宝马">
+                <mods>E90,09-15款X1,07-12款X3,04-11款320,12款MINI,新3系,1系</mods>
+            </sub>
+            <sub name="上汽">
+                <mods>荣威360,荣威RX5,2015款名爵锐腾,11-12款荣威550/名爵6,13-15款荣威550/名爵6,荣威I6,2014款宝骏730,2015款宝骏560,2017款宝骏730,2017款宝骏510,2018款宝骏530,2017款名爵ZS,2017款锐腾,名爵ZS,大通T60,18款名爵6,19款荣威i5,17-18款荣威i6,19款荣威i6,2017款荣威Ei6混动,2018款荣威RX3,19款名爵HS,2019款MG6,2020 I5,2020 ZS,2020 RX5,2020 I6,2020 RX3,2020 MG6,2020 HS,2019 ZS,2017 I6,2015 360(SAF1),2016 RX5;2017 MG6;2017 I6(SAF1),2015名爵锐腾(SAF1),2017名爵锐腾(SAF1),2017-ZS(SAF1)</mods>
+            </sub>
+            <sub name="长安">
+                <mods>CS75,奔奔,CX70,16悦翔V7,18款逸动DT,18款X70A,19款科赛,19款欧尚A800,18款CS55,20款欧尚X7,17款欧尚,19款CS35 PLUS,18款X70A,CX70自动空调,CX70手动空调</mods>
+            </sub>
+            <sub name="传祺">
+                <mods>GA3/GA3S,GA4,GA6,17款GS3,GS4,GS5,2017款GS7,2018款GS4,2018款GE3,16款GS4,20款GS4</mods>
+            </sub>
+            
+            <sub name="马自达">
+                <mods>Mazda6,17款MazdaCX5,Mazda5,Mazda8,MazdaCX7,Mazda3,MazdaCX4,14Mazda3,17款阿特兹,Mazda7,昂克塞拉,MazdaCX9,睿翼,20款昂科赛拉</mods>
+            </sub>
+            <sub name="奔驰">
+                <mods>B200,威霆,E260L,Smart,G350,G55,C200,C200(保留原车主机),16款威霆METRIS,ML,19款Sprinter,A级2004-2012款,B级2005-2011款,R级2006-2014款,ML级2005-2011款,GL级2005-2013款</mods>
+            </sub>
+            <sub name="比亚迪">
+                <mods>12-15款比亚迪F3,16-18款比亚迪元,12-16款速锐</mods>
+            </sub>
+            <sub name="奔腾">
+                <mods>14款B70,17款X80,12款B90,17款X40,13款B50,09款B50,16款B50,19款红旗H5</mods>
+            </sub>
+            <sub name="奥迪">
+                <mods>A3,08-16款A4L,08-18款Q5</mods>
+            </sub>
+            <sub name="三菱">
+                <mods>2018款欧蓝德,2020款帕杰罗劲畅,2020款欧蓝德</mods>
+            </sub>
+            <sub name="启辰">
+                <mods>2017款T90,2017款D60,2017款M50V</mods>
+            </sub>
+            <sub name="吉利">
+                <mods>远景,15款远景</mods>
+            </sub>
+            <sub name="菲亚特">
+                <mods>12款菲翔,Fiorino,Doblo,Egea,13款500L,19款500L,18款Aegea,19款Aegea,17款PANDA,16-Aegea,13-500L,19-500L</mods>
+            </sub>
+            <sub name="卡威">
+                <mods>K150</mods>
+            </sub>
+            <sub name="潍柴">
+                <mods>18 D50,潍柴U60V</mods>
+            </sub>
+            <sub name="塔塔">
+                <mods>Nexon,Altroz,Tiago,Hexa</mods>
+            </sub>    
+            <sub name="英菲尼迪">
+                <mods>QX50,15款Q70,14款QX60,10款G37,16款Q50L,17款日产途乐</mods>
+            </sub>
+            <sub name="依维柯">
+                <mods>依维柯</mods>
+            </sub>
+            <sub name="马恒达">
+                <mods>Scorpio S11</mods>
+            </sub>
+            <sub name="UAZ">
+                <mods>PATRIOT</mods>
+            </sub>                        
+            <sub name="按键板">
+                <mods>通用1</mods>
+                <mods>通用2</mods>
+            </sub>
+			  <sub name="IAP升级">
+                <mods>IAP升级</mods>
+            </sub>
+        </menu>
+        
+        <menu name="欣朴" value="1">
+            <sub name="大众">
+                <mods>大众通用,高尔夫7,明锐,斯柯达速派,凌渡,17款迈腾,17款途观L,17款途昂,17款斯柯达柯迪亚克,17款西亚特</mods>
+            </sub>
+            <sub name="丰田">
+                <mods>15款凯美瑞,16款酷路泽,RAV4,普拉多(霸道),汉兰达,15款汉兰达,15款汉兰达手动空调,卡罗拉,雷凌,锐志,16款RAV4,10款霸道,16款普拉多(霸道),12款凯美瑞,14款坦途,14款坦途手动空调,V6,18款凯美瑞,其他兼容车型</mods>
+            </sub>
+            <sub name="现代-起亚">
+                <mods>现代IX35,现代IX45,索纳塔8,15款索兰托,索纳塔9,16款起亚K5,16款起亚KX5,新途胜</mods>
+            </sub>
+            <sub name="本田">
+                <mods>12款CRV,15款CRV,凌派,杰德,歌诗图,缤智,思域,XRV,奥德赛,飞度,雅阁9(2.0),15款锋范,16款凌派,16款思域,16款CRV,17款CRV</mods>
+            </sub>
+            <sub name="日产">
+                <mods>天籁,奇骏,楼兰,蓝鸟,逍客,2017款奇峻,2017款逍客</mods>
+            </sub>
+            <sub name="福特">
+                <mods>2012款福克斯,2013款翼虎,2013款翼搏,2013款嘉年华,2015款福克斯,2013款锐界,2013款猛禽F-150,2013款探险者,2013款金牛座,2013款蒙迪欧(自动空调),2015款锐界,征服者,进口野马,07-13款蒙迪欧致胜,2017款翼虎</mods>
+            </sub>
+            <sub name="吉普">
+                <mods>2016款自由光,2016款自由侠,11-15款指南者,10-13款牧马人,菲亚特Aegea</mods>
+            </sub>
+            <sub name="标致雪铁龙">
+                <mods>爱丽舍,世嘉,DS5LS,C4L,C3XR,2008,3008,14款408,15款508,16款308,17款4008,301,206,保留屏车型,其他兼容车型,其他带空调控制兼容车型</mods>
+            </sub>
+            <sub name="奔驰">
+                <mods>威霆,B200</mods>
+            </sub>
+            <sub name="菲亚特">
+                <mods>Egea</mods>
+                <mods>菲亚特博悦</mods>
+                <mods>2012款领雅</mods>
+                <mods>2009款菲奥里诺</mods>
+                <mods>Ram1500</mods>
+            </sub>
+            <sub name="通用">
+                <mods>07-17款科鲁兹,15款新赛欧,11-14款爱唯欧,13-19款昂科拉,10-19款英朗,13-19款昂科威,18款凯越,09-19款君威,15-19款威朗,11-15款GL8,12-18款迈锐宝,16-19款迈锐宝XL,13款昂科雷,旧款欧宝,2016ChevroletTahoe,2014GMCYukon(Denali),2017款探界者</mods>
+            </sub>
+            
+            <sub name="雷诺">
+                <mods>新梅甘娜,16款达斯特,Dacia,Dacia-Vesta</mods>
+            </sub>
+          
+            
+        <sub name="马自达">
+            <mods>14Mazda3</mods>
+            <mods>MazdaCX5</mods>
+            <mods>Mazda-Opel</mods>
+            <mods>Mazda-BT50</mods>
+        </sub>
+        <sub name="奥迪">
+            <mods>A3</mods>
+            <mods>A4</mods>
+        </sub>
+       
+        <sub name="三菱">
+            <mods>2014款欧蓝德,2019款欧蓝德</mods>
+        </sub>
+          <sub name="依维柯">
+                <mods>依维柯</mods>
+            </sub>
+            
+            <sub name="斯巴鲁">
+                <mods>斯巴鲁XV,森林人</mods>
+            </sub>
+            <sub name="江西五十铃">
+                <mods>17款D-MAX</mods>
+            </sub>           
+            <sub name="IAP升级">
+                <mods>IAP升级</mods>
+            </sub>
+        </menu>
+        <menu name="鑫巴斯" value="6">
+            <sub name="日产">
+                <mods>2008款天籁,奇骏,蓝鸟,逍客,楼兰</mods>
+            </sub>
+            <sub name="本田">
+                <mods>雅阁9(2.0),雅阁9(2.4),歌诗图,雅阁8,14款思域/15款CRV2.4,16款思域,17款CRV,杰德,飞度,奥德赛,缤智,XRV,凌派,15款锋范,哥瑞</mods>
+            </sub>
+            <sub name="马自达">
+                <mods>Mazda6,MazdaCX4,14Mazda3,17款阿特兹</mods>
+            </sub>
+            <sub name="现代-起亚">
+                <mods>16款起亚K5,16款起亚KX5,16款现代名图</mods>
+            </sub>  
+            <sub name="吉普">
+                <mods>2016款自由光,2016款自由侠,自由客,11-15款指南者,2017款指南者,2017款大切诺基</mods>
+            </sub>
+            <sub name="长城">
+                <mods>H2(全兼容),风骏6</mods>
+            </sub>
+            <sub name="福特">
+                <mods>2017款蒙迪欧</mods>
+            </sub>
+            <sub name="奔驰">
+                <mods>B200,威霆</mods>
+            </sub> 
+            <sub name="比亚迪">
+                <mods>宋,宋Max</mods>
+            </sub>
+            <sub name="奔腾">
+                <mods>X80</mods>
+            </sub>
+            <sub name="霍顿">
+                <mods>准将VF(单驱空调),准将VF(双驱空调)</mods>
+            </sub>
+        </menu>
+
+        <menu name="比纳瑞" value="10">
+            <sub name="大众">
+                <mods>大众通用,高尔夫7,17款途观L,17款迈腾</mods>
+            </sub>            
+            <sub name="本田">
+                <mods>雅阁9(2.0),雅阁9(2.4),雅阁9(13-15款2.0),雅阁9(13-15款2.4),雅阁9(16款2.0),雅阁9(16款2.4),雅阁9(16款混动2.0),09-14款奥德赛,凌派,哥瑞,杰德,歌诗图,缤智,思域,XRV,奥德赛,飞度,15款锋范,16款凌派,16款思域,16款CRV,冠道,12款CRV,12款思域,14款思域/15款CRV2.4,16-19款思域,12CRV/15CRV(2.0)</mods>
+            </sub>
+            <sub name="日产">
+                <mods>2014款新奇骏,2016款新逍客,2013款新天籁,08-12款天籁,11-16款新骐达</mods>
+            </sub>
+        	<sub name="福特">
+                <mods>2015款锐界,2012款福克斯,2015款福克斯,2013款翼虎,2017款翼虎,12-15款福克斯,14款新蒙迪欧,12-17款翼虎,07-13款蒙迪欧致胜,2013款金牛座,2013款蒙迪欧,2017款蒙迪欧,2016款撼路者</mods>
+            </sub>
+            <sub name="通用">
+                <mods>10-19款英朗,09-19款君威,09-19款君越,13-19款昂科威,15-19款威朗,13款科鲁兹,12-18款迈锐宝,2017款探界者,19款探界者,12-17科帕奇,17-18款GL8ES,新君威</mods>
+            </sub>
+	   		<sub name="现代-起亚">
+                <mods>16款现代名图,16款起亚KX5,16款起亚K5,索纳塔8,索纳塔9,17款起亚KX7,现代IX45,16款现代领动,其他兼容车型</mods>
+            </sub>  
+            <sub name="马自达">
+                <mods>MazdaCX4,14Mazda3,17款阿特兹</mods>
+            </sub>
+           <sub name="标致雪铁龙">
+                <mods>爱丽舍,世嘉,C4L,C3XR,2008,3008,14款408,15款508,16款308,301,其他兼容车型,其他带空调控制兼容车型</mods>
+            </sub>
+            <sub name="丰田">
+                <mods>12款凯美瑞,14款霸道,10款霸道,15款凯美瑞,15款锐志,12款汉兰达,16款汉兰达,12款锐志,10款霸道手动空调,09款凯美瑞,14款霸道手动空调,15款汉兰达,15款汉兰达手动空调,09款汉兰达,09款汉兰达手动空调,07款卡罗拉,14款卡罗拉,05-09款锐志,09-12款RAV4,14款坦途,14款坦途手动空调,18款霸道(普拉多),18款霸道手动空调,07-15款兰酷,18款凯美瑞,埃尔法</mods>
+            </sub>
+            <sub name="长安">
+                <mods>CS35,CS75,CS95,17款CS75,17款CS55,CX70,17款CX70</mods>
+            </sub>  
+             <sub name="传祺">
+                <mods>GS4,17款GS8,2018款GS4混动版</mods>
+            </sub>
+           <sub name="吉普">
+                <mods>10-13款牧马人,11-15款指南者,自由客,2016款自由光,2016款自由侠,2017款指南者</mods>
+            </sub>
+             <sub name="江铃">
+                <mods>驭胜</mods>
+            </sub>
+            <sub name="雷诺">
+                <mods>16_17款科雷嘉,2017款科雷傲,2018款科雷傲</mods>
+            </sub>
+            <sub name="华泰">
+                <mods>圣达菲</mods>
+            </sub>  
+            <sub name="观致">
+                <mods>观致3,观致5</mods>
+            </sub>
+             <sub name="长城">
+                <mods>哈弗H6,哈弗H8,哈弗H9</mods>
+            </sub>
+            <sub name="众泰">
+                <mods>T600,大迈X5,SR7</mods>
+            </sub>
+             <sub name="江淮">
+                <mods>S2,S3</mods>
+            </sub>
+        </menu>
+        <menu name="道骏" value="11">
+            <sub name="通用">
+                <mods>07-17款科鲁兹,15款新赛欧,11-14款爱唯欧,13-19款昂科拉,10-19款英朗,13-19款昂科威,18款凯越,09-19款君威,09-19款君越,15-19款威朗,11-15款GL8,12-18款迈锐宝,16-19款迈锐宝XL,12-17科帕奇,凯迪拉克SRX,凯迪拉克ATS-L,林荫大道</mods>
+            </sub>
+            <sub name="福特">
+                <mods>2013款蒙迪欧,2015款福克斯,12-17款翼虎,09-15款嘉年华,2013款翼搏,2017款翼搏,途睿欧,2019款福睿斯</mods>
+            </sub>
+             <sub name="本田">
+                <mods>雅阁7,雅阁7(双驱空调),雅阁7(单驱空调),15款思铂睿</mods>
+            </sub>
+            <sub name="道奇">
+                <mods>酷威,酷威(保留原车屏)</mods>
+            </sub>
+            <sub name="丰田">
+                <mods>汉兰达,普拉多(霸道),12款凯美瑞,18款凯美瑞,12-16款凯美瑞,12款皇冠,13款皇冠,锐志,10-17款霸道,卡罗拉</mods>
+            </sub> 
+             <sub name="现代-起亚">
+                <mods>13款索兰托</mods>
+            </sub>
+            <sub name="雷克萨斯">
+                <mods>06-12ES</mods>
+            </sub> 
+            <sub name="日产">
+                <mods>04-07款天籁</mods>
+            </sub>
+            <sub name="比亚迪">
+                <mods>比亚迪S6,比亚迪E5,速锐,比亚迪G6,比亚迪M6,比亚迪F6</mods>
+            </sub> 
+             <sub name="长城">
+                <mods>哈弗H6,哈弗H7,哈弗H8,哈弗H9</mods>
+            </sub>
+            <sub name="上汽">
+                <mods>19款荣威EI5,19款荣威i5</mods>
+            </sub>
+            <sub name="金杯">
+                <mods>格瑞斯</mods>
+            </sub>
+            <sub name="东南">
+                <mods>DX7</mods>
+            </sub>
+            <sub name="江淮">
+                <mods>S2_MINI</mods>
+            </sub>
+        </menu>
+        <menu name="长远通睿晟威" value="12">
+            <sub name="大众">
+                <mods>大众通用</mods>
+            </sub> 
+            <sub name="本田">
+                <mods>雅阁7,雅阁7(9600)</mods>
+            </sub>
+             <sub name="马自达">
+                <mods>Mazda6,Mazda3</mods>
+            </sub>            
+            <sub name="奔腾">
+                <mods>B70,B50</mods>
+            </sub>
+            <sub name="比亚迪">
+                <mods>比亚迪S6,比亚迪G6,比亚迪F6,12-16款速锐,比亚迪G5,比亚迪M6,S7,E6,宋,宋Max</mods>
+            </sub>
+        </menu>
+        <menu name="欧迪" value="13">
+            <sub name="大众">
+                <mods>老款途锐2010年以前,新途锐,辉昂,大众迈特威</mods>
+            </sub>
+            <sub name="丰田">
+                <mods>16款普拉多(霸道),16款兰酷,海狮,14代皇冠,19款RAV4(台湾),19款卡罗拉,海拉克斯</mods>
+            </sub>            
+            <sub name="本田">
+                <mods>12CRV/15CRV(2.0),本田12思域,凌派,缤智,杰德,XRV,15款锋范</mods>
+            </sub>            
+            <sub name="日产">
+                <mods>20款轩逸,御轩,探路者,2019款天籁</mods>
+            </sub>
+            <sub name="现代-起亚">
+                <mods>现代IX35,现代IX45,索纳塔8,索纳塔9,16款起亚K5,16款起亚KX5,16款现代名图,16款现代领动,16款起亚K3,17款起亚KX7,18款起亚智跑,19款现代菲斯塔,19款现代胜达IX45,19款现代途胜,17款起亚K4/凯绅,15款嘉华,19款起亚KX5</mods>
+            </sub>
+            <sub name="马自达">
+                <mods>MazdaCX4,17款MazdaCX5,17款阿特兹,昂克塞拉,Mazda3,17款马自达3,20款马自达3,Mazda6,睿翼,MazdaCX7,14款MazdaCX7,马自达BT-50,马自达CX-9</mods>
+            </sub>            
+            <sub name="通用">
+                <mods>赛欧3,12-17科帕奇</mods>
+            </sub>
+            <sub name="奥迪">
+                <mods>A3/S3 (2003-2013),A4/S4(2002-2008),奥迪TT(2006-2012),05-11款A6</mods>
+            </sub>
+            <sub name="保时捷">
+                <mods>03-10款卡宴</mods>
+            </sub>
+            
+            <sub name="奔腾">
+                <mods>B50,X80,16款B50,17款X80,17款X40,18款森雅R9,18款CX65,14款B70,19款B50,16款B30</mods>
+            </sub>
+            <sub name="海马">
+                <mods>14款海马M3,17款海马,海马S5,13-15款海马S7,16款海马M6,14款海马M5,16款海马M3,18款福美来F5,M8,17款福美来,17款海马S7,17款S5young,19款海马S5</mods>
+            </sub>
+            <sub name="北汽">
+                <mods>14款绅宝D60,16款绅宝X55,15-17款绅宝X25,16款BJ20,17款威旺M50F,16款BJ40,16款绅宝X35,17款昌河Q35,幻速S6,EC180,幻速S6,绅宝X65,绅宝D70,幻速S5,16款幻速S3L,EC180,19款新能源EC5,18款新能源EU5,18款绅宝D50,19款绅宝D50,18-21款绅宝X55,19-21款绅宝X35,18北京X5,18北京X3</mods>
+            </sub>
+            <sub name="三菱">
+                <mods>2014款欧蓝德,2020款欧蓝德,2018款奕歌,2020款帕杰罗劲畅</mods>
+            </sub>
+            <sub name="上汽">
+                <mods>18-19款大通G10,2015款名爵锐腾,2016款T60,2018款荣威RX3,2019款大通G50,2014款宝骏730,2017款宝骏730,2017款宝骏510,2018款宝骏530,2015款宝骏560,2016款宝骏560,2017款宝骏560,2020款宝骏RS-3,2017款T60</mods>
+            </sub>
+			<sub name="奇瑞">
+                <mods>QQ冰淇淋</mods>
+            </sub>
+            <sub name="吉利">
+                <mods>博瑞</mods>
+            </sub>
+			<sub name="沃尔沃">
+                <mods>08-18XC60</mods>
+            </sub>
+            <sub name="吉普">
+                <mods>2018款牧马人,07-10款指南者/牧马人</mods>
+            </sub>            
+            <sub name="传祺">
+                <mods>GS4,GS5,2019款GS8,20款GM8,GA4,2019款GA6,2019款GM6</mods>
+            </sub>
+            <sub name="长城">
+                <mods>16-17款H9,18-19款哈佛H4,欧拉,2019款哈弗H6-换代,2019款哈弗F7,2017款风骏6</mods>
+            </sub>
+            <sub name="欧宝">
+                <mods>安德拉2006-2012,赛飞利2006-2008,雅特2005-2008,安德拉2006-2012(保留原车主机)</mods>
+            </sub>
+            <sub name="雷诺">
+                <mods>纬度</mods>
+            </sub>
+            <sub name="法拉利">
+                <mods>2020款法拉利</mods>
+            </sub>
+            <sub name="菲亚特">
+                <mods>Ducato</mods>
+            </sub>
+             <sub name="斯巴鲁">
+                <mods>斯巴鲁XV,斯巴鲁驰鹏</mods>
+            </sub>
+            <sub name="众泰">
+                <mods>T600,2018款众泰T500,黄海N2</mods>
+            </sub>
+            <sub name="宝马">
+                <mods>NBT-EVO全系,06-10款宝马老X3,宝马E46/E39/E53,宝马老3系/老5系/老X5,宝马120/130/318/320/325/X1,E60,E90</mods>
+            </sub>
+            <sub name="汉腾">
+                <mods>16款x7,18款x5</mods>
+            </sub>
+            <sub name="长安">
+                <mods>悦翔V7,CS75,奔奔,17款CS75,17款欧尚,17款CX70,17款CS55,17款CS15,18款逸动DT,17款A800,17款X70A,18款A600,18款凌轩,18款科赛,18款CS75,18款悦翔,20款欧尚X7,19款悦翔,19款CS15</mods>
+            </sub>
+            <sub name="江淮">
+                <mods>S2_S3_S5全兼容,2017S2MINI,IEV6E,19款S4,瑞风S7,17-20款瑞风S7,18款带小屏 IEV6E,19款带小屏 IEV6E,2014款S3,2015款S2,2016款M,2017款S3,18款R3,2017S2MINI</mods>
+            </sub>            
+            <sub name="力帆">
+                <mods>力帆X60,力帆X720,力帆X820</mods>
+            </sub>            
+            <sub name="江铃">
+                <mods>牧游侠,14-17款陆丰X7,易至EV3-E300,E200N</mods>
+            </sub>
+            <sub name="双龙">
+                <mods>蒂维拉</mods>
+            </sub>
+            <sub name="比亚迪">
+                <mods>比亚迪全兼容(老协议盒),比亚迪全兼容</mods>
+            </sub>
+            <sub name="斯威">
+                <mods>18款斯威G01,19款斯威G01</mods>
+            </sub>            
+            <sub name="依维柯">
+                <mods>依维柯</mods>
+            </sub>
+            <sub name="福特">
+                <mods>2021款全顺</mods>
+            </sub>                  
+            <sub name="奔驰">
+                <mods>全系列,Smart</mods>
+            </sub>  
+            <sub name="悍马">
+                <mods>H2</mods>
+            </sub> 
+             <sub name="东风">
+                <mods>景逸X5,风光S560,纳智捷,风光330S,风光370,19款AX7,20款风神奕炫,2019低配不带悬浮屏景逸X5,风光500,风光580,22EX1,22FEV</mods>
+            </sub>
+            <sub name="陆风">
+                <mods>逍遥,X7</mods>
+            </sub>              
+             <sub name="观致">
+                <mods>观致3,观致5</mods>
+            </sub>   
+              <sub name="凯迪拉克">
+                <mods>凯雷德,赛威</mods>
+            </sub>            
+            <sub name="东南">
+                <mods>DX7,V5,V6,20款A5翼舞</mods>
+            </sub>
+            <sub name="中华">
+                <mods>16款V3,17款H3,18款V6 自动豪华版,18款V6 自动尊贵版,18款V6 手动都市版,18款V6 自动旗舰版,H530,V5</mods>
+            </sub>                      
+            <sub name="潍柴">
+                <mods>20款潍柴U70</mods>
+            </sub>     
+            <sub name="野马">
+                <mods>17款野马T80</mods>
+            </sub>
+             <sub name="比速">
+                <mods>M3,T3,T5</mods>
+            </sub>
+            <sub name="知豆">
+                <mods>D2</mods>
+            </sub>
+            <sub name="合众">
+                <mods>哪吒</mods>
+            </sub>
+            <sub name="福田">
+                <mods>拓陆者,蒙派克</mods>
+            </sub>
+            <sub name="创维">
+                <mods>ET5</mods>
+            </sub>
+            <sub name="IAP升级">
+                <mods>IAP升级</mods>
+            </sub>
+        </menu>
+        
+   		<menu name="华臣宇" value="14">
+           <sub name="比亚迪">
+                <mods>比亚迪全兼容,比亚迪S6,宋元新能源,宋元燃油,唐/s7新能源,唐/s7燃油,比亚迪秦,比亚迪E1/E2,比亚迪G5</mods>
+            </sub>
+        </menu>
+        <menu name="路征豪正" value="15">                       
+            <sub name="大众">
+                <mods>老款途锐2010年以前,新途锐,大众迈特威</mods>
+            </sub>                     
+            <sub name="本田">
+                <mods>12款思铂睿,雅阁8</mods>
+            </sub>   
+            <sub name="丰田">
+                <mods>10款霸道,16款兰酷,07-15款兰酷,埃尔法,LC100,05-09款锐志</mods>
+            </sub> 
+            <sub name="福特">
+                <mods>07-13款蒙迪欧致胜</mods>
+            </sub>
+            <sub name="奥迪">
+            	<mods>A3,A4,TT</mods>
+      	 	</sub>
+            <sub name="路虎">
+                <mods>LandRover,神行者2</mods>
+            </sub>     
+            <sub name="奔驰">
+                <mods>B200,Vinao,威霆,斯宾特,S350,ML350,Smart</mods>
+            </sub>            
+            <sub name="宝马">
+                <mods>MINI,E90,宝马E90-X1,宝马120/130/318/320/325/X1,宝马E46/E39/E53</mods>
+            </sub>
+            <sub name="马自达">
+                <mods>Mazda6</mods>
+            </sub>              
+            <sub name="雷诺">
+                <mods>Dacia,Duster,Sandero,Lodgy,Logan,Dokker,Captur,Clio,Symbol,Kwid,Sandero</mods>
+            </sub>  
+            <sub name="雷克萨斯">
+                <mods>06-12IS,09-14RX,06-12ES,LS430,LS460</mods>
+            </sub>
+            <sub name="菲亚特">
+                <mods>菲亚特博悦</mods>
+            </sub>        
+            <sub name="吉普">
+                <mods>10-13款牧马人,11-15款指南者,自由客,道奇,300c,2005大捷龙,2004大切诺基</mods>
+            </sub>
+            <sub name="欧宝">
+                <mods>安德拉2006-2012</mods>
+                <mods>赛飞利2006-2008</mods>
+                <mods>雅特2005-2008</mods>
+            </sub>
+            <sub name="保时捷">
+                <mods>03-10款卡宴</mods>
+            </sub>
+            <sub name="斯巴鲁">
+                <mods>斯巴鲁驰鹏</mods>
+            </sub>
+        </menu>
+        
+        <menu name="巴谷" value="16">            
+       		<sub name="奥迪">
+            	<mods>A3,A4,A6,TT</mods>
+      	 	</sub>
+      	 	<sub name="菲亚特">
+                <mods>菲亚特博悦,13-500L,TORO,Doblo,Fiorino,IDEA,其他兼容车型</mods>
+            </sub>             
+      	 	 <sub name="标致雪铁龙">
+                <mods>301,307,408,C4,C4L,508,DS5,爱丽舍,世嘉,其他兼容车型</mods>
+            </sub>      	 	    
+            <sub name="保时捷">
+                <mods>03-10款卡宴</mods>
+            </sub>                              
+            <sub name="奔驰">
+                <mods>全系列</mods>
+            </sub>
+            <sub name="吉普">
+                <mods>2016款自由光,2017款大切诺基</mods>
+            </sub>
+            <sub name="阿尔法罗密欧">
+                <mods>阿尔法罗密欧</mods>
+            </sub>            
+        </menu>
+        
+	   <menu name="和驰" value="18">  
+            <sub name="奔驰">
+                <mods>B200,Vinao,威霆,斯宾特,S350,ML350</mods>
+            </sub>            
+            <sub name="宝马">
+                <mods>E90,宝马E90-X1,宝马120/130/318/320/325/X1</mods>
+            </sub>
+            <sub name="标致雪铁龙">
+                <mods>C4L,508</mods>
+            </sub>  
+            <sub name="菲亚特">
+                <mods>菲亚特博悦</mods>
+            </sub>  
+            <sub name="北汽">
+                <mods>幻速H3</mods>
+            </sub> 
+        </menu>
+        
+        <menu name="宝谷" value="19">
+            <sub name="雷诺">
+                <mods>Dacia,Duster,Sandero,Lodgy,Logan,Dokker,Captur,Clio,Symbol,Kwid,Sandero,梅甘娜3</mods>
+            </sub>            
+             <sub name="大乘">
+                <mods>Tu auto</mods>
+            </sub>
+        </menu>
+        
+        
+         <menu name="昕驰保仕杰" value="21"> 
+            <sub name="福特">
+                <mods>探险者,12-17款翼虎,2015款锐界,2013款蒙迪欧,2018款蒙迪欧,2013款猛禽F-150,2013款金牛座,进口野马</mods>
+            </sub>                             
+            <sub name="本田">
+                <mods>雅阁8</mods>
+            </sub>   
+            <sub name="丰田">
+                <mods>12款皇冠,13款皇冠,07-15款兰酷,02-09款霸道,10-17款霸道,05-09款锐志,埃尔法,LC100</mods>
+            </sub>         
+            <sub name="日产">
+                <mods>2008款天籁,08-12款天籁,天籁公爵,05-07风雅,08-13EX35,09-14FX35,09-14QX60,11-15款贵士,楼兰,探路者,04-07款天籁</mods>
+            </sub>
+            <sub name="雷克萨斯">
+                <mods>LC100,06-12IS,06-12ES,04-06LS430,04-05LX470,NX,RX</mods>
+            </sub>
+             <sub name="现代-起亚">
+                <mods>13款索兰托</mods>
+            </sub>
+            <sub name="通用">
+                <mods>新君威,09-19款君越,11-15款GL8,13-19款昂科拉,10-19款英朗,07-17款科鲁兹,12-18款迈锐宝,11-14款爱唯欧</mods>
+            </sub>
+             <sub name="菲亚特">
+                <mods>菲跃</mods>
+            </sub>
+            <sub name="道奇">
+                <mods>酷威</mods>
+            </sub>
+            <sub name="上汽">
+                <mods>2019款荣威950</mods>
+            </sub>
+        </menu>
+        
+        <menu name="馨飞扬" value="5">
+            <sub name="本田">
+                <mods>缤智</mods>
+            </sub>
+             <sub name="日产">
+                <mods>17款途乐,18款途乐,09-14QX60</mods>
+            </sub>
+             <sub name="丰田">
+                <mods>奔跑者</mods>
+            </sub>
+           <sub name="斯巴鲁">
+                <mods>斯巴鲁XV</mods>
+            </sub>
+             <sub name="雷诺">
+                <mods>2017款科雷傲</mods>
+            </sub>
+        </menu>
+        
+         <menu name="唐度" value="17">
+            <sub name="雷克萨斯">
+                <mods>4500,RX350,LX570</mods>
+            </sub>
+            <sub name="丰田">
+                <mods>RAV4,14款霸道,10款霸道,其他兼容车型</mods>
+            </sub>
+            <sub name="三菱">
+                <mods>帕杰罗</mods>
+            </sub>
+        </menu>
+        
+         <menu name="其它" value="9">
+            <sub name="北汽">
+                <mods>S3,S5</mods>
+            </sub>
+            <sub name="其它">
+                <mods>Test</mods>
+            </sub>
+        </menu>
+    </menus>
+</plist>

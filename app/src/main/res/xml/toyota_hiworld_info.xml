@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+     <com.common.view.MyPreference
+        android:key="dynamical_fuel"
+        android:persistent="false"
+        android:title="@string/dynamical_fuel" />
+     <com.common.view.MyPreference
+        android:key="dynamical"
+        android:persistent="false"
+        android:title="@string/dynamical" />
+    <com.common.view.MyPreference
+        android:key="engine_speed55"
+        android:persistent="false"
+        android:title="@string/engine_speed55" />
+    <com.common.view.MyPreference
+        android:key="averagespeed24"
+        android:persistent="false"
+        android:title="@string/averagespeed24" />
+<!--     <com.common.view.MyPreference -->
+<!--         android:key="unit_of_fuel_consumption" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/unit_of_fuel_consumption" /> -->
+<!--      <com.common.view.MyPreference -->
+<!--         android:key="mile_unit" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/mile_unit" /> -->
+    <com.common.view.MyPreference
+        android:key="driving_mileage"
+        android:persistent="false"
+        android:title="@string/driving_mileage" />
+    <com.common.view.MyPreference
+        android:key="traveltime"
+        android:persistent="false"
+        android:title="@string/traveltime" />
+    <com.common.view.MyPreference
+        android:key="curfuel"
+        android:persistent="false"
+        android:title="@string/curfuel" />
+    <com.common.view.MyPreference
+        android:key="trip1"
+        android:persistent="false"
+        android:title="@string/trip1" />
+    <com.common.view.MyPreference
+        android:key="trip2"
+        android:persistent="false"
+        android:title="@string/trip2" />
+    <com.common.view.MyPreference
+        android:key="trip3"
+        android:persistent="false"
+        android:title="@string/trip3" />
+    <com.common.view.MyPreference
+        android:key="trip4"
+        android:persistent="false"
+        android:title="@string/trip4" />
+    <com.common.view.MyPreference
+        android:key="trip5"
+        android:persistent="false"
+        android:title="@string/trip5" />
+</PreferenceScreen>

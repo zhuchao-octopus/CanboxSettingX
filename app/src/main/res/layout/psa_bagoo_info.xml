@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/warning_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="0px"
+        android:paddingLeft="20px"
+        android:paddingRight="15px"
+        android:paddingTop="0px" >
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_00"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_00" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_01"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_01" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_02"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_02" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_03"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_03" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_04"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_04" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_10"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_10" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_11"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_11" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_12"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_12" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_20"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_20" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_21"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_21" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_22"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_22" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_30"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_30" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_31"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_31" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_40"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_40" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_41"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_41" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_42"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_42" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_50"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_50" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_51"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_51" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_52"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_52" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_60"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_60" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_61"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_61" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_62"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_62" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_63"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_63" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_64"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_64" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_65"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_65" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_66"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_66" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_67"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_67" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_70"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_70" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_71"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_71" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_72"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_72" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_73"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_73" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_74"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_74" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_80"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_80" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_81"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_81" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_82"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_82" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_90"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_90" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_A0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_A0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_A1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_A1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B2"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B2" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B3"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B3" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B4"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B4" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B5"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B5" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_B6"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_B6" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_C0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_C0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_C1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_C1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_C2"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_C2" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D2"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D2" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D3"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D3" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D4"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D4" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D5"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D5" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_D6"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D6" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_E0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_E1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E2"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_E2" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E3"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_E3" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E4"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D4" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E5"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_D5" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_E6"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_E6" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_F0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_F0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_F1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_F1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_F2"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_F2" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_G0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_G0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_G1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_G1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_H0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_H0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_H1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_H1" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_H2"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_H2" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_I0"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_I0" />
+
+            <TextView
+                android:id="@+id/bagoo_warning_info_I1"
+                style="@style/CarInfoTextView4"
+                android:text="@string/bagoo_warning_info_I1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <TextView
+                style="@style/CarInfoTextView3"
+                android:text="@string/driving_page1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/fulecons" />
+
+                <TextView
+                    android:id="@+id/fulecons1"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/driving_mileage" />
+
+                <TextView
+                    android:id="@+id/driving_mileage"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/destination" />
+
+                <TextView
+                    android:id="@+id/destination"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff000000" />
+
+                <Button
+                    android:id="@+id/booking_mileage"
+                    style="@style/CarInfoTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="68px"
+                    android:background="@drawable/button_click_back1"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="20px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px"
+                    android:text="@string/booking_mileage" />
+                
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <TextView
+                style="@style/CarInfoTextView3"
+                android:text="@string/driving_page2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/fulecons" />
+
+                <TextView
+                    android:id="@+id/fulecons2"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/averageapeed" />
+
+                <TextView
+                    android:id="@+id/averageapeed1"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/mileage1" />
+
+                <TextView
+                    android:id="@+id/mileage1"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                	android:layout_width="match_parent"
+                    android:id="@+id/fuelclear2"
+                    android:background="@drawable/button_click_back1"
+                    android:text="@string/fuelclear" />
+
+            </RelativeLayout>
+            
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+             
+            <TextView
+                style="@style/CarInfoTextView3"
+                android:text="@string/driving_page3" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/fulecons" />
+
+                <TextView
+                    android:id="@+id/fulecons3"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/averageapeed" />
+
+                <TextView
+                    android:id="@+id/averageapeed2"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/mileage1" />
+
+                <TextView
+                    android:id="@+id/mileage2"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                	android:layout_width="match_parent"
+                    android:id="@+id/fuelclear3"
+                    android:background="@drawable/button_click_back1"
+                    android:text="@string/fuelclear" />
+
+            </RelativeLayout>
+            
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+             
+            <TextView
+                style="@style/CarInfoTextView3"
+                android:text="@string/carbodyinfo" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/beoilmass" />
+
+                <TextView
+                    android:id="@+id/beoilmass"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/am_safetybelt" />
+
+                <TextView
+                    android:id="@+id/am_safetybelt"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/speed" />
+
+                <TextView
+                    android:id="@+id/speed"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/automatic_door_locking" />
+
+                <TextView
+                    android:id="@+id/automatic_door_locking"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/automatic_headlamp_lighting" />
+
+                <TextView
+                    android:id="@+id/automatic_headlamp_lighting"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/passenger_airbag" />
+
+                <TextView
+                    android:id="@+id/passenger_airbag"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/parking_assistance" />
+
+                <TextView
+                    android:id="@+id/parking_assistance"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/sport_suspension_Bit1_mode" />
+
+                <TextView
+                    android:id="@+id/sport_suspension_Bit1_mode"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/automatic_screen_wipe" />
+
+                <TextView
+                    android:id="@+id/automatic_screen_wipe"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/esp_system" />
+
+                <TextView
+                    android:id="@+id/esp_system"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/door" />
+
+                <TextView
+                    android:id="@+id/door"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/stop_start_system" />
+
+                <TextView
+                    android:id="@+id/stop_start_system"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/child_safety" />
+
+                <TextView
+                    android:id="@+id/child_safety"
+                    style="@style/CarInfoTextView2" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
+
+            <!-- <RelativeLayout -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:paddingBottom="5px" -->
+            <!-- android:paddingLeft="20px" -->
+            <!-- android:paddingRight="15px" -->
+            <!-- android:paddingTop="5px" > -->
+
+
+            <!-- <TextView -->
+            <!-- style="@style/CarInfoTextView1" -->
+            <!-- android:text="@string/car_door_lock" /> -->
+
+
+            <!-- <TextView -->
+            <!-- android:id="@+id/car_door_lock" -->
+            <!-- style="@style/CarInfoTextView2" /> -->
+            <!-- </RelativeLayout> -->
+
+
+            <!-- <View -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="1px" -->
+            <!-- android:background="#ff000000" /> -->
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

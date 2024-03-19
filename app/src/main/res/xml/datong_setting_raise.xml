@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res-auto"
+    android:persistent="false" >
+
+    <SwitchPreference
+        android:key="key_flow_me_home"
+        android:persistent="false"
+        android:title="@string/flow_me_home" />
+
+    <ListPreference
+        android:dependency="key_flow_me_home"
+        android:entries="@array/honda_security_relock_timer_entries"
+        android:entryValues="@array/three_values"
+        android:key="key_flow_me_home_times"
+        android:title="@string/flow_me_home_times" />
+    <ListPreference
+        android:entries="@array/chery_notification_entries"
+        android:entryValues="@array/three_values"
+        android:key="key_unlock_near_car"
+        android:title="@string/lockdoor_prompt" />
+
+    <SwitchPreference
+        android:key="key_driving_lock"
+        android:persistent="false"
+        android:title="@string/gac_settings_auto_lock_when_drive" />
+    <SwitchPreference
+        android:key="key_unlock"
+        android:persistent="false"
+        android:title="@string/auto_unlock" />
+
+    <ListPreference
+        android:entries="@array/saic_search_car_indicator_type_entries"
+        android:entryValues="@array/two_values"
+        android:key="key_unlock_mode"
+        android:title="@string/search_car_indicator" />
+
+    <SwitchPreference
+        android:key="key_keyless_unlock"
+        android:persistent="false"
+        android:title="@string/keyless_unlock" />
+    <SwitchPreference
+        android:key="key_unlocks"
+        android:persistent="false"
+        android:title="@string/key_unlock" />
+    <SwitchPreference
+        android:key="key_rear_view_mirror_automatically_folded"
+        android:persistent="false"
+        android:title="@string/rear_view_mirror_automatically_folded" />
+    <SwitchPreference
+        android:key="key_speed_alarm"
+        android:persistent="false"
+        android:title="@string/speed_alarm" />
+
+    <com.common.view.MyPreferenceSeekBar
+        android:key="key_speed_settings"
+        android:persistent="false"
+        android:dependency="key_speed_alarm"
+        android:title="@string/speed_settings"
+        my:unit="km/h"
+        my:max="220"
+        my:min="30"
+        my:step="1" />
+
+</PreferenceScreen>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="smartdoorlock_entries">
+        <item>Alle Sitze</item>
+        <item>Fahrersitz</item>
+    </string-array>
+    <string-array name="closedoortime_entries">
+        <item>aus</item>
+        <item>30s</item>
+        <item>60s</item>
+        <item>120s</item>
+    </string-array>
+    <string-array name="timeswitchlight_entries">
+        <item>aus</item>
+        <item>30s</item>
+        <item>60s</item>
+        <item>90s</item>
+    </string-array>
+    <string-array name="lightingime_entries">
+        <item>aus</item>
+        <item>7.5s</item>
+        <item>15s</item>
+        <item>30s</item>
+    </string-array>
+    <string-array name="radarrange_entries">
+        <item>weit</item>
+        <item>in der Nähe von</item>
+    </string-array>
+    <string-array name="enrange">
+        <item>km</item>
+        <item>mls</item>
+    </string-array>
+    <string-array name="enrange_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="enlang">
+        <item>Deutsch</item>
+        <item>English UK</item>
+        <item>English US</item>
+        <item>Espanol</item>
+        <item>Italiano</item>
+        <item>Francais</item>
+    </string-array>
+    <string-array name="enlang_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="enage_full">
+        <item>l/100km</item>
+        <item>mpg(US)</item>
+        <item>mpg(UK)</item>
+        <item>km/L</item>
+    </string-array>
+    <string-array name="enage_full_vaues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="entemp">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+    </string-array>
+    <string-array name="entemp_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="entimes">
+        <item>12 Stunde</item>
+        <item>24 Stunde</item>
+    </string-array>
+    <string-array name="entimes_vaues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+</resources>

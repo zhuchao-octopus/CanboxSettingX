@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.clw.vehicleinfos"
+    android:id="@+id/infos"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/toyaota_car_bk"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/charging_settings"
+            style="@style/CommonButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="80px"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/charging_settings"
+            android:textSize="24px" >
+        </TextView>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#88888888" >
+        </View>
+
+        <TextView
+            android:id="@+id/energy_information"
+            style="@style/CommonButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="80px"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/energy_information"
+            android:textSize="24px" >
+        </TextView>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#88888888" >
+        </View>
+    </LinearLayout>
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="fill_parent"
+        android:background="#88888888" >
+    </View>
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/page11"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:layout_centerVertical="true"
+                    android:text="@string/time_of_appointment" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/time_of_appointment1"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="140px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="@string/to"
+                        android:textColor="#ffffff"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:id="@+id/time_of_appointment2"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="140px"
+                        android:layout_marginLeft="2px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/cycle_mode" />
+
+                <LinearLayout
+                    android:layout_width="290px"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="fill_parent" >
+
+                        <RadioButton
+                            android:id="@+id/cycle_mode1"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="140px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/loop" />
+
+                        <RadioButton
+                            android:id="@+id/cycle_mode2"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="140px"
+                            android:layout_marginLeft="5px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/single_time" />
+                    </RadioGroup>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/cycle_date" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="160px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="80px"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <CheckBox
+                            android:id="@+id/cycle_date1"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/monday" />
+
+                        <CheckBox
+                            android:id="@+id/cycle_date2"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:layout_marginLeft="2px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/tuesday" />
+
+                        <CheckBox
+                            android:id="@+id/cycle_date3"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:layout_marginLeft="2px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/monday" />
+
+                        <CheckBox
+                            android:id="@+id/cycle_date4"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:layout_marginLeft="2px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/thursday" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80px"
+                        android:gravity="center_vertical|left"
+                        android:orientation="horizontal" >
+
+                        <CheckBox
+                            android:id="@+id/cycle_date5"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:layout_marginLeft="2px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/friday" />
+
+                        <CheckBox
+                            android:id="@+id/cycle_date6"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:layout_marginLeft="2px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/saturday" />
+
+                        <CheckBox
+                            android:id="@+id/cycle_date7"
+                            style="@style/CarInfoTextView5"
+                            android:layout_width="100px"
+                            android:layout_marginLeft="2px"
+                            android:tag="ak_paramter=100,50"
+                            android:text="@string/sunday" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/ok"
+                    style="@style/CarInfoTextView5"
+                    android:layout_width="140px"
+                    android:layout_marginLeft="2px"
+                    android:onClick="onClick"
+                    android:tag="ak_paramter=100,50"
+                    android:text="@string/ok" />
+
+                <Button
+                    android:id="@+id/cancel"
+                    style="@style/CarInfoTextView5"
+                    android:layout_width="140px"
+                    android:layout_marginLeft="20px"
+                    android:onClick="onClick"
+                    android:tag="ak_paramter=100,50"
+                    android:text="@string/cancel" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/page1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:layout_centerVertical="true"
+                    android:text="@string/charging_mode" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/charging_mode1"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="140px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/charging_immediately" />
+
+                    <TextView
+                        android:id="@+id/charging_mode2"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="140px"
+                        android:layout_marginLeft="2px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/pointment_settings" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/current_appointment" />
+
+                <TextView
+                    android:id="@+id/current_appointment"
+                    style="@style/CarInfoTextView5"
+                    android:background="#00000000" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <TextView
+                android:id="@+id/distance_charging_time"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textSize="36px"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/page2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:layout_centerVertical="true"
+                    android:text="@string/gs4_energy_recovery" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/gs4_energy_recovery1"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="100px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/closed" />
+
+                    <TextView
+                        android:id="@+id/gs4_energy_recovery2"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="100px"
+                        android:layout_marginLeft="2px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/gm_low" />
+
+                    <TextView
+                        android:id="@+id/gs4_energy_recovery3"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="100px"
+                        android:layout_marginLeft="2px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/gm_high" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/energy_recovery_i_pedal" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/energy_recovery_i_pedal1"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="120px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/open" />
+
+                    <TextView
+                        android:id="@+id/energy_recovery_i_pedal2"
+                        style="@style/CarInfoTextView5"
+                        android:layout_width="120px"
+                        android:layout_marginLeft="2px"
+                        android:onClick="onClick"
+                        android:tag="ak_paramter=100,50"
+                        android:text="@string/close" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <TextView
+                    style="@style/CarInfoTextView1"
+                    android:text="@string/energy_flow_state" />
+
+                <TextView
+                    android:id="@+id/energy_flow_state"
+                    style="@style/CarInfoTextView2"
+                    android:background="#44444444" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#88888888" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baic_car" >
+                </ImageView>
+
+                <SeekBar
+                    android:id="@+id/enag"
+                    android:layout_width="116px"
+                    android:layout_height="54px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/baic_energy"
+                    android:max="10"
+                    android:paddingBottom="5px"
+                    android:paddingLeft="5px"
+                    android:paddingRight="15px"
+                    android:paddingTop="5px"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:scaleType="centerInside"
+                    android:thumb="@null" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

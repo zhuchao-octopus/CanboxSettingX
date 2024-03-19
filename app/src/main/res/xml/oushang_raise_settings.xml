@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <SwitchPreference
+        android:key="rear_view"
+        android:persistent="false"
+        android:title="@string/rear_view" />
+    <SwitchPreference
+        android:key="wipers"
+        android:persistent="false"
+        android:title="@string/wipers" />
+    <SwitchPreference
+        android:key="remote_unlock"
+        android:persistent="false"
+        android:title="@string/remote_unlock" />
+    <SwitchPreference
+        android:key="driving_auto"
+        android:persistent="false"
+        android:title="@string/driving_auto" />
+    <SwitchPreference
+        android:key="oushang_1"
+        android:persistent="false"
+        android:title="@string/oushang_1" />
+    <SwitchPreference
+        android:key="oushang_2"
+        android:persistent="false"
+        android:title="@string/oushang_2" />
+    <SwitchPreference
+        android:key="oushang_3"
+        android:persistent="false"
+        android:title="@string/oushang_3" />
+    <SwitchPreference
+        android:key="oushang_4"
+        android:persistent="false"
+        android:title="@string/oushang_4" />
+    <SwitchPreference
+        android:key="oushang_5"
+        android:persistent="false"
+        android:title="@string/oushang_5" />
+
+    <ListPreference
+        android:entries="@array/headlight_delay_oushange"
+        android:entryValues="@array/envol_vaues"
+        android:key="headlight_delay"
+        android:persistent="false"
+        android:title="@string/headlight_delay1" />
+    <ListPreference
+        android:entries="@array/turn_signal_oushange"
+        android:entryValues="@array/envol_vaues"
+        android:key="turn_signal"
+        android:persistent="false"
+        android:title="@string/turn_signal" />
+    <ListPreference
+        android:entries="@array/oushange_array123"
+        android:entryValues="@array/envolume_vaues"
+        android:key="oushang_6"
+        android:persistent="false"
+        android:title="@string/oushang_6" />
+    <ListPreference
+        android:entries="@array/oushange_array123"
+        android:entryValues="@array/envolume_vaues"
+        android:key="information_tone"
+        android:persistent="false"
+        android:title="@string/information_tone" />
+    <ListPreference
+        android:entries="@array/oushange_array123"
+        android:entryValues="@array/envolume_vaues"
+        android:key="warning_tone"
+        android:persistent="false"
+        android:title="@string/warning_tone" />
+
+    <SwitchPreference
+        android:key="parkunlock"
+        android:persistent="false"
+        android:title="@string/parkunlock" />
+    <SwitchPreference
+        android:key="oushang_7"
+        android:persistent="false"
+        android:title="@string/oushang_7" />
+
+    <ListPreference
+        android:entries="@array/headlight_delay_oushange"
+        android:entryValues="@array/envol_vaues"
+        android:key="oushang_8"
+        android:persistent="false"
+        android:title="@string/oushang_8" />
+
+    <SwitchPreference
+        android:key="oushang_9"
+        android:persistent="false"
+        android:title="@string/oushang_9" />
+    <SwitchPreference
+        android:key="oushang_10"
+        android:persistent="false"
+        android:title="@string/oushang_10" />
+
+    <ListPreference
+        android:entries="@array/array_speaker_volue"
+        android:entryValues="@array/radarvol_entryValues1"
+        android:key="oushang_11"
+        android:persistent="false"
+        android:title="@string/oushang_11" />
+    <ListPreference
+        android:entries="@array/enfort_tips"
+        android:entryValues="@array/enauto_lights_off_vaues_s"
+        android:key="oushang_12"
+        android:persistent="false"
+        android:title="@string/oushang_12" />
+
+    
+    
+    <SwitchPreference
+        android:key="oushang_17"
+        android:persistent="false"
+        android:title="@string/oushang_17" />   
+    <SwitchPreference
+        android:key="oushang_18"
+        android:persistent="false"
+        android:title="@string/oushang_18" />   
+    <SwitchPreference
+        android:key="oushang_19"
+        android:persistent="false"
+        android:title="@string/oushang_19" />   
+    <SwitchPreference
+        android:key="oushang_1a"
+        android:persistent="false"
+        android:title="@string/oushang_1a" />   
+    <SwitchPreference
+        android:key="oushang_1b"
+        android:persistent="false"
+        android:title="@string/oushang_1b" />   
+    <SwitchPreference
+        android:key="oushang_1d"
+        android:persistent="false"
+        android:title="@string/oushang_1d" />   
+        
+        <ListPreference
+        android:entries="@array/oushang_1c"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_1c"
+        android:persistent="false"
+        android:title="@string/oushang_1c" />
+        
+                <ListPreference
+        android:entries="@array/oushang_1e"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_1e"
+        android:persistent="false"
+        android:title="@string/oushang_1e" />
+              
+                 
+    <SwitchPreference
+        android:key="oushang_1f"
+        android:persistent="false"
+        android:title="@string/oushang_1f" />   
+        
+    <ListPreference
+        android:entries="@array/oushang_20"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_20"
+        android:persistent="false"
+        android:title="@string/oushang_20" />
+                 
+                  <ListPreference
+        android:entries="@array/oushang_21"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_21"
+        android:persistent="false"
+        android:title="@string/oushang_21" />
+                  
+                   <ListPreference
+        android:entries="@array/oushang_22"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_22"
+        android:persistent="false"
+        android:title="@string/oushang_22" />
+                   
+                   
+    <SwitchPreference
+        android:key="oushang_23"
+        android:persistent="false"
+        android:title="@string/oushang_23" />
+    <SwitchPreference
+        android:key="oushang_24"
+        android:persistent="false"
+        android:title="@string/oushang_24" />
+    <SwitchPreference
+        android:key="oushang_25"
+        android:persistent="false"
+        android:title="@string/oushang_25" />
+    <SwitchPreference
+        android:key="oushang_26"
+        android:persistent="false"
+        android:title="@string/oushang_26" />
+    
+     <ListPreference
+        android:entries="@array/volbackdoor_entryValues"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_27"
+        android:persistent="false"
+        android:title="@string/oushang_27" />
+                    
+                         <ListPreference
+        android:entries="@array/oushang_29"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_29"
+        android:persistent="false"
+        android:title="@string/oushang_29" />
+                         
+    <SwitchPreference
+        android:key="oushang_2b"
+        android:persistent="false"
+        android:title="@string/oushang_2b" />
+    <SwitchPreference
+        android:key="oushang_2c"
+        android:persistent="false"
+        android:title="@string/oushang_2c" />
+    <SwitchPreference
+        android:key="oushang_2d"
+        android:persistent="false"
+        android:title="@string/oushang_2d" />
+    <SwitchPreference
+        android:key="oushang_2e"
+        android:persistent="false"
+        android:title="@string/oushang_2e" />
+    <SwitchPreference
+        android:key="oushang_2f"
+        android:persistent="false"
+        android:title="@string/oushang_2f" />
+    <SwitchPreference
+        android:key="oushang_30"
+        android:persistent="false"
+        android:title="@string/oushang_30" />
+    <SwitchPreference
+        android:key="oushang_31"
+        android:persistent="false"
+        android:title="@string/oushang_31" />
+    
+     <ListPreference
+        android:entries="@array/oushang_32"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_32"
+        android:persistent="false"
+        android:title="@string/oushang_32" />
+     
+    <SwitchPreference
+        android:key="oushang_33"
+        android:persistent="false"
+        android:title="@string/oushang_33" />
+    <SwitchPreference
+        android:key="oushang_34"
+        android:persistent="false"
+        android:title="@string/oushang_34" />
+    <SwitchPreference
+        android:key="oushang_35"
+        android:persistent="false"
+        android:title="@string/oushang_35" />
+    <SwitchPreference
+        android:key="oushang_36"
+        android:persistent="false"
+        android:title="@string/oushang_36" />
+    
+         <ListPreference
+        android:entries="@array/oushang_37"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_37"
+        android:persistent="false"
+        android:title="@string/oushang_37" />
+         
+                  <ListPreference
+        android:entries="@array/automodewindlevel_entries"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_38"
+        android:persistent="false"
+        android:title="@string/oushang_38" />
+                  
+                           <ListPreference
+        android:entries="@array/oushang_3a"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_3a"
+        android:persistent="false"
+        android:title="@string/oushang_3a" />
+                           
+    <SwitchPreference
+        android:key="oushang_3b"
+        android:persistent="false"
+        android:title="@string/oushang_3b" />
+
+    <SwitchPreference
+        android:key="oushang_3c"
+        android:persistent="false"
+        android:title="@string/oushang_3c" />
+    <SwitchPreference
+        android:key="oushang_3d"
+        android:persistent="false"
+        android:title="@string/oushang_3d" />
+    <SwitchPreference
+        android:key="oushang_3e"
+        android:persistent="false"
+        android:title="@string/oushang_3e" />
+    
+                               <ListPreference
+        android:entries="@array/oushang_3f"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_3f"
+        android:persistent="false"
+        android:title="@string/oushang_3f" />
+                               
+                             <ListPreference
+        android:entries="@array/oushang_40"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_40"
+        android:persistent="false"
+        android:title="@string/oushang_40" />
+                             
+                             <ListPreference
+        android:entries="@array/oushang_41"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_41"
+        android:persistent="false"
+        android:title="@string/oushang_41" />
+    <ListPreference
+        android:entries="@array/oushang_42"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_42"
+        android:persistent="false"
+        android:title="@string/oushang_42" />
+    <ListPreference
+        android:entries="@array/oushang_43"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_43"
+        android:persistent="false"
+        android:title="@string/oushang_43" />
+    <ListPreference
+        android:entries="@array/oushang_44"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_44"
+        android:persistent="false"
+        android:title="@string/oushang_44" />
+    <ListPreference
+        android:entries="@array/oushang_45"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_45"
+        android:persistent="false"
+        android:title="@string/oushang_45" />
+    <ListPreference
+        android:entries="@array/oushang_46"
+        android:entryValues="@array/alarm_vol_value"
+        android:key="oushang_46"
+        android:persistent="false"
+        android:title="@string/oushang_46" />
+                               
+    <SwitchPreference
+        android:key="oushang_47"
+        android:persistent="false"
+        android:title="@string/oushang_47" />
+    <SwitchPreference
+        android:key="oushang_48"
+        android:persistent="false"
+        android:title="@string/oushang_48" />
+    <SwitchPreference
+        android:key="oushang_49"
+        android:persistent="false"
+        android:title="@string/oushang_49" />
+    
+    
+    <PreferenceScreen
+        android:key="default_all"
+        android:persistent="false"
+        android:title="@string/default_all" />
+
+</PreferenceScreen>

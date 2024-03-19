@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+
+    <PreferenceScreen android:title="@string/historyfuel" >
+        <com.common.view.MyPreference
+            android:key="min1"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min1" />
+        <com.common.view.MyPreference
+            android:key="min2"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min2" />
+        <com.common.view.MyPreference
+            android:key="min3"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min3" />
+        <com.common.view.MyPreference
+            android:key="min4"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min4" />
+        <com.common.view.MyPreference
+            android:key="min5"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min5" />
+        <com.common.view.MyPreference
+            android:key="min6"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min6" />
+        <com.common.view.MyPreference
+            android:key="min7"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min7" />
+        <com.common.view.MyPreference
+            android:key="min8"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min8" />
+        <com.common.view.MyPreference
+            android:key="min9"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min9" />
+        <com.common.view.MyPreference
+            android:key="min100"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min100" />
+        <com.common.view.MyPreference
+            android:key="min10"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min10" />
+        <com.common.view.MyPreference
+            android:key="min11"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min11" />
+        <com.common.view.MyPreference
+            android:key="min12"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min12" />
+        <com.common.view.MyPreference
+            android:key="min13"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min13" />
+        <com.common.view.MyPreference
+            android:key="min14"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/min14" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/averagefuel" >
+        <com.common.view.MyPreference
+            android:key="time1"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time1" />
+        <com.common.view.MyPreference
+            android:key="time2"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time2" />
+        <com.common.view.MyPreference
+            android:key="time3"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time3" />
+        <com.common.view.MyPreference
+            android:key="time4"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time4" />
+        <com.common.view.MyPreference
+            android:key="time5"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time5" />
+        <com.common.view.MyPreference
+            android:key="time6"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time6" />
+        <com.common.view.MyPreference
+            android:key="time_i_eloop"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time_i_eloop" />
+        <com.common.view.MyPreference
+            android:key="time_cur_drive"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/time_cur_drive" />
+    </PreferenceScreen>
+
+
+</PreferenceScreen>

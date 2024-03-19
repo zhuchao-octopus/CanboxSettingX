@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceScreen
+		android:icon ="@drawable/tyre"
+	    android:key  ="current_drive"
+	    android:title="@string/current_drive" >
+		<com.common.view.MyPreference
+		    android:key="dynamical_fuel"
+		    android:persistent="false"
+		    android:title="@string/dynamical_fuel" />
+		<com.common.view.MyPreference
+		    android:key="history"
+		    android:persistent="false"
+		    android:title="@string/history" />
+		<com.common.view.MyPreference
+		    android:key="current_consumption"
+		    android:persistent="false"
+		    android:title="@string/current_consumption" />
+		<com.common.view.MyPreference
+		    android:key="i_stop_average_fuel_consumption"
+		    android:persistent="false"
+		    android:title="@string/i_stop_average_fuel_consumption" />
+		<com.common.view.MyPreference
+		    android:key="camry_distance_1"
+		    android:persistent="false"
+		    android:title="@string/camry_distance_1" />
+		<com.common.view.MyPreference
+		    android:key="engine_speed_default"
+		    android:persistent="false"
+		    android:title="@string/engine_speed_default" />
+		<com.common.view.MyPreference
+		    android:key="instantaneous_speed"
+		    android:persistent="false"
+		    android:title="@string/instantaneous_speed" />
+		<com.common.view.MyPreference
+		    android:key="engine_speed55"
+		    android:persistent="false"
+		    android:title="@string/engine_speed55" />
+    </PreferenceScreen>
+	<PreferenceScreen
+		android:icon ="@drawable/tyre"
+		android:key  ="history_drive"
+		android:title="@string/history_drive" >
+		<com.common.view.MyPreference
+		    android:key="tripA_cumulative_mileage"
+		    android:persistent="false"
+		    android:title="@string/tripA_cumulative_mileage" />
+		<com.common.view.MyPreference
+		    android:key="tripA_average_fuel_consumption"
+		    android:persistent="false"
+		    android:title="@string/tripA_average_fuel_consumption" />
+		<com.common.view.MyPreference
+		    android:key="history_1"
+		    android:persistent="false"
+		    android:title="@string/history_1" />
+		<com.common.view.MyPreference
+		    android:key="cumulative_mileage_1"
+		    android:persistent="false"
+		    android:title="@string/cumulative_mileage" />
+		<com.common.view.MyPreference
+		    android:key="i_stop_average_fuel_consumption_1"
+		    android:persistent="false"
+		    android:title="@string/i_stop_average_fuel_consumption" />
+		<com.common.view.MyPreference
+		    android:key="history_2"
+		    android:persistent="false"
+		    android:title="@string/history_2" />
+		<com.common.view.MyPreference
+		    android:key="cumulative_mileage_2"
+		    android:persistent="false"
+		    android:title="@string/cumulative_mileage" />
+		<com.common.view.MyPreference
+		    android:key="i_stop_average_fuel_consumption_2"
+		    android:persistent="false"
+		    android:title="@string/i_stop_average_fuel_consumption" />
+		<com.common.view.MyPreference
+		    android:key="history_3"
+		    android:persistent="false"
+		    android:title="@string/history_3" />
+		<com.common.view.MyPreference
+		    android:key="cumulative_mileage_3"
+		    android:persistent="false"
+		    android:title="@string/cumulative_mileage" />
+		<com.common.view.MyPreference
+		    android:key="i_stop_average_fuel_consumption_3"
+		    android:persistent="false"
+		    android:title="@string/i_stop_average_fuel_consumption" />
+<!-- 		<com.common.view.MyPreference -->
+<!-- 		    android:key="driving_range_2" -->
+<!-- 		    android:persistent="false" -->
+<!-- 		    android:title="@string/driving_range" /> -->
+	</PreferenceScreen>
+</PreferenceScreen>

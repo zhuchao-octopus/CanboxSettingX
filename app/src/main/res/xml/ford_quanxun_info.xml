@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:title="@string/averagefuel" />
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage" />
+    <com.common.view.MyPreference
+        android:key="beoilmass"
+        android:persistent="false"
+        android:title="@string/beoilmass" />
+    <com.common.view.MyPreference
+        android:key="mileage_sum"
+        android:persistent="false"
+        android:title="@string/mileage_sum" />
+    <com.common.view.MyPreference
+        android:key="maintenance_mileage_unit"
+        android:persistent="false"
+        android:title="@string/maintenance_mileage_unit" />
+    <com.common.view.MyPreference
+        android:key="the_battery"
+        android:persistent="false"
+        android:title="@string/the_battery" />
+    <com.common.view.MyPreference
+        android:key="am_cellvoltage"
+        android:persistent="false"
+        android:title="@string/am_cellvoltage" />
+    <com.common.view.MyPreference
+        android:key="averagespeed"
+        android:persistent="false"
+        android:title="@string/averagespeed" />
+    <com.common.view.MyPreference
+        android:key="driving_mode"
+        android:persistent="false"
+        android:title="@string/driving_mode" />
+
+</PreferenceScreen>

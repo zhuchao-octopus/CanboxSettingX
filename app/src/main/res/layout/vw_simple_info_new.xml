@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/toyaota_car_bk"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="0px" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="420px"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="265px"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="165px"
+                    android:layout_height="456px"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/toyaota_car_door"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <View
+                        android:id="@+id/toyaota_car_light_back_normal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_back_normal"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/toyaota_car_light_fog_rear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_fog_rear"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/toyaota_car_light_fog_front"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_fog_front"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/width_lamp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_width"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/the_low_beam_light"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_near"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/high_beam"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_long"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/toyaota_car_light_reverse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_reverse"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/toyaota_car_light_brake"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_brake"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/toyaota_car_light_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_right"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/toyaota_car_light_left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_light_left"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_door5"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_door0"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_door7"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toyaota_car_door8"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="110px"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <View
+                        android:id="@+id/door_status_1"
+                        android:layout_width="265px"
+                        android:layout_height="323px"
+                        android:background="@drawable/toyaota_car_door1"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_2"
+                        android:layout_width="265px"
+                        android:layout_height="323px"
+                        android:background="@drawable/toyaota_car_door2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_3"
+                        android:layout_width="265px"
+                        android:layout_height="323px"
+                        android:background="@drawable/toyaota_car_door3"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/door_status_4"
+                        android:layout_width="265px"
+                        android:layout_height="323px"
+                        android:background="@drawable/toyaota_car_door4"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/toyota_car_light"
+                android:layout_width="220px"
+                android:layout_height="45px"
+                android:background="#ff19182a"
+                android:gravity="center"
+                android:orientation="vertical" >
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="40px"
+        android:paddingRight="40px"
+        android:paddingTop="40px" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/vw_back1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/beoilmass" />
+
+                <TextView
+                    android:id="@+id/beoilmass"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/am_safetybelt" />
+
+                <TextView
+                    android:id="@+id/am_safetybelt"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:text="@string/cleaning_liquid_alarm" />
+
+                <TextView
+                    android:id="@+id/cleaning_liquid_alarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/vw_back2"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/am_cellvoltage" />
+
+                <TextView
+                    android:id="@+id/am_cellvoltage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/am_handbrake" />
+
+                <TextView
+                    android:id="@+id/am_handbrake"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/trunkdoor" />
+
+                <TextView
+                    android:id="@+id/trunkdoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@drawable/vw_back3"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/am_mileage" />
+
+                <TextView
+                    android:id="@+id/am_mileage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/am_enginespeed" />
+
+                <TextView
+                    android:id="@+id/am_enginespeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10px"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:paddingTop="10px" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/outt" />
+
+                <TextView
+                    android:id="@+id/outt"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

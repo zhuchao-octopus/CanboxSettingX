@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/com_button14" />
+
+
+    <item android:drawable="@drawable/bg2" />
+<!--     <item android:drawable="#ff0000" /> -->
+<!--     <item > -->
+<!--         <shape> -->
+<!--             <solid android:color="#88444444" /> -->
+<!--             <stroke android:width="2dp" android:color="#00000000"   />   -->
+<!--         </shape>         -->
+<!--     </item> -->
+    
+</selector>

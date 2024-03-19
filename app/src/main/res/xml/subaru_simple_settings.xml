@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/subaru_lightingtime"
+        android:entryValues="@array/lightingime_entryValues"
+        android:key="lightingtime"
+        android:persistent="false"
+        android:title="@string/lightingime" />
+    <ListPreference
+        android:entries="@array/subaru_settings_1"
+        android:entryValues="@array/lightingime_entryValues"
+        android:key="subaru_settings_1"
+        android:persistent="false"
+        android:title="@string/subaru_settings_1" />
+
+    <SwitchPreference
+        android:key="subaru_settings_2"
+        android:persistent="false"
+        android:title="@string/subaru_settings_2" />
+    <SwitchPreference
+        android:key="subaru_settings_3"
+        android:persistent="false"
+        android:title="@string/subaru_settings_3" />
+
+    <ListPreference
+        android:entries="@array/subaru_settings_4"
+        android:entryValues="@array/height_value"
+        android:key="subaru_settings_4"
+        android:persistent="false"
+        android:title="@string/subaru_settings_4" />
+    <ListPreference
+        android:entries="@array/subaru_auto_door"
+        android:entryValues="@array/lightingime_entryValues"
+        android:key="auto_door"
+        android:persistent="false"
+        android:title="@string/auto_door" />
+    <ListPreference
+        android:entries="@array/subaru_automatic"
+        android:entryValues="@array/lightingime_entryValues"
+        android:key="automatic"
+        android:persistent="false"
+        android:title="@string/automatic" />
+    <ListPreference
+        android:entries="@array/car_type_cmd_mitsubishi"
+        android:entryValues="@array/lightingime_entryValues"
+        android:key="subaru_settings_5"
+        android:persistent="false"
+        android:title="@string/subaru_settings_5" />
+
+</PreferenceScreen>

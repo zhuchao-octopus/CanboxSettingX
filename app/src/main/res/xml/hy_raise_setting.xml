@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <PreferenceScreen android:title="@string/vehicle_settings" >
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/ambient_light" >
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/pointment_settings" >
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/new_energy_settings" >
+    </PreferenceScreen>
+    
+
+
+</PreferenceScreen>

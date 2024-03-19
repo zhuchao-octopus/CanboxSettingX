@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+    
+    <ListPreference
+        android:entries="@array/enlanguages"
+        android:entryValues="@array/enoil_vaues2"
+        android:key="langauage5"
+        android:persistent="false"
+        android:title="@string/langauage5" />
+    
+
+    <ListPreference
+        android:entries="@array/enfort_tips"
+        android:entryValues="@array/enfort_tips_vaues"
+        android:key="fort_tips"
+        android:persistent="false"
+        android:title="@string/fort_tips" />
+
+    <SwitchPreference
+        android:key="brake_alarm"
+        android:persistent="false"
+        android:title="@string/brake_alarm" />
+    <SwitchPreference
+        android:key="driving_auto"
+        android:persistent="false"
+        android:title="@string/driving_auto" />
+    <SwitchPreference
+        android:key="headlight_delay"
+        android:persistent="false"
+        android:title="@string/headlight_delay1" />
+    <SwitchPreference
+        android:key="running_lights"
+        android:persistent="false"
+        android:title="@string/running_lights" />
+
+    <ListPreference
+        android:entries="@array/over_speed"
+        android:entryValues="@array/height_value"
+        android:key="over_speed"
+        android:persistent="false"
+        android:title="@string/over_speed" />
+
+</PreferenceScreen>

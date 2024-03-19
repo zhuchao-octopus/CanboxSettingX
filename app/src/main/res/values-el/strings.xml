@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="vehicle_info_name">"Πληροφορίες οχήματος"</string>
+
+    <!-- focus -->
+
+    <string name="temp_dis">"Θερμοκρασία "</string>
+    <string name="turn_lights_set">"Φώτα φλάς"</string>
+    <string name="information_tone">"Πληροφορίες Ειδοποίηση έντασης"</string>
+    <string name="warning_tone">"Ένταση προειδοποίησης"</string>
+    <string name="warning_contorl">"Έλεγχος προειδοποίησης"</string>
+    <string name="mileage_unit">"Μονάδα χιλιομέτρων"</string>
+    <string name="brightness">"Φώτα"</string>
+    <string name="disc_indicator">"Δείκτης δίσκου"</string>
+    <string name="acoustic_key">"Κουμπί φωτός ήχου"</string>
+    <string name="five_key">"Δείκτης κλειδιού πέντε κατευθύνσεων"</string>
+    <string name="type_monitor">"Τύπος παρακολούθησης"</string>
+    <string name="off_Warning_info">"Μήνυμα προειδοποίησης Κλειστό"</string>
+    <string name="wipers_induction">"Αισθητήρας βροχής"</string>
+    <string name="incar_light">"Εσωτερικός φωτισμός"</string>
+    <string name="ramp">"Βοήθεια εκκίνησης "</string>
+    <string name="reverse_zoom">"Αναστροφή ζουμ βίντεο"</string>
+    <string name="enhanced_assistance">"Ενισχυμένη βοήθεια στάθμευσης"</string>
+    <string name="remote_start55">"Ξεκινήστε από απόσταση το όχημα"</string>
+    <string name="lfRight">"Αριστερή ή Δεξιά κίνηση"</string>
+    <string name="adaptive">"Προσαρμοστικός φωτισμός προς τα εμπρός"</string>
+    <string name="alarm_vol">"Προειδοποίηση ρυθμίσεων έντασης ήχου"</string>
+
+    <!-- info -->
+    <string name="help_label">"Βοήθεια"</string>
+
+</resources>

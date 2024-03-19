@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#090d10"
+    android:gravity="center"
+    android:paddingLeft="10px"
+    android:paddingRight="10px"
+    android:paddingTop="5px" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="420px"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="105px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="124dip"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/ac"
+                android:textSize="28sp" >
+            </TextView>
+
+            <Button
+                android:id="@+id/on"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_air1"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/on"
+                android:textSize="28sp" >
+            </Button>
+
+            <Button
+                android:id="@+id/off"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_air1"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/off"
+                android:textSize="28sp" >
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="105px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="124dip"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/mode"
+                android:textSize="28sp" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/canbus21_mode1"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_air1"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:scaleType="center"
+                android:src="@drawable/canbus21_mode1" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/canbus21_mode2"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_air1"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:scaleType="center"
+                android:src="@drawable/canbus21_mode2" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/canbus21_mode3"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_air1"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:scaleType="center"
+                android:src="@drawable/canbus21_mode3" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/canbus21_mode4"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_air1"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:scaleType="center"
+                android:src="@drawable/canbus21_mode4" >
+            </ImageView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@drawable/button_air1" >
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180px"
+            android:layout_marginTop="15px"
+            android:gravity="bottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="124dip"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/canbus21_wind" >
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" >
+
+                <LinearLayout
+                    android:layout_width="674px"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal" >
+
+                        <Button
+                            android:id="@+id/point0"
+                            android:layout_width="0px"
+                            android:layout_height="75px"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="0dip"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_air2"
+                            android:clickable="true"
+                            android:onClick="onClick"
+                            android:text="@string/low"
+                            android:textSize="28sp" >
+                        </Button>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/point1"
+                        android:layout_width="0px"
+                        android:layout_height="90px"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_air2"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:scaleType="center"
+                        android:src="@drawable/point" >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/point2"
+                        android:layout_width="0px"
+                        android:layout_height="105px"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_air2"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:scaleType="center"
+                        android:src="@drawable/point" >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/point3"
+                        android:layout_width="0px"
+                        android:layout_height="120px"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_air2"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:scaleType="center"
+                        android:src="@drawable/point" >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/point4"
+                        android:layout_width="0px"
+                        android:layout_height="135px"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_air2"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:scaleType="center"
+                        android:src="@drawable/point" >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/point5"
+                        android:layout_width="0px"
+                        android:layout_height="150px"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_air2"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:scaleType="center"
+                        android:src="@drawable/point" >
+                    </ImageView>
+
+                    <Button
+                        android:id="@+id/point6"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_air2"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:text="@string/hi"
+                        android:textSize="28sp" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

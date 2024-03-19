@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
+    android:title="@string/controlset" >
+
+    <com.common.view.MyPreference
+        android:key="whether_wear_seat_belt"
+        android:persistent="false"
+        android:title="@string/whether_wear_seat_belt" />
+    <com.common.view.MyPreference
+        android:key="washwater_status"
+        android:persistent="false"
+        android:title="@string/washwater_status" />
+    <com.common.view.MyPreference
+        android:key="engine_speed"
+        android:persistent="false"
+        android:title="@string/engine_speed" />
+    <com.common.view.MyPreference
+        android:key="speed_instance"
+        android:persistent="false"
+        android:title="@string/vw_speed_instance" />
+    <com.common.view.MyPreference
+        android:key="battery_voltage"
+        android:persistent="false"
+        android:title="@string/battery_voltage" />
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage" />
+    <com.common.view.MyPreference
+        android:key="remain_oid"
+        android:persistent="false"
+        android:title="@string/remain_oid" />
+    <com.common.view.MyPreference
+        android:key="fuel_warning_sign"
+        android:persistent="false"
+        android:title="@string/fuel_warning_sign" />
+    <com.common.view.MyPreference
+        android:key="battery_voltage_warning"
+        android:persistent="false"
+        android:title="@string/battery_voltage_warning" />
+
+</PreferenceScreen>

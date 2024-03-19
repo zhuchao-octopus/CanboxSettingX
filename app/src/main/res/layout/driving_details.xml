@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@id/distance"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="right"
+                android:text="@string/zero"
+                android:textSize="@dimen/conv_number_text_size" />
+
+            <TextView
+                android:id="@id/distance_unit"
+                android:layout_width="@dimen/driving_center_item_width"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textSize="@dimen/conv_normal_text_size" />
+
+            <LinearLayout
+                android:layout_width="@dimen/driving_center_item_width"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="@string/avg_str"
+                    android:textSize="@dimen/conv_normal_text_size" />
+
+                <TextView
+                    android:id="@id/avg_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_number_text_size" />
+
+                <TextView
+                    android:id="@id/avg_electric_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_number_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/avg_speed_unit"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:textSize="@dimen/conv_normal_text_size" />
+
+            <TextView
+                android:id="@id/avg_electric_quantity_unit"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:textSize="@dimen/conv_normal_text_size"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@id/power_distance_layout"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="@dimen/driving_distance_layout_width"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@id/power_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/conv_number_text_size" />
+
+                    <TextView
+                        android:id="@id/power_distance_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/conv_number_text_size" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/electric_quantity_icon" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@id/travelling_time"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="right"
+                android:text="@string/zero"
+                android:textSize="@dimen/conv_number_text_size" />
+
+            <TextView
+                android:id="@id/travelling_time_unit"
+                android:layout_width="@dimen/driving_center_item_width"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textSize="@dimen/conv_normal_text_size" />
+
+            <LinearLayout
+                android:layout_width="@dimen/driving_center_item_width"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="@string/avg_str"
+                    android:textSize="@dimen/conv_normal_text_size" />
+
+                <TextView
+                    android:id="@id/avg_consumption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_number_text_size" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/avg_consumption_unit"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:textSize="@dimen/conv_normal_text_size" />
+
+            <LinearLayout
+                android:id="@id/oil_distance_layout"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="@dimen/driving_distance_layout_width"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@id/oil_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/conv_number_text_size" />
+
+                    <TextView
+                        android:id="@id/oil_distance_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/conv_number_text_size" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/consumption_icon" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/avg_speed_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="@dimen/driving_center_item_width"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="@string/avg_str"
+                    android:textSize="@dimen/conv_normal_text_size" />
+
+                <TextView
+                    android:id="@id/avg_speed_passat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/zero"
+                    android:textSize="@dimen/conv_number_text_size" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/avg_speed_unit_passat"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:textSize="@dimen/conv_normal_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <!-- <ImageView -->
+        <!-- android:id="@+id/oil_pic" -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="83px" -->
+        <!-- android:layout_centerVertical="true" -->
+        <!-- android:src="@drawable/driving_data_back" /> -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="83px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/driving_data_back"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/vehicle_padding_left" >
+
+            <RelativeLayout
+                android:id="@+id/vehicle_parent"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="3.5" >
+
+                <ImageView
+                    android:id="@id/vehicle"
+                    android:layout_width="164px"
+                    android:layout_height="60px"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/vehicle" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <!-- <TextView -->
+                <!-- android:id="@id/range_unit" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_alignParentBottom="true" -->
+                <!-- android:layout_alignParentRight="true" -->
+                <!-- android:layout_marginBottom="@dimen/driving_data_margin_unit_bottom" -->
+                <!-- android:layout_marginRight="100.0dip" -->
+                <!-- android:gravity="left" -->
+                <!-- android:textSize="@dimen/conv_normal_text_size" /> -->
+
+                <TextView
+                    android:id="@id/range"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="0"
+                    android:textSize="26px" />
+
+                <ImageView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

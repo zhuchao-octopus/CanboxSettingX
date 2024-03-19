@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginTop="60px"
+        android:layout_weight="2.8"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="0.3"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/disk_scan"
+                    style="@style/CommonButtonStyle"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/one_track_rpt_normal" />
+
+                <ImageView
+                    android:id="@+id/disk_repeat"
+                    style="@style/CommonButtonStyle"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/all_rpt_noraml" />
+
+                <ImageView
+                    android:id="@+id/disk_shuffle"
+                    style="@style/CommonButtonStyle"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/all_rdm_normal" />
+
+                <ImageView
+                    android:id="@+id/repeat"
+                    style="@style/CommonButtonStyle"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/repeat" />
+
+                <ImageView
+                    android:id="@+id/shuffle"
+                    style="@style/CommonButtonStyle"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/shuffle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50px"
+                            android:layout_gravity="center" >
+
+                            <TextView
+                                style="@style/shadowTextCommonStyleFonts"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="right"
+                                android:text="@string/str_current_dish"
+                                android:textSize="34px" />
+
+                            <TextView
+                                android:id="@+id/str_current_dish"
+                                style="@style/shadowTextCommonStyleFonts"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20px"
+                                android:singleLine="true"
+                                android:textColor="#ffffffff"
+                                android:textSize="34px" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50px"
+                        android:layout_gravity="center" >
+
+                        <TextView
+                            style="@style/shadowTextCommonStyleFonts"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="right"
+                            android:text="@string/str_current_song"
+                            android:textSize="34px" />
+
+                        <TextView
+                            android:id="@+id/str_current_song"
+                            style="@style/shadowTextCommonStyleFonts"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20px"
+                            android:singleLine="true"
+                            android:textColor="#ffffffff"
+                            android:textSize="34px" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50px"
+                        android:layout_gravity="center" >
+
+                        <TextView
+                            style="@style/shadowTextCommonStyleFonts"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="right"
+                            android:text="@string/str_play_time"
+                            android:textSize="34px" />
+
+                        <TextView
+                            android:id="@+id/str_play_time"
+                            style="@style/shadowTextCommonStyleFonts"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20px"
+                            android:singleLine="true"
+                            android:textColor="#ffffffff"
+                            android:textSize="34px" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50px"
+                        android:layout_gravity="center" >
+
+                        
+
+                        <TextView
+                            android:id="@+id/str_total_song"
+                            style="@style/shadowTextCommonStyleFonts"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20px"
+                            android:singleLine="true"
+                            android:textColor="#ffffffff"
+                            android:textSize="34px" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/disk_icon1"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cd"
+                    android:tag="ak_paramter=100,50" />
+
+                <TextView
+                    android:id="@+id/disk1"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_marginTop="15px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/disk_icon2"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cd"
+                    android:tag="ak_paramter=100,50" />
+
+                <TextView
+                    android:id="@+id/disk2"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_marginTop="15px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/disk_icon3"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cd"
+                    android:tag="ak_paramter=100,50" />
+
+                <TextView
+                    android:id="@+id/disk3"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_marginTop="15px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/disk_icon4"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cd"
+                    android:tag="ak_paramter=100,50" />
+
+                <TextView
+                    android:id="@+id/disk4"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_marginTop="15px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/disk_icon5"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cd"
+                    android:tag="ak_paramter=100,50" />
+
+                <TextView
+                    android:id="@+id/disk5"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_marginTop="15px"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/disk_icon6"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cd"
+                    android:tag="ak_paramter=100,50" />
+
+                <TextView
+                    android:id="@+id/disk6"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textSize="32px" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

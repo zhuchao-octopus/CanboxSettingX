@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlsettings"
+    android:title="@string/controlset" >
+
+    <SwitchPreference
+        android:key="over_speed"
+        android:persistent="false"
+        android:title="@string/over_speed" />
+
+    <EditTextPreference
+        android:key="speed_alarms"
+        android:persistent="false"
+        android:title="@string/speed_alarms" />
+
+    <ListPreference
+        android:entries="@array/enage_full222"
+        android:entryValues="@array/enauto_cmd_vaues"
+        android:key="oil_unit"
+        android:persistent="false"
+        android:title="@string/oil_unit" />
+
+    <MultiSelectListPreference
+        android:entries="@array/eninstrument_style3"
+        android:entryValues="@array/eninstrument_style3_value"
+        android:key="instrument_style"
+        android:persistent="false"
+        android:title="@string/instrument_style" />
+
+    <PreferenceScreen
+        android:key="reset1"
+        android:title="@string/individual_reset" />
+    <PreferenceScreen
+        android:key="reset2"
+        android:title="@string/individual_reset" />
+    <PreferenceScreen
+        android:key="reset3"
+        android:title="@string/individual_reset" />
+
+</PreferenceScreen>

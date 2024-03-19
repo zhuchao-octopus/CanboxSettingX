@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
+    android:title="@string/controlset" >
+	<PreferenceScreen
+	    android:key  ="light_settings"
+	    android:title="@string/light_settings" >
+	    <SwitchPreference
+	    	android:key="str_adaptive_front_lighting"
+	        android:persistent="false"
+	        android:title="@string/str_adaptive_front_lighting" />
+       	<SwitchPreference
+	    	android:key="str_daytime_running_lamp"
+	        android:persistent="false"
+	        android:title="@string/str_daytime_running_lamp" />
+
+       		<SwitchPreference
+	    	android:key="str_atmosphere_lighting"
+	        android:persistent="false"
+	        android:title="@string/str_atmosphere_lighting" />
+       	
+
+<!--        	 	<ListPreference  -->
+<!--                android:entries="@array/atmosphere_lighting_entries" -->
+<!--                android:entryValues="@array/atmosphere_lighting_values" -->
+<!--                android:key="str_atmosphere_lighting" -->
+<!--                android:persistent="false" -->
+<!--                android:title="@string/str_atmosphere_lighting" /> -->
+       	 	
+       	<ListPreference 
+               android:entries="@array/hiworld_theme_color_entries"
+               android:entryValues="@array/speed_values"
+               android:key="theme_color"
+               android:persistent="false"
+               android:title="@string/theme_color" />
+      	<ListPreference 
+               android:entries="@array/psa_delay_entries"
+               android:entryValues="@array/trumpche_num_level_entries"
+               android:key="str_go_home"
+               android:persistent="false"
+               android:title="@string/str_go_home" />
+    	<ListPreference 
+               android:entries="@array/psa_delay_entries"
+               android:entryValues="@array/trumpche_num_level_entries"
+               android:key="str_welcome_lighting"
+               android:persistent="false"
+               android:title="@string/str_welcome_lighting" />
+    	<ListPreference 
+               android:entries="@array/atmosphere_model_entriess"
+               android:entryValues="@array/conv_opening_values"
+               android:key="atmosphere_model"
+               android:persistent="false"
+               android:title="@string/atmosphere_model" />
+
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="lock"
+	    android:title="@string/lock" >
+       	<SwitchPreference
+	    	android:key="str_auto_lock"
+	        android:persistent="false"
+	        android:title="@string/str_auto_lock" />
+      	<SwitchPreference
+	    	android:key="str_the_door_locked"
+	        android:persistent="false"
+	        android:title="@string/str_the_door_locked" />
+      	<SwitchPreference
+	    	android:key="only_set_the_trunk"
+	        android:persistent="false"
+	        android:title="@string/only_set_the_trunk" />
+      	<ListPreference 
+               android:entries="@array/psa_door_unlock_entries_raise"
+               android:entryValues="@array/speed_values"
+               android:key="str_remote_unlock_style"
+               android:persistent="false"
+               android:title="@string/str_remote_unlock_style" />
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="car_settings"
+	    android:title="@string/car_settings" >
+      	<SwitchPreference
+	    	android:key="psa_parking_assistance"
+	        android:persistent="false"
+	        android:title="@string/psa_parking_assistance" />
+	    <ListPreference 
+               android:entries="@array/psa_rear_wiper_entries"
+               android:entryValues="@array/speed_values"
+               android:key="str_rear_wiper"
+               android:persistent="false"
+               android:title="@string/str_rear_wiper" />
+	    <SwitchPreference
+	    	android:key="str_radar_inactive"
+	        android:persistent="false"
+	        android:title="@string/str_radar_inactive" />
+	    <ListPreference 
+               android:entries="@array/enenergy1"
+               android:entryValues="@array/enenergy_vaues1"
+               android:key="oil_unit"
+               android:persistent="false"
+               android:title="@string/oil_unit" />
+        <SwitchPreference
+	    	android:key="str_auto_start_stop"
+	        android:persistent="false"
+	        android:title="@string/str_auto_start_stop" />
+	    <SwitchPreference
+	    	android:key="welcome_cmd"
+	        android:persistent="false"
+	        android:title="@string/welcome_cmd" />
+	    <PreferenceScreen
+	    	android:key="tpms_calibration"
+	        android:persistent="false"
+	        android:title="@string/tpms_calibration" />
+	    <SwitchPreference
+	    	android:key="str_auto_hold"
+	        android:persistent="false"
+	        android:title="@string/str_auto_hold" />
+	    <SwitchPreference
+	    	android:key="str_lane_changing_assistant"
+	        android:persistent="false"
+	        android:title="@string/str_lane_changing_assistant" />
+	    <ListPreference 
+               android:entries="@array/temperature_unit"
+               android:entryValues="@array/temperature_values"
+               android:key="str_temperature_unit"
+               android:persistent="false"
+               android:title="@string/str_temperature_unit" />
+	    <SwitchPreference
+	    	android:key="fatigue_detection_system"
+	        android:persistent="false"
+	        android:title="@string/fatigue_detection_system" />
+	    <SwitchPreference
+	    	android:key="lane_keeping_auxiliary"
+	        android:persistent="false"
+	        android:title="@string/lane_keeping_auxiliary" />
+	    <SwitchPreference
+	    	android:key="speed_limit_prompt"
+	        android:persistent="false"
+	        android:title="@string/speed_limit_prompt" />
+	    <ListPreference 
+               android:entries="@array/steeing_entries"
+               android:entryValues="@array/temperature_values"
+               android:key="psa_driving_mode"
+               android:persistent="false"
+               android:title="@string/psa_driving_mode" />
+	    <ListPreference 
+               android:entries="@array/ion_purifier_entries"
+               android:entryValues="@array/pressure_values"
+               android:key="ion_purifier"
+               android:persistent="false"
+               android:title="@string/ion_purifier" />
+	    <ListPreference 
+               android:entries="@array/smoked_type_entries"
+               android:entryValues="@array/switch_on_time_values"
+               android:key="smoked_type"
+               android:persistent="false"
+               android:title="@string/smoked_type" />
+	    <ListPreference 
+               android:entries="@array/background_lighting_mazda"
+               android:entryValues="@array/acc_assist_warn_tip_values"
+               android:key="fumigating_concentration"
+               android:persistent="false"
+               android:title="@string/fumigating_concentration" />
+<!-- 	    <ListPreference  -->
+<!--                android:entries="@array/nitialization_mode_entries" -->
+<!--                android:entryValues="@array/speed_values" -->
+<!--                android:key="nitialization_mode" -->
+<!--                android:persistent="false" -->
+<!--                android:title="@string/nitialization_mode" /> -->
+	</PreferenceScreen>
+	<PreferenceScreen
+	    android:key  ="power_amplifier_settings"
+	    android:title="@string/power_amplifier_settings" >
+	    <ListPreference
+               android:entries="@array/distribution_entries"
+               android:entryValues="@array/distance_values"
+               android:key="sound_distribution"
+               android:persistent="false"
+               android:title="@string/sound_distribution" />
+	     <ListPreference
+               android:entries="@array/autorelockdoors"
+               android:entryValues="@array/distance_values"
+               android:key="loudness"
+               android:persistent="false"
+               android:title="@string/loudness" />
+	     <ListPreference
+               android:entries="@array/autorelockdoors"
+               android:entryValues="@array/distance_values"
+               android:key="volume_as_fast"
+               android:persistent="false"
+               android:title="@string/volume_as_fast" />
+	     <ListPreference
+               android:entries="@array/sound_selection_entries"
+               android:entryValues="@array/speed_linkage_volume_values"
+               android:key="sound_selection"
+               android:persistent="false"
+               android:title="@string/sound_selection" />
+	</PreferenceScreen>
+</PreferenceScreen>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="false" />
+
+    <application android:label="@string/app_name">
+        <activity
+            android:name="com.canboxsetting.FloatActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.canboxsetting.RadioActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_radio"
+            android:label="@string/app_vehicle_radio"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true"
+            tools:ignore="DiscouragedApi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.eqset.EQActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_eq"
+            android:label="@string/app_name_amp"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true"
+            tools:ignore="DiscouragedApi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.CarInfoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_info"
+            android:label="@string/vehicle_info_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true"
+            tools:ignore="DiscouragedApi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true"
+            tools:ignore="DiscouragedApi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.my.factory.CanboxSettings"
+            android:excludeFromRecents="true"
+            android:label="@string/canbox_settings_title"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Settings"
+            android:exported="true"
+            tools:ignore="ExportedPreferenceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.my.factory.intent.action.CanboxSettings" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.my.factory.CanboxSettings2"
+            android:excludeFromRecents="true"
+            android:label="@string/canbox_settings_title"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Settings"
+            android:exported="true"
+            tools:ignore="ExportedPreferenceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.my.factory.intent.action.CanboxSettings2" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.my.factory.CanboxSettingsAdvanced"
+            android:excludeFromRecents="true"
+            android:label="@string/canbox_settings_title"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Settings"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.my.factory.intent.action.CanboxSettingsAdvanced" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.TPMSActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_tpms"
+            android:label="@string/tpms"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.JeepCarCDPlayerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/dvd_icon"
+            android:label="@string/car_cd"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.CanAirControlActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/app_ac"
+            android:label="@string/app_name_ac"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.ac.HondaAirControl"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.canboxsetting.intent.action.HondaAirControl" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.CarPlayerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_car_player"
+            android:label="@string/app_name_usb"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.CarCompassActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/compass_icon"
+            android:label="@string/app_name_compass"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.TimeSetActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_timeset"
+            android:label="@string/app_vehicle_clock"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.AnStartActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_anstar"
+            android:label="@string/app_onstar"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.SeatHeatActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/icon_seat_heat"
+            android:label="@string/app_seat_heating"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.canboxsetting.AVMActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/nissan360"
+            android:label="@string/str_avm"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.focussync.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/sync_icon"
+            android:label="@string/sync"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

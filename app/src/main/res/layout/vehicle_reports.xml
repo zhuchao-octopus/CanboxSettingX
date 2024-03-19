@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/vehicle_reports"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="30px"
+    android:paddingLeft="@dimen/content_padding_left"
+    android:paddingTop="30px" >
+
+    <Button
+        android:id="@id/more_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/warning"
+        android:gravity="center"
+        android:minWidth="@dimen/btn_width"
+        android:textSize="@dimen/conv_normal_text_size"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@id/report_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/checked"
+        android:text="@string/report_default"
+        android:textSize="@dimen/conv_normal_text_size" />
+
+    <Button
+        android:id="@id/start_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:drawableLeft="@drawable/info"
+        android:gravity="center"
+        android:minWidth="@dimen/btn_width"
+        android:text="@string/start_stop"
+        android:textSize="@dimen/conv_normal_text_size" />
+
+</RelativeLayout>

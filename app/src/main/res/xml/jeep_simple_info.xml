@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    
+    <com.common.view.MyPreference
+        android:key="speed"
+        android:persistent="false"
+        android:title="@string/speed" />
+    
+    <com.common.view.MyPreference
+        android:key="enginespeed"
+        android:persistent="false"
+        android:title="@string/enginespeed" />
+    
+    <com.common.view.MyPreference
+        android:key="mileage"
+        android:persistent="false"
+        android:title="@string/mileage" />
+    <com.common.view.MyPreference
+        android:key="curfuel"
+        android:persistent="false"
+        android:title="@string/curfuel" />
+    
+    <com.common.view.MyPreference
+        android:key="tripa1"
+        android:persistent="false"
+        android:title="@string/historyfuel" />
+    <com.common.view.MyPreference
+        android:key="tripa2"
+        android:persistent="false"
+        android:title="@string/historyfuel" />
+    <com.common.view.MyPreference
+        android:key="tripa3"
+        android:persistent="false"
+        android:title="@string/historyfuel" />
+    <com.common.view.MyPreference
+        android:key="tripa4"
+        android:persistent="false"
+        android:title="@string/historyfuel" />
+    <com.common.view.MyPreference
+        android:key="tripb1"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+    <com.common.view.MyPreference
+        android:key="tripb2"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+    <com.common.view.MyPreference
+        android:key="tripb3"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+    <com.common.view.MyPreference
+        android:key="tripb4"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+
+</PreferenceScreen>

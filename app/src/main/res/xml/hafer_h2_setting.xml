@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/controlset" >
+
+    <ListPreference
+        android:entries="@array/h2_light"
+        android:entryValues="@array/Kcommonage_entryValues"
+        android:key="dome_light_delay_time"
+        android:persistent="false"
+        android:title="@string/dome_light_delay_time" />
+    <ListPreference
+        android:entries="@array/h2_gohome"
+        android:entryValues="@array/Kcommonage_entryValues"
+        android:key="home_time"
+        android:persistent="false"
+        android:title="@string/home_time" />
+    <ListPreference
+        android:entries="@array/h2_power_save"
+        android:entryValues="@array/Kcommonage_entryValues"
+        android:key="power_saving_settings"
+        android:persistent="false"
+        android:title="@string/power_saving_settings" />
+    <ListPreference
+        android:entries="@array/h2_power_asl"
+        android:entryValues="@array/Kcommonage_entryValues"
+        android:key="asl_set"
+        android:persistent="false"
+        android:title="@string/asl_set" />
+
+<!--         <ListPreference -->
+<!--         android:entries="@array/launage_entries3" -->
+<!--         android:entryValues="@array/launage_entryValues3" -->
+<!--         android:key="langauage5" -->
+<!--         android:persistent="false" -->
+<!--         android:title="@string/langauage5" /> -->
+    
+        
+</PreferenceScreen>

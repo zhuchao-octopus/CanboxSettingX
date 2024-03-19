@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <SwitchPreference
+        android:key="parking_assist"
+        android:title="@string/parking_assist" />
+    <SwitchPreference
+        android:key="bwiper"
+        android:title="@string/bwiper" />
+    <SwitchPreference
+        android:key="daytime_lights"
+        android:title="@string/daytime_lights" />
+    <SwitchPreference
+        android:key="am_backdoor"
+        android:title="@string/am_backdoor" />
+    <SwitchPreference
+        android:key="auto_parking"
+        android:title="@string/auto_parking" />
+
+<!--     <ListPreference -->
+<!--         android:entries="@array/temp_dis_t" -->
+<!--         android:entryValues="@array/common_s2" -->
+<!--         android:key="temp_dis_k" -->
+<!--         android:title="@string/temp_dis" /> -->
+    <ListPreference
+        android:entries="@array/enwelcome_lig"
+        android:entryValues="@array/enwelcome_lig_values"
+        android:key="lamp_no"
+        android:title="@string/lamp_no" />
+    <!-- <SwitchPreference -->
+    <!-- android:key="engine_stop" -->
+    <!-- android:title="@string/engine_stop" /> -->
+
+    <ListPreference
+        android:entries="@array/remotedoorunlock_entries"
+        android:entryValues="@array/remotedoorunlock_entryValues"
+        android:key="setdoor"
+        android:title="@string/setdoor" />
+
+    <Preference
+        android:key="tpms_cal"
+        android:title="@string/tpms_cal" />
+    <Preference
+        android:key="tpms_calibration"
+        android:title="@string/tpms_calibration" />
+
+</PreferenceScreen>

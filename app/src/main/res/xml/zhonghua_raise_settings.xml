@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res-auto"
+    android:title="@string/controlset" >
+	<PreferenceScreen
+        android:title="@string/lock" >
+        <SwitchPreference
+                android:key="unlock_the_door"
+                android:persistent="false"
+                android:title="@string/unlock_the_door" />
+        <SwitchPreference
+                android:key="latch_flashing"
+                android:persistent="false"
+                android:title="@string/latch_flashing" />
+        <SwitchPreference
+            android:key="unlock_flicker"
+            android:persistent="false"
+            android:title="@string/unlock_flicker" />
+        <SwitchPreference
+            android:key="view_mirror_automatically_folded"
+            android:persistent="false"
+            android:title="@string/view_mirror_automatically_folded" />
+        <SwitchPreference
+            android:key="zhonghua_xx"
+            android:persistent="false"
+            android:title="@string/zhonghua_xx" />
+        <SwitchPreference
+            android:key="str_auto_unlock"
+            android:persistent="false"
+            android:title="@string/str_auto_unlock" />
+        <SwitchPreference
+            android:key="zhonghua_auto_lock"
+            android:persistent="false"
+            android:title="@string/zhonghua_auto_lock" />
+	</PreferenceScreen>
+	  <PreferenceScreen
+        android:key="tire"
+        android:title="@string/reversing_camera_settings" >
+        <SwitchPreference
+            android:key="reversing_camera"
+            android:persistent="false"
+            android:title="@string/reversing_camera" />
+        <ListPreference
+            android:entries="@array/lock_sound_setting_entries"
+            android:entryValues="@array/new_tourui_four_values"
+            android:key="reverse_mute_suppression"
+            android:persistent="false"
+            android:title="@string/reverse_mute_suppression" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="door_lock_settings"
+        android:title="@string/door_lock_settings" >
+        <ListPreference
+            android:entries="@array/zhonghua_door_unlocking_entries"
+            android:entryValues="@array/two_values"
+            android:key="key_and_remote_unlock_mode"
+            android:persistent="false"
+            android:title="@string/key_and_remote_unlock_mode" />
+        <SwitchPreference
+            android:key="str_daytime_running_lamp"
+            android:persistent="false"
+            android:title="@string/str_daytime_running_lamp" />
+        <com.common.view.MyPreferenceSeekBar
+	            android:key="vehicle_background_light"
+	            android:persistent="false"
+	            android:title="@string/vehicle_background_light"
+	            vehicle:max="15"
+	            vehicle:min="0"
+	            vehicle:step="1" />
+        <com.common.view.MyPreferenceSeekBar
+	            android:key="instrument_cluster_brightness"
+	            android:persistent="false"
+	            android:title="@string/instrument_cluster_brightness"
+	            vehicle:max="8"
+	            vehicle:min="0"
+	            vehicle:step="1" />
+        <ListPreference
+            android:entries="@array/zhonghua_lock_unlock_feedback"
+            android:entryValues="@array/trumpche_num_level_entries"
+            android:key="lock_unlock_feedback"
+            android:persistent="false"
+            android:title="@string/lock_unlock_feedback" />
+        <SwitchPreference
+            android:key="str_speed_lock"
+            android:persistent="false"
+            android:title="@string/str_speed_lock" />
+        <ListPreference
+            android:entries="@array/zhonghua_go_home_entries"
+            android:entryValues="@array/five_values"
+            android:key="str_go_home"
+            android:persistent="false"
+            android:title="@string/str_go_home" />
+        <ListPreference
+            android:entries="@array/greeting_lights_entries"
+            android:entryValues="@array/five_values"
+            android:key="welcome_lamp"
+            android:persistent="false"
+            android:title="@string/welcome_lamp" />
+    </PreferenceScreen>
+</PreferenceScreen>
