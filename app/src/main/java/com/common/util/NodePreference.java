@@ -1,15 +1,16 @@
 package com.common.util;
 
+import com.common.view.MyPreference;
+import com.common.view.MyPreferenceEdit;
+import com.common.view.MyPreferenceSeekBar;
+
 import android.content.Context;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
 import android.util.Log;
-
-import com.common.view.MyPreference;
-import com.common.view.MyPreferenceEdit;
-import com.common.view.MyPreferenceSeekBar;
 
 public class NodePreference {
 

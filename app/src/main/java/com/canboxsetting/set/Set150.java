@@ -1,23 +1,61 @@
 package com.canboxsetting.set;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.Date;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
+import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.IntentFilter;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.RemoteException;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TimePicker;
 
-import com.android.canboxsetting.R;
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.Node;
 import com.common.util.NodePreference;
+import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set150 extends PreferenceFragment implements
@@ -26,7 +64,7 @@ public class Set150 extends PreferenceFragment implements
 
 	private static final NodePreference[] NODES = {
 
-	new NodePreference("parking_assist", 0x00c0, 0x3600, 0xc0, 0, R.array.kuwei_park_entries, R.array.twelve_values),
+	new NodePreference("parking_assist", 0x00c0, 0x3600, 0xc0, 0, R.array.kuwei_park_entries, R.array.twelve_values), 
 			
 	new NodePreference("headlight_off", 0x0030, 0x3600, 0x30, 0, R.array.enheadlights_off, R.array.twelve_values), 
 	new NodePreference("unlock_open_lamp", 0x000c, 0x3600, 0x0c, 0, R.array.enheadlights_off, R.array.twelve_values), 

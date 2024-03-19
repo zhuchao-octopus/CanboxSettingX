@@ -16,29 +16,60 @@
 
 package com.canboxsetting.radio;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.array;
+import com.canboxsetting.R.drawable;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.canboxsetting.R.string;
+import com.common.adapter.MyListViewAdapterCD;
+import com.common.adapter.MyListViewAdapterRadio;
+import com.common.util.AuxInUI;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.MyFragment;
-import com.common.adapter.MyListViewAdapterRadio;
-import com.common.util.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
 
 /**
  * This activity plays a video from a specified URI.
@@ -307,42 +338,42 @@ byte mStatus;
 
 	public void onClick(View v) {
 		byte[] buf;
-		int id = v.getId();
-		if (id == R.id.fm) {
-			buf = new byte[]{0x0d, (byte) 0xe1, 0x1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-			BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        int id = v.getId();
+        if (id == R.id.fm) {
+            buf = new byte[]{0x0d, (byte) 0xe1, 0x1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 //			sendCanboxInfo0x83(3, 1);
-		} else if (id == R.id.am) {
-			buf = new byte[]{0x0d, (byte) 0xe1, 0x4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-			BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        } else if (id == R.id.am) {
+            buf = new byte[]{0x0d, (byte) 0xe1, 0x4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 //			sendCanboxInfo0x83(3, 0);
-		} else if (id == R.id.radio_prev) {
-			sendCanboxInfo0x83(1, 0);
-		} else if (id == R.id.radio_next) {
-			sendCanboxInfo0x83(1, 1);
-		} else if (id == R.id.radio_ff) {
-			sendCanboxInfo0x83(2, 1);
-		} else if (id == R.id.radio_fr) {
-			sendCanboxInfo0x83(2, 0);
-		} else if (id == R.id.radio_function_button_scan) {
-			if ((mStatus & 0xff) != 0) {
-				sendCanboxInfo0x83(5, 0);
-			} else {
-				sendCanboxInfo0x83(5, 1);
-			}
-		} else if (id == R.id.radio_step_up_button) {
-			sendCanboxInfo0x83(8);
-		} else if (id == R.id.radio_step_down_button) {
-			sendCanboxInfo0x83(9);
-		} else if (id == R.id.update_stations_list) {
-			sendCanboxInfo0x83(0xc);
-		} else if (id == R.id.stations) {
-			mMainView.findViewById(R.id.liststations).setVisibility(
-					View.VISIBLE);
-			mMainView.findViewById(R.id.listpreset).setVisibility(View.GONE);
-		} else if (id == R.id.preset) {
-			mMainView.findViewById(R.id.liststations).setVisibility(View.GONE);
-			mMainView.findViewById(R.id.listpreset).setVisibility(View.VISIBLE);
-		}
+        } else if (id == R.id.radio_prev) {
+            sendCanboxInfo0x83(1, 0);
+        } else if (id == R.id.radio_next) {
+            sendCanboxInfo0x83(1, 1);
+        } else if (id == R.id.radio_ff) {
+            sendCanboxInfo0x83(2, 1);
+        } else if (id == R.id.radio_fr) {
+            sendCanboxInfo0x83(2, 0);
+        } else if (id == R.id.radio_function_button_scan) {
+            if ((mStatus & 0xff) != 0) {
+                sendCanboxInfo0x83(5, 0);
+            } else {
+                sendCanboxInfo0x83(5, 1);
+            }
+        } else if (id == R.id.radio_step_up_button) {
+            sendCanboxInfo0x83(8);
+        } else if (id == R.id.radio_step_down_button) {
+            sendCanboxInfo0x83(9);
+        } else if (id == R.id.update_stations_list) {
+            sendCanboxInfo0x83(0xc);
+        } else if (id == R.id.stations) {
+            mMainView.findViewById(R.id.liststations).setVisibility(
+                    View.VISIBLE);
+            mMainView.findViewById(R.id.listpreset).setVisibility(View.GONE);
+        } else if (id == R.id.preset) {
+            mMainView.findViewById(R.id.liststations).setVisibility(View.GONE);
+            mMainView.findViewById(R.id.listpreset).setVisibility(View.VISIBLE);
+        }
 	}
 }

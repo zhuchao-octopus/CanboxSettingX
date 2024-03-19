@@ -16,22 +16,46 @@
 
 package com.canboxsetting.cd;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.MyFragment;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
 
 /**
  * This activity plays a video from a specified URI.
@@ -69,89 +93,89 @@ public class CD207 extends MyFragment {
 	private int mRepeatMode = 0;
 
 	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.disk_icon1) {
-			sendCanboxInfo(0x8a, 0x6, 1);
-		} else if (id == R.id.disk_icon2) {
-			sendCanboxInfo(0x8a, 0x6, 2);
-		} else if (id == R.id.disk_icon3) {
-			sendCanboxInfo(0x8a, 0x6, 3);
-		} else if (id == R.id.disk_icon4) {
-			sendCanboxInfo(0x8a, 0x6, 4);
-		} else if (id == R.id.disk_icon5) {
-			sendCanboxInfo(0x8a, 0x6, 5);
-		} else if (id == R.id.disk_icon6) {
-			sendCanboxInfo(0x8a, 0x6, 6);
-		} else if (id == R.id.repeat) {
-			if (v.isSelected()) {
-				sendCanboxInfo(0x8a, 0xb, 0);
-			} else {
-				sendCanboxInfo(0x8a, 0xb, 1);
-			}
-		} else if (id == R.id.prev) {
-			sendCanboxInfo(0x74, 0x9, 1);
-			Util.doSleep(200);
-			sendCanboxInfo(0x74, 0x9, 0);
-		} else if (id == R.id.pp) {// if (mPlayStatus == 3) {
-			// sendCanboxInfo0xC8(0x13);
-			// } else {
-			// sendCanboxInfo0xC8(0x14);
-			// }
-		} else if (id == R.id.next) {
-			sendCanboxInfo(0x74, 0x8, 1);
-			Util.doSleep(200);
-			sendCanboxInfo(0x74, 0x8, 0);
-		} else if (id == R.id.ff) {
-			if (v.isSelected()) {
+        int id = v.getId();
+        if (id == R.id.disk_icon1) {
+            sendCanboxInfo(0x8a, 0x6, 1);
+        } else if (id == R.id.disk_icon2) {
+            sendCanboxInfo(0x8a, 0x6, 2);
+        } else if (id == R.id.disk_icon3) {
+            sendCanboxInfo(0x8a, 0x6, 3);
+        } else if (id == R.id.disk_icon4) {
+            sendCanboxInfo(0x8a, 0x6, 4);
+        } else if (id == R.id.disk_icon5) {
+            sendCanboxInfo(0x8a, 0x6, 5);
+        } else if (id == R.id.disk_icon6) {
+            sendCanboxInfo(0x8a, 0x6, 6);
+        } else if (id == R.id.repeat) {
+            if (v.isSelected()) {
+                sendCanboxInfo(0x8a, 0xb, 0);
+            } else {
+                sendCanboxInfo(0x8a, 0xb, 1);
+            }
+        } else if (id == R.id.prev) {
+            sendCanboxInfo(0x74, 0x9, 1);
+            Util.doSleep(200);
+            sendCanboxInfo(0x74, 0x9, 0);
+        } else if (id == R.id.pp) {// if (mPlayStatus == 3) {
+            // sendCanboxInfo0xC8(0x13);
+            // } else {
+            // sendCanboxInfo0xC8(0x14);
+            // }
+        } else if (id == R.id.next) {
+            sendCanboxInfo(0x74, 0x8, 1);
+            Util.doSleep(200);
+            sendCanboxInfo(0x74, 0x8, 0);
+        } else if (id == R.id.ff) {
+            if (v.isSelected()) {
 
-				v.setSelected(false);
-				sendCanboxInfo(0x8a, 0xe, 0);
-			} else {
-				v.setSelected(true);
-				sendCanboxInfo(0x8a, 0xe, 1);
-			}
-		} else if (id == R.id.fr) {
-			if (v.isSelected()) {
-				v.setSelected(false);
-				sendCanboxInfo(0x8a, 0xf, 0);
-			} else {
+                v.setSelected(false);
+                sendCanboxInfo(0x8a, 0xe, 0);
+            } else {
+                v.setSelected(true);
+                sendCanboxInfo(0x8a, 0xe, 1);
+            }
+        } else if (id == R.id.fr) {
+            if (v.isSelected()) {
+                v.setSelected(false);
+                sendCanboxInfo(0x8a, 0xf, 0);
+            } else {
 
-				v.setSelected(true);
-				sendCanboxInfo(0x8a, 0xf, 1);
-			}
-		} else if (id == R.id.shuffle) {
-			if (v.isSelected()) {
-				sendCanboxInfo(0x8a, 0xc, 0);
-			} else {
+                v.setSelected(true);
+                sendCanboxInfo(0x8a, 0xf, 1);
+            }
+        } else if (id == R.id.shuffle) {
+            if (v.isSelected()) {
+                sendCanboxInfo(0x8a, 0xc, 0);
+            } else {
 
-				sendCanboxInfo(0x8a, 0xc, 1);
-			}
-		} else if (id == R.id.disk_shuffle) {
-			if (v.isSelected()) {
-				sendCanboxInfo(0x8a, 0x9, 0);
-			} else {
+                sendCanboxInfo(0x8a, 0xc, 1);
+            }
+        } else if (id == R.id.disk_shuffle) {
+            if (v.isSelected()) {
+                sendCanboxInfo(0x8a, 0x9, 0);
+            } else {
 
-				sendCanboxInfo(0x8a, 0x9, 1);
-			}
-		} else if (id == R.id.disk_repeat) {
-			if (v.isSelected()) {
-				sendCanboxInfo(0x8a, 0x8, 0);
-			} else {
+                sendCanboxInfo(0x8a, 0x9, 1);
+            }
+        } else if (id == R.id.disk_repeat) {
+            if (v.isSelected()) {
+                sendCanboxInfo(0x8a, 0x8, 0);
+            } else {
 
-				sendCanboxInfo(0x8a, 0x8, 1);
-			}
-		} else if (id == R.id.disk_scan) {
-			if (v.isSelected()) {
-				sendCanboxInfo(0x8a, 0xa, 0);
-			} else {
+                sendCanboxInfo(0x8a, 0x8, 1);
+            }
+        } else if (id == R.id.disk_scan) {
+            if (v.isSelected()) {
+                sendCanboxInfo(0x8a, 0xa, 0);
+            } else {
 
-				sendCanboxInfo(0x8a, 0xa, 1);
-			}
-		} else if (id == R.id.gac_cd_state_scan) {
-			sendCanboxInfo(0x74, 0x12, 1);
-			Util.doSleep(200);
-			sendCanboxInfo(0x74, 0x12, 0);
-		}
+                sendCanboxInfo(0x8a, 0xa, 1);
+            }
+        } else if (id == R.id.gac_cd_state_scan) {
+            sendCanboxInfo(0x74, 0x12, 1);
+            Util.doSleep(200);
+            sendCanboxInfo(0x74, 0x12, 0);
+        }
 	}
 
 	private void setViewVisible(int id, int b) {

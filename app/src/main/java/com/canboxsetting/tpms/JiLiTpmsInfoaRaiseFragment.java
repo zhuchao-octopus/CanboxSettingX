@@ -2,8 +2,9 @@ package com.canboxsetting.tpms;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -13,9 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.canboxsetting.R;
+import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
+import com.common.view.MyPreference2;
 
 public class JiLiTpmsInfoaRaiseFragment extends PreferenceFragment implements
 		OnPreferenceClickListener {

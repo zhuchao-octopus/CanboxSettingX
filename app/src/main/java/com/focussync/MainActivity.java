@@ -16,7 +16,19 @@
 
 package com.focussync;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.car.ui.GlobalDef;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,19 +37,29 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.preference.PreferenceFragment;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.android.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.canboxsetting.R;
 /**
  * This activity plays a video from a specified URI.
  */
@@ -152,92 +174,92 @@ public class MainActivity extends Activity {
 	}
 
 	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.menu) {
-			sendCanboxControl(0x2);
-		} else if (id == R.id.phone) {
-			sendCanboxControl(0x3);
-		} else if (id == R.id.mic) {
-			sendCanboxControl(0x1);
-		} else if (id == R.id.music) {
-			sendCanboxControl(0x1b);
-		} else if (id == R.id.info) {
-			sendCanboxControl(0x6);
-		} else if (id == R.id.button1) {
-			sendCanboxControl(0x1c);
-		} else if (id == R.id.button2) {
-			sendCanboxControl(0x12);
-		} else if (id == R.id.button3) {
-			sendCanboxControl(0x1e);
-		} else if (id == R.id.button4) {
-			sendCanboxControl(0x1f);
-		} else if (id == R.id.up) {
-			sendCanboxControl(0x0a);
-		} else if (id == R.id.down) {
-			sendCanboxControl(0x0b);
-		} else if (id == R.id.left) {
-			sendCanboxControl(0x19);
-		} else if (id == R.id.right) {
-			sendCanboxControl(0x1a);
-		} else if (id == R.id.ok) {
-			sendCanboxControl(0x0c);
-		} else if (id == R.id.prev) {
-			sendCanboxControl(0x08);
-		} else if (id == R.id.next) {
-			sendCanboxControl(0x09);
-		} else if (id == R.id.num0) {
-			sendCanboxControl(0x0d);
-		} else if (id == R.id.num1) {
-			sendCanboxControl(0x0e);
-		} else if (id == R.id.num2) {
-			sendCanboxControl(0x0f);
-		} else if (id == R.id.num3) {
-			sendCanboxControl(0x10);
-		} else if (id == R.id.num4) {
-			sendCanboxControl(0x11);
-		} else if (id == R.id.num5) {
-			sendCanboxControl(0x12);
-		} else if (id == R.id.num6) {
-			sendCanboxControl(0x13);
-		} else if (id == R.id.num7) {
-			sendCanboxControl(0x14);
-		} else if (id == R.id.num8) {
-			sendCanboxControl(0x15);
-		} else if (id == R.id.num9) {
-			sendCanboxControl(0x16);
-		} else if (id == R.id.num_x) {
-			sendCanboxControl(0x17);
-		} else if (id == R.id.num_j) {
-			sendCanboxControl(0x18);
-		} else if (id == R.id.dial) {
-			sendCanboxControl(0x5);
-		} else if (id == R.id.hang) {
-			sendCanboxControl(0x4);
-		} else if (id == R.id.list1) {
-			sendCanboxControl(0x91);
-		} else if (id == R.id.list2) {
-			sendCanboxControl(0x92);
-		} else if (id == R.id.list3) {
-			sendCanboxControl(0x93);
-		} else if (id == R.id.list4) {
-			sendCanboxControl(0x94);
-		} else if (id == R.id.list5) {
-			sendCanboxControl(0x95);
-		} else if (id == R.id.speech) {
-			sendCanboxControl(0x1);
-		} else if (id == R.id.app) {
-			sendCanboxControl(0x20);
-		} else if (id == R.id.pp) {
-			sendCanboxControl(0x22);
-		} else if (id == R.id.repeat) {
-			sendCanboxControl(0x21);
-		} else if (id == R.id.media) {
-			sendCanboxControl(0x81);
-		} else if (id == R.id.random) {
-			sendCanboxControl(0x7);
-		} else if (id == R.id.keyboard) {
-			toggleKeyboard();
-		}
+        int id = v.getId();
+        if (id == R.id.menu) {
+            sendCanboxControl(0x2);
+        } else if (id == R.id.phone) {
+            sendCanboxControl(0x3);
+        } else if (id == R.id.mic) {
+            sendCanboxControl(0x1);
+        } else if (id == R.id.music) {
+            sendCanboxControl(0x1b);
+        } else if (id == R.id.info) {
+            sendCanboxControl(0x6);
+        } else if (id == R.id.button1) {
+            sendCanboxControl(0x1c);
+        } else if (id == R.id.button2) {
+            sendCanboxControl(0x12);
+        } else if (id == R.id.button3) {
+            sendCanboxControl(0x1e);
+        } else if (id == R.id.button4) {
+            sendCanboxControl(0x1f);
+        } else if (id == R.id.up) {
+            sendCanboxControl(0x0a);
+        } else if (id == R.id.down) {
+            sendCanboxControl(0x0b);
+        } else if (id == R.id.left) {
+            sendCanboxControl(0x19);
+        } else if (id == R.id.right) {
+            sendCanboxControl(0x1a);
+        } else if (id == R.id.ok) {
+            sendCanboxControl(0x0c);
+        } else if (id == R.id.prev) {
+            sendCanboxControl(0x08);
+        } else if (id == R.id.next) {
+            sendCanboxControl(0x09);
+        } else if (id == R.id.num0) {
+            sendCanboxControl(0x0d);
+        } else if (id == R.id.num1) {
+            sendCanboxControl(0x0e);
+        } else if (id == R.id.num2) {
+            sendCanboxControl(0x0f);
+        } else if (id == R.id.num3) {
+            sendCanboxControl(0x10);
+        } else if (id == R.id.num4) {
+            sendCanboxControl(0x11);
+        } else if (id == R.id.num5) {
+            sendCanboxControl(0x12);
+        } else if (id == R.id.num6) {
+            sendCanboxControl(0x13);
+        } else if (id == R.id.num7) {
+            sendCanboxControl(0x14);
+        } else if (id == R.id.num8) {
+            sendCanboxControl(0x15);
+        } else if (id == R.id.num9) {
+            sendCanboxControl(0x16);
+        } else if (id == R.id.num_x) {
+            sendCanboxControl(0x17);
+        } else if (id == R.id.num_j) {
+            sendCanboxControl(0x18);
+        } else if (id == R.id.dial) {
+            sendCanboxControl(0x5);
+        } else if (id == R.id.hang) {
+            sendCanboxControl(0x4);
+        } else if (id == R.id.list1) {
+            sendCanboxControl(0x91);
+        } else if (id == R.id.list2) {
+            sendCanboxControl(0x92);
+        } else if (id == R.id.list3) {
+            sendCanboxControl(0x93);
+        } else if (id == R.id.list4) {
+            sendCanboxControl(0x94);
+        } else if (id == R.id.list5) {
+            sendCanboxControl(0x95);
+        } else if (id == R.id.speech) {
+            sendCanboxControl(0x1);
+        } else if (id == R.id.app) {
+            sendCanboxControl(0x20);
+        } else if (id == R.id.pp) {
+            sendCanboxControl(0x22);
+        } else if (id == R.id.repeat) {
+            sendCanboxControl(0x21);
+        } else if (id == R.id.media) {
+            sendCanboxControl(0x81);
+        } else if (id == R.id.random) {
+            sendCanboxControl(0x7);
+        } else if (id == R.id.keyboard) {
+            toggleKeyboard();
+        }
 	}
 
 	private int mKeyboardIndex = 0;

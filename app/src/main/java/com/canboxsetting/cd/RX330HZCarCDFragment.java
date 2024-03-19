@@ -16,32 +16,57 @@
 
 package com.canboxsetting.cd;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.array;
+import com.canboxsetting.R.drawable;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.canboxsetting.R.string;
+import com.common.util.AuxInUI;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.MyFragment;
-import com.common.util.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import java.util.Locale;
 
 /**
  * This activity plays a video from a specified URI.
@@ -274,111 +299,111 @@ public class RX330HZCarCDFragment extends MyFragment {
 	}
 
 	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.shuffle) {
-			sendCanboxInfo0x84(0x10, 0);
-		} else if (id == R.id.repeat) {
-			sendCanboxInfo0x84(0x11, 0);
-		} else if (id == R.id.radio_prev || id == R.id.prev) {
-			prev();
-		} else if (id == R.id.pp) {
-			pp();
-		} else if (id == R.id.radio_next || id == R.id.next) {
-			next();
-		} else if (id == R.id.radio_function_button_scan) {
-			sendCanboxInfo0x84(0x24, 0);
-		} else if (id == R.id.radio_step_up_button) {
-			sendCanboxInfo0x84(0x23, 0);
-		} else if (id == R.id.radio_step_down_button) {
-			sendCanboxInfo0x84(0x22, 0);
-		} else if (id == R.id.freq_1) {
-			sendCanboxInfo0x84(0x20, 1);
-		} else if (id == R.id.freq_2) {
-			sendCanboxInfo0x84(0x20, 2);
-		} else if (id == R.id.freq_3) {
-			sendCanboxInfo0x84(0x20, 3);
-		} else if (id == R.id.freq_4) {
-			sendCanboxInfo0x84(0x20, 4);
-		} else if (id == R.id.freq_5) {
-			sendCanboxInfo0x84(0x20, 5);
-		} else if (id == R.id.freq_6) {
-			sendCanboxInfo0x84(0x20, 6);
-		} else if (id == R.id.ff) {
-			ff();
-		} else if (id == R.id.fr) {
-			fr();
-		} else if (id == R.id.to_fm1) {
-			showUI(1);
-			sendCanboxInfo0x84(0x30, 1);
-		} else if (id == R.id.to_fm2) {
-			showUI(1);
-			sendCanboxInfo0x84(0x30, 2);
-		} else if (id == R.id.to_am) {
-			showUI(1);
-			sendCanboxInfo0x84(0x30, 3);
-		} else if (id == R.id.to_disc) {
-			showUI(2);
-			sendCanboxInfo0x84(0x30, 4);
-		} else if (id == R.id.to_aux) {
-			showUI(3);
-			sendCanboxInfo0x84(0x30, 5);
-		} else if (id == R.id.to_usb) {
-			showUI(4);
-			sendCanboxInfo0xC5(0x1);
-			// case R.id.list:
-			// case R.id.radio_list:
-			// mMainView.findViewById(R.id.off).setVisibility(View.VISIBLE);
-			// break;
-		} else if (id == R.id.aux_main) {
-			toggleFullScreen();
-		} else if (id == R.id.dvd_next) {
-			sendCanboxInfo0x84(0x4a, 5);
-		} else if (id == R.id.dvd_pre) {
-			sendCanboxInfo0x84(0x49, 5);
-		} else if (id == R.id.dvd_ff) {
-			ff();
-		} else if (id == R.id.dvd_fr) {
-			fr();
-		} else if (id == R.id.dvd_pp) {
-			pp();
-		} else if (id == R.id.dvd_stop) {
-			sendCanboxInfo0x84(0x42, 0);
-		} else if (id == R.id.up) {
-			sendCanboxInfo0x84(0x43, 0);
-		} else if (id == R.id.down) {
-			sendCanboxInfo0x84(0x44, 0);
-		} else if (id == R.id.left) {
-			sendCanboxInfo0x84(0x45, 0);
-		} else if (id == R.id.right) {
-			sendCanboxInfo0x84(0x46, 0);
-		} else if (id == R.id.ok) {
-			sendCanboxInfo0x84(0x47, 0);
-		} else if (id == R.id.dvd_title) {
-			sendCanboxInfo0x84(0x48, 0);
-		} else if (id == R.id.usb_play) {
-			sendCanboxInfo0xC5(1);
-		} else if (id == R.id.usb_stop) {
-			sendCanboxInfo0xC5(2);
-		} else if (id == R.id.usb_next) {
-			sendCanboxInfo0xC5(4);
-		} else if (id == R.id.usb_prev) {
-			sendCanboxInfo0xC5(3);
-		} else if (id == R.id.dvd_set) {
-			if (mMainView.findViewById(R.id.dvd_lang_main).getVisibility() == View.VISIBLE) {
+        int id = v.getId();
+        if (id == R.id.shuffle) {
+            sendCanboxInfo0x84(0x10, 0);
+        } else if (id == R.id.repeat) {
+            sendCanboxInfo0x84(0x11, 0);
+        } else if (id == R.id.radio_prev || id == R.id.prev) {
+            prev();
+        } else if (id == R.id.pp) {
+            pp();
+        } else if (id == R.id.radio_next || id == R.id.next) {
+            next();
+        } else if (id == R.id.radio_function_button_scan) {
+            sendCanboxInfo0x84(0x24, 0);
+        } else if (id == R.id.radio_step_up_button) {
+            sendCanboxInfo0x84(0x23, 0);
+        } else if (id == R.id.radio_step_down_button) {
+            sendCanboxInfo0x84(0x22, 0);
+        } else if (id == R.id.freq_1) {
+            sendCanboxInfo0x84(0x20, 1);
+        } else if (id == R.id.freq_2) {
+            sendCanboxInfo0x84(0x20, 2);
+        } else if (id == R.id.freq_3) {
+            sendCanboxInfo0x84(0x20, 3);
+        } else if (id == R.id.freq_4) {
+            sendCanboxInfo0x84(0x20, 4);
+        } else if (id == R.id.freq_5) {
+            sendCanboxInfo0x84(0x20, 5);
+        } else if (id == R.id.freq_6) {
+            sendCanboxInfo0x84(0x20, 6);
+        } else if (id == R.id.ff) {
+            ff();
+        } else if (id == R.id.fr) {
+            fr();
+        } else if (id == R.id.to_fm1) {
+            showUI(1);
+            sendCanboxInfo0x84(0x30, 1);
+        } else if (id == R.id.to_fm2) {
+            showUI(1);
+            sendCanboxInfo0x84(0x30, 2);
+        } else if (id == R.id.to_am) {
+            showUI(1);
+            sendCanboxInfo0x84(0x30, 3);
+        } else if (id == R.id.to_disc) {
+            showUI(2);
+            sendCanboxInfo0x84(0x30, 4);
+        } else if (id == R.id.to_aux) {
+            showUI(3);
+            sendCanboxInfo0x84(0x30, 5);
+        } else if (id == R.id.to_usb) {
+            showUI(4);
+            sendCanboxInfo0xC5(0x1);
+            // case R.id.list:
+            // case R.id.radio_list:
+            // mMainView.findViewById(R.id.off).setVisibility(View.VISIBLE);
+            // break;
+        } else if (id == R.id.aux_main) {
+            toggleFullScreen();
+        } else if (id == R.id.dvd_next) {
+            sendCanboxInfo0x84(0x4a, 5);
+        } else if (id == R.id.dvd_pre) {
+            sendCanboxInfo0x84(0x49, 5);
+        } else if (id == R.id.dvd_ff) {
+            ff();
+        } else if (id == R.id.dvd_fr) {
+            fr();
+        } else if (id == R.id.dvd_pp) {
+            pp();
+        } else if (id == R.id.dvd_stop) {
+            sendCanboxInfo0x84(0x42, 0);
+        } else if (id == R.id.up) {
+            sendCanboxInfo0x84(0x43, 0);
+        } else if (id == R.id.down) {
+            sendCanboxInfo0x84(0x44, 0);
+        } else if (id == R.id.left) {
+            sendCanboxInfo0x84(0x45, 0);
+        } else if (id == R.id.right) {
+            sendCanboxInfo0x84(0x46, 0);
+        } else if (id == R.id.ok) {
+            sendCanboxInfo0x84(0x47, 0);
+        } else if (id == R.id.dvd_title) {
+            sendCanboxInfo0x84(0x48, 0);
+        } else if (id == R.id.usb_play) {
+            sendCanboxInfo0xC5(1);
+        } else if (id == R.id.usb_stop) {
+            sendCanboxInfo0xC5(2);
+        } else if (id == R.id.usb_next) {
+            sendCanboxInfo0xC5(4);
+        } else if (id == R.id.usb_prev) {
+            sendCanboxInfo0xC5(3);
+        } else if (id == R.id.dvd_set) {
+            if (mMainView.findViewById(R.id.dvd_lang_main).getVisibility() == View.VISIBLE) {
 
-				mMainView.findViewById(R.id.dvd_lang_main).setVisibility(
-						View.GONE);
-			} else {
-				mMainView.findViewById(R.id.dvd_lang_main).setVisibility(
-						View.VISIBLE);
-			}
-		} else if (id == R.id.dvd_lang) {
-			showLangDialog(0x4f);
-		} else if (id == R.id.dvd_lang_subtitle) {
-			showLangDialog(0x4d);
-		} else if (id == R.id.dvd_lang_voice) {
-			showLangDialog(0x4e);
-		}
+                mMainView.findViewById(R.id.dvd_lang_main).setVisibility(
+                        View.GONE);
+            } else {
+                mMainView.findViewById(R.id.dvd_lang_main).setVisibility(
+                        View.VISIBLE);
+            }
+        } else if (id == R.id.dvd_lang) {
+            showLangDialog(0x4f);
+        } else if (id == R.id.dvd_lang_subtitle) {
+            showLangDialog(0x4d);
+        } else if (id == R.id.dvd_lang_voice) {
+            showLangDialog(0x4e);
+        }
 	}
 
 	private int mDialogId;

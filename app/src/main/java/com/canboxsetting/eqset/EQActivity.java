@@ -16,23 +16,28 @@
 
 package com.canboxsetting.eqset;
 
+import com.canboxsetting.FragmentPro;
+import com.canboxsetting.R;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.TextUtils.TruncateAt;
 import android.util.Log;
 import android.view.View;
-import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.AbsoluteLayout;
+import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.AbsoluteLayout.LayoutParams;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
-import com.android.canboxsetting.R;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.utils.BroadcastUtil;
 
 /**
  * This activity plays a video from a specified URI.
@@ -156,16 +161,16 @@ public class EQActivity extends Activity {
 				boolean fromUser) {
 			// TODO Auto-generated method stub
 			if (fromUser) {
-				int id = seekBar.getId();
-				if (id == R.id.seekbar_treble) {
-					sendEQCmd(EQ_CMD_SET_HIGH, progress);
-				} else if (id == R.id.seekbar_middle) {
-					sendEQCmd(EQ_CMD_SET_MIDDLE, progress);
-				} else if (id == R.id.seekbar_bass) {
-					sendEQCmd(EQ_CMD_SET_LOW, progress);
-				} else if (id == R.id.seekbar_volume) {
-					sendEQCmd(EQ_CMD_SET_VOLUME, progress);
-				}
+                int id = seekBar.getId();
+                if (id == R.id.seekbar_treble) {
+                    sendEQCmd(EQ_CMD_SET_HIGH, progress);
+                } else if (id == R.id.seekbar_middle) {
+                    sendEQCmd(EQ_CMD_SET_MIDDLE, progress);
+                } else if (id == R.id.seekbar_bass) {
+                    sendEQCmd(EQ_CMD_SET_LOW, progress);
+                } else if (id == R.id.seekbar_volume) {
+                    sendEQCmd(EQ_CMD_SET_VOLUME, progress);
+                }
 			}
 		}
 	};
@@ -210,16 +215,16 @@ public class EQActivity extends Activity {
 	}
 
 	public void onClick(View view) {
-		int id = view.getId();
-		if (id == R.id.btn_amp_rear) {
-			setFR(true);
-		} else if (id == R.id.btn_amp_front) {
-			setFR(false);
-		} else if (id == R.id.btn_amp_left) {
-			setLR(false);
-		} else if (id == R.id.btn_amp_right) {
-			setLR(true);
-		}
+        int id = view.getId();
+        if (id == R.id.btn_amp_rear) {
+            setFR(true);
+        } else if (id == R.id.btn_amp_front) {
+            setFR(false);
+        } else if (id == R.id.btn_amp_left) {
+            setLR(false);
+        } else if (id == R.id.btn_amp_right) {
+            setLR(true);
+        }
 	}
 
 	private void setFR(boolean f) {
@@ -269,7 +274,7 @@ public class EQActivity extends Activity {
 		LayoutParams lp;
 		v = findViewById(R.id.sound_buttun_line2);
 		if (v != null) {
-			lp = (LayoutParams) v.getLayoutParams();
+			lp = (AbsoluteLayout.LayoutParams) v.getLayoutParams();
 			lp.x = (int) (lr * mCrossStepX);// - (SOUND_SET_RANGE/2);
 			lp.y = 0;
 			v.setLayoutParams(lp);
@@ -277,7 +282,7 @@ public class EQActivity extends Activity {
 
 		v = findViewById(R.id.sound_buttun_line1);
 		if (v != null) {
-			lp = (LayoutParams) v.getLayoutParams();
+			lp = (AbsoluteLayout.LayoutParams) v.getLayoutParams();
 			lp.x = 0;
 			lp.y = (int) (fr * mCrossStepY);
 			v.setLayoutParams(lp);

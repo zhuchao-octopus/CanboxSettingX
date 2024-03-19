@@ -1,5 +1,10 @@
 package com.common.ui;
 
+import android.content.Context;
+import android.hardware.display.DisplayManager;
+import android.view.Display;
+import android.view.View;
+
 public interface UIInterface {
 
 	public static final int SCREEN0 = 0;

@@ -16,25 +16,46 @@
 
 package com.canboxsetting.cd;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.MyFragment;
-
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
 
 /**
  * This activity plays a video from a specified URI.
@@ -72,26 +93,26 @@ public class CD80 extends MyFragment {
 	public void onClick(View v) {
 		setSource();
 		Util.doSleep(100);
-		int id = v.getId();
-		if (id == R.id.repeat) {
-			sendCanboxInfo0xC8(0x11, 0, 0);
-		} else if (id == R.id.fr) {
-			sendCanboxInfo0xC8(0x3, 0, 0);
-		} else if (id == R.id.ff) {
-			sendCanboxInfo0xC8(0x4, 0, 0);
-		} else if (id == R.id.prev) {
-			sendCanboxInfo0xC8(0x2, 0, 0);
-		} else if (id == R.id.pp) {
-			if (mPlayStatus == 5) {
-				sendCanboxInfo0xC8(0x13, 0, 0);//play
-			} else {
-				sendCanboxInfo0xC8(0x14, 0, 0);
-			}
-		} else if (id == R.id.next) {
-			sendCanboxInfo0xC8(0x1, 0, 0);
-		} else if (id == R.id.shuffle) {
-			sendCanboxInfo0xC8(0x8, 0, 0);
-		}
+        int id = v.getId();
+        if (id == R.id.repeat) {
+            sendCanboxInfo0xC8(0x11, 0, 0);
+        } else if (id == R.id.fr) {
+            sendCanboxInfo0xC8(0x3, 0, 0);
+        } else if (id == R.id.ff) {
+            sendCanboxInfo0xC8(0x4, 0, 0);
+        } else if (id == R.id.prev) {
+            sendCanboxInfo0xC8(0x2, 0, 0);
+        } else if (id == R.id.pp) {
+            if (mPlayStatus == 5) {
+                sendCanboxInfo0xC8(0x13, 0, 0);//play
+            } else {
+                sendCanboxInfo0xC8(0x14, 0, 0);
+            }
+        } else if (id == R.id.next) {
+            sendCanboxInfo0xC8(0x1, 0, 0);
+        } else if (id == R.id.shuffle) {
+            sendCanboxInfo0xC8(0x8, 0, 0);
+        }
 	}
 
 	private void updateView(byte[] buf) {

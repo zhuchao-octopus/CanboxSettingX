@@ -1,15 +1,18 @@
 package com.my.factory;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.util.Log;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import com.canboxsetting.R;
+import com.my.factory.XlmParser.Translation;
+
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.util.Log;
 
 /**
  * This activity plays a video from a specified URI.

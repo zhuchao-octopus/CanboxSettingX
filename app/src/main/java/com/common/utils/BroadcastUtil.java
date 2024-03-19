@@ -1,12 +1,18 @@
 package com.common.utils;
 
-import android.content.Context;
-import android.content.Intent;
-
 import com.common.util.AppConfig;
 import com.common.util.MyCmd;
 import com.common.util.MyCmd.Cmd;
 import com.common.util.MyCmd.KeyPressType;
+
+import android.app.Instrumentation;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.util.Log;
+import android.view.KeyEvent;
 
 public class BroadcastUtil {
 

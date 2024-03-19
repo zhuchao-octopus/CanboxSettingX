@@ -17,6 +17,7 @@
 package com.common.camera;
 
 import android.hardware.Camera.Parameters;
+import android.hardware.Camera.Size;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;

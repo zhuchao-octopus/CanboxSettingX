@@ -16,16 +16,10 @@
 
 package com.canboxsetting;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
 
-import com.android.canboxsetting.R;
 import com.canboxsetting.info.Accord2013InfoSimpleFragment;
 import com.canboxsetting.info.BMWE90X1UnionFragment;
 import com.canboxsetting.info.FiatEGEARaiseFragment;
@@ -57,259 +51,293 @@ import com.canboxsetting.info.ToyotaInfoSBinarytekFragment;
 import com.canboxsetting.info.ToyotaInfoSimpleFragment;
 import com.canboxsetting.info.VWInfoSimpleFragment;
 import com.canboxsetting.info.VWMQBInfoRaiseFragment;
+import com.canboxsetting.info.ZhongXingFragment;
 import com.car.ui.GlobalDef;
+import com.common.util.AppConfig;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceFragment;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class CarInfoActivity extends Activity {
-    private static final String TAG = "CanboxSetting";
+	private static final String TAG = "CanboxSetting";
 
-    private FragmentManager mFragmentManager;
+	private FragmentManager mFragmentManager;
 
-    private Fragment mSetting;
+	private Fragment mSetting;
 
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+	@Override
+	public void onCreate(Bundle icicle) {
+		super.onCreate(icicle);
 
-        String value = null;// AppConfig.getCanboxSetting();//MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
+		setContentView(R.layout.main);
+		mFragmentManager = getFragmentManager();
 
-        String mCanboxType = MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-        int mProVersion = 0;
-        String mProIndex = null;
-        Log.d(TAG,TAG+" mCanboxType = "+mCanboxType);
-        if (mCanboxType != null) {
-            String[] ss = mCanboxType.split(",");
-            value = ss[0];
-            try {
-                for (int i = 1; i < ss.length; ++i) {
-                    if (ss[i]
-                            .startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-                        mProVersion = Integer.valueOf(ss[i].substring(1));
-                    } else if (ss[i]
-                            .startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
-                        mProIndex = ss[i].substring(1);
-                        try {
-                            GlobalDef.setProId(Integer.valueOf(mProIndex));
-                        } catch (Exception e) {
+		String value = null;// AppConfig.getCanboxSetting();//MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
 
-                        }
-                    } else if (ss[i]
-                            .startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
-                        String mProId = ss[i].substring(1);
-                        if (mProId != null && mProId.length() >= 4) {
-                            int start = 0;
-                            int end = 0;
-                            if (mProId.charAt(1) == '0'
-                                    && mProId.charAt(2) != 0) {
-                                end = 1;
-                            } else if (mProId.charAt(2) == '0') {
-                                end = 2;
-                            }
+		String mCanboxType = MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
+		int mProVersion = 0;
+		String mProIndex = null;
+		
+		
+		if (mCanboxType != null) {
+			String[] ss = mCanboxType.split(",");
+			value = ss[0];
+			try {
+				for (int i = 1; i < ss.length; ++i) {
+					if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
+						mProVersion = Integer.valueOf(ss[i].substring(1));
+					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+						mProIndex = ss[i].substring(1);
+						try {
+							GlobalDef.setProId(Integer.valueOf(mProIndex));
+						} catch (Exception e) {
 
-                            start = end + 1;
-                            int mModelId = -1;
-                            if (mProId.contains("-")) {
-                                String[] sss = mProId.substring(start)
-                                        .split("-");
-                                mModelId = Integer.valueOf(sss[1]);
-                            } else {
-                                if ((mProId.length() - start) == 2) {
-                                    mModelId = Integer.valueOf(mProId
-                                            .substring(start + 1, start + 2));
-                                } else if ((mProId.length() - start) == 4) {
-                                    mModelId = Integer.valueOf(mProId
-                                            .substring(start + 2, start + 4));
-                                } else if ((mProId.length() - start) == 3) {
-                                    mModelId = Integer.valueOf(mProId
-                                            .substring(start + 2, start + 3));
-                                }
-                            }
+						}
+					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
+						String mProId = ss[i].substring(1);
+						if (mProId != null && mProId.length() >= 4) {
+							int start = 0;
+							int end = 0;
+							if (mProId.charAt(1) == '0'
+									&& mProId.charAt(2) != 0) {
+								end = 1;
+							} else if (mProId.charAt(2) == '0') {
+								end = 2;
+							}
 
-                            GlobalDef.setModelId(mModelId);
+							start = end + 1;
+							int mModelId = -1;
+							if (mProId.contains("-")) {
+								String[] sss = mProId.substring(start)
+										.split("-");
+								mModelId = Integer.valueOf(sss[1]);
+							} else {
+								if ((mProId.length() - start) == 2) {
+									mModelId = Integer.valueOf(mProId
+											.substring(start + 1, start + 2));
+								} else if ((mProId.length() - start) == 4) {
+									mModelId = Integer.valueOf(mProId
+											.substring(start + 2, start + 4));
+								} else if ((mProId.length() - start) == 3) {
+									mModelId = Integer.valueOf(mProId
+											.substring(start + 2, start + 3));
+								}
+							}
 
-                        }
-                    }
-                }
-            } catch (Exception ignored) {
+							GlobalDef.setModelId(mModelId);
+							
+						}
+					}
+				}
+			} catch (Exception e) {
 
-            }
-        }
+			}
+		}
 
-        if (mProVersion >= 3 && mProIndex != null) {
-            Class<?> c = FragmentPro.getFragmentInfoByID(mProIndex);
-            if (c != null) {
-                try {
-                    mSetting = (Fragment) c.newInstance();
-                } catch (Exception ignored) {
-                }
+ 		Log.d(TAG,TAG+" mProVersion = "+mProVersion +",mProIndex = "+mProIndex);
+		if (mProVersion >= 3 && mProIndex != null) {
+			Class<?> c = FragmentPro.getFragmentInfoByID(mProIndex);
+			if (c != null) {
+				try {
+					mSetting = (Fragment) c.newInstance();
+				} catch (Exception e) {
 
-            }
-            if (mSetting == null) {
-                finish();
-                return;
-            }
-        } else {
-            if (value != null) {
-                if (value.equals(MachineConfig.VALUE_CANBOX_GM_SIMPLE)) {
-                    mSetting = new GMInfoSimpleFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_GM_RAISE)) {
-                    mSetting = new GMInfoSimpleFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_VW)) {
-                    mSetting = new VWInfoSimpleFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_PSA_BAGOO)) {
-                    mSetting = new PSAInfoBagooFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)) {
-                    mSetting = new Golf7InfoSimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
-                    mSetting = new VWMQBInfoRaiseFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION)) {
-                    mSetting = new BMWE90X1UnionFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE)) {
-                    mSetting = new FocusFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_FIAT)) {
-                    mSetting = new FiatFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_PSA)) {
-                    mSetting = new PSAInfoSimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_KADJAR_RAISE)) {
-                    mSetting = new KadjarRaiseFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_TOYOTA)
-                        || value.equals(MachineConfig.VALUE_CANBOX_TOYOTA_RAISE)) {
-                    mSetting = new ToyotaInfoSimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE)
-                        || value.equals(MachineConfig.VALUE_CANBOX_HONDA_RAISE)) {
-                    mSetting = new HondaInfoSimpleFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_SIMPLE)) {
-                    mSetting = new JeepInfoSimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK)) {
-                    mSetting = new ToyotaInfoSBinarytekFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_PEUGEOT206)) {
-                    mSetting = new Peugeot206SimpleFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_ACCORD2013)
-                        || value.equals(MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK)) {
-                    mSetting = new Accord2013InfoSimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_PORSCHE_UNION)) {
-                    mSetting = new PorscheUnionInfoFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK)
-                        || value.equals(MachineConfig.VALUE_CANBOX_MAZDA_XINBAS)
-                        || value.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)) {
-                    mSetting = new MazdaBinarytekInfoFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD)) {
-                    mSetting = new TouaregHiworldFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_PETGEO_RAISE)
-                        || value.equals(MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE)) {
-                    mSetting = new PSAInfoRaiseFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_OBD_BINARUI)) {
-                    mSetting = new OBDBinarytekFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)) {
-                    mSetting = new FocusRaiseFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE)) {
-                    mSetting = new Mazda3SimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG)) {
-                    mSetting = new LandRoverHaoZhengFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_RX330_HAOZHENG)) {
-                    mSetting = new Rx330HZInfoSimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_PSA206_SIMPLE)) {
-                    mSetting = new PSA206308SimpleFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN)) {
-                    mSetting = new MondeoDaojunFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_OUSHANG_RAISE)) {
-                    mSetting = new OuShangeInfoRaiseFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE)) {
-                    mSetting = new FiatEGEARaiseFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_HY_RAISE)) {
-                    mSetting = new HYRaiseFragment();
-                } else if (value
-                        .equals(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)) {
-                    mSetting = new NissanRaiseFragment();
-                }
-            }
-        }
-        // if(){
-        //
-        // } else {
-        //
-        // }
-        if (mSetting == null) {
-            mSetting = new GMInfoSimpleFragment();
-        }
+				}
 
-        replaceFragment(R.id.main, mSetting, false);
+			}
+			if (mSetting == null) {
+				finish();
+				return;
+			}
+		} else {
+			if (value != null) {
+				if (value.equals(MachineConfig.VALUE_CANBOX_GM_SIMPLE)) {
+					mSetting = new GMInfoSimpleFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_GM_RAISE)) {
+					mSetting = new GMInfoSimpleFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_VW)) {
+					mSetting = new VWInfoSimpleFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_PSA_BAGOO)) {
+					mSetting = new PSAInfoBagooFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)) {
+					mSetting = new Golf7InfoSimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
+					mSetting = new VWMQBInfoRaiseFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION)) {
+					mSetting = new BMWE90X1UnionFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE)) {
+					mSetting = new FocusFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_FIAT)) {
+					mSetting = new FiatFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_PSA)) {
+					mSetting = new PSAInfoSimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_KADJAR_RAISE)) {
+					mSetting = new KadjarRaiseFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_TOYOTA)
+						|| value.equals(MachineConfig.VALUE_CANBOX_TOYOTA_RAISE)) {
+					mSetting = new ToyotaInfoSimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE)
+						|| value.equals(MachineConfig.VALUE_CANBOX_HONDA_RAISE)) {
+					mSetting = new HondaInfoSimpleFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_SIMPLE)) {
+					mSetting = new JeepInfoSimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK)) {
+					mSetting = new ToyotaInfoSBinarytekFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_PEUGEOT206)) {
+					mSetting = new Peugeot206SimpleFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_ACCORD2013)
+						|| value.equals(MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK)) {
+					mSetting = new Accord2013InfoSimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_PORSCHE_UNION)) {
+					mSetting = new PorscheUnionInfoFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK)
+						|| value.equals(MachineConfig.VALUE_CANBOX_MAZDA_XINBAS)
+						|| value.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)) {
+					mSetting = new MazdaBinarytekInfoFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD)) {
+					mSetting = new TouaregHiworldFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_PETGEO_RAISE)
+						|| value.equals(MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE)) {
+					mSetting = new PSAInfoRaiseFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_OBD_BINARUI)) {
+					mSetting = new OBDBinarytekFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)) {
+					mSetting = new FocusRaiseFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE)) {
+					mSetting = new Mazda3SimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG)) {
+					mSetting = new LandRoverHaoZhengFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_RX330_HAOZHENG)) {
+					mSetting = new Rx330HZInfoSimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_PSA206_SIMPLE)) {
+					mSetting = new PSA206308SimpleFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN)) {
+					mSetting = new MondeoDaojunFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_OUSHANG_RAISE)) {
+					mSetting = new OuShangeInfoRaiseFragment();
+				} else if (value
+						.equals(MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE)) {
+					mSetting = new FiatEGEARaiseFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_HY_RAISE)) {
+					mSetting = new HYRaiseFragment();
+				} else if (value.equals(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)) {
+					mSetting = new NissanRaiseFragment();
+				}
+				else if (value.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
+					mSetting = new ZhongXingFragment();
+				}
+			}
+		}
+		// if(){
+		//
+		// } else {
+		//
+		// }
+		if (mSetting == null) {
+			mSetting = new GMInfoSimpleFragment();
+		}
 
-        mCmd = 0;
-        upateIntent(getIntent());
-    }
+		replaceFragment(R.id.main, mSetting, false);
 
-    private void replaceFragment(int layoutId, Fragment fragment, boolean isAddStack) {
-        if (fragment != null) {
-            FragmentTransaction transation = mFragmentManager
-                    .beginTransaction();
-            transation.replace(layoutId, fragment);
-            if (isAddStack) {
-                transation.addToBackStack(null);
-            }
-            transation.commit();
-        }
-    }
+		mCmd = 0;
+		upateIntent(getIntent());
+	}
 
-    public static int mCmd = 0;
+	private void replaceFragment(int layoutId, Fragment fragment,
+			boolean isAddStack) {
+		if (fragment != null) {
+			FragmentTransaction transation = mFragmentManager
+					.beginTransaction();
+			transation.replace(layoutId, fragment);
+			if (isAddStack) {
+				transation.addToBackStack(null);
+			}
+			transation.commit();
+		}
+	}
 
-    private void upateIntent(Intent it) {
-        if (it != null) {
-            mCmd = it.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
-        }
-    }
+	public static int mCmd = 0;
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        if (mSetting instanceof MyFragment) {
-            MyFragment new_name = (MyFragment) mSetting;
-            new_name.onNewIntent(intent);
-        }
-        setIntent(intent);
-        upateIntent(intent);
+	private void upateIntent(Intent it) {
+		if (it != null) {
+			mCmd = it.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);			
+		}
+	}
 
-    }
+	@Override
+	protected void onNewIntent(Intent intent) {
+		if (mSetting instanceof MyFragment) {
+			MyFragment new_name = (MyFragment) mSetting;
+			new_name.onNewIntent(intent);			
+		}
+		setIntent(intent);
+		upateIntent(intent);	
+		
+	}
 
-    public void onClick(View v) {
-        if (mSetting instanceof MyFragment) {
-            MyFragment new_name = (MyFragment) mSetting;
-            new_name.onClick(v);
-        }
-    }
+	public void onClick(View v) {
+		if (mSetting instanceof MyFragment) {
+			MyFragment new_name = (MyFragment) mSetting;
+			new_name.onClick(v);
+		}
+	}
+	
+	@Override
+	protected void onPause() {
 
-    @Override
-    protected void onPause() {
+		super.onPause();
+		// finish();
+	}
 
-        super.onPause();
-        // finish();
-    }
+	@Override
+	protected void onDestroy() {
 
-    @Override
-    protected void onDestroy() {
-
-        super.onDestroy();
-        // System.exit(0);
-    }
+		super.onDestroy();
+		// System.exit(0);
+	}
 }

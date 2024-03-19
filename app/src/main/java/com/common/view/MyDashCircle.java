@@ -1,4 +1,4 @@
-package com.common.view;//package com.common.view;
+//package com.common.view;
 //
 //import com.canboxsetting.R;
 //

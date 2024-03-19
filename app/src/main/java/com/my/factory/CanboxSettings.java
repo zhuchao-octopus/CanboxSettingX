@@ -16,33 +16,36 @@
 
 package com.my.factory;
 
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.MultiSelectListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceScreen;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-import com.android.canboxsetting.R;
 import com.common.util.AppConfig;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.SystemConfig;
 import com.common.util.UtilSystem;
+import com.canboxsetting.R;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.preference.ListPreference;
+import android.preference.MultiSelectListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.preference.Preference.OnPreferenceClickListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 /**
  * This activity plays a video from a specified URI.
@@ -155,7 +158,9 @@ public class CanboxSettings extends PreferenceActivity implements
 			MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE,
 			MachineConfig.VALUE_CANBOX_GM_OD,
 			MachineConfig.VALUE_CANBOX_MAZDA_RAISE,
-			MachineConfig.VALUE_CANBOX_GM_RAISE, };
+			MachineConfig.VALUE_CANBOX_GM_RAISE, 
+			//MachineConfig.VALUE_CANBOX_AUDI_RAISE, // 41
+			MachineConfig.VALUE_CANBOX_ZHONGXING_OD,};
 
 	private final String[] mCanboxValueSimple = {
 			MachineConfig.VALUE_CANBOX_NONE,
@@ -188,7 +193,7 @@ public class CanboxSettings extends PreferenceActivity implements
 			MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE, // 41
 			MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE, // 41
 			MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 41
-			MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, };
+			MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE};
 	private final String[] mCanboxValueRaise = {
 			MachineConfig.VALUE_CANBOX_NONE,
 			MachineConfig.VALUE_CANBOX_MAZDA, // 3
@@ -224,16 +229,21 @@ public class CanboxSettings extends PreferenceActivity implements
 			MachineConfig.VALUE_CANBOX_BRAVO_UNION, // 34
 			MachineConfig.VALUE_CANBOX_PEUGEOT307_UNION, // 41
 	};
+	
 	private final String[] mCanboxValueCYT = { MachineConfig.VALUE_CANBOX_NONE,
 			MachineConfig.VALUE_CANBOX_ACCORD7_CHANGYUANTONG, // 26
 	};
+	
 	private final String[] mCanboxValueOD = {
 			MachineConfig.VALUE_CANBOX_NONE,
 			MachineConfig.VALUE_CANBOX_CHERY_OD, // 41
 			MachineConfig.VALUE_CANBOX_RX330_HAOZHENG, // 41
 			MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, // 41
 			MachineConfig.VALUE_CANBOX_MINI_HAOZHENG,
-			MachineConfig.VALUE_CANBOX_GM_OD, };
+			MachineConfig.VALUE_CANBOX_GM_OD, 
+			MachineConfig.VALUE_CANBOX_ZHONGXING_OD,
+			};
+			
 	private final String[] mCanboxValueBinarytek = {
 			MachineConfig.VALUE_CANBOX_NONE,
 			MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK, // 27
@@ -287,41 +297,61 @@ public class CanboxSettings extends PreferenceActivity implements
 
 	private void updateManufacturerPreference(String value) {
 		mCanboxManufacturerPreference.setValue(value);
-		mCanboxManufacturerPreference.setSummary(mCanboxManufacturerPreference.getEntry());
+		mCanboxManufacturerPreference.setSummary(mCanboxManufacturerPreference
+				.getEntry());
 	}
 
 	private void setCanboxPreferenceEntry(String manufactuer) {
 		if (manufactuer == null)
 			manufactuer = "";
-		if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_SIMPLE])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_simple));
+		if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_SIMPLE])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_simple));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueSimple);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_RAISE])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_raise));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_RAISE])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_raise));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueRaise);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_BAGOO])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_bagoo));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_BAGOO])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_bagoo));
 			mCanboxSettingPreference.setEntryValues(mCanboxValuebagoo);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_UNION])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_union));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_UNION])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_union));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueUnion);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_CYT])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_cyt));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_CYT])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_cyt));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueCYT);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_OD])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_od));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_OD])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_od));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueOD);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_BINARYTEK])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_binarytek));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_BINARYTEK])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_binarytek));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueBinarytek);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_XINBAS])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_xinbas));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_XINBAS])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_xinbas));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueXinbas);
-		} else if (manufactuer.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_HIWORLD])) {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select_hiworld));
+		} else if (manufactuer
+				.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_HIWORLD])) {
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select_hiworld));
 			mCanboxSettingPreference.setEntryValues(mCanboxValueHiworld);
 		} else {
-			mCanboxSettingPreference.setEntries(getResources().getStringArray(R.array.canbox_select));
+			mCanboxSettingPreference.setEntries(getResources().getStringArray(
+					R.array.canbox_select));
 			mCanboxSettingPreference.setEntryValues(canbox_all);
 		}
 	}
@@ -334,8 +364,10 @@ public class CanboxSettings extends PreferenceActivity implements
 		setContentView(R.layout.canbox_setting);
 		addPreferencesFromResource(R.xml.canbox_settings);
 
-		mManufacturerPreferenceValue = getResources().getStringArray(R.array.canbox_manufacturer_values);
-		if (mManufacturerPreferenceValue != null && mManufacturerPreferenceValue.length != M_VALUE_ARRARY_INDX_COUNT) {
+		mManufacturerPreferenceValue = getResources().getStringArray(
+				R.array.canbox_manufacturer_values);
+		if (mManufacturerPreferenceValue != null
+				&& mManufacturerPreferenceValue.length != M_VALUE_ARRARY_INDX_COUNT) {
 			Log.e(TAG, "load manufacturer value failed");
 			return;
 		}
@@ -345,7 +377,11 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		mCanboxSettingPreference = (ListPreference) findPreference(KEY_CANBOX);
 		mCanboxSettingPreference.setEntryValues(canbox_all);
+		
 		mCanboxSettingPreference.setValue(MachineConfig.VALUE_CANBOX_NONE);
+		//Log.d(TAG,"onCreate(Bundle icicle) "+MachineConfig.VALUE_CANBOX_ZHONGXING_OD);
+		
+		
 		mCanboxSettingPreference.setSummary(mCanboxSettingPreference.getEntry());
 		mCanboxSettingPreference.setOnPreferenceChangeListener(this);
 
@@ -355,15 +391,18 @@ public class CanboxSettings extends PreferenceActivity implements
 		mCanboxEQPreference = (ListPreference) findPreference(KEY_CANBOX_EQ);
 		mCanboxEQPreference.setOnPreferenceChangeListener(this);
 
-		String[] entry = { getString(R.string.normal),getString(R.string.canbox_pre_next),	getString(R.string.canbox_volume_increase_decrease) };
+		String[] entry = {
+                                  getString(R.string.normal),
+				  getString(R.string.canbox_pre_next),
+				  getString(R.string.canbox_volume_increase_decrease) };
 		String[] value = { "0", "1", "2" };
 
 		ListPreference lp;
 
-//		lp = (ListPreference) findPreference("canbox_key_change");
-//		lp.setEntries(entry);
-//		lp.setEntryValues(value);
-//		lp.setOnPreferenceChangeListener(this);
+		// lp = (ListPreference) findPreference("canbox_key_change");
+		// lp.setEntries(entry);
+		// lp.setEntryValues(value);
+		// lp.setOnPreferenceChangeListener(this);
 		// lp = (ListPreference) findPreference("canbox_front_door");
 		// lp.setEntries(entry);
 		// lp.setEntryValues(value);
@@ -373,7 +412,7 @@ public class CanboxSettings extends PreferenceActivity implements
 		// lp.setEntryValues(value);
 		// lp.setOnPreferenceChangeListener(this);
 
-		String[] entry1 = { getString(R.string.normal),getString(R.string.change), getString(R.string.hide) };
+		String[] entry1 = { getString(R.string.normal),	getString(R.string.change), getString(R.string.hide) };
 		String[] value1 = { "0", "1", "2" };
 
 		lp = (ListPreference) findPreference("canbox_front_door");
@@ -401,21 +440,26 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		mWillSetCan = can;
 		if (MachineConfig.VALUE_CANBOX_TOYOTA.equalsIgnoreCase(can)
-				|| MachineConfig.VALUE_CANBOX_TOYOTA_RAISE.equalsIgnoreCase(can)
+				|| MachineConfig.VALUE_CANBOX_TOYOTA_RAISE
+						.equalsIgnoreCase(can)
 				|| MachineConfig.VALUE_CANBOX_HY.equalsIgnoreCase(can)
-				|| MachineConfig.VALUE_CANBOX_CHRYSLER_SIMPLE.equalsIgnoreCase(can)
-				|| MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE.equalsIgnoreCase(can)
-				|| MachineConfig.VALUE_CANBOX_RX330_HAOZHENG.equalsIgnoreCase(can)
+				|| MachineConfig.VALUE_CANBOX_CHRYSLER_SIMPLE
+						.equalsIgnoreCase(can)
+				|| MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE
+						.equalsIgnoreCase(can)
+				|| MachineConfig.VALUE_CANBOX_RX330_HAOZHENG
+						.equalsIgnoreCase(can)
 				|| MachineConfig.VALUE_CANBOX_HY_RAISE.equalsIgnoreCase(can)
-				|| MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE.equalsIgnoreCase(can))
-		{
+				|| MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE
+						.equalsIgnoreCase(can)) {
 			getPreferenceScreen().addPreference(mEQVolume);
 			mEQVolume.setOnPreferenceClickListener(this);
 
 			volume = MachineConfig.getIntProperty2(SystemConfig.CANBOX_EQ_VOLUME);
 
-			if (MachineConfig.VALUE_CANBOX_TOYOTA.equalsIgnoreCase(can)	|| MachineConfig.VALUE_CANBOX_TOYOTA_RAISE.equalsIgnoreCase(can))
-			{
+			if (MachineConfig.VALUE_CANBOX_TOYOTA.equalsIgnoreCase(can)
+					|| MachineConfig.VALUE_CANBOX_TOYOTA_RAISE
+							.equalsIgnoreCase(can)) {
 				max = 63;
 				if (volume == -1 || volume > max) {
 					volume = 45;
@@ -425,12 +469,14 @@ public class CanboxSettings extends PreferenceActivity implements
 				if (volume == -1 || volume > max) {
 					volume = 30;
 				}
-			} else if (MachineConfig.VALUE_CANBOX_CHRYSLER_SIMPLE.equalsIgnoreCase(can)) {
+			} else if (MachineConfig.VALUE_CANBOX_CHRYSLER_SIMPLE
+					.equalsIgnoreCase(can)) {
 				max = 38;
 				if (volume == -1 || volume > max) {
 					volume = 28;
 				}
-			} else if (MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE.equalsIgnoreCase(can)) {
+			} else if (MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE
+					.equalsIgnoreCase(can)) {
 				max = 45;
 				if (volume == -1 || volume > max) {
 					volume = 38;
@@ -515,13 +561,14 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		if (mCarOtherSettings != null) {
 			try {
-				int v = Integer.parseInt(mCarOtherSettings);
+				int v = Integer.valueOf(mCarOtherSettings);
 				for (int i = 0; i < 32; i++) {
 					if ((v & (0x1 << i)) != 0) {
 						ss.add("" + i);
 					}
 				}
-			} catch (Exception ignored) {
+			} catch (Exception e) {
+
 			}
 		}
 		mOtherSettings.setValues(ss);
@@ -540,7 +587,9 @@ public class CanboxSettings extends PreferenceActivity implements
 		}
 
 		getPreferenceScreen().addPreference(mKeyChangeSettings);
-		String[] entry2 = {getString(R.string.canbox_pre_next),getString(R.string.canbox_volume_increase_decrease) };
+		String[] entry2 = { 
+				getString(R.string.canbox_pre_next),
+				getString(R.string.canbox_volume_increase_decrease) };
 		String[] value2 = { "0", "1" };
 
 		mKeyChangeSettings.setEntries(entry2);
@@ -557,13 +606,14 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		if (mChangeKey != null) {
 			try {
-				int v = Integer.parseInt(mChangeKey);
+				int v = Integer.valueOf(mChangeKey);
 				for (int i = 0; i < 32; i++) {
 					if ((v & (0x1 << i)) != 0) {
 						ss.add("" + i);
 					}
 				}
-			} catch (Exception ignored) {
+			} catch (Exception e) {
+
 			}
 		}
 		mKeyChangeSettings.setValues(ss);
@@ -846,6 +896,7 @@ public class CanboxSettings extends PreferenceActivity implements
 	private void updateCarType(String can) {
 		updateOtherSettings(can);
 		if (mLPCarType == null) {
+
 			mLPCarType = (ListPreference) findPreference("canbox_car_type");
 			mLPCarType.setOnPreferenceChangeListener(this);
 		}
@@ -855,7 +906,6 @@ public class CanboxSettings extends PreferenceActivity implements
 					"3:2016 FiatAegea", "4:2017 JeepCompass",
 					"5:2015 FiatDoblo", "6:2014 Grand Cherokee",
 					"7:2018 Renegade M" };
-
 			String[] value2 = { "1", "2", "3", "4", "5", "6", "7" };
 
 			mLPCarType.setEntries(entry2);
@@ -1022,7 +1072,8 @@ public class CanboxSettings extends PreferenceActivity implements
 //
 //			mLPCarType.setSummary(mLPCarType.getEntry());
 //		} 
-		else if (MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE.equalsIgnoreCase(can)) {
+		else if (MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE
+				.equalsIgnoreCase(can)) {
 			getPreferenceScreen().addPreference(mLPCarType);
 			String[] entry2 = { "0: 508", "1: RZC" };
 			String[] value2 = { "0", "1" };
@@ -1035,6 +1086,7 @@ public class CanboxSettings extends PreferenceActivity implements
 			} else {
 				mLPCarType.setValue("0");
 			}
+
 			mLPCarType.setSummary(mLPCarType.getEntry());
 		} else if (MachineConfig.VALUE_CANBOX_RX330_HAOZHENG
 				.equalsIgnoreCase(can)) {
@@ -1235,18 +1287,20 @@ public class CanboxSettings extends PreferenceActivity implements
 			if (s.startsWith(MachineConfig.VALUE_CANBOX_GM_SIMPLE)) {
 				show = true;
 
-				String[] entry = { "normal", "envision_low", "GL8",	"ASTRA J CD600" };
+				String[] entry = { "normal", "envision_low", "GL8",
+						"ASTRA J CD600" };
 				String[] value = { "0", "1", "2", "3" };
 				mCanboxKeyPreference.setEntries(entry);
 				mCanboxKeyPreference.setEntryValues(value);
 
 				if (mKeyType == null) {
+
 					updateCanboxKeyValue(value[0]);
 				} else {
+
 					updateCanboxKeyValue(mKeyType);
 				}
-			}
-			else if (s.startsWith(MachineConfig.VALUE_CANBOX_NISSAN2013)
+			} else if (s.startsWith(MachineConfig.VALUE_CANBOX_NISSAN2013)
 					|| s.startsWith(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)) {
 				show = true;
 
@@ -1283,15 +1337,18 @@ public class CanboxSettings extends PreferenceActivity implements
 			else if (s.startsWith(MachineConfig.VALUE_CANBOX_HY)) {
 				show = true;
 
-				String[] entry = { "Normal", "KX5 H", "KX5 M", "SONATA 9 H","SONATA 9 M", "Sportage" };
+				String[] entry = { "Normal", "KX5 H", "KX5 M", "SONATA 9 H",
+						"SONATA 9 M", "Sportage" };
 				String[] value = { "0", "1", "2", "3", "4", "5" };
 
 				mCanboxKeyPreference.setEntries(entry);
 				mCanboxKeyPreference.setEntryValues(value);
 
 				if (mKeyType == null) {
+
 					updateCanboxKeyValue(value[0]);
 				} else {
+
 					updateCanboxKeyValue(mKeyType);
 				}
 			} else if (s.startsWith(MachineConfig.VALUE_CANBOX_FORD_SIMPLE)) {
@@ -1393,15 +1450,18 @@ public class CanboxSettings extends PreferenceActivity implements
 			} else if (s.startsWith(MachineConfig.VALUE_CANBOX_OUSHANG_RAISE)) {
 
 				show = true;
-				String[] entry = { "1: None", "2: 360", "2: Right View", "3: 360 & Right View" };
+				String[] entry = { "1: None", "2: 360", "2: Right View",
+						"3: 360 & Right View" };
 				String[] value = { "0", "1", "2", "3" };
 
 				mCanboxKeyPreference.setEntries(entry);
 				mCanboxKeyPreference.setEntryValues(value);
 
 				if (mKeyType == null) {
+
 					updateCanboxKeyValue(value[0]);
 				} else {
+
 					updateCanboxKeyValue(mKeyType);
 				}
 			}
@@ -1517,30 +1577,30 @@ public class CanboxSettings extends PreferenceActivity implements
 		mAirCondition = null;
 
 		mCanboxValue = MachineConfig.getProperty(MachineConfig.KEY_CAN_BOX);
-		if (mCanboxValue != null) {
+		Log.d(TAG,"getCanboxSetting mCanboxValue="+mCanboxValue);
+		if(mCanboxValue == null)
+		    mCanboxValue = MachineConfig.VALUE_CANBOX_ZHONGXING_OD; 
+		    
+		if (mCanboxValue != null) 
+		{        		       		      
 			String[] ss = mCanboxValue.split(",");
-			mCanboxType = ss[0];
-			for (int i = 1; i < ss.length; ++i) {
-				if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_AIR_CONDITION)) {
+
+		        mCanboxType = ss[0];
+			for (int i = 1; i < ss.length; ++i) 
+			{
+				if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_AIR_CONDITION)) {
 					mAirCondition = ss[i].substring(1);
-				} else if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_KEY_TYPE)) {
+				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_KEY_TYPE)) {
 					mKeyType = ss[i].substring(1);
-				} else if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_CHANGE_KEY)) {
+				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CHANGE_KEY)) {
 					mChangeKey = ss[i].substring(1);
-				} else if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_FRONT_DOOR)) {
+				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_FRONT_DOOR)) {
 					mFrontDoor = ss[i].substring(1);
-				} else if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_REAR_DOOR)) {
+				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_REAR_DOOR)) {
 					mBackDoor = ss[i].substring(1);
-				} else if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
+				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
 					mCarType = ss[i].substring(1);
-				} else if (ss[i]
-						.startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE2)) {
+				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE2)) {
 					mCarType2 = ss[i].substring(1);
 				} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_EQ)) {
 					mCarEQ = ss[i].substring(1);
@@ -1548,19 +1608,22 @@ public class CanboxSettings extends PreferenceActivity implements
 					mCarOtherSettings = ss[i].substring(1);
 				}
 			}
-		} else {
-		}
+		} 
+		else {}
+		
 		return mCanboxValue;
 	}
 
 	private void setCanboxSetting(String which) {
 		mPreCanboxType = mCanboxType;
-
 		mCanboxType = which;
-
+		
+                Log.d(TAG,"setCanboxSetting mPreCanboxType="+mPreCanboxType+",mCanboxType="+mCanboxType+" mCanboxValue="+mCanboxValue);           
 		if (mCanboxValue != null && mCanboxValue.startsWith(mCanboxType)) {
 			getCanboxSetting();
-		} else {
+		} 
+		else 
+		{
 			mKeyType = null;
 			mChangeKey = null;
 			mFrontDoor = null;
@@ -1573,7 +1636,7 @@ public class CanboxSettings extends PreferenceActivity implements
 			mCarOtherSettings = null;
 		}
 
-		if (MachineConfig.VALUE_CANBOX_NISSAN2013.equals(mPreCanboxType) || MachineConfig.VALUE_CANBOX_NISSAN_RAISE.equals(mPreCanboxType))
+		if (MachineConfig.VALUE_CANBOX_NISSAN2013.equals(mPreCanboxType) || MachineConfig.VALUE_CANBOX_NISSAN_RAISE.equals(mPreCanboxType)) 
 		{
 			hideNissian360Button();
 		}
@@ -1594,7 +1657,8 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		if (vender == null
 				|| vender.isEmpty()
-				|| vender.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_ALL])) {
+				|| vender
+						.equals(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_ALL])) {
 			updateManufacturerPreference(mManufacturerPreferenceValue[M_VALUE_ARRARY_INDX_ALL]);
 		} else {
 			updateManufacturerPreference(vender);
@@ -1613,11 +1677,15 @@ public class CanboxSettings extends PreferenceActivity implements
 		} else {
 			mCanboxSettingPreference.setValue(which);
 		}
-
+		
 		Log.d("ddd", "" + mCanboxSettingPreference.getEntry());
+		
 		mCanboxSettingPreference.setSummary(mCanboxSettingPreference.getEntry());
+
 		updateCanboxKey(mCanboxSettingPreference.getValue());
+
 		updateCanboxEQ(mCanboxSettingPreference.getValue());
+
 		ListPreference lp;
 
 //		lp = (ListPreference) findPreference("canbox_key_change_ex");
@@ -1653,23 +1721,25 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		lp = (ListPreference) findPreference("canbox_air");
 
-		String[] entry1 = { getString(R.string.normal),getString(R.string.temp_change), getString(R.string.hide),getString(R.string.air_single) };
+		String[] entry1 = { getString(R.string.normal),
+				getString(R.string.temp_change), getString(R.string.hide),
+				getString(R.string.air_single) };
 		String[] value1 = { "0", "1", "2", "3" };
 		lp = (ListPreference) findPreference("canbox_air");
-
-		if (MachineConfig.VALUE_CANBOX_HY.equalsIgnoreCase(mCanboxType))
-		{
-			entry1 = new String[] { getString(R.string.normal),getString(R.string.change), getString(R.string.hide),getString(R.string.air_single), "17°C ~ 32°C","15°C ~ 32°C", "15°C ~ 30°C" };
+		if (MachineConfig.VALUE_CANBOX_HY.equalsIgnoreCase(mCanboxType)) {
+			entry1 = new String[] { getString(R.string.normal),
+					getString(R.string.change), getString(R.string.hide),
+					getString(R.string.air_single), "17°C ~ 32°C",
+					"15°C ~ 32°C", "15°C ~ 30°C" };
 			value1 = new String[] { "0", "1", "2", "3", "4", "5", "6" };
-		}
-		else
-		{
+		} else {
 			try {
-				int a = Integer.parseInt(mAirCondition);
+				int a = Integer.valueOf(mAirCondition);
 				if (a > 2) {
 					mAirCondition = "0";
 				}
-			} catch (Exception ignored) {
+			} catch (Exception e) {
+
 			}
 		}
 
@@ -1697,15 +1767,29 @@ public class CanboxSettings extends PreferenceActivity implements
 
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
 		String key = preference.getKey();
-        Log.d(TAG,"onPreferenceChange key="+key);
-
+ 		Log.d(TAG,"onPreferenceChange key="+key +",newValue="+newValue);
+ 		
 		if (KEY_MANUFACTURER.equals(key)) {
 			onManufacturerChanged(null, (String) newValue);
 			updateCanboxSetting(null);
 		} else if (KEY_CANBOX.equals(key)) {
-
+		       //Log.d(TAG,KEY_CANBOX+", " +MachineConfig.VALUE_CANBOX_ZHONGXING_OD+","+mPreCanboxType + ","+mCanboxType);
+		        /*if(MachineConfig.VALUE_CANBOX_ZHONGXING_OD.equals(mPreCanboxType))
+		        {
+		          //mPreCanboxType="none";
+		          setCanboxSetting("gm_raise");
+		          updateCanboxSetting("gm_raise");
+		          updateMachineConfig();
+		          setCanboxSetting((String) newValue);
+			  updateCanboxSetting((String) newValue);	
+			  updateMachineConfig();
+		          //Log.d(TAG,"reset to none");
+		        }
+		        else*/
+		        {
 			setCanboxSetting((String) newValue);
-			updateCanboxSetting((String) newValue);
+			updateCanboxSetting((String) newValue);	
+			}		
 		} else if (KEY_CANBOX_KEY.equals(key)) {
 			updateCanboxKeyValue((String) newValue);
 			setCanboxKeySetting((String) newValue);
@@ -1782,23 +1866,26 @@ public class CanboxSettings extends PreferenceActivity implements
 			while (it.hasNext()) {
 				String str = it.next();
 				try {
-					int i = Integer.parseInt(str);
+					int i = Integer.valueOf(str);
 					if (i < 32) {
 						otherSettings |= (0x1 << i);
 					}
-				} catch (Exception ignored) {
+				} catch (Exception e) {
+
 				}
 			}
+
 			mChangeKey = otherSettings + "";
 		}
 		return false;
 	}
 
 	public boolean onPreferenceClick(Preference arg0) {
-		/// if (arg0.getKey().equals(KEY_RESET_SYSTEM)) {
-		///
-		/// }
+		// if (arg0.getKey().equals(KEY_RESET_SYSTEM)) {
+		//
+		// }
 		String key = arg0.getKey();
+		Log.d(TAG,"onPreferenceChange key="+key);
 		if ("canbox_eq_volume".equals(key)) {
 			showVolumeDialog();
 		}
@@ -1823,16 +1910,18 @@ public class CanboxSettings extends PreferenceActivity implements
 		} catch (Exception e) {
 
 		}
-		if (null != value) {
+
+		if (null != value) 
+		{
 			if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_FORD_EXPLORER_SIMPLE))
+			|| value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)
+			|| value.equals(MachineConfig.VALUE_CANBOX_FORD_EXPLORER_SIMPLE)) 
 			{
-				if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE) || value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE))
-				{
+				if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE) || value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)) {
 					hideCanboxCarInfo = false;
 				}
 				hideConboxSetting = false;
+				
 				if (1 != mCarType) {
 					hideSync = false;
 					if (mCarType == 2 || mCarType == 3) {
@@ -1856,8 +1945,9 @@ public class CanboxSettings extends PreferenceActivity implements
 					|| value.equals(MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG)
 					|| value.equals(MachineConfig.VALUE_CANBOX_OUSHANG_RAISE)
 					|| value.equals(MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE)
-			        || value.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE))
-			{
+					|| value.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)
+					)
+					{
 				hideConboxSetting = false;
 				hideCanboxCarInfo = false;
 			} else if (value.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)
@@ -1872,7 +1962,8 @@ public class CanboxSettings extends PreferenceActivity implements
 					|| value.equals(MachineConfig.VALUE_CANBOX_PSA206_SIMPLE)
 					|| value.equals(MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN)
 					|| value.equals(MachineConfig.VALUE_CANBOX_HY_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)) {
+					|| value.equals(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)
+					|| value.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
 				hideCanboxCarInfo = false;
 			} else if (value.equals(MachineConfig.VALUE_CANBOX_OPEL)
 					|| value.equals(MachineConfig.VALUE_CANBOX_RAM_FIAT)
@@ -1982,24 +2073,27 @@ public class CanboxSettings extends PreferenceActivity implements
 	private void updateMachineConfig() {
 
 		updateHideAppConboxVersion1(mCanboxType, mCarType);
-
-		if (mCanboxType == null	|| MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType)) {
+		
+                Log.d(TAG,"updateMachineConfig() mCanboxType = " +mCanboxType);
+                
+		if (mCanboxType == null || MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType)) {
 			MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, null);
 
 			Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
 			it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
 			sendBroadcast(it);
-		}
-		else
-		{
+		} else {
 			if (mCanboxType != null) {
 				String newCanboxValue = mCanboxType;
 
 				if (mKeyType != null) {
-					newCanboxValue += "," + MachineConfig.KEY_SUB_CANBOX_KEY_TYPE + mKeyType;
+					newCanboxValue += ","
+							+ MachineConfig.KEY_SUB_CANBOX_KEY_TYPE + mKeyType;
 				}
 				if (mAirCondition != null) {
-					newCanboxValue += "," + MachineConfig.KEY_SUB_CANBOX_AIR_CONDITION + mAirCondition;
+					newCanboxValue += ","
+							+ MachineConfig.KEY_SUB_CANBOX_AIR_CONDITION
+							+ mAirCondition;
 				}
 				if (mChangeKey != null) {
 					newCanboxValue += ","
@@ -2032,14 +2126,17 @@ public class CanboxSettings extends PreferenceActivity implements
 							+ mCarEQ;
 				}
 				if (mCarOtherSettings != null) {
-					newCanboxValue += "," + MachineConfig.KEY_SUB_CANBOX_OTHER + mCarOtherSettings;
+					newCanboxValue += "," + MachineConfig.KEY_SUB_CANBOX_OTHER
+							+ mCarOtherSettings;
 				}
 				newCanboxValue += ",v2";
-				if (!newCanboxValue.equals(mCanboxValue))
-				{
-					MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX,newCanboxValue);
+				if (!newCanboxValue.equals(mCanboxValue)) {
+					MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX,
+							newCanboxValue);
+
 					Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-					it.putExtra(MyCmd.EXTRA_COMMON_CMD,	MachineConfig.KEY_CAN_BOX);
+					it.putExtra(MyCmd.EXTRA_COMMON_CMD,
+							MachineConfig.KEY_CAN_BOX);
 					sendBroadcast(it);
 				}
 			}
@@ -2048,15 +2145,15 @@ public class CanboxSettings extends PreferenceActivity implements
 
 	@Override
 	public void onClick(View arg0) {
-		int id = arg0.getId();
-		if (id == R.id.btn_ok) {
-			updateMachineConfig();
-			finish();
-		} else if (id == R.id.btn_cancel) {
-			finish();
-		} else if (id == R.id.btn_advanced) {
-			UtilSystem.doRunActivity(this, "com.my.factory.intent.action.CanboxSettings2");
-		}
+        int id = arg0.getId();
+        if (id == R.id.btn_ok) {
+            updateMachineConfig();
+            finish();
+        } else if (id == R.id.btn_cancel) {
+            finish();
+        } else if (id == R.id.btn_advanced) {
+            UtilSystem.doRunActivity(this, "com.my.factory.intent.action.CanboxSettings2");
+        }
 	}
 
 	private void hideNissian360Button() {
@@ -2113,7 +2210,8 @@ public class CanboxSettings extends PreferenceActivity implements
 							mTextVolume.setText("" + progress);
 							sendCanboxVolume(mWillSetCan, progress);
 							volume = progress;
-							MachineConfig.setIntProperty(SystemConfig.CANBOX_EQ_VOLUME, progress);
+							MachineConfig.setIntProperty(
+									SystemConfig.CANBOX_EQ_VOLUME, progress);
 
 						}
 					}
@@ -2127,8 +2225,9 @@ public class CanboxSettings extends PreferenceActivity implements
 		byte[] buf = null;// new byte[] { (byte) 0x84, 0x2, 0x07, (byte)progress
 							// };
 
-		if (MachineConfig.VALUE_CANBOX_TOYOTA.equalsIgnoreCase(can)	|| MachineConfig.VALUE_CANBOX_TOYOTA_RAISE.equalsIgnoreCase(can))
-		{
+		if (MachineConfig.VALUE_CANBOX_TOYOTA.equalsIgnoreCase(can)
+				|| MachineConfig.VALUE_CANBOX_TOYOTA_RAISE
+						.equalsIgnoreCase(can)) {
 			buf = new byte[] { (byte) 0x84, 0x2, 0x07, (byte) progress };
 		} else if (MachineConfig.VALUE_CANBOX_HY.equalsIgnoreCase(can)) {
 			buf = new byte[] { (byte) 0xc4, 0x1, (byte) (0x00 | progress) };

@@ -1,24 +1,61 @@
 package com.canboxsetting.set;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.Date;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
+import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.IntentFilter;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.RemoteException;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TimePicker;
 
-import com.android.canboxsetting.R;
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.Node;
 import com.common.util.NodePreference;
+import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set289 extends PreferenceFragment implements
@@ -27,21 +64,29 @@ public class Set289 extends PreferenceFragment implements
 
 	private static final NodePreference[] NODES = {
 
-			new NodePreference("unlocks", 0x7501, 0x2700, 0xff, 0,	R.array.remote_unlock_entries, R.array.two_values),
-			new NodePreference("energy_recovery", 0x7502, 0x2701, 0xff, 0, 20, 100, 1),
+			new NodePreference("unlocks", 0x7501, 0x2700, 0xff, 0,
+					R.array.remote_unlock_entries, R.array.two_values),
+
+
+					new NodePreference("energy_recovery", 0x7502, 0x2701, 0xff, 0, 20, 100, 1),
+					
 
 			new NodePreference("creep", 0x7503, 0x2702, 0xff, 0),
 			new NodePreference("skyworth1", 0x7504, 0x2703, 0xff, 0),
 			new NodePreference("skyworth2", 0x7505, 0x2704, 0xff, 0),
 			new NodePreference("skyworth3", 0x7506, 0x2705, 0xff, 0),
 
-			new NodePreference("over_speed", 0x7507, 0x2706, 0xff, 0, R.array.skyworth1, R.array.ten_values),
+			new NodePreference("over_speed", 0x7507, 0x2706, 0xff, 0,
+					R.array.skyworth1, R.array.ten_values),
+
 			new NodePreference("pedestrian_safety_assistance", 0x7508, 0x2707, 0xff, 0),
 			new NodePreference("body_stability_control", 0x7509, 0x2708, 0xff, 0),
 			new NodePreference("hill_decent_control", 0x750a, 0x2709, 0xff, 0),
 			new NodePreference("skyworth4", 0x750b, 0x270a, 0xff, 0),
 			new NodePreference("skyworth5", 0x750c, 0x270b, 0xff, 0),
-
+							
+	
+	
 	};
 
 	private final static int[] INIT_CMDS = { 0x27 };
@@ -54,6 +99,7 @@ public class Set289 extends PreferenceFragment implements
 		addPreferencesFromResource(R.xml.empty_setting);
 
 		init();
+
 	}
 
 	private void init() {

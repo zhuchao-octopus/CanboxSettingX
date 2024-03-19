@@ -16,18 +16,42 @@
 
 package com.canboxsetting.ac;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
-
-import com.android.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
@@ -55,34 +79,34 @@ public class HondaAirControl extends Activity {
 	}
 
 	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.on) {
-			sendCanboxInfo0xC6(0xac, 0x1);
-		} else if (id == R.id.off) {
-			sendCanboxInfo0xC6(0xac, 0x2);
-		} else if (id == R.id.canbus21_mode1) {
-			sendCanboxInfo0xC6(0xac, 0x3);
-		} else if (id == R.id.canbus21_mode2) {
-			sendCanboxInfo0xC6(0xac, 0x4);
-		} else if (id == R.id.canbus21_mode3) {
-			sendCanboxInfo0xC6(0xac, 0x5);
-		} else if (id == R.id.canbus21_mode4) {
-			sendCanboxInfo0xC6(0xac, 0x6);
-		} else if (id == R.id.point0) {
-			sendCanboxInfo0xC6(0xad, 0x1);
-		} else if (id == R.id.point1) {
-			sendCanboxInfo0xC6(0xad, 0x2);
-		} else if (id == R.id.point2) {
-			sendCanboxInfo0xC6(0xad, 0x3);
-		} else if (id == R.id.point3) {
-			sendCanboxInfo0xC6(0xad, 0x4);
-		} else if (id == R.id.point4) {
-			sendCanboxInfo0xC6(0xad, 0x5);
-		} else if (id == R.id.point5) {
-			sendCanboxInfo0xC6(0xad, 0x6);
-		} else if (id == R.id.point6) {
-			sendCanboxInfo0xC6(0xad, 0x7);
-		}
+        int id = v.getId();
+        if (id == R.id.on) {
+            sendCanboxInfo0xC6(0xac, 0x1);
+        } else if (id == R.id.off) {
+            sendCanboxInfo0xC6(0xac, 0x2);
+        } else if (id == R.id.canbus21_mode1) {
+            sendCanboxInfo0xC6(0xac, 0x3);
+        } else if (id == R.id.canbus21_mode2) {
+            sendCanboxInfo0xC6(0xac, 0x4);
+        } else if (id == R.id.canbus21_mode3) {
+            sendCanboxInfo0xC6(0xac, 0x5);
+        } else if (id == R.id.canbus21_mode4) {
+            sendCanboxInfo0xC6(0xac, 0x6);
+        } else if (id == R.id.point0) {
+            sendCanboxInfo0xC6(0xad, 0x1);
+        } else if (id == R.id.point1) {
+            sendCanboxInfo0xC6(0xad, 0x2);
+        } else if (id == R.id.point2) {
+            sendCanboxInfo0xC6(0xad, 0x3);
+        } else if (id == R.id.point3) {
+            sendCanboxInfo0xC6(0xad, 0x4);
+        } else if (id == R.id.point4) {
+            sendCanboxInfo0xC6(0xad, 0x5);
+        } else if (id == R.id.point5) {
+            sendCanboxInfo0xC6(0xad, 0x6);
+        } else if (id == R.id.point6) {
+            sendCanboxInfo0xC6(0xad, 0x7);
+        }
 	}
 
 	private boolean mShow = false;

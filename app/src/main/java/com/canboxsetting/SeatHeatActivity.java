@@ -17,15 +17,14 @@
 package com.canboxsetting;
 
 
+import com.common.util.MachineConfig;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
-
-import com.android.canboxsetting.R;
-import com.common.util.MachineConfig;
 
 /**
  * This activity plays a video from a specified URI.

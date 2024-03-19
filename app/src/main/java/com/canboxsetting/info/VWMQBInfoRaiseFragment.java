@@ -1,41 +1,84 @@
 package com.canboxsetting.info;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.charset.Charset;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
+import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.RemoteException;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.text.TextUtils.TruncateAt;
+import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TimePicker;
 
-import com.android.canboxsetting.R;
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.string;
+import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.Node;
 import com.common.util.NodeDrivingData;
+import com.common.util.SystemConfig;
 import com.common.util.Util;
 import com.common.util.UtilSystem;
+import com.common.util.shell.ShellUtils;
 import com.common.view.MyPopDialog;
+import com.common.view.MyPreference2;
 
-import java.util.Locale;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 public class VWMQBInfoRaiseFragment extends PreferenceFragment implements
 		OnPreferenceClickListener {
@@ -62,28 +105,28 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragment implements
 	private View.OnClickListener mOnClick = new View.OnClickListener() {
 		public void onClick(View v) {
 			Log.d("ccfk", "" + v.getId());
-			int id = v.getId();
-			if (id == R.id.setting) {
-				UtilSystem.doRunActivity(getActivity(), "com.canboxsetting",
-						"com.canboxsetting.MainActivity");
-			} else if (id == R.id.views) {
-				mDialog.show();
-			}
+            int id = v.getId();
+            if (id == R.id.setting) {
+                UtilSystem.doRunActivity(getActivity(), "com.canboxsetting",
+                        "com.canboxsetting.MainActivity");
+            } else if (id == R.id.views) {
+                mDialog.show();
+            }
 		};
 	};
 
 	private View.OnClickListener mOnClickDrivingData = new View.OnClickListener() {
 		public void onClick(View v) {
-			int id = v.getId();
-			if (id == R.id.bt_left) {
-				mDrivingDataPage = (mDrivingDataPage + 1)
-						% NODES_DRIVINGDATA.length;
-				showDrivingData();
-			} else if (id == R.id.bt_right) {
-				mDrivingDataPage = (mDrivingDataPage + NODES_DRIVINGDATA.length - 1)
-						% NODES_DRIVINGDATA.length;
-				showDrivingData();
-			}
+            int id = v.getId();
+            if (id == R.id.bt_left) {
+                mDrivingDataPage = (mDrivingDataPage + 1)
+                        % NODES_DRIVINGDATA.length;
+                showDrivingData();
+            } else if (id == R.id.bt_right) {
+                mDrivingDataPage = (mDrivingDataPage + NODES_DRIVINGDATA.length - 1)
+                        % NODES_DRIVINGDATA.length;
+                showDrivingData();
+            }
 		};
 	};
 
@@ -94,18 +137,18 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragment implements
 
 	private View.OnClickListener mOnClickVehicleStatus = new View.OnClickListener() {
 		public void onClick(View v) {
-			int id = v.getId();
-			if (id == R.id.bt_left) {
-				mVehiclePage = (mVehiclePage + 1) % 2;
-				showVehicletatus();
-			} else if (id == R.id.bt_right) {
-				mVehiclePage = (mVehiclePage + 1) % 2;
-				showVehicletatus();
-			} else if (id == R.id.set) {
-				showTPMSSetDialog();
-			} else if (id == R.id.start_stop) {
-				showStopStartStatusDialog();
-			}
+            int id = v.getId();
+            if (id == R.id.bt_left) {
+                mVehiclePage = (mVehiclePage + 1) % 2;
+                showVehicletatus();
+            } else if (id == R.id.bt_right) {
+                mVehiclePage = (mVehiclePage + 1) % 2;
+                showVehicletatus();
+            } else if (id == R.id.set) {
+                showTPMSSetDialog();
+            } else if (id == R.id.start_stop) {
+                showStopStartStatusDialog();
+            }
 		};
 	};
 	ArrayAdapter<String> mAdapter;
@@ -253,15 +296,15 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragment implements
 			setVisible(R.id.conv_consumers, 0);
 			setVisible(R.id.vehicle_status, 0);
 			setVisible(R.id.vehicle_hybrid_power, 0);
-			if (id == R.string.driving_data) {
-				setVisible(R.id.driving_data, 1);
-			} else if (id == R.string.conv_consumers) {
-				setVisible(R.id.conv_consumers, 1);
-			} else if (id == R.string.vehicle_status) {
-				setVisible(R.id.vehicle_status, 1);
-			} else if (id == R.string.energy_flow_view) {
-				setVisible(R.id.vehicle_hybrid_power, 1);
-			}
+            if (id == string.driving_data) {
+                setVisible(R.id.driving_data, 1);
+            } else if (id == string.conv_consumers) {
+                setVisible(R.id.conv_consumers, 1);
+            } else if (id == string.vehicle_status) {
+                setVisible(R.id.vehicle_status, 1);
+            } else if (id == string.energy_flow_view) {
+                setVisible(R.id.vehicle_hybrid_power, 1);
+            }
 		}
 	}
 

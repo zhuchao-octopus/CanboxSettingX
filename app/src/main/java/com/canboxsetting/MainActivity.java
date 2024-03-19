@@ -16,14 +16,10 @@
 
 package com.canboxsetting;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.os.Bundle;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
 
-import com.android.canboxsetting.R;
 import com.canboxsetting.info.Nission2013InfoSimpleFragment;
 import com.canboxsetting.keyboard.PSABagooKeyboardFragment;
 import com.canboxsetting.set.Accord2013SettingsSimpleFragment;
@@ -59,8 +55,35 @@ import com.canboxsetting.set.TouaregHiworldSettingFragment;
 import com.canboxsetting.set.ToyotaSettingsSimpleFragment;
 import com.canboxsetting.set.VWMQBSettingsRaiseFragment;
 import com.car.ui.GlobalDef;
+import com.common.util.AppConfig;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 /**
  *type1: VWMQBSettingsRaiseFragment
@@ -75,7 +98,9 @@ Data4 参数4
  */
 public class MainActivity extends Activity {
 	private static final String TAG = "CanboxSetting";
+
 	private FragmentManager mFragmentManager;
+
 	private Fragment mSetting;
 
 	@Override
@@ -88,8 +113,8 @@ public class MainActivity extends Activity {
 		int mCarType = 0;
 
 		String value = null;
-		String mCanboxType = MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-
+		String mCanboxType = MachineConfig
+				.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
 		int mProVersion = 0;
 		String mProIndex = null;
 		if (mCanboxType != null) {
@@ -97,22 +122,26 @@ public class MainActivity extends Activity {
 			value = ss[0];
 			try {
 				for (int i = 1; i < ss.length; ++i) {
-					if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-						mProVersion = Integer.parseInt(ss[i].substring(1));
-					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+					if (ss[i]
+							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
+						mProVersion = Integer.valueOf(ss[i].substring(1));
+					} else if (ss[i]
+							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
 						mProIndex = ss[i].substring(1);
 						try {
-							GlobalDef.setProId(Integer.parseInt(mProIndex));
-						} catch (Exception ignored) {
-						}
+							GlobalDef.setProId(Integer.valueOf(mProIndex));
+						} catch (Exception e) {
 
-					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
+						}
+					} else if (ss[i]
+							.startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
 						try {
-							mCarType = Integer.parseInt(ss[i].substring(1));
-						} catch (Exception ignored) {
+							mCarType = Integer.valueOf(ss[i].substring(1));
+						} catch (Exception e) {
 
 						}
-					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
+					} else if (ss[i]
+							.startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
 						String mProId = ss[i].substring(1);
 						if (mProId != null && mProId.length() >= 4) {
 							int start = 0;
@@ -127,15 +156,19 @@ public class MainActivity extends Activity {
 							start = end + 1;
 							int mModelId = -1;
 							if (mProId.contains("-")) {
-								String[] sss = mProId.substring(start).split("-");
+								String[] sss = mProId.substring(start)
+										.split("-");
 								mModelId = Integer.valueOf(sss[1]);
 							} else {
 								if ((mProId.length() - start) == 2) {
-									mModelId = Integer.valueOf(mProId.substring(start + 1, start + 2));
+									mModelId = Integer.valueOf(mProId
+											.substring(start + 1, start + 2));
 								} else if ((mProId.length() - start) == 4) {
-									mModelId = Integer.valueOf(mProId.substring(start + 2, start + 4));
+									mModelId = Integer.valueOf(mProId
+											.substring(start + 2, start + 4));
 								} else if ((mProId.length() - start) == 3) {
-									mModelId = Integer.valueOf(mProId.substring(start + 2, start + 3));
+									mModelId = Integer.valueOf(mProId
+											.substring(start + 2, start + 3));
 								}
 							}
 
@@ -145,7 +178,8 @@ public class MainActivity extends Activity {
 					}
 
 				}
-			} catch (Exception ignored) {
+			} catch (Exception e) {
+
 			}
 		}
 
@@ -162,7 +196,8 @@ public class MainActivity extends Activity {
 					} else {
 						mSetting = (Fragment) c.newInstance();
 					}
-				} catch (Exception ignored) {
+				} catch (Exception e) {
+
 				}
 
 			}
@@ -303,9 +338,11 @@ public class MainActivity extends Activity {
 		updateIntent(intent);
 	}
 
-	private void replaceFragment(int layoutId, Fragment fragment,boolean isAddStack) {
+	private void replaceFragment(int layoutId, Fragment fragment,
+			boolean isAddStack) {
 		if (fragment != null) {
-			FragmentTransaction transation = mFragmentManager.beginTransaction();
+			FragmentTransaction transation = mFragmentManager
+					.beginTransaction();
 			transation.replace(layoutId, fragment);
 			if (isAddStack) {
 				transation.addToBackStack(null);

@@ -1,5 +1,6 @@
 package com.common.view;
 
+import com.canboxsetting.R;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -10,8 +11,6 @@ import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
-
-import com.android.canboxsetting.R;
 
 public class CircularRingPercentageView extends View {
     private Paint paint;

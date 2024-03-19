@@ -16,19 +16,51 @@
 
 package com.canboxsetting.ac;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.array;
+import com.canboxsetting.R.drawable;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.canboxsetting.R.string;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.MyFragment;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
@@ -204,55 +236,55 @@ public class VWMQBACHiworldFragment extends MyFragment {
 			} else if ((cmd & 0xff00) == 0x8100 || (cmd & 0xff00) == 0x2a00) {
 				sendCanboxInfoParam2((cmd & 0xff00) >> 8, (cmd & 0xff));
 			} else {
-				if (id == R.id.inner_loop) {
-					if (mCommonUpdateView.getLoopInner() == 0) {
-						param = 1;
-					}
-				} else if (id == R.id.wind_minus) {
-					param = mCommonUpdateView.getWind();
-					if (param > 0) {
-						param--;
-					}
-				} else if (id == R.id.wind_add) {
-					param = mCommonUpdateView.getWind();
-					if (param < 7) {
-						param++;
-					}
-				} else if (id == R.id.wind_minus_rear) {
-					param = mCommonUpdateView.getWindRear();
-					if (param > 0) {
-						param--;
-					}
-				} else if (id == R.id.wind_add_rear) {
-					param = mCommonUpdateView.getWindRear();
-					if (param < 7) {
-						param++;
-					}
-				} else if (id == R.id.con_left_temp_up) {
-					param = getTemp(true, 0);
-				} else if (id == R.id.con_left_temp_down) {
-					param = getTemp(false, 0);
-				} else if (id == R.id.con_right_temp_up) {
-					param = getTemp(true, 1);
-				} else if (id == R.id.con_right_temp_down) {
-					param = getTemp(false, 1);
-				} else if (id == R.id.con_left_temp_rear_up) {
-					param = getTemp(true, 2);
-				} else if (id == R.id.con_left_temp_rear_down) {
-					param = getTemp(false, 2);
-				} else if (id == R.id.left_seat_heat) {
-					param = mCommonUpdateView.getHeatLeft();
-					param = (param + 1) % 4;
-				} else if (id == R.id.right_seat_heat) {
-					param = mCommonUpdateView.getHeatRight();
-					param = (param + 1) % 4;
-				} else if (id == R.id.left_seat_refrigeration) {
-					param = mCommonUpdateView.getRefrigerationLeft();
-					param = (param + 1) % 4;
-				} else if (id == R.id.right_seat_refrigeration) {
-					param = mCommonUpdateView.getRefrigerationRight();
-					param = (param + 1) % 4;
-				}
+                if (id == R.id.inner_loop) {
+                    if (mCommonUpdateView.getLoopInner() == 0) {
+                        param = 1;
+                    }
+                } else if (id == R.id.wind_minus) {
+                    param = mCommonUpdateView.getWind();
+                    if (param > 0) {
+                        param--;
+                    }
+                } else if (id == R.id.wind_add) {
+                    param = mCommonUpdateView.getWind();
+                    if (param < 7) {
+                        param++;
+                    }
+                } else if (id == R.id.wind_minus_rear) {
+                    param = mCommonUpdateView.getWindRear();
+                    if (param > 0) {
+                        param--;
+                    }
+                } else if (id == R.id.wind_add_rear) {
+                    param = mCommonUpdateView.getWindRear();
+                    if (param < 7) {
+                        param++;
+                    }
+                } else if (id == R.id.con_left_temp_up) {
+                    param = getTemp(true, 0);
+                } else if (id == R.id.con_left_temp_down) {
+                    param = getTemp(false, 0);
+                } else if (id == R.id.con_right_temp_up) {
+                    param = getTemp(true, 1);
+                } else if (id == R.id.con_right_temp_down) {
+                    param = getTemp(false, 1);
+                } else if (id == R.id.con_left_temp_rear_up) {
+                    param = getTemp(true, 2);
+                } else if (id == R.id.con_left_temp_rear_down) {
+                    param = getTemp(false, 2);
+                } else if (id == R.id.left_seat_heat) {
+                    param = mCommonUpdateView.getHeatLeft();
+                    param = (param + 1) % 4;
+                } else if (id == R.id.right_seat_heat) {
+                    param = mCommonUpdateView.getHeatRight();
+                    param = (param + 1) % 4;
+                } else if (id == R.id.left_seat_refrigeration) {
+                    param = mCommonUpdateView.getRefrigerationLeft();
+                    param = (param + 1) % 4;
+                } else if (id == R.id.right_seat_refrigeration) {
+                    param = mCommonUpdateView.getRefrigerationRight();
+                    param = (param + 1) % 4;
+                }
 
 				sendCanboxInfoParam2((cmd & 0xff), param);
 			}

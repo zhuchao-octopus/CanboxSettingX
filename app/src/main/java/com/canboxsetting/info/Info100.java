@@ -2,20 +2,37 @@ package com.canboxsetting.info;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.IntentFilter;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.RemoteException;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.text.format.DateFormat;
 import android.util.Log;
 
-import com.android.canboxsetting.R;
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.Node;
 import com.common.util.NodePreference;
+import com.common.util.Util;
+import com.common.view.MyPreferenceSeekBar;
 
 public class Info100 extends PreferenceFragment {
 	private static final String TAG = "HYSettingsRaiseFragment";

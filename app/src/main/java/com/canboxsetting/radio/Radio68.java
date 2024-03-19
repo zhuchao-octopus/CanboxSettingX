@@ -16,28 +16,61 @@
 
 package com.canboxsetting.radio;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ListView;
-import android.widget.TextView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
-import com.android.canboxsetting.R;
 import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.array;
+import com.canboxsetting.R.drawable;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.canboxsetting.R.string;
+import com.common.adapter.MyListViewAdapterCD;
 import com.common.adapter.MyListViewAdapterRadio;
 import com.common.util.AuxInUI;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Util;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
@@ -128,26 +161,26 @@ public class Radio68 extends MyFragment {
 	}
 
 	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.radio_fr) {
-			sendCanboxInfo0x85(0x20, 0x13);
-		} else if (id == R.id.radio_ff) {
-			sendCanboxInfo0x85(0x20, 0x12);
-		} else if (id == R.id.radio_prev) {
-			sendCanboxInfo0x85(0x20, 0x16);
-		} else if (id == R.id.radio_next) {
-			sendCanboxInfo0x85(0x20, 0x15);
-		} else if (id == R.id.radio_function_button_scan) {
-			sendCanboxInfo0x85(0x20, 0x14);
-		} else if (id == R.id.am) {
-			sendCanboxInfo0x85(0x20, 0x83);
-		} else if (id == R.id.fm) {
-			if (mBaud == 1) {
-				sendCanboxInfo0x85(0x20, 0x87);
-			} else {
-				sendCanboxInfo0x85(0x20, 0x86);
-			}
-		}
+        int id = v.getId();
+        if (id == R.id.radio_fr) {
+            sendCanboxInfo0x85(0x20, 0x13);
+        } else if (id == R.id.radio_ff) {
+            sendCanboxInfo0x85(0x20, 0x12);
+        } else if (id == R.id.radio_prev) {
+            sendCanboxInfo0x85(0x20, 0x16);
+        } else if (id == R.id.radio_next) {
+            sendCanboxInfo0x85(0x20, 0x15);
+        } else if (id == R.id.radio_function_button_scan) {
+            sendCanboxInfo0x85(0x20, 0x14);
+        } else if (id == R.id.am) {
+            sendCanboxInfo0x85(0x20, 0x83);
+        } else if (id == R.id.fm) {
+            if (mBaud == 1) {
+                sendCanboxInfo0x85(0x20, 0x87);
+            } else {
+                sendCanboxInfo0x85(0x20, 0x86);
+            }
+        }
 	}
 
 	private int mListIndex;

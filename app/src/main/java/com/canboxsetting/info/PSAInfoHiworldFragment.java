@@ -1,31 +1,82 @@
 package com.canboxsetting.info;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.Date;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
+import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.RemoteException;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceFragment;
+import android.preference.SwitchPreference;
 import android.text.InputType;
+import android.text.format.DateFormat;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TimePicker;
 
-import com.android.canboxsetting.R;
 import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.canboxsetting.R.string;
+import com.common.util.AppConfig;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.SystemConfig;
+import com.common.util.Util;
+import com.common.util.shell.ShellUtils;
+
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 public class PSAInfoHiworldFragment extends MyFragment {
 	private static final String TAG = "GMInfoSimpleFragment";
@@ -159,19 +210,19 @@ public class PSAInfoHiworldFragment extends MyFragment {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 
-			int id = v.getId();
-			if (id == R.id.fuelclear1) {//				cmd82 |= 0x40;
+            int id = v.getId();
+            if (id == R.id.fuelclear1) {//				cmd82 |= 0x40;
 //				cmd82 &= ~0x20;
-				cmd82 = 0x41;
-			} else if (id == R.id.fuelclear2) {
-				cmd82 = 0x22;
+                cmd82 = 0x41;
+            } else if (id == R.id.fuelclear2) {
+                cmd82 = 0x22;
 //				cmd82 |= 0x20;
 //				cmd82 &= ~0x40;
-			} else if (id == R.id.booking_mileage) {
-				showBookingMileageDialog();
+            } else if (id == R.id.booking_mileage) {
+                showBookingMileageDialog();
 
-				return;
-			}
+                return;
+            }
 			sendCanboxInfo82((byte) cmd82);
 		}
 	};
@@ -191,51 +242,52 @@ public class PSAInfoHiworldFragment extends MyFragment {
 		// TODO Auto-generated method stub
 		int id = intent.getIntExtra(MyCmd.EXTRA_COMMON_ID, 0);
 		if (id != 0) {
-			if (mCurUI == R.id.driving_page1) {
-				id = R.id.driving_page2;
-			} else if (mCurUI == R.id.driving_page2) {
-				id = R.id.driving_page3;
-			} else {
-				id = R.id.driving_page1;
-			}
+            if (mCurUI == R.id.driving_page1) {
+                id = R.id.driving_page2;
+            } else if (mCurUI == R.id.driving_page2) {
+                id = R.id.driving_page3;
+            } else {
+                id = R.id.driving_page1;
+            }
 			showUI(id);
 		}
 	}
 	
 	private int cmd82 = 0;
 
+	@SuppressLint("NonConstantResourceId")
 	private void showUI(int id) {
 		// int cmd82 = 0;
 		int cmd90 = 0;
 		mCurUI = id;
-		if (id == R.id.driving_page1) {
-			mMainView.findViewById(R.id.driving_page1_layout).setVisibility(
-					View.VISIBLE);
-			mMainView.findViewById(R.id.driving_page2_layout).setVisibility(
-					View.GONE);
-			mMainView.findViewById(R.id.driving_page3_layout).setVisibility(
-					View.GONE);
-			cmd82 = 0x33;
-			cmd90 = 0x33;
-		} else if (id == R.id.driving_page2) {
-			mMainView.findViewById(R.id.driving_page2_layout).setVisibility(
-					View.VISIBLE);
-			mMainView.findViewById(R.id.driving_page1_layout).setVisibility(
-					View.GONE);
-			mMainView.findViewById(R.id.driving_page3_layout).setVisibility(
-					View.GONE);
-			cmd82 = 1;
-			cmd90 = 0x34;
-		} else if (id == R.id.driving_page3) {
-			mMainView.findViewById(R.id.driving_page3_layout).setVisibility(
-					View.VISIBLE);
-			mMainView.findViewById(R.id.driving_page2_layout).setVisibility(
-					View.GONE);
-			mMainView.findViewById(R.id.driving_page1_layout).setVisibility(
-					View.GONE);
-			cmd82 = 0x33;
-			cmd90 = 0x35;
-		}
+        if (id == R.id.driving_page1) {
+            mMainView.findViewById(R.id.driving_page1_layout).setVisibility(
+                    View.VISIBLE);
+            mMainView.findViewById(R.id.driving_page2_layout).setVisibility(
+                    View.GONE);
+            mMainView.findViewById(R.id.driving_page3_layout).setVisibility(
+                    View.GONE);
+            cmd82 = 0x33;
+            cmd90 = 0x33;
+        } else if (id == R.id.driving_page2) {
+            mMainView.findViewById(R.id.driving_page2_layout).setVisibility(
+                    View.VISIBLE);
+            mMainView.findViewById(R.id.driving_page1_layout).setVisibility(
+                    View.GONE);
+            mMainView.findViewById(R.id.driving_page3_layout).setVisibility(
+                    View.GONE);
+            cmd82 = 1;
+            cmd90 = 0x34;
+        } else if (id == R.id.driving_page3) {
+            mMainView.findViewById(R.id.driving_page3_layout).setVisibility(
+                    View.VISIBLE);
+            mMainView.findViewById(R.id.driving_page2_layout).setVisibility(
+                    View.GONE);
+            mMainView.findViewById(R.id.driving_page1_layout).setVisibility(
+                    View.GONE);
+            cmd82 = 0x33;
+            cmd90 = 0x35;
+        }
 
 //		sendCanboxInfo82((byte) cmd82);
 		mHandler.sendEmptyMessageDelayed(cmd90, 150);

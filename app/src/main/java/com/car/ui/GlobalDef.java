@@ -1,13 +1,38 @@
 package com.car.ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
+import android.app.Activity;
+import android.app.WallpaperManager;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.hardware.display.DisplayManager;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Environment;
+import android.os.Handler;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
+import android.view.Display;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.common.ui.UIBase;
+import com.common.util.Kernel;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.ProtocolAk47;
 import com.common.util.SystemConfig;
 import com.common.util.Util;
+import com.common.util.UtilCarKey;
+import com.common.utils.BroadcastUtil;
 
 public class GlobalDef {
 

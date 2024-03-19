@@ -1,6 +1,11 @@
 package com.common.ui;
 
+import com.car.ui.GlobalDef;
+import com.common.util.AppConfig;
+
 import android.content.Context;
+import android.hardware.display.DisplayManager;
+import android.view.Display;
 import android.view.View;
 
 public class UIBase implements UIInterface {

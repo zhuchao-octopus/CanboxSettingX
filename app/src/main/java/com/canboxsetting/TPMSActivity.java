@@ -16,20 +16,45 @@
 
 package com.canboxsetting;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.canboxsetting.tpms.MazdTpmsInfoaRaiseFragment;
+import com.canboxsetting.tpms.VWMQBTpmsInfoRaiseFragment;
+import com.canboxsetting.tpms.VWMQBTpmsInfoSimpleFragment;
+import com.canboxsetting.tpms.ZhongXingFragment;
+import com.car.ui.GlobalDef;
+import com.common.util.AppConfig;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.tpms.MazdTpmsInfoaRaiseFragment;
-import com.canboxsetting.tpms.VWMQBTpmsInfoRaiseFragment;
-import com.canboxsetting.tpms.VWMQBTpmsInfoSimpleFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceFragment;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
@@ -59,13 +84,14 @@ public class TPMSActivity extends Activity {
 			try {
 				for (int i = 1; i < ss.length; ++i) {
 					if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-						mProVersion = Integer.parseInt(ss[i].substring(1));
+						mProVersion = Integer.valueOf(ss[i].substring(1));
 					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
 						mProIndex = ss[i].substring(1);
-						GlobalDef.setProId(Integer.parseInt(mProIndex));
+						GlobalDef.setProId(Integer.valueOf(mProIndex));
 					}
 				}
-			} catch (Exception ignored) {
+			} catch (Exception e) {
+
 			}
 		}
 
@@ -77,8 +103,10 @@ public class TPMSActivity extends Activity {
 					Bundle b = new Bundle();
 					b.putString(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX, mProIndex);
 					mSetting.setArguments(b);
-				} catch (Exception ignored) {
+				} catch (Exception e) {
+
 				}
+
 			}
 			if (mSetting == null) {
 				finish();
@@ -98,7 +126,10 @@ public class TPMSActivity extends Activity {
 				else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)) {
 					mSetting = new MazdTpmsInfoaRaiseFragment();
 				}
-
+				
+				else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
+					mSetting = new ZhongXingFragment();
+				}
 			}
 
 			if (mSetting == null) {
@@ -115,7 +146,8 @@ public class TPMSActivity extends Activity {
 	private void replaceFragment(int layoutId, Fragment fragment,
 			boolean isAddStack) {
 		if (fragment != null) {
-			FragmentTransaction transation = mFragmentManager.beginTransaction();
+			FragmentTransaction transation = mFragmentManager
+					.beginTransaction();
 			transation.replace(layoutId, fragment);
 			if (isAddStack) {
 				transation.addToBackStack(null);

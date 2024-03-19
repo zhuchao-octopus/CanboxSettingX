@@ -16,10 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.canboxsetting.R;
+
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import android.util.Log;
+import com.canboxsetting.R;
 
 public class ZhongXingFragment extends PreferenceFragment implements OnPreferenceClickListener {
 	private static final String TAG = "ZhongXingFragment";
@@ -34,20 +36,20 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 
 	// mTpms = (PreferenceScreen) findPreference("tpms");
 	// mTpms.setOnPreferenceClickListener(this);
-
 	// }
 
 	String mCanboxType;
 	String mProIndex = null;
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 
-		mTpmsView = inflater.inflate(R.layout.type_info, container, false);
+		mTpmsView = inflater.inflate(R.layout.type_info_od, container, false);
 
 		mCanboxType = MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-
+		
+ 		Log.d(TAG,TAG+" mCanboxType = "+mCanboxType);
+	
 		if (mCanboxType != null) {
 			String[] ss = mCanboxType.split(",");
 			mCanboxType = ss[0];
@@ -57,7 +59,8 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 						mProIndex = ss[i].substring(1);
 					}
 				}
-			} catch (Exception ignored) {
+			} catch (Exception e) {
+
 			}
 		}
 				
@@ -80,27 +83,13 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 		if (mTpmsView != null) {
 			mTpmsReset = mTpmsView.findViewById(R.id.tpms);
 			if (mTpmsReset != null) {
-				if (MachineConfig.VALUE_CANBOX_VW_MQB_RAISE
-						.equals(mCanboxType) || "46".equals(mProIndex) || "106".equals(mProIndex)) {
-					mTpmsReset.setVisibility(View.GONE);
-				} else {
-					mTpmsReset.setOnClickListener(new View.OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
-							byte[] buf = new byte[] { (byte) 0xc6, 0x02,
-									(byte) 0x22, (byte) 0x01 };
-							BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-						}
-					});
-				}
+			    mTpmsReset.setVisibility(View.GONE);	
 			}
 		}
-		// }
+
 	}
 
-	private final static int[] INIT_CMDS = { 0x6600,0x6601, 0x6800 };
+	private final static int[] INIT_CMDS = { 0x3800,0x3900, 0x2400,0x3000 };
 
 	private void requestInitData() {
 		if (mPause){
@@ -156,7 +145,6 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 			switch(msg.what){
 			case 0:
 				requestInitData();
-
 				break;
 			case 1:
 				sendCanboxInfo(0x90, (msg.arg1 & 0xff00) >> 8, msg.arg1 & 0xff);
@@ -166,7 +154,7 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 	};
 
 	private void sendCanboxInfo(int d0, int d1, int d2) {
-		byte[] buf = new byte[] { (byte) d0, 0x02, (byte) d1, (byte) d2 };
+		byte[] buf = new byte[] { (byte) d0, 0x01, (byte) d1};
 		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 	}
 
@@ -179,7 +167,7 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 			String key = arg0.getKey();
 			if ("tpms".equals(key)) {
 				mTpmsView = null;
-				sendCanboxInfo(0x90, 0x65, 0);
+				sendCanboxInfo(0x90, 0x38,0);
 			}
 		} catch (Exception e) {
 
@@ -228,7 +216,7 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 			initTpmsView();
 		}
 		switch (buf[0]) {
-			case 0x66:
+			case 0x38:
 				mUnit = (buf[7] & 0xff);
 				
 				if (buf[2] == 0) {
@@ -257,53 +245,32 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 //				setTpmsTextValue(R.id.type21_info, buf[5], mColor & 0x4);
 //				setTpmsTextValue(R.id.type22_info, buf[6], mColor & 0x8);
 				break;
-		case 0x68:
-
-			int text0 = buf[2];
-			int text1 = buf[3];
-
-			if (text0 == 0) {
-				text0 = R.string.vw_raise_warning_info_0;
-			}
-			else if ((text0 & 0x40) != 0) {
-				text0 = R.string.vw_raise_warning_info_1;
-			}
-			else if ((text0 & 0x20) != 0) {
-				text0 = R.string.vw_raise_warning_info_1;
-			}
-			else if ((text0 & 0x08) != 0) {
-				text0 = R.string.vw_raise_warning_info_1;
-			}
-			else if ((text0 & 0x04) != 0) {
-				text0 = R.string.vw_raise_warning_info_1;
-			}
-            else {
-				text0 = 0;
-			}
-			if (text1 == 0) {
-				text1 = R.string.vw_raise_warning_info_0;
-			}
-			else if ((text1 & 0x40) != 0) {
-				text1 = R.string.vw_raise_warning_info_1;
-			}
-			else if ((text1 & 0x20) != 0) {
-				text1 = R.string.vw_raise_warning_info_1;
-			}
-			else if ((text1 & 0x08) != 0) {
-				text1 = R.string.vw_raise_warning_info_1;
-			}
-			else if ((text1 & 0x04) != 0) {
-				text1 = R.string.vw_raise_warning_info_1;
-			}
-			else {
-				text1 = 0;
+		case 0x39:
+			mColor = buf[2];
+			int text = buf[3];
+			switch (text) {
+			case 0:
+				text = R.string.vw_raise_warning_info_0;
+				break;
+			case 2:
+				text = R.string.vw_raise_warning_info_1;
+				break;
+			case 3:
+				text = R.string.vw_raise_warning_info_2;
+				break;
+			case 4:
+				text = R.string.vw_raise_warning_info_3;
+				break;
+			default:
+				text = 0;
+				break;
 			}
 
 			TextView tv = ((TextView) mTpmsView.findViewById(R.id.type30_info));
-			if (text0 == 0) {
+			if (text == 0) {
 				tv.setText("");
 			} else {
-				tv.setText(text0);
+				tv.setText(text);
 			}
 
 			setTpmsText(R.id.type11_info2, -1, mColor & 0x1);
@@ -377,7 +344,33 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 		tv.setText(text);
 
 	}
-	
+
+	private void setTpmsTextValue(int id, int value1, int value2,int color) {
+	        String text = "";
+	       
+                if(value1 == 0xff)     
+                {
+                 text = (value2 - 40)+"°C";  
+                } 
+                else 
+                {
+                    double v = (value1 & 0xFF) * 1.373;
+                  
+		    text = v + "KPa "+(value2 - 40)+"°C";
+		}
+		
+		if (color != 0) {
+			color = Color.RED;
+		} else {
+			color = Color.WHITE;
+		}
+
+		TextView tv = ((TextView) mTpmsView.findViewById(id));
+
+		tv.setTextColor(color);
+		tv.setText(text);
+	}
+		
 	private void setTpmsTextColor(int id, int color) {
 
 		TextView tv = ((TextView) mTpmsView.findViewById(id));
@@ -436,73 +429,97 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 		if (mTpmsView == null) {
 			initTpmsView();
 		}
+		//Log.d(TAG,"buf[0]="+(byte)buf[0]);
+		//Log.d(TAG,"==========================>buf[1]="+(byte)buf[1]);
+		//Log.d(TAG,"==========================>buf[2]="+(byte)buf[2]);
+		//Log.d(TAG,"==========================>buf[3]="+(byte)buf[3]);
 		switch (buf[0]) {
-		case 0x66:
-			if (buf[2] == 0) {
-				setTpmsTextValueSimple(R.id.type11_info, buf[3], mColor & 0x1,buf[2]);
-				setTpmsTextValueSimple(R.id.type12_info, buf[4], mColor & 0x2,buf[2]);
-				setTpmsTextValueSimple(R.id.type21_info, buf[5], mColor & 0x4,buf[2]);
-				setTpmsTextValueSimple(R.id.type22_info, buf[6], mColor & 0x8,buf[2]);
-			}
-			else
-			{
-				setTpmsTextValueSimple(R.id.type11_num, buf[3], mColor & 0x1,buf[2]);
-				setTpmsTextValueSimple(R.id.type12_num, buf[4], mColor & 0x2,buf[2]);
-				setTpmsTextValueSimple(R.id.type21_num, buf[5], mColor & 0x4,buf[2]);
-				setTpmsTextValueSimple(R.id.type22_num, buf[6], mColor & 0x8,buf[2]);
-			}
+		case 0x38:
+			setTpmsTextValue(R.id.type11_info, buf[6],buf[2], 0);
+			setTpmsTextValue(R.id.type12_info, buf[7],buf[3], 0);
+			setTpmsTextValue(R.id.type21_info, buf[8],buf[4], 0);
+			setTpmsTextValue(R.id.type22_info, buf[9],buf[5], 0);
 			break;
 		case 0x40:
 			if (buf[2] == 0x90) {
-				mUnit = (buf[4] & 0xf0) >> 4;
+			    mUnit = (buf[4] & 0xf0) >> 4;
 			}
 			break;
-		case 0x65:
-			mColor = buf[2];
-			int text = buf[3];
-			switch (text) {
-			case 0:
-				text = R.string.vw_raise_warning_info_0;
-				break;
-			case 2:
-				text = R.string.vw_raise_warning_info_1;
-				break;
-			case 3:
-				text = R.string.vw_raise_warning_info_2;
-				break;
-			case 4:
-				text = R.string.vw_raise_warning_info_3;
-				break;
-			default:
-				text = 0;
-				break;
-			}
-
+		case 0x39:
+			byte text0 = buf[2];
+			byte text1 = buf[3];
 			TextView tv = ((TextView) mTpmsView.findViewById(R.id.type30_info));
-			if (text == 0) {
+			tv.setTextColor(Color.RED);
+			if (text0 == 0 && text1 == 0) {	
+			        tv.setTextColor(Color.WHITE);		
+				tv.setText(R.string.vw_raise_warning_info_0);
+			}
+			else if ((text0 & 0x40) != 0) {			
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type11_info));
+				ttv.setTextColor(Color.RED);
+			}
+			else if ((text0 & 0x20) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type11_info));
+				ttv.setTextColor(Color.RED);
+			}
+			else if ((text0 & 0x08) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type12_info));
+				ttv.setTextColor(Color.RED);
+			}
+			else if ((text0 & 0x04) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type12_info));
+				ttv.setTextColor(Color.RED);
+			}
+                       
+			else if ((text1 & 0x40) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type21_info));
+				ttv.setTextColor(Color.RED);
+			}
+			else if ((text1 & 0x20) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type21_info));
+				ttv.setTextColor(Color.RED);
+			}
+			else if ((text1 & 0x08) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type22_info));
+				ttv.setTextColor(Color.RED);
+			}
+			
+			else if ((text1 & 0x04) != 0) {
+				tv.setText(R.string.vw_raise_warning_info_1);
+				TextView ttv = ((TextView) mTpmsView.findViewById(R.id.type22_info));
+				ttv.setTextColor(Color.RED);
+			}
+			else {
+				text1 = 0;
+				text0 = 0;
 				tv.setText("");
-			} else {
-				tv.setText(text);
 			}
 
-			setTpmsTextColor(R.id.type11_info, mColor & 0x1);
-			setTpmsTextColor(R.id.type12_info, mColor & 0x2);
-			setTpmsTextColor(R.id.type21_info, mColor & 0x4);
-			setTpmsTextColor(R.id.type22_info, mColor & 0x8);
+			//setTpmsTextColor(R.id.type11_info, mColor & 0x1);
+			//setTpmsTextColor(R.id.type12_info, mColor & 0x2);
+			//setTpmsTextColor(R.id.type21_info, mColor & 0x4);
+			//setTpmsTextColor(R.id.type22_info, mColor & 0x8);
 			break;
 		case 0x48:// this is hidworld
 			String s="";
-//			switch ((buf[2] & 0xff) >> 4) {
-//			case 0:
-//				mUnit = 2;
-//				break;
-//			case 1:
-//				mUnit = 0;
-//				break;
-//			case 2:
-//				mUnit = 1;
-//				break;
-//			}
+			//			switch ((buf[2] & 0xff) >> 4) {
+			//			case 0:
+			//				mUnit = 2;
+			//				break;
+			//			case 1:
+			//				mUnit = 0;
+			//				break;
+			//			case 2:
+			//				mUnit = 1;
+			//				break;
+			//			}
 			
 			switch ((buf[2] & 0xff) >> 6) {
 			case 1:
@@ -521,31 +538,22 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 			tv.setTextColor(Color.WHITE);
 			
 			
-			mColor = ((buf[3] & 0x80) >> 7) | ((buf[3] & 0x40) >> 5)
-					| ((buf[3] & 0x20) >> 3) | ((buf[3] & 0x10) >> 1);
+			mColor = ((buf[3] & 0x80) >> 7) | ((buf[3] & 0x40) >> 5) | ((buf[3] & 0x20) >> 3) | ((buf[3] & 0x10) >> 1);
 			
 			setTpmsTextColor(R.id.type11_info, mColor & 0x1);
 			setTpmsTextColor(R.id.type12_info, mColor & 0x2);
 			setTpmsTextColor(R.id.type21_info, mColor & 0x4);
 			setTpmsTextColor(R.id.type22_info, mColor & 0x8);
 
-			setTpmsTextValueHiworld(R.id.type11_num, ((buf[4] & 0x0ff) << 8)
-					| (buf[5] & 0x0ff), mColor & 0x1);
-			setTpmsTextValueHiworld(R.id.type12_num, ((buf[6] & 0x0ff) << 8)
-					| (buf[7] & 0x0ff), mColor & 0x2);
-			setTpmsTextValueHiworld(R.id.type21_num, ((buf[8] & 0x0ff) << 8)
-					| (buf[9] & 0x0ff), mColor & 0x4);
-			setTpmsTextValueHiworld(R.id.type22_num, ((buf[10] & 0x0ff) << 8)
-					| (buf[11] & 0x0ff), mColor & 0x8);
+			setTpmsTextValueHiworld(R.id.type11_num, ((buf[4] & 0x0ff) << 8) | (buf[5] & 0x0ff), mColor & 0x1);
+			setTpmsTextValueHiworld(R.id.type12_num, ((buf[6] & 0x0ff) << 8) | (buf[7] & 0x0ff), mColor & 0x2);
+			setTpmsTextValueHiworld(R.id.type21_num, ((buf[8] & 0x0ff) << 8) | (buf[9] & 0x0ff), mColor & 0x4);
+			setTpmsTextValueHiworld(R.id.type22_num, ((buf[10] & 0x0ff) << 8) | (buf[11] & 0x0ff), mColor & 0x8);
 			
-			setTpmsTextValueHiworld2(R.id.type11_info, ((buf[12] & 0x0ff) << 8)
-					| (buf[13] & 0x0ff));
-			setTpmsTextValueHiworld2(R.id.type12_info, ((buf[14] & 0x0ff) << 8)
-					| (buf[15] & 0x0ff));
-			setTpmsTextValueHiworld2(R.id.type21_info, ((buf[16] & 0x0ff) << 8)
-					| (buf[17] & 0x0ff));
-			setTpmsTextValueHiworld2(R.id.type22_info, ((buf[18] & 0x0ff) << 8)
-					| (buf[19] & 0x0ff));
+			setTpmsTextValueHiworld2(R.id.type11_info, ((buf[12] & 0x0ff) << 8) | (buf[13] & 0x0ff));
+			setTpmsTextValueHiworld2(R.id.type12_info, ((buf[14] & 0x0ff) << 8) | (buf[15] & 0x0ff));
+			setTpmsTextValueHiworld2(R.id.type21_info, ((buf[16] & 0x0ff) << 8) | (buf[17] & 0x0ff));
+			setTpmsTextValueHiworld2(R.id.type22_info, ((buf[18] & 0x0ff) << 8) | (buf[19] & 0x0ff));
 			
 			break;
 		}
@@ -561,8 +569,7 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 	}
 
 	private void registerListener() {
-		if (mReceiver == null)
-		{
+		if (mReceiver == null) {
 			mReceiver = new BroadcastReceiver() {
 				@Override
 				public void onReceive(Context context, Intent intent) {
@@ -572,25 +579,24 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 						byte[] buf = intent.getByteArrayExtra("buf");
 						if (buf != null) {
 							try {
-								if (MachineConfig.VALUE_CANBOX_VW_MQB_RAISE.equals(mCanboxType) || "46".equals(mProIndex)) {
+								if (MachineConfig.VALUE_CANBOX_VW_MQB_RAISE.equals(mCanboxType) || "46".equals(mProIndex)) { 
 									updateViewRaise(buf);
 								} else {
 									updateView(buf);
 								}
 
-							} catch (Exception ignored) {
+							} catch (Exception e) {
+
 							}
 						}
 					}
 				}
 			};
-
 			IntentFilter iFilter = new IntentFilter();
 			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
 
 			this.getActivity().registerReceiver(mReceiver, iFilter);
 		}
-
 	}
 
 }

@@ -8,10 +8,10 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.AbsSeekBar;
 
-import com.android.canboxsetting.R;
-
+import com.canboxsetting.R;
 
 public class VerticalSeekBar extends AbsSeekBar {
 	public static final int VSEEKBAR_STATU_NONE = 0;

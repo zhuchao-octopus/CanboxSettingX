@@ -16,22 +16,51 @@
 
 package com.canboxsetting.ac;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.drawable;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
+import com.canboxsetting.R.string;
+import com.car.ui.GlobalDef;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnKeyListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-
-import com.android.canboxsetting.R;
-import com.canboxsetting.MyFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
 
 /**
  * This activity plays a video from a specified URI.
@@ -98,45 +127,45 @@ public class HondaRaiseACFragment extends MyFragment {
 	}
 
 	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.ac) {
-			int i = mCommonUpdateView.getAirData(0);
-			if ((i & 0x40) == 0) {
-				i = 1;
-			} else {
-				i = 2;
-			}
-			sendCanboxInfo0xC6(0xac, i);
-		} else if (id == R.id.wind_horizontal1) {
-			sendCanboxInfo0xC6(0xac, 0x3);
-		} else if (id == R.id.wind_horizontal_down) {
-			sendCanboxInfo0xC6(0xac, 0x4);
-		} else if (id == R.id.wind_down1) {
-			sendCanboxInfo0xC6(0xac, 0x5);
-		} else if (id == R.id.wind_up_down) {
-			sendCanboxInfo0xC6(0xac, 0x6);
-		} else if (id == R.id.wind_add) {
-			int w = mCommonUpdateView.getWind();
-			w = (w + 1);
-			if (w < 0 || w > 7) {
-				w = 7;
-			}
-			sendCanboxInfo0xC6(0xad, w);
-		} else if (id == R.id.wind_minus) {
-			int w = mCommonUpdateView.getWind();
-			w = (w - 1);
-			if (w < 0 || w > 7) {
-				w = 0;
-			}
-			sendCanboxInfo0xC6(0xad, w);
-		} else {
-			int cmd = getCmd(v.getId());
+        int id = v.getId();
+        if (id == R.id.ac) {
+            int i = mCommonUpdateView.getAirData(0);
+            if ((i & 0x40) == 0) {
+                i = 1;
+            } else {
+                i = 2;
+            }
+            sendCanboxInfo0xC6(0xac, i);
+        } else if (id == R.id.wind_horizontal1) {
+            sendCanboxInfo0xC6(0xac, 0x3);
+        } else if (id == R.id.wind_horizontal_down) {
+            sendCanboxInfo0xC6(0xac, 0x4);
+        } else if (id == R.id.wind_down1) {
+            sendCanboxInfo0xC6(0xac, 0x5);
+        } else if (id == R.id.wind_up_down) {
+            sendCanboxInfo0xC6(0xac, 0x6);
+        } else if (id == R.id.wind_add) {
+            int w = mCommonUpdateView.getWind();
+            w = (w + 1);
+            if (w < 0 || w > 7) {
+                w = 7;
+            }
+            sendCanboxInfo0xC6(0xad, w);
+        } else if (id == R.id.wind_minus) {
+            int w = mCommonUpdateView.getWind();
+            w = (w - 1);
+            if (w < 0 || w > 7) {
+                w = 0;
+            }
+            sendCanboxInfo0xC6(0xad, w);
+        } else {
+            int cmd = getCmd(v.getId());
 
-			Util.doSleep(200);
-			sendCanboxInfo0xE0((cmd & 0xff), 1);
-			Util.doSleep(200);
-			sendCanboxInfo0xE0((cmd & 0xff), 0);
-		}
+            Util.doSleep(200);
+            sendCanboxInfo0xE0((cmd & 0xff), 1);
+            Util.doSleep(200);
+            sendCanboxInfo0xE0((cmd & 0xff), 0);
+        }
 	}
 
 	private void updateSelect(int id, int s) {

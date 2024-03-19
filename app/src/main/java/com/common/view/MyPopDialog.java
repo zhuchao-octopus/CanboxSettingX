@@ -1,5 +1,7 @@
 package com.common.view;
 
+import com.canboxsetting.R;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,12 +11,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.android.canboxsetting.R;
-
+import android.widget.AdapterView.OnItemClickListener;
 
 public class MyPopDialog extends Dialog {
 

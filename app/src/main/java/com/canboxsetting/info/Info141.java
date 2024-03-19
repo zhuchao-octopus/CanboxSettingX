@@ -1,32 +1,82 @@
 package com.canboxsetting.info;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.IntentFilter;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.os.RemoteException;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceFragment;
+import android.preference.SwitchPreference;
+import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
 import android.widget.TimePicker;
 
-import com.android.canboxsetting.R;
+import com.canboxsetting.CarInfoActivity;
 import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.canboxsetting.R.layout;
 import com.car.view.LineGraphicView;
 import com.common.util.BroadcastUtil;
+import com.common.util.Kernel;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
+import com.common.util.SystemConfig;
 import com.common.util.Util;
+import com.common.util.shell.ShellUtils;
 
-import java.util.ArrayList;
-import java.util.Locale;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 public class Info141 extends MyFragment {
 	private static final String TAG = "FiatFragment";
@@ -92,40 +142,40 @@ public class Info141 extends MyFragment {
 	@Override
 	public void onClick(View v) {
 
-		int id = v.getId();
-		if (id == R.id.charging_settings) {
-			showPage(R.id.page0);
-		} else if (id == R.id.energy_information) {
-			showPage(R.id.page1);
-		} else if (id == R.id.energy_statistics) {
-			showPage(R.id.page2);
-		} else if (id == R.id.gs4_energy_recovery1) {
-			sendCanboxData(0x3, 0);
-		} else if (id == R.id.gs4_energy_recovery2) {
-			sendCanboxData(0x3, 1);
-		} else if (id == R.id.gs4_energy_recovery3) {
-			sendCanboxData(0x3, 2);
-		} else if (id == R.id.energy_recovery_i_pedal1) {
-			sendCanboxData(0x4, 1);
-		} else if (id == R.id.energy_recovery_i_pedal2) {
-			sendCanboxData(0x4, 2);
-		} else if (id == R.id.cancel) {
-			showPage(R.id.page1);
-		} else if (id == R.id.time_of_appointment1) {
-			(new TimePickerDialog(getActivity(), onTimeSetListener, 0, 0, true))
-					.show();
-		} else if (id == R.id.time_of_appointment2) {
-			(new TimePickerDialog(getActivity(), onTimeSetListenerEnd, 0, 0,
-					true)).show();
-		} else if (id == R.id.ok) {
-			setReserveTime();
-		} else if (id == R.id.charging_mode1) {
-			sendCanboxData(0x1, 1);
-			v.setSelected(true);
-		} else if (id == R.id.warning_cancel) {
-			mMainView.findViewById(R.id.warning_layout)
-					.setVisibility(View.GONE);
-		}
+        int id = v.getId();
+        if (id == R.id.charging_settings) {
+            showPage(R.id.page0);
+        } else if (id == R.id.energy_information) {
+            showPage(R.id.page1);
+        } else if (id == R.id.energy_statistics) {
+            showPage(R.id.page2);
+        } else if (id == R.id.gs4_energy_recovery1) {
+            sendCanboxData(0x3, 0);
+        } else if (id == R.id.gs4_energy_recovery2) {
+            sendCanboxData(0x3, 1);
+        } else if (id == R.id.gs4_energy_recovery3) {
+            sendCanboxData(0x3, 2);
+        } else if (id == R.id.energy_recovery_i_pedal1) {
+            sendCanboxData(0x4, 1);
+        } else if (id == R.id.energy_recovery_i_pedal2) {
+            sendCanboxData(0x4, 2);
+        } else if (id == R.id.cancel) {
+            showPage(R.id.page1);
+        } else if (id == R.id.time_of_appointment1) {
+            (new TimePickerDialog(getActivity(), onTimeSetListener, 0, 0, true))
+                    .show();
+        } else if (id == R.id.time_of_appointment2) {
+            (new TimePickerDialog(getActivity(), onTimeSetListenerEnd, 0, 0,
+                    true)).show();
+        } else if (id == R.id.ok) {
+            setReserveTime();
+        } else if (id == R.id.charging_mode1) {
+            sendCanboxData(0x1, 1);
+            v.setSelected(true);
+        } else if (id == R.id.warning_cancel) {
+            mMainView.findViewById(R.id.warning_layout)
+                    .setVisibility(View.GONE);
+        }
 	}
 
 	private void setReserveTime() {
@@ -181,7 +231,7 @@ public class Info141 extends MyFragment {
 		}
 	}
 
-	OnTimeSetListener onTimeSetListener = new OnTimeSetListener() {
+	TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
 
 		@Override
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -196,7 +246,7 @@ public class Info141 extends MyFragment {
 
 	};
 
-	OnTimeSetListener onTimeSetListenerEnd = new OnTimeSetListener() {
+	TimePickerDialog.OnTimeSetListener onTimeSetListenerEnd = new TimePickerDialog.OnTimeSetListener() {
 
 		@Override
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -222,13 +272,13 @@ public class Info141 extends MyFragment {
 		setViewSel(R.id.charging_settings, false);
 		setViewSel(R.id.energy_information, false);
 		setViewSel(R.id.energy_statistics, false);
-		if (page == R.id.page0) {
-			setViewSel(R.id.charging_settings, true);
-		} else if (page == R.id.page1) {
-			setViewSel(R.id.energy_information, true);
-		} else if (page == R.id.page2) {
-			setViewSel(R.id.energy_statistics, true);
-		}
+        if (page == id.page0) {
+            setViewSel(id.charging_settings, true);
+        } else if (page == id.page1) {
+            setViewSel(id.energy_information, true);
+        } else if (page == id.page2) {
+            setViewSel(id.energy_statistics, true);
+        }
 	}
 
 	private void setViewVisible(int id, boolean visible) {

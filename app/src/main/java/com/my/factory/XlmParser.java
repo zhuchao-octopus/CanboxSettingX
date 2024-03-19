@@ -1,16 +1,18 @@
 package com.my.factory;
 
-import android.content.Context;
-import android.content.res.XmlResourceParser;
-import android.util.Log;
-
-import com.android.canboxsetting.R;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
+import com.canboxsetting.R;
+
+import android.content.Context;
+import android.content.res.XmlResourceParser;
+import android.util.Log;
 
 /**
  * This activity plays a video from a specified URI.
@@ -19,7 +21,7 @@ public class XlmParser {
 
 	private ArrayList<Translation> mTranslations;
 
-	static class Translation {
+	class Translation {
 		public String mZH;
 		public String mEN;
 
@@ -131,9 +133,11 @@ public class XlmParser {
 
 					if (name.trim().toLowerCase().equals("menu")) {
 						if (xml.getAttributeCount() > 1) {
-							if (xml.getAttributeName(0).trim().toLowerCase().equals("name")
-									&& xml.getAttributeName(1).trim().toLowerCase().equals("value"))
-							{
+							if (xml.getAttributeName(0).trim().toLowerCase()
+									.equals("name")
+									&& xml.getAttributeName(1).trim()
+											.toLowerCase().equals("value")) {
+
 								cname = xml.getAttributeValue(0);
 								cname = getTranslation(cname);
 								cvalue = xml.getAttributeIntValue(1, 0);
@@ -143,11 +147,11 @@ public class XlmParser {
 								}
 							}
 						}
-					}
-					else if (name.trim().toLowerCase().equals("sub"))
-					{
+					} else if (name.trim().toLowerCase().equals("sub")) {
 						if (xml.getAttributeCount() > 0) {
-							if (xml.getAttributeName(0).trim().toLowerCase().equals("name")) {
+							if (xml.getAttributeName(0).trim().toLowerCase()
+									.equals("name")) {
+
 								cname = xml.getAttributeValue(0);
 								cname = getTranslation(cname);
 								sub = new Sub(cname);
@@ -156,10 +160,9 @@ public class XlmParser {
 								}
 							}
 						}
-					}
-					else if (name.trim().toLowerCase().equals("mods"))
-					{
+					} else if (name.trim().toLowerCase().equals("mods")) {
 						cname = xml.nextText();
+
 						if (sub != null) {
 							if (sub.getCount() == 0) {
 								String[] ss = cname.split(",");
@@ -181,8 +184,9 @@ public class XlmParser {
 
 				xml.next();// 读取下一个标签
 			}
-		}
-		catch (XmlPullParserException | IOException e) {
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 

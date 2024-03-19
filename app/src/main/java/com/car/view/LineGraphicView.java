@@ -1,5 +1,7 @@
 package com.car.view;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -11,8 +13,6 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
-
-import java.util.ArrayList;
 
 public class LineGraphicView extends View {
 	/**

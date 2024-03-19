@@ -1,9 +1,13 @@
 package com.common.service;
 
+import com.common.util.MyCmd;
+
 import android.content.Context;
 import android.content.Intent;
-
-import com.common.util.MyCmd;
+import android.hardware.display.DisplayManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.view.Display;
+import android.view.View;
 
 public abstract class ServiceBase {
 	public Context mContext;
