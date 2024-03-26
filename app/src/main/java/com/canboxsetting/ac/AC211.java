@@ -66,375 +66,354 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class AC211 extends MyFragment {
-	private static final String TAG = "VWMQBAirControlFragment";
+    private static final String TAG = "VWMQBAirControlFragment";
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-	}
+    }
 
-	private View mMainView;
+    private View mMainView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.ac_vw_mqb_bnr, container,
-				false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_vw_mqb_bnr, container, false);
 
-		return mMainView;
-	}
+        return mMainView;
+    }
 
-	private void sendCanboxInfo0xc6(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) 0xc6, 0x2, (byte) d0, (byte) d1, };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
-	
-	private void sendCanboxInfo0xe8(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) 0xe0, 0x2, (byte) d0, (byte) d1, };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
-	
-	private void sendKey(int key){
-		sendCanboxInfo0xe8(key, 1);
-		Util.doSleep(200);
-		sendCanboxInfo0xe8(key, 0);
-	}
+    private void sendCanboxInfo0xc6(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xc6, 0x2, (byte) d0, (byte) d1,};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { (byte) 0x90, 0x2, (byte) d0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo0xe8(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1,};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private final static int[][] CMD_ID = new int[][] {
-		{ R.id.ac_profile, 0xb100 },
-		{ R.id.icon_power, 0x1b2ff },
-		
+    private void sendKey(int key) {
+        sendCanboxInfo0xe8(key, 1);
+        Util.doSleep(200);
+        sendCanboxInfo0xe8(key, 0);
+    }
 
-		{ R.id.con_left_temp_up, 0x3 },
-		{ R.id.con_left_temp_down, 0x2 },
-		{ R.id.con_right_temp_up, 0x5 },
-		{ R.id.con_right_temp_down, 0x4 },
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-		{ R.id.mode, 0x7 }, 
-		{ R.id.wind_minus, 0x9 }, 
-		{ R.id.wind_add, 0xa },
-		
-		{ R.id.con_seathotleft, 0xb },
-		{ R.id.con_seathotright, 0xd },
-		
-
-		{ R.id.air_title_sync, 0x10 }, 
-		
-			{ R.id.air_title_ce_max, 0x13 },
-			{ R.id.rear, 0x14 }, 
-			{ R.id.air_title_ce_rear_lock, 0x2a },
-//			{ R.id.air_title_ce_aqs, 0x1b000 },
-			{ R.id.air_title_ce_ac_1, 0x17 },
-			{ R.id.air_title_ce_inner_loop, 0x19 },
-			{ R.id.air_title_ce_auto_large, 0x15 },
-			{ R.id.air_title_ce_ac_max, 0x18 }, 
-
-			
-//			{ R.id.canbus21_mode1, 0x1b4ff }, 
-//			{ R.id.canbus21_mode3, 0x1b5ff },
-//			{ R.id.canbus21_mode5, 0x1b6ff }, 
-
-			
+    private final static int[][] CMD_ID = new int[][]{
+            {R.id.ac_profile, 0xb100}, {R.id.icon_power, 0x1b2ff},
 
 
-	};
+            {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},
 
-	private int mWindStep = 0;
-	private int mInner = 0;
-	private int mSeatHeatLeft = 0;
-	private int mSeatHeatRight = 0;
+            {R.id.mode, 0x7}, {R.id.wind_minus, 0x9}, {R.id.wind_add, 0xa},
 
-	private int getCmd(int id) {
-		for (int i = 0; i < CMD_ID.length; ++i) {
-			if (CMD_ID[i][0] == id) {
-				return (CMD_ID[i][1] & 0xffffff);
-			}
-		}
-		return 0;
-	}
+            {R.id.con_seathotleft, 0xb}, {R.id.con_seathotright, 0xd},
 
-	public void onClick(View v) {
-		int cmd = getCmd(v.getId());
-		
 
-		
-//		else if (v.getId() == R.id.air_title_ce_inner_loop) {
-//			if (mInner == 0) {
-//				mInner = 1;
-//			} else {
-//				mInner = 0;
-//			}
-//			cmd |= mInner;
-//		} else if (v.getId() == R.id.con_seathotright) {
-//			mSeatHeatRight = (mSeatHeatRight + 1) % 4;
-//			cmd |= mSeatHeatRight;
-//		} else if (v.getId() == R.id.con_seathotleft) {
-//			mSeatHeatLeft = (mSeatHeatLeft + 1) % 4;
-//			cmd |= mSeatHeatLeft;
-//		} else {
-//
-//			if ((cmd & 0x10000) != 0) {
-//				cmd &= ~0xff;
-//				if (!v.isSelected()) {
-//					cmd |= 0x1;
-//				}
-//			} else if ((cmd & 0xff00) == 0xbb00) {
-//				if (v.isSelected()) {
-//					cmd &= ~0xff;
-//				}
-//			} else {
-//
-//			}
-//		}
-		
-		if ((cmd & 0xff00) != 0) {
-			if (v.getId() == R.id.ac_profile) {
-				mACProfileLevel = (mACProfileLevel + 1) % 3;
-				cmd |= mACProfileLevel;
-			} else {
-				if ((cmd & 0x10000) != 0) {
-					cmd &= ~0xff;
-					if (!v.isSelected()) {
-						cmd |= 0x1;
-					}
-				} else if ((cmd & 0xff00) == 0xbb00) {
-					if (v.isSelected()) {
-						cmd &= ~0xff;
-					}
-				} else {
+            {R.id.air_title_sync, 0x10},
 
-				}
-			}
-			
-			sendCanboxInfo0xc6((cmd & 0xff00) >> 8, (cmd & 0xff));
-		} else {
+            {R.id.air_title_ce_max, 0x13}, {R.id.rear, 0x14}, {R.id.air_title_ce_rear_lock, 0x2a},
+            //			{ R.id.air_title_ce_aqs, 0x1b000 },
+            {R.id.air_title_ce_ac_1, 0x17}, {R.id.air_title_ce_inner_loop, 0x19}, {R.id.air_title_ce_auto_large, 0x15}, {R.id.air_title_ce_ac_max, 0x18},
 
-			sendKey((cmd & 0xff));
-		}
 
-	}
+            //			{ R.id.canbus21_mode1, 0x1b4ff },
+            //			{ R.id.canbus21_mode3, 0x1b5ff },
+            //			{ R.id.canbus21_mode5, 0x1b6ff },
 
-	private void updateSelect(int id, int s) {
-		View v = mMainView.findViewById(id);
-		if (v != null) {
-			v.setSelected(s != 0);
-		}
-	}
 
-	private int mACProfileLevel = 0;
+    };
 
-	private void setACProfile(int level) {
-		TextView tv = (TextView) mMainView.findViewById(R.id.ac_profile);
-		if (tv != null) {
-			String[] array = getResources().getStringArray(
-					R.array.air_con_profile_entries);
+    private int mWindStep = 0;
+    private int mInner = 0;
+    private int mSeatHeatLeft = 0;
+    private int mSeatHeatRight = 0;
 
-			if (level >= 0 && level < array.length) {
-				String s = getString(R.string.ac_profile) + ": " + array[level];
-				tv.setText(s);
-			}
+    private int getCmd(int id) {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            if (CMD_ID[i][0] == id) {
+                return (CMD_ID[i][1] & 0xffffff);
+            }
+        }
+        return 0;
+    }
 
-		}
-		mACProfileLevel = level;
-	}
+    public void onClick(View v) {
+        int cmd = getCmd(v.getId());
 
-	private void setSpeed(int speed) {
 
-		for (int i = 0; i < 7; ++i) {
-			View v = mMainView.findViewById(R.id.point0 + i);
-			if (v != null) {
-				if (i < speed) {
-					v.setSelected(true);
-				} else {
-					v.setSelected(false);
-				}
-			}
-		}
-		mWindStep = speed;
-	}
+        //		else if (v.getId() == R.id.air_title_ce_inner_loop) {
+        //			if (mInner == 0) {
+        //				mInner = 1;
+        //			} else {
+        //				mInner = 0;
+        //			}
+        //			cmd |= mInner;
+        //		} else if (v.getId() == R.id.con_seathotright) {
+        //			mSeatHeatRight = (mSeatHeatRight + 1) % 4;
+        //			cmd |= mSeatHeatRight;
+        //		} else if (v.getId() == R.id.con_seathotleft) {
+        //			mSeatHeatLeft = (mSeatHeatLeft + 1) % 4;
+        //			cmd |= mSeatHeatLeft;
+        //		} else {
+        //
+        //			if ((cmd & 0x10000) != 0) {
+        //				cmd &= ~0xff;
+        //				if (!v.isSelected()) {
+        //					cmd |= 0x1;
+        //				}
+        //			} else if ((cmd & 0xff00) == 0xbb00) {
+        //				if (v.isSelected()) {
+        //					cmd &= ~0xff;
+        //				}
+        //			} else {
+        //
+        //			}
+        //		}
 
-	private void setLoop(int loop) {
+        if ((cmd & 0xff00) != 0) {
+            if (v.getId() == R.id.ac_profile) {
+                mACProfileLevel = (mACProfileLevel + 1) % 3;
+                cmd |= mACProfileLevel;
+            } else {
+                if ((cmd & 0x10000) != 0) {
+                    cmd &= ~0xff;
+                    if (!v.isSelected()) {
+                        cmd |= 0x1;
+                    }
+                } else if ((cmd & 0xff00) == 0xbb00) {
+                    if (v.isSelected()) {
+                        cmd &= ~0xff;
+                    }
+                } else {
 
-		ImageView v = (ImageView) mMainView
-				.findViewById(R.id.air_title_ce_inner_loop);
+                }
+            }
 
-		if (v != null) {
-			if (loop == 0) {
-				v.getDrawable().setLevel(0);
-			} else {
-				v.getDrawable().setLevel(1);
-			}
-		}
-		mInner = loop;
-	}
+            sendCanboxInfo0xc6((cmd & 0xff00) >> 8, (cmd & 0xff));
+        } else {
 
-	private void setSeatheat(int id, int level) {
+            sendKey((cmd & 0xff));
+        }
 
-		ImageButton v = (ImageButton) mMainView.findViewById(id);
-		int drawable;
-		if (v != null) {
-			if (id == R.id.con_seathotleft) {
-				drawable = R.drawable.img_air_seathotleft0;
-				switch (level) {
-				case 1:
-					drawable = R.drawable.img_air_seathotleft1;
-					break;
-				case 2:
-					drawable = R.drawable.img_air_seathotleft2;
-					break;
-				case 3:
-					drawable = R.drawable.img_air_seathotleft3;
-					break;
-				}
-			} else {
-				drawable = R.drawable.img_air_seathotright0;
-				switch (level) {
-				case 1:
-					drawable = R.drawable.img_air_seathotright1;
-					break;
-				case 2:
-					drawable = R.drawable.img_air_seathotright2;
-					break;
-				case 3:
-					drawable = R.drawable.img_air_seathotright3;
-					break;
-				}
-			}
+    }
 
-			v.setImageResource(drawable);
-		}
-	}
+    private void updateSelect(int id, int s) {
+        View v = mMainView.findViewById(id);
+        if (v != null) {
+            v.setSelected(s != 0);
+        }
+    }
 
-	private void setTemp(int id, int temperature, int unit) {
-		TextView v = (TextView) mMainView.findViewById(id);
-		String s;
+    private int mACProfileLevel = 0;
 
-		temperature = (byte) ((15.5f + (0.5f * temperature)) * 2);
+    private void setACProfile(int level) {
+        TextView tv = (TextView) mMainView.findViewById(R.id.ac_profile);
+        if (tv != null) {
+            String[] array = getResources().getStringArray(R.array.air_con_profile_entries);
 
-		if (v != null) {
-			if (temperature <= 31) {
-				s = "LOW";
-			} else if (temperature >= 62) {
-				s = "HI";
+            if (level >= 0 && level < array.length) {
+                String s = getString(R.string.ac_profile) + ": " + array[level];
+                tv.setText(s);
+            }
 
-			} else {
-				if (unit == 0) {
-					s = String.format(Locale.ENGLISH, "%.1f%s",
-							((float) temperature) / 2, getResources()
-									.getString(R.string.temp_unic));
-				} else {
-					s = String.format(Locale.ENGLISH, "%dF", (int) temperature);
-				}
-			}
-			v.setText(s);
-		}
-	}
+        }
+        mACProfileLevel = level;
+    }
 
-	private void updateView(byte[] buf) {
-		switch (buf[0]) {
-		case 0x21:
-			// if (buf[2]&0x80)
-			updateSelect(R.id.air_title_ce_ac_max, buf[6] & 0x08);
-			updateSelect(R.id.air_title_ce_rear_lock, buf[2] & 0x01);
-			updateSelect(R.id.air_title_ce_ac_1, buf[2] & 0x40);
-			updateSelect(R.id.air_title_ce_auto_large, buf[2] & 0x08);
-			updateSelect(R.id.air_title_ce_max, buf[2] & 0x02);
-			updateSelect(R.id.air_title_ce_aqs, buf[6] & 0x20);
-			updateSelect(R.id.wheel, buf[7] & 0x80);
+    private void setSpeed(int speed) {
 
-			updateSelect(R.id.air_title_sync, buf[2] & 0x04);
-			updateSelect(R.id.icon_power, buf[2] & 0x80);
-			updateSelect(R.id.rear, buf[6] & 0x40);
+        for (int i = 0; i < 7; ++i) {
+            View v = mMainView.findViewById(R.id.point0 + i);
+            if (v != null) {
+                if (i < speed) {
+                    v.setSelected(true);
+                } else {
+                    v.setSelected(false);
+                }
+            }
+        }
+        mWindStep = speed;
+    }
 
-			setSpeed((buf[3] & 0xf));
-			setACProfile((buf[8] & 0x3));
+    private void setLoop(int loop) {
 
-			setSeatheat(R.id.con_seathotright, (buf[7] & 0x07));
+        ImageView v = (ImageView) mMainView.findViewById(R.id.air_title_ce_inner_loop);
 
-			mSeatHeatRight = buf[7] & 0x7;
-			setSeatheat(R.id.con_seathotleft, (buf[7] & 0x70) >> 4);
+        if (v != null) {
+            if (loop == 0) {
+                v.getDrawable().setLevel(0);
+            } else {
+                v.getDrawable().setLevel(1);
+            }
+        }
+        mInner = loop;
+    }
 
-			mSeatHeatLeft = (buf[7] & 0x70) >> 4;
+    private void setSeatheat(int id, int level) {
 
-			setTemp(R.id.con_txt_left_temp, (buf[4] & 0xff), (buf[6] & 0x01));
-			setTemp(R.id.con_txt_right_temp, (buf[5] & 0xff), (buf[6] & 0x01));
+        ImageButton v = (ImageButton) mMainView.findViewById(id);
+        int drawable;
+        if (v != null) {
+            if (id == R.id.con_seathotleft) {
+                drawable = R.drawable.img_air_seathotleft0;
+                switch (level) {
+                    case 1:
+                        drawable = R.drawable.img_air_seathotleft1;
+                        break;
+                    case 2:
+                        drawable = R.drawable.img_air_seathotleft2;
+                        break;
+                    case 3:
+                        drawable = R.drawable.img_air_seathotleft3;
+                        break;
+                }
+            } else {
+                drawable = R.drawable.img_air_seathotright0;
+                switch (level) {
+                    case 1:
+                        drawable = R.drawable.img_air_seathotright1;
+                        break;
+                    case 2:
+                        drawable = R.drawable.img_air_seathotright2;
+                        break;
+                    case 3:
+                        drawable = R.drawable.img_air_seathotright3;
+                        break;
+                }
+            }
 
-			updateSelect(R.id.canbus21_mode1, buf[3] & 0x40);
-			updateSelect(R.id.canbus21_mode3, buf[3] & 0x20);
-			updateSelect(R.id.canbus21_mode5, buf[3] & 0x80);
+            v.setImageResource(drawable);
+        }
+    }
 
-			setLoop(buf[2] & 0x20);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+    private void setTemp(int id, int temperature, int unit) {
+        TextView v = (TextView) mMainView.findViewById(id);
+        String s;
 
-			super.callBack(0);
-			break;
-		}
-	}
+        temperature = (byte) ((15.5f + (0.5f * temperature)) * 2);
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		super.onPause();
-	}
+        if (v != null) {
+            if (temperature <= 31) {
+                s = "LOW";
+            } else if (temperature >= 62) {
+                s = "HI";
 
-	@Override
-	public void onResume() {
-		registerListener();
-		sendCanboxInfo0x90(0x21);
-		new Handler().postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				sendCanboxInfo0x90(0x21);
-			}
-		}, 1000);
-		super.onResume();
-	}
+            } else {
+                if (unit == 0) {
+                    s = String.format(Locale.ENGLISH, "%.1f%s", ((float) temperature) / 2, getResources().getString(R.string.temp_unic));
+                } else {
+                    s = String.format(Locale.ENGLISH, "%dF", (int) temperature);
+                }
+            }
+            v.setText(s);
+        }
+    }
 
-	private BroadcastReceiver mReceiver;
+    private void updateView(byte[] buf) {
+        switch (buf[0]) {
+            case 0x21:
+                // if (buf[2]&0x80)
+                updateSelect(R.id.air_title_ce_ac_max, buf[6] & 0x08);
+                updateSelect(R.id.air_title_ce_rear_lock, buf[2] & 0x01);
+                updateSelect(R.id.air_title_ce_ac_1, buf[2] & 0x40);
+                updateSelect(R.id.air_title_ce_auto_large, buf[2] & 0x08);
+                updateSelect(R.id.air_title_ce_max, buf[2] & 0x02);
+                updateSelect(R.id.air_title_ce_aqs, buf[6] & 0x20);
+                updateSelect(R.id.wheel, buf[7] & 0x80);
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+                updateSelect(R.id.air_title_sync, buf[2] & 0x04);
+                updateSelect(R.id.icon_power, buf[2] & 0x80);
+                updateSelect(R.id.rear, buf[6] & 0x40);
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+                setSpeed((buf[3] & 0xf));
+                setACProfile((buf[8] & 0x3));
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+                setSeatheat(R.id.con_seathotright, (buf[7] & 0x07));
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+                mSeatHeatRight = buf[7] & 0x7;
+                setSeatheat(R.id.con_seathotleft, (buf[7] & 0x70) >> 4);
+
+                mSeatHeatLeft = (buf[7] & 0x70) >> 4;
+
+                setTemp(R.id.con_txt_left_temp, (buf[4] & 0xff), (buf[6] & 0x01));
+                setTemp(R.id.con_txt_right_temp, (buf[5] & 0xff), (buf[6] & 0x01));
+
+                updateSelect(R.id.canbus21_mode1, buf[3] & 0x40);
+                updateSelect(R.id.canbus21_mode3, buf[3] & 0x20);
+                updateSelect(R.id.canbus21_mode5, buf[3] & 0x80);
+
+                setLoop(buf[2] & 0x20);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+
+                super.callBack(0);
+                break;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        unregisterListener();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        registerListener();
+        sendCanboxInfo0x90(0x21);
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                sendCanboxInfo0x90(0x21);
+            }
+        }, 1000);
+        super.onResume();
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 }

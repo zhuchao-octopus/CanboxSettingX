@@ -66,325 +66,306 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class JeepAirControlFragment extends MyFragment {
-	private static final String TAG = "JeepAirControlFragment";
+    private static final String TAG = "JeepAirControlFragment";
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-	}
+    }
 
-	private View mMainView;
+    private View mMainView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.ac_jeep_simple, container, false);
-			
-		if ((GlobalDef.getProId() == 186)) {
-			mMainView.findViewById(R.id.wheel).setVisibility(View.GONE);
-		}
-		return mMainView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_jeep_simple, container, false);
 
-	private void sendCanboxInfo0x82(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) 0x82, 0x2, (byte) d0, (byte) d1, };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        if ((GlobalDef.getProId() == 186)) {
+            mMainView.findViewById(R.id.wheel).setVisibility(View.GONE);
+        }
+        return mMainView;
+    }
 
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { (byte) 0x90, 0x4, (byte) d0, 0, 0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo0x82(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0x82, 0x2, (byte) d0, (byte) d1,};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private final static int[][] CMD_ID = new int[][] {
-			{ R.id.air_title_ce_max, 0x010c },
-			{ R.id.air_title_ce_rear, 0x010e },
-			{ R.id.air_title_ce_ac_1, 0x0101 },
-			{ R.id.air_title_ce_inner_loop, 0x0103 },
-			{ R.id.air_title_ce_auto_large, 0x0102 },
-			{ R.id.air_title_ce_ac_max, 0x010f }, { R.id.wheel, 0x0118 },
-			{ R.id.con_left_temp_up, 0x0104 },
-			{ R.id.con_left_temp_down, 0x0105 },
-			{ R.id.con_right_temp_up, 0x0114 },
-			{ R.id.con_right_temp_down, 0x0115 },
-			{ R.id.canbus21_mode1, 0x0108 }, { R.id.canbus21_mode2, 0x0109 },
-			{ R.id.canbus21_mode3, 0x010a }, { R.id.canbus21_mode4, 0x010b },
-			{ R.id.con_seathotleft, 0x0111 },
-			{ R.id.con_seathotright, 0x0112 }, { R.id.air_title_sync, 0x010d },
-			{ R.id.icon_power, 0x0110 }, { R.id.wind_add, 0x0106 },
-			{ R.id.wind_minus, 0x0107 },
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x4, (byte) d0, 0, 0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	};
+    private final static int[][] CMD_ID = new int[][]{
+            {R.id.air_title_ce_max, 0x010c}, {R.id.air_title_ce_rear, 0x010e}, {R.id.air_title_ce_ac_1, 0x0101}, {R.id.air_title_ce_inner_loop, 0x0103}, {R.id.air_title_ce_auto_large, 0x0102},
+            {R.id.air_title_ce_ac_max, 0x010f}, {R.id.wheel, 0x0118}, {R.id.con_left_temp_up, 0x0104}, {R.id.con_left_temp_down, 0x0105}, {R.id.con_right_temp_up, 0x0114},
+            {R.id.con_right_temp_down, 0x0115}, {R.id.canbus21_mode1, 0x0108}, {R.id.canbus21_mode2, 0x0109}, {R.id.canbus21_mode3, 0x010a}, {R.id.canbus21_mode4, 0x010b},
+            {R.id.con_seathotleft, 0x0111}, {R.id.con_seathotright, 0x0112}, {R.id.air_title_sync, 0x010d}, {R.id.icon_power, 0x0110}, {R.id.wind_add, 0x0106}, {R.id.wind_minus, 0x0107},
 
-	private void sendCmd(int id) {
-		for (int i = 0; i < CMD_ID.length; ++i) {
-			if (CMD_ID[i][0] == id) {
-				sendCanboxInfo0x82((CMD_ID[i][1] & 0xff00) >> 8,
-						(CMD_ID[i][1] & 0xff));
-			}
-		}
-	}
+    };
 
-	public void onClick(View v) {
-		sendCmd(v.getId());
-	}
+    private void sendCmd(int id) {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            if (CMD_ID[i][0] == id) {
+                sendCanboxInfo0x82((CMD_ID[i][1] & 0xff00) >> 8, (CMD_ID[i][1] & 0xff));
+            }
+        }
+    }
 
-	private void updateSelect(int id, int s) {
-		View v = mMainView.findViewById(id);
-		if (v != null) {
-			v.setSelected(s != 0);
-		}
-	}
+    public void onClick(View v) {
+        sendCmd(v.getId());
+    }
 
-	private void setSpeed(int speed) {
+    private void updateSelect(int id, int s) {
+        View v = mMainView.findViewById(id);
+        if (v != null) {
+            v.setSelected(s != 0);
+        }
+    }
 
-		for (int i = 0; i < 7; ++i) {
-			View v = mMainView.findViewById(R.id.point0 + i);
-			if (v != null) {
-				if (i < speed) {
-					v.setVisibility(View.VISIBLE);
-				} else {
-					v.setVisibility(View.INVISIBLE);
-				}
-			}
-		}
-	}
+    private void setSpeed(int speed) {
 
-	private void setLoop(int loop) {
+        for (int i = 0; i < 7; ++i) {
+            View v = mMainView.findViewById(R.id.point0 + i);
+            if (v != null) {
+                if (i < speed) {
+                    v.setVisibility(View.VISIBLE);
+                } else {
+                    v.setVisibility(View.INVISIBLE);
+                }
+            }
+        }
+    }
 
-		ImageView v = (ImageView) mMainView
-				.findViewById(R.id.air_title_ce_inner_loop);
+    private void setLoop(int loop) {
 
-		if (v != null) {
-			if (loop == 0) {
-				v.getDrawable().setLevel(0);
-			} else {
-				v.getDrawable().setLevel(1);
-			}
-		}
-	}
+        ImageView v = (ImageView) mMainView.findViewById(R.id.air_title_ce_inner_loop);
 
-	private void setSeatheat(int id, int level) {
-		ImageButton v = (ImageButton) mMainView.findViewById(id);
-		int drawable;
-		if (v != null) {
-			if (id == R.id.con_seathotleft) {
-				drawable = R.drawable.img_air_seathotleft0;
-				switch (level) {
-				case 1:
-					drawable = R.drawable.img_air_seathotleft1;
-					break;
-				case 2:
-					drawable = R.drawable.img_air_seathotleft2;
-					break;
-				}
-			} else {
-				drawable = R.drawable.img_air_seathotright0;
-				switch (level) {
-				case 1:
-					drawable = R.drawable.img_air_seathotright1;
-					break;
-				case 2:
-					drawable = R.drawable.img_air_seathotright2;
-					break;
-				}
-			}
+        if (v != null) {
+            if (loop == 0) {
+                v.getDrawable().setLevel(0);
+            } else {
+                v.getDrawable().setLevel(1);
+            }
+        }
+    }
 
-			v.setImageResource(drawable);
-		}
-	}
+    private void setSeatheat(int id, int level) {
+        ImageButton v = (ImageButton) mMainView.findViewById(id);
+        int drawable;
+        if (v != null) {
+            if (id == R.id.con_seathotleft) {
+                drawable = R.drawable.img_air_seathotleft0;
+                switch (level) {
+                    case 1:
+                        drawable = R.drawable.img_air_seathotleft1;
+                        break;
+                    case 2:
+                        drawable = R.drawable.img_air_seathotleft2;
+                        break;
+                }
+            } else {
+                drawable = R.drawable.img_air_seathotright0;
+                switch (level) {
+                    case 1:
+                        drawable = R.drawable.img_air_seathotright1;
+                        break;
+                    case 2:
+                        drawable = R.drawable.img_air_seathotright2;
+                        break;
+                }
+            }
 
-	String getAirTemperature(View view, float temperature, boolean isCentigradeUnit) {
+            v.setImageResource(drawable);
+        }
+    }
 
-		if (GlobalDef.mTempUnit == 1) {
-			if (!isCentigradeUnit) {
-				temperature = ((temperature) - 32) / 1.8f;
-				isCentigradeUnit = !isCentigradeUnit;
-			}
-		} else if (GlobalDef.mTempUnit == 2) {
-			if (isCentigradeUnit) {
-				temperature = ((temperature / 2) * 1.8f + 32);
-				isCentigradeUnit = !isCentigradeUnit;
-			}
-		}
+    String getAirTemperature(View view, float temperature, boolean isCentigradeUnit) {
 
-		if (isCentigradeUnit == true) {
-			return String.format(Locale.ENGLISH, "%.1f%s", temperature / 2,
-					view.getResources()
-							.getString(R.string.temp_unic_centigrade));
-		} else {
-			return String.format(Locale.ENGLISH, "%d%s", (int) temperature,
-					view.getResources()
-							.getString(R.string.temp_unic_fahrenheit));
-		}
+        if (GlobalDef.mTempUnit == 1) {
+            if (!isCentigradeUnit) {
+                temperature = ((temperature) - 32) / 1.8f;
+                isCentigradeUnit = !isCentigradeUnit;
+            }
+        } else if (GlobalDef.mTempUnit == 2) {
+            if (isCentigradeUnit) {
+                temperature = ((temperature / 2) * 1.8f + 32);
+                isCentigradeUnit = !isCentigradeUnit;
+            }
+        }
 
-	}
-	
-	private void setTemp(int id, int temperature, int unit) {
-		TextView v = (TextView) mMainView.findViewById(id);
-		String s;
-		if (v != null) {
-			if (temperature == 0) {
-				s = "LOW";
-			} else if (temperature == 0xff) {
-				s = "HI";
+        if (isCentigradeUnit == true) {
+            return String.format(Locale.ENGLISH, "%.1f%s", temperature / 2, view.getResources().getString(R.string.temp_unic_centigrade));
+        } else {
+            return String.format(Locale.ENGLISH, "%d%s", (int) temperature, view.getResources().getString(R.string.temp_unic_fahrenheit));
+        }
 
-			} else {
-				s = getAirTemperature(mMainView, temperature, unit == 0);
-//				if (unit == 0) {
-//					s = String.format(Locale.ENGLISH, "%.1f%s",
-//							((float) temperature) / 2, getResources()
-//									.getString(R.string.temp_unic));
-//				} else {
-//					s = String.format(Locale.ENGLISH, "%dF", (int) temperature);
-//				}
-			}
-			v.setText(s);
-		}
-	}
-	
+    }
 
-	private void setTempManul(int id, int temperature, int unit) {
-		TextView v = (TextView) mMainView.findViewById(id);
-		String s;
-		if (v != null) {
-			switch((temperature&0xc0)>>6){
-			case 1:
-				s = getString(R.string.air_manual_cryogen);
-				s += " " + ((temperature & 0x3f) );
-				break;
-			case 2:
-				s = getString(R.string.air_manual_heat);
-				s += " " + ((temperature & 0x3f) );
-				break;
-			default:
-				s = getString(R.string.air_manual_normal);
-				s += " " + ((temperature & 0x3f) );
-				break;
-			}
-		
-			v.setText(s);
-		}
-	}
+    private void setTemp(int id, int temperature, int unit) {
+        TextView v = (TextView) mMainView.findViewById(id);
+        String s;
+        if (v != null) {
+            if (temperature == 0) {
+                s = "LOW";
+            } else if (temperature == 0xff) {
+                s = "HI";
 
-	private void updateView(byte[] buf) {
-		switch (buf[0]) {
-		case 0x21:
-			// if (buf[2]&0x80)
-			updateSelect(R.id.air_title_ce_ac_max, buf[6] & 0x08);
-			updateSelect(R.id.air_title_ce_rear, buf[6] & 0x40);
-			updateSelect(R.id.air_title_ce_ac_1, buf[2] & 0x40);
-			updateSelect(R.id.air_title_ce_auto_large, buf[2] & 0x08);
-			updateSelect(R.id.air_title_ce_max, buf[6] & 0x80);
-			updateSelect(R.id.wheel, buf[9] & 0x80);
+            } else {
+                s = getAirTemperature(mMainView, temperature, unit == 0);
+                //				if (unit == 0) {
+                //					s = String.format(Locale.ENGLISH, "%.1f%s",
+                //							((float) temperature) / 2, getResources()
+                //									.getString(R.string.temp_unic));
+                //				} else {
+                //					s = String.format(Locale.ENGLISH, "%dF", (int) temperature);
+                //				}
+            }
+            v.setText(s);
+        }
+    }
 
-			updateSelect(R.id.air_title_sync, buf[2] & 0x04);
-			updateSelect(R.id.icon_power, buf[2] & 0x80);
 
-			setSpeed((buf[3] & 0xf));
+    private void setTempManul(int id, int temperature, int unit) {
+        TextView v = (TextView) mMainView.findViewById(id);
+        String s;
+        if (v != null) {
+            switch ((temperature & 0xc0) >> 6) {
+                case 1:
+                    s = getString(R.string.air_manual_cryogen);
+                    s += " " + ((temperature & 0x3f));
+                    break;
+                case 2:
+                    s = getString(R.string.air_manual_heat);
+                    s += " " + ((temperature & 0x3f));
+                    break;
+                default:
+                    s = getString(R.string.air_manual_normal);
+                    s += " " + ((temperature & 0x3f));
+                    break;
+            }
 
-			setSeatheat(R.id.con_seathotright, (buf[7] & 0x0f));
-			setSeatheat(R.id.con_seathotleft, (buf[7] & 0xf0) >> 4);
+            v.setText(s);
+        }
+    }
 
-			if ((buf[6] & 0x02)==0){
-				setTemp(R.id.con_txt_left_temp, (buf[4] & 0xff), (buf[6] & 0x01));
-				setTemp(R.id.con_txt_right_temp, (buf[5] & 0xff), (buf[6] & 0x01));
-			} else {
-				setTempManul(R.id.con_txt_left_temp, (buf[4] & 0xff), (buf[6] & 0x01));
-				setTempManul(R.id.con_txt_right_temp, (buf[5] & 0xff), (buf[6] & 0x01));
-			}
+    private void updateView(byte[] buf) {
+        switch (buf[0]) {
+            case 0x21:
+                // if (buf[2]&0x80)
+                updateSelect(R.id.air_title_ce_ac_max, buf[6] & 0x08);
+                updateSelect(R.id.air_title_ce_rear, buf[6] & 0x40);
+                updateSelect(R.id.air_title_ce_ac_1, buf[2] & 0x40);
+                updateSelect(R.id.air_title_ce_auto_large, buf[2] & 0x08);
+                updateSelect(R.id.air_title_ce_max, buf[6] & 0x80);
+                updateSelect(R.id.wheel, buf[9] & 0x80);
 
-			int t = 0;
-			updateSelect(R.id.canbus21_mode1, 0);
-			updateSelect(R.id.canbus21_mode2, 0);
-			updateSelect(R.id.canbus21_mode3, 0);
-			updateSelect(R.id.canbus21_mode4, 0);
-			if ((buf[3] & 0x80) != 0) {
-				if ((buf[3] & 0x20) != 0) {
-					t = R.id.canbus21_mode4;
-				}
-			} else {
-				if ((buf[3] & 0x20) != 0 && (buf[3] & 0x40) != 0) {
-					t = R.id.canbus21_mode2;
-				} else if ((buf[3] & 0x20) != 0) {
-					t = R.id.canbus21_mode3;
-				} else if ((buf[3] & 0x40) != 0) {
-					t = R.id.canbus21_mode1;
-				}
-			}
+                updateSelect(R.id.air_title_sync, buf[2] & 0x04);
+                updateSelect(R.id.icon_power, buf[2] & 0x80);
 
-			if (t != 0) {
-				updateSelect(t, 1);
-			}
+                setSpeed((buf[3] & 0xf));
 
-			setLoop(buf[2] & 0x20);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-			// updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                setSeatheat(R.id.con_seathotright, (buf[7] & 0x0f));
+                setSeatheat(R.id.con_seathotleft, (buf[7] & 0xf0) >> 4);
 
-			super.callBack(0);
-			break;
-		}
-	}
+                if ((buf[6] & 0x02) == 0) {
+                    setTemp(R.id.con_txt_left_temp, (buf[4] & 0xff), (buf[6] & 0x01));
+                    setTemp(R.id.con_txt_right_temp, (buf[5] & 0xff), (buf[6] & 0x01));
+                } else {
+                    setTempManul(R.id.con_txt_left_temp, (buf[4] & 0xff), (buf[6] & 0x01));
+                    setTempManul(R.id.con_txt_right_temp, (buf[5] & 0xff), (buf[6] & 0x01));
+                }
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		super.onPause();
-	}
+                int t = 0;
+                updateSelect(R.id.canbus21_mode1, 0);
+                updateSelect(R.id.canbus21_mode2, 0);
+                updateSelect(R.id.canbus21_mode3, 0);
+                updateSelect(R.id.canbus21_mode4, 0);
+                if ((buf[3] & 0x80) != 0) {
+                    if ((buf[3] & 0x20) != 0) {
+                        t = R.id.canbus21_mode4;
+                    }
+                } else {
+                    if ((buf[3] & 0x20) != 0 && (buf[3] & 0x40) != 0) {
+                        t = R.id.canbus21_mode2;
+                    } else if ((buf[3] & 0x20) != 0) {
+                        t = R.id.canbus21_mode3;
+                    } else if ((buf[3] & 0x40) != 0) {
+                        t = R.id.canbus21_mode1;
+                    }
+                }
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			sendCanboxInfo0x90(0x21);
-		}
-	};
-	
-	@Override
-	public void onResume() {
-		registerListener();
-//		sendCanboxInfo0x90(0x21);
-		mHandler.sendEmptyMessageDelayed(0, 500);
-		mHandler.sendEmptyMessageDelayed(0, 1000);
-		super.onResume();
-	}
+                if (t != 0) {
+                    updateSelect(t, 1);
+                }
 
-	private BroadcastReceiver mReceiver;
+                setLoop(buf[2] & 0x20);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
+                // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+                super.callBack(0);
+                break;
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    @Override
+    public void onPause() {
+        unregisterListener();
+        super.onPause();
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            sendCanboxInfo0x90(0x21);
+        }
+    };
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+    @Override
+    public void onResume() {
+        registerListener();
+        //		sendCanboxInfo0x90(0x21);
+        mHandler.sendEmptyMessageDelayed(0, 500);
+        mHandler.sendEmptyMessageDelayed(0, 1000);
+        super.onResume();
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 }

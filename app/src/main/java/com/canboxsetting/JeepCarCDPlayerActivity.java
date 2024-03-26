@@ -65,266 +65,252 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class JeepCarCDPlayerActivity extends Activity {
-	private static final String TAG = "HondaAirControl";
+    private static final String TAG = "HondaAirControl";
 
-	private FragmentManager mFragmentManager;
+    private FragmentManager mFragmentManager;
 
-	private MyFragment mSetting;
+    private MyFragment mSetting;
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		setContentView(R.layout.main);
-		mFragmentManager = getFragmentManager();
+        setContentView(R.layout.main);
+        mFragmentManager = getFragmentManager();
 
-		String value = null;// AppConfig.getCanboxSetting();//
-							// MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
+        String value = null;// AppConfig.getCanboxSetting();//
+        // MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
 
-		String mCanboxType = MachineConfig
-				.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-		int mProVersion = 0;
-		String mProIndex = null;
+        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
+        int mProVersion = 0;
+        String mProIndex = null;
 
-		int mModelId = 0 ;
-		if (mCanboxType != null) {
-			String[] ss = mCanboxType.split(",");
-			value = ss[0];
-			try {
-				for (int i = 1; i < ss.length; ++i) {
-					if (ss[i]
-							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-						mProVersion = Integer.valueOf(ss[i].substring(1));
-					} else if (ss[i]
-							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
-						mProIndex = ss[i].substring(1);
-					}else if (ss[i]
-							.startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
-						String mProId = ss[i].substring(1);
-						if (mProId != null && mProId.length() >= 4) {
-							int start = 0;
-							int end = 0;
-							if (mProId.charAt(1) == '0'
-									&& mProId.charAt(2) != 0) {
-								end = 1;
-							} else if (mProId.charAt(2) == '0') {
-								end = 2;
-							}
+        int mModelId = 0;
+        if (mCanboxType != null) {
+            String[] ss = mCanboxType.split(",");
+            value = ss[0];
+            try {
+                for (int i = 1; i < ss.length; ++i) {
+                    if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
+                        mProVersion = Integer.valueOf(ss[i].substring(1));
+                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+                        mProIndex = ss[i].substring(1);
+                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
+                        String mProId = ss[i].substring(1);
+                        if (mProId != null && mProId.length() >= 4) {
+                            int start = 0;
+                            int end = 0;
+                            if (mProId.charAt(1) == '0' && mProId.charAt(2) != 0) {
+                                end = 1;
+                            } else if (mProId.charAt(2) == '0') {
+                                end = 2;
+                            }
 
-							start = end + 1;
-							if (mProId.contains("-")) {
-								String[] sss = mProId.substring(start)
-										.split("-");
-								mModelId = Integer.valueOf(sss[1]);
-							} else {
-								if ((mProId.length() - start) == 2) {
-									mModelId = Integer.valueOf(mProId
-											.substring(start + 1, start + 2));
-								} else if ((mProId.length() - start) == 4) {
-									mModelId = Integer.valueOf(mProId
-											.substring(start + 2, start + 4));
-								} else if ((mProId.length() - start) == 3) {
-									mModelId = Integer.valueOf(mProId
-											.substring(start + 2, start + 3));
-								}
-							}
+                            start = end + 1;
+                            if (mProId.contains("-")) {
+                                String[] sss = mProId.substring(start).split("-");
+                                mModelId = Integer.valueOf(sss[1]);
+                            } else {
+                                if ((mProId.length() - start) == 2) {
+                                    mModelId = Integer.valueOf(mProId.substring(start + 1, start + 2));
+                                } else if ((mProId.length() - start) == 4) {
+                                    mModelId = Integer.valueOf(mProId.substring(start + 2, start + 4));
+                                } else if ((mProId.length() - start) == 3) {
+                                    mModelId = Integer.valueOf(mProId.substring(start + 2, start + 3));
+                                }
+                            }
 
-							GlobalDef.setModelId(mModelId);
-							
-						}
-					}
-				}
-			} catch (Exception e) {
+                            GlobalDef.setModelId(mModelId);
 
-			}
-		}
+                        }
+                    }
+                }
+            } catch (Exception e) {
 
-		if (mProVersion >= 3 && mProIndex != null) {
-			Class<?> c = FragmentPro.getFragmentCDByID(mProIndex);
-			if (c != null) {
-				try {
-					mSetting = (MyFragment) c.newInstance();
-				} catch (Exception e) {
+            }
+        }
 
-				}
+        if (mProVersion >= 3 && mProIndex != null) {
+            Class<?> c = FragmentPro.getFragmentCDByID(mProIndex);
+            if (c != null) {
+                try {
+                    mSetting = (MyFragment) c.newInstance();
+                } catch (Exception e) {
 
-			}
-			if (mSetting == null) {
-				finish();
-				return;
-			}
-		} else {
-			if (value != null) {
-				if (value.equals(MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK)
-						|| value.equals(MachineConfig.VALUE_CANBOX_MAZDA_XINBAS)) {
-					mSetting = new MazdaBinarytekCarCDFragment();
-				} else if (value
-						.equals(MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE)) {
-					mSetting = new MazdaSimpleCarCDFragment();
-				} else if (value
-						.equals(MachineConfig.VALUE_CANBOX_RX330_HAOZHENG)) {
-					mSetting = new RX330HZCarCDFragment();
-				} else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_XINBAS)) {
-					mSetting = new JeepCarCDXinbasFragment();
-				} else if (value.equals(MachineConfig.VALUE_CANBOX_GM_OD)) {
-					mSetting = new GMODCarCDFragment();
-				}
-			}
-		}
-		// if(){
-		//
-		// } else {
-		//
-		// }
-		if (mSetting == null) {
-			mSetting = new JeepCarCDFragment();
-		}
+                }
 
-		replaceFragment(R.id.main, mSetting, false);
-		registerListener();
-		updateIntent(getIntent());
-	}
+            }
+            if (mSetting == null) {
+                finish();
+                return;
+            }
+        } else {
+            if (value != null) {
+                if (value.equals(MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK) || value.equals(MachineConfig.VALUE_CANBOX_MAZDA_XINBAS)) {
+                    mSetting = new MazdaBinarytekCarCDFragment();
+                } else if (value.equals(MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE)) {
+                    mSetting = new MazdaSimpleCarCDFragment();
+                } else if (value.equals(MachineConfig.VALUE_CANBOX_RX330_HAOZHENG)) {
+                    mSetting = new RX330HZCarCDFragment();
+                } else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_XINBAS)) {
+                    mSetting = new JeepCarCDXinbasFragment();
+                } else if (value.equals(MachineConfig.VALUE_CANBOX_GM_OD)) {
+                    mSetting = new GMODCarCDFragment();
+                }
+            }
+        }
+        // if(){
+        //
+        // } else {
+        //
+        // }
+        if (mSetting == null) {
+            mSetting = new JeepCarCDFragment();
+        }
 
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		BroadcastUtil.sendToCarServiceSetSource(this, MyCmd.SOURCE_AUX);
-	}
-	private void updateIntent(Intent it) {
-		if (it != null) {
-			int page;
+        replaceFragment(R.id.main, mSetting, false);
+        registerListener();
+        updateIntent(getIntent());
+    }
 
-			page = it.getIntExtra("finish", 0);
-			if (page == 1) {
-				finish();
-			}
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        BroadcastUtil.sendToCarServiceSetSource(this, MyCmd.SOURCE_AUX);
+    }
 
-		}
-	}
+    private void updateIntent(Intent it) {
+        if (it != null) {
+            int page;
 
-	@Override
-	protected void onNewIntent(Intent it) {
-		updateIntent(it);
-		setIntent(it);
-	}
+            page = it.getIntExtra("finish", 0);
+            if (page == 1) {
+                finish();
+            }
 
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		unregisterListener();
-		BroadcastUtil.sendToCarServiceSetSource(this, MyCmd.SOURCE_MX51);
-	}
+        }
+    }
 
-	public void onClick(View v) {
-		mSetting.onClick(v);
-	}
+    @Override
+    protected void onNewIntent(Intent it) {
+        updateIntent(it);
+        setIntent(it);
+    }
 
-	private void replaceFragment(int layoutId, Fragment fragment,
-			boolean isAddStack) {
-		if (fragment != null) {
-			FragmentTransaction transation = mFragmentManager
-					.beginTransaction();
-			transation.replace(layoutId, fragment);
-			if (isAddStack) {
-				transation.addToBackStack(null);
-			}
-			transation.commit();
-		}
-	}
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        unregisterListener();
+        BroadcastUtil.sendToCarServiceSetSource(this, MyCmd.SOURCE_MX51);
+    }
 
-	public void doKeyControl(int code) {
-		int id = -1;
-		switch (code) {
-		case MyCmd.Keycode.CH_UP:
-		case MyCmd.Keycode.KEY_SEEK_NEXT:
-		case MyCmd.Keycode.KEY_TURN_A:
-		case MyCmd.Keycode.NEXT:
-		case MyCmd.Keycode.KEY_DVD_UP:
-		case MyCmd.Keycode.KEY_DVD_RIGHT:
-			id = R.id.next;
-			break;
+    public void onClick(View v) {
+        mSetting.onClick(v);
+    }
 
-		case MyCmd.Keycode.CH_DOWN:
-		case MyCmd.Keycode.KEY_SEEK_PREV:
-		case MyCmd.Keycode.KEY_TURN_D:
-		case MyCmd.Keycode.PREVIOUS:
-		case MyCmd.Keycode.KEY_DVD_DOWN:
-		case MyCmd.Keycode.KEY_DVD_LEFT:
-			id = R.id.prev;
-			break;
-		case MyCmd.Keycode.FAST_R:
-			id = R.id.fr;
-			break;
-		case MyCmd.Keycode.FAST_F:
-			id = R.id.ff;
-			break;
-		case MyCmd.Keycode.STOP:
-			id = R.id.next;
-			break;
-		case MyCmd.Keycode.KEY_REPEAT:
-			id = R.id.repeat;
-			break;
-		case MyCmd.Keycode.KEY_SHUFFLE:
-			id = R.id.shuffle;
-			break;
-		case MyCmd.Keycode.KEY_REPEAT_ONE:
+    private void replaceFragment(int layoutId, Fragment fragment, boolean isAddStack) {
+        if (fragment != null) {
+            FragmentTransaction transation = mFragmentManager.beginTransaction();
+            transation.replace(layoutId, fragment);
+            if (isAddStack) {
+                transation.addToBackStack(null);
+            }
+            transation.commit();
+        }
+    }
 
-			break;
+    public void doKeyControl(int code) {
+        int id = -1;
+        switch (code) {
+            case MyCmd.Keycode.CH_UP:
+            case MyCmd.Keycode.KEY_SEEK_NEXT:
+            case MyCmd.Keycode.KEY_TURN_A:
+            case MyCmd.Keycode.NEXT:
+            case MyCmd.Keycode.KEY_DVD_UP:
+            case MyCmd.Keycode.KEY_DVD_RIGHT:
+                id = R.id.next;
+                break;
 
-		case MyCmd.Keycode.PLAY_PAUSE:
-			id = R.id.pp;
-			break;
+            case MyCmd.Keycode.CH_DOWN:
+            case MyCmd.Keycode.KEY_SEEK_PREV:
+            case MyCmd.Keycode.KEY_TURN_D:
+            case MyCmd.Keycode.PREVIOUS:
+            case MyCmd.Keycode.KEY_DVD_DOWN:
+            case MyCmd.Keycode.KEY_DVD_LEFT:
+                id = R.id.prev;
+                break;
+            case MyCmd.Keycode.FAST_R:
+                id = R.id.fr;
+                break;
+            case MyCmd.Keycode.FAST_F:
+                id = R.id.ff;
+                break;
+            case MyCmd.Keycode.STOP:
+                id = R.id.next;
+                break;
+            case MyCmd.Keycode.KEY_REPEAT:
+                id = R.id.repeat;
+                break;
+            case MyCmd.Keycode.KEY_SHUFFLE:
+                id = R.id.shuffle;
+                break;
+            case MyCmd.Keycode.KEY_REPEAT_ONE:
 
-		}
-		if (id != -1) {
-			View v = findViewById(id);
-			if (v != null) {
-				onClick(v);
-			}
-		}
-	}
+                break;
 
-	private BroadcastReceiver mReceiver;
+            case MyCmd.Keycode.PLAY_PAUSE:
+                id = R.id.pp;
+                break;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        }
+        if (id != -1) {
+            View v = findViewById(id);
+            if (v != null) {
+                onClick(v);
+            }
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.ACTION_KEY_PRESS)) {
-						if (mSetting.isCurrentSource()) {
-							int code = intent.getIntExtra(
-									MyCmd.EXTRAS_KEY_CODE, 0);
-							doKeyControl(code);
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.ACTION_KEY_PRESS);
+    private BroadcastReceiver mReceiver;
 
-			registerReceiver(mReceiver, iFilter);
-		}
-	}
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			if (mSetting.onBackKey()) {
-				return true;
-			}
-		}
-		return super.onKeyDown(keyCode, event);
-	}
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.ACTION_KEY_PRESS)) {
+                        if (mSetting.isCurrentSource()) {
+                            int code = intent.getIntExtra(MyCmd.EXTRAS_KEY_CODE, 0);
+                            doKeyControl(code);
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.ACTION_KEY_PRESS);
+
+            registerReceiver(mReceiver, iFilter);
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mSetting.onBackKey()) {
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

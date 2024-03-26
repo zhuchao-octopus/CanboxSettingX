@@ -61,38 +61,36 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class CD207 extends MyFragment {
-	private static final String TAG = "JeepCarCDFragment";
+    private static final String TAG = "JeepCarCDFragment";
 
-	private View mMainView;
+    private View mMainView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.teana08_hiworld_car_cd_player, container,
-				false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.teana08_hiworld_car_cd_player, container, false);
 
-		return mMainView;
-	}
+        return mMainView;
+    }
 
-	private void sendCanboxInfo(int d0, int d1, int d2) {
-		byte[] buf = new byte[] { (byte) d0, 0x2, (byte) d1, (byte) d2 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo(int d0, int d1, int d2) {
+        byte[] buf = new byte[]{(byte) d0, 0x2, (byte) d1, (byte) d2};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { 0x3, (byte) 0x6a, 0x5, 1, (byte) d0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{0x3, (byte) 0x6a, 0x5, 1, (byte) d0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void sendCanboxInfo0x8f(int d0) {
-		byte[] buf = new byte[] { (byte) 0x8f, 0x3, 0x2, (byte) d0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo0x8f(int d0) {
+        byte[] buf = new byte[]{(byte) 0x8f, 0x3, 0x2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private int mPlayStatus = 0;
-	private int mRepeatMode = 0;
+    private int mPlayStatus = 0;
+    private int mRepeatMode = 0;
 
-	public void onClick(View v) {
+    public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.disk_icon1) {
             sendCanboxInfo(0x8a, 0x6, 1);
@@ -176,196 +174,190 @@ public class CD207 extends MyFragment {
             Util.doSleep(200);
             sendCanboxInfo(0x74, 0x12, 0);
         }
-	}
+    }
 
-	private void setViewVisible(int id, int b) {
-		mMainView.findViewById(id).setVisibility(
-				(b != 0) ? View.VISIBLE : View.GONE);
-	}
+    private void setViewVisible(int id, int b) {
+        mMainView.findViewById(id).setVisibility((b != 0) ? View.VISIBLE : View.GONE);
+    }
 
-	private void setViewSelect(int id, int b) {
-		mMainView.findViewById(id).setSelected((b != 0) ? true : false);
-//		mMainView.findViewById(id).setSelected( true );
-	}
+    private void setViewSelect(int id, int b) {
+        mMainView.findViewById(id).setSelected((b != 0) ? true : false);
+        //		mMainView.findViewById(id).setSelected( true );
+    }
 
-	private void setDiskType(int index, int type) {
-		int id = R.string.gac_cd_state_idle;
-		if (type != 0) {
-			id = R.string.cd;
-		}
+    private void setDiskType(int index, int type) {
+        int id = R.string.gac_cd_state_idle;
+        if (type != 0) {
+            id = R.string.cd;
+        }
 
-		((TextView) mMainView.findViewById(index)).setText(id);
-	}
+        ((TextView) mMainView.findViewById(index)).setText(id);
+    }
 
-	public String bcd2Str0xF(int b) {
-		String c = "";
-		if (b >= 0 && b < 10) {
-			c = "" + b;
-		} else if (b >= 0xa && b <= 0xf) {
-			switch (b) {
-			case 0xa:
-				c = "A";
-				break;
-			case 0xb:
-				c = "B";
-				break;
-			case 0xc:
-				c = "C";
-				break;
-			case 0xd:
-				c = "D";
-				break;
-			case 0xe:
-				c = "E";
-				break;
-			case 0xf:
-				c = "F";
-				break;
-			}
-		}
-		return c;
-	}
-	
-	public String bcd2Str(byte b) {
-		return "" + (b & 0xff);
-//		return (bcd2Str0xF((b & 0xF0) >> 4) + bcd2Str0xF((b & 0xF)));
-	}
-	
-	private void updateView(byte[] buf) {
+    public String bcd2Str0xF(int b) {
+        String c = "";
+        if (b >= 0 && b < 10) {
+            c = "" + b;
+        } else if (b >= 0xa && b <= 0xf) {
+            switch (b) {
+                case 0xa:
+                    c = "A";
+                    break;
+                case 0xb:
+                    c = "B";
+                    break;
+                case 0xc:
+                    c = "C";
+                    break;
+                case 0xd:
+                    c = "D";
+                    break;
+                case 0xe:
+                    c = "E";
+                    break;
+                case 0xf:
+                    c = "F";
+                    break;
+            }
+        }
+        return c;
+    }
 
-		switch (buf[0]) {
-		case (byte)0xa8: {
-			byte []b = new byte[0x10];
-			Util.byteArrayCopy(b, buf, 0, 2, 0x10);
-			String s = new String(b);
-			((TextView) mMainView.findViewById(R.id.str_total_song))
-			.setText(s);
-		}
-			break;
-		case (byte)0x86:
+    public String bcd2Str(byte b) {
+        return "" + (b & 0xff);
+        //		return (bcd2Str0xF((b & 0xF0) >> 4) + bcd2Str0xF((b & 0xF)));
+    }
 
-			setDiskType(R.id.disk1, (buf[3] & 0x1));
-			setDiskType(R.id.disk2, (buf[3] & 0x2));
-			setDiskType(R.id.disk3, (buf[3] & 0x4));
-			setDiskType(R.id.disk4, (buf[3] & 0x8));
-			setDiskType(R.id.disk5, (buf[3] & 0x10));
-			setDiskType(R.id.disk6, (buf[3] & 0x20));
-			
-				((TextView) mMainView.findViewById(R.id.str_current_dish))
-						.setText("" + ((buf[2] & 0xf0) >> 4));
+    private void updateView(byte[] buf) {
 
-				String s = bcd2Str(buf[5]);
-				
-				((TextView) mMainView.findViewById(R.id.str_current_song))
-						.setText(s);
+        switch (buf[0]) {
+            case (byte) 0xa8: {
+                byte[] b = new byte[0x10];
+                Util.byteArrayCopy(b, buf, 0, 2, 0x10);
+                String s = new String(b);
+                ((TextView) mMainView.findViewById(R.id.str_total_song)).setText(s);
+            }
+            break;
+            case (byte) 0x86:
 
-//				s = "";
-//				if (buf[6] != 0) {
-//					s += (buf[6] & 0xff);
-//				}
-//				((TextView) mMainView.findViewById(R.id.str_total_song))
-//						.setText(s);
+                setDiskType(R.id.disk1, (buf[3] & 0x1));
+                setDiskType(R.id.disk2, (buf[3] & 0x2));
+                setDiskType(R.id.disk3, (buf[3] & 0x4));
+                setDiskType(R.id.disk4, (buf[3] & 0x8));
+                setDiskType(R.id.disk5, (buf[3] & 0x10));
+                setDiskType(R.id.disk6, (buf[3] & 0x20));
 
-//				s = String
-//						.format("%02d:%02d", (buf[8] & 0xff), (buf[9] & 0xff));
+                ((TextView) mMainView.findViewById(R.id.str_current_dish)).setText("" + ((buf[2] & 0xf0) >> 4));
 
-				s = bcd2Str(buf[6]) + ":" + bcd2Str(buf[7]);
-				
-			((TextView) mMainView.findViewById(R.id.str_play_time)).setText(s);
+                String s = bcd2Str(buf[5]);
 
-			setViewSelect(R.id.repeat, (((buf[8] & 0x30) >> 4) == 1) ? 1 : 0);
-			setViewSelect(R.id.shuffle, (((buf[8] & 0xc) >> 2) == 1) ? 1 : 0);
+                ((TextView) mMainView.findViewById(R.id.str_current_song)).setText(s);
 
-//			setViewSelect(R.id.gac_cd_state_scan,
-//					(((buf[8] & 0xc0) >> 6) == 1) ? 1 : 0);
-			
-			setViewSelect(R.id.disk_scan, (((buf[8] & 0xc0) >> 6) == 2) ? 1 : 0);
-			
-			setViewSelect(R.id.disk_repeat, (((buf[8] & 0x30) >> 4) == 2) ? 1
-					: 0);
-			setViewSelect(R.id.disk_shuffle, (((buf[8] & 0xc) >> 2) == 2) ? 1
-					: 0);
+                //				s = "";
+                //				if (buf[6] != 0) {
+                //					s += (buf[6] & 0xff);
+                //				}
+                //				((TextView) mMainView.findViewById(R.id.str_total_song))
+                //						.setText(s);
 
-			
-			break;
-		}
-	}
+                //				s = String
+                //						.format("%02d:%02d", (buf[8] & 0xff), (buf[9] & 0xff));
 
-	private String getCanBoxString(int type, byte[] buf) {
-		String s = "";
-		try {
-			if (type == 0x1) {
-				s = new String(buf);
-			} else if (type == 0x2) {
-				s = new String(buf, "GB2312");
-			} else if (type == 0x10) {
-				for (int i = 0; i < buf.length; i += 2) {
-					byte b = buf[i];
-					buf[i] = buf[i + 1];
-					buf[i + 1] = b;
-				}
-				s = new String(buf, "UNICODE");
-			} else {// if (type == 0x11) {
-				s = new String(buf, "UNICODE");
-			}
-		} catch (Exception e) {
+                s = bcd2Str(buf[6]) + ":" + bcd2Str(buf[7]);
 
-		}
+                ((TextView) mMainView.findViewById(R.id.str_play_time)).setText(s);
 
-		return s;
-	}
+                setViewSelect(R.id.repeat, (((buf[8] & 0x30) >> 4) == 1) ? 1 : 0);
+                setViewSelect(R.id.shuffle, (((buf[8] & 0xc) >> 2) == 1) ? 1 : 0);
 
-	@Override
-	public void onPause() {
-		unregisterListener();
+                //			setViewSelect(R.id.gac_cd_state_scan,
+                //					(((buf[8] & 0xc0) >> 6) == 1) ? 1 : 0);
 
-		sendCanboxInfo0x8f(0x4);
-		super.onPause();
-	}
+                setViewSelect(R.id.disk_scan, (((buf[8] & 0xc0) >> 6) == 2) ? 1 : 0);
 
-	@Override
-	public void onResume() {
-		registerListener();
-		sendCanboxInfo0x90(0xa8);
-		Util.doSleep(30);
-		sendCanboxInfo0x90(0x86);
+                setViewSelect(R.id.disk_repeat, (((buf[8] & 0x30) >> 4) == 2) ? 1 : 0);
+                setViewSelect(R.id.disk_shuffle, (((buf[8] & 0xc) >> 2) == 2) ? 1 : 0);
 
 
-		super.onResume();
-	}
+                break;
+        }
+    }
 
-	private BroadcastReceiver mReceiver;
+    private String getCanBoxString(int type, byte[] buf) {
+        String s = "";
+        try {
+            if (type == 0x1) {
+                s = new String(buf);
+            } else if (type == 0x2) {
+                s = new String(buf, "GB2312");
+            } else if (type == 0x10) {
+                for (int i = 0; i < buf.length; i += 2) {
+                    byte b = buf[i];
+                    buf[i] = buf[i + 1];
+                    buf[i + 1] = b;
+                }
+                s = new String(buf, "UNICODE");
+            } else {// if (type == 0x11) {
+                s = new String(buf, "UNICODE");
+            }
+        } catch (Exception e) {
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+        return s;
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    @Override
+    public void onPause() {
+        unregisterListener();
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+        sendCanboxInfo0x8f(0x4);
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        registerListener();
+        sendCanboxInfo0x90(0xa8);
+        Util.doSleep(30);
+        sendCanboxInfo0x90(0x86);
+
+
+        super.onResume();
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 }

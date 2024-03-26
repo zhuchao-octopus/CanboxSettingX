@@ -24,175 +24,168 @@ import com.common.view.MyPreference2;
 
 public class TPMS278 extends PreferenceFragment {
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		mTpmsView = inflater.inflate(R.layout.type_info4, container, false);
-		return mTpmsView;
-	}
+        mTpmsView = inflater.inflate(R.layout.type_info4, container, false);
+        return mTpmsView;
+    }
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		unregisterListener();
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterListener();
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		registerListener();
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerListener();
 
-		byte[] buf = new byte[] { (byte) 0xff, 1, (byte) 0xb };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        byte[] buf = new byte[]{(byte) 0xff, 1, (byte) 0xb};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private View mTpmsView;
-
+    private View mTpmsView;
 
 
+    private void setTpmsTextInfo(int id, int value, int color) {
 
-	private void setTpmsTextInfo(int id, int value, int color) {
+        String text = "";
 
-		String text = "";
-		
-		if (value != 0xffff) {
-			text = String.format("%d kpa", value);
-		} else {
-			text = "--";
-		}
+        if (value != 0xffff) {
+            text = String.format("%d kpa", value);
+        } else {
+            text = "--";
+        }
 
-		if (color == 0) {
-			color = Color.WHITE;
-		} else {
-			color = Color.RED;
-		}
+        if (color == 0) {
+            color = Color.WHITE;
+        } else {
+            color = Color.RED;
+        }
 
-		TextView tv = ((TextView) mTpmsView.findViewById(id));
+        TextView tv = ((TextView) mTpmsView.findViewById(id));
 
-		tv.setTextColor(color);
-		tv.setText(text);
-	}
+        tv.setTextColor(color);
+        tv.setText(text);
+    }
 
-	private void setTpmsTextInfo2(int id, int value) {
+    private void setTpmsTextInfo2(int id, int value) {
 
-		String text = "";
+        String text = "";
 
-		if (value != 255) {
-				text = String.format("(%d.%d) Bar", value / 10, value % 10);
-		} else {
-			text = "--";
-		}
+        if (value != 255) {
+            text = String.format("(%d.%d) Bar", value / 10, value % 10);
+        } else {
+            text = "--";
+        }
 
-		
 
-		TextView tv = ((TextView) mTpmsView.findViewById(id));
+        TextView tv = ((TextView) mTpmsView.findViewById(id));
 
-		tv.setTextColor(Color.WHITE);
-		tv.setText(text);
-	}
-	
-	private void setTpmsTextValue(int id, int value, int color) {
+        tv.setTextColor(Color.WHITE);
+        tv.setText(text);
+    }
 
-		String text;
+    private void setTpmsTextValue(int id, int value, int color) {
 
-		if (value == 255) {
-			text = "--";
-		} else {
-			value = value - 40;
-			text = String.format("%d °C", value);
-		}
+        String text;
 
-		color = Color.WHITE;
+        if (value == 255) {
+            text = "--";
+        } else {
+            value = value - 40;
+            text = String.format("%d °C", value);
+        }
 
-		TextView tv = ((TextView) mTpmsView.findViewById(id));
+        color = Color.WHITE;
 
-		tv.setTextColor(color);
-		tv.setText(text);
-	}
-	
-	
+        TextView tv = ((TextView) mTpmsView.findViewById(id));
 
-	private void setTpmsWaring(int text_id, int value) {
-		String s = "";
-		int id = 0;
-		switch ((value & 0xff)) {
-		case 1:
-			id = R.string.red_warn;
-			break;
-		case 2:
-			id = R.string.str_quick_leakage;
-			break;
-		case 3:
-			id = R.string.yellow_warn;
-			break;
-		}
-		TextView tv = ((TextView) mTpmsView.findViewById(text_id));
-		if (id != 0) {
-			s = getString(id);
-		}
-		tv.setText(s);
-	}
-	int mColor;
-	private void updateView(byte[] buf) {
-		switch (buf[0]) {
-		case (byte)0xb:
+        tv.setTextColor(color);
+        tv.setText(text);
+    }
 
-			if (mTpmsView != null) {
-				
 
-				setTpmsTextInfo(R.id.type11_num, (buf[4] & 0xff)
-						| ((buf[3] & 0xff) << 8), (buf[2] & 0x8));
-				
-				
-				setTpmsTextInfo(R.id.type12_num, (buf[6] & 0xff)
-						| ((buf[5] & 0xff) << 8),  (buf[2] & 0x4));
-				
-				setTpmsTextInfo(R.id.type21_num, (buf[8] & 0xff)
-						| ((buf[7] & 0xff) << 8),  (buf[2] & 0x2));
-				
-				setTpmsTextInfo(R.id.type22_num, (buf[10] & 0xff)
-						| ((buf[9] & 0xff) << 8),  (buf[2] & 0x1));
+    private void setTpmsWaring(int text_id, int value) {
+        String s = "";
+        int id = 0;
+        switch ((value & 0xff)) {
+            case 1:
+                id = R.string.red_warn;
+                break;
+            case 2:
+                id = R.string.str_quick_leakage;
+                break;
+            case 3:
+                id = R.string.yellow_warn;
+                break;
+        }
+        TextView tv = ((TextView) mTpmsView.findViewById(text_id));
+        if (id != 0) {
+            s = getString(id);
+        }
+        tv.setText(s);
+    }
 
-			}
+    int mColor;
 
-			break;
-		
-		}
-	}
+    private void updateView(byte[] buf) {
+        switch (buf[0]) {
+            case (byte) 0xb:
 
-	private BroadcastReceiver mReceiver;
+                if (mTpmsView != null) {
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+                    setTpmsTextInfo(R.id.type11_num, (buf[4] & 0xff) | ((buf[3] & 0xff) << 8), (buf[2] & 0x8));
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+                    setTpmsTextInfo(R.id.type12_num, (buf[6] & 0xff) | ((buf[5] & 0xff) << 8), (buf[2] & 0x4));
+
+                    setTpmsTextInfo(R.id.type21_num, (buf[8] & 0xff) | ((buf[7] & 0xff) << 8), (buf[2] & 0x2));
+
+                    setTpmsTextInfo(R.id.type22_num, (buf[10] & 0xff) | ((buf[9] & 0xff) << 8), (buf[2] & 0x1));
+
+                }
+
+                break;
+
+        }
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

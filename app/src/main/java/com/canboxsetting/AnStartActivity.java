@@ -67,62 +67,58 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class AnStartActivity extends Activity {
-	private static final String TAG = "CanAirControlActivity";
+    private static final String TAG = "CanAirControlActivity";
 
-	private FragmentManager mFragmentManager;
+    private FragmentManager mFragmentManager;
 
-	private MyFragment mSetting;
+    private MyFragment mSetting;
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		setContentView(R.layout.main);
-		mFragmentManager = getFragmentManager();
+        setContentView(R.layout.main);
+        mFragmentManager = getFragmentManager();
 
-		String mCanboxType = MachineConfig
-				.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-		String mProIndex = null;
-		if (mCanboxType != null) {
-			String[] ss = mCanboxType.split(",");
-			mCanboxType = ss[0];
-			try {
-				for (int i = 1; i < ss.length; ++i) {
-					if (ss[i]
-							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
-						mProIndex = ss[i].substring(1);
-					}
-				}
-			} catch (Exception e) {
+        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
+        String mProIndex = null;
+        if (mCanboxType != null) {
+            String[] ss = mCanboxType.split(",");
+            mCanboxType = ss[0];
+            try {
+                for (int i = 1; i < ss.length; ++i) {
+                    if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+                        mProIndex = ss[i].substring(1);
+                    }
+                }
+            } catch (Exception e) {
 
-			}
-		}
+            }
+        }
 
-		if ("111".equals(mProIndex)) {
-			mSetting = new GMOnStarHiworldFragment();
-		} else {
-			mSetting = new GMOnStarFragment();
-		}
+        if ("111".equals(mProIndex)) {
+            mSetting = new GMOnStarHiworldFragment();
+        } else {
+            mSetting = new GMOnStarFragment();
+        }
 
-		replaceFragment(R.id.main, mSetting, false);
+        replaceFragment(R.id.main, mSetting, false);
 
-	}
+    }
 
-	public void onClick(View v) {
-		mSetting.onClick(v);
-	}
+    public void onClick(View v) {
+        mSetting.onClick(v);
+    }
 
-	private void replaceFragment(int layoutId, Fragment fragment,
-			boolean isAddStack) {
-		if (fragment != null) {
-			FragmentTransaction transation = mFragmentManager
-					.beginTransaction();
-			transation.replace(layoutId, fragment);
-			if (isAddStack) {
-				transation.addToBackStack(null);
-			}
-			transation.commit();
-		}
-	}
+    private void replaceFragment(int layoutId, Fragment fragment, boolean isAddStack) {
+        if (fragment != null) {
+            FragmentTransaction transation = mFragmentManager.beginTransaction();
+            transation.replace(layoutId, fragment);
+            if (isAddStack) {
+                transation.addToBackStack(null);
+            }
+            transation.commit();
+        }
+    }
 
 }

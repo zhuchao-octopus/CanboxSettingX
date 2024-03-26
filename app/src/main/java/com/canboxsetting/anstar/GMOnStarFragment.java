@@ -76,68 +76,66 @@ import android.widget.TextView;
  */
 public class GMOnStarFragment extends MyFragment {
 
-	private View mMainView;
+    private View mMainView;
 
-	public TextView mDigit;
+    public TextView mDigit;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.onstar, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.onstar, container, false);
 
-		for (int i : BUTTON_ON_CLICK_DIAL) {
-			View v = mMainView.findViewById(i);
-			if (v != null) {
-				v.setOnClickListener(mOnClickDial);
-			}
-		}
+        for (int i : BUTTON_ON_CLICK_DIAL) {
+            View v = mMainView.findViewById(i);
+            if (v != null) {
+                v.setOnClickListener(mOnClickDial);
+            }
+        }
 
-		for (int i : BUTTON_ON_CLICK) {
-			View v = mMainView.findViewById(i);
-			if (v != null) {
-				v.setOnClickListener(mOnClick);
-			}
-		}
+        for (int i : BUTTON_ON_CLICK) {
+            View v = mMainView.findViewById(i);
+            if (v != null) {
+                v.setOnClickListener(mOnClick);
+            }
+        }
 
-		mDigit = (TextView) mMainView.findViewById(R.id.tel_text);
-		(mMainView.findViewById(R.id.del_onstar))
-				.setOnLongClickListener(new OnLongClickListener() {
-					@Override
-					public boolean onLongClick(View v) {
-						mDigit.setText("");
-						return true;
-					}
-				});
-		return mMainView;
-	}
+        mDigit = (TextView) mMainView.findViewById(R.id.tel_text);
+        (mMainView.findViewById(R.id.del_onstar)).setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mDigit.setText("");
+                return true;
+            }
+        });
+        return mMainView;
+    }
 
-	private View.OnClickListener mOnClickDial = new View.OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
+    private View.OnClickListener mOnClickDial = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
 
-			if (mStatus == 4) {
-				byte b = 0;
-				String s = ((TextView) v).getText().toString();
-				if (s.equals("*")) {
-					b = 0xA;
-				} else if (s.equals("*")) {
-					b = 0xB;
-				} else {
-					b = (byte) (s.charAt(0) - '0');
-				}
-				sendCanboxInfo(0x85, 0x80 | b);
-			}
+            if (mStatus == 4) {
+                byte b = 0;
+                String s = ((TextView) v).getText().toString();
+                if (s.equals("*")) {
+                    b = 0xA;
+                } else if (s.equals("*")) {
+                    b = 0xB;
+                } else {
+                    b = (byte) (s.charAt(0) - '0');
+                }
+                sendCanboxInfo(0x85, 0x80 | b);
+            }
 
-			mDigit.setText("" + mDigit.getText() + ((TextView) v).getText());
+            mDigit.setText("" + mDigit.getText() + ((TextView) v).getText());
 
-		}
-	};
+        }
+    };
 
-	private View.OnClickListener mOnClick = new View.OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
+    private View.OnClickListener mOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
             int id = v.getId();
             if (id == R.id.del_onstar) {
                 String str = mDigit.getText().toString();
@@ -149,238 +147,230 @@ public class GMOnStarFragment extends MyFragment {
             } else if (id == R.id.dial_handup) {
                 sendCanboxInfo(0x85, 0x3);
             }
-		}
-	};
+        }
+    };
 
-	private void onDail() {
-		if (mStatus == 0) {
-			sendCanboxInfo(0x85, 0x1);
-		}
+    private void onDail() {
+        if (mStatus == 0) {
+            sendCanboxInfo(0x85, 0x1);
+        }
 
-		if (mStatus == 0 || mStatus == 1 ) {
-			String num = mDigit.getText().toString();
-			if (num != null && num.length() > 0) {
-				byte[] buf = new byte[0xc];
-				buf[0] = (byte) 0x86;
-				buf[1] = (byte) 0xA;
-				int len = num.length();
-				if (len > 19) {
-					len = 19;
-				}
+        if (mStatus == 0 || mStatus == 1) {
+            String num = mDigit.getText().toString();
+            if (num != null && num.length() > 0) {
+                byte[] buf = new byte[0xc];
+                buf[0] = (byte) 0x86;
+                buf[1] = (byte) 0xA;
+                int len = num.length();
+                if (len > 19) {
+                    len = 19;
+                }
 
-				byte num1 = 0;
-				int i = 0;
-				for (; i < len; i++) {
-					byte bcd = getBCD(num.charAt(i));
-					if ((i % 2) == 0) {
-						num1 = (byte) ((bcd & 0xff) << 4);
-					} else {
-						num1 |= (bcd & 0xff);
-						buf[(i / 2) + 2] = num1;
-					}
-				}
+                byte num1 = 0;
+                int i = 0;
+                for (; i < len; i++) {
+                    byte bcd = getBCD(num.charAt(i));
+                    if ((i % 2) == 0) {
+                        num1 = (byte) ((bcd & 0xff) << 4);
+                    } else {
+                        num1 |= (bcd & 0xff);
+                        buf[(i / 2) + 2] = num1;
+                    }
+                }
 
-				if ((i % 2) == 0) {
-					num1 = (byte) (0xF0);
-				} else {
-					num1 |= 0xf;
-				}
-				buf[(i / 2) + 2] = num1;
-				BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-			}
-		} else if (mStatus == 2) {
-			sendCanboxInfo(0x85, 0x02);
-		}
-	}
+                if ((i % 2) == 0) {
+                    num1 = (byte) (0xF0);
+                } else {
+                    num1 |= 0xf;
+                }
+                buf[(i / 2) + 2] = num1;
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        } else if (mStatus == 2) {
+            sendCanboxInfo(0x85, 0x02);
+        }
+    }
 
-	private void sendCanboxInfo(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) d0, 0x01, (byte) d1 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) d0, 0x01, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private static final int[] BUTTON_ON_CLICK_DIAL = new int[] {
-			R.id.number_1, R.id.number_2, R.id.number_3, R.id.number_4,
-			R.id.number_5, R.id.number_6, R.id.number_7, R.id.number_8,
-			R.id.number_9, R.id.number_0, R.id.number_star, R.id.number_pound };
-	private static final int[] BUTTON_ON_CLICK = new int[] { R.id.del_onstar,
-			R.id.dial_dialout, R.id.dial_handup, };
+    private static final int[] BUTTON_ON_CLICK_DIAL = new int[]{
+            R.id.number_1, R.id.number_2, R.id.number_3, R.id.number_4, R.id.number_5, R.id.number_6, R.id.number_7, R.id.number_8, R.id.number_9, R.id.number_0, R.id.number_star, R.id.number_pound
+    };
+    private static final int[] BUTTON_ON_CLICK = new int[]{
+            R.id.del_onstar, R.id.dial_dialout, R.id.dial_handup,
+    };
 
-	private int mStatus = 0;
+    private int mStatus = 0;
 
-	private void updateStatus(int status) {
-		if (mStatus != status) {
-			switch (status) {
-			case 0:
-				getActivity().finish();
-				break;
-			case 1:
-			case 2:
-			case 4:
-				BroadcastUtil.sendToCarServiceSetSource(getActivity(),
-						MyCmd.SOURCE_AUX);
-				break;
-			}
+    private void updateStatus(int status) {
+        if (mStatus != status) {
+            switch (status) {
+                case 0:
+                    getActivity().finish();
+                    break;
+                case 1:
+                case 2:
+                case 4:
+                    BroadcastUtil.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_AUX);
+                    break;
+            }
 
-			mStatus = status;
-		}
-		String[] ss = getResources().getStringArray(R.array.onstar_states);
-		if (status >= 0 && status < ss.length) {
-			((TextView) mMainView.findViewById(R.id.state_text))
-					.setText(ss[status]);
-		}
+            mStatus = status;
+        }
+        String[] ss = getResources().getStringArray(R.array.onstar_states);
+        if (status >= 0 && status < ss.length) {
+            ((TextView) mMainView.findViewById(R.id.state_text)).setText(ss[status]);
+        }
 
-	}
+    }
 
-	private void updateView(byte[] buf) {
+    private void updateView(byte[] buf) {
 
-		switch (buf[0]) {
-		case 0x41: {
-			byte[] data = new byte[24];
-			Util.byteArrayCopy(data, buf, 0, 2, data.length);
-			String s = new String(data);
-			((TextView) mMainView.findViewById(R.id.wireless_port))
-					.setText(getString(R.string.onstar_wireless_port, s));
-			mMainView.findViewById(R.id.ll_wireless_model).setVisibility(
-					View.VISIBLE);
-		}
-			break;
-		case 0x42: {
-			byte[] data = new byte[24];
-			Util.byteArrayCopy(data, buf, 0, 2, data.length);
-			String s = new String(data);
-			((TextView) mMainView.findViewById(R.id.wireless_psd))
-					.setText(getString(R.string.onstar_wireless_psd, s));
-			mMainView.findViewById(R.id.ll_wireless_model).setVisibility(
-					View.VISIBLE);
-		}
-			break;
-		case 0x9:
-			updateStatus(buf[2] & 0xff);
-			break;
-		case 0x8:
-			String num = "";
-			String s;
-			for (int i = 2; i < buf.length && i < 11; ++i) {
-				s = null;
-				s = getBCD((buf[i] & 0xf0) >> 4);
+        switch (buf[0]) {
+            case 0x41: {
+                byte[] data = new byte[24];
+                Util.byteArrayCopy(data, buf, 0, 2, data.length);
+                String s = new String(data);
+                ((TextView) mMainView.findViewById(R.id.wireless_port)).setText(getString(R.string.onstar_wireless_port, s));
+                mMainView.findViewById(R.id.ll_wireless_model).setVisibility(View.VISIBLE);
+            }
+            break;
+            case 0x42: {
+                byte[] data = new byte[24];
+                Util.byteArrayCopy(data, buf, 0, 2, data.length);
+                String s = new String(data);
+                ((TextView) mMainView.findViewById(R.id.wireless_psd)).setText(getString(R.string.onstar_wireless_psd, s));
+                mMainView.findViewById(R.id.ll_wireless_model).setVisibility(View.VISIBLE);
+            }
+            break;
+            case 0x9:
+                updateStatus(buf[2] & 0xff);
+                break;
+            case 0x8:
+                String num = "";
+                String s;
+                for (int i = 2; i < buf.length && i < 11; ++i) {
+                    s = null;
+                    s = getBCD((buf[i] & 0xf0) >> 4);
 
-				if (s == null) {
-					break;
-				}
-				num += s;
-				s = null;
-				s = getBCD(buf[i] & 0xf);
-				if (s == null) {
-					break;
-				}
+                    if (s == null) {
+                        break;
+                    }
+                    num += s;
+                    s = null;
+                    s = getBCD(buf[i] & 0xf);
+                    if (s == null) {
+                        break;
+                    }
 
-				num += s;
-			}
-			mDigit.setText(num);
-			break;
-		}
-	}
+                    num += s;
+                }
+                mDigit.setText(num);
+                break;
+        }
+    }
 
-	private String getBCD(int c) {
-		String s = null;
-		if ((c & 0xf) == 0xF) {
-			s = null;
-		} else if ((c & 0xf) == 0xa) {
-			s = "*";
-		} else if ((c & 0xf) == 0xb) {
-			s = "#";
-		} else {
-			s = "" + (c & 0xf);
-		}
-		return s;
-	}
+    private String getBCD(int c) {
+        String s = null;
+        if ((c & 0xf) == 0xF) {
+            s = null;
+        } else if ((c & 0xf) == 0xa) {
+            s = "*";
+        } else if ((c & 0xf) == 0xb) {
+            s = "#";
+        } else {
+            s = "" + (c & 0xf);
+        }
+        return s;
+    }
 
-	private byte getBCD(char c) {
-		byte b = 0;
-		if (c >= '0' && c <= '9') {
-			b = (byte) (c - '0');
-		} else if (c == '*') {
-			b = 0xA;
-		} else if (c == '#') {
-			b = 0xb;
-		}
-		return b;
-	}
+    private byte getBCD(char c) {
+        byte b = 0;
+        if (c >= '0' && c <= '9') {
+            b = (byte) (c - '0');
+        } else if (c == '*') {
+            b = 0xA;
+        } else if (c == '#') {
+            b = 0xb;
+        }
+        return b;
+    }
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		super.onPause();
-	}
+    @Override
+    public void onPause() {
+        unregisterListener();
+        super.onPause();
+    }
 
-	@Override
-	public void onResume() {
-		registerListener();
-		sendCanboxInfo(0x90, 0x09);
+    @Override
+    public void onResume() {
+        registerListener();
+        sendCanboxInfo(0x90, 0x09);
 
-		sendCanboxInfo(0x90, 0x08);
-		super.onResume();
-	}
+        sendCanboxInfo(0x90, 0x08);
+        super.onResume();
+    }
 
-	private BroadcastReceiver mReceiver;
+    private BroadcastReceiver mReceiver;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					} else if (action.equals(MyCmd.BROADCAST_CAR_SERVICE_SEND)) {
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    } else if (action.equals(MyCmd.BROADCAST_CAR_SERVICE_SEND)) {
 
-						int cmd = intent.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
-						switch (cmd) {
-						case MyCmd.Cmd.SOURCE_CHANGE:
-						case MyCmd.Cmd.RETURN_CURRENT_SOURCE:
-							int source = intent.getIntExtra(
-									MyCmd.EXTRA_COMMON_DATA, 0);
-							if (mSource == MyCmd.SOURCE_AUX
-									&& source != MyCmd.SOURCE_AUX) {
-								// sendCanboxInfo0xc7(0xE);
-								// } else {
-								// sendCanboxInfo0xc7(0x0);
-							}
-							mSource = source;
-							break;
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
-			iFilter.addAction(MyCmd.BROADCAST_CAR_SERVICE_SEND);
+                        int cmd = intent.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
+                        switch (cmd) {
+                            case MyCmd.Cmd.SOURCE_CHANGE:
+                            case MyCmd.Cmd.RETURN_CURRENT_SOURCE:
+                                int source = intent.getIntExtra(MyCmd.EXTRA_COMMON_DATA, 0);
+                                if (mSource == MyCmd.SOURCE_AUX && source != MyCmd.SOURCE_AUX) {
+                                    // sendCanboxInfo0xc7(0xE);
+                                    // } else {
+                                    // sendCanboxInfo0xc7(0x0);
+                                }
+                                mSource = source;
+                                break;
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+            iFilter.addAction(MyCmd.BROADCAST_CAR_SERVICE_SEND);
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
-	private AuxInUI mAuxInUI;
+    private AuxInUI mAuxInUI;
 
-	private int mSource = MyCmd.SOURCE_NONE;
+    private int mSource = MyCmd.SOURCE_NONE;
 
-	public boolean isCurrentSource() {
-		return (mSource == MyCmd.SOURCE_AUX);
-	}
+    public boolean isCurrentSource() {
+        return (mSource == MyCmd.SOURCE_AUX);
+    }
 
 }

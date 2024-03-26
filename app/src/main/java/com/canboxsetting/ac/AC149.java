@@ -66,178 +66,147 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class AC149 extends MyFragment {
-	private static final String TAG = "VWMQBAirControlFragment";
+    private static final String TAG = "VWMQBAirControlFragment";
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-	}
+    }
 
-	private CommonUpdateView mCommonUpdateView;
-	private View mMainView;
+    private CommonUpdateView mCommonUpdateView;
+    private View mMainView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater
-				.inflate(R.layout.ac_crown13_xinchi, container, false);
-		mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-		
-		
-		return mMainView;
-	}
-
-	private void sendCanboxInfo0xc7(int d0) {
-		byte[] buf = new byte[] { (byte) 0x71, 0x2, (byte)d0, 1 };
-
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-		Util.doSleep(200);
-		buf[3] = 0;
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
-
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { (byte) 0x90, 0x2, (byte) d0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
-
-	private final static int[][] CMD_ID = new int[][] {
-
-		{ R.id.ac_auto, 0x01 },
-		{ R.id.dual, 0x2 },
-		{ R.id.inner_loop, 0x03 },
-		{ R.id.max, 0x04 }, 
-		{R.id.rear, 0x05 }, 
-		{ R.id.wind_add, 0x06 },
-		{ R.id.wind_minus, 0x07 }, 
-		{ R.id.ac, 0x08 },  
-		{ R.id.mode, 0x9 },		
-		{ R.id.power, 0x0a },
-
-		{ R.id.con_left_temp_up, 0x0c },
-		{ R.id.con_left_temp_down, 0x0d },
-		{ R.id.con_right_temp_up, 0xe },
-		{ R.id.con_right_temp_down, 0xf },
-
-		{ R.id.wind_horizontal_down, 0x12 },
-		{ R.id.wind_up_down, 0x13 },
-		
-			{ R.id.wind_up1, 0x21 },
-			{ R.id.wind_horizontal1, 0x22 }, 
-			{ R.id.wind_down1, 0x23 },
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_crown13_xinchi, container, false);
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
 
 
-			{ R.id.left_seat_heat, 0x24 }, 
-			{ R.id.right_seat_heat, 0x25 },
+        return mMainView;
+    }
+
+    private void sendCanboxInfo0xc7(int d0) {
+        byte[] buf = new byte[]{(byte) 0x71, 0x2, (byte) d0, 1};
+
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        Util.doSleep(200);
+        buf[3] = 0;
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private final static int[][] CMD_ID = new int[][]{
+
+            {R.id.ac_auto, 0x01}, {R.id.dual, 0x2}, {R.id.inner_loop, 0x03}, {R.id.max, 0x04}, {R.id.rear, 0x05}, {R.id.wind_add, 0x06}, {R.id.wind_minus, 0x07}, {R.id.ac, 0x08}, {R.id.mode, 0x9},
+            {R.id.power, 0x0a},
+
+            {R.id.con_left_temp_up, 0x0c}, {R.id.con_left_temp_down, 0x0d}, {R.id.con_right_temp_up, 0xe}, {R.id.con_right_temp_down, 0xf},
+
+            {R.id.wind_horizontal_down, 0x12}, {R.id.wind_up_down, 0x13},
+
+            {R.id.wind_up1, 0x21}, {R.id.wind_horizontal1, 0x22}, {R.id.wind_down1, 0x23},
 
 
-
-			{ R.id.air_purification, 0x26 },
-			{ R.id.windshield_deicing, 0x27 },
-			{ R.id.swing, 0x28 },
-			{ R.id.air_title_ce_max, 0x29 },
-			
+            {R.id.left_seat_heat, 0x24}, {R.id.right_seat_heat, 0x25},
 
 
-			{ R.id.ac_auto_rear, 0x41 },
-			
-			{ R.id.con_left_temp_rear_up, 0x43 },
-			{ R.id.con_left_temp_rear_down, 0x44 },
+            {R.id.air_purification, 0x26}, {R.id.windshield_deicing, 0x27}, {R.id.swing, 0x28}, {R.id.air_title_ce_max, 0x29},
 
 
+            {R.id.ac_auto_rear, 0x41},
 
-	};
-
-
-	private int getCmd(int id) {
-		for (int i = 0; i < CMD_ID.length; ++i) {
-			if (CMD_ID[i][0] == id) {
-				return (CMD_ID[i][1] & 0xffffff);
-			}
-		}
-		return 0;
-	}
-
-	private void showRear(boolean show) {
-		if (show) {
-			mMainView.findViewById(R.id.ac_layout_rear).setVisibility(
-					View.VISIBLE);
-			mMainView.findViewById(R.id.ac_layout_front).setVisibility(
-					View.GONE);
-		} else {
-			mMainView.findViewById(R.id.ac_layout_rear)
-					.setVisibility(View.GONE);
-			mMainView.findViewById(R.id.ac_layout_front).setVisibility(
-					View.VISIBLE);
-		}
-	}
-	
-	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.air_rear) {
-			showRear(true);
-		} else if (id == R.id.air_front) {
-			showRear(false);
-		} else {
-		int cmd = getCmd(v.getId());
+            {R.id.con_left_temp_rear_up, 0x43}, {R.id.con_left_temp_rear_down, 0x44},
 
 
-		sendCanboxInfo0xc7((cmd & 0xff));
-	}
-	}
+    };
 
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		super.onPause();
-	}
+    private int getCmd(int id) {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            if (CMD_ID[i][0] == id) {
+                return (CMD_ID[i][1] & 0xffffff);
+            }
+        }
+        return 0;
+    }
 
-	@Override
-	public void onResume() {
-		registerListener();
-		sendCanboxInfo0x90(0x28);
-		Util.doSleep(200);
-		sendCanboxInfo0x90(0x58);
-		super.onResume();
-	}
+    private void showRear(boolean show) {
+        if (show) {
+            mMainView.findViewById(R.id.ac_layout_rear).setVisibility(View.VISIBLE);
+            mMainView.findViewById(R.id.ac_layout_front).setVisibility(View.GONE);
+        } else {
+            mMainView.findViewById(R.id.ac_layout_rear).setVisibility(View.GONE);
+            mMainView.findViewById(R.id.ac_layout_front).setVisibility(View.VISIBLE);
+        }
+    }
 
-	private BroadcastReceiver mReceiver;
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.air_rear) {
+            showRear(true);
+        } else if (id == R.id.air_front) {
+            showRear(false);
+        } else {
+            int cmd = getCmd(v.getId());
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
-						String cmd = intent
-								.getStringExtra(MyCmd.EXTRA_COMMON_CMD);
-						if ("ac".equals(cmd)) {
-							byte[] buf = intent.getByteArrayExtra("buf");
-							if (buf != null) {
+            sendCanboxInfo0xc7((cmd & 0xff));
+        }
+    }
 
-								mCommonUpdateView.postChanged(
-										CommonUpdateView.MESSAGE_AIR_CONDITION,
-										0, 0, buf);
 
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    @Override
+    public void onPause() {
+        unregisterListener();
+        super.onPause();
+    }
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+    @Override
+    public void onResume() {
+        registerListener();
+        sendCanboxInfo0x90(0x28);
+        Util.doSleep(200);
+        sendCanboxInfo0x90(0x58);
+        super.onResume();
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+                        String cmd = intent.getStringExtra(MyCmd.EXTRA_COMMON_CMD);
+                        if ("ac".equals(cmd)) {
+                            byte[] buf = intent.getByteArrayExtra("buf");
+                            if (buf != null) {
+
+                                mCommonUpdateView.postChanged(CommonUpdateView.MESSAGE_AIR_CONDITION, 0, 0, buf);
+
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 }

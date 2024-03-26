@@ -61,36 +61,32 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class JeepCarCDFragment extends MyFragment {
-	private static final String TAG = "JeepCarCDFragment";
+    private static final String TAG = "JeepCarCDFragment";
 
 
-	
+    private View mMainView;
 
-	private View mMainView;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.jeep_car_cd_player, container, false);
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.jeep_car_cd_player, container,
-				false);
+        return mMainView;
+    }
 
-		return mMainView;
-	}
+    private void sendCanboxInfo0xC8(int d0) {
+        byte[] buf = new byte[]{(byte) 0xC8, 0x2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void sendCanboxInfo0xC8(int d0) {
-		byte[] buf = new byte[] { (byte) 0xC8, 0x2, (byte) d0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x4, (byte) d0, 0, 0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { (byte) 0x90, 0x4, (byte) d0, 0, 0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    byte mPlayStatus = 0;
+    byte mRepeatMode = 0;
 
-	byte mPlayStatus = 0;
-	byte mRepeatMode = 0;
-
-	public void onClick(View v) {
+    public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.repeat) {
             if ((mRepeatMode & 0x1) == 0) {
@@ -115,135 +111,133 @@ public class JeepCarCDFragment extends MyFragment {
                 sendCanboxInfo0xC8(0xa);
             }
         }
-	}
+    }
 
-	private void updateView(byte[] buf) {
+    private void updateView(byte[] buf) {
 
-		switch (buf[0]) {
-		case 0x42:
-			mPlayStatus = buf[2];
-			mRepeatMode = buf[3];
-			if (mPlayStatus == 3) {
-				((ImageView) mMainView.findViewById(R.id.pp)).getDrawable().setLevel(1);
-			} else {
-				((ImageView) mMainView.findViewById(R.id.pp)).getDrawable().setLevel(0);
-			}
+        switch (buf[0]) {
+            case 0x42:
+                mPlayStatus = buf[2];
+                mRepeatMode = buf[3];
+                if (mPlayStatus == 3) {
+                    ((ImageView) mMainView.findViewById(R.id.pp)).getDrawable().setLevel(1);
+                } else {
+                    ((ImageView) mMainView.findViewById(R.id.pp)).getDrawable().setLevel(0);
+                }
 
-			if ((mRepeatMode & 0x1) == 0) {
-				mMainView.findViewById(R.id.repeat_tag).setVisibility(View.GONE);
-			} else {
-				mMainView.findViewById(R.id.repeat_tag).setVisibility(View.VISIBLE);
-			}
-			if ((mRepeatMode & 0x2) == 0) {
-				mMainView.findViewById(R.id.shuffle_tag).setVisibility(View.GONE);
-			} else {
-				mMainView.findViewById(R.id.shuffle_tag).setVisibility(View.VISIBLE);
-			}
-			break;
-		case 0x43: {
-			String s1 = "";
-			String s2 = "";
+                if ((mRepeatMode & 0x1) == 0) {
+                    mMainView.findViewById(R.id.repeat_tag).setVisibility(View.GONE);
+                } else {
+                    mMainView.findViewById(R.id.repeat_tag).setVisibility(View.VISIBLE);
+                }
+                if ((mRepeatMode & 0x2) == 0) {
+                    mMainView.findViewById(R.id.shuffle_tag).setVisibility(View.GONE);
+                } else {
+                    mMainView.findViewById(R.id.shuffle_tag).setVisibility(View.VISIBLE);
+                }
+                break;
+            case 0x43: {
+                String s1 = "";
+                String s2 = "";
 
-			s1 += ((buf[2] & 0xff) << 8) | (buf[3] & 0xff);
-			s2 += ((buf[10] & 0xff) << 8) | (buf[11] & 0xff);
+                s1 += ((buf[2] & 0xff) << 8) | (buf[3] & 0xff);
+                s2 += ((buf[10] & 0xff) << 8) | (buf[11] & 0xff);
 
-			((TextView) mMainView.findViewById(R.id.num)).setText(s2 + "/" + s1);
+                ((TextView) mMainView.findViewById(R.id.num)).setText(s2 + "/" + s1);
 
-			String s = String.format("%02d:%02d:%02d/%02d:%02d:%02d",
-					(buf[4] & 0xff), (buf[5] & 0xff), (buf[6] & 0xff),
-					(buf[7] & 0xff), (buf[8] & 0xff), (buf[9] & 0xff));
+                String s = String.format("%02d:%02d:%02d/%02d:%02d:%02d", (buf[4] & 0xff), (buf[5] & 0xff), (buf[6] & 0xff), (buf[7] & 0xff), (buf[8] & 0xff), (buf[9] & 0xff));
 
-			((TextView) mMainView.findViewById(R.id.time)).setText(s);
-		}
-			break;
-		case 0x44:
-			byte[] b = new byte[buf.length - 7];
-			Util.byteArrayCopy(b, buf, 0, 6, b.length);
-			String s = getString(buf[3], b);
-			if (buf[2] == 0x1) {
-				((TextView) mMainView.findViewById(R.id.song)).setText(s);
-			} else if (buf[2] == 0x2) {
-				((TextView) mMainView.findViewById(R.id.albums)).setText(s);
-			} else if (buf[2] == 0x3) {
-				((TextView) mMainView.findViewById(R.id.singer)).setText(s);
-			}
-			break;
-		}
-	}
+                ((TextView) mMainView.findViewById(R.id.time)).setText(s);
+            }
+            break;
+            case 0x44:
+                byte[] b = new byte[buf.length - 7];
+                Util.byteArrayCopy(b, buf, 0, 6, b.length);
+                String s = getString(buf[3], b);
+                if (buf[2] == 0x1) {
+                    ((TextView) mMainView.findViewById(R.id.song)).setText(s);
+                } else if (buf[2] == 0x2) {
+                    ((TextView) mMainView.findViewById(R.id.albums)).setText(s);
+                } else if (buf[2] == 0x3) {
+                    ((TextView) mMainView.findViewById(R.id.singer)).setText(s);
+                }
+                break;
+        }
+    }
 
-	private String getString(byte type, byte[] buf) {
-		String s = "";
-		try {
-			if (type == 0x1) {
-				s = new String(buf);
-			} else if (type == 0x2) {
-				s = new String(buf, "GB2312");
-			} else if (type == 0x10) {
-				for (int i = 0; i < buf.length; i += 2) {
-					byte b = buf[i];
-					buf[i] = buf[i + 1];
-					buf[i + 1] = b;
-				}
-				s = new String(buf, "UNICODE");
-			} else {// if (type == 0x11) {
-				s = new String(buf, "UNICODE");
-			}
-		} catch (Exception e) {
+    private String getString(byte type, byte[] buf) {
+        String s = "";
+        try {
+            if (type == 0x1) {
+                s = new String(buf);
+            } else if (type == 0x2) {
+                s = new String(buf, "GB2312");
+            } else if (type == 0x10) {
+                for (int i = 0; i < buf.length; i += 2) {
+                    byte b = buf[i];
+                    buf[i] = buf[i + 1];
+                    buf[i + 1] = b;
+                }
+                s = new String(buf, "UNICODE");
+            } else {// if (type == 0x11) {
+                s = new String(buf, "UNICODE");
+            }
+        } catch (Exception e) {
 
-		}
+        }
 
-		return s;
-	}
+        return s;
+    }
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		super.onPause();
-	}
+    @Override
+    public void onPause() {
+        unregisterListener();
+        super.onPause();
+    }
 
-	@Override
-	public void onResume() {
-		registerListener();
-		sendCanboxInfo0x90(0x42);
-		Util.doSleep(30);
-		sendCanboxInfo0x90(0x43);
-		Util.doSleep(30);
-		sendCanboxInfo0x90(0x44);
-		super.onResume();
-	}
+    @Override
+    public void onResume() {
+        registerListener();
+        sendCanboxInfo0x90(0x42);
+        Util.doSleep(30);
+        sendCanboxInfo0x90(0x43);
+        Util.doSleep(30);
+        sendCanboxInfo0x90(0x44);
+        super.onResume();
+    }
 
-	private BroadcastReceiver mReceiver;
+    private BroadcastReceiver mReceiver;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 }

@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
 	
 	private int mCarType = 0;
 	private void updateCarType(){
-		String value = MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
+		String value = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
 
 
 		if (value != null) {

@@ -65,149 +65,148 @@ import com.common.view.MyPreference2;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
-public class OBDBinarytekFragment extends PreferenceFragment implements
-		OnPreferenceClickListener {
-	private static final String TAG = "OBDBinarytekFragment";
+public class OBDBinarytekFragment extends PreferenceFragment implements OnPreferenceClickListener {
+    private static final String TAG = "OBDBinarytekFragment";
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.obd_binarytek);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.obd_binarytek);
+    }
 
-	private final static int[] INIT_CMDS = { 0x8905, 0x8a05, 0x8b0a };
-	private final static int[] DEINIT_CMDS = { 0x8900, 0x8a00, 0x8b00 };
+    private final static int[] INIT_CMDS = {0x8905, 0x8a05, 0x8b0a};
+    private final static int[] DEINIT_CMDS = {0x8900, 0x8a00, 0x8b00};
 
-	private void requestInitData() {
-		// mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
-		for (int i = 0; i < INIT_CMDS.length; ++i) {
-			mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 200));
-		}
+    private void requestInitData() {
+        // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
+        for (int i = 0; i < INIT_CMDS.length; ++i) {
+            mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 200));
+        }
 
-	}
-	
-	private void requestDeinitData() {
-		// mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
-		for (int i = 0; i < DEINIT_CMDS.length; ++i) {
-			mHandler.sendEmptyMessageDelayed(DEINIT_CMDS[i], (i * 100));
-		}
+    }
 
-	}
+    private void requestDeinitData() {
+        // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
+        for (int i = 0; i < DEINIT_CMDS.length; ++i) {
+            mHandler.sendEmptyMessageDelayed(DEINIT_CMDS[i], (i * 100));
+        }
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (!mPaused || ((msg.what & 0xff) == 0)) {
-				sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
-			}
-		}
-	};
+    }
 
-	private void sendCanboxInfo(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) d0, 0x1, (byte) d1 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused || ((msg.what & 0xff) == 0)) {
+                sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
 
-	public boolean onPreferenceClick(Preference arg0) {
+    private void sendCanboxInfo(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) d0, 0x1, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-		return false;
-	}
+    public boolean onPreferenceClick(Preference arg0) {
 
-	private boolean mPaused = true;
+        return false;
+    }
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		requestDeinitData();
-		unregisterListener();
-		mPaused = true;
-	}
+    private boolean mPaused = true;
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		registerListener();
-		mPaused = false;
-		requestInitData();
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        requestDeinitData();
+        unregisterListener();
+        mPaused = true;
+    }
 
-	private void setPreference(String key, String s) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			p.setSummary(s);
-		}
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerListener();
+        mPaused = false;
+        requestInitData();
+    }
 
-	private void updateView(byte[] buf) {
+    private void setPreference(String key, String s) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            p.setSummary(s);
+        }
+    }
 
-		int index = 0;
-		String s = "";
+    private void updateView(byte[] buf) {
 
-		switch (buf[0]) {
-		case 0x68: {
+        int index = 0;
+        String s = "";
 
-			index = ((buf[2] & 0xff) | ((buf[3] & 0xff) << 8));
-			s = index + " rpm";
-			setPreference("enginespeed", s);
+        switch (buf[0]) {
+            case 0x68: {
 
-		}
-			break;
+                index = ((buf[2] & 0xff) | ((buf[3] & 0xff) << 8));
+                s = index + " rpm";
+                setPreference("enginespeed", s);
 
-		case 0x6a: {
+            }
+            break;
 
-			index = ((buf[2] & 0xff) | ((buf[3] & 0xff) << 8));
-			s = index + " km/h";
-			setPreference("speed", s);
+            case 0x6a: {
 
-		}
-			break;
+                index = ((buf[2] & 0xff) | ((buf[3] & 0xff) << 8));
+                s = index + " km/h";
+                setPreference("speed", s);
 
-		case 0x27: {
+            }
+            break;
 
-			index = (buf[2]);
-			s = index + " °C";
-			setPreference("coolant_temp", s);
+            case 0x27: {
 
-		}
-			break;
+                index = (buf[2]);
+                s = index + " °C";
+                setPreference("coolant_temp", s);
 
-		}
-	}
+            }
+            break;
 
-	private BroadcastReceiver mReceiver;
+        }
+    }
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private BroadcastReceiver mReceiver;
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + buf);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + buf);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

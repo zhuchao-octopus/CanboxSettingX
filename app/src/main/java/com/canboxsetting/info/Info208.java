@@ -70,84 +70,82 @@ import android.provider.Settings.SettingNotFoundException;
 
 public class Info208 extends PreferenceFragment {
 
-	private View mMainView;
+    private View mMainView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.c200_car_screen, container,
-				false);
-	
-		return mMainView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.c200_car_screen, container, false);
+
+        return mMainView;
+    }
 
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		unregisterListener();
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterListener();
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		registerListener();
-		
-
-		byte[] buf = new byte[] {  0x3, (byte) 0x6a, 0x5, 0x1, (byte)0x9b };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerListener();
 
 
-	private void updateView(byte[] buf) {
+        byte[] buf = new byte[]{0x3, (byte) 0x6a, 0x5, 0x1, (byte) 0x9b};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
 
-		switch (buf[0]&0xff) {
-		case 0x9b: {
-			byte []str = new byte[48];
-			Util.byteArrayCopy(str, buf, 0, 4, str.length);
-			String s = new String(str);
-			((TextView)mMainView.findViewById(R.id.screen_text)).setText(s);
-		}
-			break;
+    private void updateView(byte[] buf) {
 
-		}
-	}
 
-	private BroadcastReceiver mReceiver;
+        switch (buf[0] & 0xff) {
+            case 0x9b: {
+                byte[] str = new byte[48];
+                Util.byteArrayCopy(str, buf, 0, 4, str.length);
+                String s = new String(str);
+                ((TextView) mMainView.findViewById(R.id.screen_text)).setText(s);
+            }
+            break;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private BroadcastReceiver mReceiver;
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-							try {
-								updateView(buf);
-							} catch (Exception e) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

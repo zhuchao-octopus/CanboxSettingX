@@ -66,254 +66,247 @@ import com.common.view.MyPreference2;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
-public class OuShangeInfoRaiseFragment extends PreferenceFragment implements
-		OnPreferenceClickListener {
-	private static final String TAG = "VWMQBInfoRaiseFragment";
+public class OuShangeInfoRaiseFragment extends PreferenceFragment implements OnPreferenceClickListener {
+    private static final String TAG = "VWMQBInfoRaiseFragment";
 
-	PreferenceScreen mTpms;
+    PreferenceScreen mTpms;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		addPreferencesFromResource(R.xml.oushang_info_raise);
-	}
+        addPreferencesFromResource(R.xml.oushang_info_raise);
+    }
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		unregisterListener();
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterListener();
 
-		mHandler.removeMessages(0x1);
-	}
+        mHandler.removeMessages(0x1);
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		registerListener();
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerListener();
 
-		sendCanboxInfo(0x90, 0x3a, 0);
-		
-		mHandler.removeMessages(0x1);
-		mHandler.sendEmptyMessageDelayed(0x1, 500);
+        sendCanboxInfo(0x90, 0x3a, 0);
 
-	}
+        mHandler.removeMessages(0x1);
+        mHandler.sendEmptyMessageDelayed(0x1, 500);
 
-	private void initTpmsView() {
-		if (mTpmsView == null) {
-			MyPreference2 p = (MyPreference2) findPreference("tpms_content");
-			if (p != null) {
-				mTpmsView = p.getMainView();
-			}
-		}
-		if (mTpmsView != null) {
-			View v = mTpmsView.findViewById(R.id.tpms);
-			v.setOnClickListener(new View.OnClickListener() {
+    }
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					sendCanboxInfo(0x83, 0xc, 1);
-				}
-			});
-		}
-	}
+    private void initTpmsView() {
+        if (mTpmsView == null) {
+            MyPreference2 p = (MyPreference2) findPreference("tpms_content");
+            if (p != null) {
+                mTpmsView = p.getMainView();
+            }
+        }
+        if (mTpmsView != null) {
+            View v = mTpmsView.findViewById(R.id.tpms);
+            v.setOnClickListener(new View.OnClickListener() {
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case 1:
-				initTpmsView();
-				if (mTpmsView == null) {
-					mHandler.sendEmptyMessageDelayed(0x1, 500);
-				}
-				break;
-			}
-			// sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-		}
-	};
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    sendCanboxInfo(0x83, 0xc, 1);
+                }
+            });
+        }
+    }
 
-	private void sendCanboxInfo(int d0, int d1, int d2) {
-		byte[] buf = new byte[] { (byte) d0, 0x02, (byte) d1, (byte) d2 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    initTpmsView();
+                    if (mTpmsView == null) {
+                        mHandler.sendEmptyMessageDelayed(0x1, 500);
+                    }
+                    break;
+            }
+            // sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+        }
+    };
 
-	private void setPreference(String key, String s) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			p.setSummary(s);
-		}
-	}
+    private void sendCanboxInfo(int d0, int d1, int d2) {
+        byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private View mTpmsView;
+    private void setPreference(String key, String s) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            p.setSummary(s);
+        }
+    }
 
-	public boolean onPreferenceClick(Preference arg0) {
+    private View mTpmsView;
 
-		return false;
-	}
+    public boolean onPreferenceClick(Preference arg0) {
 
-	private void setTpmsBarText(int id, int text) {
-		String s;
-		if (text == 0xff) {
-			s = "-.-";
-		} else {
-			text = (text * 10 / 7) - 1;
+        return false;
+    }
 
-			s = String.format("%d.%d", text / 100, text / 10);
+    private void setTpmsBarText(int id, int text) {
+        String s;
+        if (text == 0xff) {
+            s = "-.-";
+        } else {
+            text = (text * 10 / 7) - 1;
 
-		}
-		TextView tv = ((TextView) mTpmsView.findViewById(id));
-		tv.setText(s + "bar");
-	}
+            s = String.format("%d.%d", text / 100, text / 10);
 
-	private byte[] mTpmsWarning = new byte[4];
+        }
+        TextView tv = ((TextView) mTpmsView.findViewById(id));
+        tv.setText(s + "bar");
+    }
 
-	private void setTpmsWarningText(int id, int text) {
-		String s = null;
+    private byte[] mTpmsWarning = new byte[4];
 
-		if ((text & 0xff) != 0) {
-			String[] ss = getResources()
-					.getStringArray(R.array.tpms_waring_msg);
-			int i = 0;
-			s = "";
-			for (i = 0; i < 8; i++) {
-				if ((text & (0x1 << i)) != 0) {
-					if (s.length() > 0) {
-						s += ",";
-					}
-					s += ss[i];
-				}
-			}
+    private void setTpmsWarningText(int id, int text) {
+        String s = null;
 
-		}
-		TextView tv = ((TextView) mTpmsView.findViewById(id));
-		if (s != null) {
+        if ((text & 0xff) != 0) {
+            String[] ss = getResources().getStringArray(R.array.tpms_waring_msg);
+            int i = 0;
+            s = "";
+            for (i = 0; i < 8; i++) {
+                if ((text & (0x1 << i)) != 0) {
+                    if (s.length() > 0) {
+                        s += ",";
+                    }
+                    s += ss[i];
+                }
+            }
 
-			tv.setText(s);
-			tv.setVisibility(View.VISIBLE);
-		} else {
-			tv.setVisibility(View.GONE);
-		}
-	}
+        }
+        TextView tv = ((TextView) mTpmsView.findViewById(id));
+        if (s != null) {
 
-	private void setTpmsText(int id, int text) {
-		String s;
-		if (text == 0xff) {
-			s = "-";
-		} else {
-			text = -40 + text;
+            tv.setText(s);
+            tv.setVisibility(View.VISIBLE);
+        } else {
+            tv.setVisibility(View.GONE);
+        }
+    }
 
-			s = text + " ";
+    private void setTpmsText(int id, int text) {
+        String s;
+        if (text == 0xff) {
+            s = "-";
+        } else {
+            text = -40 + text;
 
-		}
-		TextView tv = ((TextView) mTpmsView.findViewById(id));
-		tv.setText(s + getActivity().getString(R.string.temp_unic));
-	}
+            s = text + " ";
 
-	private void updateView(byte[] buf) {
-		int index;
-		String s = "";
-		switch (buf[0]) {
+        }
+        TextView tv = ((TextView) mTpmsView.findViewById(id));
+        tv.setText(s + getActivity().getString(R.string.temp_unic));
+    }
 
-		case 0x3a:
-			index = ((buf[4] & 0xff) | ((buf[3] & 0xff) << 8));
-			if (index >= 0 && index <= 0x1fff) {
-				s = String.format("%d km", index);
-			} else {
-				s = "";
-			}
-			setPreference("oil_change", s);
+    private void updateView(byte[] buf) {
+        int index;
+        String s = "";
+        switch (buf[0]) {
 
-			break;
+            case 0x3a:
+                index = ((buf[4] & 0xff) | ((buf[3] & 0xff) << 8));
+                if (index >= 0 && index <= 0x1fff) {
+                    s = String.format("%d km", index);
+                } else {
+                    s = "";
+                }
+                setPreference("oil_change", s);
 
-		case 0x38:
+                break;
 
-			if (mTpmsView == null) {
-				MyPreference2 p = (MyPreference2) findPreference("tpms_content");
-				if (p != null) {
-					mTpmsView = p.getMainView();
-				}
-			}
+            case 0x38:
 
-			setTpmsText(R.id.type11_info, buf[2]);
-			setTpmsText(R.id.type12_info, buf[3]);
-			setTpmsText(R.id.type21_info, buf[4]);
-			setTpmsText(R.id.type22_info, buf[5]);
+                if (mTpmsView == null) {
+                    MyPreference2 p = (MyPreference2) findPreference("tpms_content");
+                    if (p != null) {
+                        mTpmsView = p.getMainView();
+                    }
+                }
 
-			setTpmsBarText(R.id.type11_num, buf[6]);
-			setTpmsBarText(R.id.type12_num, buf[7]);
-			setTpmsBarText(R.id.type21_num, buf[8]);
-			setTpmsBarText(R.id.type22_num, buf[9]);
+                setTpmsText(R.id.type11_info, buf[2]);
+                setTpmsText(R.id.type12_info, buf[3]);
+                setTpmsText(R.id.type21_info, buf[4]);
+                setTpmsText(R.id.type22_info, buf[5]);
 
-			break;
+                setTpmsBarText(R.id.type11_num, buf[6]);
+                setTpmsBarText(R.id.type12_num, buf[7]);
+                setTpmsBarText(R.id.type21_num, buf[8]);
+                setTpmsBarText(R.id.type22_num, buf[9]);
 
-		case 0x39:
-			setTpmsWarningText(R.id.type11_warning, buf[2]);
-			setTpmsWarningText(R.id.type12_warning, buf[3]);
-			setTpmsWarningText(R.id.type21_warning, buf[4]);
-			setTpmsWarningText(R.id.type22_warning, buf[5]);
+                break;
 
-			break;
-		case 0x52:
-			if (buf[2] == 0xc) {
-				showTpmsResetDialog(buf[3] & 0xff);
-			}
-			break;
-		}
-	}
+            case 0x39:
+                setTpmsWarningText(R.id.type11_warning, buf[2]);
+                setTpmsWarningText(R.id.type12_warning, buf[3]);
+                setTpmsWarningText(R.id.type21_warning, buf[4]);
+                setTpmsWarningText(R.id.type22_warning, buf[5]);
 
-	private void showTpmsResetDialog(int id) {
-		if (id <= 4 && id >= 1) {
+                break;
+            case 0x52:
+                if (buf[2] == 0xc) {
+                    showTpmsResetDialog(buf[3] & 0xff);
+                }
+                break;
+        }
+    }
 
-			String[] ss = getResources()
-					.getStringArray(R.array.tpms_set_msg);
+    private void showTpmsResetDialog(int id) {
+        if (id <= 4 && id >= 1) {
 
-			AlertDialog ad = new AlertDialog.Builder(getActivity())
-					.setTitle(ss[id])
-					.setNegativeButton(R.string.cancel,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int whichButton) {
-								}
-							}).create();
-			ad.show();
-		}
-	}
+            String[] ss = getResources().getStringArray(R.array.tpms_set_msg);
 
-	private BroadcastReceiver mReceiver;
+            AlertDialog ad = new AlertDialog.Builder(getActivity()).setTitle(ss[id]).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                }
+            }).create();
+            ad.show();
+        }
+    }
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private BroadcastReceiver mReceiver;
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("cce", "" + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("cce", "" + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

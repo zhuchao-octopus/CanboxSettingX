@@ -66,83 +66,78 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class CarCompassActivity extends Activity {
-	private static final String TAG = "CanAirControlActivity";
+    private static final String TAG = "CanAirControlActivity";
 
-	private FragmentManager mFragmentManager;
+    private FragmentManager mFragmentManager;
 
-	private MyFragment mSetting;
+    private MyFragment mSetting;
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		setContentView(R.layout.main);
-		mFragmentManager = getFragmentManager();
+        setContentView(R.layout.main);
+        mFragmentManager = getFragmentManager();
 
-		String value = null;
-		String mCanboxType = MachineConfig
-				.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-		int mProVersion = 0;
-		String mProIndex = null;
-		if (mCanboxType != null) {
-			String[] ss = mCanboxType.split(",");
-			value = ss[0];
-			try {
-				for (int i = 1; i < ss.length; ++i) {
-					if (ss[i]
-							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-						mProVersion = Integer.valueOf(ss[i].substring(1));
-					} else if (ss[i]
-							.startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
-						mProIndex = ss[i].substring(1);
-						try {
-							GlobalDef.setProId(Integer.valueOf(mProIndex));
-						} catch (Exception e) {
+        String value = null;
+        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
+        int mProVersion = 0;
+        String mProIndex = null;
+        if (mCanboxType != null) {
+            String[] ss = mCanboxType.split(",");
+            value = ss[0];
+            try {
+                for (int i = 1; i < ss.length; ++i) {
+                    if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
+                        mProVersion = Integer.valueOf(ss[i].substring(1));
+                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+                        mProIndex = ss[i].substring(1);
+                        try {
+                            GlobalDef.setProId(Integer.valueOf(mProIndex));
+                        } catch (Exception e) {
 
-						}
-					}
-				}
-			} catch (Exception e) {
+                        }
+                    }
+                }
+            } catch (Exception e) {
 
-			}
-		}
+            }
+        }
 
-		if (mProVersion >= 3 && mProIndex != null) {
-			Class<?> c = FragmentPro.getFragmentCompassByID(mProIndex);
-			if (c != null) {
-				try {
-					mSetting = (MyFragment) c.newInstance();
-				} catch (Exception e) {
+        if (mProVersion >= 3 && mProIndex != null) {
+            Class<?> c = FragmentPro.getFragmentCompassByID(mProIndex);
+            if (c != null) {
+                try {
+                    mSetting = (MyFragment) c.newInstance();
+                } catch (Exception e) {
 
-				}
+                }
 
-			}
-		}
+            }
+        }
 
-		if (mSetting == null) {
-			finish();
-			return;
-		}
+        if (mSetting == null) {
+            finish();
+            return;
+        }
 
-		replaceFragment(R.id.main, mSetting, false);
+        replaceFragment(R.id.main, mSetting, false);
 
-	}
+    }
 
-	public void onClick(View v) {
-		mSetting.onClick(v);
-	}
+    public void onClick(View v) {
+        mSetting.onClick(v);
+    }
 
-	private void replaceFragment(int layoutId, Fragment fragment,
-			boolean isAddStack) {
-		if (fragment != null) {
-			FragmentTransaction transation = mFragmentManager
-					.beginTransaction();
-			transation.replace(layoutId, fragment);
-			if (isAddStack) {
-				transation.addToBackStack(null);
-			}
-			transation.commit();
-		}
-	}
+    private void replaceFragment(int layoutId, Fragment fragment, boolean isAddStack) {
+        if (fragment != null) {
+            FragmentTransaction transation = mFragmentManager.beginTransaction();
+            transation.replace(layoutId, fragment);
+            if (isAddStack) {
+                transation.addToBackStack(null);
+            }
+            transation.commit();
+        }
+    }
 
 }

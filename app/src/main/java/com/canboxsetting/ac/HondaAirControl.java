@@ -57,28 +57,28 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class HondaAirControl extends Activity {
-	private static final String TAG = "HondaAirControl";
+    private static final String TAG = "HondaAirControl";
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		setContentView(R.layout.honda_air_control);
-	}
+        setContentView(R.layout.honda_air_control);
+    }
 
-	@Override
-	protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
 
-		super.onDestroy();
-		// System.exit(0);
-	}
+        super.onDestroy();
+        // System.exit(0);
+    }
 
-	private void sendCanboxInfo0xC6(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) 0xC6, 0x2, (byte) d0, (byte) d1 };
-		BroadcastUtil.sendCanboxInfo(this, buf);
-	}
+    private void sendCanboxInfo0xC6(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xC6, 0x2, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(this, buf);
+    }
 
-	public void onClick(View v) {
+    public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.on) {
             sendCanboxInfo0xC6(0xac, 0x1);
@@ -107,64 +107,66 @@ public class HondaAirControl extends Activity {
         } else if (id == R.id.point6) {
             sendCanboxInfo0xC6(0xad, 0x7);
         }
-	}
+    }
 
-	private boolean mShow = false;
-	private void updateView(byte[] buf) {
+    private boolean mShow = false;
 
-		if ((buf[0] & 0xff) == 0x21) {
-			if ((buf[6] & 0x40) != 0){
-				mShow = true;
-			} else if(mShow){
-				finish();
-			}
-		}
-	}
-	
-	@Override
-	protected void onPause() {
-		unregisterListener();
-		mShow = false;
-		super.onPause();
-	}
-	
-	@Override
-	protected void onResume()  {
-		registerListener();
-		super.onResume();
-	}
-	private BroadcastReceiver mReceiver;
-	
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private void updateView(byte[] buf) {
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+        if ((buf[0] & 0xff) == 0x21) {
+            if ((buf[6] & 0x40) != 0) {
+                mShow = true;
+            } else if (mShow) {
+                finish();
+            }
+        }
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    @Override
+    protected void onPause() {
+        unregisterListener();
+        mShow = false;
+        super.onPause();
+    }
 
-			registerReceiver(mReceiver, iFilter);
-		}
-	}
+    @Override
+    protected void onResume() {
+        registerListener();
+        super.onResume();
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            registerReceiver(mReceiver, iFilter);
+        }
+    }
 }

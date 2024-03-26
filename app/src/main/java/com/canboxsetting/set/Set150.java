@@ -58,296 +58,293 @@ import com.common.util.NodePreference;
 import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set150 extends PreferenceFragment implements
-		Preference.OnPreferenceChangeListener {
-	private static final String TAG = "HYSettingsRaiseFragment";
+public class Set150 extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
+    private static final String TAG = "HYSettingsRaiseFragment";
 
-	private static final NodePreference[] NODES = {
+    private static final NodePreference[] NODES = {
 
-	new NodePreference("parking_assist", 0x00c0, 0x3600, 0xc0, 0, R.array.kuwei_park_entries, R.array.twelve_values), 
-			
-	new NodePreference("headlight_off", 0x0030, 0x3600, 0x30, 0, R.array.enheadlights_off, R.array.twelve_values), 
-	new NodePreference("unlock_open_lamp", 0x000c, 0x3600, 0x0c, 0, R.array.enheadlights_off, R.array.twelve_values), 
-	
+            new NodePreference("parking_assist", 0x00c0, 0x3600, 0xc0, 0, R.array.kuwei_park_entries, R.array.twelve_values),
 
-	new NodePreference("headlight_wiper", 0x0002, 0x3600, 0x02, 0),	
-	
-	new NodePreference("flash_lights_with_lock", 0x0001, 0x3600, 0x01, 0),	
-	
-	new NodePreference("zhonghua_xx", 0x0180, 0x3601, 0x80, 0),	
-	new NodePreference("unlock_driving", 0x0140, 0x3601, 0x40, 0),	
-	
-	
-	
-	new NodePreference("first_press_of_key_unlocks", 0x0120, 0x3601, 0x20, 0, R.array.remote_unlock_entries, R.array.twelve_values), 
+            new NodePreference("headlight_off", 0x0030, 0x3600, 0x30, 0, R.array.enheadlights_off, R.array.twelve_values),
+            new NodePreference("unlock_open_lamp", 0x000c, 0x3600, 0x0c, 0, R.array.enheadlights_off, R.array.twelve_values),
 
-	new NodePreference("keyless_entry", 0x0110, 0x3601, 0x10, 0),	
-	new NodePreference("outseat_heating", 0x0108, 0x3601, 0x08, 0),
-	
-	new NodePreference("engine_power", 0x0106, 0x3601, 0x06, 0, R.array.enpower_off, R.array.twelve_values), 
-	new NodePreference("language", 0x02f0, 0x3602, 0xf0, 0, R.array.kuwei_language_entries, R.array.twelve_values), 
-	new NodePreference("unit_setting", 0x020f, 0x3602, 0x0f, 0, R.array.kuwei_metric_entries, R.array.twelve_values), 
 
-	};
+            new NodePreference("headlight_wiper", 0x0002, 0x3600, 0x02, 0),
 
-	private final static int[] INIT_CMDS = { 0x36 };
+            new NodePreference("flash_lights_with_lock", 0x0001, 0x3600, 0x01, 0),
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+            new NodePreference("zhonghua_xx", 0x0180, 0x3601, 0x80, 0), new NodePreference("unlock_driving", 0x0140, 0x3601, 0x40, 0),
 
-		addPreferencesFromResource(R.xml.empty_setting);
 
-		init();
+            new NodePreference("first_press_of_key_unlocks", 0x0120, 0x3601, 0x20, 0, R.array.remote_unlock_entries, R.array.twelve_values),
 
-	}
+            new NodePreference("keyless_entry", 0x0110, 0x3601, 0x10, 0), new NodePreference("outseat_heating", 0x0108, 0x3601, 0x08, 0),
 
-	private byte[] mCmdSend = new byte[] { (byte) 0xc6, 0x8, 0, 0, 0, 0, 0, 0,
-			0, 0 };
+            new NodePreference("engine_power", 0x0106, 0x3601, 0x06, 0, R.array.enpower_off, R.array.twelve_values),
+            new NodePreference("language", 0x02f0, 0x3602, 0xf0, 0, R.array.kuwei_language_entries, R.array.twelve_values),
+            new NodePreference("unit_setting", 0x020f, 0x3602, 0x0f, 0, R.array.kuwei_metric_entries, R.array.twelve_values),
 
-	private void sendCmd(int cmd, int value) {
-		int mask = cmd & 0xff;
-		int index = (cmd & 0xff00) >> 8;
-		index += 2;
-		int start = 0;
-		int i;
-		for (i = 0; i < 32; i++) {
-			if ((mask & (0x1 << i)) != 0) {
-				start = i;
-				break;
-			}
-		}
+    };
 
-		mCmdSend[index] &= ~mask;
-		mCmdSend[index] |= (value << start) & mask;
+    private final static int[] INIT_CMDS = {0x36};
 
-		BroadcastUtil.sendCanboxInfo(getActivity(), mCmdSend);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	private void init() {
+        addPreferencesFromResource(R.xml.empty_setting);
 
-		for (int i = 0; i < NODES.length; ++i) {
-			Preference p = NODES[i].createPreference(getActivity());
-			if (p != null) {
+        init();
 
-				Preference ps = getPreferenceScreen();
-				if (ps instanceof PreferenceScreen) {
-					boolean add = true;
-					if (((NODES[i].mType & 0xff0000) >> 16) != 0) {
-						int index = ((NODES[i].mType & 0xff00) >> 8) + 2;
-						if ((mVisible[index] & NODES[i].mType) == 0) {
-							add = false;
-						}
-					}
+    }
 
-					if (add) {
-						((PreferenceScreen) ps).addPreference(p);
-					}
+    private byte[] mCmdSend = new byte[]{
+            (byte) 0xc6, 0x8, 0, 0, 0, 0, 0, 0, 0, 0
+    };
 
-					if ((p instanceof ListPreference)
-							|| (p instanceof SwitchPreference)) {
-						p.setOnPreferenceChangeListener(this);
-					} else if ((p instanceof MyPreferenceSeekBar)) {
-						p.setOnPreferenceChangeListener(this);
-						if (NODES[i].mKey.equals("over_speed")) {
-							((MyPreferenceSeekBar) p).setUnit("km/h");
-						} else {
-							((MyPreferenceSeekBar) p).setUnit("m");
-						}
-					}
-				}
+    private void sendCmd(int cmd, int value) {
+        int mask = cmd & 0xff;
+        int index = (cmd & 0xff00) >> 8;
+        index += 2;
+        int start = 0;
+        int i;
+        for (i = 0; i < 32; i++) {
+            if ((mask & (0x1 << i)) != 0) {
+                start = i;
+                break;
+            }
+        }
 
-			}
-		}
-	}
+        mCmdSend[index] &= ~mask;
+        mCmdSend[index] |= (value << start) & mask;
 
-	private byte[] mVisible = new byte[] { 0x78, 0, 0, (byte) 0xff,
-			(byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff };
+        BroadcastUtil.sendCanboxInfo(getActivity(), mCmdSend);
+    }
 
-	private boolean mPaused = true;
+    private void init() {
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		mPaused = true;
-		unregisterListener();
-	}
+        for (int i = 0; i < NODES.length; ++i) {
+            Preference p = NODES[i].createPreference(getActivity());
+            if (p != null) {
 
-	@Override
-	public void onResume() {
-		super.onResume();
+                Preference ps = getPreferenceScreen();
+                if (ps instanceof PreferenceScreen) {
+                    boolean add = true;
+                    if (((NODES[i].mType & 0xff0000) >> 16) != 0) {
+                        int index = ((NODES[i].mType & 0xff00) >> 8) + 2;
+                        if ((mVisible[index] & NODES[i].mType) == 0) {
+                            add = false;
+                        }
+                    }
 
-		mPaused = false;
-		registerListener();
-		requestInitData();
+                    if (add) {
+                        ((PreferenceScreen) ps).addPreference(p);
+                    }
 
-	}
+                    if ((p instanceof ListPreference) || (p instanceof SwitchPreference)) {
+                        p.setOnPreferenceChangeListener(this);
+                    } else if ((p instanceof MyPreferenceSeekBar)) {
+                        p.setOnPreferenceChangeListener(this);
+                        if (NODES[i].mKey.equals("over_speed")) {
+                            ((MyPreferenceSeekBar) p).setUnit("km/h");
+                        } else {
+                            ((MyPreferenceSeekBar) p).setUnit("m");
+                        }
+                    }
+                }
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
+            }
+        }
+    }
 
-	private void requestInitData() {
-		for (int i = 0; i < INIT_CMDS.length; ++i) {
-			mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
-		}
-	}
+    private byte[] mVisible = new byte[]{
+            0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff
+    };
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (!mPaused) {
-				sendCanboxInfo(msg.what & 0xff);
-			}
-		}
-	};
+    private boolean mPaused = true;
 
-	private void udpatePreferenceValue(Preference preference, Object newValue) {
-		String key = preference.getKey();
-		for (int i = 0; i < NODES.length; ++i) {
-			if (NODES[i].mKey.equals(key)) {
-				if (preference instanceof ListPreference) {
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPaused = true;
+        unregisterListener();
+    }
 
-					sendCmd(NODES[i].mCmd, Integer.parseInt((String) newValue));
+    @Override
+    public void onResume() {
+        super.onResume();
 
-				} else if (preference instanceof SwitchPreference) {
+        mPaused = false;
+        registerListener();
+        requestInitData();
 
-					sendCmd(NODES[i].mCmd, ((Boolean) newValue) ? 0x1 : 0x0);
+    }
 
-				}
-				break;
-			}
-		}
-	}
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
-	public boolean onPreferenceChange(Preference preference, Object newValue) {
-		try {
-			udpatePreferenceValue(preference, newValue);
-		} catch (Exception e) {
+    private void requestInitData() {
+        for (int i = 0; i < INIT_CMDS.length; ++i) {
+            mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
+        }
+    }
 
-		}
-		return false;
-	}
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
 
-	private void sendCanboxInfo(int d0) {
-		byte[] buf = new byte[] {(byte) 0x90, 0x1, (byte) d0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void udpatePreferenceValue(Preference preference, Object newValue) {
+        String key = preference.getKey();
+        for (int i = 0; i < NODES.length; ++i) {
+            if (NODES[i].mKey.equals(key)) {
+                if (preference instanceof ListPreference) {
 
-	private void sendCanboxInfo(int d0, int d1, int d2) {
-		byte[] buf = new byte[] { 0x2, (byte) d0, (byte) d1, (byte) d2 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+                    sendCmd(NODES[i].mCmd, Integer.parseInt((String) newValue));
 
-	private void setPreference(String key, int index) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			if (p instanceof ListPreference) {
-				ListPreference lp = (ListPreference) p;
-				CharSequence []ss = lp.getEntries();
-				if (ss != null && (ss.length > index)) {
-					lp.setValue(String.valueOf(index));
-				}
-				lp.setSummary("%s");
-			} else if (p instanceof SwitchPreference) {
-				SwitchPreference sp = (SwitchPreference) p;
-				sp.setChecked(index == 1 ? true : false);
-			} else if (p instanceof MyPreferenceSeekBar) {
-				if (key.equals("over_speed")) {
-					index = index * 10;
-				}
-				p.setSummary(index + "");
-			}
-		}
-	}
+                } else if (preference instanceof SwitchPreference) {
 
-	private void setPreference(String key, String s) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			p.setSummary(s);
-		}
-	}
+                    sendCmd(NODES[i].mCmd, ((Boolean) newValue) ? 0x1 : 0x0);
 
-	private int getStatusValue1(int value, int mask) {
+                }
+                break;
+            }
+        }
+    }
 
-		int start = 0;
-		int i;
-		for (i = 0; i < 32; i++) {
-			if ((mask & (0x1 << i)) != 0) {
-				start = i;
-				break;
-			}
-		}
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        try {
+            udpatePreferenceValue(preference, newValue);
+        } catch (Exception e) {
 
-		// } catch (Exception e) {
-		// value = 0;
-		// }
+        }
+        return false;
+    }
 
-		return ((value & mask) >> start);
-	}
+    private void sendCanboxInfo(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x1, (byte) d0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void updateView(byte[] buf) {
+    private void sendCanboxInfo(int d0, int d1, int d2) {
+        byte[] buf = new byte[]{0x2, (byte) d0, (byte) d1, (byte) d2};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-		int cmd;
-		int mask;
-		int index;
-		// if (buf[0] == 0x78) {
-		// if ((mVisible[3] != buf[3]) || (mVisible[3] != buf[4])
-		// || (mVisible[3] != buf[5])) {
-		// Util.byteArrayCopy(mVisible, buf, 3, 3, mVisible.length - 3);
-		// removeAll();
-		// init();
-		// }
-		// }
-		for (int i = 0; i < NODES.length; ++i) {
-			cmd = (NODES[i].mStatus & 0xff00) >> 8;
-			index = NODES[i].mStatus & 0xff;
-			mask = NODES[i].mMask;
+    private void setPreference(String key, int index) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            if (p instanceof ListPreference) {
+                ListPreference lp = (ListPreference) p;
+                CharSequence[] ss = lp.getEntries();
+                if (ss != null && (ss.length > index)) {
+                    lp.setValue(String.valueOf(index));
+                }
+                lp.setSummary("%s");
+            } else if (p instanceof SwitchPreference) {
+                SwitchPreference sp = (SwitchPreference) p;
+                sp.setChecked(index == 1 ? true : false);
+            } else if (p instanceof MyPreferenceSeekBar) {
+                if (key.equals("over_speed")) {
+                    index = index * 10;
+                }
+                p.setSummary(index + "");
+            }
+        }
+    }
 
-			if ((buf[0] & 0xff) == cmd) {
-				mask = (NODES[i].mMask);
-				int value = getStatusValue1(buf[2 + index], mask);
-				setPreference(NODES[i].mKey, value);
-			}
+    private void setPreference(String key, String s) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            p.setSummary(s);
+        }
+    }
 
-		}
+    private int getStatusValue1(int value, int mask) {
 
-	}
+        int start = 0;
+        int i;
+        for (i = 0; i < 32; i++) {
+            if ((mask & (0x1 << i)) != 0) {
+                start = i;
+                break;
+            }
+        }
 
-	private BroadcastReceiver mReceiver;
+        // } catch (Exception e) {
+        // value = 0;
+        // }
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        return ((value & mask) >> start);
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void updateView(byte[] buf) {
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d(TAG, "updateView:Exception " + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+        int cmd;
+        int mask;
+        int index;
+        // if (buf[0] == 0x78) {
+        // if ((mVisible[3] != buf[3]) || (mVisible[3] != buf[4])
+        // || (mVisible[3] != buf[5])) {
+        // Util.byteArrayCopy(mVisible, buf, 3, 3, mVisible.length - 3);
+        // removeAll();
+        // init();
+        // }
+        // }
+        for (int i = 0; i < NODES.length; ++i) {
+            cmd = (NODES[i].mStatus & 0xff00) >> 8;
+            index = NODES[i].mStatus & 0xff;
+            mask = NODES[i].mMask;
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+            if ((buf[0] & 0xff) == cmd) {
+                mask = (NODES[i].mMask);
+                int value = getStatusValue1(buf[2 + index], mask);
+                setPreference(NODES[i].mKey, value);
+            }
+
+        }
+
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d(TAG, "updateView:Exception " + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

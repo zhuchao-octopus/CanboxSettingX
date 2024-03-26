@@ -75,248 +75,241 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class Radio207 extends MyFragment {
-	private static final String TAG = "Radio153";
+    private static final String TAG = "Radio153";
 
-	private View mMainView;
+    private View mMainView;
 
-	private ListView mListViewCD;
+    private ListView mListViewCD;
 
-	private MyListViewAdapterRadio mMyListViewAdapter;
+    private MyListViewAdapterRadio mMyListViewAdapter;
 
-	private ListView mListViewPreset;
+    private ListView mListViewPreset;
 
-	private MyListViewAdapterRadio mMyListViewAdapterPreset;
+    private MyListViewAdapterRadio mMyListViewAdapterPreset;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater.inflate(R.layout.honda_radio, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.honda_radio, container, false);
 
-//		mListViewCD = (ListView) mMainView.findViewById(R.id.liststations);
-//		mListViewPreset = (ListView) mMainView.findViewById(R.id.listpreset);
-		
-
-		mMainView.findViewById(R.id.panel).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.other).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.liststations).setVisibility(View.GONE);
-//		mMainView.findViewById(R.id.layout_radio_list).setVisibility(View.GONE);
-//		mMainView.findViewById(R.id.panel).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.radio).setVisibility(View.VISIBLE);
-
-		mMainView.findViewById(R.id.fmam).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.fm).setVisibility(View.VISIBLE);
-		mMainView.findViewById(R.id.am).setVisibility(View.VISIBLE);
-		mMainView.findViewById(R.id.line_am).setVisibility(View.VISIBLE);
-		mMainView.findViewById(R.id.stations).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.preset).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.update_stations_list).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.radio_step_up_button).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.radio_step_down_button).setVisibility(View.GONE);
-//		mListViewPreset.setVisibility(View.VISIBLE);
-//		initUI();
-		
-	mListViewPreset = (ListView) mMainView.findViewById(R.id.listpreset);
-	
-		mListViewPreset.setVisibility(View.VISIBLE);
-		
-		return mMainView;
-	}
+        //		mListViewCD = (ListView) mMainView.findViewById(R.id.liststations);
+        //		mListViewPreset = (ListView) mMainView.findViewById(R.id.listpreset);
 
 
+        mMainView.findViewById(R.id.panel).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.other).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.liststations).setVisibility(View.GONE);
+        //		mMainView.findViewById(R.id.layout_radio_list).setVisibility(View.GONE);
+        //		mMainView.findViewById(R.id.panel).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.radio).setVisibility(View.VISIBLE);
 
-	private void sendCanboxInfo0x83(int d0) {
-		sendCanboxInfo0x83(d0, 1);
-	}
+        mMainView.findViewById(R.id.fmam).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.fm).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.am).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.line_am).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.stations).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.preset).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.update_stations_list).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.radio_step_up_button).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.radio_step_down_button).setVisibility(View.GONE);
+        //		mListViewPreset.setVisibility(View.VISIBLE);
+        //		initUI();
 
-	private void sendCanboxInfo0xC5(int d0) {
-//		byte[] buf = new byte[] { (byte) 0xc5, 0x2, (byte) d0, 0 };
-//		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
-	
-	private void sendCanboxInfo0x83(int d0, int d1) {
-		byte[] buf = new byte[] { 0x2, (byte) 0xf1, (byte) d0, (byte) d1 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        mListViewPreset = (ListView) mMainView.findViewById(R.id.listpreset);
 
+        mListViewPreset.setVisibility(View.VISIBLE);
 
-	private void updatePresetList(int index, String name, int freq) {
-
-		if (mMyListViewAdapterPreset == null) {
-			mMyListViewAdapterPreset = new MyListViewAdapterRadio(
-					getActivity(), R.layout.tl_list);
-			mListViewPreset.setAdapter(mMyListViewAdapterPreset);
-
-			mListViewPreset.setOnItemClickListener(new OnItemClickListener() {
-				public void onItemClick(AdapterView<?> arg0, View view,
-						int postion, long id) {
-					int index = mMyListViewAdapterPreset
-							.getSelectIndex(postion);
-					if (index != -1) {
-
-						sendCanboxInfo0x83(0x8, index+1);
-
-					}
-				}
-			});
-
-		}
-
-		if (mMyListViewAdapterPreset != null) {
-			mMyListViewAdapterPreset.addList(index, name, freq);
-		}
-
-	}
-
-byte mStatus;
-	private void updateView(byte[] buf) {
-		String s = "";
-		switch (buf[0]) {
-		case (byte)0x84: {
-			mStatus = buf[6];
-			int freq = ((buf[4] & 0xff) << 8) | (buf[3] & 0xff);
-			String s2;
-			String s3;
-
-			int index = (buf[5] & 0xff);
-			if (buf[2] == 0 || buf[2] == 2 || buf[2] == 4) {
-				s = "FM";
-				if (index != 0) {
-					s += index;
-				}
-				s3 = "MHz";
-				s2 = String.format("%d.%d", freq / 100, freq % 100);
-			} else {
-				s = "AM";
-				s3 = "KHz";
-				s2 = freq + "";
-			}
-			((TextView) mMainView.findViewById(R.id.freq_baud)).setText(s);
-			((TextView) mMainView.findViewById(R.id.freq_text)).setText(s2);
-			((TextView) mMainView.findViewById(R.id.freq_unit)).setText(s3);
-			
-			if ((buf[7] & 0x20) != 0) {
-				((TextView) mMainView.findViewById(R.id.st))
-						.setVisibility(View.VISIBLE);
-			} else {
-
-				((TextView) mMainView.findViewById(R.id.st))
-						.setVisibility(View.GONE);
-			}
-		}
-			break;
-		case (byte)0xa7: {			
-			byte []b = new byte[0x10];
-			Util.byteArrayCopy(b, buf, 0, 2, 0x10);
-			s = new String(b);
-			((TextView) mMainView.findViewById(R.id.status))
-			.setText(s);
-			break;
-		}
-		}
-
-	}
-
-	private boolean mPaused = true;
-	@Override
-	public void onPause() {
-		unregisterListener();mPaused = true;
-		super.onPause();
-	}
-
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { 0x3, (byte) 0x6a, 0x5, 1, (byte) d0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
-	@Override
-	public void onResume() {
-		registerListener();
-		mPaused = false;
-		BroadcastUtil
-				.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_AUX);
-
-		sendCanboxInfo0x90(0x84);		
-		Util.doSleep(50);
-		sendCanboxInfo0x90(0xa7);
-		super.onResume();
-	}
-	
-	private final static int[] INIT_CMDS = { 0x22, 0x21 };
+        return mMainView;
+    }
 
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (!mPaused) {
-				byte[] buf = new byte[] {(byte) 0x1f, 0x1, (byte)(msg.what & 0xff) };
-				BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-			}
-		}
-	};
+    private void sendCanboxInfo0x83(int d0) {
+        sendCanboxInfo0x83(d0, 1);
+    }
+
+    private void sendCanboxInfo0xC5(int d0) {
+        //		byte[] buf = new byte[] { (byte) 0xc5, 0x2, (byte) d0, 0 };
+        //		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo0x83(int d0, int d1) {
+        byte[] buf = new byte[]{0x2, (byte) 0xf1, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
 
-	private BroadcastReceiver mReceiver;
+    private void updatePresetList(int index, String name, int freq) {
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        if (mMyListViewAdapterPreset == null) {
+            mMyListViewAdapterPreset = new MyListViewAdapterRadio(getActivity(), R.layout.tl_list);
+            mListViewPreset.setAdapter(mMyListViewAdapterPreset);
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+            mListViewPreset.setOnItemClickListener(new OnItemClickListener() {
+                public void onItemClick(AdapterView<?> arg0, View view, int postion, long id) {
+                    int index = mMyListViewAdapterPreset.getSelectIndex(postion);
+                    if (index != -1) {
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					} else if (action.equals(MyCmd.BROADCAST_CAR_SERVICE_SEND)) {
+                        sendCanboxInfo0x83(0x8, index + 1);
 
-						int cmd = intent.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
-						switch (cmd) {
-						case MyCmd.Cmd.SOURCE_CHANGE:
-						case MyCmd.Cmd.RETURN_CURRENT_SOURCE:
-							int source = intent.getIntExtra(
-									MyCmd.EXTRA_COMMON_DATA, 0);
-							if (mSource == MyCmd.SOURCE_AUX
-									&& source != MyCmd.SOURCE_AUX) {
-								// sendCanboxInfo0xc7(0xE);
-								// } else {
-								// sendCanboxInfo0xc7(0x0);
-							}
-							mSource = source;
-							break;
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
-			iFilter.addAction(MyCmd.BROADCAST_CAR_SERVICE_SEND);
+                    }
+                }
+            });
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+        }
 
-	private AuxInUI mAuxInUI;
+        if (mMyListViewAdapterPreset != null) {
+            mMyListViewAdapterPreset.addList(index, name, freq);
+        }
 
-	private int mSource = MyCmd.SOURCE_NONE;
+    }
 
-	public boolean isCurrentSource() {
-		return (mSource == MyCmd.SOURCE_AUX);
-	}
+    byte mStatus;
+
+    private void updateView(byte[] buf) {
+        String s = "";
+        switch (buf[0]) {
+            case (byte) 0x84: {
+                mStatus = buf[6];
+                int freq = ((buf[4] & 0xff) << 8) | (buf[3] & 0xff);
+                String s2;
+                String s3;
+
+                int index = (buf[5] & 0xff);
+                if (buf[2] == 0 || buf[2] == 2 || buf[2] == 4) {
+                    s = "FM";
+                    if (index != 0) {
+                        s += index;
+                    }
+                    s3 = "MHz";
+                    s2 = String.format("%d.%d", freq / 100, freq % 100);
+                } else {
+                    s = "AM";
+                    s3 = "KHz";
+                    s2 = freq + "";
+                }
+                ((TextView) mMainView.findViewById(R.id.freq_baud)).setText(s);
+                ((TextView) mMainView.findViewById(R.id.freq_text)).setText(s2);
+                ((TextView) mMainView.findViewById(R.id.freq_unit)).setText(s3);
+
+                if ((buf[7] & 0x20) != 0) {
+                    ((TextView) mMainView.findViewById(R.id.st)).setVisibility(View.VISIBLE);
+                } else {
+
+                    ((TextView) mMainView.findViewById(R.id.st)).setVisibility(View.GONE);
+                }
+            }
+            break;
+            case (byte) 0xa7: {
+                byte[] b = new byte[0x10];
+                Util.byteArrayCopy(b, buf, 0, 2, 0x10);
+                s = new String(b);
+                ((TextView) mMainView.findViewById(R.id.status)).setText(s);
+                break;
+            }
+        }
+
+    }
+
+    private boolean mPaused = true;
+
+    @Override
+    public void onPause() {
+        unregisterListener();
+        mPaused = true;
+        super.onPause();
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{0x3, (byte) 0x6a, 0x5, 1, (byte) d0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    @Override
+    public void onResume() {
+        registerListener();
+        mPaused = false;
+        BroadcastUtil.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_AUX);
+
+        sendCanboxInfo0x90(0x84);
+        Util.doSleep(50);
+        sendCanboxInfo0x90(0xa7);
+        super.onResume();
+    }
+
+    private final static int[] INIT_CMDS = {0x22, 0x21};
 
 
-	public void onClick(View v) {
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                byte[] buf = new byte[]{(byte) 0x1f, 0x1, (byte) (msg.what & 0xff)};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    } else if (action.equals(MyCmd.BROADCAST_CAR_SERVICE_SEND)) {
+
+                        int cmd = intent.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
+                        switch (cmd) {
+                            case MyCmd.Cmd.SOURCE_CHANGE:
+                            case MyCmd.Cmd.RETURN_CURRENT_SOURCE:
+                                int source = intent.getIntExtra(MyCmd.EXTRA_COMMON_DATA, 0);
+                                if (mSource == MyCmd.SOURCE_AUX && source != MyCmd.SOURCE_AUX) {
+                                    // sendCanboxInfo0xc7(0xE);
+                                    // } else {
+                                    // sendCanboxInfo0xc7(0x0);
+                                }
+                                mSource = source;
+                                break;
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+            iFilter.addAction(MyCmd.BROADCAST_CAR_SERVICE_SEND);
+
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
+
+    private AuxInUI mAuxInUI;
+
+    private int mSource = MyCmd.SOURCE_NONE;
+
+    public boolean isCurrentSource() {
+        return (mSource == MyCmd.SOURCE_AUX);
+    }
+
+
+    public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.fm) {
             sendCanboxInfo0x83(3, 1);
@@ -343,12 +336,11 @@ byte mStatus;
         } else if (id == R.id.update_stations_list) {
             sendCanboxInfo0x83(0xc);
         } else if (id == R.id.stations) {
-            mMainView.findViewById(R.id.liststations).setVisibility(
-                    View.VISIBLE);
+            mMainView.findViewById(R.id.liststations).setVisibility(View.VISIBLE);
             mMainView.findViewById(R.id.listpreset).setVisibility(View.GONE);
         } else if (id == R.id.preset) {
             mMainView.findViewById(R.id.liststations).setVisibility(View.GONE);
             mMainView.findViewById(R.id.listpreset).setVisibility(View.VISIBLE);
         }
-	}
+    }
 }

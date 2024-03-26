@@ -69,197 +69,188 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
 public class GMInfoDaoJunFragment extends Fragment {
-	private static final String TAG = "GMInfoSimpleFragment";
+    private static final String TAG = "GMInfoSimpleFragment";
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		// addPreferencesFromResource(R.xml.gm_simple_info);
+        // addPreferencesFromResource(R.xml.gm_simple_info);
 
-	}
+    }
 
-	private View mMainView;
+    private View mMainView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		final Context context = inflater.getContext();
-		mMainView = inflater.inflate(R.layout.gm_simple_info, container, false);
-		View v = mMainView.findViewById(R.id.tpms);
-		if (v != null){
-			v.setVisibility(View.GONE);
-		}
-		
-		if (GlobalDef.getModelId() == 30||GlobalDef.getModelId() == 52||GlobalDef.getModelId() == 9){
-			mMainView.findViewById(R.id.other_ui).setVisibility(View.GONE);
-		}
-		return mMainView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final Context context = inflater.getContext();
+        mMainView = inflater.inflate(R.layout.gm_simple_info, container, false);
+        View v = mMainView.findViewById(R.id.tpms);
+        if (v != null) {
+            v.setVisibility(View.GONE);
+        }
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		unregisterListener();
-	}
+        if (GlobalDef.getModelId() == 30 || GlobalDef.getModelId() == 52 || GlobalDef.getModelId() == 9) {
+            mMainView.findViewById(R.id.other_ui).setVisibility(View.GONE);
+        }
+        return mMainView;
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		registerListener();
-		sendCanboxInfo(0x31);
-		Util.doSleep(50);
-		sendCanboxInfo(0x32);
-		Util.doSleep(50);
-		sendCanboxInfo(0x33);
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterListener();
+    }
 
-	private void sendCanboxInfo(int d0) {
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerListener();
+        sendCanboxInfo(0x31);
+        Util.doSleep(50);
+        sendCanboxInfo(0x32);
+        Util.doSleep(50);
+        sendCanboxInfo(0x33);
+    }
 
-		byte[] buf = new byte[] { (byte) 0x90, 0x01, (byte) d0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo(int d0) {
 
-	private void updateView(byte[] buf) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x01, (byte) d0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-		String temp = "";
-		int i;
-		switch (buf[0]) {
-		case 0xb:
-			((TextView) mMainView.findViewById(R.id.speed))
-			.setText( (((((int) buf[2] & 0xff)*256) +   ((int) buf[3] & 0xff))/16) + "KM/H");
-			break;
-		case 0x31:
+    private void updateView(byte[] buf) {
 
-			temp = String.format("%d.%d V", ((int) buf[3] & 0xff) / 10,
-					((int) buf[3] & 0xff) % 10);
+        String temp = "";
+        int i;
+        switch (buf[0]) {
+            case 0xb:
+                ((TextView) mMainView.findViewById(R.id.speed)).setText((((((int) buf[2] & 0xff) * 256) + ((int) buf[3] & 0xff)) / 16) + "KM/H");
+                break;
+            case 0x31:
 
-			((TextView) mMainView.findViewById(R.id.cell_V)).setText(temp);
+                temp = String.format("%d.%d V", ((int) buf[3] & 0xff) / 10, ((int) buf[3] & 0xff) % 10);
 
-			// if ((buf[4] & 0x80) != 0) {
-			// temp = "-";
-			// }
-			temp = "" + buf[4];
-//			if (mMainView.findViewById(R.id.temp_info) != null) {
-//				((TextView) mMainView.findViewById(R.id.temp_info))
-//						.setText(temp + "°C");
-//			}
+                ((TextView) mMainView.findViewById(R.id.cell_V)).setText(temp);
 
-			temp = ((((int) buf[6] & 0xff) << 24)
-					+ (((int) buf[7] & 0xff) << 16)
-					+ (((int) buf[8] & 0xff) << 8) + ((int) buf[9] & 0xff))
-					+ "KM";
-			((TextView) mMainView.findViewById(R.id.mileage_sum)).setText(temp);
+                // if ((buf[4] & 0x80) != 0) {
+                // temp = "-";
+                // }
+                temp = "" + buf[4];
+                //			if (mMainView.findViewById(R.id.temp_info) != null) {
+                //				((TextView) mMainView.findViewById(R.id.temp_info))
+                //						.setText(temp + "°C");
+                //			}
 
-			break;
-		case 0x32:
-			temp = (((int) buf[2] & 0xff) * 256 + ((int) buf[3] & 0xff))
-					+ "RPM";
-			((TextView) mMainView.findViewById(R.id.am_enginespeed))
-					.setText(temp);
+                temp = ((((int) buf[6] & 0xff) << 24) + (((int) buf[7] & 0xff) << 16) + (((int) buf[8] & 0xff) << 8) + ((int) buf[9] & 0xff)) + "KM";
+                ((TextView) mMainView.findViewById(R.id.mileage_sum)).setText(temp);
 
-			i = ((int) buf[4] & 0xff) * 256 + ((int) buf[5] & 0xff);
-			temp = String.format("%d.%d L", i / 10, i % 10);
+                break;
+            case 0x32:
+                temp = (((int) buf[2] & 0xff) * 256 + ((int) buf[3] & 0xff)) + "RPM";
+                ((TextView) mMainView.findViewById(R.id.am_enginespeed)).setText(temp);
 
-			((TextView) mMainView.findViewById(R.id.instant)).setText(temp);
+                i = ((int) buf[4] & 0xff) * 256 + ((int) buf[5] & 0xff);
+                temp = String.format("%d.%d L", i / 10, i % 10);
 
-			((TextView) mMainView.findViewById(R.id.foot))
-					.setText(((int) buf[6] & 0xff) + "%");
+                ((TextView) mMainView.findViewById(R.id.instant)).setText(temp);
 
-			break;
-		case 0x33:
+                ((TextView) mMainView.findViewById(R.id.foot)).setText(((int) buf[6] & 0xff) + "%");
 
-			temp = ((int) buf[2] & 0xff) * 256 + ((int) buf[3] & 0xff) + "";
-			((TextView) mMainView.findViewById(R.id.type11_num)).setText(temp);
+                break;
+            case 0x33:
 
-			temp = ((int) buf[4] & 0xff) * 256 + ((int) buf[5] & 0xff) + "";
-			((TextView) mMainView.findViewById(R.id.type12_num)).setText(temp);
+                temp = ((int) buf[2] & 0xff) * 256 + ((int) buf[3] & 0xff) + "";
+                ((TextView) mMainView.findViewById(R.id.type11_num)).setText(temp);
 
-			temp = ((int) buf[6] & 0xff) * 256 + ((int) buf[7] & 0xff) + "";
-			((TextView) mMainView.findViewById(R.id.type21_num)).setText(temp);
+                temp = ((int) buf[4] & 0xff) * 256 + ((int) buf[5] & 0xff) + "";
+                ((TextView) mMainView.findViewById(R.id.type12_num)).setText(temp);
 
-			temp = ((int) buf[8] & 0xff) * 256 + ((int) buf[9] & 0xff) + "";
-			((TextView) mMainView.findViewById(R.id.type22_num)).setText(temp);
+                temp = ((int) buf[6] & 0xff) * 256 + ((int) buf[7] & 0xff) + "";
+                ((TextView) mMainView.findViewById(R.id.type21_num)).setText(temp);
 
-			temp = "";
-			if ((buf[12] & 0x1) != 0) {
-				temp = getString(R.string.tpms_hi);
-			} else if ((buf[12] & 0x2) != 0) {
-				temp = getString(R.string.tpms_low);
-			} else if ((buf[12] & 0x4) != 0) {
-				temp = getString(R.string.check_tpms);
-			}
+                temp = ((int) buf[8] & 0xff) * 256 + ((int) buf[9] & 0xff) + "";
+                ((TextView) mMainView.findViewById(R.id.type22_num)).setText(temp);
 
-			((TextView) mMainView.findViewById(R.id.type11_info)).setText(temp);
+                temp = "";
+                if ((buf[12] & 0x1) != 0) {
+                    temp = getString(R.string.tpms_hi);
+                } else if ((buf[12] & 0x2) != 0) {
+                    temp = getString(R.string.tpms_low);
+                } else if ((buf[12] & 0x4) != 0) {
+                    temp = getString(R.string.check_tpms);
+                }
 
-			temp = "";
-			if ((buf[13] & 0x1) != 0) {
-				temp = getString(R.string.tpms_hi);
-			} else if ((buf[13] & 0x2) != 0) {
-				temp = getString(R.string.tpms_low);
-			} else if ((buf[13] & 0x4) != 0) {
-				temp = getString(R.string.check_tpms);
-			}
-			((TextView) mMainView.findViewById(R.id.type12_info)).setText(temp);
+                ((TextView) mMainView.findViewById(R.id.type11_info)).setText(temp);
 
-			temp = "";
-			if ((buf[14] & 0x1) != 0) {
-				temp = getString(R.string.tpms_hi);
-			} else if ((buf[14] & 0x2) != 0) {
-				temp = getString(R.string.tpms_low);
-			} else if ((buf[14] & 0x4) != 0) {
-				temp = getString(R.string.check_tpms);
-			}
-			((TextView) mMainView.findViewById(R.id.type21_info)).setText(temp);
+                temp = "";
+                if ((buf[13] & 0x1) != 0) {
+                    temp = getString(R.string.tpms_hi);
+                } else if ((buf[13] & 0x2) != 0) {
+                    temp = getString(R.string.tpms_low);
+                } else if ((buf[13] & 0x4) != 0) {
+                    temp = getString(R.string.check_tpms);
+                }
+                ((TextView) mMainView.findViewById(R.id.type12_info)).setText(temp);
 
-			temp = "";
-			if ((buf[15] & 0x1) != 0) {
-				temp = getString(R.string.tpms_hi);
-			} else if ((buf[15] & 0x2) != 0) {
-				temp = getString(R.string.tpms_low);
-			} else if ((buf[15] & 0x4) != 0) {
-				temp = getString(R.string.check_tpms);
-			}
-			((TextView) mMainView.findViewById(R.id.type22_info)).setText(temp);
+                temp = "";
+                if ((buf[14] & 0x1) != 0) {
+                    temp = getString(R.string.tpms_hi);
+                } else if ((buf[14] & 0x2) != 0) {
+                    temp = getString(R.string.tpms_low);
+                } else if ((buf[14] & 0x4) != 0) {
+                    temp = getString(R.string.check_tpms);
+                }
+                ((TextView) mMainView.findViewById(R.id.type21_info)).setText(temp);
 
-			break;
-		}
-	}
+                temp = "";
+                if ((buf[15] & 0x1) != 0) {
+                    temp = getString(R.string.tpms_hi);
+                } else if ((buf[15] & 0x2) != 0) {
+                    temp = getString(R.string.tpms_low);
+                } else if ((buf[15] & 0x4) != 0) {
+                    temp = getString(R.string.check_tpms);
+                }
+                ((TextView) mMainView.findViewById(R.id.type22_info)).setText(temp);
 
-	private BroadcastReceiver mReceiver;
+                break;
+        }
+    }
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private BroadcastReceiver mReceiver;
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + buf);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + buf);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

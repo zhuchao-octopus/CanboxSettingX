@@ -58,44 +58,44 @@ import android.widget.TextView;
  */
 public class MyFragment extends Fragment {
 
-	public final static int TYPE_SEATHEAT_ONLY = 0x10000;
-	public final static int TYPE_MASK = 0xff0000;
+    public final static int TYPE_SEATHEAT_ONLY = 0x10000;
+    public final static int TYPE_MASK = 0xff0000;
 
-	public final static int TYPE_CAR_TYPE = 0xff;
+    public final static int TYPE_CAR_TYPE = 0xff;
 
-	public int mCarType = 0;
-	public void onClick(View v) {
-	}
+    public int mCarType = 0;
 
-	public boolean isCurrentSource() {
-		return false;
-	}
-	
-	public boolean onBackKey() {
-		return false;
-	}
-	
-	
+    public void onClick(View v) {
+    }
 
-	public interface MsgInterface {
+    public boolean isCurrentSource() {
+        return false;
+    }
 
-		public void callBack(int msg);
+    public boolean onBackKey() {
+        return false;
+    }
 
-	}
 
-	public MsgInterface mMsgInterface;
+    public interface MsgInterface {
 
-	public void setCallback(MsgInterface i) {
-		mMsgInterface = i;
-	}
+        public void callBack(int msg);
 
-	public void callBack(int msg) {
-		if (mMsgInterface != null) {
-			mMsgInterface.callBack(msg);
-		}
-	}
-	
-	protected void onNewIntent(Intent intent) {
-		
-	}
+    }
+
+    public MsgInterface mMsgInterface;
+
+    public void setCallback(MsgInterface i) {
+        mMsgInterface = i;
+    }
+
+    public void callBack(int msg) {
+        if (mMsgInterface != null) {
+            mMsgInterface.callBack(msg);
+        }
+    }
+
+    protected void onNewIntent(Intent intent) {
+
+    }
 }

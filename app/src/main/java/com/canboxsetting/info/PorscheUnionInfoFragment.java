@@ -66,84 +66,84 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
 public class PorscheUnionInfoFragment extends PreferenceFragment {
-	private static final String TAG = "KadjarRaiseFragment";
+    private static final String TAG = "KadjarRaiseFragment";
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.porsche_union_info);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.porsche_union_info);
+    }
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		unregisterListener();
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterListener();
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		registerListener();
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerListener();
+    }
 
-	private void setPreference(String key, String s) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			p.setSummary(s);
-		}
-	}
+    private void setPreference(String key, String s) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            p.setSummary(s);
+        }
+    }
 
-	private void updateView(byte[] buf) {
+    private void updateView(byte[] buf) {
 
-		int index = 0;
-		String s = "";
+        int index = 0;
+        String s = "";
 
-		switch (buf[0]) {
-		case 0x2: {
+        switch (buf[0]) {
+            case 0x2: {
 
-			index = ((buf[3] & 0xff) | ((buf[2] & 0xff) << 8));
-			s = index + " KM";
-			setPreference("mileage", s);
-		}
-			break;
-		}
+                index = ((buf[3] & 0xff) | ((buf[2] & 0xff) << 8));
+                s = index + " KM";
+                setPreference("mileage", s);
+            }
+            break;
+        }
 
-	}
+    }
 
-	private BroadcastReceiver mReceiver;
+    private BroadcastReceiver mReceiver;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
 
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + buf);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + buf);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

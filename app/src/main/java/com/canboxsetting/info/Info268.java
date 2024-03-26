@@ -59,157 +59,146 @@ import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Info268 extends PreferenceFragment {
-	private static final String TAG = "HYSettingsRaiseFragment";
+    private static final String TAG = "HYSettingsRaiseFragment";
 
-	private static final NodePreference[] NODES = {
+    private static final NodePreference[] NODES = {
 
-		new NodePreference("remaining_power", 0x31),
-		new NodePreference("battery_temperature", 0x31),
-		new NodePreference("battery_voltage", 0x31),
-		new NodePreference("battery_current", 0x31),
-		new NodePreference("motor_temperature", 0x31),
-		new NodePreference("control_module_voltage", 0x31),
-		new NodePreference("motor_controller_failure", 0x31),
+            new NodePreference("remaining_power", 0x31), new NodePreference("battery_temperature", 0x31), new NodePreference("battery_voltage", 0x31), new NodePreference("battery_current", 0x31),
+            new NodePreference("motor_temperature", 0x31), new NodePreference("control_module_voltage", 0x31), new NodePreference("motor_controller_failure", 0x31),
 
 
-	};
+    };
 
-	private final static int[] INIT_CMDS = { 0x31 };
+    private final static int[] INIT_CMDS = {0x31};
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		addPreferencesFromResource(R.xml.empty_setting);
+        addPreferencesFromResource(R.xml.empty_setting);
 
-		init();
+        init();
 
-	}
+    }
 
-	private void init() {
+    private void init() {
 
-		for (int i = 0; i < NODES.length; ++i) {
-			Preference p = NODES[i].createPreference(getActivity());
-			if (p != null) {
+        for (int i = 0; i < NODES.length; ++i) {
+            Preference p = NODES[i].createPreference(getActivity());
+            if (p != null) {
 
-				Preference ps = getPreferenceScreen();
-				if (ps instanceof PreferenceScreen) {
-					((PreferenceScreen) ps).addPreference(p);
-				}
+                Preference ps = getPreferenceScreen();
+                if (ps instanceof PreferenceScreen) {
+                    ((PreferenceScreen) ps).addPreference(p);
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 
-	private boolean mPaused = true;
+    private boolean mPaused = true;
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		mPaused = true;
-		unregisterListener();
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPaused = true;
+        unregisterListener();
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
+    @Override
+    public void onResume() {
+        super.onResume();
 
-		mPaused = false;
-		registerListener();
-		requestInitData();
+        mPaused = false;
+        registerListener();
+        requestInitData();
 
-	}
+    }
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
-	private void requestInitData() {
-		for (int i = 0; i < INIT_CMDS.length; ++i) {
-			mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
-		}
-	}
+    private void requestInitData() {
+        for (int i = 0; i < INIT_CMDS.length; ++i) {
+            mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
+        }
+    }
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (!mPaused) {
-				sendCanboxInfo(msg.what & 0xff);
-			}
-		}
-	};
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
 
-	private void sendCanboxInfo(int d0) {
-		byte[] buf = new byte[] { (byte) 0x90, 1, (byte) d0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    private void sendCanboxInfo(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 1, (byte) d0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
-	private void setPreference(String key, String s) {
-		Preference ps = getPreferenceScreen();
-		
-		Preference p = ((PreferenceScreen)ps).findPreference(key);
-		if (p != null) {
-			p.setSummary(s);
-		}
-	}
-	
-	private void updateView(byte[] buf) {
+    private void setPreference(String key, String s) {
+        Preference ps = getPreferenceScreen();
 
-		
-		switch (buf[0]) {
-		case 0x31:
-			setPreference(NODES[0].mKey, buf[2] + "%");
-			setPreference(NODES[1].mKey, buf[3]
-					+ getString(R.string.temp_unic_centigrade));
-			setPreference(NODES[2].mKey,
-					(((buf[4] & 0xff) << 8) | (buf[5] & 0xff)) + "V");
-			setPreference(NODES[3].mKey, buf[6] + "A");
-			setPreference(NODES[4].mKey, buf[7]
-					+ getString(R.string.temp_unic_centigrade));
-			setPreference(NODES[5].mKey,
-					(((buf[8] & 0xff) << 8) | (buf[9] & 0xff)) + "V");
-			setPreference(NODES[6].mKey,
-					(buf[10] == 1) ? getString(R.string.motor_failure)
-							: getString(R.string.ordinary));
-			break;
-		}
+        Preference p = ((PreferenceScreen) ps).findPreference(key);
+        if (p != null) {
+            p.setSummary(s);
+        }
+    }
 
-	}
+    private void updateView(byte[] buf) {
 
-	private BroadcastReceiver mReceiver;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        switch (buf[0]) {
+            case 0x31:
+                setPreference(NODES[0].mKey, buf[2] + "%");
+                setPreference(NODES[1].mKey, buf[3] + getString(R.string.temp_unic_centigrade));
+                setPreference(NODES[2].mKey, (((buf[4] & 0xff) << 8) | (buf[5] & 0xff)) + "V");
+                setPreference(NODES[3].mKey, buf[6] + "A");
+                setPreference(NODES[4].mKey, buf[7] + getString(R.string.temp_unic_centigrade));
+                setPreference(NODES[5].mKey, (((buf[8] & 0xff) << 8) | (buf[9] & 0xff)) + "V");
+                setPreference(NODES[6].mKey, (buf[10] == 1) ? getString(R.string.motor_failure) : getString(R.string.ordinary));
+                break;
+        }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d(TAG, "updateView:Exception " + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    private BroadcastReceiver mReceiver;
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d(TAG, "updateView:Exception " + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

@@ -60,128 +60,121 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class TPMSActivity extends Activity {
-	private static final String TAG = "CanboxSetting";
+    private static final String TAG = "CanboxSetting";
 
-	private FragmentManager mFragmentManager;
+    private FragmentManager mFragmentManager;
 
-	private Fragment mSetting;
+    private Fragment mSetting;
 
-//	public static String mCanboxType = null;
+    //	public static String mCanboxType = null;
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		setContentView(R.layout.main);
-		mFragmentManager = getFragmentManager();
+        setContentView(R.layout.main);
+        mFragmentManager = getFragmentManager();
 
-		String mCanboxType = MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-		int mProVersion = 0;
-		String mProIndex = null;
-		if (mCanboxType != null) {
-			String[] ss = mCanboxType.split(",");
-			mCanboxType = ss[0];
-			try {
-				for (int i = 1; i < ss.length; ++i) {
-					if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-						mProVersion = Integer.valueOf(ss[i].substring(1));
-					} else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
-						mProIndex = ss[i].substring(1);
-						GlobalDef.setProId(Integer.valueOf(mProIndex));
-					}
-				}
-			} catch (Exception e) {
+        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
+        int mProVersion = 0;
+        String mProIndex = null;
+        if (mCanboxType != null) {
+            String[] ss = mCanboxType.split(",");
+            mCanboxType = ss[0];
+            try {
+                for (int i = 1; i < ss.length; ++i) {
+                    if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
+                        mProVersion = Integer.valueOf(ss[i].substring(1));
+                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+                        mProIndex = ss[i].substring(1);
+                        GlobalDef.setProId(Integer.valueOf(mProIndex));
+                    }
+                }
+            } catch (Exception e) {
 
-			}
-		}
+            }
+        }
 
-		if (mProVersion >= 3 && mProIndex != null) {
-			Class<?> c = FragmentPro.getFragmentTpmsByID(mProIndex);
-			if (c != null) {
-				try {
-					mSetting = (Fragment) c.newInstance();
-					Bundle b = new Bundle();
-					b.putString(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX, mProIndex);
-					mSetting.setArguments(b);
-				} catch (Exception e) {
+        if (mProVersion >= 3 && mProIndex != null) {
+            Class<?> c = FragmentPro.getFragmentTpmsByID(mProIndex);
+            if (c != null) {
+                try {
+                    mSetting = (Fragment) c.newInstance();
+                    Bundle b = new Bundle();
+                    b.putString(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX, mProIndex);
+                    mSetting.setArguments(b);
+                } catch (Exception e) {
 
-				}
+                }
 
-			}
-			if (mSetting == null) {
-				finish();
-				return;
-			}
-		} else {
-			// mCanboxType =
-			// AppConfig.getCanboxSetting();//MachineConfig.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
-			if (mCanboxType != null) {
-				if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
-					mSetting = new VWMQBTpmsInfoRaiseFragment();
-				}
-				else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)) {
-					mSetting = new VWMQBTpmsInfoSimpleFragment();
-				}
-				
-				else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)) {
-					mSetting = new MazdTpmsInfoaRaiseFragment();
-				}
-				
-				else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
-					mSetting = new ZhongXingFragment();
-				}
-			}
+            }
+            if (mSetting == null) {
+                finish();
+                return;
+            }
+        } else {
+            // mCanboxType =
+            // AppConfig.getCanboxSetting();//MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
+            if (mCanboxType != null) {
+                if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
+                    mSetting = new VWMQBTpmsInfoRaiseFragment();
+                } else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)) {
+                    mSetting = new VWMQBTpmsInfoSimpleFragment();
+                } else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)) {
+                    mSetting = new MazdTpmsInfoaRaiseFragment();
+                } else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
+                    mSetting = new ZhongXingFragment();
+                }
+            }
 
-			if (mSetting == null) {
-				mSetting = new VWMQBTpmsInfoRaiseFragment();
-			}
-		}
+            if (mSetting == null) {
+                mSetting = new VWMQBTpmsInfoRaiseFragment();
+            }
+        }
 
-		replaceFragment(R.id.main, mSetting, false);
+        replaceFragment(R.id.main, mSetting, false);
 
-		mCmd = 0;
-		upateIntent(getIntent());
-	}
+        mCmd = 0;
+        upateIntent(getIntent());
+    }
 
-	private void replaceFragment(int layoutId, Fragment fragment,
-			boolean isAddStack) {
-		if (fragment != null) {
-			FragmentTransaction transation = mFragmentManager
-					.beginTransaction();
-			transation.replace(layoutId, fragment);
-			if (isAddStack) {
-				transation.addToBackStack(null);
-			}
-			transation.commit();
-		}
-	}
+    private void replaceFragment(int layoutId, Fragment fragment, boolean isAddStack) {
+        if (fragment != null) {
+            FragmentTransaction transation = mFragmentManager.beginTransaction();
+            transation.replace(layoutId, fragment);
+            if (isAddStack) {
+                transation.addToBackStack(null);
+            }
+            transation.commit();
+        }
+    }
 
-	public static int mCmd = 0;
-	public static byte[] mBuf;
+    public static int mCmd = 0;
+    public static byte[] mBuf;
 
-	private void upateIntent(Intent it) {
-		if (it != null) {
-			mBuf = it.getByteArrayExtra(MyCmd.EXTRA_COMMON_CMD);
-		}
-	}
+    private void upateIntent(Intent it) {
+        if (it != null) {
+            mBuf = it.getByteArrayExtra(MyCmd.EXTRA_COMMON_CMD);
+        }
+    }
 
-	@Override
-	protected void onNewIntent(Intent intent) {
-		setIntent(intent);
-		upateIntent(intent);
-	}
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        upateIntent(intent);
+    }
 
-	@Override
-	protected void onPause() {
+    @Override
+    protected void onPause() {
 
-		super.onPause();
-		// finish();
-	}
+        super.onPause();
+        // finish();
+    }
 
-	@Override
-	protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
 
-		super.onDestroy();
-		// System.exit(0);
-	}
+        super.onDestroy();
+        // System.exit(0);
+    }
 }

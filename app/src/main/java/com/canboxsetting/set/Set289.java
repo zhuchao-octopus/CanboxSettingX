@@ -58,282 +58,265 @@ import com.common.util.NodePreference;
 import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set289 extends PreferenceFragment implements
-		Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
-	private static final String TAG = "Set275";
+public class Set289 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+    private static final String TAG = "Set275";
 
-	private static final NodePreference[] NODES = {
+    private static final NodePreference[] NODES = {
 
-			new NodePreference("unlocks", 0x7501, 0x2700, 0xff, 0,
-					R.array.remote_unlock_entries, R.array.two_values),
+            new NodePreference("unlocks", 0x7501, 0x2700, 0xff, 0, R.array.remote_unlock_entries, R.array.two_values),
 
 
-					new NodePreference("energy_recovery", 0x7502, 0x2701, 0xff, 0, 20, 100, 1),
-					
-
-			new NodePreference("creep", 0x7503, 0x2702, 0xff, 0),
-			new NodePreference("skyworth1", 0x7504, 0x2703, 0xff, 0),
-			new NodePreference("skyworth2", 0x7505, 0x2704, 0xff, 0),
-			new NodePreference("skyworth3", 0x7506, 0x2705, 0xff, 0),
-
-			new NodePreference("over_speed", 0x7507, 0x2706, 0xff, 0,
-					R.array.skyworth1, R.array.ten_values),
-
-			new NodePreference("pedestrian_safety_assistance", 0x7508, 0x2707, 0xff, 0),
-			new NodePreference("body_stability_control", 0x7509, 0x2708, 0xff, 0),
-			new NodePreference("hill_decent_control", 0x750a, 0x2709, 0xff, 0),
-			new NodePreference("skyworth4", 0x750b, 0x270a, 0xff, 0),
-			new NodePreference("skyworth5", 0x750c, 0x270b, 0xff, 0),
-							
-	
-	
-	};
-
-	private final static int[] INIT_CMDS = { 0x27 };
+            new NodePreference("energy_recovery", 0x7502, 0x2701, 0xff, 0, 20, 100, 1),
 
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+            new NodePreference("creep", 0x7503, 0x2702, 0xff, 0), new NodePreference("skyworth1", 0x7504, 0x2703, 0xff, 0), new NodePreference("skyworth2", 0x7505, 0x2704, 0xff, 0),
+            new NodePreference("skyworth3", 0x7506, 0x2705, 0xff, 0),
 
-		addPreferencesFromResource(R.xml.empty_setting);
+            new NodePreference("over_speed", 0x7507, 0x2706, 0xff, 0, R.array.skyworth1, R.array.ten_values),
 
-		init();
-
-	}
-
-	private void init() {
-		
-		for (int i = 0; i < NODES.length; ++i) {
-			Preference p = NODES[i].createPreference(getActivity());
-			if (p != null) {
-				
-				Preference ps = getPreferenceScreen();
-				if (ps instanceof PreferenceScreen) {
-					boolean add = true;
-					
-
-					if (add) {
-						((PreferenceScreen) ps).addPreference(p);
-					}
-
-					if ((p instanceof ListPreference)
-							|| (p instanceof SwitchPreference)) {
-						p.setOnPreferenceChangeListener(this);
-					}  else if ((p instanceof MyPreferenceSeekBar)) {
-						p.setOnPreferenceChangeListener(this);
-						if (NODES[i].mKey.equals("energy_recovery")){
-//							((MyPreferenceSeekBar)p).setUnit(" % ");
-						}
-					}
-				}
-
-			}
-		}
-	}
-	
-	
-
-	private boolean mPaused = true;
-
-	@Override
-	public void onPause() {
-		super.onPause();
-		mPaused = true;
-		unregisterListener();
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-
-		mPaused = false;
-		registerListener();
-		requestInitData();
-
-	}
-
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
-
-	private void requestInitData() {
-		for (int i = 0; i < INIT_CMDS.length; ++i) {
-			mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
-		}
-	}
-
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (!mPaused) {
-				sendCanboxInfo(msg.what & 0xff);
-			}
-		}
-	};
+            new NodePreference("pedestrian_safety_assistance", 0x7508, 0x2707, 0xff, 0), new NodePreference("body_stability_control", 0x7509, 0x2708, 0xff, 0),
+            new NodePreference("hill_decent_control", 0x750a, 0x2709, 0xff, 0), new NodePreference("skyworth4", 0x750b, 0x270a, 0xff, 0), new NodePreference("skyworth5", 0x750c, 0x270b, 0xff, 0),
 
 
-	private void udpatePreferenceValue(Preference preference, Object newValue) {
-		String key = preference.getKey();
-		for (int i = 0; i < NODES.length; ++i) {
-			if (NODES[i].mKey.equals(key)) {
-				if (preference instanceof ListPreference) {
+    };
 
-					sendCanboxInfo((NODES[i].mCmd & 0xff00) >> 8,
-							NODES[i].mCmd & 0xff,
-							Integer.parseInt((String) newValue));					
-				} else if (preference instanceof SwitchPreference) {
-					
-						sendCanboxInfo((NODES[i].mCmd & 0xff00) >> 8,
-								NODES[i].mCmd & 0xff,
-								((Boolean) newValue) ? 0x1 : 0x0);	
-					
-				} else if (preference instanceof MyPreferenceSeekBar) {
-					int index = Integer.parseInt((String) newValue);
-					
-					sendCanboxInfo((NODES[i].mCmd & 0xff00) >> 8,
-							NODES[i].mCmd & 0xff,
-							index);	
-				} 
-				break;
-			}
-		}
-	}
+    private final static int[] INIT_CMDS = {0x27};
 
-	public boolean onPreferenceClick(Preference arg0) {
-		try {
-			udpatePreferenceValue(arg0, null);
-		} catch (Exception e) {
 
-		}
-	return false; 
-}
-	
-	public boolean onPreferenceChange(Preference preference, Object newValue) {
-		try {
-			udpatePreferenceValue(preference, newValue);
-		} catch (Exception e) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		}
-		return false;
-	}
+        addPreferencesFromResource(R.xml.empty_setting);
 
-	private void sendCanboxInfo(int d0) {
-		byte[] buf = new byte[] {  (byte) 0x90, 2,(byte) d0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        init();
 
-	private void sendCanboxInfo(int d0, int d1, int d2) {
-		byte[] buf = new byte[] { (byte) d0, 0x2, (byte) d1, (byte) d2};
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+    }
 
-	private void setPreference(String key, int index) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			if (p instanceof ListPreference) {
-				ListPreference lp = (ListPreference) p;
-				CharSequence []ss = lp.getEntries();
-				if (ss != null && (ss.length > index)) {
-					lp.setValue(String.valueOf(index));
-				}
-				lp.setSummary("%s");
-			} else if (p instanceof SwitchPreference) {
-				SwitchPreference sp = (SwitchPreference) p;
-				sp.setChecked(index == 1 ? true : false);
-			} else if (p instanceof MyPreferenceSeekBar) {
-				p.setSummary(index+"");
-			}
-		}
-	}
+    private void init() {
 
-	private void setPreference(String key, String s) {
-		Preference p = findPreference(key);
-		if (p != null) {
-			p.setSummary(s);
-		}
-	}
+        for (int i = 0; i < NODES.length; ++i) {
+            Preference p = NODES[i].createPreference(getActivity());
+            if (p != null) {
 
-	private int getStatusValue1(int value, int mask) {
+                Preference ps = getPreferenceScreen();
+                if (ps instanceof PreferenceScreen) {
+                    boolean add = true;
 
-		int start = 0;
-		int i;
-		for (i = 0; i < 32; i++) {
-			if ((mask & (0x1 << i)) != 0) {
-				start = i;
-				break;
-			}
-		}
 
-		// } catch (Exception e) {
-		// value = 0;
-		// }
+                    if (add) {
+                        ((PreferenceScreen) ps).addPreference(p);
+                    }
 
-		return ((value & mask) >> start);
-	}
-	
-	private void updateView(byte[] buf) {
+                    if ((p instanceof ListPreference) || (p instanceof SwitchPreference)) {
+                        p.setOnPreferenceChangeListener(this);
+                    } else if ((p instanceof MyPreferenceSeekBar)) {
+                        p.setOnPreferenceChangeListener(this);
+                        if (NODES[i].mKey.equals("energy_recovery")) {
+                            //							((MyPreferenceSeekBar)p).setUnit(" % ");
+                        }
+                    }
+                }
 
-		int cmd;
-		int mask;
-		int index;
-//		if (buf[0] == 0x78) {
-//			if ((mVisible[3] != buf[3]) || (mVisible[3] != buf[4])
-//					|| (mVisible[3] != buf[5])) {
-//				Util.byteArrayCopy(mVisible, buf, 3, 3, mVisible.length - 3);
-//				removeAll();
-//				init();
-//			}
-//		}
-		for (int i = 0; i < NODES.length; ++i) {
-			cmd = (NODES[i].mStatus & 0xff00) >> 8;
-			index = NODES[i].mStatus & 0xff;
-			mask = NODES[i].mMask;
+            }
+        }
+    }
 
-			if ((buf[0] & 0xff) == cmd) {
-				mask = (NODES[i].mMask);
-				int value = getStatusValue1(buf[2 + index], mask);
-				setPreference(NODES[i].mKey, value);
-			}
 
-		}
+    private boolean mPaused = true;
 
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPaused = true;
+        unregisterListener();
+    }
 
-	private BroadcastReceiver mReceiver;
+    @Override
+    public void onResume() {
+        super.onResume();
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			this.getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+        mPaused = false;
+        registerListener();
+        requestInitData();
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    }
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
-								updateView(buf);
-							} catch (Exception e) {
-								Log.d(TAG, "updateView:Exception " + e);
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
-			this.getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+    private void requestInitData() {
+        for (int i = 0; i < INIT_CMDS.length; ++i) {
+            mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
+        }
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
+
+
+    private void udpatePreferenceValue(Preference preference, Object newValue) {
+        String key = preference.getKey();
+        for (int i = 0; i < NODES.length; ++i) {
+            if (NODES[i].mKey.equals(key)) {
+                if (preference instanceof ListPreference) {
+
+                    sendCanboxInfo((NODES[i].mCmd & 0xff00) >> 8, NODES[i].mCmd & 0xff, Integer.parseInt((String) newValue));
+                } else if (preference instanceof SwitchPreference) {
+
+                    sendCanboxInfo((NODES[i].mCmd & 0xff00) >> 8, NODES[i].mCmd & 0xff, ((Boolean) newValue) ? 0x1 : 0x0);
+
+                } else if (preference instanceof MyPreferenceSeekBar) {
+                    int index = Integer.parseInt((String) newValue);
+
+                    sendCanboxInfo((NODES[i].mCmd & 0xff00) >> 8, NODES[i].mCmd & 0xff, index);
+                }
+                break;
+            }
+        }
+    }
+
+    public boolean onPreferenceClick(Preference arg0) {
+        try {
+            udpatePreferenceValue(arg0, null);
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        try {
+            udpatePreferenceValue(preference, newValue);
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    private void sendCanboxInfo(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo(int d0, int d1, int d2) {
+        byte[] buf = new byte[]{(byte) d0, 0x2, (byte) d1, (byte) d2};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void setPreference(String key, int index) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            if (p instanceof ListPreference) {
+                ListPreference lp = (ListPreference) p;
+                CharSequence[] ss = lp.getEntries();
+                if (ss != null && (ss.length > index)) {
+                    lp.setValue(String.valueOf(index));
+                }
+                lp.setSummary("%s");
+            } else if (p instanceof SwitchPreference) {
+                SwitchPreference sp = (SwitchPreference) p;
+                sp.setChecked(index == 1 ? true : false);
+            } else if (p instanceof MyPreferenceSeekBar) {
+                p.setSummary(index + "");
+            }
+        }
+    }
+
+    private void setPreference(String key, String s) {
+        Preference p = findPreference(key);
+        if (p != null) {
+            p.setSummary(s);
+        }
+    }
+
+    private int getStatusValue1(int value, int mask) {
+
+        int start = 0;
+        int i;
+        for (i = 0; i < 32; i++) {
+            if ((mask & (0x1 << i)) != 0) {
+                start = i;
+                break;
+            }
+        }
+
+        // } catch (Exception e) {
+        // value = 0;
+        // }
+
+        return ((value & mask) >> start);
+    }
+
+    private void updateView(byte[] buf) {
+
+        int cmd;
+        int mask;
+        int index;
+        //		if (buf[0] == 0x78) {
+        //			if ((mVisible[3] != buf[3]) || (mVisible[3] != buf[4])
+        //					|| (mVisible[3] != buf[5])) {
+        //				Util.byteArrayCopy(mVisible, buf, 3, 3, mVisible.length - 3);
+        //				removeAll();
+        //				init();
+        //			}
+        //		}
+        for (int i = 0; i < NODES.length; ++i) {
+            cmd = (NODES[i].mStatus & 0xff00) >> 8;
+            index = NODES[i].mStatus & 0xff;
+            mask = NODES[i].mMask;
+
+            if ((buf[0] & 0xff) == cmd) {
+                mask = (NODES[i].mMask);
+                int value = getStatusValue1(buf[2 + index], mask);
+                setPreference(NODES[i].mKey, value);
+            }
+
+        }
+
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            this.getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
+                                updateView(buf);
+                            } catch (Exception e) {
+                                Log.d(TAG, "updateView:Exception " + e);
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            this.getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
 }

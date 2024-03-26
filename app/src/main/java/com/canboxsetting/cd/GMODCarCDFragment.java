@@ -72,359 +72,361 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class GMODCarCDFragment extends MyFragment {
-	private static final String TAG = "JeepCarCDFragment";
+    private static final String TAG = "JeepCarCDFragment";
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		// setContentView(R.layout.jeep_car_cd_player);
+        // setContentView(R.layout.jeep_car_cd_player);
 
-	}
+    }
 
-	private View mMainView;
+    private View mMainView;
 
-	int mCarType = 0;
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		
-		
-		mMainView = inflater.inflate(R.layout.gm_od_player, container, false);
+    int mCarType = 0;
 
-		
-		showCamera();
-		initPresentationUI();
-		return mMainView;
-	}
-	private void initCarType(){
-		String mCanboxType = MachineConfig
-				.getPropertyOnce(MachineConfig.KEY_CAN_BOX);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		String[] ss = mCanboxType.split(",");
-		String value = ss[0];
-		for (int i = 1; i < ss.length; ++i) {
-			if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
-				try{
-					mCarType = Integer.valueOf(ss[i].substring(1));
-				}catch(Exception e){
-					
-				}
-			}
-		}
-		
-		if (mCarType == 1){
 
-			mMainView.findViewById(R.id.dvd_menu).setVisibility(View.GONE);
-		}
-	}
+        mMainView = inflater.inflate(R.layout.gm_od_player, container, false);
 
-	private static final int[] BUTTON_ON_CLICK = new int[] { R.id.home,
-			R.id.navi, R.id.radio, R.id.back, R.id.bt, R.id.power, R.id.prev,
-			R.id.next, R.id.key_vol_a, R.id.key_vol_m, R.id.key_sel_a,
-			R.id.key_sel_m, R.id.ok, R.id.music };
 
-	private void initPresentationUI() {
-		for (int i : BUTTON_ON_CLICK) {
-			View v = mMainView.findViewById(i);
-			if (v != null) {
-				v.setOnTouchListener(mOnTouchListener);
-			}
-		}
+        showCamera();
+        initPresentationUI();
+        return mMainView;
+    }
 
-		mGestureDetector = new GestureDetector(mOnGestureListener);
-		mGestureDetector.setOnDoubleTapListener(mOnDoubleTapListener);
+    private void initCarType() {
+        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
 
-		mMainView.findViewById(R.id.aux_main).setOnTouchListener(
-				mCameraOnTouchListener);
-	}
+        String[] ss = mCanboxType.split(",");
+        String value = ss[0];
+        for (int i = 1; i < ss.length; ++i) {
+            if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
+                try {
+                    mCarType = Integer.valueOf(ss[i].substring(1));
+                } catch (Exception e) {
 
-	private GestureDetector mGestureDetector;
+                }
+            }
+        }
 
-	private OnGestureListener mOnGestureListener = new OnGestureListener() {
-		public void onLongPress(MotionEvent e) {
-		};
+        if (mCarType == 1) {
 
-		public boolean onScroll(MotionEvent e1, MotionEvent e2,
-				float distanceX, float distanceY) {
-			return false;
-		};
+            mMainView.findViewById(R.id.dvd_menu).setVisibility(View.GONE);
+        }
+    }
 
-		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-				float velocityY) {
-			return false;
-		};
+    private static final int[] BUTTON_ON_CLICK = new int[]{
+            R.id.home, R.id.navi, R.id.radio, R.id.back, R.id.bt, R.id.power, R.id.prev, R.id.next, R.id.key_vol_a, R.id.key_vol_m, R.id.key_sel_a, R.id.key_sel_m, R.id.ok, R.id.music
+    };
 
-		public void onShowPress(MotionEvent e) {
-		};
+    private void initPresentationUI() {
+        for (int i : BUTTON_ON_CLICK) {
+            View v = mMainView.findViewById(i);
+            if (v != null) {
+                v.setOnTouchListener(mOnTouchListener);
+            }
+        }
 
-		public boolean onDown(MotionEvent e) {
-			return false;
-		};
+        mGestureDetector = new GestureDetector(mOnGestureListener);
+        mGestureDetector.setOnDoubleTapListener(mOnDoubleTapListener);
 
-		public boolean onSingleTapUp(MotionEvent e) {
-			return false;
-		};
-	};
-	private OnDoubleTapListener mOnDoubleTapListener = new OnDoubleTapListener() {
-		public boolean onDoubleTap(MotionEvent e) {
-			toggleFullScreen();
-			return false;
-		};
+        mMainView.findViewById(R.id.aux_main).setOnTouchListener(mCameraOnTouchListener);
+    }
 
-		@Override
-		public boolean onSingleTapConfirmed(MotionEvent e) {
-			sendXY((int) e.getX(), (int) e.getY());
-			return false;
-		};
+    private GestureDetector mGestureDetector;
 
-		@Override
-		public boolean onDoubleTapEvent(MotionEvent e) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-	};
+    private OnGestureListener mOnGestureListener = new OnGestureListener() {
+        public void onLongPress(MotionEvent e) {
+        }
 
-	private void sendXY(int x, int y) {
-		int w = mMainView.findViewById(R.id.aux_main).getWidth();
-		int h = mMainView.findViewById(R.id.aux_main).getHeight();
-		if (w != 0 && h != 0) {
-			x = x * 0x3fff / w;
-			y = y * 0x3fff / h;
-		}
-		Log.d("ccf", x + ":" + y);
-		byte[] buf = new byte[] { (byte) 0x75, 0x5, 0x1, (byte) (x & 0xff),
-				(byte) ((x & 0xff00) >> 8), (byte) (y & 0xff),
-				(byte) ((y & 0xff00) >> 8) };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        ;
 
-	private OnTouchListener mCameraOnTouchListener = new OnTouchListener() {
-		@Override
-		public boolean onTouch(View v, MotionEvent event) {
-			// TODO Auto-generated method stub
-			if (mGestureDetector != null) {
-				return mGestureDetector.onTouchEvent(event);
-			}
-			return false;
-		}
-	};
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            return false;
+        }
 
-	private OnTouchListener mOnTouchListener = new OnTouchListener() {
-		@Override
-		public boolean onTouch(View v, MotionEvent event) {
-			// TODO Auto-generated method stub
-			switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN: {
-				int d0 = Integer.valueOf((String) v.getTag());
+        ;
 
-				mHandler.removeMessages(0);
-				mHandler.sendMessageDelayed(mHandler.obtainMessage(0, d0, 0),
-						2000);
-				sendCanboxInfo0x74(d0, 1);
-			}
-				break;
-			case MotionEvent.ACTION_UP: {
-				mHandler.removeMessages(0);
-				int d0 = Integer.valueOf((String) v.getTag());
-				sendCanboxInfo0x74(d0, 0);
-			}
-				break;
-			}
-			return false;
-		}
-	};
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            return false;
+        }
 
-	private Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			mHandler.removeMessages(0);
-			mHandler.sendMessageDelayed(mHandler.obtainMessage(0, msg.arg1, 0),
-					100);
-			sendCanboxInfo0x74(msg.arg1, 2);
-		}
-	};
+        ;
 
-	private void sendCanboxInfo0x74(String tag, int d1) {
+        public void onShowPress(MotionEvent e) {
+        }
 
-		int d0 = Integer.valueOf(tag);
-		sendCanboxInfo0x74(d0, d1);
-	}
+        ;
 
-	private void sendCanboxInfo0x74(int d0, int d1) {
-		byte[] buf = new byte[] { (byte) 0x74, 0x2, (byte) d0, (byte) d1 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        public boolean onDown(MotionEvent e) {
+            return false;
+        }
 
-	private void sendCanboxInfo0x90(int d0) {
-		byte[] buf = new byte[] { (byte) 0x90, 0x2, (byte) d0, 0 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-	}
+        ;
 
-	public void onClick(View v) {
+        public boolean onSingleTapUp(MotionEvent e) {
+            return false;
+        }
+
+        ;
+    };
+    private OnDoubleTapListener mOnDoubleTapListener = new OnDoubleTapListener() {
+        public boolean onDoubleTap(MotionEvent e) {
+            toggleFullScreen();
+            return false;
+        }
+
+        ;
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            sendXY((int) e.getX(), (int) e.getY());
+            return false;
+        }
+
+        ;
+
+        @Override
+        public boolean onDoubleTapEvent(MotionEvent e) {
+            // TODO Auto-generated method stub
+            return false;
+        }
+    };
+
+    private void sendXY(int x, int y) {
+        int w = mMainView.findViewById(R.id.aux_main).getWidth();
+        int h = mMainView.findViewById(R.id.aux_main).getHeight();
+        if (w != 0 && h != 0) {
+            x = x * 0x3fff / w;
+            y = y * 0x3fff / h;
+        }
+        Log.d("ccf", x + ":" + y);
+        byte[] buf = new byte[]{
+                (byte) 0x75, 0x5, 0x1, (byte) (x & 0xff), (byte) ((x & 0xff00) >> 8), (byte) (y & 0xff), (byte) ((y & 0xff00) >> 8)
+        };
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private OnTouchListener mCameraOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO Auto-generated method stub
+            if (mGestureDetector != null) {
+                return mGestureDetector.onTouchEvent(event);
+            }
+            return false;
+        }
+    };
+
+    private OnTouchListener mOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO Auto-generated method stub
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN: {
+                    int d0 = Integer.valueOf((String) v.getTag());
+
+                    mHandler.removeMessages(0);
+                    mHandler.sendMessageDelayed(mHandler.obtainMessage(0, d0, 0), 2000);
+                    sendCanboxInfo0x74(d0, 1);
+                }
+                break;
+                case MotionEvent.ACTION_UP: {
+                    mHandler.removeMessages(0);
+                    int d0 = Integer.valueOf((String) v.getTag());
+                    sendCanboxInfo0x74(d0, 0);
+                }
+                break;
+            }
+            return false;
+        }
+    };
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            mHandler.removeMessages(0);
+            mHandler.sendMessageDelayed(mHandler.obtainMessage(0, msg.arg1, 0), 100);
+            sendCanboxInfo0x74(msg.arg1, 2);
+        }
+    };
+
+    private void sendCanboxInfo0x74(String tag, int d1) {
+
+        int d0 = Integer.valueOf(tag);
+        sendCanboxInfo0x74(d0, d1);
+    }
+
+    private void sendCanboxInfo0x74(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0x74, 0x2, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    public void onClick(View v) {
         if (v.getId() == id.pp) {
         }
-	}
+    }
 
-	private boolean mFull = false;
+    private boolean mFull = false;
 
-	private void setFullScreen() {
-		getActivity().getWindow().setFlags(
-				WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    private void setFullScreen() {
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		mMainView.findViewById(R.id.dvd_menu).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.dvd_menu).setVisibility(View.GONE);
 
-		mFull = true;
-	}
+        mFull = true;
+    }
 
-	private void quitFullScreen() {
-		final WindowManager.LayoutParams attrs = getActivity().getWindow()
-				.getAttributes();
-		attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		getActivity().getWindow().setAttributes(attrs);
-		getActivity().getWindow().clearFlags(
-				WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-		if (mCarType != 1){
-			mMainView.findViewById(R.id.dvd_menu).setVisibility(View.VISIBLE);
-		}
+    private void quitFullScreen() {
+        final WindowManager.LayoutParams attrs = getActivity().getWindow().getAttributes();
+        attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActivity().getWindow().setAttributes(attrs);
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        if (mCarType != 1) {
+            mMainView.findViewById(R.id.dvd_menu).setVisibility(View.VISIBLE);
+        }
 
-		mFull = false;
-	}
+        mFull = false;
+    }
 
-	private void toggleFullScreen() {
-		if (!mFull) {
-			setFullScreen();
-		} else {
-			quitFullScreen();
-		}
-	}
+    private void toggleFullScreen() {
+        if (!mFull) {
+            setFullScreen();
+        } else {
+            quitFullScreen();
+        }
+    }
 
-	private int m6DiskStatus = 0;
+    private int m6DiskStatus = 0;
 
-	private void hideCamera() {
-		if (mAuxInUI != null) {
-			if (!mAuxInUI.mPause) {
-				mAuxInUI.onPause();
-			}
-		}
-	}
+    private void hideCamera() {
+        if (mAuxInUI != null) {
+            if (!mAuxInUI.mPause) {
+                mAuxInUI.onPause();
+            }
+        }
+    }
 
-	private void showCamera() {
-		if (mAuxInUI == null) {
-			mAuxInUI = AuxInUI.getInstanse(getActivity(),
-					mMainView.findViewById(R.id.aux_main), 0);
-			mAuxInUI.onCreate();
-		}
-		if (mAuxInUI.mPause) {
-			mAuxInUI.onResume();
-		}
-	}
+    private void showCamera() {
+        if (mAuxInUI == null) {
+            mAuxInUI = AuxInUI.getInstanse(getActivity(), mMainView.findViewById(R.id.aux_main), 0);
+            mAuxInUI.onCreate();
+        }
+        if (mAuxInUI.mPause) {
+            mAuxInUI.onResume();
+        }
+    }
 
-	private void showDVD() {
-		showCamera();
-		mMainView.findViewById(R.id.cd).setVisibility(View.GONE);
-		mMainView.findViewById(R.id.dvd).setVisibility(View.VISIBLE);
-		mMainView.findViewById(R.id.dvd_menu).setVisibility(View.VISIBLE);
-		mMainView.findViewById(R.id.disc_status).setVisibility(View.VISIBLE);
-		mMainView.findViewById(R.id.dvd_lang_main).setVisibility(View.GONE);
-	}
+    private void showDVD() {
+        showCamera();
+        mMainView.findViewById(R.id.cd).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.dvd).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.dvd_menu).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.disc_status).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.dvd_lang_main).setVisibility(View.GONE);
+    }
 
-	private void setVisible(int id, int value) {
-		View v = mMainView.findViewById(id);
-		if (v != null) {
-			v.setVisibility(value != 0 ? View.VISIBLE : View.GONE);
-		}
-	}
+    private void setVisible(int id, int value) {
+        View v = mMainView.findViewById(id);
+        if (v != null) {
+            v.setVisibility(value != 0 ? View.VISIBLE : View.GONE);
+        }
+    }
 
-	private int mPauseUI = 0;
+    private int mPauseUI = 0;
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		hideCamera();
-		super.onPause();
-	}
+    @Override
+    public void onPause() {
+        unregisterListener();
+        hideCamera();
+        super.onPause();
+    }
 
-	@Override
-	public void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		mPauseUI = 0;
-	}
+    @Override
+    public void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        mPauseUI = 0;
+    }
 
-	@Override
-	public void onResume() {
-		registerListener();
+    @Override
+    public void onResume() {
+        registerListener();
 
-		BroadcastUtil
-				.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_AUX);
-		sendCanboxInfo0x90(0x62);
-		Util.doSleep(30);
-		sendCanboxInfo0x90(0x61);
-		initCarType();
-		super.onResume();
-	}
+        BroadcastUtil.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_AUX);
+        sendCanboxInfo0x90(0x62);
+        Util.doSleep(30);
+        sendCanboxInfo0x90(0x61);
+        initCarType();
+        super.onResume();
+    }
 
-	private BroadcastReceiver mReceiver;
+    private BroadcastReceiver mReceiver;
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
 
-						byte[] buf = intent.getByteArrayExtra("buf");
-						if (buf != null) {
-							try {
+                        byte[] buf = intent.getByteArrayExtra("buf");
+                        if (buf != null) {
+                            try {
 
-							} catch (Exception e) {
-								Log.d("aa", "!!!!!!!!" + e);
-							}
-						}
-					} else if (action.equals(MyCmd.BROADCAST_CAR_SERVICE_SEND)) {
+                            } catch (Exception e) {
+                                Log.d("aa", "!!!!!!!!" + e);
+                            }
+                        }
+                    } else if (action.equals(MyCmd.BROADCAST_CAR_SERVICE_SEND)) {
 
-						int cmd = intent.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
-						switch (cmd) {
-						case MyCmd.Cmd.SOURCE_CHANGE:
-						case MyCmd.Cmd.RETURN_CURRENT_SOURCE:
-							int source = intent.getIntExtra(
-									MyCmd.EXTRA_COMMON_DATA, 0);
-							if (mSource == MyCmd.SOURCE_AUX
-									&& source != MyCmd.SOURCE_AUX) {
-								// sendCanboxInfo0xc7(0xE);
-								// } else {
-								// sendCanboxInfo0xc7(0x0);
-							}
-							mSource = source;
-							break;
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
-			iFilter.addAction(MyCmd.BROADCAST_CAR_SERVICE_SEND);
+                        int cmd = intent.getIntExtra(MyCmd.EXTRA_COMMON_CMD, 0);
+                        switch (cmd) {
+                            case MyCmd.Cmd.SOURCE_CHANGE:
+                            case MyCmd.Cmd.RETURN_CURRENT_SOURCE:
+                                int source = intent.getIntExtra(MyCmd.EXTRA_COMMON_DATA, 0);
+                                if (mSource == MyCmd.SOURCE_AUX && source != MyCmd.SOURCE_AUX) {
+                                    // sendCanboxInfo0xc7(0xE);
+                                    // } else {
+                                    // sendCanboxInfo0xc7(0x0);
+                                }
+                                mSource = source;
+                                break;
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+            iFilter.addAction(MyCmd.BROADCAST_CAR_SERVICE_SEND);
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 
-	private AuxInUI mAuxInUI;
+    private AuxInUI mAuxInUI;
 
-	private int mSource = MyCmd.SOURCE_NONE;
+    private int mSource = MyCmd.SOURCE_NONE;
 
-	public boolean isCurrentSource() {
-		return (mSource == MyCmd.SOURCE_AUX);
-	}
+    public boolean isCurrentSource() {
+        return (mSource == MyCmd.SOURCE_AUX);
+    }
 
 }

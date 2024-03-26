@@ -67,133 +67,115 @@ import android.widget.TextView;
  * This activity plays a video from a specified URI.
  */
 public class AC114 extends MyFragment {
-	private static final String TAG = "VWMQBAirControlFragment";
+    private static final String TAG = "VWMQBAirControlFragment";
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-	}
+    }
 
-	private CommonUpdateView mCommonUpdateView;
+    private CommonUpdateView mCommonUpdateView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mMainView = inflater
-				.inflate(R.layout.ac_hanteng_raise, container, false);
-		mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-		
-		return mMainView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_hanteng_raise, container, false);
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
 
-	private View mMainView;
+        return mMainView;
+    }
+
+    private View mMainView;
 
 
-	private void sendCanboxKey0x82(int d0) {
-		int index = (d0 & 0xff00) >> 8;
+    private void sendCanboxKey0x82(int d0) {
+        int index = (d0 & 0xff00) >> 8;
 
-		byte[] buf = new byte[] { (byte) 0xc7, 4, 0, 0, 0, 0 };
-		buf[index + 2] = (byte) (d0 & 0xff);
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        byte[] buf = new byte[]{(byte) 0xc7, 4, 0, 0, 0, 0};
+        buf[index + 2] = (byte) (d0 & 0xff);
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
-	}
-
-
-
-	private final static int[][] CMD_ID = new int[][] { 
-		{ R.id.power, 0x0080 },
-		{ R.id.mode, 0x0040 },		
-		{ R.id.ac_auto, 0x0020 },
-		{ R.id.max, 0x0010 }, 
-		{ R.id.ac, 0x0002 },  
-		{ R.id.ac_max, 0x0001 },  
-		
-		{ R.id.rear, 0x0104 }, 
-		{ R.id.wind_add, 0x0102 },
-		{ R.id.wind_minus, 0x0101 }, 
-		
-
-		{ R.id.inner_loop, 0x0201 },
-		
-		
-
-		{ R.id.con_left_temp_up, 0x0302 },
-		{ R.id.con_left_temp_down, 0x0301 },		
+    }
 
 
+    private final static int[][] CMD_ID = new int[][]{
+            {R.id.power, 0x0080}, {R.id.mode, 0x0040}, {R.id.ac_auto, 0x0020}, {R.id.max, 0x0010}, {R.id.ac, 0x0002}, {R.id.ac_max, 0x0001},
+
+            {R.id.rear, 0x0104}, {R.id.wind_add, 0x0102}, {R.id.wind_minus, 0x0101},
 
 
-	};
-
-	private int getCmd(int id) {
-		for (int i = 0; i < CMD_ID.length; ++i) {
-			if (CMD_ID[i][0] == id) {
-				return (CMD_ID[i][1] & 0xffffff);
-			}
-		}
-		return 0;
-	}
-
-	public void onClick(View v) {
-		int id = v.getId();
-
-		int cmd = getCmd(id);
-		sendCanboxKey0x82(cmd);
-
-	}
+            {R.id.inner_loop, 0x0201},
 
 
+            {R.id.con_left_temp_up, 0x0302}, {R.id.con_left_temp_down, 0x0301},
 
-	@Override
-	public void onPause() {
-		unregisterListener();
-		super.onPause();
-	}
 
-	@Override
-	public void onResume() {
-		registerListener();
-		byte[] buf = new byte[] { (byte) 0x90, 1, (byte) 0x24 };
-		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-		super.onResume();
-	}
+    };
 
-	private BroadcastReceiver mReceiver;
+    private int getCmd(int id) {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            if (CMD_ID[i][0] == id) {
+                return (CMD_ID[i][1] & 0xffffff);
+            }
+        }
+        return 0;
+    }
 
-	private void unregisterListener() {
-		if (mReceiver != null) {
-			getActivity().unregisterReceiver(mReceiver);
-			mReceiver = null;
-		}
-	}
+    public void onClick(View v) {
+        int id = v.getId();
 
-	private void registerListener() {
-		if (mReceiver == null) {
-			mReceiver = new BroadcastReceiver() {
-				@Override
-				public void onReceive(Context context, Intent intent) {
-					String action = intent.getAction();
-					if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
-						String cmd = intent
-								.getStringExtra(MyCmd.EXTRA_COMMON_CMD);
-						if ("ac".equals(cmd)) {
-							byte[] buf = intent.getByteArrayExtra("buf");
-							if (buf != null) {
+        int cmd = getCmd(id);
+        sendCanboxKey0x82(cmd);
 
-								mCommonUpdateView.postChanged(
-										CommonUpdateView.MESSAGE_AIR_CONDITION,
-										0, 0, buf);
+    }
 
-							}
-						}
-					}
-				}
-			};
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
 
-			getActivity().registerReceiver(mReceiver, iFilter);
-		}
-	}
+    @Override
+    public void onPause() {
+        unregisterListener();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        registerListener();
+        byte[] buf = new byte[]{(byte) 0x90, 1, (byte) 0x24};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        super.onResume();
+    }
+
+    private BroadcastReceiver mReceiver;
+
+    private void unregisterListener() {
+        if (mReceiver != null) {
+            getActivity().unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    private void registerListener() {
+        if (mReceiver == null) {
+            mReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
+                        String cmd = intent.getStringExtra(MyCmd.EXTRA_COMMON_CMD);
+                        if ("ac".equals(cmd)) {
+                            byte[] buf = intent.getByteArrayExtra("buf");
+                            if (buf != null) {
+
+                                mCommonUpdateView.postChanged(CommonUpdateView.MESSAGE_AIR_CONDITION, 0, 0, buf);
+
+                            }
+                        }
+                    }
+                }
+            };
+            IntentFilter iFilter = new IntentFilter();
+            iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
+
+            getActivity().registerReceiver(mReceiver, iFilter);
+        }
+    }
 }
