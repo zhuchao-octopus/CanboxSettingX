@@ -28,6 +28,7 @@ import com.common.util.MyCmd;
 import com.common.util.SystemConfig;
 import com.common.util.UtilSystem;
 import com.canboxsetting.R;
+import com.zhuchao.android.fbase.MMLog;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -1907,126 +1908,136 @@ public class CanboxSettings extends PreferenceActivity implements
 		int mCarType = 0;
 		try {
 			mCarType = Integer.parseInt(msCarType);
-		} catch (Exception e) {
-
+		} catch (Exception ignored) {
 		}
+
+		MMLog.d(TAG,"updateHideAppConboxVersion1 msCarType:"+" mCarType:"+mCarType);
 
 		if (null != value) 
 		{
-			if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE)
-			|| value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)
-			|| value.equals(MachineConfig.VALUE_CANBOX_FORD_EXPLORER_SIMPLE)) 
-			{
-				if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE) || value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)) {
-					hideCanboxCarInfo = false;
-				}
-				hideConboxSetting = false;
-				
-				if (1 != mCarType) {
-					hideSync = false;
-					if (mCarType == 2 || mCarType == 3) {
-						hideAuxin = true;
+			switch (value) {
+				case MachineConfig.VALUE_CANBOX_FORD_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_FORD_RAISE:
+				case MachineConfig.VALUE_CANBOX_FORD_EXPLORER_SIMPLE:
+					if (value.equals(MachineConfig.VALUE_CANBOX_FORD_SIMPLE) || value.equals(MachineConfig.VALUE_CANBOX_FORD_RAISE)) {
+						hideCanboxCarInfo = false;
 					}
-				}
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_GM_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_HONDA_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PSA_BAGOO)
-					|| value.equals(MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PSA)
-					|| value.equals(MachineConfig.VALUE_CANBOX_KADJAR_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_TOYOTA)
-					|| value.equals(MachineConfig.VALUE_CANBOX_TOYOTA_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK)
-					|| value.equals(MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK)
-					|| value.equals(MachineConfig.VALUE_CANBOX_ACCORD2013)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PETGEO_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG)
-					|| value.equals(MachineConfig.VALUE_CANBOX_OUSHANG_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)
-					)
-					{
-				hideConboxSetting = false;
-				hideCanboxCarInfo = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD)) {
-				hideConboxSetting = false;
-				hideCanboxCarInfo = false;
-				hideCanboxAirControl = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_VW)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PEUGEOT206)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PORSCHE_UNION)
-					|| value.equals(MachineConfig.VALUE_CANBOX_OBD_BINARUI)
-					|| value.equals(MachineConfig.VALUE_CANBOX_PSA206_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN)
-					|| value.equals(MachineConfig.VALUE_CANBOX_HY_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
-				hideCanboxCarInfo = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_OPEL)
-					|| value.equals(MachineConfig.VALUE_CANBOX_RAM_FIAT)
-					|| value.equals(MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_CHERY_OD)
-					|| value.equals(MachineConfig.VALUE_CANBOX_NISSAN2013)
-					|| value.equals(MachineConfig.VALUE_CANBOX_HAFER_H2)
-					|| value.equals(MachineConfig.VALUE_CANBOX_SMART_HAOZHENG)
-					|| value.equals(MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE)
-					|| value.equals(MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE)) {
-				hideConboxSetting = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_SIMPLE)) {
+					hideConboxSetting = false;
 
-				if (mCarType == 0 || mCarType == 1 || mCarType == 4
-						|| mCarType == 6 || mCarType == 7) {
+					if (1 != mCarType) {
+						hideSync = false;
+						if (mCarType == 2 || mCarType == 3) {
+							hideAuxin = true;
+						}
+					}
+					break;
+				case MachineConfig.VALUE_CANBOX_GM_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_HONDA_RAISE:
+				case MachineConfig.VALUE_CANBOX_PSA_BAGOO:
+				case MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION:
+				case MachineConfig.VALUE_CANBOX_PSA:
+				case MachineConfig.VALUE_CANBOX_KADJAR_RAISE:
+				case MachineConfig.VALUE_CANBOX_TOYOTA:
+				case MachineConfig.VALUE_CANBOX_TOYOTA_RAISE:
+				case MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK:
+				case MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK:
+				case MachineConfig.VALUE_CANBOX_ACCORD2013:
+				case MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE:
+				case MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG:
+				case MachineConfig.VALUE_CANBOX_OUSHANG_RAISE:
+				case MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE:
+				case MachineConfig.VALUE_CANBOX_MAZDA_RAISE:
+					hideConboxSetting = false;
+					hideCanboxCarInfo = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
+				case MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD:
+					hideConboxSetting = false;
+					hideCanboxCarInfo = false;
 					hideCanboxAirControl = false;
-				}
-				hideCanboxCarInfo = false;
-				hideConboxSetting = false;
-				hideCarCD = false;
-			} else if (value
-					.equals(MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK)) {
-				hideCanboxCarInfo = false;
-				hideConboxSetting = false;
-				hideCarCD = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_MAZDA_XINBAS)) {
-				hideCanboxCarInfo = false;
-				hideConboxSetting = false;
-				if (mCarType != 1) {
+					break;
+				case MachineConfig.VALUE_CANBOX_VW:
+				case MachineConfig.VALUE_CANBOX_PEUGEOT206:
+				case MachineConfig.VALUE_CANBOX_PORSCHE_UNION:
+				case MachineConfig.VALUE_CANBOX_OBD_BINARUI:
+				case MachineConfig.VALUE_CANBOX_PSA206_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN:
+				case MachineConfig.VALUE_CANBOX_HY_RAISE:
+				case MachineConfig.VALUE_CANBOX_NISSAN_RAISE:
+				case MachineConfig.VALUE_CANBOX_ZHONGXING_OD:
+					hideCanboxCarInfo = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_OPEL:
+				case MachineConfig.VALUE_CANBOX_RAM_FIAT:
+				case MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_CHERY_OD:
+				case MachineConfig.VALUE_CANBOX_NISSAN2013:
+				case MachineConfig.VALUE_CANBOX_HAFER_H2:
+				case MachineConfig.VALUE_CANBOX_SMART_HAOZHENG:
+				case MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE:
+				case MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE:
+					hideConboxSetting = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_JEEP_SIMPLE:
+
+					if (mCarType == 0 || mCarType == 1 || mCarType == 4
+							|| mCarType == 6 || mCarType == 7) {
+						hideCanboxAirControl = false;
+					}
+					hideCanboxCarInfo = false;
+					hideConboxSetting = false;
+					hideCarCD = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK:
+					hideCanboxCarInfo = false;
+					hideConboxSetting = false;
+					hideCarCD = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_MAZDA_XINBAS:
+					hideCanboxCarInfo = false;
+					hideConboxSetting = false;
+					if (mCarType != 1) {
+						hideAuxin = true;
+						hideCarCD = false;
+					}
+					break;
+				case MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE:
+					if (mCarType != 1) {
+						hideAuxin = true;
+						hideCarCD = false;
+					}
+					hideConboxSetting = false;
+					hideCanboxCarInfo = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_RX330_HAOZHENG:
+					hideCanboxCarInfo = false;
+					hideCarCD = false;
+					hideAuxin = true;
+					hideCanboxAirControl = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_X30_RAISE:
+					if (mCarType == 1 || mCarType == 2) {
+						hideCanboxAirControl = false;
+					}
+					break;
+				case MachineConfig.VALUE_CANBOX_JEEP_XINBAS:
+					hideConboxSetting = false;
+					hideCarCD = false;
+					hideCanboxAirControl = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_GM_OD:
 					hideAuxin = true;
 					hideCarCD = false;
-				}
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE)) {
-				if (mCarType != 1) {
-					hideAuxin = true;
-					hideCarCD = false;
-				}
-				hideConboxSetting = false;
-				hideCanboxCarInfo = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_HAFER_H2)) {
-				hideFrontCamera = true;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_RX330_HAOZHENG)) {
-				hideCanboxCarInfo = false;
-				hideCarCD = false;
-				hideAuxin = true;
-				hideCanboxAirControl = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_X30_RAISE)) {
-				if (mCarType == 1 || mCarType == 2) {
 					hideCanboxAirControl = false;
-				}
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_XINBAS)) {
-				hideConboxSetting = false;
-				hideCarCD = false;
-				hideCanboxAirControl = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_GM_OD)) {
-				hideAuxin = true;
-				hideCarCD = false;
-				hideCanboxAirControl = false;
-			} else if (value.equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
-				hideConboxSetting = false;
-				hideCanboxCarInfo = false;
-				hideCanboxAirControl = false;
-				hideTpms = false;
+					break;
+				case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:
+					hideConboxSetting = false;
+					hideCanboxCarInfo = false;
+					hideCanboxAirControl = false;
+					hideTpms = false;
+					break;
 			}
 		}
 
@@ -2074,7 +2085,7 @@ public class CanboxSettings extends PreferenceActivity implements
 
 		updateHideAppConboxVersion1(mCanboxType, mCarType);
 		
-                Log.d(TAG,"updateMachineConfig() mCanboxType = " +mCanboxType);
+        Log.d(TAG,"updateMachineConfig() mCanboxType = " +mCanboxType);
                 
 		if (mCanboxType == null || MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType)) {
 			MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, null);

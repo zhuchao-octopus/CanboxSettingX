@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
             } //else
         } catch (Exception ignored) {
         }
-
+        MMLog.d(TAG, "mCanboxType.value=" + value);
         //if (value != null)
         switch (Objects.requireNonNull(value)) {
             case MachineConfig.VALUE_CANBOX_GM_SIMPLE:

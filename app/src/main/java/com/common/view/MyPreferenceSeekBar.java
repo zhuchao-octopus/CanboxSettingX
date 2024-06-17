@@ -9,7 +9,7 @@ import com.canboxsetting.R;
 import com.common.util.Kernel;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.ResourceUtil;
+
 import com.common.util.SystemConfig;
 
 import android.app.Activity;

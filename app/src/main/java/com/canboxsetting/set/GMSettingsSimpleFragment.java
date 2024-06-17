@@ -17,7 +17,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -28,6 +27,7 @@ import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implements androidx.preference.Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
@@ -123,7 +123,7 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
         }
     }
 
-    private void udpatePreferenceValue(Preference preference, Object newValue) {
+    private void updatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
         for (int i = 0; i < KEYS.length; ++i) {
             if (KEYS[i].equals(key)) {
@@ -146,7 +146,7 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
                 int i = Integer.parseInt((String) newValue);
                 sendCanboxInfo(0x88, i);
             } else {
-                udpatePreferenceValue(preference, newValue);
+                updatePreferenceValue(preference, newValue);
             }
 
         } catch (Exception ignored) {
@@ -158,7 +158,9 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
         String key = arg0.getKey();
         if (getActivity() == null) return false;
         if ("restore".equals(key)) {
-            Dialog d = new AlertDialog.Builder(getActivity()).setTitle(R.string.confirmation_factory_settings).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            Dialog d = new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.confirmation_factory_settings)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
                     sendCanboxInfo(0x83, 0x80, 0x01);
                 }
@@ -191,10 +193,10 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
                 if (ss != null && (ss.length > index)) {
                     lp.setValue(String.valueOf(index));
                 }
-                lp.setSummary(((ListPreference) findPreference(key)).getEntry());
+                lp.setSummary(((ListPreference) Objects.requireNonNull(findPreference(key))).getEntry());
             } else if (p instanceof SwitchPreference) {
                 SwitchPreference sp = (SwitchPreference) p;
-                sp.setChecked(index == 0 ? false : true);
+                sp.setChecked(index != 0);
             }
         }
     }
@@ -208,9 +210,9 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
                 setPreference("airqualitysensor", (int) ((buf[2] & 0x30) >> 4));
                 setPreference("airpartition", (int) ((buf[2] & 0x0C) >> 2));
                 setPreference("backwindowdefog", (int) ((buf[2] & 0x02) >> 1));
-                setPreference("frontwindowdefog", (int) ((buf[2] & 0x01) >> 0));
+                setPreference("frontwindowdefog", (int) ((buf[2] & 0x01)));
                 setPreference("remote_seat", (int) (((buf[3] & 0x40) == 0) ? ((buf[3] & 0x08) >> 3) : ((buf[3] & 0x30) >> 4)));
-                setPreference("ari_mode", (int) ((buf[3] & 0x3) >> 0));
+                setPreference("ari_mode", (int) ((buf[3] & 0x3)));
 
                 break;
             case 0x6:
@@ -227,13 +229,13 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
                 setPreference("dooropenlock", (int) ((buf[2] & 0x10) >> 4));
                 setPreference("startlatch", (int) ((buf[2] & 0x8) >> 3));
                 setPreference("parkunlock", (int) ((buf[2] & 0x6) >> 1));
-                setPreference("delaylock", (int) ((buf[2] & 0x1) >> 0));
+                setPreference("delaylock", (int) ((buf[2] & 0x1)));
 
                 setPreference("remoteunlock5", (int) ((buf[3] & 0x80) >> 7));
                 setPreference("remotelock5", (int) ((buf[3] & 0x60) >> 5));
                 setPreference("remoteunlocksettings", (int) ((buf[3] & 0x10) >> 4));
                 setPreference("wipers", (int) ((buf[3] & 0x8) >> 3));
-                setPreference("remote_start", (int) ((buf[3] & 0x2) >> 0));
+                setPreference("remote_start", (int) ((buf[3] & 0x2)));
                 break;
             case 0x7:
                 if ((buf[2] & 0x1) != 0) {
@@ -247,7 +249,7 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
             case 0xa:
 
                 setPreference("car_unlocked", (int) ((buf[2] & 0x80) >> 7));
-                setPreference("automatic_latch", (int) ((buf[2] & 0x3) >> 0));
+                setPreference("automatic_latch", (int) ((buf[2] & 0x3)));
 
                 setPreference("unkey", (int) ((buf[2] & 0x40) >> 6));
                 setPreference("by_drive", (int) ((buf[2] & 0x20) >> 5));
@@ -264,7 +266,7 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
 
                 setPreference("auto_wipers", (int) ((buf[2] & 0x8) >> 3));
 
-                index = (int) ((buf[3] & 0x3) >> 0);
+                index = (int) ((buf[3] & 0x3));
                 if (index == 3) {
                     index = 2;
                 }
@@ -384,20 +386,19 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
-                    if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
-
+                    if (MyCmd.BROADCAST_SEND_FROM_CAN.equals(action)) {
                         byte[] buf = intent.getByteArrayExtra("buf");
                         if (buf != null) {
-
                             try {
                                 updateView(buf);
                             } catch (Exception e) {
-                                Log.d("aa", "!!!!!!!!" + buf);
+                                Log.d(TAG, "updateView() "+ Arrays.toString(buf));
                             }
                         }
                     }
                 }
             };
+
             IntentFilter iFilter = new IntentFilter();
             iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
 
