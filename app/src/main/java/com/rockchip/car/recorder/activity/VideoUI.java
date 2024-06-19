@@ -41,7 +41,7 @@ public class VideoUI extends AVideoUI {
 	private static final String TAG = "CAM_RVideoUI";
 
 	protected GLFrameSurface[] mSurfaceViews;
-	private VideoUI mThis;
+	private final VideoUI mThis;
 	private int mOpenId = 0;
 	public VideoUI(View surfaceView, int id) {
 		super();

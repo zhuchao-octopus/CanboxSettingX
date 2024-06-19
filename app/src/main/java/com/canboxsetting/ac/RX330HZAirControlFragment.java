@@ -16,49 +16,25 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Util;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 /**
@@ -102,13 +78,13 @@ public class RX330HZAirControlFragment extends MyFragment {
 
             {R.id.wind_minus, 0x0900}, {R.id.wind_add, 0x0a00},
 
-            {R.id.canbus21_mode1, 0x0700}, {R.id.canbus21_mode3, 0x0800},
+            {R.id.canbus21_mode1, 0x0700}, {R.id.canbus21_mode2, 0x0800},
 
             {R.id.air_title_sync, 0x1000}, {R.id.air_title_ce_ac_max, 0x1300},
 
             {R.id.air_title_ce_auto_large, 0x1501}, {R.id.air_title_ce_rear, 0x1400}, {R.id.air_title_ce_ac_1, 0x1701}, {R.id.air_title_ce_inner_loop, 0x1900},
 
-            {R.id.canbus21_mode2, 0x2000}, {R.id.canbus21_mode4, 0x2100},
+            {R.id.canbus21_mode3, 0x2000}, {R.id.canbus21_mode4, 0x2100},
 
     };
 

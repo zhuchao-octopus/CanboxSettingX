@@ -19,6 +19,7 @@ package com.canboxsetting;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 import com.canboxsetting.MyFragment.MsgInterface;
 import com.canboxsetting.ac.GMAirODFragment;
@@ -27,6 +28,7 @@ import com.canboxsetting.ac.HondaSimpleACFragment;
 import com.canboxsetting.ac.JeepAirControlFragment;
 import com.canboxsetting.ac.JeepAirControlXinbasFragment;
 import com.canboxsetting.ac.RX330HZAirControlFragment;
+import com.canboxsetting.ac.RaiseAirControlFragment;
 import com.canboxsetting.ac.TouaregHiworldACFragment;
 import com.canboxsetting.ac.ToyotaRaiseAirControlFragment;
 import com.canboxsetting.ac.VWMQBAirControlFragment;
@@ -37,6 +39,7 @@ import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Util;
+import com.zhuchao.android.fbase.MMLog;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -48,6 +51,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -64,16 +68,15 @@ import android.widget.ListView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class CanAirControlActivity extends Activity {
     private static final String TAG = "CanAirControlActivity";
-
     private FragmentManager mFragmentManager;
-
     private MyFragment mSetting;
-
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -83,29 +86,33 @@ public class CanAirControlActivity extends Activity {
         mFragmentManager = getFragmentManager();
 
         String value = null;// = AppConfig.getCanboxSetting();//
-        // MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
-        // value = MachineConfig.VALUE_CANBOX_X30_RAISE;
         String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
         int mProVersion = 0;
-        String mProIndex = null;
         int mModelId = 0;
-        if (mCanboxType != null) {
+        String mProIndex = null;
+        MMLog.d(TAG,"mCanboxType="+mCanboxType);
+
+        if (mCanboxType != null)
+        {
             String[] ss = mCanboxType.split(",");
             value = ss[0];
             try {
-                for (int i = 1; i < ss.length; ++i) {
+                for (int i = 1; i < ss.length; ++i)
+                {
                     if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-                        mProVersion = Integer.valueOf(ss[i].substring(1));
-                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+                        mProVersion = Integer.parseInt(ss[i].substring(1));
+                    }
+                    else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
                         mProIndex = ss[i].substring(1);
                         try {
-                            GlobalDef.setProId(Integer.valueOf(mProIndex));
-                        } catch (Exception e) {
-
+                            GlobalDef.setProId(Integer.parseInt(mProIndex));
+                        } catch (Exception ignored) {
                         }
-                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
+                    }
+                    else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID))
+                    {
                         String mProId = ss[i].substring(1);
-                        if (mProId != null && mProId.length() >= 4) {
+                        if (mProId.length() >= 4) {
                             int start = 0;
                             int end = 0;
                             if (mProId.charAt(1) == '0' && mProId.charAt(2) != 0) {
@@ -118,14 +125,14 @@ public class CanAirControlActivity extends Activity {
 
                             if (mProId.contains("-")) {
                                 String[] sss = mProId.substring(start).split("-");
-                                mModelId = Integer.valueOf(sss[1]);
+                                mModelId = Integer.parseInt(sss[1]);
                             } else {
                                 if ((mProId.length() - start) == 2) {
-                                    mModelId = Integer.valueOf(mProId.substring(start + 1, start + 2));
+                                    mModelId = Integer.parseInt(mProId.substring(start + 1, start + 2));
                                 } else if ((mProId.length() - start) == 4) {
-                                    mModelId = Integer.valueOf(mProId.substring(start + 2, start + 4));
+                                    mModelId = Integer.parseInt(mProId.substring(start + 2, start + 4));
                                 } else if ((mProId.length() - start) == 3) {
-                                    mModelId = Integer.valueOf(mProId.substring(start + 2, start + 3));
+                                    mModelId = Integer.parseInt(mProId.substring(start + 2, start + 3));
                                 }
                             }
 
@@ -133,51 +140,63 @@ public class CanAirControlActivity extends Activity {
 
                         }
                     } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_CONFIG)) {
-                        int mCarConfig = Integer.valueOf(ss[i].substring(1));
+                        int mCarConfig = Integer.parseInt(ss[i].substring(1));
                         GlobalDef.setCarConfig(mCarConfig);
                     }
                 }
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
         }
 
+        MMLog.d(TAG,"mProVersion="+mProVersion + " mProIndex="+mProIndex + " value="+value);
         if (mProVersion >= 3 && mProIndex != null) {
             Class<?> c = FragmentPro.getFragmentACByID(mProIndex);
             if (c != null) {
                 try {
                     mSetting = (MyFragment) c.newInstance();
                     mSetting.mCarType = mModelId;
-                } catch (Exception e) {
-
+                } catch (Exception ignored) {
                 }
-
             }
             if (mSetting == null) {
                 finish();
                 return;
             }
-        } else {
-
+        }
+        else
+        {
             if (value != null) {
-                if (value.equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
-                    mSetting = new VWMQBAirControlFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)) {
-                    mSetting = new Golf7SimpleAirControlFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD)) {
-                    mSetting = new TouaregHiworldACFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_RX330_HAOZHENG)) {
-                    mSetting = new RX330HZAirControlFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_X30_RAISE)) {
-                    mSetting = new X30RaiseAirControlFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_JEEP_XINBAS)) {
-                    mSetting = new JeepAirControlXinbasFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_GM_OD)) {
-                    mSetting = new GMAirODFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_TOYOTA_RAISE)) {
-                    mSetting = new ToyotaRaiseAirControlFragment();
-                } else if (value.equals(MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE)) {
-                    mSetting = new HondaSimpleACFragment();
+                switch (value) {
+                    case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:
+                        mSetting = new VWMQBAirControlFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
+                        mSetting = new Golf7SimpleAirControlFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD:
+                        mSetting = new TouaregHiworldACFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_RX330_HAOZHENG:
+                        mSetting = new RX330HZAirControlFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_X30_RAISE:
+                        mSetting = new X30RaiseAirControlFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_JEEP_XINBAS:
+                        mSetting = new JeepAirControlXinbasFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_GM_OD:
+                        mSetting = new GMAirODFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_TOYOTA_RAISE:
+                        mSetting = new ToyotaRaiseAirControlFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE:
+                        mSetting = new HondaSimpleACFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
+                        mSetting = new RaiseAirControlFragment();
+                        break;
                 }
             }
             if (mSetting == null) {
@@ -187,7 +206,6 @@ public class CanAirControlActivity extends Activity {
 
         mSetting.setCallback(mMsgInterface);
         replaceFragment(R.id.main, mSetting, false);
-
     }
 
     public void onClick(View v) {
@@ -206,9 +224,7 @@ public class CanAirControlActivity extends Activity {
         }
     }
 
-
     public final static int CMD_GROUP_AC = 0x200;
-
 
     public final static int AC_CMD_REQUEST_INFO = 1;
 
@@ -235,9 +251,9 @@ public class CanAirControlActivity extends Activity {
         mHandler.removeMessages(0);
     }
 
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(@NonNull Message msg) {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
             finish();

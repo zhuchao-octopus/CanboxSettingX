@@ -16,26 +16,14 @@
 
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Util;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -44,21 +32,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 /**
@@ -113,14 +91,14 @@ public class X30RaiseAirControlFragment extends MyFragment {
     }
 
     private final static int[][] CMD_ID = new int[][]{
-            {R.id.icon_power, 0x0}, {R.id.air_title_ce_ac_1, 0x1}, {R.id.air_title_ce_auto_large, 0x02}, {R.id.air_title_ce_max, 0x06}, {R.id.canbus21_mode1, 0x07}, {R.id.canbus21_mode2, 0x08},
-            {R.id.canbus21_mode3, 0x09}, {R.id.canbus21_mode4, 0x0a}, {R.id.canbus21_mode5, 0x11}, {R.id.wind_add, 0x0b}, {R.id.wind_minus, 0x0c}, {R.id.con_left_temp_up, 0x0d},
+            {R.id.icon_power, 0x0}, {R.id.air_title_ce_ac_1, 0x1}, {R.id.air_title_ce_auto_large, 0x02}, {R.id.air_title_ce_max, 0x06}, {R.id.canbus21_mode1, 0x07}, {R.id.canbus21_mode3, 0x08},
+            {R.id.canbus21_mode2, 0x09}, {R.id.canbus21_mode4, 0x0a}, {R.id.canbus21_mode5, 0x11}, {R.id.wind_add, 0x0b}, {R.id.wind_minus, 0x0c}, {R.id.con_left_temp_up, 0x0d},
             {R.id.con_left_temp_down, 0x0e}, {R.id.air_title_ce_inner_loop, 0x15}, {R.id.air_title_ce_rear, 0x17},
 
     };
 
     private final static int[] AUTO_AIR_HIDE = new int[]{
-            R.id.canbus21_mode1, R.id.canbus21_mode2, R.id.canbus21_mode3, R.id.canbus21_mode4
+            R.id.canbus21_mode1, R.id.canbus21_mode3, R.id.canbus21_mode2, R.id.canbus21_mode4
     };
 
     private final static int[] MANUAL_AIR_HIDE = new int[]{
@@ -273,8 +251,8 @@ public class X30RaiseAirControlFragment extends MyFragment {
 
                 int t = 0;
                 updateSelect(R.id.canbus21_mode1, 0);
-                updateSelect(R.id.canbus21_mode2, 0);
                 updateSelect(R.id.canbus21_mode3, 0);
+                updateSelect(R.id.canbus21_mode2, 0);
                 updateSelect(R.id.canbus21_mode4, 0);
                 if ((buf[3] & 0x80) != 0) {
                     if ((buf[3] & 0x20) != 0) {
@@ -282,9 +260,9 @@ public class X30RaiseAirControlFragment extends MyFragment {
                     }
                 } else {
                     if ((buf[3] & 0x20) != 0 && (buf[3] & 0x40) != 0) {
-                        t = R.id.canbus21_mode2;
-                    } else if ((buf[3] & 0x20) != 0) {
                         t = R.id.canbus21_mode3;
+                    } else if ((buf[3] & 0x20) != 0) {
+                        t = R.id.canbus21_mode2;
                     } else if ((buf[3] & 0x40) != 0) {
                         t = R.id.canbus21_mode1;
                     }

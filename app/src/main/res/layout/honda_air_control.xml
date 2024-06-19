@@ -79,7 +79,7 @@
             </ImageView>
 
             <ImageView
-                android:id="@+id/canbus21_mode2"
+                android:id="@+id/canbus21_mode3"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -91,7 +91,7 @@
             </ImageView>
 
             <ImageView
-                android:id="@+id/canbus21_mode3"
+                android:id="@+id/canbus21_mode2"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

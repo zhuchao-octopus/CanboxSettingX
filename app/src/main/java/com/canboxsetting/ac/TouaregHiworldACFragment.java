@@ -16,50 +16,25 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.array;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Util;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 /**
@@ -95,7 +70,7 @@ public class TouaregHiworldACFragment extends MyFragment {
 
     private final static int[][] CMD_ID = new int[][]{
             {R.id.icon_power, 0x106ff}, {R.id.air_title_ce_aqs, 0x10100}, {R.id.air_title_ce_auto_large, 0x10200}, {R.id.air_title_ce_max, 0x10b00}, {R.id.wheel, 0x10a00},
-            {R.id.canbus21_mode1, 0x10400}, {R.id.canbus21_mode3, 0x10500}, {R.id.canbus21_mode5, 0x10300},
+            {R.id.canbus21_mode1, 0x10400}, {R.id.canbus21_mode2, 0x10500}, {R.id.canbus21_mode5, 0x10300},
 
             {R.id.point0, 0x0701}, {R.id.point1, 0x0702}, {R.id.point2, 0x0703}, {R.id.point3, 0x0704}, {R.id.point4, 0x0705}, {R.id.point5, 0x0706}, {R.id.point6, 0x0707},
 
@@ -336,9 +311,9 @@ public class TouaregHiworldACFragment extends MyFragment {
                 }
 
                 if (buf[7] == 0x3 || buf[7] == 0xc || buf[7] == 0x5 || buf[7] == 0xe) {
-                    updateSelect(R.id.canbus21_mode3, 1);
+                    updateSelect(R.id.canbus21_mode2, 1);
                 } else {
-                    updateSelect(R.id.canbus21_mode3, 0);
+                    updateSelect(R.id.canbus21_mode2, 0);
                 }
 
                 if (buf[7] == 0x5 || buf[7] == 0x6 || buf[7] == 0xd || buf[7] == 0xe) {

@@ -40,6 +40,7 @@
     <string name="radar_ui">Hide Radar UI</string>
     <string name="radar_only_in_rverse">Only show the radar view when reversing</string>
     <string name="air_single">Single Temperature</string>
+    <string name="show_air_controller">Show air controller</string>
     <string name="app_name">Control Setting</string>
     <string name="vehicle_info_name">Vehicle Info</string>
 

@@ -322,10 +322,8 @@ public class FragmentPro {
         try {
             Class<?> c = (Class<?>) Class.forName("com.canboxsetting.ac.AC" + id);
             return c;
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
         }
-
         for (FragmentProData f : mFragmentPro) {
             if (id.equals(f.mId)) {
                 return f.mFragmentAC;

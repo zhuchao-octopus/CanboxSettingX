@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:vehicle="http://schemas.android.com/apk/res/com.canboxsetting"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 	<SwitchPreference
         android:key="automatic_folding_outer_rearview_mirror"
         android:persistent="false"

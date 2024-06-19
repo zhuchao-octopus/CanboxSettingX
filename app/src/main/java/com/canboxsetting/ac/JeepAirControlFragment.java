@@ -16,50 +16,30 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.car.ui.GlobalDef;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.zhuchao.android.fbase.ByteUtils;
+import com.zhuchao.android.fbase.MMLog;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 /**
@@ -71,7 +51,6 @@ public class JeepAirControlFragment extends MyFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
     }
 
     private View mMainView;
@@ -99,7 +78,7 @@ public class JeepAirControlFragment extends MyFragment {
     private final static int[][] CMD_ID = new int[][]{
             {R.id.air_title_ce_max, 0x010c}, {R.id.air_title_ce_rear, 0x010e}, {R.id.air_title_ce_ac_1, 0x0101}, {R.id.air_title_ce_inner_loop, 0x0103}, {R.id.air_title_ce_auto_large, 0x0102},
             {R.id.air_title_ce_ac_max, 0x010f}, {R.id.wheel, 0x0118}, {R.id.con_left_temp_up, 0x0104}, {R.id.con_left_temp_down, 0x0105}, {R.id.con_right_temp_up, 0x0114},
-            {R.id.con_right_temp_down, 0x0115}, {R.id.canbus21_mode1, 0x0108}, {R.id.canbus21_mode2, 0x0109}, {R.id.canbus21_mode3, 0x010a}, {R.id.canbus21_mode4, 0x010b},
+            {R.id.con_right_temp_down, 0x0115}, {R.id.canbus21_mode1, 0x0108}, {R.id.canbus21_mode3, 0x0109}, {R.id.canbus21_mode2, 0x010a}, {R.id.canbus21_mode4, 0x010b},
             {R.id.con_seathotleft, 0x0111}, {R.id.con_seathotright, 0x0112}, {R.id.air_title_sync, 0x010d}, {R.id.icon_power, 0x0110}, {R.id.wind_add, 0x0106}, {R.id.wind_minus, 0x0107},
 
     };
@@ -250,6 +229,7 @@ public class JeepAirControlFragment extends MyFragment {
     }
 
     private void updateView(byte[] buf) {
+        MMLog.d(TAG,"updateView buf:"+ ByteUtils.BytesToHexStr(buf));
         switch (buf[0]) {
             case 0x21:
                 // if (buf[2]&0x80)
@@ -278,8 +258,8 @@ public class JeepAirControlFragment extends MyFragment {
 
                 int t = 0;
                 updateSelect(R.id.canbus21_mode1, 0);
-                updateSelect(R.id.canbus21_mode2, 0);
                 updateSelect(R.id.canbus21_mode3, 0);
+                updateSelect(R.id.canbus21_mode2, 0);
                 updateSelect(R.id.canbus21_mode4, 0);
                 if ((buf[3] & 0x80) != 0) {
                     if ((buf[3] & 0x20) != 0) {
@@ -287,9 +267,9 @@ public class JeepAirControlFragment extends MyFragment {
                     }
                 } else {
                     if ((buf[3] & 0x20) != 0 && (buf[3] & 0x40) != 0) {
-                        t = R.id.canbus21_mode2;
-                    } else if ((buf[3] & 0x20) != 0) {
                         t = R.id.canbus21_mode3;
+                    } else if ((buf[3] & 0x20) != 0) {
+                        t = R.id.canbus21_mode2;
                     } else if ((buf[3] & 0x40) != 0) {
                         t = R.id.canbus21_mode1;
                     }
@@ -306,7 +286,6 @@ public class JeepAirControlFragment extends MyFragment {
                 // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
                 // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
                 // updateSelect(R.id.air_title_ce_max, buf[6]&0x80);
-
                 super.callBack(0);
                 break;
         }
@@ -318,7 +297,7 @@ public class JeepAirControlFragment extends MyFragment {
         super.onPause();
     }
 
-    private Handler mHandler = new Handler() {
+    private Handler mHandler = new Handler(Looper.myLooper()) {
         @Override
         public void handleMessage(Message msg) {
             sendCanboxInfo0x90(0x21);
@@ -349,8 +328,8 @@ public class JeepAirControlFragment extends MyFragment {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
+                    if(action == null) return;
                     if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
-
                         byte[] buf = intent.getByteArrayExtra("buf");
                         if (buf != null) {
                             try {

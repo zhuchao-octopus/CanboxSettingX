@@ -103,7 +103,7 @@
                     android:src="@drawable/canbus21_mode1" />
 
                 <ImageView
-                    android:id="@+id/canbus21_mode3"
+                    android:id="@+id/canbus21_mode2"
                     style="@style/AirButtonStyle1"
                     android:src="@drawable/canbus21_mode3" />
 

@@ -31,7 +31,7 @@
     <string name="radar_ui">隐藏雷达界面</string>
     <string name="radar_only_in_rverse">只在倒车时显示雷达界面</string>
     <string name="air_single">只显示单通道温度</string>
-    
+    <string name="show_air_controller">显示空调控制器</string>
     <string name="app_name">中控设置</string>    
     <string name="vehicle_info_name">车辆信息</string>    
     <string name="car_cd">原车CD</string>
