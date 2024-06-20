@@ -1768,11 +1768,13 @@ public class CanboxSettings extends PreferenceActivity implements
         String key = preference.getKey();
         MMLog.d(TAG, "onPreferenceChange key=" + key + ",newValue=" + newValue);
 
-        if (KEY_MANUFACTURER.equals(key)) {
-            onManufacturerChanged(null, (String) newValue);
-            updateCanboxSetting(null);
-        } else if (KEY_CANBOX.equals(key)) {
-            //Log.d(TAG,KEY_CANBOX+", " +MachineConfig.VALUE_CANBOX_ZHONGXING_OD+","+mPreCanboxType + ","+mCanboxType);
+        switch (key) {
+            case KEY_MANUFACTURER:
+                onManufacturerChanged(null, (String) newValue);
+                updateCanboxSetting(null);
+                break;
+            case KEY_CANBOX:
+                //Log.d(TAG,KEY_CANBOX+", " +MachineConfig.VALUE_CANBOX_ZHONGXING_OD+","+mPreCanboxType + ","+mCanboxType);
 		        /*if(MachineConfig.VALUE_CANBOX_ZHONGXING_OD.equals(mPreCanboxType))
 		        {
 		          //mPreCanboxType="none";
@@ -1780,7 +1782,7 @@ public class CanboxSettings extends PreferenceActivity implements
 		          updateCanboxSetting("gm_raise");
 		          updateMachineConfig();
 		          setCanboxSetting((String) newValue);
-			  updateCanboxSetting((String) newValue);	
+			  updateCanboxSetting((String) newValue);
 			  updateMachineConfig();
 		          //Log.d(TAG,"reset to none");
 		        }
@@ -1789,90 +1791,96 @@ public class CanboxSettings extends PreferenceActivity implements
                 setCanboxSetting((String) newValue);
                 updateCanboxSetting((String) newValue);
             }
-        } else if (KEY_CANBOX_KEY.equals(key)) {
-            updateCanboxKeyValue((String) newValue);
-            setCanboxKeySetting((String) newValue);
+            break;
+            case KEY_CANBOX_KEY:
+                updateCanboxKeyValue((String) newValue);
+                setCanboxKeySetting((String) newValue);
 
-            updateCarType2(mCanboxType);
-        } else if (KEY_CANBOX_EQ.equals(key)) {
-            updateCanboxEQValue((String) newValue);
-            setCanboxEQSetting((String) newValue);
-        }
-//		else if ("canbox_key_change".equals(key)) {
-//			((ListPreference) preference).setValue((String) newValue);
-//			((ListPreference) preference)
-//					.setSummary(((ListPreference) preference).getEntry());
-//			mChangeKey = (String) newValue;
-//		} 
-        else if ("canbox_front_door".equals(key)) {
-            ((ListPreference) preference).setValue((String) newValue);
-            ((ListPreference) preference)
-                    .setSummary(((ListPreference) preference).getEntry());
-            mFrontDoor = (String) newValue;
-        } else if ("canbox_rear_door".equals(key)) {
-            ((ListPreference) preference).setValue((String) newValue);
-            ((ListPreference) preference)
-                    .setSummary(((ListPreference) preference).getEntry());
-            mBackDoor = (String) newValue;
-        } else if ("canbox_air".equals(key)) {
-            ((ListPreference) preference).setValue((String) newValue);
-            ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
-            mAirCondition = (String) newValue;
-        } else if ("canbox_air".equals(key)) {
-            ((ListPreference) preference).setValue((String) newValue);
-            ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
-            mAirCondition = (String) newValue;
-        } else if ("canbox_car_type".equals(key)) {
-            ((ListPreference) preference).setValue((String) newValue);
-            ((ListPreference) preference)
-                    .setSummary(((ListPreference) preference).getEntry());
-            mCarType = (String) newValue;
-            updateCarType2(mCanboxType);
-        } else if ("canbox_car_type2".equals(key)) {
-            ((ListPreference) preference).setValue((String) newValue);
-            ((ListPreference) preference)
-                    .setSummary(((ListPreference) preference).getEntry());
-            mCarType2 = (String) newValue;
-            initEQVolume(getCanboxType());
+                updateCarType2(mCanboxType);
+                break;
+            case KEY_CANBOX_EQ:
+                updateCanboxEQValue((String) newValue);
+                setCanboxEQSetting((String) newValue);
+                break;
+            //		else if ("canbox_key_change".equals(key)) {
+            //			((ListPreference) preference).setValue((String) newValue);
+            //			((ListPreference) preference)
+            //					.setSummary(((ListPreference) preference).getEntry());
+            //			mChangeKey = (String) newValue;
+            //		}
+            case "canbox_front_door":
+                ((ListPreference) preference).setValue((String) newValue);
+                ((ListPreference) preference)
+                        .setSummary(((ListPreference) preference).getEntry());
+                mFrontDoor = (String) newValue;
+                break;
+            case "canbox_rear_door":
+                ((ListPreference) preference).setValue((String) newValue);
+                ((ListPreference) preference)
+                        .setSummary(((ListPreference) preference).getEntry());
+                mBackDoor = (String) newValue;
+                break;
+            case "canbox_air":
+                ((ListPreference) preference).setValue((String) newValue);
+                ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
+                mAirCondition = (String) newValue;
+                break;
+            case "canbox_car_type":
+                ((ListPreference) preference).setValue((String) newValue);
+                ((ListPreference) preference)
+                        .setSummary(((ListPreference) preference).getEntry());
+                mCarType = (String) newValue;
+                updateCarType2(mCanboxType);
+                break;
+            case "canbox_car_type2":
+                ((ListPreference) preference).setValue((String) newValue);
+                ((ListPreference) preference)
+                        .setSummary(((ListPreference) preference).getEntry());
+                mCarType2 = (String) newValue;
+                initEQVolume(getCanboxType());
 
-        } else if ("canbox_other_settings".equals(key)) {
-            Set<String> s = (Set<String>) newValue;
-            ((MultiSelectListPreference) preference).setValues(s);
+                break;
+            case "canbox_other_settings": {
+                Set<String> s = (Set<String>) newValue;
+                ((MultiSelectListPreference) preference).setValues(s);
 
-            Iterator<String> it = s.iterator();
-            int otherSettings = 0;
-            while (it.hasNext()) {
-                String str = it.next();
-                try {
-                    int i = Integer.valueOf(str);
-                    if (i < 32) {
-                        otherSettings |= (0x1 << i);
+                Iterator<String> it = s.iterator();
+                int otherSettings = 0;
+                while (it.hasNext()) {
+                    String str = it.next();
+                    try {
+                        int i = Integer.parseInt(str);
+                        if (i < 32) {
+                            otherSettings |= (0x1 << i);
+                        }
+                    } catch (Exception ignored) {
                     }
-                } catch (Exception e) {
-
                 }
+
+                mCarOtherSettings = otherSettings + "";
+                break;
             }
+            case "canbox_key_change_ex": {
+                Set<String> s = (Set<String>) newValue;
+                ((MultiSelectListPreference) preference).setValues(s);
 
-            mCarOtherSettings = otherSettings + "";
-        } else if ("canbox_key_change_ex".equals(key)) {
-            Set<String> s = (Set<String>) newValue;
-            ((MultiSelectListPreference) preference).setValues(s);
+                Iterator<String> it = s.iterator();
+                int otherSettings = 0;
+                while (it.hasNext()) {
+                    String str = it.next();
+                    try {
+                        int i = Integer.valueOf(str);
+                        if (i < 32) {
+                            otherSettings |= (0x1 << i);
+                        }
+                    } catch (Exception e) {
 
-            Iterator<String> it = s.iterator();
-            int otherSettings = 0;
-            while (it.hasNext()) {
-                String str = it.next();
-                try {
-                    int i = Integer.valueOf(str);
-                    if (i < 32) {
-                        otherSettings |= (0x1 << i);
                     }
-                } catch (Exception e) {
-
                 }
-            }
 
-            mChangeKey = otherSettings + "";
+                mChangeKey = otherSettings + "";
+                break;
+            }
         }
         return false;
     }
