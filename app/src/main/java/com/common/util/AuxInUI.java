@@ -1,61 +1,28 @@
 package com.common.util;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import com.common.camera.CameraHolder;
-import com.common.presentation.PresentationUIBase;
 import com.common.ui.UIBase;
-import com.common.util.AppConfig;
-import com.common.util.Kernel;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
 import com.common.utils.BroadcastUtil;
 import com.common.utils.ParkBrake;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.PixelFormat;
-import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.Camera.Size;
-import android.hardware.display.DisplayManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Display;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.car.ui.GlobalDef;
-import com.my.gl.GLSufaceView;
+import com.my.gl.MyGLSurfaceView;
 
 import com.canboxsetting.R;
 
@@ -117,11 +84,11 @@ public class AuxInUI extends UIBase implements View.OnClickListener,
 		if (Util.isGLCamera()) {
 			FrameLayout v = (FrameLayout) mMainView
 					.findViewById(R.id.glsuface_main);
-			mGLSufaceView = new GLSufaceView(mContext, v);
+			mMyGLSurfaceView = new MyGLSurfaceView(mContext, v);
 		}
 	}
 
-	private static GLSufaceView mGLSufaceView;
+	private static MyGLSurfaceView mMyGLSurfaceView;
 
 	public void onClick(View v) {
 		toggleFullScreen();
@@ -179,8 +146,8 @@ public class AuxInUI extends UIBase implements View.OnClickListener,
 	public void onResume() {
 		super.onResume();
 		Log.d("ffs", "onResume");
-		if (mGLSufaceView != null) {
-			mGLSufaceView.setMirror(0);
+		if (mMyGLSurfaceView != null) {
+			mMyGLSurfaceView.setMirror(0);
 		}
 		startCheckBrakeCar();
 
@@ -416,10 +383,10 @@ public class AuxInUI extends UIBase implements View.OnClickListener,
 		mHandler.removeMessages(MSG_DELAY_RESTART_CAMERA);
 		Log.d(TAG, ">>releaseCamera!!" + mPreviewing);
 		if (GlobalDef.isGLCamera()) {
-			if (mGLSufaceView != null) {
+			if (mMyGLSurfaceView != null) {
 				if (mPreviewing
 						&& GlobalDef.getCameraPreview() == mCameraOpenIndex) {
-					mGLSufaceView.stoptPreview();
+					mMyGLSurfaceView.stoptPreview();
 
 					mPreviewing = false;
 					GlobalDef.setCameraPreview(0);
@@ -496,7 +463,7 @@ public class AuxInUI extends UIBase implements View.OnClickListener,
 				return;
 			}
 			GlobalDef.setCameramOpenCameraPreview(true);
-			mPreviewing = mGLSufaceView.startPreview();
+			mPreviewing = mMyGLSurfaceView.startPreview();
 			mCameraOpenIndex++;
 			if (mPreviewing) {
 				mCameraOpenIndex++;

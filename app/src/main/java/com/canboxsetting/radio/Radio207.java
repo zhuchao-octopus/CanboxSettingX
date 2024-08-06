@@ -20,6 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
@@ -48,6 +49,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -237,8 +239,7 @@ public class Radio207 extends MyFragment {
 
     private final static int[] INIT_CMDS = {0x22, 0x21};
 
-
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
@@ -247,7 +248,6 @@ public class Radio207 extends MyFragment {
             }
         }
     };
-
 
     private BroadcastReceiver mReceiver;
 

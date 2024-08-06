@@ -69,6 +69,10 @@ public class RaiseAirControlFragment extends MyFragment {
         if ((GlobalDef.getProId() == 186)) {
             mMainView.findViewById(id.wheel).setVisibility(View.GONE);
         }
+
+        byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50,0x03,0x00};//去掉原车空调面板
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
         return mMainView;
     }
 

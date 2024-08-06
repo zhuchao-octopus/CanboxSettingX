@@ -31,6 +31,7 @@ import com.common.util.UtilSystem;
 import com.canboxsetting.R;
 import com.zhuchao.android.fbase.MMLog;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -1810,8 +1811,7 @@ public class CanboxSettings extends PreferenceActivity implements
             //		}
             case "canbox_front_door":
                 ((ListPreference) preference).setValue((String) newValue);
-                ((ListPreference) preference)
-                        .setSummary(((ListPreference) preference).getEntry());
+                ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
                 mFrontDoor = (String) newValue;
                 break;
             case "canbox_rear_door":
@@ -1869,15 +1869,13 @@ public class CanboxSettings extends PreferenceActivity implements
                 while (it.hasNext()) {
                     String str = it.next();
                     try {
-                        int i = Integer.valueOf(str);
+                        int i = Integer.parseInt(str);
                         if (i < 32) {
                             otherSettings |= (0x1 << i);
                         }
-                    } catch (Exception e) {
-
+                    } catch (Exception ignored) {
                     }
                 }
-
                 mChangeKey = otherSettings + "";
                 break;
             }
@@ -2178,6 +2176,7 @@ public class CanboxSettings extends PreferenceActivity implements
     int max = 0;
     int volume = -1;
 
+    @SuppressLint("SetTextI18n")
     private void showVolumeDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -2188,14 +2187,13 @@ public class CanboxSettings extends PreferenceActivity implements
 
         // alertDialog.setContentView(R.layout.volume_dialog);
         mLevel = (SeekBar) alertDialog.findViewById(R.id.level);
-
         mTextVolume = (TextView) alertDialog.findViewById(R.id.volume);
 
         if (mLevel != null) {
 
             mLevel.setMax(max);
 
-            mTextVolume.setText("" + volume);
+            mTextVolume.setText(String.valueOf(volume));
             mLevel.setProgress(volume);
             mLevel.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -2207,12 +2205,13 @@ public class CanboxSettings extends PreferenceActivity implements
                 public void onStartTrackingTouch(SeekBar seekBar) {
                 }
 
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress,
                                               boolean fromUser) {
                     if (fromUser) {
                         if (mTextVolume != null) {
-                            mTextVolume.setText("" + progress);
+                            mTextVolume.setText(String.valueOf(progress));
                             sendCanboxVolume(mWillSetCan, progress);
                             volume = progress;
                             MachineConfig.setIntProperty(

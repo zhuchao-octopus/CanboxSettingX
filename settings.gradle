@@ -15,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CanboxSetting"
+rootProject.name = "CanboxSettingX"
 include ':app'

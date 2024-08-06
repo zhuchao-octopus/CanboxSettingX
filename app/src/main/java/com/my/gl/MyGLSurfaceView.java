@@ -4,11 +4,14 @@ import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Objects;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -22,11 +25,11 @@ import android.widget.LinearLayout;
 //import com.rockchip.car.recorder.activity.VideoUI;
 //import com.rockchip.car.recorder.render.GLFrameSurface;
 
-public class GLSufaceView {
-	private Context mContext;
+public class MyGLSurfaceView {
+	private final Context mContext;
 	//VideoUI mVideoUI;
 	
-	private ViewGroup mMain;
+	private final ViewGroup mMain;
 	//private GLFrameSurface gl;
 	private int mCameraIndex = 0;
 
@@ -39,10 +42,10 @@ public class GLSufaceView {
 
 	private final static String DEV_CAMERA_MIRROR = "/sys/class/ak/source/cam_rot_mir";
 
-	private final Handler mHandler = new Handler() {
+	private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
 		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case MSG_REFRESH_ADCAMERA_UI:
+			if (msg.what == MSG_REFRESH_ADCAMERA_UI)
+			{
 				/*if (mADCameraSelfRefresh != null) {
 					mADCameraSelfRefresh.setText("Refresh");
 					mHandler.sendEmptyMessageDelayed(MSG_REFRESH_ADCAMERA_UI, 2000);
@@ -50,11 +53,11 @@ public class GLSufaceView {
 				if (mMain != null && isAndroidR()) {
 					mMain.setBackgroundColor(Color.TRANSPARENT);
 				}
-				break;
 			}
 		}
 	};
 
+	@SuppressLint("StaticFieldLeak")
 	private static Button mADCameraSelfRefresh = null;
 	private void addADCameraRefreshButton(Context context, ViewGroup ll) {
 		if (ll != null) {
@@ -79,7 +82,7 @@ public class GLSufaceView {
 		}
 	}
 
-	public GLSufaceView(Context c, ViewGroup v){
+	public MyGLSurfaceView(Context c, ViewGroup v){
 		mContext = c;
 		if (isAndroidP() || isAndroidQ() || isAndroidR()) {
 			addADCameraRefreshButton(c, v);
@@ -104,7 +107,7 @@ public class GLSufaceView {
 		mMain = v;
 	}
 	
-	public GLSufaceView(Context c, ViewGroup v, int index){
+	public MyGLSurfaceView(Context c, ViewGroup v, int index){
 		mContext = c;
 		if (isAndroidP() || isAndroidQ() || isAndroidR()) {
 			addADCameraRefreshButton(c, v);
