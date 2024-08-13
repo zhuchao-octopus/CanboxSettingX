@@ -64,7 +64,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(layout.ac_peugeot_raise, container, false);
+        mMainView = inflater.inflate(layout.ac_slim_key, container, false);
         if ((GlobalDef.getProId() == 186)) {
             mMainView.findViewById(id.wheel).setVisibility(View.GONE);
         }
@@ -128,7 +128,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
     }
 
     private void setSpeed(int speed) {
-
         for (int i = 0; i < 7; ++i) {
             View v = mMainView.findViewById(id.point0 + i);
             if (v != null) {
