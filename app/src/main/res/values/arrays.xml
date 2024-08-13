@@ -78,7 +78,9 @@
         <item>"72:Mazda(Raise)"</item>
         <item>"73:GM(Raise)"</item>
         <item>"74:Audi(Raise)"</item>
+        <item>"75:CF006(SLIMKEY)"</item>
     </string-array>
+
     <string-array name="canbox_manufacturer_values" translatable="false">
         <item>"all"</item>
         <item>"simple"</item>

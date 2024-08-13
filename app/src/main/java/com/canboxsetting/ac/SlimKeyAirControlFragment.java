@@ -52,8 +52,8 @@ import java.util.Objects;
 /**
  * This activity plays a video from a specified URI.
  */
-public class RaiseAirControlFragment extends MyFragment {
-    private static final String TAG = "RaiseAirControlFragment";
+public class SlimKeyAirControlFragment extends MyFragment {
+    private static final String TAG = "SlimKeyAirControlFragment";
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -65,7 +65,6 @@ public class RaiseAirControlFragment extends MyFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mMainView = inflater.inflate(layout.ac_peugeot_raise, container, false);
-
         if ((GlobalDef.getProId() == 186)) {
             mMainView.findViewById(id.wheel).setVisibility(View.GONE);
         }
@@ -73,7 +72,7 @@ public class RaiseAirControlFragment extends MyFragment {
         byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50,0x03,0x00};//去掉原车空调面板
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
-        MMLog.d(TAG, "RaiseAirControlFragment.onCreateView!");
+        MMLog.d(TAG, "SlimKeyAirControlFragment.onCreateView!");
         return mMainView;
     }
 
@@ -189,16 +188,16 @@ public class RaiseAirControlFragment extends MyFragment {
         if (GlobalDef.mTempUnit == 1) {
             if (!isCentigradeUnit) {
                 temperature = ((temperature) - 32) / 1.8f;
-                isCentigradeUnit = !isCentigradeUnit;
+                isCentigradeUnit = true;
             }
         } else if (GlobalDef.mTempUnit == 2) {
             if (isCentigradeUnit) {
                 temperature = ((temperature / 2) * 1.8f + 32);
-                isCentigradeUnit = !isCentigradeUnit;
+                isCentigradeUnit = false;
             }
         }
 
-        if (isCentigradeUnit == true) {
+        if (isCentigradeUnit) {
             return String.format(Locale.ENGLISH, "%.1f%s", temperature / 2, view.getResources().getString(string.temp_unic_centigrade));
         } else {
             return String.format(Locale.ENGLISH, "%d%s", (int) temperature, view.getResources().getString(string.temp_unic_fahrenheit));
@@ -227,7 +226,6 @@ public class RaiseAirControlFragment extends MyFragment {
             v.setText(s);
         }
     }
-
 
     private void setTempManul(int id, int temperature, int unit) {
         TextView v = (TextView) mMainView.findViewById(id);
@@ -268,7 +266,7 @@ public class RaiseAirControlFragment extends MyFragment {
     @Override
     public void onResume() {
         registerListener();
-        //		sendCanboxInfo0x90(0x21);
+        //sendCanboxInfo0x90(0x21);
         mHandler.sendEmptyMessageDelayed(0, 500);
         mHandler.sendEmptyMessageDelayed(0, 1000);
         super.onResume();
@@ -303,73 +301,70 @@ public class RaiseAirControlFragment extends MyFragment {
                     }
                 }
             };
+
             IntentFilter iFilter = new IntentFilter();
             iFilter.addAction(MyCmd.BROADCAST_SEND_FROM_CAN);
-
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
 
     private void updateView(byte[] buf) {
-        MMLog.d(TAG, "RaiseAirControlFragment.updateView buf:" + ByteUtils.BuffToHexStr(buf));
-        switch (buf[1]) {
-            case 0x21:
-                updateSelect(id.icon_power, buf[2] & 0x80);
-                updateSelect(id.air_title_ce_ac_1, buf[2] & 0x40);
-                setLoop(buf[2] & 0x20);
-                updateSelect(id.air_title_ce_rear, buf[2] & 0x01);//后窗加热
+        MMLog.d(TAG, "SlimKeyAirControlFragment.updateView buf:" + ByteUtils.BuffToHexStr(buf));
+        if (buf[1] == 0x21) {
+            updateSelect(id.icon_power, buf[2] & 0x80);
+            updateSelect(id.air_title_ce_ac_1, buf[2] & 0x40);
+            setLoop(buf[2] & 0x20);
+            updateSelect(id.air_title_ce_rear, buf[2] & 0x01);//后窗加热
 
-                updateSelect(id.air_title_ce_auto_large, buf[2] & 0x08);
-                updateSelect(id.air_title_sync, buf[2] & 0x04);
+            updateSelect(id.air_title_ce_auto_large, buf[2] & 0x08);
+            updateSelect(id.air_title_sync, buf[2] & 0x04);
 
-                updateSelect(id.canbus21_mode1, buf[3] & 0x40);
-                updateSelect(id.canbus21_mode2, buf[3] & 0x20);
-                updateSelect(id.canbus21_mode3, buf[3] & 0x80);
+            updateSelect(id.canbus21_mode1, buf[3] & 0x40);
+            updateSelect(id.canbus21_mode2, buf[3] & 0x20);
+            updateSelect(id.canbus21_mode3, buf[3] & 0x80);
 
-                //updateSelect(id.canbus21_mode4, 0);
+            //updateSelect(id.canbus21_mode4, 0);
 
-                setSpeed((buf[3] & 0xf));
+            setSpeed((buf[3] & 0xf));
 
-                setTemp(id.con_txt_left_temp, (buf[4] & 0xff), (buf[4] & 0x01));
-                setTemp(id.con_txt_right_temp, (buf[5] & 0xff), (buf[5] & 0x01));
-                ///setTempManul(id.con_txt_left_temp, (buf[3] & 0xff), (buf[3] & 0x01));
-                ///setTempManul(id.con_txt_right_temp, (buf[4] & 0xff), (buf[4] & 0x01));
+            setTemp(id.con_txt_left_temp, (buf[4] & 0xff), (buf[4] & 0x01));
+            setTemp(id.con_txt_right_temp, (buf[5] & 0xff), (buf[5] & 0x01));
+            ///setTempManul(id.con_txt_left_temp, (buf[3] & 0xff), (buf[3] & 0x01));
+            ///setTempManul(id.con_txt_right_temp, (buf[4] & 0xff), (buf[4] & 0x01));
 
-                updateSelect(id.air_title_ce_max, buf[6] & 0x80);//前窗除雾
-                updateSelect(id.air_title_ce_ac_max, buf[6] & 0x08);
+            updateSelect(id.air_title_ce_max, buf[6] & 0x80);//前窗除雾
+            updateSelect(id.air_title_ce_ac_max, buf[6] & 0x08);
 
-
-                ///updateSelect(id.wheel, buf[9] & 0x80);
-                ///setSeatheat(id.con_seathotright, (buf[7] & 0x0f));
-                ///setSeatheat(id.con_seathotleft, (buf[7] & 0xf0) >> 4);
-                super.callBack(0);
-                break;
+            ///updateSelect(id.wheel, buf[9] & 0x80);
+            ///setSeatheat(id.con_seathotright, (buf[7] & 0x0f));
+            ///setSeatheat(id.con_seathotleft, (buf[7] & 0xf0) >> 4);
+            super.callBack(0);
         }
     }
 
     public void onClick(View v) {
         ///sendCmd(v.getId());
-        if (v.getId() == R.id.air_title_ce_auto_large) {
+        if (v.getId() == id.air_title_ce_auto_large) {
             switchStatus(v, (byte) 0x01);
-        } else if (v.getId() == R.id.air_title_ce_ac_1) {
+        } else if (v.getId() == id.air_title_ce_ac_1) {
             switchStatus(v, (byte) 0x02);
-        } else if (v.getId() == R.id.air_title_ce_ac_max) {
+        } else if (v.getId() == id.air_title_ce_ac_max) {
             switchStatus(v, (byte) 0x03);
-        } else if (v.getId() == R.id.con_left_temp_up) {
+        } else if (v.getId() == id.con_left_temp_up) {
             sendCanboxInfo0x8A(0x04, 0x01);
         } else if (v.getId() == id.con_left_temp_down) {
             sendCanboxInfo0x8A(0x04, 0x02);
-        } else if (v.getId() == R.id.con_right_temp_up) {
+        } else if (v.getId() == id.con_right_temp_up) {
             sendCanboxInfo0x8A(0x05, 0x01);
         } else if (v.getId() == id.con_right_temp_down) {
             sendCanboxInfo0x8A(0x05, 0x02);
-        } else if (v.getId() == R.id.canbus21_mode1) {
+        } else if (v.getId() == id.canbus21_mode1) {
             switchStatus(v, (byte) 0x06);
-        } else if (v.getId() == R.id.canbus21_mode2) {
+        } else if (v.getId() == id.canbus21_mode2) {
             switchStatus(v, (byte) 0x08);
-        } else if (v.getId() == R.id.canbus21_mode3) {
+        } else if (v.getId() == id.canbus21_mode3) {
             switchStatus(v, (byte) 0x07);
-        } else if (v.getId() == R.id.wind_minus) {
+        } else if (v.getId() == id.wind_minus) {
             sendCanboxInfo0x8A(0x0A, 0x02);
         } else if (v.getId() == id.wind_add) {
             sendCanboxInfo0x8A(0x0A, 0x01);

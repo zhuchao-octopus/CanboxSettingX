@@ -29,6 +29,7 @@ import com.canboxsetting.ac.JeepAirControlFragment;
 import com.canboxsetting.ac.JeepAirControlXinbasFragment;
 import com.canboxsetting.ac.RX330HZAirControlFragment;
 import com.canboxsetting.ac.RaiseAirControlFragment;
+import com.canboxsetting.ac.SlimKeyAirControlFragment;
 import com.canboxsetting.ac.TouaregHiworldACFragment;
 import com.canboxsetting.ac.ToyotaRaiseAirControlFragment;
 import com.canboxsetting.ac.VWMQBAirControlFragment;
@@ -197,6 +198,9 @@ public class CanAirControlActivity extends Activity {
                     case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
                         mSetting = new RaiseAirControlFragment();
                         break;
+                    case MachineConfig.VALUE_CANBOX_SLIMKEY2:
+                        mSetting = new SlimKeyAirControlFragment();
+                        break;
                 }
             }
             if (mSetting == null) {
@@ -231,7 +235,6 @@ public class CanAirControlActivity extends Activity {
     private void requestACInfo() {
         Intent i = new Intent(MyCmd.BROADCAST_SEND_TO_CAN);
         i.putExtra(MyCmd.EXTRA_COMMON_CMD, AC_CMD_REQUEST_INFO | CMD_GROUP_AC);
-
         BroadcastUtil.sendToCarService(this, i);
     }
 

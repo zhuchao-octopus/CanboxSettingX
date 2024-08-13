@@ -134,17 +134,14 @@ public class BroadcastUtil {
 
     public final static void sendToCarServiceMcuEQ(Context context, int subId, int param1, int param2) {
         sendToCarService(context, MyCmd.Cmd.MCU_AUDIO_SEND_CMD, subId, param1, param2);
-
     }
 
     public final static void sendToCarServiceMcuDVD(Context context, int subId, int param1, int param2) {
         sendToCarService(context, MyCmd.Cmd.MCU_DVD_SEND_CMD, subId, param1, param2);
-
     }
 
     public final static void sendToCarServiceMcuDVD(Context context, int subId, int param1) {
         sendToCarService(context, MyCmd.Cmd.MCU_DVD_SEND_CMD, subId, param1);
-
     }
 
     public final static void sendCanboxInfo(Context context, String name, int value1, int value2, int value3) {
