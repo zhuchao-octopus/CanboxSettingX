@@ -128,7 +128,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
     }
 
     private void setSpeed(int speed) {
-
         for (int i = 0; i < 7; ++i) {
             View v = mMainView.findViewById(id.point0 + i);
             if (v != null) {
@@ -379,14 +378,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
             ///setSeatheat(id.con_seathotleft, (buf[7] & 0xf0) >> 4);
             super.callBack(0);
         }
-    }
-
-    private void updateAirDirection(byte cmd) {
-        updateSelect(id.canbus21_mode1, cmd == 0x00?1:0);
-        updateSelect(id.canbus21_mode2, cmd == 0x02?1:0);
-        updateSelect(id.canbus21_mode3, cmd == 0x01?1:0);
-        updateSelect(id.canbus21_mode4, cmd == 0x03?1:0);
-        updateSelect(id.canbus21_mode5, cmd == 0x04?1:0);
     }
 
     public void onClick(View v) {
