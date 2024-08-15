@@ -64,13 +64,13 @@ public class SlimKeyAirControlFragment extends MyFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(layout.ac_peugeot_raise, container, false);
+        mMainView = inflater.inflate(layout.ac_peugeot_slim, container, false);
         if ((GlobalDef.getProId() == 186)) {
             mMainView.findViewById(id.wheel).setVisibility(View.GONE);
         }
 
-        byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50,0x03,0x00};//去掉原车空调面板
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        ///byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50,0x03,0x00};//去掉原车空调面板
+        //BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
         MMLog.d(TAG, "SlimKeyAirControlFragment.onCreateView!");
         return mMainView;
@@ -293,7 +293,8 @@ public class SlimKeyAirControlFragment extends MyFragment {
                         byte[] buf = intent.getByteArrayExtra("buf");
                         if (buf != null) {
                             try {
-                                updateView(buf);
+//                                updateView(buf);
+                                updateSlimView(buf);
                             } catch (Exception e) {
                                 Log.d("aa", "!!!!!!!!" + e);
                             }
@@ -307,7 +308,45 @@ public class SlimKeyAirControlFragment extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
+    private void updateSlimView(byte[] buf) {
+        if (buf != null && buf.length == 6 && buf[0] == 0x00 && buf[1] == 0x00 && buf[2] == 0x02) {
+            if (buf[3] == 0x05 && buf[4] == 0x01) {
+                MMLog.d(TAG, "updateSlimView: 打开AC");
+                updateSelect(id.air_title_ce_ac_1, 1);
+            } else if (buf[3] == 0x05 && buf[4] == 0x00) {
+                MMLog.d(TAG, "updateSlimView: 关闭AC");
+                updateSelect(id.air_title_ce_ac_1, 0);
+            } else if (buf[3] == 0x06 && (buf[4] == 0x00 || buf[4] == 0x01)) {
+                MMLog.d(TAG, "updateSlimView: AC MAX = " + buf[4]);
+                updateSelect(id.air_title_ce_ac_max, buf[4]);
+            } else if (buf[3] == 0x00 && buf[4] == 0x02) {
+                MMLog.d(TAG, "updateSlimView: 打开外循环");
+                setLoop(0);
+            } else if (buf[3] == 0x00 && buf[4] == 0x03) {
+                MMLog.d(TAG, "updateSlimView: 打开内循环");
+                setLoop(1);
+            } else if (buf[3] == 0x00 && buf[4] == 0x04) {
+                MMLog.d(TAG, "updateSlimView: 后除霜器已关闭");
+                updateSelect(id.air_title_ce_rear, 0);
+            } else if (buf[3] == 0x00 && buf[4] == 0x05) {
+                MMLog.d(TAG, "updateSlimView: 后除霜器已打开");
+                updateSelect(id.air_title_ce_rear, 1);
+            } else if (buf[3] == 0x01 && buf[4] >= 0x00 && buf[4] <= 4) {
+                MMLog.d(TAG, "updateSlimView: 空气方向 = " + buf[4]);
+                updateAirDirection(buf[4]);
+            } else if (buf[3] == 0x02 && buf[4] > 0 && buf[4] <= 7) {
+                MMLog.d(TAG, "updateSlimView: 风速调节 = " + buf[4]);
+                setSpeed(buf[4]);
+            } else if (buf[3] == 0x03 && buf[4] > 0 && buf[4] <= 16) {
+                MMLog.d(TAG, "updateSlimView: 温度调节 = " + buf[4]);
+                //TODO 暂时还未实现,不确定温度的显示方式
+            } else if (buf[3] == 0x04 && (buf[4] == 0x00 || buf[4] == 0x01)) {
+                MMLog.d(TAG, "updateSlimView: 空调开关 = " + buf[4]);
+                updateSelect(id.icon_power, buf[4]);
+            }
+        }
+        super.callBack(0);
+    }
     private void updateView(byte[] buf) {
         MMLog.d(TAG, "SlimKeyAirControlFragment.updateView buf:" + ByteUtils.BuffToHexStr(buf));
         if (buf[1] == 0x21) {
@@ -340,6 +379,14 @@ public class SlimKeyAirControlFragment extends MyFragment {
             ///setSeatheat(id.con_seathotleft, (buf[7] & 0xf0) >> 4);
             super.callBack(0);
         }
+    }
+
+    private void updateAirDirection(byte cmd) {
+        updateSelect(id.canbus21_mode1, cmd == 0x00?1:0);
+        updateSelect(id.canbus21_mode2, cmd == 0x02?1:0);
+        updateSelect(id.canbus21_mode3, cmd == 0x01?1:0);
+        updateSelect(id.canbus21_mode4, cmd == 0x03?1:0);
+        updateSelect(id.canbus21_mode5, cmd == 0x04?1:0);
     }
 
     public void onClick(View v) {

@@ -205,7 +205,12 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_FORD_RAISE, // 51
             MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
             MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, // 41
-            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, MachineConfig.VALUE_CANBOX_HY_RAISE, MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, MachineConfig.VALUE_CANBOX_MAZDA_RAISE, MachineConfig.VALUE_CANBOX_GM_RAISE,};
+            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE,
+            MachineConfig.VALUE_CANBOX_HY_RAISE,
+            MachineConfig.VALUE_CANBOX_TOYOTA_RAISE,
+            MachineConfig.VALUE_CANBOX_MAZDA_RAISE,
+            MachineConfig.VALUE_CANBOX_SLIMKEY2,//75
+            MachineConfig.VALUE_CANBOX_GM_RAISE,};
     private final String[] mCanboxValuebagoo = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_PSA_BAGOO, // 10
             MachineConfig.VALUE_CANBOX_BENZ_BAGOO, // 20
             MachineConfig.VALUE_CANBOX_SUBARU_ODS, // 42
@@ -1726,6 +1731,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                 case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
                 case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
                 case MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD:
+                case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                     hideConboxSetting = false;
                     hideCanboxCarInfo = false;
                     hideCanboxAirControl = false;
