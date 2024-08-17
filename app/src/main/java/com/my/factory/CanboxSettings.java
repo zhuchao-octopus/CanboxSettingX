@@ -1451,7 +1451,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             mCanboxSettingPreference.setValue(which);
         }
 
-        MMLog.d("updateCanboxSetting", String.valueOf(mCanboxSettingPreference.getEntry()));
+        MMLog.d("UpdateCanboxSetting", String.valueOf(mCanboxSettingPreference.getEntry()));
         mCanboxSettingPreference.setSummary(mCanboxSettingPreference.getEntry());
         updateCanboxKey(mCanboxSettingPreference.getValue());
         updateCanboxEQ(mCanboxSettingPreference.getValue());
@@ -1494,9 +1494,13 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         String[] value1 = {"0", "1", "2", "3", "4"};
 
         lp = (ListPreference) findPreference("canbox_air");
+
         if (MachineConfig.VALUE_CANBOX_HY.equalsIgnoreCase(mCanboxType)) {
             entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), "17°C ~ 32°C", "15°C ~ 32°C", "15°C ~ 30°C"};
             value1 = new String[]{"0", "1", "2", "3", "4", "5", "6"};
+        } else if (MachineConfig.VALUE_CANBOX_PSA.equalsIgnoreCase(mCanboxType)) {
+            entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), "14°C ~ 18°C", "24°C ~ 28°C"};
+            value1 = new String[]{"0", "1", "2", "3", "4", "5"};
         } else {
             try {
                 int a = Integer.parseInt(mAirCondition);
@@ -1653,7 +1657,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         return false;
     }
 
-    private static void updateHideAppConboxVersion1(String value, String msCarType) {
+    private static void updateHideAppCanboxVersion1(String value, String msCarType) {
 
         boolean hideSync = true;
         boolean hideConboxSetting = true;
@@ -1670,7 +1674,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         } catch (Exception ignored) {
         }
 
-        MMLog.d(TAG, "updateHideAppConboxVersion1 msCarType:" + " mCarType:" + mCarType);
+        MMLog.d(TAG, "UpdateHideAppCanboxVersion1 msCarType:" + " mCarType:" + mCarType);
 
         if (null != value) {
             switch (value) {
@@ -1841,16 +1845,19 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
     }
 
     private void updateMachineConfig() {
-        updateHideAppConboxVersion1(mCanboxType, mCarType);
-        MMLog.d(TAG, "updateMachineConfig() mCanboxType = " + mCanboxType);
-
+        updateHideAppCanboxVersion1(mCanboxType, mCarType);
+        MMLog.d(TAG, "UpdateMachineConfig() mCanboxType = " + mCanboxType);
+        String newCanboxValue = mCanboxType;
         if (mCanboxType == null || MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType)) {
+            MMLog.d(TAG, "Send broadcast MyCmd.BROADCAST_MACHINECONFIG_UPDATE mCanboxType=null");
             MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, null);
             Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
             it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
             sendBroadcast(it);
-        } else {
-            String newCanboxValue = mCanboxType;
+        }
+        else
+        {
+            newCanboxValue = mCanboxType;
 
             if (mKeyType != null) {
                 newCanboxValue += "," + MachineConfig.KEY_SUB_CANBOX_KEY_TYPE + mKeyType;
@@ -1883,10 +1890,12 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             }
             newCanboxValue += ",v2";
             if (!newCanboxValue.equals(mCanboxValue)) {
+                MMLog.d(TAG, "Send broadcast MyCmd.BROADCAST_MACHINECONFIG_UPDATE " + newCanboxValue);
                 MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, newCanboxValue);
                 Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
                 it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
                 sendBroadcast(it);
+                //BroadcastUtil.sendToCarService(this,it);
             }
         }
     }

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-//        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight_NoActionBar);
+        //setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight_NoActionBar);
         setContentView(R.layout.main);
         mFragmentManager = getSupportFragmentManager();// getFragmentManager();
         int mProVersion = 0;
@@ -257,7 +257,6 @@ public class MainActivity extends AppCompatActivity {
 				break;*/
             case MachineConfig.VALUE_CANBOX_NONE:
                 break;
-
         }
 
         if (mSetting == null) mSetting = new FocusSettingsFragment();

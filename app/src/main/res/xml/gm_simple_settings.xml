@@ -219,7 +219,6 @@
     <!-- android:persistent="false" -->
     <!-- android:title="@string/radarswitch" /> -->
 
-
     <!-- <ListPreference -->
     <!-- android:entries="@array/en" -->
     <!-- android:entryValues="@array/en_vaues" -->
@@ -227,12 +226,10 @@
     <!-- android:persistent="false" -->
     <!-- android:title="@string/alarm_vol" /> -->
 
-
     <!-- <PreferenceScreen -->
     <!-- android:key="factory_settings" -->
     <!-- android:persistent="false" -->
     <!-- android:title="@string/restore_factory_settings5" /> -->
-
 
     <!-- <SwitchPreference -->
     <!-- android:key="remote_start55" -->
