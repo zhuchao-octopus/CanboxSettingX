@@ -380,6 +380,14 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
+    private void updateAirDirection(byte cmd) {
+        updateSelect(id.canbus21_mode1, cmd == 0x00?1:0);
+        updateSelect(id.canbus21_mode2, cmd == 0x02?1:0);
+        updateSelect(id.canbus21_mode3, cmd == 0x01?1:0);
+        updateSelect(id.canbus21_mode4, cmd == 0x03?1:0);
+        updateSelect(id.canbus21_mode5, cmd == 0x04?1:0);
+    }
+
     public void onClick(View v) {
         ///sendCmd(v.getId());
         if (v.getId() == id.air_title_ce_auto_large) {
