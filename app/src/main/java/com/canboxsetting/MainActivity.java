@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight_NoActionBar);
         setContentView(R.layout.main);
         mFragmentManager = getSupportFragmentManager();// getFragmentManager();
         int mProVersion = 0;
