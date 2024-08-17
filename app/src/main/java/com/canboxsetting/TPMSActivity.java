@@ -16,16 +16,11 @@
 
 package com.canboxsetting;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
 import com.canboxsetting.tpms.MazdTpmsInfoaRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoSimpleFragment;
 import com.canboxsetting.tpms.ZhongXingFragment;
 import com.car.ui.GlobalDef;
-import com.common.util.AppConfig;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 
@@ -33,39 +28,16 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.preference.PreferenceFragment;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class TPMSActivity extends Activity {
     private static final String TAG = "CanboxSetting";
-
     private FragmentManager mFragmentManager;
-
     private Fragment mSetting;
-
     //	public static String mCanboxType = null;
 
     @Override
@@ -84,14 +56,13 @@ public class TPMSActivity extends Activity {
             try {
                 for (int i = 1; i < ss.length; ++i) {
                     if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-                        mProVersion = Integer.valueOf(ss[i].substring(1));
+                        mProVersion = Integer.parseInt(ss[i].substring(1));
                     } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
                         mProIndex = ss[i].substring(1);
-                        GlobalDef.setProId(Integer.valueOf(mProIndex));
+                        GlobalDef.setProId(Integer.parseInt(mProIndex));
                     }
                 }
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
         }
 
@@ -103,8 +74,7 @@ public class TPMSActivity extends Activity {
                     Bundle b = new Bundle();
                     b.putString(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX, mProIndex);
                     mSetting.setArguments(b);
-                } catch (Exception e) {
-
+                } catch (Exception ignored) {
                 }
 
             }
@@ -116,14 +86,19 @@ public class TPMSActivity extends Activity {
             // mCanboxType =
             // AppConfig.getCanboxSetting();//MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
             if (mCanboxType != null) {
-                if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_VW_MQB_RAISE)) {
-                    mSetting = new VWMQBTpmsInfoRaiseFragment();
-                } else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE)) {
-                    mSetting = new VWMQBTpmsInfoSimpleFragment();
-                } else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_MAZDA_RAISE)) {
-                    mSetting = new MazdTpmsInfoaRaiseFragment();
-                } else if (mCanboxType.equals(MachineConfig.VALUE_CANBOX_ZHONGXING_OD)) {
-                    mSetting = new ZhongXingFragment();
+                switch (mCanboxType) {
+                    case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:
+                        mSetting = new VWMQBTpmsInfoRaiseFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
+                        mSetting = new VWMQBTpmsInfoSimpleFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_MAZDA_RAISE:
+                        mSetting = new MazdTpmsInfoaRaiseFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_ZHONGXING_OD:
+                        mSetting = new ZhongXingFragment();
+                        break;
                 }
             }
 

@@ -82,9 +82,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
      * canbox_all & mCanboxValueXXX must correspond to the array in arrarys.xml
      * canbox_select_xxx
      */
-    private final String[] canbox_all = {
-            MachineConfig.VALUE_CANBOX_NONE,
-            MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
+    private final String[] canbox_all = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
             MachineConfig.VALUE_CANBOX_TOYOTA, // 2
             MachineConfig.VALUE_CANBOX_MAZDA, // 3
             MachineConfig.VALUE_CANBOX_BESTURN_X80, // 4
@@ -145,22 +143,9 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_RX330_HAOZHENG, // 41
             MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
-            MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN,
-            MachineConfig.VALUE_CANBOX_JEEP_XINBAS,
-            MachineConfig.VALUE_CANBOX_OUSHANG_RAISE,
-            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE,
-            MachineConfig.VALUE_CANBOX_HY_RAISE,
-            MachineConfig.VALUE_CANBOX_ALPHA_BAGOO,
-            MachineConfig.VALUE_CANBOX_TOYOTA_RAISE,
-            MachineConfig.VALUE_CANBOX_MINI_HAOZHENG,
-            MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE,
-            MachineConfig.VALUE_CANBOX_GM_OD,
-            MachineConfig.VALUE_CANBOX_MAZDA_RAISE,
-            MachineConfig.VALUE_CANBOX_GM_RAISE,
+            MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, MachineConfig.VALUE_CANBOX_JEEP_XINBAS, MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, MachineConfig.VALUE_CANBOX_HY_RAISE, MachineConfig.VALUE_CANBOX_ALPHA_BAGOO, MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, MachineConfig.VALUE_CANBOX_GM_OD, MachineConfig.VALUE_CANBOX_MAZDA_RAISE, MachineConfig.VALUE_CANBOX_GM_RAISE,
             //MachineConfig.VALUE_CANBOX_AUDI_RAISE,
-            MachineConfig.VALUE_CANBOX_ZHONGXING_OD,
-            MachineConfig.VALUE_CANBOX_SLIMKEY2
-    };
+            MachineConfig.VALUE_CANBOX_ZHONGXING_OD, MachineConfig.VALUE_CANBOX_SLIMKEY2};
 
     private final String[] mCanboxValueSimple = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
             MachineConfig.VALUE_CANBOX_TOYOTA, // 2
@@ -205,11 +190,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_FORD_RAISE, // 51
             MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
             MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, // 41
-            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE,
-            MachineConfig.VALUE_CANBOX_HY_RAISE,
-            MachineConfig.VALUE_CANBOX_TOYOTA_RAISE,
-            MachineConfig.VALUE_CANBOX_MAZDA_RAISE,
-            MachineConfig.VALUE_CANBOX_SLIMKEY2,//75
+            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, MachineConfig.VALUE_CANBOX_HY_RAISE, MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, MachineConfig.VALUE_CANBOX_MAZDA_RAISE, MachineConfig.VALUE_CANBOX_SLIMKEY2,//75
             MachineConfig.VALUE_CANBOX_GM_RAISE,};
     private final String[] mCanboxValuebagoo = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_PSA_BAGOO, // 10
             MachineConfig.VALUE_CANBOX_BENZ_BAGOO, // 20
@@ -1863,15 +1844,12 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         updateHideAppConboxVersion1(mCanboxType, mCarType);
         MMLog.d(TAG, "updateMachineConfig() mCanboxType = " + mCanboxType);
 
-        if (mCanboxType == null || MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType))
-        {
+        if (mCanboxType == null || MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType)) {
             MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, null);
             Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
             it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
             sendBroadcast(it);
-        }
-        else
-        {
+        } else {
             String newCanboxValue = mCanboxType;
 
             if (mKeyType != null) {

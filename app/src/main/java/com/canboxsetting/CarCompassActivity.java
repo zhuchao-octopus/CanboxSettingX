@@ -16,60 +16,21 @@
 
 package com.canboxsetting;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.canboxsetting.ac.GMAirODFragment;
-import com.canboxsetting.ac.Golf7SimpleAirControlFragment;
-import com.canboxsetting.ac.JeepAirControlFragment;
-import com.canboxsetting.ac.JeepAirControlXinbasFragment;
-import com.canboxsetting.ac.RX330HZAirControlFragment;
-import com.canboxsetting.ac.TouaregHiworldACFragment;
-import com.canboxsetting.ac.ToyotaRaiseAirControlFragment;
-import com.canboxsetting.ac.VWMQBAirControlFragment;
-import com.canboxsetting.set.X30RaiseAirControlFragment;
 import com.car.ui.GlobalDef;
-import com.common.util.AppConfig;
-import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
-/**
- * This activity plays a video from a specified URI.
- */
+
 public class CarCompassActivity extends Activity {
     private static final String TAG = "CanAirControlActivity";
 
     private FragmentManager mFragmentManager;
-
     private MyFragment mSetting;
 
     @Override
@@ -89,18 +50,16 @@ public class CarCompassActivity extends Activity {
             try {
                 for (int i = 1; i < ss.length; ++i) {
                     if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
-                        mProVersion = Integer.valueOf(ss[i].substring(1));
+                        mProVersion = Integer.parseInt(ss[i].substring(1));
                     } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
                         mProIndex = ss[i].substring(1);
                         try {
-                            GlobalDef.setProId(Integer.valueOf(mProIndex));
-                        } catch (Exception e) {
-
+                            GlobalDef.setProId(Integer.parseInt(mProIndex));
+                        } catch (Exception ignored) {
                         }
                     }
                 }
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
         }
 
@@ -109,10 +68,8 @@ public class CarCompassActivity extends Activity {
             if (c != null) {
                 try {
                     mSetting = (MyFragment) c.newInstance();
-                } catch (Exception e) {
-
+                } catch (Exception ignored) {
                 }
-
             }
         }
 
@@ -122,7 +79,6 @@ public class CarCompassActivity extends Activity {
         }
 
         replaceFragment(R.id.main, mSetting, false);
-
     }
 
     public void onClick(View v) {
