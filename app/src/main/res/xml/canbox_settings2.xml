@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout="@layout/preference_list_fragment" >
+    android:layout="@layout/can_preference_list_fragment" >
 
     <ListPreference
         android:key="manufacturer"
