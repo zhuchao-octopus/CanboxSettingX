@@ -1498,8 +1498,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), "17°C ~ 32°C", "15°C ~ 32°C", "15°C ~ 30°C"};
             value1 = new String[]{"0", "1", "2", "3", "4", "5", "6"};
         } else if (MachineConfig.VALUE_CANBOX_PSA.equalsIgnoreCase(mCanboxType)) {
-            entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), "14°C ~ 18°C", "24°C ~ 28°C"};
-            value1 = new String[]{"0", "1", "2", "3", "4", "5"};
+            entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), getString(R.string.air_condition_simple_508)};
+            value1 = new String[]{"0", "1", "2", "3", "4"};
         } else {
             try {
                 int a = Integer.parseInt(mAirCondition);
