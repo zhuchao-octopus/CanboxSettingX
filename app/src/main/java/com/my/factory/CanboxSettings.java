@@ -1488,8 +1488,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         }
         lp.setSummary(lp.getEntry());
 
-        lp = (ListPreference) findPreference("canbox_air");
-
+        ///lp = (ListPreference) findPreference("canbox_air");
         String[] entry1 = {getString(R.string.normal), getString(R.string.temp_change), getString(R.string.hide), getString(R.string.air_single), getString(R.string.show_air_controller)};
         String[] value1 = {"0", "1", "2", "3", "4"};
 
@@ -1518,6 +1517,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         }
         lp.setSummary(lp.getEntry());
         lp.setOnPreferenceChangeListener(this);
+
         // lp = (ListPreference) findPreference("canbox_car_type");
         // if (mCarType != null) {
         // lp.setValue(mCarType);

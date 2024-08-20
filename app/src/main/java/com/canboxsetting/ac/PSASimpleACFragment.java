@@ -16,49 +16,22 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Util;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 /**
@@ -79,7 +52,6 @@ public class PSASimpleACFragment extends MyFragment {
         return mMainView;
     }
 
-
     private void initView() {
         String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
         int carConfig = 0;
@@ -89,13 +61,12 @@ public class PSASimpleACFragment extends MyFragment {
             try {
                 for (int i = 1; i < ss.length; ++i) {
                     if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_CONFIG)) {
-                        carConfig = Integer.valueOf(ss[i].substring(1));
+                        carConfig = Integer.parseInt(ss[i].substring(1));
                     } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
                         mProId = ss[i].substring(1);
                     }
                 }
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
         }
 
@@ -138,11 +109,8 @@ public class PSASimpleACFragment extends MyFragment {
     };
 
     private final static int[][] CMD_ID1 = new int[][]{
-
             {R.id.ac_auto, 0x1}, {R.id.ac, 0x2}, {R.id.ac_max, 0x3},
-
             {R.id.wind_horizontal1, 6}, {R.id.wind_up1, 7}, {R.id.wind_down1, 8}, {R.id.max, 0x11}, {R.id.dual, 0xb},
-
     };
 
     private final static int[][] CMD_ID2 = new int[][]{
@@ -153,9 +121,9 @@ public class PSASimpleACFragment extends MyFragment {
     };
 
     private int getCmd(int id, int[][] cmd) {
-        for (int i = 0; i < cmd.length; ++i) {
-            if (cmd[i][0] == id) {
-                return (cmd[i][1] & 0xffffff);
+        for (int[] ints : cmd) {
+            if (ints[0] == id) {
+                return (ints[1] & 0xffffff);
             }
         }
         return 0;
@@ -192,8 +160,6 @@ public class PSASimpleACFragment extends MyFragment {
                 sendCanboxInfo0xE1(cmd, 0);
             }
         }
-
-
     }
 
     private void updateSelect(int id, int s) {
