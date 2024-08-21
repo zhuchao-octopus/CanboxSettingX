@@ -2,13 +2,11 @@ package com.my.factory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.canboxsetting.R;
-import com.my.factory.XlmParser.Translation;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -61,7 +59,7 @@ public class JsonParser {
 			mApp = app;
 		}
 	};
-	
+
 	class CanBaud {
 		public String[] mPros;
 		public String mBaud;
@@ -88,10 +86,10 @@ public class JsonParser {
 					return cs;
 				}
 			}
-		}		
+		}
 		return mCanBaudConfig.get(0);
 	}
-	
+
 	public CanSetting getCanSetting(String id) {
 		for (int i = 0; i < mCanSettings.size(); ++i) {
 			CanSetting cs = mCanSettings.get(i);
@@ -230,17 +228,16 @@ public class JsonParser {
 	}
 
 	private void parserCanSetting(Context c) {
-
 		try {
 			AssetManager assetManager = c.getAssets();
-			InputStreamReader inputStreamReader = new InputStreamReader(
-					assetManager.open("can_settings.json"), "UTF-8");
+			InputStreamReader inputStreamReader = new InputStreamReader(assetManager.open("can_settings.json"), StandardCharsets.UTF_8);
 			BufferedReader br = new BufferedReader(inputStreamReader);
 			String line;
 			StringBuilder builder = new StringBuilder();
 			while ((line = br.readLine()) != null) {
 				builder.append(line);
 			}
+
 			br.close();
 			inputStreamReader.close();
 
@@ -254,14 +251,12 @@ public class JsonParser {
 				String ext = null;
 				try {
 					ext = jsonObject.getString("ext");
-				} catch (Exception e) {
-
+				} catch (Exception ignored) {
 				}
 				String app = null;
 				try {
 					app = jsonObject.getString("app");
-				} catch (Exception e) {
-
+				} catch (Exception ignored) {
 				}
 
 				CanSetting cs = new CanSetting(text, value, ext, app);
@@ -297,8 +292,8 @@ public class JsonParser {
 				String baud = jsonObject.getString("baud");
 				String config = jsonObject.getString("config");
 				String pro = jsonObject.getString("pro");
-				
-				CanBaud cb = new CanBaud(baud, config, pro);				
+
+				CanBaud cb = new CanBaud(baud, config, pro);
 
 				mCanBaudConfig.add(cb);
 			}
@@ -307,5 +302,5 @@ public class JsonParser {
 
 		}
 	}
-	
+
 }

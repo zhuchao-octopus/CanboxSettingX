@@ -194,7 +194,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     // private String mManufacturerName;
 
     private void updateView() {
-      MMLog.d(TAG,"updateView()");
+        MMLog.d(TAG, "updateView()");
     }
 
     private void updateManufacturer(String name) {
@@ -360,7 +360,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
             mCarType2 = (String) newValue;
 
-        }  else if ("external_radar".equals(key)) {
+        } else if ("external_radar".equals(key)) {
             ((ListPreference) preference).setValue((String) newValue);
             ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
             mExternalRadar = (String) newValue;
@@ -599,7 +599,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         String manuId = mManufacturerPreference.getValue();
         String mCategory = mXlmParser.getCategorysValue(mCategoryName);
         String mModel = mXlmParser.getModelValue(mCategoryName, mModelName);
-        MMLog.d(TAG,"setCanSettings() manuId="+manuId+" mCategory="+mCategory+" mModel"+mModel);
+        MMLog.d(TAG, "setCanSettings() manuId=" + manuId + " mCategory=" + mCategory + " mModel=" + mModel);
         if ("45".equals(mCategory)) { //update
             canboxUpdate(manuId);
             return;
@@ -620,22 +620,21 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
 
         if (mModel != null) {
             String config = mConfigurationPreference.getValue();
-
             String id = manuId + "0" + mCategory + mModel;
             if (mCategory.length() == 1 && 2 == mModel.length()) {
-                if (mCategory.length() == 1) {
-                    id = manuId + "0" + mCategory + "-" + mModel;
-                }
+                mCategory.length();
+                id = manuId + "0" + mCategory + "-" + mModel;
             }
 
             String idEx = id + ":" + config;
-            CanSetting cs = mJsonParser.getCanSetting(idEx);
+            CanSetting canSetting = mJsonParser.getCanSetting(idEx);
 
-            if (cs == null) {
-                cs = mJsonParser.getCanSetting(id);
-                MMLog.d(TAG, "id:" + id + ":" + cs);
+            MMLog.d(TAG, "canSetting" + canSetting + " idEx" + idEx);
+            if (canSetting == null) {
+                canSetting = mJsonParser.getCanSetting(id);
+                MMLog.d(TAG, "canSetting id=" + id + ",canSetting=" + canSetting);
             } else {
-                MMLog.d(TAG, "idEx:" + idEx + ":" + cs);
+                MMLog.d(TAG, "canSetting idEx=" + idEx + ",canSetting" + canSetting);
             }
 
             ///	if (cs == null && mModel.length() == 1 && mCategory.length() == 2) {
@@ -643,14 +642,15 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             ///		cs = mJsonParser.getCanSetting(id);
             ///		Log.d("abcd", "22:" + id);
             ///	}
-            if (cs != null) {
-                if (cs.mPro != null) {
+            if (canSetting != null)
+            {
+                if (canSetting.mPro != null) {
                     try {
-                        Integer.parseInt(cs.mPro);
+                        Integer.parseInt(canSetting.mPro);
 
-                        String s = getTotalName() + "," + MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION + "3" + "," + MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX + cs.mPro + "," + MachineConfig.KEY_SUB_CANBOX_ID + id + "," + MachineConfig.KEY_SUB_CANBOX_CAR_CONFIG + config;
-                        if (cs.mExt != null) {
-                            s += "," + cs.mExt;
+                        String s = getTotalName() + "," + MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION + "3" + "," + MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX + canSetting.mPro + "," + MachineConfig.KEY_SUB_CANBOX_ID + id + "," + MachineConfig.KEY_SUB_CANBOX_CAR_CONFIG + config;
+                        if (canSetting.mExt != null) {
+                            s += "," + canSetting.mExt;
                         }
 
                         String ext2 = getExt2Config();
@@ -666,16 +666,15 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                             s += "," + MachineConfig.KEY_SUB_CANBOX_CAR_TYPE2 + mCarType2;
                         }
 
-                        CanBaud cb = mJsonParser.getCanBaudConfig(cs.mPro);
+                        CanBaud cb = mJsonParser.getCanBaudConfig(canSetting.mPro);
                         if (cb != null) {
                             s += "," + MachineConfig.KEY_SUB_CANBOX_MCU_BAUD + cb.mBaud + "," + MachineConfig.KEY_SUB_CANBOX_MCU_CONFIG + cb.mConfig;
                         }
 
                         MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, s);
-                        mAppShow = mJsonParser.buildAppShow(manuId, mCategory, mModel, cs.mPro, config);
+                        mAppShow = mJsonParser.buildAppShow(manuId, mCategory, mModel, canSetting.mPro, config);
                         /*check ac force set*/
-                        if (mAppShow != null)
-                        {
+                        if (mAppShow != null) {
                             if (mAirCondition != null) {
                                 int acFlag = 0;
 
@@ -685,10 +684,8 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                                 }
 
                                 String[] ss;
-                                if ((acFlag & 0x20) != 0)
-                                {
-                                    if (mAppShow.contains(AppConfig.HIDE_CANBOX_AC))
-                                    {
+                                if ((acFlag & 0x20) != 0) {
+                                    if (mAppShow.contains(AppConfig.HIDE_CANBOX_AC)) {
                                         ss = mAppShow.split(",");
                                         mAppShow = null;
                                         if (ss.length > 1) {
@@ -699,8 +696,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                                                 }
                                             }
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         mAppShow += AppConfig.HIDE_CANBOX_AC + ",";
                                     }
                                 }
@@ -708,7 +704,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                         }
 
                         MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX_SHOW_APP, mAppShow);
-                        MMLog.d(TAG, manuId + ":" + mCategory + ":" + mModel + ":" + config + ":" + cs.mPro + ":" + mAppShow);
+                        MMLog.d(TAG, manuId + ":" + mCategory + ":" + mModel + ":" + config + ":" + canSetting.mPro + ":" + mAppShow);
 
                         MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX_PG_SWITCH, mCarSettingsValue);
                         Util.sudoExec("sync");
@@ -721,8 +717,9 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                         return;
                     } catch (Exception ignored) {
                     }
-                } else
-                    MMLog.d(TAG, "cd.mExt:" + cs.mExt + ":" + null +":"+cs.mAppShow);
+                }
+                ///else
+                ///    MMLog.d(TAG, "cd.mExt:" + cs.mExt + ":" + null +":"+cs.mAppShow);
             }
         }
 
@@ -774,7 +771,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             //					MachineConfig.KEY_CAN_BOX);
             //
             //			sendBroadcast(it);
-            MMLog.d(TAG,"canboxUpdate="+s+":"+AppConfig.getCarServicePackageName(this));
+            MMLog.d(TAG, "canboxUpdate=" + s + ":" + AppConfig.getCarServicePackageName(this));
             Intent it = new Intent(MyCmd.BROADCAST_CMD_TO_CAR_SERVICE);
             it.putExtra(MyCmd.EXTRA_COMMON_CMD, MyCmd.Cmd.UPDATE_CANBOX);
             it.putExtra(MyCmd.EXTRA_COMMON_DATA, s);
