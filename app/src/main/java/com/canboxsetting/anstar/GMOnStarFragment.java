@@ -196,12 +196,8 @@ public class GMOnStarFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private static final int[] BUTTON_ON_CLICK_DIAL = new int[]{
-            R.id.number_1, R.id.number_2, R.id.number_3, R.id.number_4, R.id.number_5, R.id.number_6, R.id.number_7, R.id.number_8, R.id.number_9, R.id.number_0, R.id.number_star, R.id.number_pound
-    };
-    private static final int[] BUTTON_ON_CLICK = new int[]{
-            R.id.del_onstar, R.id.dial_dialout, R.id.dial_handup,
-    };
+    private static final int[] BUTTON_ON_CLICK_DIAL = new int[]{R.id.number_1, R.id.number_2, R.id.number_3, R.id.number_4, R.id.number_5, R.id.number_6, R.id.number_7, R.id.number_8, R.id.number_9, R.id.number_0, R.id.number_star, R.id.number_pound};
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.del_onstar, R.id.dial_dialout, R.id.dial_handup,};
 
     private int mStatus = 0;
 

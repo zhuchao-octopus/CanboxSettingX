@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:persistent="false" >
+    android:persistent="false">
 
     <PreferenceScreen
         android:key="airconditioning_setting"
         android:persistent="false"
-        android:title="@string/str_airconditioning_setting" >
+        android:title="@string/str_airconditioning_setting">
         <SwitchPreference
             android:disableDependentsState="false"
             android:key="auto_compressor_status"
@@ -24,7 +24,6 @@
             android:key="ac_comfort_setting"
             android:title="@string/str_ac_comfort_setting" />
 
-   
 
         <ListPreference
             android:entries="@array/trumpche_sensitivity_entries"
@@ -36,7 +35,7 @@
             android:entryValues="@array/three_values"
             android:key="air_automatic_mode"
             android:title="@string/str_air_volume_setting_in_automatic_mode" />
-        
+
         <SwitchPreference
             android:disableDependentsState="false"
             android:key="key_unlock_ventilation"
@@ -47,12 +46,12 @@
             android:key="air_conditioning_set_air_conditioning_self_drying"
             android:persistent="false"
             android:title="@string/air_conditioning_set_air_conditioning_self_drying" />
-        
+
     </PreferenceScreen>
     <PreferenceScreen
         android:key="seat_setting"
         android:persistent="false"
-        android:title="@string/str_seat_setting" >
+        android:title="@string/str_seat_setting">
         <SwitchPreference
             android:disableDependentsState="false"
             android:key="seat_welcome"
@@ -77,7 +76,7 @@
     <PreferenceScreen
         android:key="drive_assit"
         android:persistent="false"
-        android:title="@string/str_drive_assit" >
+        android:title="@string/str_drive_assit">
         <com.common.view.MyPreferenceSeekBar
             android:key="over_speed_alert"
             android:persistent="false"
@@ -130,7 +129,7 @@
     <PreferenceScreen
         android:key="accessory"
         android:persistent="false"
-        android:title="@string/str_accessory" >
+        android:title="@string/str_accessory">
         <ListPreference
             android:entries="@array/trumpche_door_unlock_entries"
             android:entryValues="@array/two_values"
@@ -192,21 +191,20 @@
             android:key="external_mirror_angle_manual_adjustment"
             android:persistent="false"
             android:title="@string/str_external_mirror_angle_manual_adjustment" />
-        
-        
+
+
         <SwitchPreference
             android:disableDependentsState="false"
             android:key="automatically_close_the_window"
             android:persistent="false"
             android:title="@string/automatically_close_the_window" />
-        
-        
-        
+
+
     </PreferenceScreen>
     <PreferenceScreen
         android:key="light_control"
         android:persistent="false"
-        android:title="@string/str_light_control" >
+        android:title="@string/str_light_control">
         <ListPreference
             android:entries="@array/trumpche_go_home_entries"
             android:entryValues="@array/three_values"
@@ -249,29 +247,29 @@
             android:persistent="false"
             android:title="@string/atmosphere_light_color" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/other" >
-<!--         <SwitchPreference -->
-<!--             android:disableDependentsState="false" -->
-<!--             android:key="avm" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/str_avm" /> -->
+    <PreferenceScreen android:title="@string/other">
+        <!--         <SwitchPreference -->
+        <!--             android:disableDependentsState="false" -->
+        <!--             android:key="avm" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/str_avm" /> -->
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/trumpche_avm_entries" -->
-<!--             android:entryValues="@array/seven_values" -->
-<!--             android:key="avm_setting" -->
-<!--             android:title="@string/str_avm_setting" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/trumpche_avm_entries" -->
+        <!--             android:entryValues="@array/seven_values" -->
+        <!--             android:key="avm_setting" -->
+        <!--             android:title="@string/str_avm_setting" /> -->
 
         <com.common.view.MyPreferenceDialog
             android:key="factory_reset"
             android:persistent="false"
             android:title="@string/str_reset_factory" />
 
-<!--         <SwitchPreference -->
-<!--             android:disableDependentsState="false" -->
-<!--             android:key="ambient_light_setting" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/ambient_light" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:disableDependentsState="false" -->
+        <!--             android:key="ambient_light_setting" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/ambient_light" /> -->
     </PreferenceScreen>
 
 </PreferenceScreen>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,20 +10,20 @@
         android:layout_marginTop="60px"
         android:layout_weight="2.8"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.3"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/disk_scan"
@@ -71,23 +71,23 @@
                 android:layout_height="0px"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="50px"
-                            android:layout_gravity="center" >
+                            android:layout_gravity="center">
 
                             <TextView
                                 style="@style/shadowTextCommonStyleFonts"
@@ -116,7 +116,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <TextView
                             style="@style/shadowTextCommonStyleFonts"
@@ -144,7 +144,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <TextView
                             style="@style/shadowTextCommonStyleFonts"
@@ -172,9 +172,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
-                        
 
                         <TextView
                             android:id="@+id/str_total_song"
@@ -198,14 +197,14 @@
             android:layout_height="fill_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/disk_icon1"
@@ -232,7 +231,7 @@
                 android:layout_marginTop="15px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/disk_icon2"
@@ -259,7 +258,7 @@
                 android:layout_marginTop="15px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/disk_icon3"
@@ -286,7 +285,7 @@
                 android:layout_marginTop="15px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/disk_icon4"
@@ -313,7 +312,7 @@
                 android:layout_marginTop="15px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/disk_icon5"
@@ -340,7 +339,7 @@
                 android:layout_marginTop="15px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/disk_icon6"

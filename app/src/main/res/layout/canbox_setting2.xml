@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
-    android:paddingBottom="10px" >
+    android:paddingBottom="10px">
 
     <ListView
         android:id="@android:id/list"
@@ -18,7 +18,7 @@
         android:layout_weight="1"
         android:background="#212121"
         android:gravity="bottom"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <!-- <LinearLayout -->
         <!-- android:layout_width="fill_parent" -->
@@ -58,15 +58,14 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0px"
-            android:layout_weight="2" >
-        </LinearLayout>
+            android:layout_weight="2"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0px"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_cancel"

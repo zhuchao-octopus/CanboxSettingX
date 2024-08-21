@@ -1088,12 +1088,12 @@
     <string-array name="enremote_seat">
         <item>Выкл.</item>
         <item>Вкл.</item>
-<!--         <item>Pilot</item> -->
+        <!--         <item>Pilot</item> -->
     </string-array>
     <string-array name="enremote_seat_vaues">
         <item>0</item>
         <item>1</item>
-<!--         <item>2</item> -->
+        <!--         <item>2</item> -->
     </string-array>
     <string-array name="enauto_collision">
         <item>Выкл.</item>
@@ -1333,20 +1333,20 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-<!--     <string-array name="enlanguages61"> -->
-<!--         <item>English</item> -->
-<!--         <item>Chinese</item> -->
-<!--         <item>Russian</item> -->
-<!--         <item>French</item> -->
-<!--         <item>Germa</item> -->
-<!--     </string-array> -->
-<!--     <string-array name="enlanguages61_vaues"> -->
-<!--         <item>0</item> -->
-<!--         <item>1</item> -->
-<!--         <item>2</item> -->
-<!--         <item>3</item> -->
-<!--         <item>4</item> -->
-<!--     </string-array> -->
+    <!--     <string-array name="enlanguages61"> -->
+    <!--         <item>English</item> -->
+    <!--         <item>Chinese</item> -->
+    <!--         <item>Russian</item> -->
+    <!--         <item>French</item> -->
+    <!--         <item>Germa</item> -->
+    <!--     </string-array> -->
+    <!--     <string-array name="enlanguages61_vaues"> -->
+    <!--         <item>0</item> -->
+    <!--         <item>1</item> -->
+    <!--         <item>2</item> -->
+    <!--         <item>3</item> -->
+    <!--         <item>4</item> -->
+    <!--     </string-array> -->
     <string-array name="enari_comfortable">
         <item>Медленный</item>
         <item>Нормальный</item>
@@ -1422,8 +1422,8 @@
     <string-array name="enfor_warning">
         <item>БЛИЗКО</item>
         <item>ДАЛЕКО</item>
-    </string-array>    
-     <string-array name="power_consumption_select">
+    </string-array>
+    <string-array name="power_consumption_select">
         <item>KWh_100km</item>
         <item>KWh_km</item>
     </string-array>

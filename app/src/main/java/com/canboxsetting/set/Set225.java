@@ -1,92 +1,51 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.car.ui.GlobalDef;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set225 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set225 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
             //group1
 
-            new NodePreference("set_tip_sound", 0xa701, 0x4000, 0xff, 0, R.array.low_speed_warning_tone_entries, R.array.three_values),
-            new NodePreference("outside_lights_close_time", 0xa702, 0x4001, 0xff, 0, R.array.enheadlight_off_timer, R.array.five_values),
-            new NodePreference("inner_lights_close_time", 0xa703, 0x4002, 0xff, 0, R.array.external_lighting_delay_off, R.array.five_values),
-            new NodePreference("automatic_speed_lock", 0xa704, 0x4003, 0xff, 0, R.array.jac_automatic_speed_lock, R.array.three_values),
+            new NodePreference("set_tip_sound", 0xa701, 0x4000, 0xff, 0, R.array.low_speed_warning_tone_entries, R.array.three_values), new NodePreference("outside_lights_close_time", 0xa702, 0x4001, 0xff, 0, R.array.enheadlight_off_timer, R.array.five_values), new NodePreference("inner_lights_close_time", 0xa703, 0x4002, 0xff, 0, R.array.external_lighting_delay_off, R.array.five_values), new NodePreference("automatic_speed_lock", 0xa704, 0x4003, 0xff, 0, R.array.jac_automatic_speed_lock, R.array.three_values),
 
             new NodePreference("fortification_prompt_sound", 0xa705, 0x4004, 0xff, 0), new NodePreference("Positioning_lighting", 0xa706, 0x4005, 0xff, 0),
 
 
             new NodePreference("alert_volume", 0xa709, 0x4008, 0xff, 0, R.array.three_high_values, R.array.three_values),
 
-            new NodePreference("automatic_window_lowering_by_remote_control", 0xa70a, 0x4009, 0xff, 0), new NodePreference("remote_mirror_fold", 0xa70c, 0x400b, 0xff, 0),
-            new NodePreference("reverse_mirror_flip", 0xa70d, 0x400c, 0xff, 0), new NodePreference("function_seat", 0xa70e, 0x400d, 0xff, 0),
+            new NodePreference("automatic_window_lowering_by_remote_control", 0xa70a, 0x4009, 0xff, 0), new NodePreference("remote_mirror_fold", 0xa70c, 0x400b, 0xff, 0), new NodePreference("reverse_mirror_flip", 0xa70d, 0x400c, 0xff, 0), new NodePreference("function_seat", 0xa70e, 0x400d, 0xff, 0),
 
 
-            new NodePreference("vol_radar", 0xa70f, 0x400e, 0xff, 0, R.array.five_high_values, R.array.five_high_values),
-            new NodePreference("radar_warning_tone", 0xa710, 0x400f, 0xff, 0, R.array.five_high_values, R.array.five_high_values),
+            new NodePreference("vol_radar", 0xa70f, 0x400e, 0xff, 0, R.array.five_high_values, R.array.five_high_values), new NodePreference("radar_warning_tone", 0xa710, 0x400f, 0xff, 0, R.array.five_high_values, R.array.five_high_values),
 
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x40
+    private final static int[] INIT_CMDS = {0x40
 
     };
 
@@ -99,6 +58,11 @@ public class Set225 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

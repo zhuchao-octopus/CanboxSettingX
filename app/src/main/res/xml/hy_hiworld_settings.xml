@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="vehicle_settings"
-	    android:title="@string/vehicle_settings" >
-	    <SwitchPreference
-	    	android:key="air_circulation_activated_according_to_external_dust_conditions"
-	        android:persistent="false"
-	        android:title="@string/air_circulation_activated_according_to_external_dust_conditions" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="vehicle_settings"
+        android:title="@string/vehicle_settings">
+        <SwitchPreference
+            android:key="air_circulation_activated_according_to_external_dust_conditions"
+            android:persistent="false"
+            android:title="@string/air_circulation_activated_according_to_external_dust_conditions" />
         <ListPreference
-               android:entries="@array/back_seat_status_entries"
-               android:entryValues="@array/enoil_vaues2"
-               android:key="third_row_seat_back_fold_left_side"
-               android:persistent="false"
-               android:title="@string/third_row_seat_back_fold_left_side" />
-      	<ListPreference
-               android:entries="@array/back_seat_status_entries"
-               android:entryValues="@array/enoil_vaues2"
-               android:key="third_row_seat_back_fold_right_side"
-               android:persistent="false"
-               android:title="@string/third_row_seat_back_fold_right_side" />
-      	<SwitchPreference
-	    	android:key="conv_tips_12"
-	        android:persistent="false"
-	        android:title="@string/conv_tips_12" />
+            android:entries="@array/back_seat_status_entries"
+            android:entryValues="@array/enoil_vaues2"
+            android:key="third_row_seat_back_fold_left_side"
+            android:persistent="false"
+            android:title="@string/third_row_seat_back_fold_left_side" />
+        <ListPreference
+            android:entries="@array/back_seat_status_entries"
+            android:entryValues="@array/enoil_vaues2"
+            android:key="third_row_seat_back_fold_right_side"
+            android:persistent="false"
+            android:title="@string/third_row_seat_back_fold_right_side" />
         <SwitchPreference
-               android:key="seat_heating_or_ventilation"
-               android:persistent="false"
-               android:title="@string/seat_heating_or_ventilation" />
+            android:key="conv_tips_12"
+            android:persistent="false"
+            android:title="@string/conv_tips_12" />
         <SwitchPreference
-               android:key="seat_status_switch"
-               android:persistent="false"
-               android:title="@string/seat_status_switch" />
+            android:key="seat_heating_or_ventilation"
+            android:persistent="false"
+            android:title="@string/seat_heating_or_ventilation" />
         <SwitchPreference
-               android:key="mute_status"
-               android:persistent="false"
-               android:title="@string/mute_status" />
-	</PreferenceScreen>
+            android:key="seat_status_switch"
+            android:persistent="false"
+            android:title="@string/seat_status_switch" />
+        <SwitchPreference
+            android:key="mute_status"
+            android:persistent="false"
+            android:title="@string/mute_status" />
+    </PreferenceScreen>
 </PreferenceScreen>

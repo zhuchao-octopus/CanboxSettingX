@@ -1,56 +1,51 @@
 package com.common.ui;
 
-import com.car.ui.GlobalDef;
-import com.common.util.AppConfig;
-
 import android.content.Context;
-import android.hardware.display.DisplayManager;
-import android.view.Display;
 import android.view.View;
 
 public class UIBase implements UIInterface {
 
-	protected Context mContext;
-	protected View mMainView;
+    protected Context mContext;
+    protected View mMainView;
 
-	public boolean mPause = true;
-	public int mSource;
+    public boolean mPause = true;
+    public int mSource;
 
-	protected int mDisplayIndex; // 0 is main screen, 1 is second screen
+    protected int mDisplayIndex; // 0 is main screen, 1 is second screen
 
-	public UIBase(Context context, View view, int displayIndex) {
-		mContext = context;
-		mMainView = view;
-		mDisplayIndex = displayIndex;
+    public UIBase(Context context, View view, int displayIndex) {
+        mContext = context;
+        mMainView = view;
+        mDisplayIndex = displayIndex;
 
-	}
+    }
 
-	public void onCreate() {
-//		mPause = false;
-	}
+    public void onCreate() {
+        //		mPause = false;
+    }
 
-	public void onDestroy() {
-		mPause = true;
-	}
+    public void onDestroy() {
+        mPause = true;
+    }
 
-	public void onPause() {
-		mPause = true;
-	}
+    public void onPause() {
+        mPause = true;
+    }
 
-	public void onResume() {
+    public void onResume() {
 
-		mPause = false;
-	}
+        mPause = false;
+    }
 
-	public final static int SCREEN0_HIDE = 0;
-	public final static int SCREEN0_SHOW_NORMAL = 1;
-	public final static int SCREEN0_SHOW_VIDEO = 2;
-	public final static int SCREEN0_SHOW_FULLSCREEN = 3;
+    public final static int SCREEN0_HIDE = 0;
+    public final static int SCREEN0_SHOW_NORMAL = 1;
+    public final static int SCREEN0_SHOW_VIDEO = 2;
+    public final static int SCREEN0_SHOW_FULLSCREEN = 3;
 
-	public final static int SCREEN0_SHOW_CD_PLAYER = 4;
+    public final static int SCREEN0_SHOW_CD_PLAYER = 4;
 
-	public int getScreen0Type() {
-		return SCREEN0_HIDE;
-	}
+    public int getScreen0Type() {
+        return SCREEN0_HIDE;
+    }
 
 }

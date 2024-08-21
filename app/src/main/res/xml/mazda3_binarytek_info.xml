@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <com.common.view.MyPreference
         android:key="miunit"
@@ -14,7 +13,7 @@
         android:selectable="false"
         android:title="@string/the_temperature_value" />
 
-    <PreferenceScreen android:title="@string/historyfuel" >
+    <PreferenceScreen android:title="@string/historyfuel">
         <com.common.view.MyPreference
             android:key="min1"
             android:persistent="false"
@@ -96,7 +95,7 @@
         <!-- android:selectable="false" -->
         <!-- android:title="@string/averagefuel" /> -->
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/averagefuel" >
+    <PreferenceScreen android:title="@string/averagefuel">
         <com.common.view.MyPreference
             android:key="time1"
             android:persistent="false"
@@ -143,7 +142,7 @@
         android:title="@string/tireinfo" />
     <PreferenceScreen
         android:key="warning_msg"
-        android:title="@string/warning_msg" >
+        android:title="@string/warning_msg">
         <com.common.view.MyPreference2
             android:key="warning_msg_content"
             android:layout="@layout/warning_msg_mazda" />

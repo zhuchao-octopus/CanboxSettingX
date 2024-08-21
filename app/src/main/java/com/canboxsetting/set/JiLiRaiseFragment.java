@@ -1,75 +1,43 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 
-public class JiLiRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class JiLiRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
-    private static final NodePreference[] NODES_TPMS = {
-            new NodePreference("deflation_warning_system", 0x8020, 0, 0),
+    private static final NodePreference[] NODES_TPMS = {new NodePreference("deflation_warning_system", 0x8020, 0, 0),
 
     };
 
 
-    private static final NodePreference[] NODES_X1 = {
-            new NodePreference("speed_lock1", 0x8000, 0x5000, 0x80, 0), new NodePreference("stop_unlock", 0x8001, 0x5000, 0x40, 0),
-            new NodePreference("door_open_turn_signal_flashes", 0x8002, 0x5000, 0x40, 0), new NodePreference("remote_lock_feedback", 0x8003, 0x5000, 0x10, 0),
-            new NodePreference("automatically_turns_off_position_light_after_locking", 0x8004, 0x5000, 0x8, 0),
+    private static final NodePreference[] NODES_X1 = {new NodePreference("speed_lock1", 0x8000, 0x5000, 0x80, 0), new NodePreference("stop_unlock", 0x8001, 0x5000, 0x40, 0), new NodePreference("door_open_turn_signal_flashes", 0x8002, 0x5000, 0x40, 0), new NodePreference("remote_lock_feedback", 0x8003, 0x5000, 0x10, 0), new NodePreference("automatically_turns_off_position_light_after_locking", 0x8004, 0x5000, 0x8, 0),
 
 
     };
@@ -86,24 +54,17 @@ public class JiLiRaiseFragment extends PreferenceFragment implements Preference.
 
             new NodePreference("electronic_power_mode_selection", 0x8006, 0x5002, 0x80, 0, R.array.electronic_power_mode_selection_entries, R.array.three_values),
 
-            new NodePreference("remote_lock_feedback", 0x8007, 0x5002, 0x40, 0), new NodePreference("automatically_close_the_window", 0x8008, 0x5002, 0x20, 0),
-            new NodePreference("close_the_skylight_shade", 0x8009, 0x5002, 0x10, 0), new NodePreference("daytime_driving_lights", 0x800a, 0x5002, 0x8, 0),
-            new NodePreference("breathable_mode", 0x8012, 0x5002, 0x4, 0),
+            new NodePreference("remote_lock_feedback", 0x8007, 0x5002, 0x40, 0), new NodePreference("automatically_close_the_window", 0x8008, 0x5002, 0x20, 0), new NodePreference("close_the_skylight_shade", 0x8009, 0x5002, 0x10, 0), new NodePreference("daytime_driving_lights", 0x800a, 0x5002, 0x8, 0), new NodePreference("breathable_mode", 0x8012, 0x5002, 0x4, 0),
             //
 
     };
 
-    private static final NodePreference[] NODES_1819DIHAO = {
-            new NodePreference("speed_lock1", 0x8000, 0x5006, 0x80, 0), new NodePreference("stop_unlock", 0x8001, 0x5006, 0x40, 0),
-            new NodePreference("door_open_turn_signal_flashes", 0x8002, 0x5006, 0x40, 0),
+    private static final NodePreference[] NODES_1819DIHAO = {new NodePreference("speed_lock1", 0x8000, 0x5006, 0x80, 0), new NodePreference("stop_unlock", 0x8001, 0x5006, 0x40, 0), new NodePreference("door_open_turn_signal_flashes", 0x8002, 0x5006, 0x40, 0),
 
             new NodePreference("view_mirror_automatically_folded", 0x8014, 0x5006, 0x40, 0),
 
     };
-    private static final NodePreference[] NODES = {
-            new NodePreference("speed_lock1", 0x8000, 0x5000, 0x80, 0), new NodePreference("stop_unlock", 0x8001, 0x5000, 0x40, 0),
-            new NodePreference("door_open_turn_signal_flashes", 0x8002, 0x5000, 0x20, 0), new NodePreference("remote_lock_feedback", 0x8003, 0x5000, 0x10, 0),
-            new NodePreference("automatically_turns_off_position_light_after_locking", 0x8004, 0x5000, 0x8, 0),
+    private static final NodePreference[] NODES = {new NodePreference("speed_lock1", 0x8000, 0x5000, 0x80, 0), new NodePreference("stop_unlock", 0x8001, 0x5000, 0x40, 0), new NodePreference("door_open_turn_signal_flashes", 0x8002, 0x5000, 0x20, 0), new NodePreference("remote_lock_feedback", 0x8003, 0x5000, 0x10, 0), new NodePreference("automatically_turns_off_position_light_after_locking", 0x8004, 0x5000, 0x8, 0),
 
 
             new NodePreference("intelligent_bend_light", 0x8005, 0x5001, 0x80, 0), new NodePreference("view_mirror_automatically_folded", 0x8014, 0x5006, 0x40, 0),
@@ -112,8 +73,7 @@ public class JiLiRaiseFragment extends PreferenceFragment implements Preference.
 
             new NodePreference("electronic_power_mode_selection", 0x8006, 0x5002, 0x80, 0, R.array.electronic_power_mode_selection_entries, R.array.three_values),
 
-            new NodePreference("automatically_close_the_window", 0x8008, 0x5002, 0x20, 0), new NodePreference("close_the_skylight_shade", 0x8009, 0x5002, 0x10, 0),
-            new NodePreference("daytime_driving_lights", 0x800a, 0x5002, 0x8, 0), new NodePreference("breathable_mode", 0x8012, 0x5002, 0x4, 0),
+            new NodePreference("automatically_close_the_window", 0x8008, 0x5002, 0x20, 0), new NodePreference("close_the_skylight_shade", 0x8009, 0x5002, 0x10, 0), new NodePreference("daytime_driving_lights", 0x800a, 0x5002, 0x8, 0), new NodePreference("breathable_mode", 0x8012, 0x5002, 0x4, 0),
             //
 
             //
@@ -121,14 +81,10 @@ public class JiLiRaiseFragment extends PreferenceFragment implements Preference.
 
             new NodePreference("trunk_auto_unlock_distance", 0x8023, 0x5003, 0x20, 0, R.array.trunk_auto_unlock_distance_entries, R.array.three_values),
 
-            new NodePreference("trunk_auto_on", 0x8022, 0x5003, 0x10, 0), new NodePreference("keyless_unlocking_of_the_trunk", 0x8024, 0x5003, 0x8, 0),
-            new NodePreference("any_door_open_lock_lock_alarm_setting", 0x801e, 0x5003, 0x4, 0), new NodePreference("near_unlocked_configuration", 0x801f, 0x5003, 0x2, 0),
-            new NodePreference("leave_locked_configuration", 0x8020, 0x5003, 0x1, 0),
+            new NodePreference("trunk_auto_on", 0x8022, 0x5003, 0x10, 0), new NodePreference("keyless_unlocking_of_the_trunk", 0x8024, 0x5003, 0x8, 0), new NodePreference("any_door_open_lock_lock_alarm_setting", 0x801e, 0x5003, 0x4, 0), new NodePreference("near_unlocked_configuration", 0x801f, 0x5003, 0x2, 0), new NodePreference("leave_locked_configuration", 0x8020, 0x5003, 0x1, 0),
 
 
-            new NodePreference("language", 0x801a, 0x2700, 0x01, 0, R.array.chery_language_status_entries, R.array.three_values),
-            new NodePreference("showdistancecontrol", 0x8019, 0x5005, 0xc, 0, R.array.alarm_distance_entries, R.array.three_values),
-            new NodePreference("low_speed_warning_tone", 0x801b, 0x4f00, 0xc, 0, R.array.alarm_sensitivity_entries, R.array.three_values),
+            new NodePreference("language", 0x801a, 0x2700, 0x01, 0, R.array.chery_language_status_entries, R.array.three_values), new NodePreference("showdistancecontrol", 0x8019, 0x5005, 0xc, 0, R.array.alarm_distance_entries, R.array.three_values), new NodePreference("low_speed_warning_tone", 0x801b, 0x4f00, 0xc, 0, R.array.alarm_sensitivity_entries, R.array.three_values),
             //			new NodePreference("stay_with_me_home_duration", 0x8027,
             //					0x5002, 0x80, 0,
             //					R.array.timeswitchlight_entries,
@@ -154,6 +110,11 @@ public class JiLiRaiseFragment extends PreferenceFragment implements Preference.
         addPreferencesFromResource(R.xml.empty_setting);
 
         //init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

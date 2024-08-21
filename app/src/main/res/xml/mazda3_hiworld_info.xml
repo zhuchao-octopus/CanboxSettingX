@@ -3,7 +3,7 @@
     android:title="@string/controlset">
 
 
-    <PreferenceScreen android:title="@string/historyfuel" >
+    <PreferenceScreen android:title="@string/historyfuel">
         <com.common.view.MyPreference
             android:key="min1"
             android:persistent="false"
@@ -80,7 +80,7 @@
             android:selectable="false"
             android:title="@string/min14" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/averagefuel" >
+    <PreferenceScreen android:title="@string/averagefuel">
         <com.common.view.MyPreference
             android:key="time1"
             android:persistent="false"

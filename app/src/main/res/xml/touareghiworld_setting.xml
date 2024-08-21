@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:persistent="false"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <SwitchPreference
         android:key="air_switch"
@@ -11,7 +11,7 @@
         android:key="auto_air"
         android:persistent="false"
         android:title="@string/auto_air" />
-    <SwitchPreference 
+    <SwitchPreference
         android:key="blow_window"
         android:persistent="false"
         android:title="@string/blow_window" />
@@ -116,16 +116,16 @@
         android:persistent="false"
         android:title="@string/car_light" />
 
-     <SwitchPreference
+    <SwitchPreference
         android:key="left_drive"
         android:persistent="false"
         android:title="@string/left_drive" />
-     
-      <SwitchPreference
+
+    <SwitchPreference
         android:key="intelligent_driving"
         android:persistent="false"
         android:title="@string/intelligent_driving" />
-      
+
     <PreferenceCategory
         android:key="car_window_sync"
         android:title="@string/car_window_sync" />

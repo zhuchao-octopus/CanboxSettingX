@@ -16,10 +16,19 @@
 
 package com.canboxsetting;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Objects;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import com.canboxsetting.MyFragment.MsgInterface;
 import com.canboxsetting.ac.GMAirODFragment;
@@ -35,46 +44,17 @@ import com.canboxsetting.ac.ToyotaRaiseAirControlFragment;
 import com.canboxsetting.ac.VWMQBAirControlFragment;
 import com.canboxsetting.set.X30RaiseAirControlFragment;
 import com.car.ui.GlobalDef;
-import com.common.util.AppConfig;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Util;
 import com.zhuchao.android.fbase.MMLog;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
+import java.util.Objects;
 
 /**
  * This activity plays a video from a specified URI.
  */
-public class CanAirControlActivity extends Activity {
+public class CanAirControlActivity extends AppCompatActivity {
     private static final String TAG = "CanAirControlActivity";
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
@@ -84,34 +64,29 @@ public class CanAirControlActivity extends Activity {
         super.onCreate(icicle);
         GlobalDef.init(this);
         setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         String value = null;// = AppConfig.getCanboxSetting();//
         String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
         int mProVersion = 0;
         int mModelId = 0;
         String mProIndex = null;
-        MMLog.d(TAG,"mCanboxType="+mCanboxType);
+        MMLog.d(TAG, "mCanboxType=" + mCanboxType);
 
-        if (mCanboxType != null)
-        {
+        if (mCanboxType != null) {
             String[] ss = mCanboxType.split(",");
             value = ss[0];
             try {
-                for (int i = 1; i < ss.length; ++i)
-                {
+                for (int i = 1; i < ss.length; ++i) {
                     if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_VERSION)) {
                         mProVersion = Integer.parseInt(ss[i].substring(1));
-                    }
-                    else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
+                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_PROTOCAL_INDEX)) {
                         mProIndex = ss[i].substring(1);
                         try {
                             GlobalDef.setProId(Integer.parseInt(mProIndex));
                         } catch (Exception ignored) {
                         }
-                    }
-                    else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID))
-                    {
+                    } else if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_ID)) {
                         String mProId = ss[i].substring(1);
                         if (mProId.length() >= 4) {
                             int start = 0;
@@ -149,7 +124,7 @@ public class CanAirControlActivity extends Activity {
             }
         }
 
-        MMLog.d(TAG,"mProVersion="+mProVersion + " mProIndex="+mProIndex + " value="+value);
+        MMLog.d(TAG, "mProVersion=" + mProVersion + " mProIndex=" + mProIndex + " value=" + value);
         if (mProVersion >= 3 && mProIndex != null) {
             Class<?> c = FragmentPro.getFragmentACByID(mProIndex);
             if (c != null) {
@@ -163,9 +138,7 @@ public class CanAirControlActivity extends Activity {
                 finish();
                 return;
             }
-        }
-        else
-        {
+        } else {
             if (value != null) {
                 switch (value) {
                     case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:

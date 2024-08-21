@@ -13,8 +13,8 @@ import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;

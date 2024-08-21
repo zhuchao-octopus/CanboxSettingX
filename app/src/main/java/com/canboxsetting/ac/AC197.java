@@ -138,8 +138,7 @@ public class AC197 extends MyFragment {
     }
 
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0xac01}, {R.id.ac, 0xac02}, {R.id.inner_loop, 0x0ac03}, {R.id.ac_max, 0xac04},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0xac01}, {R.id.ac, 0xac02}, {R.id.inner_loop, 0x0ac03}, {R.id.ac_max, 0xac04},
 
             {R.id.max, 0xac3e},
 

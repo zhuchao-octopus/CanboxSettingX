@@ -1,66 +1,28 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class HondaSettingsSimpleFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class HondaSettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
 
     private int mType = 0;
@@ -73,37 +35,27 @@ public class HondaSettingsSimpleFragment extends PreferenceFragment implements P
 
             new Node("ctm_system", 0xC660, 0, 0),
 
-            new Node("adjust_outside", 0xC600, 0x32000000, 0x000f, 0x0, Node.TYPE_BUFF1_INDEX), new Node("trip_a", 0xC602, 0x32000000, 0x0030, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("trip_b", 0xC603, 0x32000000, 0x00c0, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("adjust_outside", 0xC600, 0x32000000, 0x000f, 0x0, Node.TYPE_BUFF1_INDEX), new Node("trip_a", 0xC602, 0x32000000, 0x0030, 0x0, Node.TYPE_BUFF1_INDEX), new Node("trip_b", 0xC603, 0x32000000, 0x00c0, 0x0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("interior", 0xC604, 0x32000000, 0x0103, 0x0, Node.TYPE_BUFF1_INDEX), new Node("headlight", 0xC605, 0x32000000, 0x010c, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("auto_light", 0xC606, 0x32000000, 0x0170, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("interior", 0xC604, 0x32000000, 0x0103, 0x0, Node.TYPE_BUFF1_INDEX), new Node("headlight", 0xC605, 0x32000000, 0x010c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("auto_light", 0xC606, 0x32000000, 0x0170, 0x0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("lock_with", 0xC607, 0x32000000, 0x0203, 0x0, Node.TYPE_BUFF1_INDEX), new Node("unlock_with", 0xC608, 0x32000000, 0x020c, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("key_mode", 0xC609, 0x32000000, 0x0240, 0x0, Node.TYPE_BUFF1_INDEX), new Node("keyless", 0xC60a, 0x32000000, 0x0280, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("security", 0xC60b, 0x32000000, 0x0230, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("lock_with", 0xC607, 0x32000000, 0x0203, 0x0, Node.TYPE_BUFF1_INDEX), new Node("unlock_with", 0xC608, 0x32000000, 0x020c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("key_mode", 0xC609, 0x32000000, 0x0240, 0x0, Node.TYPE_BUFF1_INDEX), new Node("keyless", 0xC60a, 0x32000000, 0x0280, 0x0, Node.TYPE_BUFF1_INDEX), new Node("security", 0xC60b, 0x32000000, 0x0230, 0x0, Node.TYPE_BUFF1_INDEX),
 
             new Node("access_beep", 0xC60d, 0x32000000, 0x0340, 0x0, Node.TYPE_BUFF1_INDEX),
 
             new Node("tpms_check", 0xC61100), new Node("default_all", 0xC60f00),
 
-            new Node("alarm_vol", 0xC612, 0x32000000, 0x04c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("backlight", 0xC613, 0x32000000, 0x0420, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("notifications", 0xC614, 0x32000000, 0x0410, 0x0410, Node.TYPE_BUFF1_INDEX), new Node("speed_distance_units", 0xC615, 0x32000000, 0x0408, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("tachometer", 0xC616, 0x32000000, 0x0404, 0x0, Node.TYPE_BUFF1_INDEX), new Node("walk_away_auto_lock", 0xC617, 0x32000000, 0x0402, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("alarm_vol", 0xC612, 0x32000000, 0x04c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("backlight", 0xC613, 0x32000000, 0x0420, 0x0, Node.TYPE_BUFF1_INDEX), new Node("notifications", 0xC614, 0x32000000, 0x0410, 0x0410, Node.TYPE_BUFF1_INDEX), new Node("speed_distance_units", 0xC615, 0x32000000, 0x0408, 0x0, Node.TYPE_BUFF1_INDEX), new Node("tachometer", 0xC616, 0x32000000, 0x0404, 0x0, Node.TYPE_BUFF1_INDEX), new Node("walk_away_auto_lock", 0xC617, 0x32000000, 0x0402, 0x0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("remote_startoff", 0xC618, 0x32000000, 0x0320, 0x0, Node.TYPE_BUFF1_INDEX), new Node("door_unlock_mode", 0xC619, 0x32000000, 0x0310, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("keyless_access_light", 0xC61a, 0x32000000, 0x0308, 0x0, Node.TYPE_BUFF1_INDEX), new Node("illumination", 0xC61b, 0x32000000, 0x0307, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("remote_startoff", 0xC618, 0x32000000, 0x0320, 0x0, Node.TYPE_BUFF1_INDEX), new Node("door_unlock_mode", 0xC619, 0x32000000, 0x0310, 0x0, Node.TYPE_BUFF1_INDEX), new Node("keyless_access_light", 0xC61a, 0x32000000, 0x0308, 0x0, Node.TYPE_BUFF1_INDEX), new Node("illumination", 0xC61b, 0x32000000, 0x0307, 0x0, Node.TYPE_BUFF1_INDEX),
 
             new Node("headlight_wiper", 0xC61c, 0x32000000, 0x0401, 0x0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("start_stop_dis", 0xC61d, 0x32000000, 0x0540, 0x0, Node.TYPE_BUFF1_INDEX), new Node("voice_alarm", 0xC61e, 0x32000000, 0x0580, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("danger_ahead", 0xC61f, 0x32000000, 0x050c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("acc_car", 0xC620, 0x32000000, 0x0520, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("stop_lkas", 0xC621, 0x32000000, 0x0510, 0x0, Node.TYPE_BUFF1_INDEX), new Node("deviate", 0xC622, 0x32000000, 0x0503, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("start_stop_dis", 0xC61d, 0x32000000, 0x0540, 0x0, Node.TYPE_BUFF1_INDEX), new Node("voice_alarm", 0xC61e, 0x32000000, 0x0580, 0x0, Node.TYPE_BUFF1_INDEX), new Node("danger_ahead", 0xC61f, 0x32000000, 0x050c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("acc_car", 0xC620, 0x32000000, 0x0520, 0x0, Node.TYPE_BUFF1_INDEX), new Node("stop_lkas", 0xC621, 0x32000000, 0x0510, 0x0, Node.TYPE_BUFF1_INDEX), new Node("deviate", 0xC622, 0x32000000, 0x0503, 0x0, Node.TYPE_BUFF1_INDEX),
 
             new Node("tachometer_settings", 0xC623, 0x32000000, 0x0680, 0x0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("driver_attention_monitor", 0xC624, 0x32000000, 0x090c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("the_handle_electrically", 0xC626, 0x32000000, 0x0902, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("remote_control_open_condition", 0xC625, 0x32000000, 0x0901, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("driver_attention_monitor", 0xC624, 0x32000000, 0x090c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("the_handle_electrically", 0xC626, 0x32000000, 0x0902, 0x0, Node.TYPE_BUFF1_INDEX), new Node("remote_control_open_condition", 0xC625, 0x32000000, 0x0901, 0x0, Node.TYPE_BUFF1_INDEX),
 
             new Node("reset_info", 0xC60e00),
 
@@ -137,6 +89,11 @@ public class HondaSettingsSimpleFragment extends PreferenceFragment implements P
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

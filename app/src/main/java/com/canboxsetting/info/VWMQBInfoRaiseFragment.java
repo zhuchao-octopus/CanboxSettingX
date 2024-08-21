@@ -1,89 +1,56 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.charset.Charset;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.TextUtils.TruncateAt;
-import android.text.format.DateFormat;
+
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
-import android.widget.TimePicker;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
 import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodeDrivingData;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
 import com.common.util.UtilSystem;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPopDialog;
-import com.common.view.MyPreference2;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import java.util.Locale;
 
-public class VWMQBInfoRaiseFragment extends PreferenceFragment implements OnPreferenceClickListener {
+public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "VWMQBInfoRaiseFragment";
 
     private View mMainView;
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -129,9 +96,7 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragment implements OnPref
         ;
     };
 
-    private static final NodeDrivingData[] NODES_DRIVINGDATA = {
-            new NodeDrivingData(R.string.since_start), new NodeDrivingData(R.string.long_term), new NodeDrivingData(R.string.since_refuelling)
-    };
+    private static final NodeDrivingData[] NODES_DRIVINGDATA = {new NodeDrivingData(R.string.since_start), new NodeDrivingData(R.string.long_term), new NodeDrivingData(R.string.since_refuelling)};
 
     private View.OnClickListener mOnClickVehicleStatus = new View.OnClickListener() {
         public void onClick(View v) {
@@ -231,13 +196,9 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragment implements OnPref
         }
     }
 
-    private static final int[] BUTTON_ON_CLICK = new int[]{
-            R.id.setting, R.id.views, R.id.set,
-    };
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.setting, R.id.views, R.id.set,};
 
-    private static final int[] POP_LIST = new int[]{
-            R.string.driving_data, R.string.conv_consumers, R.string.vehicle_status, R.string.energy_flow_view
-    };
+    private static final int[] POP_LIST = new int[]{R.string.driving_data, R.string.conv_consumers, R.string.vehicle_status, R.string.energy_flow_view};
 
     private void initPresentationUI() {
         for (int i : BUTTON_ON_CLICK) {

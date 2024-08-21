@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- see mcu-host_comm_prtcl_V120.docx CAN GroupID (0x05) CAN Comm Setting & CAN Comm Protocol Setting -->
+<?xml version="1.0" encoding="utf-8"?><!-- see mcu-host_comm_prtcl_V120.docx CAN GroupID (0x05) CAN Comm Setting & CAN Comm Protocol Setting -->
 <!-- got to can_baud_config.json -->
 <formats>
 
-<!--     <format -->
-<!--         baud="02030000" -->
-<!--         config="00000001" -->
-<!--         pro="46" /> -->
+    <!--     <format -->
+    <!--         baud="02030000" -->
+    <!--         config="00000001" -->
+    <!--         pro="46" /> -->
 
 </formats>

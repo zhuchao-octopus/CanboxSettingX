@@ -24,17 +24,18 @@ import com.car.ui.GlobalDef;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.content.Intent;
 import android.os.Bundle;
 
 /**
  * This activity plays a video from a specified URI.
  */
-public class TPMSActivity extends Activity {
+public class TPMSActivity extends AppCompatActivity {
     private static final String TAG = "CanboxSetting";
     private FragmentManager mFragmentManager;
     private Fragment mSetting;
@@ -45,7 +46,7 @@ public class TPMSActivity extends Activity {
         super.onCreate(icicle);
 
         setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
         int mProVersion = 0;

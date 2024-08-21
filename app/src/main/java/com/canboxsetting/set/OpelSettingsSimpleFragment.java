@@ -1,77 +1,38 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
 import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import java.util.Objects;
 
-public class OpelSettingsSimpleFragment extends Fragment {
+public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
     private static final String TAG = "OpelSettingsSimpleFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     private View mMainView;
@@ -150,11 +111,8 @@ public class OpelSettingsSimpleFragment extends Fragment {
                 sendCanboxInfo(0);
                 mKeyId = 0;
             }
-
             return false;
         }
-
-        ;
     };
 
     @Override
@@ -163,8 +121,7 @@ public class OpelSettingsSimpleFragment extends Fragment {
         mHandler.removeMessages(0);
     }
 
-
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (mKeyId != 0) {
@@ -173,6 +130,7 @@ public class OpelSettingsSimpleFragment extends Fragment {
             mHandler.sendEmptyMessageDelayed(0, 300);
         }
     };
+
     View.OnLongClickListener mOnLongClickListener = new View.OnLongClickListener() {
 
         @Override
@@ -188,19 +146,16 @@ public class OpelSettingsSimpleFragment extends Fragment {
 
     private int getKey(int id) {
         int ret = 0;
-        for (int i = 0; i < BUTTON_ID.length; ++i) {
-            if (BUTTON_ID[i][0] == id) {
-                ret = BUTTON_ID[i][1];
+        for (int[] ints : BUTTON_ID) {
+            if (ints[0] == id) {
+                ret = ints[1];
                 break;
             }
         }
         return ret;
     }
 
-    private final static int[][] BUTTON_ID = {
-            {R.id.ok, 0x1}, {R.id.settings, 0x2}, {R.id.bc, 0x3}, {R.id.left, 0x4}, {R.id.right, 0x5}, {R.id.fam, 0x6}, {R.id.cdmp3, 0x7}, {R.id.num1, 0x8}, {R.id.num2, 0x9}, {R.id.num3, 0xa},
-            {R.id.num4, 0xb}, {R.id.num5, 0xc}, {R.id.num6, 0xd}, {R.id.num7, 0xe}, {R.id.num8, 0xf}, {R.id.num9, 0x10}, {R.id.clock, 0x15}, {R.id.set, 0x16},
-    };
+    private final static int[][] BUTTON_ID = {{R.id.ok, 0x1}, {R.id.settings, 0x2}, {R.id.bc, 0x3}, {R.id.left, 0x4}, {R.id.right, 0x5}, {R.id.fam, 0x6}, {R.id.cdmp3, 0x7}, {R.id.num1, 0x8}, {R.id.num2, 0x9}, {R.id.num3, 0xa}, {R.id.num4, 0xb}, {R.id.num5, 0xc}, {R.id.num6, 0xd}, {R.id.num7, 0xe}, {R.id.num8, 0xf}, {R.id.num9, 0x10}, {R.id.clock, 0x15}, {R.id.set, 0x16},};
 
 
 }

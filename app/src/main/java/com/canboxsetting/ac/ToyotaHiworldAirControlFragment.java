@@ -100,8 +100,7 @@ public class ToyotaHiworldAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.ac_auto, 0x4}, {R.id.max, 0x5}, {R.id.rear, 0x6}, {R.id.inner_loop, 0x7},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.ac_auto, 0x4}, {R.id.max, 0x5}, {R.id.rear, 0x6}, {R.id.inner_loop, 0x7},
 
             {R.id.wind_add, 0xb}, {R.id.wind_minus, 0xc},
 
@@ -112,8 +111,7 @@ public class ToyotaHiworldAirControlFragment extends MyFragment {
             {R.id.con_left_temp_up, 0xd}, {R.id.con_left_temp_down, 0xe}, {R.id.con_right_temp_up, 0xf}, {R.id.con_right_temp_down, 0x10},
 
 
-            {R.id.mode, 0x15}, {R.id.wind_horizontal1, 0x16}, {R.id.wind_down1, 0x1D}, {R.id.wind_horizontal_down, 0x1b}, {R.id.wind_up_down, 0x1c}, {R.id.wind_horizontal1, 0x1a},
-            {R.id.left_seat_heat, 0x11}, {R.id.right_seat_heat, 0x12},
+            {R.id.mode, 0x15}, {R.id.wind_horizontal1, 0x16}, {R.id.wind_down1, 0x1D}, {R.id.wind_horizontal_down, 0x1b}, {R.id.wind_up_down, 0x1c}, {R.id.wind_horizontal1, 0x1a}, {R.id.left_seat_heat, 0x11}, {R.id.right_seat_heat, 0x12},
 
 
             {R.id.con_left_temp_rear_up, 0x20}, {R.id.con_left_temp_rear_down, 0x21},

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-<!--      <com.common.view.MyPreference -->
-<!--         android:key="instantaneous_speed" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/instantaneous_speed" /> -->
-     <com.common.view.MyPreference
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--      <com.common.view.MyPreference -->
+    <!--         android:key="instantaneous_speed" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/instantaneous_speed" /> -->
+    <com.common.view.MyPreference
         android:key="engine_speed_default"
         android:persistent="false"
         android:title="@string/engine_speed_default" />

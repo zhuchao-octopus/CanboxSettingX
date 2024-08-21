@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <!-- <PreferenceScreen -->
     <!-- android:key="airsystemsetting" -->
@@ -8,7 +8,7 @@
     <!-- <intent android:action="com.canboxsetting.intent.action.HondaAirControl" /> -->
     <!-- </PreferenceScreen> -->
 
-    <PreferenceScreen android:title="@string/trip_settings" >
+    <PreferenceScreen android:title="@string/trip_settings">
         <ListPreference
             android:entries="@array/adjust_outside"
             android:entryValues="@array/Kcommonage_entryValues"
@@ -28,7 +28,7 @@
             android:persistent="false"
             android:title="@string/trip_b" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/light_settings" >
+    <PreferenceScreen android:title="@string/light_settings">
         <ListPreference
             android:entries="@array/eninterior"
             android:entryValues="@array/eninterior_vaues"
@@ -48,7 +48,7 @@
             android:persistent="false"
             android:title="@string/auto_light" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/lock" >
+    <PreferenceScreen android:title="@string/lock">
         <ListPreference
             android:entries="@array/honda_auto_door_lock_with_entries"
             android:entryValues="@array/enlock_with_vaues"
@@ -84,7 +84,7 @@
             android:key="access_beep"
             android:persistent="false"
             android:title="@string/access_beep" />
-        
+
         <ListPreference
             android:entries="@array/encar_unlocked"
             android:entryValues="@array/encar_unlocked_vaues"
@@ -92,7 +92,7 @@
             android:persistent="false"
             android:title="@string/door_unlock_mode" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/system_settings" >
+    <PreferenceScreen android:title="@string/system_settings">
         <SwitchPreference
             android:key="ctm_system"
             android:persistent="false"
@@ -222,8 +222,8 @@
             android:persistent="false"
             android:title="@string/the_handle_electrically" />
     </PreferenceScreen>
-<!--     <PreferenceScreen android:title="@string/display_settings" > -->
-<!--     </PreferenceScreen> -->
+    <!--     <PreferenceScreen android:title="@string/display_settings" > -->
+    <!--     </PreferenceScreen> -->
 
     <!-- <SwitchPreference -->
     <!-- android:key="map_view" -->

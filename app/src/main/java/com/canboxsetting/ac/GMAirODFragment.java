@@ -69,13 +69,10 @@ public class GMAirODFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.air_title_ce_max, 4}, {R.id.air_title_ce_rear, 5}, {R.id.air_title_ce_ac_1, 8}, {R.id.air_title_ce_inner_loop, 3}, {R.id.air_title_ce_auto_large, 1}, {R.id.air_title_sync, 2},
-            {R.id.wind_add, 6}, {R.id.wind_minus, 7},
+    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 4}, {R.id.air_title_ce_rear, 5}, {R.id.air_title_ce_ac_1, 8}, {R.id.air_title_ce_inner_loop, 3}, {R.id.air_title_ce_auto_large, 1}, {R.id.air_title_sync, 2}, {R.id.wind_add, 6}, {R.id.wind_minus, 7},
 
 
-            {R.id.icon_power, 0xa}, {R.id.con_left_temp_up, 0xc}, {R.id.con_left_temp_down, 0xd}, {R.id.con_right_temp_up, 0xe}, {R.id.con_right_temp_down, 0xf}, {R.id.con_mode_up, 0x10},
-            {R.id.con_mode_down, 0x11},
+            {R.id.icon_power, 0xa}, {R.id.con_left_temp_up, 0xc}, {R.id.con_left_temp_down, 0xd}, {R.id.con_right_temp_up, 0xe}, {R.id.con_right_temp_down, 0xf}, {R.id.con_mode_up, 0x10}, {R.id.con_mode_down, 0x11},
 
 
             {R.id.con_seathotleft, 0x24}, {R.id.con_seathotright, 0x25},

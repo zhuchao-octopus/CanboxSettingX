@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/car_settings" >
-    </PreferenceScreen>
-    <PreferenceScreen android:title="@string/pollutionlevel_" >
-        
+    <PreferenceScreen android:title="@string/car_settings"></PreferenceScreen>
+    <PreferenceScreen android:title="@string/pollutionlevel_">
+
         <com.common.view.MyPreference
             android:key="_pm2_5"
             android:persistent="false"
@@ -15,7 +14,7 @@
             android:persistent="false"
             android:title="@string/outside_pm2_5" />
     </PreferenceScreen>
-<!--     <PreferenceScreen android:title="@string/driving_setting" > -->
-<!--     </PreferenceScreen> -->
+    <!--     <PreferenceScreen android:title="@string/driving_setting" > -->
+    <!--     </PreferenceScreen> -->
 
 </PreferenceScreen>

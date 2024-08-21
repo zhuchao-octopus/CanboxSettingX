@@ -1,78 +1,41 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.annotation.Nullable;
+import androidx.preference.MultiSelectListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
+import android.util.Log;
+import android.widget.Toast;
+
+import com.canboxsetting.R;
+import com.common.util.BroadcastUtil;
+import com.common.util.MyCmd;
+import com.common.util.Node;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.MultiSelectListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
-
-import com.canboxsetting.R;
-import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
-
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class LandRoverHaoZhengSettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class LandRoverHaoZhengSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "LandRoverHaoZhengSettingsFragment";
 
     private static final Node[] NODES = {
 
-            new Node("over_speed", 0, 0, 0, 0x0), new Node("speed_alarms", 0, 0, 0, 0x0), new Node("oil_unit", 0, 0, 0, 0x0), new Node("instrument_style", 0, 0, 0, 0x0),
-            new Node("reset1", 0, 0, 0, 0x0), new Node("reset2", 0, 0, 0, 0x0), new Node("reset3", 0, 0, 0, 0x0),
+            new Node("over_speed", 0, 0, 0, 0x0), new Node("speed_alarms", 0, 0, 0, 0x0), new Node("oil_unit", 0, 0, 0, 0x0), new Node("instrument_style", 0, 0, 0, 0x0), new Node("reset1", 0, 0, 0, 0x0), new Node("reset2", 0, 0, 0, 0x0), new Node("reset3", 0, 0, 0, 0x0),
 
     };
 
@@ -108,6 +71,11 @@ public class LandRoverHaoZhengSettingsFragment extends PreferenceFragment implem
         p.setTitle(getString(R.string.reset) + " " + getString(R.string.averageapeed));
 
         mEditTextPreferenceSpeedAlarm = (EditTextPreference) findPreference("speed_alarms");
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

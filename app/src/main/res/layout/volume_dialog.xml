@@ -4,7 +4,7 @@
     android:layout_height="100px"
     android:orientation="horizontal"
     android:paddingBottom="40px"
-    android:paddingTop="40px" >
+    android:paddingTop="40px">
 
     <SeekBar
         android:id="@+id/level"

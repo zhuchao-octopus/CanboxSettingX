@@ -70,13 +70,11 @@ public class TPMS192 extends PreferenceFragment {
         tv.setText(text);
     }
 
-    final static int[] WARNING = {
-            0, R.string.system_self_test, R.string.str_quick_leakage, R.string.str_slow_leakage,
+    final static int[] WARNING = {0, R.string.system_self_test, R.string.str_quick_leakage, R.string.str_slow_leakage,
 
             R.string.landwind_Tire_pressure_high, R.string.landwind_Tire_pressure_low,
 
-            R.string.temp_high_more, R.string.str_temp_warning, R.string.str_low_battery,
-    };
+            R.string.temp_high_more, R.string.str_temp_warning, R.string.str_low_battery,};
 
     private void setTpmsTextWarning(int id, int value) {
 

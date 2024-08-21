@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:vehicle="http://schemas.android.com/apk/res-auto"
-    android:persistent="false" >
+    android:persistent="false">
 
-       <PreferenceCategory
+    <PreferenceCategory
         android:key="driving_mode_category"
         android:persistent="false"
-        android:title="@string/driving_mode" >
-<!--         <SwitchPreference -->
-<!--             android:key="economic_driving" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/economic_driving" /> -->
+        android:title="@string/driving_mode">
+        <!--         <SwitchPreference -->
+        <!--             android:key="economic_driving" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/economic_driving" /> -->
 
         <ListPreference
             android:entries="@array/saic_driving_mode_entries"
@@ -36,31 +36,31 @@
             android:key="comfortable_air_conditioning"
             android:persistent="false"
             android:title="@string/comfortable_air_conditioning" />
-<!--         <ListPreference -->
-<!--             android:entries="@array/power_management_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="power_management" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/power_management" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/power_management_entries" -->
+        <!--             android:entryValues="@array/three_values" -->
+        <!--             android:key="power_management" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/power_management" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="warning_pedestrian_cues" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/warning_pedestrian_cues" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="radar_warning_tone" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/radar_warning_tone" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="pedestrian_automatic_emergency_braking_system" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/pedestrian_automatic_emergency_braking_system" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="warning_pedestrian_cues" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/warning_pedestrian_cues" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="radar_warning_tone" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/radar_warning_tone" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="pedestrian_automatic_emergency_braking_system" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/pedestrian_automatic_emergency_braking_system" /> -->
     </PreferenceCategory>
-    
+
     <PreferenceCategory
         android:key="lock_control_key"
         android:persistent="false"
-        android:title="@string/lock_control" >
+        android:title="@string/lock_control">
         <SwitchPreference
             android:key="key_driving_lock"
             android:persistent="false"
@@ -69,14 +69,14 @@
             android:key="key_unlock"
             android:persistent="false"
             android:title="@string/unlock" />
-<!--         <SwitchPreference -->
-<!--             android:key="key_gac_settings_auto_lock_when_drive" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/gac_settings_auto_lock_when_drive" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="key_flameout_automatic_latch" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/flameout_automatic_latch" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="key_gac_settings_auto_lock_when_drive" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/gac_settings_auto_lock_when_drive" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="key_flameout_automatic_latch" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/flameout_automatic_latch" /> -->
 
         <ListPreference
             android:entries="@array/saic_mg_door_entries"
@@ -92,7 +92,7 @@
     <PreferenceCategory
         android:key="light_control_key"
         android:persistent="false"
-        android:title="@string/light_control" >
+        android:title="@string/light_control">
         <MultiCheckPreference
             android:entries="@array/saic_mg_light_entries"
             android:entryValues="@array/three_values"
@@ -115,44 +115,41 @@
             android:entries="@array/saic_mg_times_entries"
             android:entryValues="@array/ten_values"
             android:key="key_search_car_indicator_times"
-            android:title="@string/search_car_indicator_times" />        
-        
-        
-<!--         <ListPreference -->
-<!--             android:entries="@array/saic_mg_light_times_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="flow_me_home_keep_light_time" -->
-<!--             android:title="@string/flow_me_home_keep_light_time" /> -->
+            android:title="@string/search_car_indicator_times" />
 
-        
-        
-       
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/saic_mg_light_times_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="welcome_light_stays_on" -->
-<!--             android:title="@string/welcome_light_stays_on" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/saic_mg_light_times_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="stay_home_with_me_keep_the_lights_on" -->
-<!--             android:title="@string/stay_home_with_me_keep_the_lights_on" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/saic_flow_me_home_times_entries" -->
-<!--             android:entryValues="@array/ten_values" -->
-<!--             android:key="stay_with_me_home_duration" -->
-<!--             android:title="@string/stay_with_me_home_duration" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/duration_of_car_finding_indicator_entries" -->
-<!--             android:entryValues="@array/ten_values" -->
-<!--             android:key="car_search_indication_duration" -->
-<!--             android:title="@string/car_search_indication_duration" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/saic_mg_light_times_entries" -->
+        <!--             android:entryValues="@array/three_values" -->
+        <!--             android:key="flow_me_home_keep_light_time" -->
+        <!--             android:title="@string/flow_me_home_keep_light_time" /> -->
+
+
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/saic_mg_light_times_entries" -->
+        <!--             android:entryValues="@array/three_values" -->
+        <!--             android:key="welcome_light_stays_on" -->
+        <!--             android:title="@string/welcome_light_stays_on" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/saic_mg_light_times_entries" -->
+        <!--             android:entryValues="@array/three_values" -->
+        <!--             android:key="stay_home_with_me_keep_the_lights_on" -->
+        <!--             android:title="@string/stay_home_with_me_keep_the_lights_on" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/saic_flow_me_home_times_entries" -->
+        <!--             android:entryValues="@array/ten_values" -->
+        <!--             android:key="stay_with_me_home_duration" -->
+        <!--             android:title="@string/stay_with_me_home_duration" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/duration_of_car_finding_indicator_entries" -->
+        <!--             android:entryValues="@array/ten_values" -->
+        <!--             android:key="car_search_indication_duration" -->
+        <!--             android:title="@string/car_search_indication_duration" /> -->
     </PreferenceCategory>
     <PreferenceCategory
         android:key="comfortable_and_convenient_key"
         android:persistent="false"
-        android:title="@string/comfortable_and_convenient" >
+        android:title="@string/comfortable_and_convenient">
         <SwitchPreference
             android:key="key_flow_me_home_switch"
             android:persistent="false"
@@ -168,7 +165,7 @@
             android:entryValues="@array/three_values"
             android:key="key_steering_handle"
             android:title="@string/steering_handle" />
-  <SwitchPreference
+        <SwitchPreference
             android:key="greeting_lights"
             android:persistent="false"
             android:title="@string/greeting_lights" />
@@ -176,7 +173,7 @@
     <PreferenceCategory
         android:key="driving_maintenance_key"
         android:persistent="false"
-        android:title="@string/driving_maintenance" >
+        android:title="@string/driving_maintenance">
         <ListPreference
             android:entries="@array/reduction_of_fetal_pressure_entries"
             android:entryValues="@array/two_values"
@@ -187,35 +184,35 @@
             android:key="body_stability_control"
             android:persistent="false"
             android:title="@string/body_stability_control" />
-<!--         <SwitchPreference -->
-<!--             android:key="follow_me_home_reversing_lights" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/follow_me_home_reversing_lights" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="accompany_me_home_low_beam" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/accompany_me_home_low_beam" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="follow_me_home_after_the_fog_lights" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/follow_me_home_after_the_fog_lights" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="find_car_lights_indicate_reversing_lights" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/find_car_lights_indicate_reversing_lights" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="find_car_light_indicator_low_beam" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/find_car_light_indicator_low_beam" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="find_car_lights_indicate_rear_fog_lights" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/find_car_lights_indicate_rear_fog_lights" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="follow_me_home_reversing_lights" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/follow_me_home_reversing_lights" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="accompany_me_home_low_beam" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/accompany_me_home_low_beam" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="follow_me_home_after_the_fog_lights" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/follow_me_home_after_the_fog_lights" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="find_car_lights_indicate_reversing_lights" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/find_car_lights_indicate_reversing_lights" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="find_car_light_indicator_low_beam" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/find_car_light_indicator_low_beam" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="find_car_lights_indicate_rear_fog_lights" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/find_car_lights_indicate_rear_fog_lights" /> -->
     </PreferenceCategory>
     <PreferenceCategory
         android:key="air_key"
         android:persistent="false"
-        android:title="@string/app_name_air" >
+        android:title="@string/app_name_air">
         <SwitchPreference
             android:key="rear_window_defrost_defogging_linkage_key"
             android:persistent="false"
@@ -233,28 +230,27 @@
             android:title="@string/air_temperature_settings" />
     </PreferenceCategory>
 
-    
-    
+
     <ListPreference
         android:entries="@array/open_close_entries"
         android:entryValues="@array/two_values"
         android:key="automatic_folding_of_rearview_mirror_key"
         android:title="@string/automatic_folding_of_rearview_mirror" />
-<!--     <ListPreference -->
-<!--         android:entries="@array/reduction_of_fetal_pressure_entries" -->
-<!--         android:entryValues="@array/two_values" -->
-<!--         android:key="factory_reset_settings_key" -->
-<!--         android:title="@string/factory_reset_settings" /> -->
+    <!--     <ListPreference -->
+    <!--         android:entries="@array/reduction_of_fetal_pressure_entries" -->
+    <!--         android:entryValues="@array/two_values" -->
+    <!--         android:key="factory_reset_settings_key" -->
+    <!--         android:title="@string/factory_reset_settings" /> -->
 
-<!--     <SwitchPreference -->
-<!--         android:key="key_bzs" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/bzs" /> -->
+    <!--     <SwitchPreference -->
+    <!--         android:key="key_bzs" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/bzs" /> -->
 
     <PreferenceCategory
         android:key="auxiliary_driving"
         android:persistent="false"
-        android:title="@string/auxiliary_driving" >
+        android:title="@string/auxiliary_driving">
         <SwitchPreference
             android:key="warning_pedestrian_cues"
             android:persistent="false"
@@ -267,131 +263,131 @@
         android:key="dashboard_brightness"
         android:persistent="false"
         android:title="@string/dashboard_brightness" />
-    
-    
-<!--     <ListPreference -->
-<!--         android:entries="@array/vehicle_locking_feedback" -->
-<!--         android:entryValues="@array/three_values" -->
-<!--         android:key="vehicle_locking_feedback" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/vehicle_locking_feedback" /> -->
-<!--     <ListPreference -->
-<!--         android:entries="@array/door_to_be_unlocked_entries" -->
-<!--         android:entryValues="@array/two_values" -->
-<!--         android:key="keyless_unlock" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/keyless_unlock" /> -->
-<!--     <ListPreference -->
-<!--         android:entries="@array/door_to_be_unlocked_entries" -->
-<!--         android:entryValues="@array/three_values" -->
-<!--         android:key="key_unlocks" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/key_unlock" /> -->
 
-<!--     <PreferenceCategory -->
-<!--         android:key="advanced_driver_assistance" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/advanced_driver_assistance" > -->
-<!--         <SwitchPreference -->
-<!--             android:key="speed_assistance" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/speed_assistance" /> -->
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/advanced_driver_assistance_mode_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="advanced_driver_assistance_mode" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/advanced_driver_assistance_mode" /> -->
+    <!--     <ListPreference -->
+    <!--         android:entries="@array/vehicle_locking_feedback" -->
+    <!--         android:entryValues="@array/three_values" -->
+    <!--         android:key="vehicle_locking_feedback" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/vehicle_locking_feedback" /> -->
+    <!--     <ListPreference -->
+    <!--         android:entries="@array/door_to_be_unlocked_entries" -->
+    <!--         android:entryValues="@array/two_values" -->
+    <!--         android:key="keyless_unlock" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/keyless_unlock" /> -->
+    <!--     <ListPreference -->
+    <!--         android:entries="@array/door_to_be_unlocked_entries" -->
+    <!--         android:entryValues="@array/three_values" -->
+    <!--         android:key="key_unlocks" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/key_unlock" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="departure_waring" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/gac_settings_departure_waring" /> -->
+    <!--     <PreferenceCategory -->
+    <!--         android:key="advanced_driver_assistance" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/advanced_driver_assistance" > -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="speed_assistance" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/speed_assistance" /> -->
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/alarm_sensitivity_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="alarm_sensitivity" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/alarm_sensitivity" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/advanced_driver_assistance_mode_entries" -->
+    <!--             android:entryValues="@array/three_values" -->
+    <!--             android:key="advanced_driver_assistance_mode" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/advanced_driver_assistance_mode" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="prompt_tone_warning" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/prompt_tone_warning" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="vibration_reminder" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/vibration_reminder" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="forward_collision_assistance_system" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/forward_collision_assistance_system" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="departure_waring" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/gac_settings_departure_waring" /> -->
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/assistance_mode_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="assistance_mode" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/assistance_mode" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/alarm_sensitivity_entries" -->
+    <!--             android:entryValues="@array/three_values" -->
+    <!--             android:key="alarm_sensitivity" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/alarm_sensitivity" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="backward_driving_assistance_system" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/backward_driving_assistance_system" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="blind_area_monitoring" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/blind_area_monitoring" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="lane_changing_assistant" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/str_lane_changing_assistant" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="backward_traffic_warning" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/backward_traffic_warning" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="lane_assist" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/lane_assist" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="prompt_tone_warning" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/prompt_tone_warning" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="vibration_reminder" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/vibration_reminder" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="forward_collision_assistance_system" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/forward_collision_assistance_system" /> -->
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/assistance_mode_entries_v2" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="assistance_mode_v2" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/assistance_mode" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/lane_keeping_alarm_sensitivity_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="lane_keeping_alarm_sensitivity" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/lane_keeping_alarm_sensitivity" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/lane_keeping_alarm_sensitivity_entries" -->
-<!--             android:entryValues="@array/three_values" -->
-<!--             android:key="forward_alarm_sensitivity" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/forward_alarm_sensitivity" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/assistance_mode_entries" -->
+    <!--             android:entryValues="@array/two_values" -->
+    <!--             android:key="assistance_mode" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/assistance_mode" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="traffic_jam_assistance_system" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/traffic_jam_assistance_system" /> -->
-<!--     </PreferenceCategory> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="backward_driving_assistance_system" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/backward_driving_assistance_system" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="blind_area_monitoring" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/blind_area_monitoring" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="lane_changing_assistant" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/str_lane_changing_assistant" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="backward_traffic_warning" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/backward_traffic_warning" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="lane_assist" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/lane_assist" /> -->
+
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/assistance_mode_entries_v2" -->
+    <!--             android:entryValues="@array/three_values" -->
+    <!--             android:key="assistance_mode_v2" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/assistance_mode" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/lane_keeping_alarm_sensitivity_entries" -->
+    <!--             android:entryValues="@array/three_values" -->
+    <!--             android:key="lane_keeping_alarm_sensitivity" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/lane_keeping_alarm_sensitivity" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/lane_keeping_alarm_sensitivity_entries" -->
+    <!--             android:entryValues="@array/three_values" -->
+    <!--             android:key="forward_alarm_sensitivity" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/forward_alarm_sensitivity" /> -->
+
+    <!--         <SwitchPreference -->
+    <!--             android:key="traffic_jam_assistance_system" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/traffic_jam_assistance_system" /> -->
+    <!--     </PreferenceCategory> -->
     <PreferenceCategory
         android:key="car_window_and_lock"
         android:persistent="false"
-        android:title="@string/car_window_and_lock" >
-           <ListPreference
+        android:title="@string/car_window_and_lock">
+        <ListPreference
             android:entries="@array/saic_hiworld_window_entries"
             android:entryValues="@array/two_values"
             android:key="sunroof"
             android:persistent="false"
             android:title="@string/sunroof" />
-           
+
         <ListPreference
             android:entries="@array/saic_window_entries"
             android:entryValues="@array/four_values"
@@ -416,97 +412,92 @@
             android:key="rear_right_window"
             android:persistent="false"
             android:title="@string/rear_right_window" />
-        
-         <com.common.view.MyPreferenceSeekBar
+
+        <com.common.view.MyPreferenceSeekBar
             android:key="opening_degree_of_reserve_box"
             android:persistent="false"
             android:title="@string/opening_degree_of_reserve_box"
             vehicle:max="152"
             vehicle:min="0"
             vehicle:step="2" />
-         
-         
-         
-         
-         
-         
-         
-<!--         <ListPreference -->
-<!--             android:entries="@array/saic_hiworld_window_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="sunshade_curtain" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/sunshade_curtain" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/wiper_control_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="wiper_control" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/wiper_control" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/saic_hiworld_window_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="sunshade_curtain" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/sunshade_curtain" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="window_lock" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/window_lock" /> -->
 
-<!--         <ListPreference -->
-<!--             android:entries="@array/door_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="left_front_door" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/left_front_door" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/door_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="right_front_door" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/right_front_door" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/door_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="left_back_door" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/left_back_door" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/door_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="right_back_door" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/right_back_door" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/door_entries" -->
-<!--             android:entryValues="@array/two_values" -->
-<!--             android:key="truck1" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/truck" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/saic_hiworld_window_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="sunshade_curtain" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/sunshade_curtain" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/wiper_control_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="wiper_control" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/wiper_control" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/saic_hiworld_window_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="sunshade_curtain" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/sunshade_curtain" /> -->
 
-<!--         <SwitchPreference -->
-<!--             android:key="speed_limit_alarm" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/speed_limit_alarm" /> -->
+        <!--         <SwitchPreference -->
+        <!--             android:key="window_lock" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/window_lock" /> -->
 
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!--             android:key="speed_limit_alarm_value" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/speed_limit_alarm_value" -->
-<!--             vehicle:max="42" -->
-<!--             vehicle:min="30" -->
-<!--             vehicle:step="5" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/door_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="left_front_door" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/left_front_door" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/door_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="right_front_door" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/right_front_door" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/door_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="left_back_door" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/left_back_door" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/door_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="right_back_door" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/right_back_door" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/door_entries" -->
+        <!--             android:entryValues="@array/two_values" -->
+        <!--             android:key="truck1" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/truck" /> -->
+
+        <!--         <SwitchPreference -->
+        <!--             android:key="speed_limit_alarm" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/speed_limit_alarm" /> -->
+
+        <!--         <com.common.view.MyPreferenceSeekBar -->
+        <!--             android:key="speed_limit_alarm_value" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/speed_limit_alarm_value" -->
+        <!--             vehicle:max="42" -->
+        <!--             vehicle:min="30" -->
+        <!--             vehicle:step="5" /> -->
     </PreferenceCategory>
- 
-        <ListPreference
-            android:entries="@array/language_status_entries"
-            android:entryValues="@array/two_values"
-            android:key="language1"
-            android:title="@string/language" />
+
+    <ListPreference
+        android:entries="@array/language_status_entries"
+        android:entryValues="@array/two_values"
+        android:key="language1"
+        android:title="@string/language" />
 
 
-<!--     </PreferenceCategory> -->
+    <!--     </PreferenceCategory> -->
 
 </PreferenceScreen>

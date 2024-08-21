@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    
+
     <com.common.view.MyPreference
         android:key="speed"
         android:persistent="false"
         android:title="@string/speed" />
-    
+
     <com.common.view.MyPreference
         android:key="enginespeed"
         android:persistent="false"
         android:title="@string/enginespeed" />
-    
+
     <com.common.view.MyPreference
         android:key="mileage"
         android:persistent="false"
@@ -21,7 +21,7 @@
         android:key="curfuel"
         android:persistent="false"
         android:title="@string/curfuel" />
-    
+
     <com.common.view.MyPreference
         android:key="tripa1"
         android:persistent="false"

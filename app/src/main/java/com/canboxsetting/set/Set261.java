@@ -1,64 +1,29 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set261 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set261 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
@@ -80,9 +45,7 @@ public class Set261 extends PreferenceFragment implements Preference.OnPreferenc
             new NodePreference("ambient_light_front", 0x6f08, 0x6102, 0x20, 0), new NodePreference("ambient_light_rear", 0x6f09, 0x6102, 0x10, 0),
 
 
-            new NodePreference("ambient_light_color", 0x6f0a, 0x6102, 0x0e, 0, R.array.tata_a, R.array.eight_values),
-            new NodePreference("ambient_light_brightness", 0x6f0b, 0x6103, 0xe0, 0, R.array.five_high_values, R.array.five_high_values),
-    };
+            new NodePreference("ambient_light_color", 0x6f0a, 0x6102, 0x0e, 0, R.array.tata_a, R.array.eight_values), new NodePreference("ambient_light_brightness", 0x6f0b, 0x6103, 0xe0, 0, R.array.five_high_values, R.array.five_high_values),};
 
     private final static int[] INIT_CMDS = {0x61};
 
@@ -94,6 +57,11 @@ public class Set261 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -134,9 +102,7 @@ public class Set261 extends PreferenceFragment implements Preference.OnPreferenc
         getPreferenceScreen().removeAll();
     }
 
-    private byte[] mVisible = new byte[]{
-            0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff
-    };
+    private byte[] mVisible = new byte[]{0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff};
 
     private boolean mPaused = true;
 
@@ -219,9 +185,7 @@ public class Set261 extends PreferenceFragment implements Preference.OnPreferenc
     }
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
-        byte[] buf = new byte[]{
-                0x4, (byte) d0, (byte) d1, (byte) d2, (byte) 0xff, (byte) 0xff
-        };
+        byte[] buf = new byte[]{0x4, (byte) d0, (byte) d1, (byte) d2, (byte) 0xff, (byte) 0xff};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

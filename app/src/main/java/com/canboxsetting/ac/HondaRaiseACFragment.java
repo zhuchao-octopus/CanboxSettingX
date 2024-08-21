@@ -84,9 +84,7 @@ public class HondaRaiseACFragment extends MyFragment {
         return mMainView;
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x1}, {R.id.ac, 0x17}, {R.id.ac_auto, 0x15}, {R.id.rear, 0x14}, {R.id.inner_loop, 0x19}, {R.id.max, 0x13}, {R.id.dual, 0x10}, {R.id.wind_minus, 0x9}, {R.id.wind_add, 0xa},
-            {R.id.mode, 0x0040},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x1}, {R.id.ac, 0x17}, {R.id.ac_auto, 0x15}, {R.id.rear, 0x14}, {R.id.inner_loop, 0x19}, {R.id.max, 0x13}, {R.id.dual, 0x10}, {R.id.wind_minus, 0x9}, {R.id.wind_add, 0xa}, {R.id.mode, 0x0040},
 
             {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},
 

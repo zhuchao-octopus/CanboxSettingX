@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <PreferenceScreen
         android:key="carbodyinfo"
-        android:title="@string/carbodyinfo" >
+        android:title="@string/carbodyinfo">
         <com.common.view.MyPreference2
             android:key="car_content"
             android:layout="@layout/toyota_car" />
 
-<!--         <com.common.view.MyPreference -->
-<!--             android:key="mileage_sum" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/mileage_sum" /> -->
-<!--         <com.common.view.MyPreference -->
-<!--             android:key="mileage17" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/mileage17" /> -->
-<!--         <com.common.view.MyPreference -->
-<!--             android:key="trip_a" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/trip_a1" /> -->
-<!--         <com.common.view.MyPreference -->
-<!--             android:key="trip_b" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/trip_b1" /> -->
+        <!--         <com.common.view.MyPreference -->
+        <!--             android:key="mileage_sum" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/mileage_sum" /> -->
+        <!--         <com.common.view.MyPreference -->
+        <!--             android:key="mileage17" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/mileage17" /> -->
+        <!--         <com.common.view.MyPreference -->
+        <!--             android:key="trip_a" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/trip_a1" /> -->
+        <!--         <com.common.view.MyPreference -->
+        <!--             android:key="trip_b" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/trip_b1" /> -->
         <com.common.view.MyPreference
             android:key="am_runningspeed"
             android:persistent="false"
@@ -40,7 +40,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="fuelinfo"
-        android:title="@string/fuelinfo" >
+        android:title="@string/fuelinfo">
         <com.common.view.MyPreference
             android:key="averagespeed"
             android:persistent="false"
@@ -64,24 +64,24 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="tpms"
-        android:title="@string/tireinfo" >
+        android:title="@string/tireinfo">
         <com.common.view.MyPreference2
             android:key="tpms_content"
             android:layout="@layout/type_info2" />
     </PreferenceScreen>
     <PreferenceScreen
         android:key="hybrid"
-        android:title="@string/hybrid" >
+        android:title="@string/hybrid">
         <com.common.view.MyPreference2
             android:key="hybrid_content"
             android:layout="@layout/toyota_battery" />
     </PreferenceScreen>
 
-    
-<!--     <PreferenceScreen -->
-<!--         android:key="car_amplifier_volume" -->
-<!--         android:title="@string/car_amplifier_volume" > -->
 
-<!--     </PreferenceScreen> -->
-    
+    <!--     <PreferenceScreen -->
+    <!--         android:key="car_amplifier_volume" -->
+    <!--         android:title="@string/car_amplifier_volume" > -->
+
+    <!--     </PreferenceScreen> -->
+
 </PreferenceScreen>

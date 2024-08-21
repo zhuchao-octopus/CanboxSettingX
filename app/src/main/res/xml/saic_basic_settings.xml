@@ -18,7 +18,7 @@
         android:persistent="false"
         android:title="@string/flow_me_home" />
 
-     <ListPreference
+    <ListPreference
         android:entries="@array/saic_search_car_indicator_type_entries"
         android:entryValues="@array/two_values"
         android:key="key_search_car_indicator_type"
@@ -35,11 +35,11 @@
         android:key="key_steering_handle"
         android:title="@string/steering_handle" />
 
-     <ListPreference
+    <ListPreference
         android:entries="@array/time_format"
         android:entryValues="@array/two_values"
         android:key="time_format"
         android:persistent="false"
         android:title="@string/time_format" />
-  
+
 </PreferenceScreen>

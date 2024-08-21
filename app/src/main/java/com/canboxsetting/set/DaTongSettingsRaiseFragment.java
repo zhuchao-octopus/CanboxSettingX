@@ -1,67 +1,31 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class DaTongSettingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class DaTongSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";
 
     private int mType = 0;
@@ -79,18 +43,12 @@ public class DaTongSettingsRaiseFragment extends PreferenceFragment implements P
 
     private static final Node[] NODES = {
 
-            new Node("key_flow_me_home", 0x8300, 0x5100, 0x80, 0x0), new Node("key_flow_me_home_times", 0x8301, 0x5100, 0x60, 0x0), new Node("key_unlock_near_car", 0x8302, 0x5100, 0x18, 0x0),
-            new Node("key_driving_lock", 0x8303, 0x5100, 0x04, 0x0), new Node("key_unlock", 0x8304, 0x5100, 0x02, 0x0), new Node("key_unlock_mode", 0x8305, 0x5100, 0x01, 0x0),
-            new Node("key_keyless_unlock", 0x8306, 0x5101, 0x80, 0x0), new Node("key_unlocks", 0x8307, 0x5101, 0x40, 0x0),
-            new Node("key_rear_view_mirror_automatically_folded", 0x830a, 0x5101, 0x20, 0x0), new Node("key_speed_alarm", 0x8308, 0x5101, 0x10, 0x0),
-            new Node("key_speed_settings", 0x8309, 0x5102, 0xff, 30, 220),
+            new Node("key_flow_me_home", 0x8300, 0x5100, 0x80, 0x0), new Node("key_flow_me_home_times", 0x8301, 0x5100, 0x60, 0x0), new Node("key_unlock_near_car", 0x8302, 0x5100, 0x18, 0x0), new Node("key_driving_lock", 0x8303, 0x5100, 0x04, 0x0), new Node("key_unlock", 0x8304, 0x5100, 0x02, 0x0), new Node("key_unlock_mode", 0x8305, 0x5100, 0x01, 0x0), new Node("key_keyless_unlock", 0x8306, 0x5101, 0x80, 0x0), new Node("key_unlocks", 0x8307, 0x5101, 0x40, 0x0), new Node("key_rear_view_mirror_automatically_folded", 0x830a, 0x5101, 0x20, 0x0), new Node("key_speed_alarm", 0x8308, 0x5101, 0x10, 0x0), new Node("key_speed_settings", 0x8309, 0x5102, 0xff, 30, 220),
 
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x5100
-    };
+    private final static int[] INIT_CMDS = {0x5100};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -122,6 +80,11 @@ public class DaTongSettingsRaiseFragment extends PreferenceFragment implements P
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

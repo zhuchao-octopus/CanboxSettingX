@@ -1,70 +1,34 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set285 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set285 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "Set275";
 
     private static final NodePreference[] NODES = {
 
-            new NodePreference("cardoorspeed", 0x8300, 0x2601, 0x80, 0), new NodePreference("cardoorautomatic", 0x8301, 0x2601, 0x40, 0), new NodePreference("plinkage", 0x8302, 0x2601, 0x20, 0),
-            new NodePreference("remoteunlock", 0x8303, 0x2601, 0x10, 0), new NodePreference("daylight", 0x8304, 0x2600, 0x80, 0),
+            new NodePreference("cardoorspeed", 0x8300, 0x2601, 0x80, 0), new NodePreference("cardoorautomatic", 0x8301, 0x2601, 0x40, 0), new NodePreference("plinkage", 0x8302, 0x2601, 0x20, 0), new NodePreference("remoteunlock", 0x8303, 0x2601, 0x10, 0), new NodePreference("daylight", 0x8304, 0x2600, 0x80, 0),
 
             new NodePreference("volbackdoor", 0x8305, 0x2601, 0x07, 0, R.array.seven_values, R.array.seven_values),
 
@@ -74,8 +38,7 @@ public class Set285 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("door", 0x830f, 0x2602, 0x20, 0, R.array.door_to_be_unlocked_entries, R.array.two_values),
 
-            new NodePreference("intelligent_lock", 0x8310, 0x2602, 0x10, 0), new NodePreference("lock_unlock_blink", 0x8311, 0x2602, 0x08, 0), new NodePreference("air_auto", 0x8312, 0x2603, 0x80, 0),
-            new NodePreference("inner_outer_auto", 0x8313, 0x2603, 0x40, 0),
+            new NodePreference("intelligent_lock", 0x8310, 0x2602, 0x10, 0), new NodePreference("lock_unlock_blink", 0x8311, 0x2602, 0x08, 0), new NodePreference("air_auto", 0x8312, 0x2603, 0x80, 0), new NodePreference("inner_outer_auto", 0x8313, 0x2603, 0x40, 0),
 
     };
 
@@ -89,6 +52,11 @@ public class Set285 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

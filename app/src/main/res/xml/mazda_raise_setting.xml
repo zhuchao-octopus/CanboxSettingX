@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/controlsettings" >
+    <PreferenceScreen android:title="@string/controlsettings">
         <ListPreference
             android:entries="@array/enheadlight_off_timer"
             android:entryValues="@array/radarvol_entryValues"
@@ -94,7 +94,7 @@
             android:persistent="false"
             android:title="@string/mazda3_2020_settings_7" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/driving_display" >
+    <PreferenceScreen android:title="@string/driving_display">
         <ListPreference
             android:entries="@array/height"
             android:entryValues="@array/height_value"
@@ -125,26 +125,27 @@
             android:key="calibration"
             android:persistent="false"
             android:title="@string/brightness_control" />
-        
-                <ListPreference
+
+        <ListPreference
             android:entries="@array/mazda3_2020_settings_13"
             android:entryValues="@array/envol_vaues"
             android:key="mazda3_2020_settings_13"
             android:persistent="false"
             android:title="@string/mazda3_2020_settings_13" />
-                
-                        <ListPreference
+
+        <ListPreference
             android:entries="@array/adjust_outside"
             android:entryValues="@array/honda_entryValues"
             android:key="mazda3_2020_settings_14"
             android:persistent="false"
             android:title="@string/mazda3_2020_settings_14" />
-        
-             <PreferenceScreen android:key="display_reset"
+
+        <PreferenceScreen
+            android:key="display_reset"
             android:title="@string/restore_factory_settings5" />
-             
+
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/door_open" >
+    <PreferenceScreen android:title="@string/door_open">
         <ListPreference
             android:entries="@array/enauto_lights_off"
             android:entryValues="@array/enauto_lights_off_vaues"
@@ -152,7 +153,7 @@
             android:persistent="false"
             android:title="@string/auto_lights_off" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/door_close" >
+    <PreferenceScreen android:title="@string/door_close">
         <ListPreference
             android:entries="@array/enauto_lights_off2"
             android:entryValues="@array/enauto_lights_off2_vaues"
@@ -160,8 +161,8 @@
             android:persistent="false"
             android:title="@string/auto_lights_off" />
     </PreferenceScreen>
-    
-    <PreferenceScreen android:title="@string/mazda3_2020_settings_b" >
+
+    <PreferenceScreen android:title="@string/mazda3_2020_settings_b">
         <SwitchPreference
             android:key="mazda3_2020_settings_c"
             android:persistent="false"
@@ -179,13 +180,14 @@
             android:key="mazda3_2020_settings_e"
             android:persistent="false"
             android:title="@string/mazda3_2020_settings_e" />
-        
-        <PreferenceScreen android:key="safe_reset"
+
+        <PreferenceScreen
+            android:key="safe_reset"
             android:title="@string/restore_factory_settings5" />
-        
+
     </PreferenceScreen>
-        
-     <PreferenceScreen android:title="@string/mazda3_2020_settings_f" >
+
+    <PreferenceScreen android:title="@string/mazda3_2020_settings_f">
         <SwitchPreference
             android:key="mazda3_2020_settings_10"
             android:persistent="false"
@@ -203,13 +205,14 @@
             android:key="mazda3_2020_settings_12"
             android:persistent="false"
             android:title="@string/mazda3_2020_settings_12" />
-        
-        <PreferenceScreen android:key="speed_warning_reset"
+
+        <PreferenceScreen
+            android:key="speed_warning_reset"
             android:title="@string/restore_factory_settings5" />
-        
+
     </PreferenceScreen>
-    
-    <PreferenceScreen android:title="@string/fuel_economy" >
+
+    <PreferenceScreen android:title="@string/fuel_economy">
         <SwitchPreference
             android:key="sync_avg"
             android:persistent="false"
@@ -220,7 +223,7 @@
             android:persistent="false"
             android:title="@string/reset_avg" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/other" >
+    <PreferenceScreen android:title="@string/other">
         <SwitchPreference
             android:key="wipers_induction"
             android:persistent="false"
@@ -307,8 +310,8 @@
         <SwitchPreference
             android:key="leavehome"
             android:persistent="false"
-            android:title="@string/leavehome" />     
-            <SwitchPreference
+            android:title="@string/leavehome" />
+        <SwitchPreference
             android:key="touch_switch"
             android:persistent="false"
             android:title="@string/touch_switch" />
@@ -318,9 +321,9 @@
             android:persistent="false"
             android:title="@string/default_all" />
     </PreferenceScreen>
-    <PreferenceScreen 
-            android:key="text_360"
-            android:title="@string/text_360" >
+    <PreferenceScreen
+        android:key="text_360"
+        android:title="@string/text_360">
         <SwitchPreference
             android:key="mazda3_2020_settings_8"
             android:persistent="false"

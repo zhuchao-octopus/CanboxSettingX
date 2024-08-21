@@ -10,7 +10,7 @@
         android:layout_width="0px"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/charging_settings"
@@ -21,14 +21,12 @@
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/charging_settings"
-            android:textSize="24px" >
-        </TextView>
+            android:textSize="24px"></TextView>
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:background="#88888888" >
-        </View>
+            android:background="#88888888"></View>
 
         <TextView
             android:id="@+id/energy_information"
@@ -39,34 +37,31 @@
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/energy_information"
-            android:textSize="24px" >
-        </TextView>
+            android:textSize="24px"></TextView>
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:background="#88888888" >
-        </View>
+            android:background="#88888888"></View>
     </LinearLayout>
 
     <View
         android:layout_width="1px"
         android:layout_height="fill_parent"
-        android:background="#88888888" >
-    </View>
+        android:background="#88888888"></View>
 
     <LinearLayout
         android:layout_width="0px"
         android:layout_height="fill_parent"
         android:layout_weight="4"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/page11"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -75,7 +70,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -88,7 +83,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/time_of_appointment1"
@@ -118,8 +113,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -127,7 +121,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -139,13 +133,13 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <RadioGroup
                         android:id="@+id/radioGroup"
                         android:layout_width="fill_parent"
                         android:orientation="horizontal"
-                        android:layout_height="fill_parent" >
+                        android:layout_height="fill_parent">
 
                         <RadioButton
                             android:id="@+id/cycle_mode1"
@@ -168,8 +162,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -177,7 +170,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -189,13 +182,13 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="80px"
                         android:gravity="center"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/cycle_date1"
@@ -233,7 +226,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80px"
                         android:gravity="center_vertical|left"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/cycle_date5"
@@ -265,15 +258,14 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/ok"
@@ -300,7 +292,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -309,7 +301,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -322,7 +314,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/charging_mode1"
@@ -346,8 +338,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -355,7 +346,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -370,8 +361,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <TextView
                 android:id="@+id/distance_charging_time"
@@ -388,7 +378,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:visibility="visible" >
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -397,7 +387,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -410,7 +400,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/gs4_energy_recovery1"
@@ -443,8 +433,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -452,7 +441,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -464,7 +453,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/energy_recovery_i_pedal1"
@@ -488,8 +477,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -497,7 +485,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -512,8 +500,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -522,7 +509,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -530,8 +517,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/baic_car" >
-                </ImageView>
+                    android:src="@drawable/baic_car"></ImageView>
 
                 <SeekBar
                     android:id="@+id/enag"

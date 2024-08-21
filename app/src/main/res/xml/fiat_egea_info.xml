@@ -11,7 +11,7 @@
         android:persistent="false"
         android:title="@string/curfuel" />
 
-    <PreferenceCategory android:title="@string/trip_a1" >
+    <PreferenceCategory android:title="@string/trip_a1">
         <com.common.view.MyPreference
             android:key="average_fuel_consumption"
             android:persistent="false"
@@ -29,7 +29,7 @@
             android:persistent="false"
             android:title="@string/traveltime" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/trip_b1" >
+    <PreferenceCategory android:title="@string/trip_b1">
         <com.common.view.MyPreference
             android:key="average_fuel_consumption2"
             android:persistent="false"

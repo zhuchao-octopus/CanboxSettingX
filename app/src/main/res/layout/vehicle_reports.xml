@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:paddingBottom="30px"
     android:paddingLeft="@dimen/content_padding_left"
-    android:paddingTop="30px" >
+    android:paddingTop="30px">
 
     <Button
         android:id="@id/more_report"

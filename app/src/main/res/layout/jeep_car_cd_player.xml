@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,7 +10,7 @@
         android:layout_marginTop="60px"
         android:layout_weight="2.8"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ListView
             android:id="@+id/list_view"
@@ -28,30 +28,30 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0px"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="50px"
-                            android:layout_gravity="center" >
+                            android:layout_gravity="center">
 
                             <TextView
                                 style="@style/shadowTextCommonStyleFonts"
@@ -80,13 +80,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <TextView
                             style="@style/shadowTextCommonStyleFonts"
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                                android:layout_weight="2"
+                            android:layout_weight="2"
                             android:gravity="right"
                             android:text="@string/albums"
                             android:textSize="34px" />
@@ -108,13 +108,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <TextView
                             style="@style/shadowTextCommonStyleFonts"
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                                android:layout_weight="2"
+                            android:layout_weight="2"
                             android:gravity="right"
                             android:text="@string/singer"
                             android:textSize="34px" />
@@ -139,7 +139,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.4"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/num"
@@ -181,12 +181,12 @@
         android:layout_height="0px"
         android:layout_weight="0.8"
         android:background="@drawable/radio_bottom_bg"
-        android:gravity="center" >
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center" >
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/repeat"

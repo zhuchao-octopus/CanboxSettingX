@@ -1,72 +1,25 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.charset.Charset;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.Preference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
-import com.common.view.MyPreference2;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class JeepInfoSimpleFragment extends PreferenceFragment {
+public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
     private static final String TAG = "JeepInfoSimpleFragment";
 
     @Override
@@ -84,6 +37,11 @@ public class JeepInfoSimpleFragment extends PreferenceFragment {
         findPreference("tripb2").setTitle(getString(R.string.trip_b1) + " " + getString(R.string.averageapeed));
         findPreference("tripb3").setTitle(getString(R.string.trip_b1) + " " + getString(R.string.mileage1));
         findPreference("tripb4").setTitle(getString(R.string.trip_b1) + " " + getString(R.string.traveltime1));
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     private boolean mPaused = true;
@@ -105,9 +63,7 @@ public class JeepInfoSimpleFragment extends PreferenceFragment {
         registerListener();
     }
 
-    private final static int[] INIT_CMDS = {
-            0x4001, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xa
-    };
+    private final static int[] INIT_CMDS = {0x4001, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xa};
     private final static int MSG_REQUEST_INIT = 1000;
 
     private void requestInitData() {
@@ -139,9 +95,7 @@ public class JeepInfoSimpleFragment extends PreferenceFragment {
     };
 
     private void sendCanboxInfo2(int cmd) {
-        byte[] buf = new byte[]{
-                (byte) 0x90, 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)
-        };
+        byte[] buf = new byte[]{(byte) 0x90, 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

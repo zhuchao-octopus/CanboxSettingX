@@ -21,10 +21,12 @@ import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -33,10 +35,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
  * This activity plays a video from a specified URI.
  */
-public class RadioActivity extends Activity {
+public class RadioActivity extends AppCompatActivity {
     private static final String TAG = "HondaAirControl";
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
@@ -46,7 +50,7 @@ public class RadioActivity extends Activity {
         super.onCreate(icicle);
 
         setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         String value = null;// AppConfig.getCanboxSetting();//
         // MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
@@ -194,6 +198,7 @@ public class RadioActivity extends Activity {
         }
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     private void registerListener() {
         if (mReceiver == null) {
             mReceiver = new BroadcastReceiver() {

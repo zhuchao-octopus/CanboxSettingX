@@ -1,66 +1,28 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.charset.Charset;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.preference.Preference;
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
+import com.zhuchao.android.fbase.MMLog;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import java.util.Objects;
 
-public class ZhongXingFragment extends PreferenceFragment {
+public class ZhongXingFragment extends PreferenceFragmentCompat {
     private static final String TAG = "Golf7InfoSimpleFragment";
 
     @Override
@@ -68,6 +30,11 @@ public class ZhongXingFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.zhongxing_od);
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -89,7 +56,7 @@ public class ZhongXingFragment extends PreferenceFragment {
         mPause = false;
     }
 
-    private Handler mHandler = new Handler() {
+    private Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(Message msg) {
             // mHandler.removeMessages(msg.what);
@@ -378,7 +345,7 @@ public class ZhongXingFragment extends PreferenceFragment {
                             try {
                                 updateView(buf);
                             } catch (Exception e) {
-                                Log.d("aa", "!!!!!!!!" + buf);
+                                MMLog.d("aa", "!!!!!!!!" + buf);
                             }
                         }
                     }

@@ -137,8 +137,7 @@ public class MingJueRongWeiACRaiselFragment extends MyFragment {
 
             {R.id.power_rear, 0x1a01}, {R.id.con_left_temp_rear_up, 0x1801}, {R.id.con_left_temp_rear_down, 0x1802},
 
-            {R.id.wind_horizontal1_rear, 0x1901}, {R.id.wind_down1_rear, 0x1903}, {R.id.wind_horizontal_down_rear, 0x1902}, {R.id.ac_auto_rear, 0x1b01}, {R.id.wind_add_rear, 0x1401},
-            {R.id.wind_minus_rear, 0x1402},
+            {R.id.wind_horizontal1_rear, 0x1901}, {R.id.wind_down1_rear, 0x1903}, {R.id.wind_horizontal_down_rear, 0x1902}, {R.id.ac_auto_rear, 0x1b01}, {R.id.wind_add_rear, 0x1401}, {R.id.wind_minus_rear, 0x1402},
 
     };
 
@@ -149,9 +148,7 @@ public class MingJueRongWeiACRaiselFragment extends MyFragment {
                 if ((CMD_ID[i][1] & 0xff00) == 0) {
                     sendKey((CMD_ID[i][1] & 0xff));
                 } else {
-                    byte[] buf = new byte[]{
-                            (byte) 0x8a, 0x2, (byte) ((CMD_ID[i][1] & 0xff00) >> 8), (byte) (CMD_ID[i][1] & 0xff)
-                    };
+                    byte[] buf = new byte[]{(byte) 0x8a, 0x2, (byte) ((CMD_ID[i][1] & 0xff00) >> 8), (byte) (CMD_ID[i][1] & 0xff)};
                     BroadcastUtil.sendCanboxInfo(getActivity(), buf);
                     Util.doSleep(200);
                     buf[3] = 0;

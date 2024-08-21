@@ -114,9 +114,7 @@ public class JeepCarCDXinbasFragment extends MyFragment {
                     int index = mMyListViewAdapter.getSelectIndex(postion);
                     if (index != -1) {
 
-                        byte[] buf = new byte[]{
-                                (byte) 0x86, 0x3, (byte) 0xf, (byte) ((index & 0xff00) >> 8), (byte) ((index & 0xff) >> 0)
-                        };
+                        byte[] buf = new byte[]{(byte) 0x86, 0x3, (byte) 0xf, (byte) ((index & 0xff00) >> 8), (byte) ((index & 0xff) >> 0)};
                         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
                     }

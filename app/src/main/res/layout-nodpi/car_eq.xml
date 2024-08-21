@@ -2,25 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#cc444444" >
+    android:background="#cc444444">
 
     <RelativeLayout
         android:layout_width="0px"
         android:layout_height="fill_parent"
         android:layout_weight="4"
-        android:padding="15px" >
+        android:padding="15px">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/btn_amp_left"
@@ -36,15 +36,14 @@
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="4"
-                android:orientation="vertical" >
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/btn_amp_right"
@@ -60,14 +59,14 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/btn_amp_front"
@@ -84,22 +83,21 @@
                 android:layout_height="0px"
                 android:layout_weight="4"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </LinearLayout>
+                    android:orientation="vertical"></LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
                     android:layout_weight="4"
                     android:orientation="vertical"
-                    android:padding="10px" >
+                    android:padding="10px">
 
                     <ImageView
                         android:layout_width="fill_parent"
@@ -111,7 +109,7 @@
                         android:id="@+id/linearLayoutMid"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <View
                             android:id="@+id/sound_buttun_line2"
@@ -132,8 +130,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </LinearLayout>
+                    android:orientation="vertical"></LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -141,7 +138,7 @@
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/btn_amp_rear"
@@ -160,14 +157,14 @@
         android:layout_height="fill_parent"
         android:layout_weight="5"
         android:orientation="vertical"
-        android:padding="10px" >
+        android:padding="10px">
 
         <LinearLayout
             android:id="@+id/treable"
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
             android:layout_weight="1.0"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical">
 
             <TextView
                 style="@style/amp_seekbar_left"
@@ -187,7 +184,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
             android:layout_weight="1.0"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical">
 
             <TextView
                 style="@style/amp_seekbar_left"
@@ -207,7 +204,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
             android:layout_weight="1.0"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical">
 
             <TextView
                 style="@style/amp_seekbar_left"
@@ -228,7 +225,7 @@
             android:layout_height="0.0dip"
             android:layout_weight="1.0"
             android:gravity="center_vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <TextView
                 style="@style/amp_seekbar_left"

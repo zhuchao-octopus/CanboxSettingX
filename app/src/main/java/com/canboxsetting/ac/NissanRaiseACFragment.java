@@ -78,8 +78,7 @@ public class NissanRaiseACFragment extends MyFragment {
         return mMainView;
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.inner_loop_out, 0x8}, {R.id.inner_loop_in, 0x4}, {R.id.max, 0x10}, {R.id.ac_auto, 0x20}, {R.id.mode, 0x40}, {R.id.power, 0x80},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.inner_loop_out, 0x8}, {R.id.inner_loop_in, 0x4}, {R.id.max, 0x10}, {R.id.ac_auto, 0x20}, {R.id.mode, 0x40}, {R.id.power, 0x80},
 
             {R.id.dual, 0x180}, {R.id.rear, 0x140},
 

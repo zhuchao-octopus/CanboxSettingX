@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-     <com.common.view.MyPreference
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.common.view.MyPreference
         android:key="dynamical_fuel"
         android:persistent="false"
         android:title="@string/dynamical_fuel" />
 
 
-    
-    
     <com.common.view.MyPreference
         android:key="averagespeed24"
         android:persistent="false"

@@ -263,9 +263,7 @@ public class Radio174 extends MyFragment {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
-                byte[] buf = new byte[]{
-                        0x02, (byte) 0x90, 0x1, (byte) (msg.arg1 & 0xff)
-                };
+                byte[] buf = new byte[]{0x02, (byte) 0x90, 0x1, (byte) (msg.arg1 & 0xff)};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
             }
         }

@@ -119,9 +119,7 @@ public class GMODCarCDFragment extends MyFragment {
         }
     }
 
-    private static final int[] BUTTON_ON_CLICK = new int[]{
-            R.id.home, R.id.navi, R.id.radio, R.id.back, R.id.bt, R.id.power, R.id.prev, R.id.next, R.id.key_vol_a, R.id.key_vol_m, R.id.key_sel_a, R.id.key_sel_m, R.id.ok, R.id.music
-    };
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.home, R.id.navi, R.id.radio, R.id.back, R.id.bt, R.id.power, R.id.prev, R.id.next, R.id.key_vol_a, R.id.key_vol_m, R.id.key_sel_a, R.id.key_sel_m, R.id.ok, R.id.music};
 
     private void initPresentationUI() {
         for (int i : BUTTON_ON_CLICK) {
@@ -205,9 +203,7 @@ public class GMODCarCDFragment extends MyFragment {
             y = y * 0x3fff / h;
         }
         Log.d("ccf", x + ":" + y);
-        byte[] buf = new byte[]{
-                (byte) 0x75, 0x5, 0x1, (byte) (x & 0xff), (byte) ((x & 0xff00) >> 8), (byte) (y & 0xff), (byte) ((y & 0xff00) >> 8)
-        };
+        byte[] buf = new byte[]{(byte) 0x75, 0x5, 0x1, (byte) (x & 0xff), (byte) ((x & 0xff00) >> 8), (byte) (y & 0xff), (byte) ((y & 0xff00) >> 8)};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

@@ -103,18 +103,13 @@ public class PSASimpleACFragment extends MyFragment {
         }
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.wind_minus, 0xa02}, {R.id.wind_add, 0xa01}, {R.id.con_left_temp_up, 0x401}, {R.id.con_left_temp_down, 0x402}, {R.id.con_right_temp_up, 0x501}, {R.id.con_right_temp_down, 0x502},
+    private final static int[][] CMD_ID = new int[][]{{R.id.wind_minus, 0xa02}, {R.id.wind_add, 0xa01}, {R.id.con_left_temp_up, 0x401}, {R.id.con_left_temp_down, 0x402}, {R.id.con_right_temp_up, 0x501}, {R.id.con_right_temp_down, 0x502},
 
     };
 
-    private final static int[][] CMD_ID1 = new int[][]{
-            {R.id.ac_auto, 0x1}, {R.id.ac, 0x2}, {R.id.ac_max, 0x3},
-            {R.id.wind_horizontal1, 6}, {R.id.wind_up1, 7}, {R.id.wind_down1, 8}, {R.id.max, 0x11}, {R.id.dual, 0xb},
-    };
+    private final static int[][] CMD_ID1 = new int[][]{{R.id.ac_auto, 0x1}, {R.id.ac, 0x2}, {R.id.ac_max, 0x3}, {R.id.wind_horizontal1, 6}, {R.id.wind_up1, 7}, {R.id.wind_down1, 8}, {R.id.max, 0x11}, {R.id.dual, 0xb},};
 
-    private final static int[][] CMD_ID2 = new int[][]{
-            {R.id.power, 0xC},
+    private final static int[][] CMD_ID2 = new int[][]{{R.id.power, 0xC},
 
             {R.id.inner_loop, 0xe}, {R.id.rear, 0x12},
 

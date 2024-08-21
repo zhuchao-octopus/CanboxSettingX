@@ -6,9 +6,15 @@ import android.content.IntentFilter;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +25,12 @@ import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
 import com.common.view.MyPreference2;
 
-public class DaTongTpmsInfoaRaiseFragment extends PreferenceFragment implements OnPreferenceClickListener {
+public class DaTongTpmsInfoaRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -5,7 +5,7 @@
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingEnd="?android:attr/scrollbarSize" >
+    android:paddingEnd="?android:attr/scrollbarSize">
 
     <ImageView
         android:id="@+android:id/icon"
@@ -20,7 +20,7 @@
         android:layout_marginEnd="6dip"
         android:layout_marginStart="15dip"
         android:layout_marginTop="2px"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <TextView
             android:id="@+android:id/title"
@@ -37,15 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
-            </LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressbar_value"

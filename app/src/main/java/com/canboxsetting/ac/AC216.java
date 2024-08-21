@@ -108,8 +108,7 @@ public class AC216 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.off, 0x01}, {R.id.ac, 0x02}, {R.id.ac_auto, 0x04},
+    private final static int[][] CMD_ID = new int[][]{{R.id.off, 0x01}, {R.id.ac, 0x02}, {R.id.ac_auto, 0x04},
 
             {R.id.max, 5}, {R.id.rear, 6}, {R.id.inner_loop, 0x07},
 

@@ -158,14 +158,13 @@
         android:key="mitsubishi_settings_26"
         android:persistent="false"
         android:title="@string/mitsubishi_settings_26" />
-    
-        <PreferenceScreen
+
+    <PreferenceScreen
         android:key="mitsubishi_settings_0"
         android:persistent="false"
         android:title="@string/mitsubishi_settings_0" />
-    
-        
-        
+
+
     <ListPreference
         android:entries="@array/car_type_cmd_mitsubishi"
         android:entryValues="@array/car_type_cmd_values"

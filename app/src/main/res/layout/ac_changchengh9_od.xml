@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include
         android:id="@+id/ac_layout_rear"
@@ -20,7 +20,7 @@
         android:layout_weight="3"
         android:background="@drawable/air_back2"
         android:orientation="vertical"
-        android:padding="2px" >
+        android:padding="2px">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="1.0dip"
             android:layout_weight="0.8"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/max"
@@ -65,8 +65,7 @@
                 style="@style/AirButtonStyle1"
                 android:gravity="center"
                 android:text="@string/gwm_zone"
-                android:textSize="24px" >
-            </TextView>
+                android:textSize="24px"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -76,13 +75,13 @@
             android:layout_marginStart="1.0dip"
             android:layout_marginTop="1.0dip"
             android:layout_weight="2"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/con_left_temp_up"
@@ -121,14 +120,14 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="4.0"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="0px"
                     android:layout_marginTop="0dip"
                     android:layout_weight="1"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="0px"
@@ -136,7 +135,7 @@
                         android:layout_marginTop="0dip"
                         android:layout_weight="4.2"
                         android:gravity="center"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/wind_minus"
@@ -148,7 +147,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="4"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@id/wind_rate_1"
@@ -156,8 +155,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_2"
@@ -165,8 +163,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_3"
@@ -174,8 +171,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_4"
@@ -183,8 +179,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_5"
@@ -192,8 +187,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_6"
@@ -201,8 +195,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_7"
@@ -210,8 +203,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind" >
-                            </ImageView>
+                                android:src="@drawable/air_wind"></ImageView>
                         </LinearLayout>
 
                         <ImageView
@@ -227,8 +219,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="1.0dip"
                     android:layout_weight="0"
-                    android:orientation="horizontal" >
-                </LinearLayout>
+                    android:orientation="horizontal"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -236,7 +227,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="1.0dip"
                     android:layout_weight="1.0"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <ImageButton
                         android:id="@id/left_seat_refrigeration"
@@ -281,7 +272,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="1.0dip"
                 android:layout_weight="1.5"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/con_right_temp_up"
@@ -321,8 +312,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0px"
         android:layout_weight="0"
-        android:orientation="horizontal" >
-    </LinearLayout>
+        android:orientation="horizontal"></LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -331,7 +321,7 @@
         android:layout_marginTop="1.0dip"
         android:layout_weight="1"
         android:background="@drawable/air_control_bottom_bg"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/power"
@@ -370,8 +360,7 @@
             style="@style/AirButtonStyle1"
             android:gravity="center"
             android:text="@string/air_rear"
-            android:textSize="24px" >
-        </TextView>
+            android:textSize="24px"></TextView>
     </LinearLayout>
 
 </LinearLayout>

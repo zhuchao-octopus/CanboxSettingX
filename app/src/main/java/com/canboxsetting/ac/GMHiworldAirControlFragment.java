@@ -105,8 +105,7 @@ public class GMHiworldAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x01}, {R.id.ac, 0x02}, {R.id.ac_auto, 0x04}, {R.id.inner_loop, 0x07},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x01}, {R.id.ac, 0x02}, {R.id.ac_auto, 0x04}, {R.id.inner_loop, 0x07},
 
             {R.id.sync, 0x0f},
             //			{ R.id.max, 0xff05 },

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/curfuel" >
+    <PreferenceScreen android:title="@string/curfuel">
         <com.common.view.MyPreference
             android:key="instant"
             android:persistent="false"
@@ -28,7 +28,7 @@
             android:persistent="false"
             android:title="@string/driving_mileage" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/historyfuel" >
+    <PreferenceScreen android:title="@string/historyfuel">
 
         <!-- <com.common.view.MyPreference -->
         <!-- android:key="averagefuel" -->

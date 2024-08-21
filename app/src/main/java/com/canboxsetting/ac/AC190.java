@@ -107,9 +107,7 @@ public class AC190 extends MyFragment {
         }
     }
 
-    byte[] AirBuf = new byte[]{
-            (byte) 0xc7, 0x6, 0, 0, 0, 0, 0, 0
-    };
+    byte[] AirBuf = new byte[]{(byte) 0xc7, 0x6, 0, 0, 0, 0, 0, 0};
 
     private void sendKeyEx(int key) {
         AirBuf[2] = (byte) ((key & 0xff) >> 0);
@@ -135,8 +133,7 @@ public class AC190 extends MyFragment {
 
             //		{ R.id.wind_minus, 0x1d },
             //		{ R.id.wind_add, 0x1c },
-            {R.id.con_left_temp_up, 0x2000000}, {R.id.con_left_temp_down, 0x1000000},
-    };
+            {R.id.con_left_temp_up, 0x2000000}, {R.id.con_left_temp_down, 0x1000000},};
 
     private void sendCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {

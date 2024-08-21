@@ -11,22 +11,22 @@
         android:persistent="false"
         android:title="@string/driving_range" />
 
-       <com.common.view.MyPreference
-            android:key="tripA_average_fuel_consumption"
-            android:persistent="false"
-            android:title="@string/tripA_average_fuel_consumption" />
-        <com.common.view.MyPreference
-            android:key="tripA_cumulative_mileage"
-            android:persistent="false"
-            android:title="@string/tripA_cumulative_mileage" />
+    <com.common.view.MyPreference
+        android:key="tripA_average_fuel_consumption"
+        android:persistent="false"
+        android:title="@string/tripA_average_fuel_consumption" />
+    <com.common.view.MyPreference
+        android:key="tripA_cumulative_mileage"
+        android:persistent="false"
+        android:title="@string/tripA_cumulative_mileage" />
 
-        <com.common.view.MyPreference
-            android:key="tripB_average_fuel_consumption"
-            android:persistent="false"
-            android:title="@string/tripB_average_fuel_consumption" />
-        <com.common.view.MyPreference
-            android:key="tripB_cumulative_mileage"
-            android:persistent="false"
-            android:title="@string/tripB_cumulative_mileage" />
+    <com.common.view.MyPreference
+        android:key="tripB_average_fuel_consumption"
+        android:persistent="false"
+        android:title="@string/tripB_average_fuel_consumption" />
+    <com.common.view.MyPreference
+        android:key="tripB_cumulative_mileage"
+        android:persistent="false"
+        android:title="@string/tripB_cumulative_mileage" />
 
 </PreferenceScreen>

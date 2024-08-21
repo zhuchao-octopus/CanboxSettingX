@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:vehicle="http://schemas.android.com/apk/res-auto"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <SwitchPreference
         android:key="seat_courtesy"
@@ -62,10 +62,10 @@
         android:key="ambient_lighting_color"
         android:persistent="false"
         android:title="@string/ambient_lighting_color" />
-    
+
     <PreferenceCategory
         android:key="original_car_sound_source"
-        android:title="@string/original_car_sound_source" >
+        android:title="@string/original_car_sound_source">
         <ListPreference
             android:entries="@array/scbs_entries"
             android:entryValues="@array/two_values"

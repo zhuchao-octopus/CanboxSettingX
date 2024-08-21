@@ -128,9 +128,7 @@ public class Accord7ACDaoJunFragment extends MyFragment {
                 if ((CMD_ID[i][1] & 0xff00) == 0) {
                     sendKey((CMD_ID[i][1] & 0xff));
                 } else {
-                    byte[] buf = new byte[]{
-                            (byte) 0xa8, 0x2, (byte) (CMD_ID[i][1] & 0xff), (byte) 1
-                    };
+                    byte[] buf = new byte[]{(byte) 0xa8, 0x2, (byte) (CMD_ID[i][1] & 0xff), (byte) 1};
                     BroadcastUtil.sendCanboxInfo(getActivity(), buf);
                     Util.doSleep(200);
                     buf[3] = 0;

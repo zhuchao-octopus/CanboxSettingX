@@ -1,66 +1,30 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class FiatEGEARaiseSettingFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class FiatEGEARaiseSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
 
     private int mType = 0;
@@ -71,13 +35,7 @@ public class FiatEGEARaiseSettingFragment extends PreferenceFragment implements 
 
     private static final Node[] NODES = {
 
-            new Node("fulecons", 0x80, 0x40, 0x1, 0x0), new Node("range", 0x80, 0x40, 0x2, 0x0), new Node("temperature", 0x80, 0x40, 0x3, 0x0), new Node("metric", 0x80, 0x40, 0x4, 0x0),
-            new Node("running_lights", 0x80, 0x40, 0x10, 0x0), new Node("turn_lights_set", 0x80, 0x40, 0x11, 0x0), new Node("headlights_off", 0x80, 0x40, 0x12, 0x0),
-            new Node("lights_flash", 0x80, 0x40, 0x13, 0x0), new Node("front_light", 0x80, 0x40, 0x14, 0x0), new Node("driving_auto", 0x80, 0x40, 0x20, 0x0),
-            new Node("parksense", 0x80, 0x40, 0x30, 0x0), new Node("b_parksense", 0x80, 0x40, 0x31, 0x0), new Node("brake_control", 0x80, 0x40, 0x32, 0x0),
-            new Node("brake_control_sensitivity", 0x80, 0x40, 0x33, 0x0), new Node("rear_view_camera_delay", 0x80, 0x40, 0x34, 0x0), new Node("parkView", 0x80, 0x40, 0x35, 0x0),
-            new Node("wipers_induction", 0x80, 0x40, 0x36, 0x0), new Node("dis_trip_b", 0x80, 0x40, 0xF0, 0x0), new Node("trip_b", 0x80, 0x40, 0xF1, 0x0), new Node("trip_a", 0x80, 0x40, 0xF2, 0x0),
-            new Node("buzzer", 0x80, 0x40, 0xF3, 0x0), new Node("car_type", 0x80, 0x40, 0xF4, 0x0),
+            new Node("fulecons", 0x80, 0x40, 0x1, 0x0), new Node("range", 0x80, 0x40, 0x2, 0x0), new Node("temperature", 0x80, 0x40, 0x3, 0x0), new Node("metric", 0x80, 0x40, 0x4, 0x0), new Node("running_lights", 0x80, 0x40, 0x10, 0x0), new Node("turn_lights_set", 0x80, 0x40, 0x11, 0x0), new Node("headlights_off", 0x80, 0x40, 0x12, 0x0), new Node("lights_flash", 0x80, 0x40, 0x13, 0x0), new Node("front_light", 0x80, 0x40, 0x14, 0x0), new Node("driving_auto", 0x80, 0x40, 0x20, 0x0), new Node("parksense", 0x80, 0x40, 0x30, 0x0), new Node("b_parksense", 0x80, 0x40, 0x31, 0x0), new Node("brake_control", 0x80, 0x40, 0x32, 0x0), new Node("brake_control_sensitivity", 0x80, 0x40, 0x33, 0x0), new Node("rear_view_camera_delay", 0x80, 0x40, 0x34, 0x0), new Node("parkView", 0x80, 0x40, 0x35, 0x0), new Node("wipers_induction", 0x80, 0x40, 0x36, 0x0), new Node("dis_trip_b", 0x80, 0x40, 0xF0, 0x0), new Node("trip_b", 0x80, 0x40, 0xF1, 0x0), new Node("trip_a", 0x80, 0x40, 0xF2, 0x0), new Node("buzzer", 0x80, 0x40, 0xF3, 0x0), new Node("car_type", 0x80, 0x40, 0xF4, 0x0),
 
     };
 
@@ -101,6 +59,11 @@ public class FiatEGEARaiseSettingFragment extends PreferenceFragment implements 
                 }
             }
         }
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     private boolean mPaused = true;

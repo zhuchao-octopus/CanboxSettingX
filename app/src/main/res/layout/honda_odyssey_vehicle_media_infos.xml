@@ -10,20 +10,20 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="0.0dip"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="60px"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingLeft="20px" >
+                android:paddingLeft="20px">
 
                 <ImageView
                     android:id="@+id/bt"
@@ -56,7 +56,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingRight="20px" >
+                android:paddingRight="20px">
 
                 <TextView
                     style="@style/AirButtonStyle1"
@@ -82,14 +82,14 @@
             android:layout_height="0px"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_marginTop="0.0dip"
                 android:layout_weight="1.5"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <com.common.view.MarqueeTextView
                     android:id="@+id/cmd_id_menu_item"
@@ -130,7 +130,7 @@
                 android:layout_marginTop="0.0dip"
                 android:layout_weight="1"
                 android:background="@drawable/air_back2"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/AirButtonStyle1"
@@ -144,7 +144,7 @@
                     android:layout_height="0px"
                     android:layout_marginTop="0.0dip"
                     android:layout_weight="3"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/st"
@@ -185,7 +185,7 @@
                 android:layout_marginTop="0.0dip"
                 android:layout_weight="1"
                 android:background="@drawable/air_back2"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/AirButtonStyle1"
@@ -199,7 +199,7 @@
                     android:layout_height="0px"
                     android:layout_marginTop="0.0dip"
                     android:layout_weight="3"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/cd_play_status"
@@ -218,7 +218,7 @@
                 android:layout_marginTop="0.0dip"
                 android:layout_weight="1"
                 android:background="@drawable/air_back2"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/AirButtonStyle1"
@@ -232,7 +232,7 @@
                     android:layout_height="0px"
                     android:layout_marginTop="0.0dip"
                     android:layout_weight="3"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/usb_status"
@@ -259,7 +259,7 @@
             android:layout_width="match_parent"
             android:layout_height="90px"
             android:layout_gravity="center"
-            android:layout_marginTop="5px" >
+            android:layout_marginTop="5px">
 
             <TextView
                 android:layout_width="0px"

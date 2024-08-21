@@ -107,9 +107,7 @@ public class LuFengACRaise extends MyFragment {
         }
     }
 
-    byte[] AirBuf = new byte[]{
-            (byte) 0x82, 0x5, 0, 0, 0, 0, 0
-    };
+    byte[] AirBuf = new byte[]{(byte) 0x82, 0x5, 0, 0, 0, 0, 0};
 
     private void sendKeyEx(int key) {
         AirBuf[2] = (byte) ((key & 0xff) >> 0);

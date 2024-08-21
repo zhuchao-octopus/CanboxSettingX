@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:persistent="false" >
+    android:persistent="false">
 
     <ListPreference
         android:entries="@array/top_light_delayed_time_entries"
@@ -87,31 +87,31 @@
         android:persistent="false"
         android:title="@string/gwm_automatic_emergency_braking_system" />
 
-    
+
     <PreferenceScreen
         android:entries="@array/three_values"
         android:entryValues="@array/three_values"
         android:key="driving_buttocks_massage"
         android:title="@string/driving_buttocks_massage" />
-    
-    
+
+
     <PreferenceScreen
         android:entries="@array/three_values"
         android:entryValues="@array/three_values"
         android:key="copilot_buttocks_massage"
         android:title="@string/copilot_buttocks_massage" />
-    
+
     <PreferenceScreen
         android:entries="@array/three_values"
         android:entryValues="@array/three_values"
         android:key="driving_waist_massage"
         android:title="@string/driving_waist_massage" />
-    
+
     <PreferenceScreen
         android:entries="@array/three_values"
         android:entryValues="@array/three_values"
         android:key="side_drive_massage"
         android:title="@string/side_drive_massage" />
-    
-    
+
+
 </PreferenceScreen>

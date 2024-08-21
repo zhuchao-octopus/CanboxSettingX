@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <include layout="@layout/rx330_cd_player" />
 
     <RelativeLayout
         android:id="@+id/dvd"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <include layout="@layout/aux_player" />
 
@@ -16,13 +16,13 @@
             android:id="@+id/dvd_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0px"
                 android:layout_weight="5"
-                android:gravity="right|center_vertical" >
+                android:gravity="right|center_vertical">
 
                 <include layout="@layout/dvd_keyboard" />
 
@@ -34,7 +34,7 @@
                     android:orientation="vertical"
                     android:paddingLeft="20px"
                     android:visibility="gone"
-                    android:paddingTop="70px" >
+                    android:paddingTop="70px">
 
                     <TextView
                         android:id="@+id/dvd_lang"
@@ -77,12 +77,12 @@
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:background="@drawable/radio_bottom_bg"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center" >
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/dvd_pre"

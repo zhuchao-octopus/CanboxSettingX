@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -10,7 +10,7 @@
         android:layout_weight="4"
         android:background="#3b3b3b"
         android:orientation="horizontal"
-        android:paddingTop="10px" >
+        android:paddingTop="10px">
 
         <LinearLayout
             android:id="@+id/other"
@@ -18,13 +18,13 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/title"
@@ -41,7 +41,7 @@
                 android:layout_height="0px"
                 android:layout_weight="0.4"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/num"
@@ -81,7 +81,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
-            android:visibility="visible" >
+            android:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/layout_radio_list"
@@ -89,7 +89,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="5px" >
+                android:padding="5px">
 
                 <ListView
                     android:id="@id/liststations"
@@ -109,7 +109,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -119,7 +119,7 @@
                     android:orientation="horizontal"
                     android:paddingLeft="40px"
                     android:paddingRight="40px"
-                    android:visibility="invisible" >
+                    android:visibility="invisible">
 
                     <Button
                         android:id="@id/stations"
@@ -166,7 +166,7 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="40px"
-                    android:paddingRight="40px" >
+                    android:paddingRight="40px">
 
                     <TextView
                         android:id="@+id/status"
@@ -199,7 +199,7 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="40px"
-                    android:paddingRight="40px" >
+                    android:paddingRight="40px">
 
                     <ImageView
                         android:id="@+id/radio_step_up_button"
@@ -218,7 +218,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         android:gravity="center"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/freq_baud"
@@ -271,8 +271,7 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="40px"
-                    android:paddingRight="40px" >
-                </LinearLayout>
+                    android:paddingRight="40px"></LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -282,7 +281,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0px"
         android:layout_weight="0.9"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/radio_function_button_scan"

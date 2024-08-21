@@ -119,8 +119,7 @@ public class AC246 extends MyFragment {
 
             {R.id.con_left_temp_up, 0xc}, {R.id.con_left_temp_down, 0xd},
 
-            {R.id.wind_up_down, 0x13}, {R.id.rear_temp_hot, 0x29}, {R.id.rear_temp_cold, 0x2a},
-    };
+            {R.id.wind_up_down, 0x13}, {R.id.rear_temp_hot, 0x29}, {R.id.rear_temp_cold, 0x2a},};
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {

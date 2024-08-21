@@ -78,8 +78,7 @@ public class PSARaiseACFragment extends MyFragment {
         return mMainView;
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.wind_minus, 0xa02}, {R.id.wind_add, 0xa01}, {R.id.con_left_temp_up, 0x401}, {R.id.con_left_temp_down, 0x402}, {R.id.con_right_temp_up, 0x501}, {R.id.con_right_temp_down, 0x502},
+    private final static int[][] CMD_ID = new int[][]{{R.id.wind_minus, 0xa02}, {R.id.wind_add, 0xa01}, {R.id.con_left_temp_up, 0x401}, {R.id.con_left_temp_down, 0x402}, {R.id.con_right_temp_up, 0x501}, {R.id.con_right_temp_down, 0x502},
 
     };
 
@@ -91,8 +90,7 @@ public class PSARaiseACFragment extends MyFragment {
 
     };
 
-    private final static int[][] CMD_ID2 = new int[][]{
-            {R.id.power, 0xC},
+    private final static int[][] CMD_ID2 = new int[][]{{R.id.power, 0xC},
 
             {R.id.inner_loop, 0xe}, {R.id.rear, 0x12},
 

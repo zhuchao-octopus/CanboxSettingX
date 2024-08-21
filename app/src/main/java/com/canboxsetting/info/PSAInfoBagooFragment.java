@@ -1,79 +1,36 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.Intent;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
 import android.text.InputType;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class PSAInfoBagooFragment extends Fragment {
+public class PSAInfoBagooFragment extends PreferenceFragmentCompat {
     private static final String TAG = "GMInfoSimpleFragment";
 
     @Override
@@ -81,6 +38,11 @@ public class PSAInfoBagooFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // addPreferencesFromResource(R.xml.gm_simple_info);
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -135,9 +97,7 @@ public class PSAInfoBagooFragment extends Fragment {
                     int value = Integer.valueOf(str);
                     if (value >= 0 && value <= 3000) {
 
-                        byte[] buf = new byte[]{
-                                (byte) 0x82, 0x06, 0, 0, 0, (byte) 0x80, (byte) ((value & 0xff00) >> 8), (byte) ((value & 0xff))
-                        };
+                        byte[] buf = new byte[]{(byte) 0x82, 0x06, 0, 0, 0, (byte) 0x80, (byte) ((value & 0xff00) >> 8), (byte) ((value & 0xff))};
                         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
                     } else {

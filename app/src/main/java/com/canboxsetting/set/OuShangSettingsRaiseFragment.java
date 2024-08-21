@@ -1,66 +1,29 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class OuShangSettingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
 
     private int mType = 0;
@@ -71,34 +34,15 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragment implements 
 
     private static final Node[] NODES = {
 
-            new Node("default_all", 0x83, 0x52, 0x00), new Node("rear_view", 0x83, 0x52, 0x01), new Node("wipers", 0x83, 0x52, 0x02), new Node("remote_unlock", 0x83, 0x52, 0x03),
-            new Node("driving_auto", 0x83, 0x52, 0x04), new Node("oushang_1", 0x83, 0x52, 0x05), new Node("oushang_2", 0x83, 0x52, 0x06), new Node("oushang_3", 0x83, 0x52, 0x07),
-            new Node("oushang_4", 0x83, 0x52, 0x08), new Node("oushang_5", 0x83, 0x52, 0x09), new Node("headlight_delay", 0x83, 0x52, 0x0a), new Node("turn_signal", 0x83, 0x52, 0x0b),
-            new Node("oushang_6", 0x83, 0x52, 0x0d), new Node("information_tone", 0x83, 0x52, 0x0e), new Node("warning_tone", 0x83, 0x52, 0x0f), new Node("parkunlock", 0x83, 0x52, 0x10),
-            new Node("oushang_7", 0x83, 0x52, 0x11), new Node("oushang_8", 0x83, 0x52, 0x12), new Node("oushang_9", 0x83, 0x52, 0x13), new Node("oushang_10", 0x83, 0x52, 0x14),
-            new Node("oushang_11", 0x83, 0x52, 0x15), new Node("oushang_12", 0x83, 0x52, 0x16),
+            new Node("default_all", 0x83, 0x52, 0x00), new Node("rear_view", 0x83, 0x52, 0x01), new Node("wipers", 0x83, 0x52, 0x02), new Node("remote_unlock", 0x83, 0x52, 0x03), new Node("driving_auto", 0x83, 0x52, 0x04), new Node("oushang_1", 0x83, 0x52, 0x05), new Node("oushang_2", 0x83, 0x52, 0x06), new Node("oushang_3", 0x83, 0x52, 0x07), new Node("oushang_4", 0x83, 0x52, 0x08), new Node("oushang_5", 0x83, 0x52, 0x09), new Node("headlight_delay", 0x83, 0x52, 0x0a), new Node("turn_signal", 0x83, 0x52, 0x0b), new Node("oushang_6", 0x83, 0x52, 0x0d), new Node("information_tone", 0x83, 0x52, 0x0e), new Node("warning_tone", 0x83, 0x52, 0x0f), new Node("parkunlock", 0x83, 0x52, 0x10), new Node("oushang_7", 0x83, 0x52, 0x11), new Node("oushang_8", 0x83, 0x52, 0x12), new Node("oushang_9", 0x83, 0x52, 0x13), new Node("oushang_10", 0x83, 0x52, 0x14), new Node("oushang_11", 0x83, 0x52, 0x15), new Node("oushang_12", 0x83, 0x52, 0x16),
 
 
-            new Node("oushang_17", 0x83, 0x52, 0x17), new Node("oushang_18", 0x83, 0x52, 0x18), new Node("oushang_19", 0x83, 0x52, 0x19), new Node("oushang_1a", 0x83, 0x52, 0x1a),
-            new Node("oushang_1b", 0x83, 0x52, 0x1b), new Node("oushang_1c", 0x83, 0x52, 0x1c), new Node("oushang_1d", 0x83, 0x52, 0x1d), new Node("oushang_1e", 0x83, 0x52, 0x1e),
-            new Node("oushang_1f", 0x83, 0x52, 0x1f), new Node("oushang_20", 0x83, 0x52, 0x20), new Node("oushang_21", 0x83, 0x52, 0x21), new Node("oushang_22", 0x83, 0x52, 0x22),
-            new Node("oushang_23", 0x83, 0x52, 0x23), new Node("oushang_24", 0x83, 0x52, 0x24), new Node("oushang_25", 0x83, 0x52, 0x25), new Node("oushang_26", 0x83, 0x52, 0x26),
-            new Node("oushang_27", 0x83, 0x52, 0x27), new Node("oushang_28", 0x83, 0x52, 0x28), new Node("oushang_29", 0x83, 0x52, 0x29), new Node("oushang_2a", 0x83, 0x52, 0x2a),
-            new Node("oushang_2b", 0x83, 0x52, 0x2b), new Node("oushang_2c", 0x83, 0x52, 0x2c), new Node("oushang_2d", 0x83, 0x52, 0x2d), new Node("oushang_2e", 0x83, 0x52, 0x2e),
-            new Node("oushang_2f", 0x83, 0x52, 0x2f), new Node("oushang_30", 0x83, 0x52, 0x30), new Node("oushang_31", 0x83, 0x52, 0x31), new Node("oushang_32", 0x83, 0x52, 0x32),
-            new Node("oushang_33", 0x83, 0x52, 0x33), new Node("oushang_34", 0x83, 0x52, 0x34), new Node("oushang_35", 0x83, 0x52, 0x35), new Node("oushang_36", 0x83, 0x52, 0x36),
-            new Node("oushang_37", 0x83, 0x52, 0x37), new Node("oushang_38", 0x83, 0x52, 0x38), new Node("oushang_39", 0x83, 0x52, 0x39), new Node("oushang_3a", 0x83, 0x52, 0x3a),
-            new Node("oushang_3b", 0x83, 0x52, 0x3b), new Node("oushang_3c", 0x83, 0x52, 0x3c), new Node("oushang_3d", 0x83, 0x52, 0x3d), new Node("oushang_3e", 0x83, 0x52, 0x3e),
-            new Node("oushang_3f", 0x83, 0x52, 0x3f), new Node("oushang_40", 0x83, 0x52, 0x40), new Node("oushang_41", 0x83, 0x52, 0x41), new Node("oushang_42", 0x83, 0x52, 0x42),
-            new Node("oushang_43", 0x83, 0x52, 0x43), new Node("oushang_44", 0x83, 0x52, 0x44), new Node("oushang_45", 0x83, 0x52, 0x45), new Node("oushang_46", 0x83, 0x52, 0x46),
-            new Node("oushang_47", 0x83, 0x52, 0x47), new Node("oushang_48", 0x83, 0x52, 0x48), new Node("oushang_49", 0x83, 0x52, 0x49),
+            new Node("oushang_17", 0x83, 0x52, 0x17), new Node("oushang_18", 0x83, 0x52, 0x18), new Node("oushang_19", 0x83, 0x52, 0x19), new Node("oushang_1a", 0x83, 0x52, 0x1a), new Node("oushang_1b", 0x83, 0x52, 0x1b), new Node("oushang_1c", 0x83, 0x52, 0x1c), new Node("oushang_1d", 0x83, 0x52, 0x1d), new Node("oushang_1e", 0x83, 0x52, 0x1e), new Node("oushang_1f", 0x83, 0x52, 0x1f), new Node("oushang_20", 0x83, 0x52, 0x20), new Node("oushang_21", 0x83, 0x52, 0x21), new Node("oushang_22", 0x83, 0x52, 0x22), new Node("oushang_23", 0x83, 0x52, 0x23), new Node("oushang_24", 0x83, 0x52, 0x24), new Node("oushang_25", 0x83, 0x52, 0x25), new Node("oushang_26", 0x83, 0x52, 0x26), new Node("oushang_27", 0x83, 0x52, 0x27), new Node("oushang_28", 0x83, 0x52, 0x28), new Node("oushang_29", 0x83, 0x52, 0x29), new Node("oushang_2a", 0x83, 0x52, 0x2a), new Node("oushang_2b", 0x83, 0x52, 0x2b), new Node("oushang_2c", 0x83, 0x52, 0x2c), new Node("oushang_2d", 0x83, 0x52, 0x2d), new Node("oushang_2e", 0x83, 0x52, 0x2e), new Node("oushang_2f", 0x83, 0x52, 0x2f), new Node("oushang_30", 0x83, 0x52, 0x30), new Node("oushang_31", 0x83, 0x52, 0x31), new Node("oushang_32", 0x83, 0x52, 0x32), new Node("oushang_33", 0x83, 0x52, 0x33), new Node("oushang_34", 0x83, 0x52, 0x34), new Node("oushang_35", 0x83, 0x52, 0x35), new Node("oushang_36", 0x83, 0x52, 0x36), new Node("oushang_37", 0x83, 0x52, 0x37), new Node("oushang_38", 0x83, 0x52, 0x38), new Node("oushang_39", 0x83, 0x52, 0x39), new Node("oushang_3a", 0x83, 0x52, 0x3a), new Node("oushang_3b", 0x83, 0x52, 0x3b), new Node("oushang_3c", 0x83, 0x52, 0x3c), new Node("oushang_3d", 0x83, 0x52, 0x3d), new Node("oushang_3e", 0x83, 0x52, 0x3e), new Node("oushang_3f", 0x83, 0x52, 0x3f), new Node("oushang_40", 0x83, 0x52, 0x40), new Node("oushang_41", 0x83, 0x52, 0x41), new Node("oushang_42", 0x83, 0x52, 0x42), new Node("oushang_43", 0x83, 0x52, 0x43), new Node("oushang_44", 0x83, 0x52, 0x44), new Node("oushang_45", 0x83, 0x52, 0x45), new Node("oushang_46", 0x83, 0x52, 0x46), new Node("oushang_47", 0x83, 0x52, 0x47), new Node("oushang_48", 0x83, 0x52, 0x48), new Node("oushang_49", 0x83, 0x52, 0x49),
 
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x5201, 0x5202, 0x5203, 0x5204, 0x5205, 0x5206, 0x5207, 0x5208, 0x5209, 0x520a, 0x5201, 0x5201, 0x5201, 0x5201,
-    };
+    private final static int[] INIT_CMDS = {0x5201, 0x5202, 0x5203, 0x5204, 0x5205, 0x5206, 0x5207, 0x5208, 0x5209, 0x520a, 0x5201, 0x5201, 0x5201, 0x5201,};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -118,6 +62,11 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragment implements 
                 }
             }
         }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

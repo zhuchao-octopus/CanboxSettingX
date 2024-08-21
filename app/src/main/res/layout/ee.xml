@@ -3,19 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/toyota_info_height"
     android:background="@drawable/toyaota_car_bk"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
-        </RelativeLayout>
+            android:orientation="horizontal"></RelativeLayout>
 
         <TextView
             android:id="@+id/toyota_car_info1"
@@ -23,8 +22,7 @@
             android:layout_height="match_parent"
             android:background="#ff19182a"
             android:gravity="center"
-            android:orientation="vertical" >
-        </TextView>
+            android:orientation="vertical"></TextView>
     </RelativeLayout>
 
     <LinearLayout
@@ -32,21 +30,21 @@
         android:layout_height="match_parent"
         android:layout_weight="1.5"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/toyota_car_info2"
@@ -54,8 +52,7 @@
                     android:layout_height="match_parent"
                     android:background="#ff19182a"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </TextView>
+                    android:orientation="vertical"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -63,7 +60,7 @@
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/toyota_car_info3"
@@ -71,8 +68,7 @@
                     android:layout_height="match_parent"
                     android:background="#ff19182a"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </TextView>
+                    android:orientation="vertical"></TextView>
             </LinearLayout>
         </LinearLayout>
 
@@ -81,14 +77,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/toyota_car_info4"
@@ -96,8 +92,7 @@
                     android:layout_height="match_parent"
                     android:background="#ff19182a"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </TextView>
+                    android:orientation="vertical"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -105,7 +100,7 @@
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/toyota_car_info5"
@@ -113,8 +108,7 @@
                     android:layout_height="match_parent"
                     android:background="#ff19182a"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </TextView>
+                    android:orientation="vertical"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -122,7 +116,7 @@
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/toyota_car_info6"
@@ -130,8 +124,7 @@
                     android:layout_height="match_parent"
                     android:background="#ff19182a"
                     android:gravity="center"
-                    android:orientation="vertical" >
-                </TextView>
+                    android:orientation="vertical"></TextView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

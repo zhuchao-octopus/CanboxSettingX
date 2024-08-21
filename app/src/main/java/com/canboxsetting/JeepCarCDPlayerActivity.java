@@ -16,9 +16,18 @@
 
 package com.canboxsetting;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
 
 import com.canboxsetting.cd.GMODCarCDFragment;
 import com.canboxsetting.cd.JeepCarCDFragment;
@@ -27,44 +36,14 @@ import com.canboxsetting.cd.MazdaBinarytekCarCDFragment;
 import com.canboxsetting.cd.MazdaSimpleCarCDFragment;
 import com.canboxsetting.cd.RX330HZCarCDFragment;
 import com.car.ui.GlobalDef;
-import com.common.adapter.MyListViewAdapterCD;
-import com.common.util.AppConfig;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
 /**
  * This activity plays a video from a specified URI.
  */
-public class JeepCarCDPlayerActivity extends Activity {
+public class JeepCarCDPlayerActivity extends AppCompatActivity {
     private static final String TAG = "HondaAirControl";
 
     private FragmentManager mFragmentManager;
@@ -76,7 +55,7 @@ public class JeepCarCDPlayerActivity extends Activity {
         super.onCreate(icicle);
 
         setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         String value = null;// AppConfig.getCanboxSetting();//
         // MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
@@ -125,8 +104,7 @@ public class JeepCarCDPlayerActivity extends Activity {
                         }
                     }
                 }
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
         }
 
@@ -135,10 +113,8 @@ public class JeepCarCDPlayerActivity extends Activity {
             if (c != null) {
                 try {
                     mSetting = (MyFragment) c.newInstance();
-                } catch (Exception e) {
-
+                } catch (Exception ignored) {
                 }
-
             }
             if (mSetting == null) {
                 finish();

@@ -1657,7 +1657,7 @@
         <item>宝石蓝</item>
         <item>深蓝色</item>
         <item>粉色</item>
-    </string-array>    
+    </string-array>
 
 
     <string-array name="array_speaker_volue">
@@ -1672,7 +1672,7 @@
         <item>胎压重置成功</item>
         <item>胎压重置进行中</item>
     </string-array>
-    <string-array name="tpms_waring_msg">        
+    <string-array name="tpms_waring_msg">
         <item>高压警告</item>
         <item>低压警告</item>
         <item>系统故障</item>
@@ -1682,136 +1682,134 @@
         <item>传感器电池电量低</item>
         <item>传感器故障</item>
     </string-array>
-    
-    
-    <string-array name="mazda3_backwindowdefog">        
+
+
+    <string-array name="mazda3_backwindowdefog">
         <item>自动关闭</item>
         <item>连续</item>
     </string-array>
-        <string-array name="mazda3_3">
+    <string-array name="mazda3_3">
         <item>低</item>
         <item>中</item>
         <item>高</item>
         <item>关闭</item>
     </string-array>
-        <string-array name="mazda3_4">
+    <string-array name="mazda3_4">
         <item>类型 1</item>
         <item>类型 2</item>
         <item>关闭</item>
     </string-array>
-    
+
     <string-array name="oushang_1c">
         <item>关闭</item>
         <item>仅识别提示</item>
         <item>仅消失提示</item>
         <item>识别和消失均提示</item>
     </string-array>
-    
+
     <string-array name="oushang_1e">
         <item>高</item>
         <item>标准</item>
         <item>低</item>
     </string-array>
-    
+
     <string-array name="oushang_20">
         <item>高</item>
         <item>标准</item>
-    </string-array> 
-    
-   <string-array name="oushang_21">
+    </string-array>
+
+    <string-array name="oushang_21">
         <item>仅预警</item>
         <item>仅纠偏</item>
         <item>预警 纠偏</item>
         <item>关闭</item>
     </string-array>
-    
+
     <string-array name="oushang_22">
         <item>声音</item>
         <item>振动</item>
         <item>声音 振动</item>
     </string-array>
-    
-    
+
+
     <string-array name="oushang_32">
-        <item>红色</item>    
-        <item>紫色</item>    
-        <item>蓝色</item>    
-        <item>白色</item>    
-        <item>橙色</item>    
-        <item>宝蓝色</item>    
-        <item>绿色</item>    
+        <item>红色</item>
+        <item>紫色</item>
+        <item>蓝色</item>
+        <item>白色</item>
+        <item>橙色</item>
+        <item>宝蓝色</item>
+        <item>绿色</item>
     </string-array>
-    
-        <string-array name="oushang_37">
-        <item>行车期间调暗</item>    
-        <item>行车期间关闭</item> 
+
+    <string-array name="oushang_37">
+        <item>行车期间调暗</item>
+        <item>行车期间关闭</item>
     </string-array>
-            <string-array name="oushang_3a">
-        <item>自动</item>    
-        <item>经典</item> 
-        <item>运动</item> 
-        <item>科技</item> 
+    <string-array name="oushang_3a">
+        <item>自动</item>
+        <item>经典</item>
+        <item>运动</item>
+        <item>科技</item>
     </string-array>
-    
-                       <string-array name="oushang_3f">
-        <item>舒适</item>    
-        <item>运动</item> 
+
+    <string-array name="oushang_3f">
+        <item>舒适</item>
+        <item>运动</item>
         <item>经济</item>
     </string-array>
-    
-                        <string-array name="oushang_40">
-        <item>舒适</item>    
-        <item>运动</item> 
+
+    <string-array name="oushang_40">
+        <item>舒适</item>
+        <item>运动</item>
         <item>轻便</item>
     </string-array>
-    
-                           <string-array name="oushang_41">
-        <item>关闭</item>    
-        <item>透气</item> 
+
+    <string-array name="oushang_41">
+        <item>关闭</item>
+        <item>透气</item>
         <item>打开</item>
     </string-array>
-    
-                               <string-array name="oushang_42">
-        <item>舒适</item>    
-        <item>运动</item> 
+
+    <string-array name="oushang_42">
+        <item>舒适</item>
+        <item>运动</item>
         <item>经济</item>
         <item>自定义</item>
     </string-array>
-    
-      <string-array name="oushang_43">
-        <item>关闭</item>    
-        <item>默认</item> 
+
+    <string-array name="oushang_43">
+        <item>关闭</item>
+        <item>默认</item>
         <item>自定义</item>
     </string-array>
-    
-         
-      <string-array name="season_set">
-        <item>无</item>    
-        <item>夏令时</item> 
+
+
+    <string-array name="season_set">
+        <item>无</item>
+        <item>夏令时</item>
         <item>冬令时</item>
     </string-array>
-    
-          <string-array name="background_lighting_mazda">
+
+    <string-array name="background_lighting_mazda">
         <item>关闭</item>
         <item>昏暗</item>
         <item>中等</item>
         <item>明亮</item>
     </string-array>
-            <string-array name="mazda3_2020_settings_7">
+    <string-array name="mazda3_2020_settings_7">
         <item>关闭</item>
         <item>低</item>
         <item>高</item>
     </string-array>
-    
-            
 
-    
+
     <string-array name="mazda3_2020_settings_d">
         <item>关闭</item>
         <item>视觉</item>
         <item>视觉和听觉</item>
     </string-array>
-    
+
     <string-array name="launage_entries4">
         <item>中文</item>
         <item>英文</item>
@@ -1851,5 +1849,5 @@
         <item>土耳其</item>
         <item>乌克兰</item>
     </string-array>
-    
+
 </resources>

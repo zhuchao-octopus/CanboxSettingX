@@ -1,64 +1,30 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.annotation.Nullable;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set275 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set275 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Set275";
 
     private static final NodePreference[] NODES = {
@@ -75,15 +41,11 @@ public class Set275 extends PreferenceFragment implements Preference.OnPreferenc
             new NodePreference("auto_fold_wing_mirror", 0x8805, 0x6602, 0x80, 0), new NodePreference("reversing_rear_wiper_auxiliary", 0x8806, 0x6602, 0x40, 0),
 
 
-            new NodePreference("air_conditioning_settings_unlock_active_ventilation", 0x8807, 0x6603, 0x80, 0),
-            new NodePreference("air_conditioning_settings_unlock_windows_for_ventilation", 0x8808, 0x6603, 0x20, 0),
-            new NodePreference("air_conditioning_settings_air_purification_system_automatically_opens", 0x8809, 0x6603, 0x10, 0),
+            new NodePreference("air_conditioning_settings_unlock_active_ventilation", 0x8807, 0x6603, 0x80, 0), new NodePreference("air_conditioning_settings_unlock_windows_for_ventilation", 0x8808, 0x6603, 0x20, 0), new NodePreference("air_conditioning_settings_air_purification_system_automatically_opens", 0x8809, 0x6603, 0x10, 0),
 
             new NodePreference("reset_info", 0x880a, 0, 0), new NodePreference("factory_reset_settings", 0x88ff, 0, 0),
 
-            new NodePreference("gwm_precollision_warning_system", 0x880c, 0x6606, 0x1, 0), new NodePreference("forward_collision_sensitivity", 0x880d, 0x6606, 0x2, 0),
-            new NodePreference("oushang_2b", 0x880e, 0x6607, 0x1, 0), new NodePreference("oushang_2c", 0x880f, 0x6607, 0x2, 0), new NodePreference("oushang_2d", 0x8810, 0x6607, 0x4, 0),
-            new NodePreference("oushang_20", 0x8811, 0x6608, 0x1, 0), new NodePreference("oushang_23", 0x8812, 0x6608, 0x2, 0),
+            new NodePreference("gwm_precollision_warning_system", 0x880c, 0x6606, 0x1, 0), new NodePreference("forward_collision_sensitivity", 0x880d, 0x6606, 0x2, 0), new NodePreference("oushang_2b", 0x880e, 0x6607, 0x1, 0), new NodePreference("oushang_2c", 0x880f, 0x6607, 0x2, 0), new NodePreference("oushang_2d", 0x8810, 0x6607, 0x4, 0), new NodePreference("oushang_20", 0x8811, 0x6608, 0x1, 0), new NodePreference("oushang_23", 0x8812, 0x6608, 0x2, 0),
 
 
             new NodePreference("oushang_19", 0x8813, 0x6606, 0x0c, 0, R.array.six_values, R.array.six_values),
@@ -96,9 +58,7 @@ public class Set275 extends PreferenceFragment implements Preference.OnPreferenc
             new NodePreference("renual08", 0x8816, 0x6608, 0x30, 0, R.array.alert_volume_level_entries, R.array.three_high_values),
 
 
-            new NodePreference("rear_warning_rear_end_warning_sound", 0x8817, 0x6607, 0x8, 0), new NodePreference("door_and_window_rain_setting_skylight_setting", 0x8818, 0x6609, 0x1, 0),
-            new NodePreference("air_conditioning_set_air_conditioning_self_drying", 0x8819, 0x660a, 0x1, 0),
-            new NodePreference("oushang_1e", 0x8820, 0x6606, 0x0c, 0, R.array.alert_volume_level_entries, R.array.three_values),
+            new NodePreference("rear_warning_rear_end_warning_sound", 0x8817, 0x6607, 0x8, 0), new NodePreference("door_and_window_rain_setting_skylight_setting", 0x8818, 0x6609, 0x1, 0), new NodePreference("air_conditioning_set_air_conditioning_self_drying", 0x8819, 0x660a, 0x1, 0), new NodePreference("oushang_1e", 0x8820, 0x6606, 0x0c, 0, R.array.alert_volume_level_entries, R.array.three_values),
 
             new NodePreference("rearview_mirror_tilt", 0x8821, 0x6602, 0x20, 0), new NodePreference("gac_settings_seat_pass_in_and_out_conveniently", 0x8822, 0x6602, 0x10, 0),
 
@@ -114,6 +74,11 @@ public class Set275 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

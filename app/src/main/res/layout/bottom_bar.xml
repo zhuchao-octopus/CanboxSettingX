@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#44cccccc"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@id/bottom_bar"
@@ -12,7 +12,7 @@
         android:layout_height="fill_parent"
         android:layout_marginTop="2px"
         android:background="#ff333333"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@id/views"

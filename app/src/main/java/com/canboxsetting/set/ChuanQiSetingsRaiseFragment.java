@@ -1,100 +1,53 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.car.ui.GlobalDef;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceDialog;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class ChuanQiSetingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class ChuanQiSetingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
 
     private static final Node[] NODES = {
 
-            new Node("auto_compressor_status", 0x83, 0x52, 0x2), new Node("auto_cycle_mode", 0x83, 0x52, 0x3), new Node("ac_comfort_setting", 0x83, 0x52, 0x4),
-            new Node("anion_mode", 0x83, 0x52, 0x18), new Node("air_quality_sensor", 0x83, 0x52, 0x25), new Node("air_automatic_mode", 0x83, 0x52, 0x26),
-            new Node("key_unlock_ventilation", 0x83, 0x52, 0x3b), new Node("air_conditioning_set_air_conditioning_self_drying", 0x83, 0x52, 0x3c),
+            new Node("auto_compressor_status", 0x83, 0x52, 0x2), new Node("auto_cycle_mode", 0x83, 0x52, 0x3), new Node("ac_comfort_setting", 0x83, 0x52, 0x4), new Node("anion_mode", 0x83, 0x52, 0x18), new Node("air_quality_sensor", 0x83, 0x52, 0x25), new Node("air_automatic_mode", 0x83, 0x52, 0x26), new Node("key_unlock_ventilation", 0x83, 0x52, 0x3b), new Node("air_conditioning_set_air_conditioning_self_drying", 0x83, 0x52, 0x3c),
             //
 
             new Node("seat_welcome", 0x83, 0x52, 0x19), new Node("auto_seat_recog", 0x83, 0x52, 0x1a), new Node("auto_heat", 0x83, 0x52, 0x5), new Node("fu_auto_heat", 0x83, 0x52, 0x6),
 
             //
 
-            new Node("over_speed_alert", 0x83, 0x52, 0x7, 200, 10), new Node("alart_volume", 0x83, 0x52, 0x8), new Node("power_on_time", 0x83, 0x52, 0x9, 30, 1),
-            new Node("start_time", 0x83, 0x52, 0xa, 30, 1), new Node("turn_mode", 0x83, 0x52, 0xb), new Node("right_side_line_assist", 0x83, 0x52, 0x22),
-            new Node("left_side_line_assist", 0x83, 0x52, 0x23), new Node("luggage_sensor_open", 0x83, 0x52, 0x27), new Node("automatic_wiper", 0x83, 0x52, 0x28),
+            new Node("over_speed_alert", 0x83, 0x52, 0x7, 200, 10), new Node("alart_volume", 0x83, 0x52, 0x8), new Node("power_on_time", 0x83, 0x52, 0x9, 30, 1), new Node("start_time", 0x83, 0x52, 0xa, 30, 1), new Node("turn_mode", 0x83, 0x52, 0xb), new Node("right_side_line_assist", 0x83, 0x52, 0x22), new Node("left_side_line_assist", 0x83, 0x52, 0x23), new Node("luggage_sensor_open", 0x83, 0x52, 0x27), new Node("automatic_wiper", 0x83, 0x52, 0x28),
             //
 
-            new Node("remote_unlock", 0x83, 0x52, 0xc), new Node("speed_lock", 0x83, 0x52, 0xd), new Node("auto_unlock", 0x83, 0x52, 0xe), new Node("remote_control_left_skylight", 0x83, 0x52, 0xf),
-            new Node("front_wiper_maintain", 0x83, 0x52, 0x10), new Node("rear_wiper_auto", 0x83, 0x52, 0x11), new Node("outside_rearview", 0x83, 0x52, 0x1b),
-            new Node("unlock_the_lock_tone", 0x83, 0x52, 0x1c), new Node("intelligent_active_locking", 0x83, 0x52, 0x1d), new Node("intelligent_active_unlocking", 0x83, 0x52, 0x1e),
-            new Node("external_mirror_angle_automatic_adjustment", 0x83, 0x52, 0x1f), new Node("external_mirror_angle_manual_adjustment", 0x83, 0x52, 0x20),
-            new Node("automatically_close_the_window", 0x83, 0x52, 0x35),
+            new Node("remote_unlock", 0x83, 0x52, 0xc), new Node("speed_lock", 0x83, 0x52, 0xd), new Node("auto_unlock", 0x83, 0x52, 0xe), new Node("remote_control_left_skylight", 0x83, 0x52, 0xf), new Node("front_wiper_maintain", 0x83, 0x52, 0x10), new Node("rear_wiper_auto", 0x83, 0x52, 0x11), new Node("outside_rearview", 0x83, 0x52, 0x1b), new Node("unlock_the_lock_tone", 0x83, 0x52, 0x1c), new Node("intelligent_active_locking", 0x83, 0x52, 0x1d), new Node("intelligent_active_unlocking", 0x83, 0x52, 0x1e), new Node("external_mirror_angle_automatic_adjustment", 0x83, 0x52, 0x1f), new Node("external_mirror_angle_manual_adjustment", 0x83, 0x52, 0x20), new Node("automatically_close_the_window", 0x83, 0x52, 0x35),
             //
 
-            new Node("go_home", 0x83, 0x52, 0x12), new Node("foglamp_turn", 0x83, 0x52, 0x13), new Node("daytime_running_lamp", 0x83, 0x52, 0x14),
-            new Node("intelligent_welcome_light", 0x83, 0x52, 0x21), new Node("ambient_light_control", 0x83, 0x52, 0x24), new Node("auto_light_sensitivity", 0x83, 0x52, 0x15),
-            new Node("ambient_light_brightness", 0x83, 0x52, 0x29, 7, 1), new Node("atmosphere_light_color", 0x83, 0x52, 0x2a, 31, 1),
+            new Node("go_home", 0x83, 0x52, 0x12), new Node("foglamp_turn", 0x83, 0x52, 0x13), new Node("daytime_running_lamp", 0x83, 0x52, 0x14), new Node("intelligent_welcome_light", 0x83, 0x52, 0x21), new Node("ambient_light_control", 0x83, 0x52, 0x24), new Node("auto_light_sensitivity", 0x83, 0x52, 0x15), new Node("ambient_light_brightness", 0x83, 0x52, 0x29, 7, 1), new Node("atmosphere_light_color", 0x83, 0x52, 0x2a, 31, 1),
             //
 
-            new Node("factory_reset", 0x83, 0x0, 0x0),
-    };
+            new Node("factory_reset", 0x83, 0x0, 0x0),};
 
 
     private Preference[] mPreferences = new Preference[NODES.length];
@@ -124,6 +77,11 @@ public class ChuanQiSetingsRaiseFragment extends PreferenceFragment implements P
             ((PreferenceScreen) findPreference("airconditioning_setting")).removePreference(findPreference("air_conditioning_set_air_conditioning_self_drying"));
             ((PreferenceScreen) findPreference("accessory")).removePreference(findPreference("automatically_close_the_window"));
         }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

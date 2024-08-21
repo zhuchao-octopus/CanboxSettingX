@@ -8,9 +8,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +31,7 @@ import android.util.Log;
 
 import com.canboxsetting.R;
 
-public class ZhongXingFragment extends PreferenceFragment implements OnPreferenceClickListener {
+public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "ZhongXingFragment";
 
     // PreferenceScreen mTpms;
@@ -42,6 +48,11 @@ public class ZhongXingFragment extends PreferenceFragment implements OnPreferenc
 
     String mCanboxType;
     String mProIndex = null;
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
-	 <PreferenceScreen
+    android:title="@string/controlset">
+    <PreferenceScreen
         android:icon="@drawable/asr"
-        android:title="@string/original_car_setting_information" >
+        android:title="@string/original_car_setting_information">
         <ListPreference
             android:entries="@array/accompany_me_home2_entries"
             android:entryValues="@array/trumpche_num_level_entries"
@@ -11,88 +11,88 @@
             android:persistent="false"
             android:title="@string/str_go_home" />
         <SwitchPreference
-                android:key="driving_auto"
-                android:persistent="false"
-                android:title="@string/driving_auto" />
+            android:key="driving_auto"
+            android:persistent="false"
+            android:title="@string/driving_auto" />
         <SwitchPreference
-                android:key="automatic_emergency_braking"
-                android:persistent="false"
-                android:title="@string/automatic_emergency_braking" />
-         <SwitchPreference
-                android:key="forward_collision_waring"
-                android:persistent="false"
-                android:title="@string/forward_collision_waring" />
-         <SwitchPreference
-                android:key="slope_slow_start"
-                android:persistent="false"
-                android:title="@string/slope_slow_start" />
-         <SwitchPreference
-                android:key="blind_spot_detector"
-                android:persistent="false"
-                android:title="@string/blind_spot_detector" />
-         <SwitchPreference
-                android:key="automatically_close_the_window_when_rains"
-                android:persistent="false"
-                android:title="@string/automatically_close_the_window_when_rains" />
-         <SwitchPreference
-                android:key="automatically_lock_after_leaving_the_car"
-                android:persistent="false"
-                android:title="@string/automatically_lock_after_leaving_the_car" />
-         <SwitchPreference
-                android:key="pm2_5_purification_function"
-                android:persistent="false"
-                android:title="@string/pm2_5_purification_function" />
-         <SwitchPreference
-                android:key="side_view_image_assist"
-                android:persistent="false"
-                android:title="@string/side_view_image_assist" />
-         <SwitchPreference
-                android:key="voice_control_sunroof"
-                android:persistent="false"
-                android:title="@string/voice_control_sunroof" />
-         <SwitchPreference
-                android:key="system_settings_language"
-                android:persistent="false"
-                android:title="@string/system_settings_language" />
+            android:key="automatic_emergency_braking"
+            android:persistent="false"
+            android:title="@string/automatic_emergency_braking" />
+        <SwitchPreference
+            android:key="forward_collision_waring"
+            android:persistent="false"
+            android:title="@string/forward_collision_waring" />
+        <SwitchPreference
+            android:key="slope_slow_start"
+            android:persistent="false"
+            android:title="@string/slope_slow_start" />
+        <SwitchPreference
+            android:key="blind_spot_detector"
+            android:persistent="false"
+            android:title="@string/blind_spot_detector" />
+        <SwitchPreference
+            android:key="automatically_close_the_window_when_rains"
+            android:persistent="false"
+            android:title="@string/automatically_close_the_window_when_rains" />
+        <SwitchPreference
+            android:key="automatically_lock_after_leaving_the_car"
+            android:persistent="false"
+            android:title="@string/automatically_lock_after_leaving_the_car" />
+        <SwitchPreference
+            android:key="pm2_5_purification_function"
+            android:persistent="false"
+            android:title="@string/pm2_5_purification_function" />
+        <SwitchPreference
+            android:key="side_view_image_assist"
+            android:persistent="false"
+            android:title="@string/side_view_image_assist" />
+        <SwitchPreference
+            android:key="voice_control_sunroof"
+            android:persistent="false"
+            android:title="@string/voice_control_sunroof" />
+        <SwitchPreference
+            android:key="system_settings_language"
+            android:persistent="false"
+            android:title="@string/system_settings_language" />
     </PreferenceScreen>
     <PreferenceScreen
         android:icon="@drawable/asr"
-        android:title="@string/scene_mode_settings" >
+        android:title="@string/scene_mode_settings">
         <SwitchPreference
-                android:key="fast_cooling_mode"
-                android:persistent="false"
-                android:title="@string/fast_cooling_mode" />
-         <SwitchPreference
-                android:key="one_touch_heating"
-                android:persistent="false"
-                android:title="@string/one_touch_heating" />
+            android:key="fast_cooling_mode"
+            android:persistent="false"
+            android:title="@string/fast_cooling_mode" />
         <SwitchPreference
-                android:key="rime_mode"
-                android:persistent="false"
-                android:title="@string/rime_mode" />
+            android:key="one_touch_heating"
+            android:persistent="false"
+            android:title="@string/one_touch_heating" />
         <SwitchPreference
-                android:key="preset_parking_mode"
-                android:persistent="false"
-                android:title="@string/preset_parking_mode" />
+            android:key="rime_mode"
+            android:persistent="false"
+            android:title="@string/rime_mode" />
         <SwitchPreference
-                android:key="take_care_of_your_baby"
-                android:persistent="false"
-                android:title="@string/take_care_of_your_baby" />
+            android:key="preset_parking_mode"
+            android:persistent="false"
+            android:title="@string/preset_parking_mode" />
         <SwitchPreference
-                android:key="smoking_mode"
-                android:persistent="false"
-                android:title="@string/smoking_mode" />
+            android:key="take_care_of_your_baby"
+            android:persistent="false"
+            android:title="@string/take_care_of_your_baby" />
         <SwitchPreference
-                android:key="rain_and_snow_mode"
-                android:persistent="false"
-                android:title="@string/rain_and_snow_mode" />
+            android:key="smoking_mode"
+            android:persistent="false"
+            android:title="@string/smoking_mode" />
+        <SwitchPreference
+            android:key="rain_and_snow_mode"
+            android:persistent="false"
+            android:title="@string/rain_and_snow_mode" />
     </PreferenceScreen>
     <PreferenceScreen
         android:icon="@drawable/asr"
-        android:title="@string/personalized_meter_settings" >
+        android:title="@string/personalized_meter_settings">
         <ListPreference
             android:entries="@array/personalized_meter_settings_left_entries"
-            android:entryValues="@array/volume_values"  
+            android:entryValues="@array/volume_values"
             android:key="personalized_meter_settings_left"
             android:persistent="false"
             android:title="@string/personalized_meter_settings_left" />
@@ -102,16 +102,16 @@
             android:key="personalized_meter_settings_right"
             android:persistent="false"
             android:title="@string/personalized_meter_settings_right" />
-         <ListPreference
+        <ListPreference
             android:entries="@array/instrument_brightness_entries"
             android:entryValues="@array/dongfeng_dashboard_brightness_value"
             android:key="instrument_brightness"
             android:persistent="false"
             android:title="@string/instrument_brightness" />
         <SwitchPreference
-                android:key="ambient_light_switch"
-                android:persistent="false"
-                android:title="@string/ambient_light_switch" />
+            android:key="ambient_light_switch"
+            android:persistent="false"
+            android:title="@string/ambient_light_switch" />
         <ListPreference
             android:entries="@array/ambient_light_color_entries"
             android:entryValues="@array/eninstrument_style3_value"
@@ -125,19 +125,19 @@
             android:persistent="false"
             android:title="@string/ambient_light_brightness" />
         <SwitchPreference
-                android:key="electric_tailgate_function_switch"
-                android:persistent="false"
-                android:title="@string/electric_tailgate_function_switch" />
+            android:key="electric_tailgate_function_switch"
+            android:persistent="false"
+            android:title="@string/electric_tailgate_function_switch" />
         <SwitchPreference
-                android:key="automatic_tail_lock_when_electric_tailgate_closed"
-                android:persistent="false"
-                android:title="@string/automatic_tail_lock_when_electric_tailgate_closed" />
+            android:key="automatic_tail_lock_when_electric_tailgate_closed"
+            android:persistent="false"
+            android:title="@string/automatic_tail_lock_when_electric_tailgate_closed" />
         <SwitchPreference
-                android:key="kick_induction_electric_tailgate"
-                android:persistent="false"
-                android:title="@string/kick_induction_electric_tailgate" />
+            android:key="kick_induction_electric_tailgate"
+            android:persistent="false"
+            android:title="@string/kick_induction_electric_tailgate" />
         <ListPreference
-           	android:entries="@array/delayed_closing_time_of_electric_tailgate_entries"
+            android:entries="@array/delayed_closing_time_of_electric_tailgate_entries"
             android:entryValues="@array/ensound_vaues"
             android:key="delayed_closing_time_of_electric_tailgate"
             android:persistent="false"

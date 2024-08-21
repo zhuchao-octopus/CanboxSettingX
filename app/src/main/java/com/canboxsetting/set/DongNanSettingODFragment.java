@@ -1,73 +1,33 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 
-
-public class DongNanSettingODFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class DongNanSettingODFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "DongNanSettingRaiseFragment";
     private int mType = 0;
 
@@ -75,8 +35,7 @@ public class DongNanSettingODFragment extends PreferenceFragment implements Pref
         mType = t;
     }
 
-    private static final Node[] NODES = {
-            new Node("steering_assist_photography", 0x8304, 0x34010000, 0x10, 0, Node.TYPE_BUFF1),
+    private static final Node[] NODES = {new Node("steering_assist_photography", 0x8304, 0x34010000, 0x10, 0, Node.TYPE_BUFF1),
 
             new Node("turning_lighting", 0x8305, 0x34010000, 0x08, 0, Node.TYPE_BUFF1),
 
@@ -84,12 +43,9 @@ public class DongNanSettingODFragment extends PreferenceFragment implements Pref
 
             new Node("ford_warning_67", 0x8307, 0x34010000, 0x02, 0, Node.TYPE_BUFF1),
 
-            new Node("close_the_window_rainy_day", 0x8303, 0x34010000, 0x20, 0, Node.TYPE_BUFF1),
-    };
+            new Node("close_the_window_rainy_day", 0x8303, 0x34010000, 0x20, 0, Node.TYPE_BUFF1),};
 
-    private final static int[] INIT_CMDS = {
-            0x40
-    };
+    private final static int[] INIT_CMDS = {0x40};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -108,6 +64,11 @@ public class DongNanSettingODFragment extends PreferenceFragment implements Pref
                 }
             }
         }
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     private boolean mPaused = true;

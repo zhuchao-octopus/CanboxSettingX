@@ -1,66 +1,32 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.annotation.Nullable;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class JeepSettingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class JeepSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
 
     private int mType = 0;
@@ -72,42 +38,31 @@ public class JeepSettingsRaiseFragment extends PreferenceFragment implements Pre
     private static final Node[] NODES = {
 
 
-            new Node("parksense", 0x9701, 0x07000000, 0xc0, 0x0), new Node("f_parksense", 0x9702, 0x07000000, 0x130, 0x0), new Node("b_parksense", 0x9703, 0x07000000, 0x10c, 0x0),
-            new Node("parkView", 0x9705, 0x07000000, 0x1, 0x0), new Node("ramp", 0x9707, 0x07010000, 0x10040, 0x0), new Node("image_parkView", 0x9708, 0x07070000, 0x80, 0x0),
-            new Node("brake_service", 0x970a, 0x07070000, 0x20, 0x0), new Node("parking_brake", 0x970b, 0x07070001, 0x10, 0x0), new Node("lane_warning", 0x970c, 0x07090000, 0x18, 0x0),
-            new Node("deviation_correction", 0x970d, 0x07070000, 0x07, 0x0), new Node("busy_warning", 0x970e, 0x07010000, 0x30, 0x0), new Node("for_warning", 0x9710, 0x07080001, 0x20, 0x0),
+            new Node("parksense", 0x9701, 0x07000000, 0xc0, 0x0), new Node("f_parksense", 0x9702, 0x07000000, 0x130, 0x0), new Node("b_parksense", 0x9703, 0x07000000, 0x10c, 0x0), new Node("parkView", 0x9705, 0x07000000, 0x1, 0x0), new Node("ramp", 0x9707, 0x07010000, 0x10040, 0x0), new Node("image_parkView", 0x9708, 0x07070000, 0x80, 0x0), new Node("brake_service", 0x970a, 0x07070000, 0x20, 0x0), new Node("parking_brake", 0x970b, 0x07070001, 0x10, 0x0), new Node("lane_warning", 0x970c, 0x07090000, 0x18, 0x0), new Node("deviation_correction", 0x970d, 0x07070000, 0x07, 0x0), new Node("busy_warning", 0x970e, 0x07010000, 0x30, 0x0), new Node("for_warning", 0x9710, 0x07080001, 0x20, 0x0),
 
             new Node("for_warning2", 0x9781, 0x07060000, 0x0c, 0x0), new Node("warning_active_braking", 0x9783, 0x07060001, 0x10, 0x0), new Node("rear_parkSense", 0x9784, 0x07090001, 0x04, 0x0),
 
 
-            new Node("headlights_off", 0x9711, 0x07020000, 0x2c0, 0x0), new Node("bright_headlights", 0x9712, 0x07090000, 0x260, 0x0), new Node("wipers_start", 0x9713, 0x07020001, 0x08, 0x0),
-            new Node("running_lights", 0x9714, 0x07020001, 0x04, 0x0), new Node("lights_flash", 0x9715, 0x07020001, 0x02, 0x0), new Node("outhigh_beam", 0x9716, 0x07080001, 0x10, 0x0),
-            new Node("welcome_light", 0x9790, 0x070a0001, 0x04, 0x0), new Node("front_light", 0x9793, 0x070b0000, 0x18, 0x0), new Node("turn_lights_set", 0x9795, 0x070c0001, 0x08, 0x0),
+            new Node("headlights_off", 0x9711, 0x07020000, 0x2c0, 0x0), new Node("bright_headlights", 0x9712, 0x07090000, 0x260, 0x0), new Node("wipers_start", 0x9713, 0x07020001, 0x08, 0x0), new Node("running_lights", 0x9714, 0x07020001, 0x04, 0x0), new Node("lights_flash", 0x9715, 0x07020001, 0x02, 0x0), new Node("outhigh_beam", 0x9716, 0x07080001, 0x10, 0x0), new Node("welcome_light", 0x9790, 0x070a0001, 0x04, 0x0), new Node("front_light", 0x9793, 0x070b0000, 0x18, 0x0), new Node("turn_lights_set", 0x9795, 0x070c0001, 0x08, 0x0),
 
 
-            new Node("outlock", 0x9720, 0x07080001, 0x08, 0x0), new Node("beep_lock", 0x9723, 0x07030001, 0x10, 0x0), new Node("key_unlock", 0x9724, 0x07030001, 0x08, 0x0),
-            new Node("keyless_entry", 0x9725, 0x07030001, 0x04, 0x0), new Node("personalise", 0x9726, 0x07030001, 0x02, 0x0), new Node("door_alarm", 0x9728, 0x07080001, 0x04, 0x0),
-            new Node("remote_beep", 0x9729, 0x070c0001, 0x04, 0x0), new Node("power_alarm", 0x9788, 0x07040001, 0x08, 0x0),
+            new Node("outlock", 0x9720, 0x07080001, 0x08, 0x0), new Node("beep_lock", 0x9723, 0x07030001, 0x10, 0x0), new Node("key_unlock", 0x9724, 0x07030001, 0x08, 0x0), new Node("keyless_entry", 0x9725, 0x07030001, 0x04, 0x0), new Node("personalise", 0x9726, 0x07030001, 0x02, 0x0), new Node("door_alarm", 0x9728, 0x07080001, 0x04, 0x0), new Node("remote_beep", 0x9729, 0x070c0001, 0x04, 0x0), new Node("power_alarm", 0x9788, 0x07040001, 0x08, 0x0),
 
 
             new Node("seat", 0x9731, 0x07040001, 0x80, 0x0), new Node("power_off", 0x9732, 0x07040000, 0x260, 0x0), new Node("delayed_extinguishing_when_door_closes", 0x97a1, 0x07040000, 0x206, 0x0),
 
 
-            new Node("unit_set", 0x9752, 0x070a0000, 0x03, 0x0), new Node("fulecons", 0x9774, 0x070c0000, 0x60, 0x0), new Node("tireunit", 0x9771, 0x070a0000, 0x60, 0x0),
-            new Node("range", 0x9773, 0x070c0000, 0x80, 0x0), new Node("temperature", 0x9772, 0x070a0000, 0x10, 0x0),
+            new Node("unit_set", 0x9752, 0x070a0000, 0x03, 0x0), new Node("fulecons", 0x9774, 0x070c0000, 0x60, 0x0), new Node("tireunit", 0x9771, 0x070a0000, 0x60, 0x0), new Node("range", 0x9773, 0x070c0000, 0x80, 0x0), new Node("temperature", 0x9772, 0x070a0000, 0x10, 0x0),
 
 
             new Node("backview", 0x9704, 0x07000001, 0x02, 0x0), new Node("wipers_induction", 0x9706, 0x07010001, 0x80, 0x0), new Node("rearview_dimming", 0x9751, 0x07060001, 0x80, 0x0),
 
 
-            new Node("outseat_heating", 0x9754, 0x07080001, 0x03, 0x0), new Node("buzzer", 0x9760, 0x07090000, 0x01, 0x0), new Node("tire_pressure_assist", 0x9785, 0x07090000, 0x02, 0x0),
-            new Node("auto_parking", 0x9762, 0x070d0000, 0x80, 0x0), new Node("auto_adjustment", 0x9741, 0x07050001, 0x80, 0x0), new Node("tire_mode", 0x9743, 0x07050001, 0x20, 0x0),
-            new Node("transport_mode", 0x9744, 0x07050001, 0x10, 0x0), new Node("wheel_mode", 0x9745, 0x07050001, 0x08, 0x0), new Node("dis_suspension", 0x9742, 0x07050001, 0x40, 0x0),
+            new Node("outseat_heating", 0x9754, 0x07080001, 0x03, 0x0), new Node("buzzer", 0x9760, 0x07090000, 0x01, 0x0), new Node("tire_pressure_assist", 0x9785, 0x07090000, 0x02, 0x0), new Node("auto_parking", 0x9762, 0x070d0000, 0x80, 0x0), new Node("auto_adjustment", 0x9741, 0x07050001, 0x80, 0x0), new Node("tire_mode", 0x9743, 0x07050001, 0x20, 0x0), new Node("transport_mode", 0x9744, 0x07050001, 0x10, 0x0), new Node("wheel_mode", 0x9745, 0x07050001, 0x08, 0x0), new Node("dis_suspension", 0x9742, 0x07050001, 0x40, 0x0),
 
             new Node("vehicle_identification_settings", 0xee60, 0x00000002, 0x0, 0x0),
 
-            new Node("restore", 0, 0, 0, 0x0),
-    };
+            new Node("restore", 0, 0, 0, 0x0),};
 
     private final static int[] INIT_CMDS = {0x07,};
 
@@ -137,6 +92,11 @@ public class JeepSettingsRaiseFragment extends PreferenceFragment implements Pre
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

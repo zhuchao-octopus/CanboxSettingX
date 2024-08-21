@@ -147,9 +147,7 @@ public class PSAInfoHiworldFragment extends MyFragment {
                     int value = Integer.valueOf(str);
                     if (value >= 0 && value <= 3000) {
 
-                        byte[] buf = new byte[]{
-                                (byte) 0x82, 0x06, 0, 0, 0, (byte) 0x80, (byte) ((value & 0xff00) >> 8), (byte) ((value & 0xff))
-                        };
+                        byte[] buf = new byte[]{(byte) 0x82, 0x06, 0, 0, 0, (byte) 0x80, (byte) ((value & 0xff00) >> 8), (byte) ((value & 0xff))};
                         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
                     } else {

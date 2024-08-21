@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:controlsettings="http://schemas.android.com/apk/res/com.microntek.controlinfo"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <com.common.view.MyPreferenceEdit
         android:key="autolock_period"
         android:persistent="false"
         android:title="@string/autolock_period" />
-    
-    
+
+
     <com.common.view.MyPreferenceEdit
         android:key="lightingime"
         android:persistent="false"

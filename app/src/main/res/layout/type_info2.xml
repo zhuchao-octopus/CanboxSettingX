@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:gravity="center" >
+    android:gravity="center">
 
     <include
         layout="@layout/type_info"
@@ -11,14 +11,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="440px"
-        android:gravity="center" >
+        android:gravity="center">
 
         <LinearLayout
             android:id="@+id/type2"
             android:layout_width="800px"
             android:layout_height="200px"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/type91_info"
@@ -26,8 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/type"
-                android:gravity="center" >
-            </TextView>
+                android:gravity="center"></TextView>
 
             <TextView
                 android:id="@+id/type92_info"
@@ -35,8 +34,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/type"
-                android:gravity="center" >
-            </TextView>
+                android:gravity="center"></TextView>
 
             <TextView
                 android:id="@+id/type93_info"
@@ -44,8 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/type"
-                android:gravity="center" >
-            </TextView>
+                android:gravity="center"></TextView>
 
             <TextView
                 android:id="@+id/type94_info"
@@ -53,8 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/type"
-                android:gravity="center" >
-            </TextView>
+                android:gravity="center"></TextView>
 
             <TextView
                 android:id="@+id/type95_info"
@@ -62,8 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/type"
-                android:gravity="center" >
-            </TextView>
+                android:gravity="center"></TextView>
         </LinearLayout>
     </RelativeLayout>
 

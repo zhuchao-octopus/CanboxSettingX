@@ -16,20 +16,6 @@
 
 package com.my.factory;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-
-import com.common.util.AppConfig;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-import com.canboxsetting.R;
-import com.my.factory.JsonParser.CanBaud;
-import com.my.factory.JsonParser.CanSetting;
-import com.zhuchao.android.fbase.MMLog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,13 +24,27 @@ import android.os.Message;
 import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.canboxsetting.R;
+import com.common.util.AppConfig;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.Util;
+import com.my.factory.JsonParser.CanBaud;
+import com.my.factory.JsonParser.CanSetting;
+import com.zhuchao.android.fbase.MMLog;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * This activity plays a video from a specified URI.
@@ -642,8 +642,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             ///		cs = mJsonParser.getCanSetting(id);
             ///		Log.d("abcd", "22:" + id);
             ///	}
-            if (canSetting != null)
-            {
+            if (canSetting != null) {
                 if (canSetting.mPro != null) {
                     try {
                         Integer.parseInt(canSetting.mPro);

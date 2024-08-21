@@ -104,16 +104,11 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
 
             // control set
 
-            "findlight", "headlightdelay", "dooropenlock", "startlatch", "parkunlock", "delaylock", "remoteunlock5", "remotelock5", "remoteunlocksettings", "car_unlocked", "automatic_latch", "wipers",
-            "remote_start", "unkey", "by_drive", "auto_relock", "blind", "lfRight", "adaptive", "folding", "rtmirror", "easyeeat", "memory", "auto_wipers", "auto_collision", "status_notifi",
-            "window_control",
-    };
+            "findlight", "headlightdelay", "dooropenlock", "startlatch", "parkunlock", "delaylock", "remoteunlock5", "remotelock5", "remoteunlocksettings", "car_unlocked", "automatic_latch", "wipers", "remote_start", "unkey", "by_drive", "auto_relock", "blind", "lfRight", "adaptive", "folding", "rtmirror", "easyeeat", "memory", "auto_wipers", "auto_collision", "status_notifi", "window_control",};
 
-    private final static int[] CMDS = {
-            0x3008200, 0x3008201, 0x3008202, 0x3008203, 0x3008204, 0x3008205, 0x3008206,
+    private final static int[] CMDS = {0x3008200, 0x3008201, 0x3008202, 0x3008203, 0x3008204, 0x3008205, 0x3008206,
 
-            0x3008300, 0x3008301, 0x3008302, 0x3008303, 0x3008304, 0x3008305, 0x3008306, 0x3008307, 0x3008308, 0x300830c, 0x3008317, 0x3008309, 0x300830b, 0x300830d, 0x300830e, 0x300830f, 0x3008316,
-            0x3008310, 0x3008311, 0x3008312, 0x3008313, 0x3008314, 0x3008315, 0x3008318, 0x3008319, 0x300831a, 0x300831b,
+            0x3008300, 0x3008301, 0x3008302, 0x3008303, 0x3008304, 0x3008305, 0x3008306, 0x3008307, 0x3008308, 0x300830c, 0x3008317, 0x3008309, 0x300830b, 0x300830d, 0x300830e, 0x300830f, 0x3008316, 0x3008310, 0x3008311, 0x3008312, 0x3008313, 0x3008314, 0x3008315, 0x3008318, 0x3008319, 0x300831a, 0x300831b,
 
     };
 
@@ -158,9 +153,7 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
         String key = arg0.getKey();
         if (getActivity() == null) return false;
         if ("restore".equals(key)) {
-            Dialog d = new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.confirmation_factory_settings)
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            Dialog d = new AlertDialog.Builder(getActivity()).setTitle(R.string.confirmation_factory_settings).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
                     sendCanboxInfo(0x83, 0x80, 0x01);
                 }
@@ -171,16 +164,12 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
     }
 
     private void sendCanboxInfo(int d0, int d1) {
-        byte[] buf = new byte[]{
-                (byte) d0, 0x01, (byte) d1
-        };
+        byte[] buf = new byte[]{(byte) d0, 0x01, (byte) d1};
         if (getActivity() != null) BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
-        byte[] buf = new byte[]{
-                (byte) d0, 0x02, (byte) d1, (byte) d2
-        };
+        byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         if (getActivity() != null) BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
@@ -392,7 +381,7 @@ public class GMSettingsSimpleFragment extends PreferenceFragmentCompat implement
                             try {
                                 updateView(buf);
                             } catch (Exception e) {
-                                Log.d(TAG, "updateView() "+ Arrays.toString(buf));
+                                Log.d(TAG, "updateView() " + Arrays.toString(buf));
                             }
                         }
                     }

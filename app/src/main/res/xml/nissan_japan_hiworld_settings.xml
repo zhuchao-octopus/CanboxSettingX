@@ -1,283 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:vehicle="http://schemas.android.com/apk/res-auto"
-    android:title="@string/controlset" >
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="vehicle_settings" -->
-<!-- 	    android:title="@string/vehicle_settings" > -->
-<!--       	<ListPreference -->
-<!--                android:entries="@array/setting_auto_light_sensitivity" -->
-<!--                android:entryValues="@array/trumpche_num_level_entries" -->
-<!--                android:key="setting_auto_light_sensitivity" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/setting_auto_light_sensitivity" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="select_unlock" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/select_unlock" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="car_light_auto" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/car_light_auto" /> -->
-<!--       	<ListPreference  -->
-<!--                android:entries="@array/automatic_lighting_time_setting" -->
-<!--                android:entryValues="@array/eight_values" -->
-<!--                android:key="automatic_lighting_time_setting" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/automatic_lighting_time_setting" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="smart_key_lock_fuction" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/smart_key_lock_fuction" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="vehicle_speed_interlocking_intermittent_wiper" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/vehicle_speed_interlocking_intermittent_wiper" /> -->
-<!--       	<ListPreference -->
-<!--                android:entries="@array/engine_gearbox_sensitivity" -->
-<!--                android:entryValues="@array/pressure_values" -->
-<!--                android:key="engine_gearbox" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/engine_gearbox" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="active_tracking_control" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/active_tracking_control" /> -->
-<!--       	<ListPreference -->
-<!--                android:entries="@array/active_lane_control_feedback_entries" -->
-<!--                android:entryValues="@array/auto_lock_values" -->
-<!--                android:key="active_lane_control_feedback" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/active_lane_control_feedback" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="active_lane_control" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/active_lane_control" /> -->
-<!--       	<ListPreference -->
-<!--                android:entries="@array/steering_force_entries" -->
-<!--                android:entryValues="@array/switch_on_time_values" -->
-<!--                android:key="steering_force" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/steering_force" /> -->
-<!-- 	</PreferenceScreen>	 -->
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="power_amplifier_settings"
-	    android:title="@string/power_amplifier_settings" >
-       	<ListPreference 
-               android:entries="@array/speed_linkage_volume_entries"
-               android:entryValues="@array/speed_linkage_volume_values"
-               android:key="speed_linkage_volume"
-               android:persistent="false"
-               android:title="@string/speed_linkage_volume" />
-       	<com.common.view.MyPreferenceSeekBar
-	            android:key="surround_volume"
-	            android:persistent="false"
-	            android:title="@string/surround_volume"
-	            vehicle:max="5"
-	            vehicle:min="-5"
-	            vehicle:step="1" />
-      	<SwitchPreference
-	    	android:key="bose_center_point"
-	        android:persistent="false"
-	        android:title="@string/bose_center_point" />
-      	<SwitchPreference
-	    	android:key="driver_seat_sound_field"
-	        android:persistent="false"
-	        android:title="@string/driver_seat_sound_field" />
-	</PreferenceScreen>
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="light_status" -->
-<!-- 	    android:title="@string/light_status" > -->
-<!--        	<SwitchPreference -->
-<!-- 	    	android:key="width_light" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/width_light" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="light_near" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/light_near" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="high_beam" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/high_beam" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="the_front_fog_lamp" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/the_front_fog_lamp" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="light_bg_fog" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/light_bg_fog" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="small_light" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/small_light" /> -->
-<!--       	<SwitchPreference -->
-<!-- 	    	android:key="small_light" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/small_light" /> -->
-<!-- 	</PreferenceScreen> -->
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="audio_settings" -->
-<!-- 	    android:title="@string/audio_settings" > -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="Beep" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/Beep" /> -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/padlock_headlight_delay" -->
-<!--                android:entryValues="@array/consumption_values" -->
-<!--                android:key="show_type" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/show_type" />  -->
-<!-- 	</PreferenceScreen> -->
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="sonar_settings" -->
-<!-- 	    android:title="@string/sonar_settings" > -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="sonar_switch" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/sonar_switch" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="fr_sensor_only" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/fr_sensor_only" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="interrupt_display" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/interrupt_display" /> -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/sonar_sensitivity" -->
-<!--                android:entryValues="@array/switch_on_time_values" -->
-<!--                android:key="sonar_sensitivity" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/sonar_sensitivity" /> -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/sonar_sensitivity" -->
-<!--                android:entryValues="@array/switch_on_time_values" -->
-<!--                android:key="sonar_volume" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/sonar_volume" /> -->
-<!-- 	</PreferenceScreen> -->
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="driving_assistant_system_settings" -->
-<!-- 	    android:title="@string/driving_assistant_system_settings" > -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="distance_control_assit" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/distance_control_assit" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="lane_departrue_prevention" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/lane_departrue_prevention" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="bilne_sport_intervention" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/bilne_sport_intervention" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="forward_collision_waring" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/forward_collision_waring" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="lane_departure_warning" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/lane_departure_warning" /> -->
-<!-- 	     <SwitchPreference -->
-<!-- 	    	android:key="blind_sport_waring" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/blind_sport_waring" /> -->
-<!-- 	     <SwitchPreference -->
-<!-- 	    	android:key="reverse_radar_status" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/reverse_radar_status" /> -->
-<!-- 	</PreferenceScreen> -->
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="car_normal_settings" -->
-<!-- 	    android:title="@string/car_normal_settings" > -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="door_ambient_light" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/door_ambient_light" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="gac_settings_rain_sensor_wipper"  -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/gac_settings_rain_sensor_wipper" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="key_and_remote_unlock_mode"  -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/key_and_remote_unlock_mode" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="interlligent_key_lock"  -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/interlligent_key_lock" /> -->
-<!-- 	     <ListPreference -->
-<!--                android:entries="@array/tule_five_level" -->
-<!--                android:entryValues="@array/accvehicle_entryValues" -->
-<!--                android:key="str_auto_light_sensitivity" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/str_auto_light_sensitivity" /> -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/tule_light_off_delay" -->
-<!--                android:entryValues="@array/nine_values" -->
-<!--                android:key="dome_delay" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/dome_delay" /> -->
-<!-- 	</PreferenceScreen> -->
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="air_conditioner_settings" -->
-<!-- 	    android:title="@string/air_conditioner_settings" > -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/chery_ambient_light_brightness_entries" -->
-<!--                android:entryValues="@array/common_s5" -->
-<!--                android:key="outside_odor_sensor" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/outside_odor_sensor" /> -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/chery_ambient_light_brightness_entries" -->
-<!--                android:entryValues="@array/common_s5" -->
-<!--                android:key="adjusting_the_automatic_defrost" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/adjusting_the_automatic_defrost" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="natural_wind" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/natural_wind" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="wind_intensity" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/wind_intensity" /> -->
-<!-- 	    <SwitchPreference -->
-<!-- 	    	android:key="aromatic" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/aromatic" /> -->
-<!-- 	    <PreferenceScreen -->
-<!--             android:key="restore" -->
-<!--             android:title="@string/restore" /> -->
-<!-- 	</PreferenceScreen> -->
-<!-- 	<PreferenceScreen -->
-<!-- 		android:icon ="@drawable/tyre" -->
-<!-- 	    android:key  ="air_conditioner_settings" -->
-<!-- 	    android:title="@string/air_conditioner_settings" > -->
-<!-- 	    <ListPreference -->
-<!--                android:entries="@array/sport_model_engine_status_setting" -->
-<!--                android:entryValues="@array/speed_values" -->
-<!--                android:key="sport_model_engine_status_setting" -->
-<!--                android:persistent="false" -->
-<!--                android:title="@string/sport_model_engine_status_setting" /> -->
-<!-- 	   <SwitchPreference -->
-<!-- 	    	android:key="sport_model_backlight_setting" -->
-<!-- 	        android:persistent="false" -->
-<!-- 	        android:title="@string/sport_model_backlight_setting" /> -->
-<!-- 	   <PreferenceScreen -->
-<!--             android:key="restore" -->
-<!--             android:title="@string/restore" /> -->
-<!-- 	</PreferenceScreen> -->
+    android:title="@string/controlset">
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="vehicle_settings" -->
+    <!-- 	    android:title="@string/vehicle_settings" > -->
+    <!--       	<ListPreference -->
+    <!--                android:entries="@array/setting_auto_light_sensitivity" -->
+    <!--                android:entryValues="@array/trumpche_num_level_entries" -->
+    <!--                android:key="setting_auto_light_sensitivity" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/setting_auto_light_sensitivity" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="select_unlock" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/select_unlock" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="car_light_auto" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/car_light_auto" /> -->
+    <!--       	<ListPreference  -->
+    <!--                android:entries="@array/automatic_lighting_time_setting" -->
+    <!--                android:entryValues="@array/eight_values" -->
+    <!--                android:key="automatic_lighting_time_setting" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/automatic_lighting_time_setting" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="smart_key_lock_fuction" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/smart_key_lock_fuction" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="vehicle_speed_interlocking_intermittent_wiper" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/vehicle_speed_interlocking_intermittent_wiper" /> -->
+    <!--       	<ListPreference -->
+    <!--                android:entries="@array/engine_gearbox_sensitivity" -->
+    <!--                android:entryValues="@array/pressure_values" -->
+    <!--                android:key="engine_gearbox" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/engine_gearbox" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="active_tracking_control" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/active_tracking_control" /> -->
+    <!--       	<ListPreference -->
+    <!--                android:entries="@array/active_lane_control_feedback_entries" -->
+    <!--                android:entryValues="@array/auto_lock_values" -->
+    <!--                android:key="active_lane_control_feedback" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/active_lane_control_feedback" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="active_lane_control" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/active_lane_control" /> -->
+    <!--       	<ListPreference -->
+    <!--                android:entries="@array/steering_force_entries" -->
+    <!--                android:entryValues="@array/switch_on_time_values" -->
+    <!--                android:key="steering_force" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/steering_force" /> -->
+    <!-- 	</PreferenceScreen>	 -->
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="power_amplifier_settings"
+        android:title="@string/power_amplifier_settings">
+        <ListPreference
+            android:entries="@array/speed_linkage_volume_entries"
+            android:entryValues="@array/speed_linkage_volume_values"
+            android:key="speed_linkage_volume"
+            android:persistent="false"
+            android:title="@string/speed_linkage_volume" />
+        <com.common.view.MyPreferenceSeekBar
+            android:key="surround_volume"
+            android:persistent="false"
+            android:title="@string/surround_volume"
+            vehicle:max="5"
+            vehicle:min="-5"
+            vehicle:step="1" />
+        <SwitchPreference
+            android:key="bose_center_point"
+            android:persistent="false"
+            android:title="@string/bose_center_point" />
+        <SwitchPreference
+            android:key="driver_seat_sound_field"
+            android:persistent="false"
+            android:title="@string/driver_seat_sound_field" />
+    </PreferenceScreen>
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="light_status" -->
+    <!-- 	    android:title="@string/light_status" > -->
+    <!--        	<SwitchPreference -->
+    <!-- 	    	android:key="width_light" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/width_light" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="light_near" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/light_near" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="high_beam" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/high_beam" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="the_front_fog_lamp" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/the_front_fog_lamp" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="light_bg_fog" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/light_bg_fog" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="small_light" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/small_light" /> -->
+    <!--       	<SwitchPreference -->
+    <!-- 	    	android:key="small_light" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/small_light" /> -->
+    <!-- 	</PreferenceScreen> -->
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="audio_settings" -->
+    <!-- 	    android:title="@string/audio_settings" > -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="Beep" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/Beep" /> -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/padlock_headlight_delay" -->
+    <!--                android:entryValues="@array/consumption_values" -->
+    <!--                android:key="show_type" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/show_type" />  -->
+    <!-- 	</PreferenceScreen> -->
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="sonar_settings" -->
+    <!-- 	    android:title="@string/sonar_settings" > -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="sonar_switch" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/sonar_switch" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="fr_sensor_only" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/fr_sensor_only" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="interrupt_display" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/interrupt_display" /> -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/sonar_sensitivity" -->
+    <!--                android:entryValues="@array/switch_on_time_values" -->
+    <!--                android:key="sonar_sensitivity" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/sonar_sensitivity" /> -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/sonar_sensitivity" -->
+    <!--                android:entryValues="@array/switch_on_time_values" -->
+    <!--                android:key="sonar_volume" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/sonar_volume" /> -->
+    <!-- 	</PreferenceScreen> -->
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="driving_assistant_system_settings" -->
+    <!-- 	    android:title="@string/driving_assistant_system_settings" > -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="distance_control_assit" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/distance_control_assit" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="lane_departrue_prevention" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/lane_departrue_prevention" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="bilne_sport_intervention" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/bilne_sport_intervention" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="forward_collision_waring" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/forward_collision_waring" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="lane_departure_warning" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/lane_departure_warning" /> -->
+    <!-- 	     <SwitchPreference -->
+    <!-- 	    	android:key="blind_sport_waring" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/blind_sport_waring" /> -->
+    <!-- 	     <SwitchPreference -->
+    <!-- 	    	android:key="reverse_radar_status" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/reverse_radar_status" /> -->
+    <!-- 	</PreferenceScreen> -->
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="car_normal_settings" -->
+    <!-- 	    android:title="@string/car_normal_settings" > -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="door_ambient_light" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/door_ambient_light" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="gac_settings_rain_sensor_wipper"  -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/gac_settings_rain_sensor_wipper" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="key_and_remote_unlock_mode"  -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/key_and_remote_unlock_mode" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="interlligent_key_lock"  -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/interlligent_key_lock" /> -->
+    <!-- 	     <ListPreference -->
+    <!--                android:entries="@array/tule_five_level" -->
+    <!--                android:entryValues="@array/accvehicle_entryValues" -->
+    <!--                android:key="str_auto_light_sensitivity" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/str_auto_light_sensitivity" /> -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/tule_light_off_delay" -->
+    <!--                android:entryValues="@array/nine_values" -->
+    <!--                android:key="dome_delay" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/dome_delay" /> -->
+    <!-- 	</PreferenceScreen> -->
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="air_conditioner_settings" -->
+    <!-- 	    android:title="@string/air_conditioner_settings" > -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/chery_ambient_light_brightness_entries" -->
+    <!--                android:entryValues="@array/common_s5" -->
+    <!--                android:key="outside_odor_sensor" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/outside_odor_sensor" /> -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/chery_ambient_light_brightness_entries" -->
+    <!--                android:entryValues="@array/common_s5" -->
+    <!--                android:key="adjusting_the_automatic_defrost" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/adjusting_the_automatic_defrost" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="natural_wind" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/natural_wind" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="wind_intensity" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/wind_intensity" /> -->
+    <!-- 	    <SwitchPreference -->
+    <!-- 	    	android:key="aromatic" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/aromatic" /> -->
+    <!-- 	    <PreferenceScreen -->
+    <!--             android:key="restore" -->
+    <!--             android:title="@string/restore" /> -->
+    <!-- 	</PreferenceScreen> -->
+    <!-- 	<PreferenceScreen -->
+    <!-- 		android:icon ="@drawable/tyre" -->
+    <!-- 	    android:key  ="air_conditioner_settings" -->
+    <!-- 	    android:title="@string/air_conditioner_settings" > -->
+    <!-- 	    <ListPreference -->
+    <!--                android:entries="@array/sport_model_engine_status_setting" -->
+    <!--                android:entryValues="@array/speed_values" -->
+    <!--                android:key="sport_model_engine_status_setting" -->
+    <!--                android:persistent="false" -->
+    <!--                android:title="@string/sport_model_engine_status_setting" /> -->
+    <!-- 	   <SwitchPreference -->
+    <!-- 	    	android:key="sport_model_backlight_setting" -->
+    <!-- 	        android:persistent="false" -->
+    <!-- 	        android:title="@string/sport_model_backlight_setting" /> -->
+    <!-- 	   <PreferenceScreen -->
+    <!--             android:key="restore" -->
+    <!--             android:title="@string/restore" /> -->
+    <!-- 	</PreferenceScreen> -->
 </PreferenceScreen>

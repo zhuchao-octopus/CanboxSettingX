@@ -118,8 +118,7 @@ public class AC184 extends MyFragment {
 
             {R.id.power, 0x10}, {R.id.ac, 0x11}, {R.id.inner_loop, 0x13}, {R.id.zone, 0x14}, {R.id.max, 0x15},
 
-            {R.id.wind_horizontal1, 0x18}, {R.id.wind_horizontal_down, 0x19}, {R.id.wind_down1, 0x1a}, {R.id.wind_up_down, 0x1b}, {R.id.wind_minus, 0x1d}, {R.id.wind_add, 0x1c},
-            {R.id.con_left_temp_up, 0x1e}, {R.id.con_left_temp_down, 0x1f}, {R.id.con_right_temp_up, 0x20}, {R.id.con_right_temp_down, 0x21},
+            {R.id.wind_horizontal1, 0x18}, {R.id.wind_horizontal_down, 0x19}, {R.id.wind_down1, 0x1a}, {R.id.wind_up_down, 0x1b}, {R.id.wind_minus, 0x1d}, {R.id.wind_add, 0x1c}, {R.id.con_left_temp_up, 0x1e}, {R.id.con_left_temp_down, 0x1f}, {R.id.con_right_temp_up, 0x20}, {R.id.con_right_temp_down, 0x21},
 
             {R.id.left_seat_heat, 0x24}, {R.id.right_seat_heat, 0x25},
 
@@ -129,8 +128,7 @@ public class AC184 extends MyFragment {
             {R.id.zone, 0x16},
 
 
-            {R.id.power_rear, 0x8510}, {R.id.con_left_temp_rear_up, 0x851e}, {R.id.con_left_temp_rear_down, 0x851f}, {R.id.wind_horizontal1_rear, 0x8518}, {R.id.wind_down1_rear, 0x851a},
-            {R.id.wind_horizontal_down_rear, 0x8519}, {R.id.ac_auto_rear, 0x8512}, {R.id.wind_add_rear, 0x851c}, {R.id.wind_minus_rear, 0x851d},
+            {R.id.power_rear, 0x8510}, {R.id.con_left_temp_rear_up, 0x851e}, {R.id.con_left_temp_rear_down, 0x851f}, {R.id.wind_horizontal1_rear, 0x8518}, {R.id.wind_down1_rear, 0x851a}, {R.id.wind_horizontal_down_rear, 0x8519}, {R.id.ac_auto_rear, 0x8512}, {R.id.wind_add_rear, 0x851c}, {R.id.wind_minus_rear, 0x851d},
 
     };
 

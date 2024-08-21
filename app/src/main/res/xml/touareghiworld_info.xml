@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:controlsettings="http://schemas.android.com/apk/res-auto"
     xmlns:my="http://schemas.android.com/apk/res-auto"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <com.common.view.MyPreferenceProgress
         android:key="oil_data"

@@ -3,30 +3,29 @@
     android:id="@+id/type1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center" >
+    android:gravity="center">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="414px"
-        android:gravity="center" >
+        android:gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal">
 
             <RelativeLayout
                 android:layout_width="600px"
                 android:layout_height="360px"
                 android:gravity="center_horizontal"
-                android:scaleType="center" >
+                android:scaleType="center">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="center"
-                    android:src="@drawable/car" >
-                </ImageView>
+                    android:src="@drawable/car"></ImageView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -34,18 +33,18 @@
                     android:background="#44000000"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingTop="30px" >
+                    android:paddingTop="30px">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="160px"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="300px"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:paddingRight="60px" >
+                            android:paddingRight="60px">
 
                             <TextView
                                 android:id="@+id/type11_num"
@@ -78,7 +77,7 @@
                             android:layout_width="300px"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:paddingLeft="60px" >
+                            android:paddingLeft="60px">
 
                             <TextView
                                 android:id="@+id/type12_num"
@@ -111,13 +110,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="160px"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="300px"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:paddingRight="50px" >
+                            android:paddingRight="50px">
 
                             <TextView
                                 android:id="@+id/type21_num"
@@ -150,7 +149,7 @@
                             android:layout_width="300px"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:paddingLeft="50px" >
+                            android:paddingLeft="50px">
 
                             <TextView
                                 android:id="@+id/type22_num"
@@ -187,7 +186,7 @@
             android:layout_width="match_parent"
             android:layout_height="110px"
             android:layout_alignParentBottom="true"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/type30_num"

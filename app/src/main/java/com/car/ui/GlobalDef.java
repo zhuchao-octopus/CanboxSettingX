@@ -1,182 +1,150 @@
 package com.car.ui;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-
-import android.app.Activity;
-import android.app.WallpaperManager;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.hardware.display.DisplayManager;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Environment;
-import android.os.Handler;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
-import android.view.Display;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.common.ui.UIBase;
-import com.common.util.Kernel;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.ProtocolAk47;
 import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.UtilCarKey;
-import com.common.utils.BroadcastUtil;
 
 public class GlobalDef {
 
-	public static final String TAG = "GlobalDef";
-	public static int mSource = MyCmd.SOURCE_NONE;
-	public static int mSourceWillUpdate = MyCmd.SOURCE_NONE;
+    public static final String TAG = "GlobalDef";
+    public static int mSource = MyCmd.SOURCE_NONE;
+    public static int mSourceWillUpdate = MyCmd.SOURCE_NONE;
 
-	public static int mReverseStatus = 0;
+    public static int mReverseStatus = 0;
 
-	public static Context mContext;
+    public static Context mContext;
 
-	private static int mModelId;
-	private static int mProId;
-	private static int mCarConfig;
+    private static int mModelId;
+    private static int mProId;
+    private static int mCarConfig;
 
-	public static int getModelId() {
-		return mModelId;
-	}
+    public static int getModelId() {
+        return mModelId;
+    }
 
-	public static void setModelId(int m) {
-		mModelId = m;
-	}
-	
-	public static int getProId() {
-		return mProId;
-	}
+    public static void setModelId(int m) {
+        mModelId = m;
+    }
 
-	public static void setProId(int m) {
-		mProId = m;
-	}
+    public static int getProId() {
+        return mProId;
+    }
 
-	public static int getCarConfig() {
-		return mCarConfig;
-	}
+    public static void setProId(int m) {
+        mProId = m;
+    }
 
-	public static void setCarConfig(int m) {
-		mCarConfig = m;
-	}
-	
-	public static int mTempUnit = 0;
-	
-	public static void init(Context c) {
-		mContext = c;
-		if (Util.isPX5()) {
-			CAMERA_INDEX = CAMERA_INDEX_PX5;
-			CAMERA_SIGNAL = CAMERA_SIGNAL_PX5;
-		}
-//		mTempUnit = SystemConfig.getIntProperty(c, SystemConfig.CANBOX_TEMP_UNIT);		
-		updateTempUnit(c);
-	}
+    public static int getCarConfig() {
+        return mCarConfig;
+    }
 
-	public static void updateTempUnit(Context c) {		
-		mTempUnit = SystemConfig.getIntProperty(c, SystemConfig.CANBOX_TEMP_UNIT);			
-	}
-	
-	public static boolean USE_OLD_CAMER_IF_NO_DVR = false;
+    public static void setCarConfig(int m) {
+        mCarConfig = m;
+    }
 
-	private static int mCameraPreview = 0;
-	private static boolean mOpenCameraPreview = false;
-	public static int mCameraTryNum = 0;
+    public static int mTempUnit = 0;
 
-	public static boolean isCameraTryNumMax() {
-		mCameraTryNum++;
-		return (mCameraTryNum > 4);
-	}
+    public static void init(Context c) {
+        mContext = c;
+        if (Util.isPX5()) {
+            CAMERA_INDEX = CAMERA_INDEX_PX5;
+            CAMERA_SIGNAL = CAMERA_SIGNAL_PX5;
+        }
+        //		mTempUnit = SystemConfig.getIntProperty(c, SystemConfig.CANBOX_TEMP_UNIT);
+        updateTempUnit(c);
+    }
 
-	public static int getCameraPreview() {
-		return mCameraPreview;
-	}
+    public static void updateTempUnit(Context c) {
+        mTempUnit = SystemConfig.getIntProperty(c, SystemConfig.CANBOX_TEMP_UNIT);
+    }
 
-	public static void setCameraPreview(int preview) {
-		mCameraPreview = preview;
-		if (preview > 0) {
-			mCameraTryNum = 0;
-		}
-	}
+    public static boolean USE_OLD_CAMER_IF_NO_DVR = false;
 
-	public static boolean getCameramOpenCameraPreview() {
-		return mOpenCameraPreview;
-	}
+    private static int mCameraPreview = 0;
+    private static boolean mOpenCameraPreview = false;
+    public static int mCameraTryNum = 0;
 
-	public static void setCameramOpenCameraPreview(boolean preview) {
-		mOpenCameraPreview = preview;
-		if (preview) {
-			mCameraTryNum = 0;
-		}
-	}
+    public static boolean isCameraTryNumMax() {
+        mCameraTryNum++;
+        return (mCameraTryNum > 4);
+    }
 
-	public static boolean isGLCamera() {
-		boolean ret = false;
-		if (Util.isGLCamera()) {
-			if (USE_OLD_CAMER_IF_NO_DVR) {
-				if ("1".equals(SystemConfig.getProperty(mContext,
-						SystemConfig.KEY_DVR_RECORDING))
-						&& "1".equals(SystemConfig.getProperty(mContext,
-								SystemConfig.KEY_DVR_ACTITUL_RECORDING))) {
-					ret = true;
-				}
-			} else {
-				ret = true;
-			}
-		}
-		Log.d(TAG, "isGLCamera" + ret);
-		return ret;
-	}
+    public static int getCameraPreview() {
+        return mCameraPreview;
+    }
 
-	private static String mSystemUI;
+    public static void setCameraPreview(int preview) {
+        mCameraPreview = preview;
+        if (preview > 0) {
+            mCameraTryNum = 0;
+        }
+    }
 
-	public static String getSystemUI() {
-		return mSystemUI;
-	}
+    public static boolean getCameramOpenCameraPreview() {
+        return mOpenCameraPreview;
+    }
 
-	public final static String CAMERA_SIGNAL_701 = "/sys/class/misc/mst701/device/lock";
-	public final static String CAMERA_SIGNAL_PX5 = "/sys/class/ak/source/cvbs_status";
+    public static void setCameramOpenCameraPreview(boolean preview) {
+        mOpenCameraPreview = preview;
+        if (preview) {
+            mCameraTryNum = 0;
+        }
+    }
 
-	public static String CAMERA_SIGNAL = CAMERA_SIGNAL_701;
+    public static boolean isGLCamera() {
+        boolean ret = false;
+        if (Util.isGLCamera()) {
+            if (USE_OLD_CAMER_IF_NO_DVR) {
+                if ("1".equals(SystemConfig.getProperty(mContext, SystemConfig.KEY_DVR_RECORDING)) && "1".equals(SystemConfig.getProperty(mContext, SystemConfig.KEY_DVR_ACTITUL_RECORDING))) {
+                    ret = true;
+                }
+            } else {
+                ret = true;
+            }
+        }
+        Log.d(TAG, "isGLCamera" + ret);
+        return ret;
+    }
 
-	private final static String CAMERA_INDEX_701 = "/sys/class/misc/mst701/device/source";
-	private final static String CAMERA_INDEX_PX5 = "/sys/class/ak/source/cam_ch";
+    private static String mSystemUI;
 
-	private static String CAMERA_INDEX = CAMERA_INDEX_701;
+    public static String getSystemUI() {
+        return mSystemUI;
+    }
 
-	public static void setCameraSource(int source) {
-		Util.setFileValue(CAMERA_INDEX, source);
+    public final static String CAMERA_SIGNAL_701 = "/sys/class/misc/mst701/device/lock";
+    public final static String CAMERA_SIGNAL_PX5 = "/sys/class/ak/source/cvbs_status";
 
-	}
+    public static String CAMERA_SIGNAL = CAMERA_SIGNAL_701;
 
-	public static int getCameraSource() {
-		return Util.getFileValue(CAMERA_INDEX);
-	}
+    private final static String CAMERA_INDEX_701 = "/sys/class/misc/mst701/device/source";
+    private final static String CAMERA_INDEX_PX5 = "/sys/class/ak/source/cam_ch";
 
-	public static void wakeLockOnce() {
-		if (mContext != null) {
-			PowerManager pm = (PowerManager) mContext
-					.getSystemService(Context.POWER_SERVICE);
-			WakeLock mWakeLockOne = pm.newWakeLock(
-					PowerManager.ACQUIRE_CAUSES_WAKEUP
-							| PowerManager.SCREEN_BRIGHT_WAKE_LOCK
-							| PowerManager.ON_AFTER_RELEASE, TAG);
-			if (null != mWakeLockOne) {
-				mWakeLockOne.acquire();
-				mWakeLockOne.release();
-			}
-		}
-	}
+    private static String CAMERA_INDEX = CAMERA_INDEX_701;
+
+    public static void setCameraSource(int source) {
+        Util.setFileValue(CAMERA_INDEX, source);
+
+    }
+
+    public static int getCameraSource() {
+        return Util.getFileValue(CAMERA_INDEX);
+    }
+
+    public static void wakeLockOnce() {
+        if (mContext != null) {
+            PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+            WakeLock mWakeLockOne = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, TAG);
+            if (null != mWakeLockOne) {
+                mWakeLockOne.acquire();
+                mWakeLockOne.release();
+            }
+        }
+    }
 
 }

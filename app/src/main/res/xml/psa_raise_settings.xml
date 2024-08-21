@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceScreen android:title="@string/vehiclesset" >
+    <PreferenceScreen android:title="@string/vehiclesset">
         <SwitchPreference
             android:key="unlock_trunk_only"
             android:persistent="false"
             android:title="@string/unlock_trunk_only" />
-        
-        
+
+
         <SwitchPreference
             android:key="trunk_auto_on"
             android:persistent="false"
@@ -28,7 +28,7 @@
             android:persistent="false"
             android:title="@string/setdoor" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/driving_assistance_settings" >
+    <PreferenceScreen android:title="@string/driving_assistance_settings">
         <SwitchPreference
             android:key="parking_assist"
             android:persistent="false"
@@ -49,81 +49,79 @@
             android:key="psa_simple_15"
             android:persistent="false"
             android:title="@string/psa_simple_15" />
-        
-         <SwitchPreference
+
+        <SwitchPreference
             android:key="gwm_parallel_auxiliary"
             android:persistent="false"
             android:title="@string/gwm_parallel_auxiliary" />
-        
-        
+
+
         <SwitchPreference
             android:key="anti_collision"
             android:persistent="false"
             android:title="@string/anti_collision" />
-        
-        
+
+
         <SwitchPreference
             android:key="keyless_entry_system"
             android:persistent="false"
             android:title="@string/keyless_entry_system" />
-        
-        
-        
+
+
         <SwitchPreference
             android:key="far_and_near_light_intelligent_auxiliary_system"
             android:persistent="false"
             android:title="@string/far_and_near_light_intelligent_auxiliary_system" />
-        
-         <ListPreference
+
+        <ListPreference
             android:entries="@array/psa_brake"
             android:entryValues="@array/four_values"
             android:key="emergency_braking"
             android:persistent="false"
             android:title="@string/emergency_braking" />
-         
-           <SwitchPreference
+
+        <SwitchPreference
             android:key="trunk_lid_induction_opening_closing_function"
             android:persistent="false"
             android:title="@string/trunk_lid_induction_opening_closing_function" />
-        
-           
-           <SwitchPreference
+
+
+        <SwitchPreference
             android:key="speed_limit_prompt"
             android:persistent="false"
             android:title="@string/speed_limit_prompt" />
-        
-           
-             <SwitchPreference
+
+
+        <SwitchPreference
             android:key="traffic_sign_recognition_system"
             android:persistent="false"
             android:title="@string/traffic_sign_recognition_system" />
-        
-             
-               <SwitchPreference
+
+
+        <SwitchPreference
             android:key="turnning_cylinder_shrinkage"
             android:persistent="false"
             android:title="@string/turnning_cylinder_shrinkage" />
-        
-        
-               <SwitchPreference
+
+
+        <SwitchPreference
             android:key="disable_auto_folding_mirrors"
             android:persistent="false"
             android:title="@string/disable_auto_folding_mirrors" />
-               
-               
-        
-               <SwitchPreference
+
+
+        <SwitchPreference
             android:key="decoding_end_parallel_and_anti_collision_sound"
             android:persistent="false"
             android:title="@string/decoding_end_parallel_and_anti_collision_sound" />
-               
-               <SwitchPreference
+
+        <SwitchPreference
             android:key="buzzer"
             android:persistent="false"
             android:title="@string/buzzer" />
 
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/light_settings" >
+    <PreferenceScreen android:title="@string/light_settings">
         <ListPreference
             android:entries="@array/enlamp_no"
             android:entryValues="@array/enlamp_no_vaues"
@@ -160,8 +158,8 @@
             android:key="auto_light_open"
             android:persistent="false"
             android:title="@string/auto_light_open" />
-        
-        
+
+
         <ListPreference
             android:entries="@array/enlamp_no"
             android:entryValues="@array/enlamp_no_vaues"
@@ -171,7 +169,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="param_settings"
-        android:title="@string/car_data" >
+        android:title="@string/car_data">
         <SwitchPreference
             android:key="bwiper"
             android:persistent="false"
@@ -200,10 +198,10 @@
             android:key="engine_stop"
             android:persistent="false"
             android:title="@string/engine_stop" />
-        
-       
+
+
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/other" >
+    <PreferenceScreen android:title="@string/other">
         <ListPreference
             android:entries="@array/enoil_unit2"
             android:entryValues="@array/enenergy_vaues1"

@@ -16,47 +16,17 @@
 
 package com.canboxsetting;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 /**
  * This activity plays a video from a specified URI.
  */
-public class MyFragment extends Fragment {
+public class MyFragment extends PreferenceFragmentCompat {
 
     public final static int TYPE_SEATHEAT_ONLY = 0x10000;
     public final static int TYPE_MASK = 0xff0000;
@@ -74,6 +44,11 @@ public class MyFragment extends Fragment {
 
     public boolean onBackKey() {
         return false;
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
 

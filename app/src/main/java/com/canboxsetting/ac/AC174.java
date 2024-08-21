@@ -133,17 +133,13 @@ public class AC174 extends MyFragment {
         for (int i = 0; i < CMD_ID.length; ++i) {
             if (CMD_ID[i][0] == id) {
                 if ((CMD_ID[i][1] & 0xff00) == 0) {
-                    byte[] buf = new byte[]{
-                            0x2, 0x3b, (byte) (CMD_ID[i][1] & 0xff), 1
-                    };
+                    byte[] buf = new byte[]{0x2, 0x3b, (byte) (CMD_ID[i][1] & 0xff), 1};
                     if (v.isSelected()) {
                         buf[3] = 0;
                     }
                     BroadcastUtil.sendCanboxInfo(getActivity(), buf);
                 } else {
-                    byte[] buf = new byte[]{
-                            0x2, 0x3b, (byte) ((CMD_ID[i][1] & 0xff00) >> 8), (byte) (CMD_ID[i][1] & 0xff)
-                    };
+                    byte[] buf = new byte[]{0x2, 0x3b, (byte) ((CMD_ID[i][1] & 0xff00) >> 8), (byte) (CMD_ID[i][1] & 0xff)};
                     BroadcastUtil.sendCanboxInfo(getActivity(), buf);
                 }
             }

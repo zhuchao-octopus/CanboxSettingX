@@ -1,66 +1,28 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class KadjarRaiseSettingFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "KadjarRaiseSettingFragment";
 
     private static final Node[] NODES = {
@@ -84,8 +46,7 @@ public class KadjarRaiseSettingFragment extends PreferenceFragment implements Pr
             new Node("parking_system", 0x8313, 0x7100, 0x30), new Node("lateral_parking", 0x8312, 0x7100, 0x4), new Node("blind_zone", 0x8311, 0x7100, 0x8),
 
 
-            new Node("instrument_color", 0x8310, 0x7104, 0xff), new Node("instrument_style", 0x830e, 0x7105, 0xff), new Node("instrument_light", 0x830f, 0x7106, 0xff),
-    };
+            new Node("instrument_color", 0x8310, 0x7104, 0xff), new Node("instrument_style", 0x830e, 0x7105, 0xff), new Node("instrument_light", 0x830f, 0x7106, 0xff),};
 
     private final static int[] INIT_CMDS = {0x9071};
 
@@ -108,6 +69,11 @@ public class KadjarRaiseSettingFragment extends PreferenceFragment implements Pr
                 }
             }
         }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -147,18 +113,14 @@ public class KadjarRaiseSettingFragment extends PreferenceFragment implements Pr
 
     private void sendCanboxData(int cmd, int value) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff00) >> 8), 0x02, (byte) (cmd & 0xff), (byte) value
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x02, (byte) (cmd & 0xff), (byte) value};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
 
     private void sendCanboxData(int cmd) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff0000) >> 16), 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff0000) >> 16), 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
 

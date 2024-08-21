@@ -16,20 +16,6 @@
 
 package com.my.factory;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-
-import com.common.util.AppConfig;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.UtilSystem;
-import com.canboxsetting.R;
-import com.zhuchao.android.fbase.MMLog;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -37,15 +23,29 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+import com.canboxsetting.R;
+import com.common.util.AppConfig;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.SystemConfig;
+import com.common.util.UtilSystem;
+import com.zhuchao.android.fbase.MMLog;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * This activity plays a video from a specified URI.
@@ -1854,9 +1854,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
             it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
             sendBroadcast(it);
-        }
-        else
-        {
+        } else {
             newCanboxValue = mCanboxType;
 
             if (mKeyType != null) {

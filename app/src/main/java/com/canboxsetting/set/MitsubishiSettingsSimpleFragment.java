@@ -1,97 +1,44 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class MitsubishiSettingsSimpleFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class MitsubishiSettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "MitsubishiSettingsSimpleFragment";
 
     private static final Node[] NODES = {
 
             new Node("car_type_cmd", 0x0, 0x0, 0x0, 0x0),
 
-            new Node("mitsubishi_settings_1", 0xC601, 0x40000000, 0x00e0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_2", 0xC602, 0x40000000, 0x000c, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_3", 0xC610, 0x40000000, 0x01c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_4", 0xC611, 0x40000000, 0x0120, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_5", 0xC612, 0x40000000, 0x0110, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_6", 0xC613, 0x40000000, 0x010c, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_7", 0xC614, 0x40000000, 0x0102, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_8", 0xC620, 0x40000000, 0x0280, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_9", 0xC621, 0x40000000, 0x0270, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_10", 0xC622, 0x40000000, 0x020e, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_11", 0xC623, 0x40000000, 0x03c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_12", 0xC624, 0x40000000, 0x0330, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_13", 0xC625, 0x40000000, 0x0307, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_14", 0xC630, 0x40000000, 0x0480, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_15", 0xC631, 0x40000000, 0x0440, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_16", 0xC632, 0x40000000, 0x0420, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_17", 0xC640, 0x40000000, 0x0418, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_18", 0xC641, 0x40000000, 0x0404, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_19", 0xC642, 0x40000000, 0x0403, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_20", 0xC650, 0x40000000, 0x0580, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_21", 0xC651, 0x40000000, 0x0540, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_22", 0xC652, 0x40000000, 0x0530, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_23", 0xC653, 0x40000000, 0x050c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_24", 0xC654, 0x40000000, 0x0502, 0x0, Node.TYPE_BUFF1_INDEX),
-            new Node("mitsubishi_settings_25", 0xC660, 0x40000000, 0x06c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_26", 0xC661, 0x40000000, 0x0630, 0x0, Node.TYPE_BUFF1_INDEX),
+            new Node("mitsubishi_settings_1", 0xC601, 0x40000000, 0x00e0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_2", 0xC602, 0x40000000, 0x000c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_3", 0xC610, 0x40000000, 0x01c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_4", 0xC611, 0x40000000, 0x0120, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_5", 0xC612, 0x40000000, 0x0110, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_6", 0xC613, 0x40000000, 0x010c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_7", 0xC614, 0x40000000, 0x0102, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_8", 0xC620, 0x40000000, 0x0280, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_9", 0xC621, 0x40000000, 0x0270, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_10", 0xC622, 0x40000000, 0x020e, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_11", 0xC623, 0x40000000, 0x03c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_12", 0xC624, 0x40000000, 0x0330, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_13", 0xC625, 0x40000000, 0x0307, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_14", 0xC630, 0x40000000, 0x0480, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_15", 0xC631, 0x40000000, 0x0440, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_16", 0xC632, 0x40000000, 0x0420, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_17", 0xC640, 0x40000000, 0x0418, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_18", 0xC641, 0x40000000, 0x0404, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_19", 0xC642, 0x40000000, 0x0403, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_20", 0xC650, 0x40000000, 0x0580, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_21", 0xC651, 0x40000000, 0x0540, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_22", 0xC652, 0x40000000, 0x0530, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_23", 0xC653, 0x40000000, 0x050c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_24", 0xC654, 0x40000000, 0x0502, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_25", 0xC660, 0x40000000, 0x06c0, 0x0, Node.TYPE_BUFF1_INDEX), new Node("mitsubishi_settings_26", 0xC661, 0x40000000, 0x0630, 0x0, Node.TYPE_BUFF1_INDEX),
 
             new Node("mitsubishi_settings_0", 0xC600),
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x1A00, 0x1E00, 0x4101, 0x4102, 0x4203
+    private final static int[] INIT_CMDS = {0x1A00, 0x1E00, 0x4101, 0x4102, 0x4203
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
-             */
-    };
+             */};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -111,6 +58,11 @@ public class MitsubishiSettingsSimpleFragment extends PreferenceFragment impleme
                 }
             }
         }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
