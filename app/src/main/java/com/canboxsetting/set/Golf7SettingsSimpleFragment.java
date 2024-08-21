@@ -22,7 +22,7 @@ import androidx.preference.SwitchPreference;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 
 public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";

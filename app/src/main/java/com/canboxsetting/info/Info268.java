@@ -19,7 +19,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 
 public class Info268 extends PreferenceFragmentCompat {
     private static final String TAG = "HYSettingsRaiseFragment";

@@ -22,7 +22,7 @@ import android.util.Log;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceDialog;
 import com.common.view.MyPreferenceSeekBar;
 

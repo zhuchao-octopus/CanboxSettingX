@@ -43,7 +43,7 @@ import com.canboxsetting.ac.TouaregHiworldACFragment;
 import com.canboxsetting.ac.ToyotaRaiseAirControlFragment;
 import com.canboxsetting.ac.VWMQBAirControlFragment;
 import com.canboxsetting.set.X30RaiseAirControlFragment;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;

@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 
 public class Set123 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "HYSettingsRaiseFragment";

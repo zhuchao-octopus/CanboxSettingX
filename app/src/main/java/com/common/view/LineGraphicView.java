@@ -1,4 +1,4 @@
-package com.car.view;
+package com.common.view;
 
 import android.content.Context;
 import android.content.res.Resources;

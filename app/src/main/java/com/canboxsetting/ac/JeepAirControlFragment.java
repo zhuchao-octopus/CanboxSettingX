@@ -20,7 +20,7 @@ import java.util.Locale;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
 import com.zhuchao.android.fbase.ByteUtils;

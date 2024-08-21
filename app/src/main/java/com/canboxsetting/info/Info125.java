@@ -7,17 +7,14 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import android.util.Log;
 
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
 

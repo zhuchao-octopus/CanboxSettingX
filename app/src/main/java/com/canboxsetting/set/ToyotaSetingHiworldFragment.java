@@ -18,13 +18,10 @@ import androidx.annotation.Nullable;
 
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-import androidx.preference.PreferenceFragmentCompat;
-
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 import com.common.util.Util;
 
 public class ToyotaSetingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {

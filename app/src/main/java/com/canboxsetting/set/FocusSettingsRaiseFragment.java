@@ -19,10 +19,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.util.SystemConfig;
 import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;

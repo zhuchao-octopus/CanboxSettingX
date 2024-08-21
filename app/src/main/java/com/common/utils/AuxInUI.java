@@ -1,4 +1,4 @@
-package com.common.util;
+package com.common.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,11 +14,11 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
 import com.common.camera.CameraHolder;
 import com.common.ui.UIBase;
-import com.common.utils.BroadcastUtil;
-import com.common.utils.ParkBrake;
+import com.common.util.Kernel;
+import com.common.util.MyCmd;
+import com.common.util.Util;
 import com.my.gl.MyGLSurfaceView;
 
 import java.util.List;

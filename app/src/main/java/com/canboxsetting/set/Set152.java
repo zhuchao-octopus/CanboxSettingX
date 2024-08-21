@@ -18,10 +18,10 @@ import androidx.preference.SwitchPreference;
 import android.util.Log;
 
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set152 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {

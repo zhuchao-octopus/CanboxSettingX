@@ -16,7 +16,7 @@
 
 package com.canboxsetting;
 
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.MachineConfig;
 
 import androidx.appcompat.app.AppCompatActivity;

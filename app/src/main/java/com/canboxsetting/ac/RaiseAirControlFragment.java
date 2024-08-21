@@ -40,7 +40,7 @@ import com.canboxsetting.R;
 import com.canboxsetting.R.id;
 import com.canboxsetting.R.layout;
 import com.canboxsetting.R.string;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
 import com.zhuchao.android.fbase.ByteUtils;

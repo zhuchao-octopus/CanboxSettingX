@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.util.Util;
 
 public class HaiMaRaiseSetFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {

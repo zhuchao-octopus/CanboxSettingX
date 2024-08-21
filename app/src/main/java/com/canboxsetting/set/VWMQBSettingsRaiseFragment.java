@@ -25,10 +25,10 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 

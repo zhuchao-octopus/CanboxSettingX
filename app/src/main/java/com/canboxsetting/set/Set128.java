@@ -17,7 +17,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.util.Util;
 
 import android.util.Log;

@@ -13,11 +13,8 @@ import android.os.Handler;
 import android.os.Message;
 
 import androidx.annotation.Nullable;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import android.util.Log;
@@ -36,7 +33,7 @@ import com.canboxsetting.R;
 import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodeDrivingHiworldData;
+import com.common.utils.NodeDrivingHiworldData;
 import com.common.util.UtilSystem;
 import com.common.view.MyPopDialog;
 

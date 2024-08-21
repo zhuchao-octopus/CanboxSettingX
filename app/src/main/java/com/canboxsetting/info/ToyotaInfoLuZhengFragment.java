@@ -12,7 +12,6 @@ import android.os.Message;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
@@ -26,7 +25,7 @@ import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 import com.common.util.SystemConfig;
 import com.common.view.MyPreference2;
 

@@ -1,5 +1,6 @@
-package com.car.ui;
+package com.common.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
@@ -136,10 +137,11 @@ public class GlobalDef {
         return Util.getFileValue(CAMERA_INDEX);
     }
 
+    @SuppressLint("InvalidWakeLockTag")
     public static void wakeLockOnce() {
         if (mContext != null) {
             PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-            WakeLock mWakeLockOne = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, TAG);
+             WakeLock mWakeLockOne = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, TAG);
             if (null != mWakeLockOne) {
                 mWakeLockOne.acquire();
                 mWakeLockOne.release();

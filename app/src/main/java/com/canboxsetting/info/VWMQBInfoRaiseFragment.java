@@ -35,7 +35,7 @@ import com.canboxsetting.R;
 import com.canboxsetting.R.string;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodeDrivingData;
+import com.common.utils.NodeDrivingData;
 import com.common.util.Util;
 import com.common.util.UtilSystem;
 import com.common.view.MyPopDialog;

@@ -10,7 +10,6 @@ import android.os.Message;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
@@ -22,7 +21,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.util.Util;
 
 public class Set122 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {

@@ -35,7 +35,7 @@ import com.canboxsetting.cd.JeepCarCDXinbasFragment;
 import com.canboxsetting.cd.MazdaBinarytekCarCDFragment;
 import com.canboxsetting.cd.MazdaSimpleCarCDFragment;
 import com.canboxsetting.cd.RX330HZCarCDFragment;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;

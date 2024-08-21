@@ -11,7 +11,7 @@ import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
-import com.common.util.NodePreference;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set9 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {

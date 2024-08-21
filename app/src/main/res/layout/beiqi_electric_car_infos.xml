@@ -316,7 +316,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="360px">
 
-                    <com.car.view.LineGraphicView
+                    <com.common.view.LineGraphicView
                         android:id="@+id/line_graphic"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

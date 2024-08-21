@@ -20,7 +20,7 @@ import com.canboxsetting.tpms.MazdTpmsInfoaRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoSimpleFragment;
 import com.canboxsetting.tpms.ZhongXingFragment;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 

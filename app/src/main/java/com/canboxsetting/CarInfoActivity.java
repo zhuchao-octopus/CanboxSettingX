@@ -48,7 +48,7 @@ import com.canboxsetting.info.ToyotaInfoSimpleFragment;
 import com.canboxsetting.info.VWInfoSimpleFragment;
 import com.canboxsetting.info.VWMQBInfoRaiseFragment;
 import com.canboxsetting.info.ZhongXingFragment;
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 

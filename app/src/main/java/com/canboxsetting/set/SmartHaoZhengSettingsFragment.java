@@ -9,10 +9,8 @@ import android.os.Handler;
 import android.os.Message;
 
 import androidx.annotation.Nullable;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import android.util.Log;
@@ -20,7 +18,7 @@ import android.util.Log;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 
 public class SmartHaoZhengSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "SmartHaoZhengSettingsFragment";

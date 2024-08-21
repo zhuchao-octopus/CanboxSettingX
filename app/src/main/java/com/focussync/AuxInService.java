@@ -1,18 +1,11 @@
 package com.focussync;
 
-import com.car.ui.GlobalDef;
 import com.common.service.ServiceBase;
 import com.common.util.MyCmd;
-import com.common.util.Util;
-import com.common.utils.BroadcastUtil;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.os.Handler;
-import android.util.Log;
 
 public class AuxInService extends ServiceBase {
     public static final String TAG = "RadioService";

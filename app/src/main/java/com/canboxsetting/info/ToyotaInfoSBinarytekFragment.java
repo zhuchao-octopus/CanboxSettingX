@@ -23,7 +23,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 import com.common.view.MyPreference2;
 
 public class ToyotaInfoSBinarytekFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {

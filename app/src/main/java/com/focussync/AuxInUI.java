@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.car.ui.GlobalDef;
+import com.common.utils.GlobalDef;
 import com.my.gl.MyGLSurfaceView;
 import com.canboxsetting.R;
 

@@ -1,10 +1,11 @@
-package com.common.util;
+package com.common.utils;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 
 import com.common.service.ServiceBase;
+import com.common.util.MyCmd;
 
 public class AuxInService extends ServiceBase {
     public static final String TAG = "RadioService";

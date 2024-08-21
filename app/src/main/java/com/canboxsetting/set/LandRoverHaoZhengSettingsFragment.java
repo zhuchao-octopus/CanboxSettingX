@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.Node;
 
 import java.util.HashSet;
 import java.util.Iterator;
