@@ -16,14 +16,9 @@ import java.util.ArrayList;
  * This activity plays a video from a specified URI.
  */
 public class JsonParser {
-
     private ArrayList<CanSetting> mCanSettings = new ArrayList<CanSetting>();
-
-    ;
     private ArrayList<CanAppShow> mCanAppShows = new ArrayList<CanAppShow>();
     private ArrayList<CanBaud> mCanBaudConfig = new ArrayList<CanBaud>();
-
-    ;
 
     public CanBaud getCanBaudConfig(String id) {
         for (int i = 0; i < mCanBaudConfig.size(); ++i) {
@@ -36,8 +31,6 @@ public class JsonParser {
         }
         return mCanBaudConfig.get(0);
     }
-
-    ;
 
     public CanSetting getCanSetting(String id) {
         for (int i = 0; i < mCanSettings.size(); ++i) {

@@ -50,6 +50,7 @@ import java.util.Set;
 /**
  * This activity plays a video from a specified URI.
  */
+@SuppressLint("ExportedPreferenceActivity")
 public class CanboxSettings extends PreferenceActivity implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener, OnClickListener {
     private static final String TAG = "CanboxSettings";
     private static final String KEY_MANUFACTURER = "canbox_manufacturer";
@@ -1324,7 +1325,6 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
 
     private void updateCanboxKey(String s) {
         // String s = mCanboxValue;
-
         if (s == null) {
             s = mCanboxValue;
         }
@@ -1338,12 +1338,9 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                 String[] value = {"0", "1", "2", "3"};
                 mCanboxKeyPreference.setEntries(entry);
                 mCanboxKeyPreference.setEntryValues(value);
-
                 if (mKeyType == null) {
-
                     updateCanboxKeyValue(value[0]);
                 } else {
-
                     updateCanboxKeyValue(mKeyType);
                 }
             } else if (s.startsWith(MachineConfig.VALUE_CANBOX_NISSAN2013) || s.startsWith(MachineConfig.VALUE_CANBOX_NISSAN_RAISE)) {
@@ -1380,26 +1377,19 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             // }
             else if (s.startsWith(MachineConfig.VALUE_CANBOX_HY)) {
                 show = true;
-
                 String[] entry = {"Normal", "KX5 H", "KX5 M", "SONATA 9 H", "SONATA 9 M", "Sportage"};
                 String[] value = {"0", "1", "2", "3", "4", "5"};
-
                 mCanboxKeyPreference.setEntries(entry);
                 mCanboxKeyPreference.setEntryValues(value);
-
                 if (mKeyType == null) {
-
                     updateCanboxKeyValue(value[0]);
                 } else {
-
                     updateCanboxKeyValue(mKeyType);
                 }
             } else if (s.startsWith(MachineConfig.VALUE_CANBOX_FORD_SIMPLE)) {
                 show = true;
-
                 String[] entry = {"Normal", "Kuga"};
                 String[] value = {"0", "1"};
-
                 mCanboxKeyPreference.setEntries(entry);
                 mCanboxKeyPreference.setEntryValues(value);
 
@@ -1456,7 +1446,6 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                 String[] value = {"0", "1"};
                 mCanboxKeyPreference.setEntries(entry);
                 mCanboxKeyPreference.setEntryValues(value);
-
                 if (mKeyType == null) {
                     updateCanboxKeyValue(value[0]);
                 } else {
@@ -1466,31 +1455,24 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                 show = true;
                 String[] entry = {"0: Normal", "1: B50 High"};
                 String[] value = {"0", "1"};
-
                 mCanboxKeyPreference.setEntries(entry);
                 mCanboxKeyPreference.setEntryValues(value);
 
                 if (mKeyType == null) {
-
                     updateCanboxKeyValue(value[0]);
                 } else {
-
                     updateCanboxKeyValue(mKeyType);
                 }
             } else if (s.startsWith(MachineConfig.VALUE_CANBOX_OUSHANG_RAISE)) {
-
                 show = true;
                 String[] entry = {"1: None", "2: 360", "2: Right View", "3: 360 & Right View"};
                 String[] value = {"0", "1", "2", "3"};
 
                 mCanboxKeyPreference.setEntries(entry);
                 mCanboxKeyPreference.setEntryValues(value);
-
                 if (mKeyType == null) {
-
                     updateCanboxKeyValue(value[0]);
                 } else {
-
                     updateCanboxKeyValue(mKeyType);
                 }
             }
@@ -1510,7 +1492,6 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
 
     private void updateCanboxEQ(String s) {
         // String s = mCanboxValue;
-
         if (s == null) {
             s = mCanboxValue;
         }
@@ -1527,10 +1508,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             mCanboxEQPreference.setEntryValues(value);
 
             if (mCarEQ == null) {
-
                 updateCanboxEQValue(value[0]);
             } else {
-
                 updateCanboxEQValue(mCarEQ);
             }
             // }
@@ -1972,9 +1951,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         mTextVolume = (TextView) alertDialog.findViewById(R.id.volume);
 
         if (mLevel != null) {
-
             mLevel.setMax(max);
-
             mTextVolume.setText(String.valueOf(volume));
             mLevel.setProgress(volume);
             mLevel.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {

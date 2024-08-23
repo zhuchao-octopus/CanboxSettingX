@@ -106,6 +106,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.my.factory.CanboxSettings"
             android:excludeFromRecents="true"
@@ -116,7 +117,6 @@
             tools:ignore="ExportedPreferenceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
             <intent-filter>
@@ -135,7 +135,6 @@
             tools:ignore="ExportedPreferenceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
             <intent-filter>
@@ -144,6 +143,7 @@
                 <action android:name="com.my.factory.intent.action.CanboxSettings2" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.my.factory.CanboxSettingsAdvanced"
             android:excludeFromRecents="true"
@@ -162,6 +162,7 @@
                 <action android:name="com.my.factory.intent.action.CanboxSettingsAdvanced" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.canboxsetting.TPMSActivity"
             android:configChanges="orientation|keyboardHidden"
