@@ -18,17 +18,18 @@ package com.canboxsetting;
 
 import com.common.util.MachineConfig;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.view.View;
 
 /**
  * This activity plays a video from a specified URI.
  */
-public class TimeSetActivity extends Activity {
+public class TimeSetActivity extends AppCompatActivity {
     private static final String TAG = "CanAirControlActivity";
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
@@ -38,7 +39,7 @@ public class TimeSetActivity extends Activity {
         super.onCreate(icicle);
 
         setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         String value = null;
         String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);

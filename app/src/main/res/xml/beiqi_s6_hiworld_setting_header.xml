@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/vehicle_settings" >
-    </PreferenceScreen>
-    <PreferenceScreen android:title="@string/instrument_settings" >
-    </PreferenceScreen>
-    <PreferenceScreen android:title="@string/air_setup" >
-    </PreferenceScreen>
-    
+    <PreferenceScreen android:title="@string/vehicle_settings"></PreferenceScreen>
+    <PreferenceScreen android:title="@string/instrument_settings"></PreferenceScreen>
+    <PreferenceScreen android:title="@string/air_setup"></PreferenceScreen>
 
 
 </PreferenceScreen>

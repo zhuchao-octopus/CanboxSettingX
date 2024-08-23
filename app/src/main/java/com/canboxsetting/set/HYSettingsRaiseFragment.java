@@ -1,96 +1,48 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 
-public class HYSettingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class HYSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
             //group1
-            new NodePreference("blind_spot_detector", 0x83, 0x52, 0x1, 0), new NodePreference("air_controll_system", 0x83, 0x52, 0x2, 0),
-            new NodePreference("raise_third_row_seat_back_fold_left_side", 0x83, 0x52, 0x3, 0, R.array.back_seat_status_entries, R.array.three_high_values),
-            new NodePreference("raise_third_row_seat_back_fold_right_side", 0x83, 0x52, 0x4, 0, R.array.back_seat_status_entries, R.array.three_high_values),
+            new NodePreference("blind_spot_detector", 0x83, 0x52, 0x1, 0), new NodePreference("air_controll_system", 0x83, 0x52, 0x2, 0), new NodePreference("raise_third_row_seat_back_fold_left_side", 0x83, 0x52, 0x3, 0, R.array.back_seat_status_entries, R.array.three_high_values), new NodePreference("raise_third_row_seat_back_fold_right_side", 0x83, 0x52, 0x4, 0, R.array.back_seat_status_entries, R.array.three_high_values),
 
-            new NodePreference("raise_steering_wheel_heating", 0x83, 0x52, 0x5, 0), new NodePreference("raise_seat_heating_or_ventilation", 0x83, 0x52, 0x6, 0),
-            new NodePreference("seat_position_change_prompt", 0x83, 0x52, 0x7, 0), new NodePreference("open_rear_camera", 0x83, 0x52, 0x8, 0),
-            new NodePreference("air_circulation_activated_according_to_external_dust_conditions", 0x83, 0x52, 0xa, 0),
-            new NodePreference("langauage5", 0x3, 0x0, 0x1, 0, R.array.launage_entries3, R.array.launage_entryValues3),
+            new NodePreference("raise_steering_wheel_heating", 0x83, 0x52, 0x5, 0), new NodePreference("raise_seat_heating_or_ventilation", 0x83, 0x52, 0x6, 0), new NodePreference("seat_position_change_prompt", 0x83, 0x52, 0x7, 0), new NodePreference("open_rear_camera", 0x83, 0x52, 0x8, 0), new NodePreference("air_circulation_activated_according_to_external_dust_conditions", 0x83, 0x52, 0xa, 0), new NodePreference("langauage5", 0x3, 0x0, 0x1, 0, R.array.launage_entries3, R.array.launage_entryValues3),
             //group2
-            new NodePreference("sound_atmosphere_light_atmosphere_light", 0x83, 0x52, 0xb, 1, R.array.korea_atmosphere_light_entries, R.array.three_high_values),
-            new NodePreference("sound_atmosphere_light_theme_color", 0x83, 0x52, 0xc, 1, R.array.korea_sound_atmosphere_light_theme_color_entries, R.array.korea_sound_atmosphere_light_theme_color_values),
-            new NodePreference("sound_atmosphere_light_monochrome_light", 0x83, 0x52, 0xd, 1, R.array.korea_sound_atmosphere_light_monochrome_light_entries, R.array.dashboard_brightness_value),
-            new NodePreference("sound_atmosphere_light_sound", 0x83, 0x52, 0xe, 1),
-            new NodePreference("sound_atmosphere_light_brightness", 0x83, 0x52, 0xf, 1, R.array.korea_sound_atmosphere_light_brightness_entries, R.array.korea_sound_atmosphere_light_brightness_values),
+            new NodePreference("sound_atmosphere_light_atmosphere_light", 0x83, 0x52, 0xb, 1, R.array.korea_atmosphere_light_entries, R.array.three_high_values), new NodePreference("sound_atmosphere_light_theme_color", 0x83, 0x52, 0xc, 1, R.array.korea_sound_atmosphere_light_theme_color_entries, R.array.korea_sound_atmosphere_light_theme_color_values), new NodePreference("sound_atmosphere_light_monochrome_light", 0x83, 0x52, 0xd, 1, R.array.korea_sound_atmosphere_light_monochrome_light_entries, R.array.dashboard_brightness_value), new NodePreference("sound_atmosphere_light_sound", 0x83, 0x52, 0xe, 1), new NodePreference("sound_atmosphere_light_brightness", 0x83, 0x52, 0xf, 1, R.array.korea_sound_atmosphere_light_brightness_entries, R.array.korea_sound_atmosphere_light_brightness_values),
             //group3
             new NodePreference("appointment_charging_method", 0xa9, 0x0, 0x1, 2, R.array.appointment_charging_method_entries, R.array.three_high_values),
             //group4
-            new NodePreference("high_speed_limit", 0xa90a, 0x2, 0x0, 3, R.array.korea_speed_limit, R.array.envol_vaues),
-            new NodePreference("eco_taxiing_energy_regeneration", 0xa90a, 0x1, 0x4, 3, R.array.prompt_volume_entries, R.array.envol_vaues),
-            new NodePreference("sport_taxiing_energy_regeneration", 0xa90a, 0x1, 0x2, 3, R.array.prompt_volume_entries, R.array.envol_vaues),
-            new NodePreference("comfort_taxiing_energy_regeneration", 0xa90a, 0x1, 0x0, 3, R.array.prompt_volume_entries, R.array.envol_vaues),
-            new NodePreference("eco_mode1", 0xa90a, 0x0, 0x6, 3, R.array.korea_air_mode, R.array.envol_vaues),
-            new NodePreference("sport_mode", 0xa90a, 0x0, 0x4, 3, R.array.korea_air_mode, R.array.envol_vaues),
-            new NodePreference("comfort_mode", 0xa90a, 0x0, 0x2, 3, R.array.korea_air_mode, R.array.envol_vaues), new NodePreference("reset_driver_mode", 0xa90b, 3),
+            new NodePreference("high_speed_limit", 0xa90a, 0x2, 0x0, 3, R.array.korea_speed_limit, R.array.envol_vaues), new NodePreference("eco_taxiing_energy_regeneration", 0xa90a, 0x1, 0x4, 3, R.array.prompt_volume_entries, R.array.envol_vaues), new NodePreference("sport_taxiing_energy_regeneration", 0xa90a, 0x1, 0x2, 3, R.array.prompt_volume_entries, R.array.envol_vaues), new NodePreference("comfort_taxiing_energy_regeneration", 0xa90a, 0x1, 0x0, 3, R.array.prompt_volume_entries, R.array.envol_vaues), new NodePreference("eco_mode1", 0xa90a, 0x0, 0x6, 3, R.array.korea_air_mode, R.array.envol_vaues), new NodePreference("sport_mode", 0xa90a, 0x0, 0x4, 3, R.array.korea_air_mode, R.array.envol_vaues), new NodePreference("comfort_mode", 0xa90a, 0x0, 0x2, 3, R.array.korea_air_mode, R.array.envol_vaues), new NodePreference("reset_driver_mode", 0xa90b, 3),
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x41ff, 0x40ff,
+    private final static int[] INIT_CMDS = {0x41ff, 0x40ff,
 
     };
 
@@ -105,6 +57,11 @@ public class HYSettingsRaiseFragment extends PreferenceFragment implements Prefe
         addPreferencesFromResource(R.xml.hy_raise_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -258,9 +215,7 @@ public class HYSettingsRaiseFragment extends PreferenceFragment implements Prefe
         }
 
         //		Log.d("ffck", Util.byte2HexStr(mNewEnergy));
-        byte[] buf = new byte[]{
-                0x8, (byte) 0xa9, (byte) 0x0a, mNewEnergy[0], mNewEnergy[1], mNewEnergy[2]
-        };
+        byte[] buf = new byte[]{0x8, (byte) 0xa9, (byte) 0x0a, mNewEnergy[0], mNewEnergy[1], mNewEnergy[2]};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

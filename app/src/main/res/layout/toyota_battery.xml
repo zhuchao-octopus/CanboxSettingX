@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="420px"
-    android:gravity="center" >
- 
+    android:gravity="center">
+
     <RelativeLayout
         android:layout_width="713px"
         android:layout_height="348px"
-        android:background="@drawable/canbus8_car_bg" >
+        android:background="@drawable/canbus8_car_bg">
 
         <View
             android:id="@+id/canbus8_arrow_set"

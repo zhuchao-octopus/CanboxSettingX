@@ -1,65 +1,31 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
-import com.car.ui.GlobalDef;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
-import com.common.view.MyPreferenceSeekBar;
 
-public class Set132 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+public class Set132 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "Set132";
 
     private static final NodePreference[] NODES = {
@@ -67,8 +33,7 @@ public class Set132 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("steering_feel", 0x6f03, 0x6603, 0xc, 0, R.array.saic_steering_handle, R.array.three_values),
 
-            new NodePreference("radar_warning_tone", 0x6f04, 0x6606, 0x10, 0), new NodePreference("flameout_unlock", 0x6f06, 0x6603, 0x20, 0),
-            new NodePreference("greeting_lights", 0x6f08, 0x6603, 0x10, 0),
+            new NodePreference("radar_warning_tone", 0x6f04, 0x6606, 0x10, 0), new NodePreference("flameout_unlock", 0x6f06, 0x6603, 0x20, 0), new NodePreference("greeting_lights", 0x6f08, 0x6603, 0x10, 0),
 
             new NodePreference("length_welcome_light", 0x6f09, 0x6603, 0x3, 0, R.array.honda_security_relock_timer_entries, R.array.three_values),
 
@@ -78,9 +43,7 @@ public class Set132 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("nearly_unclock", 0x6f20, 0x6602, 0x80, 0, R.array.auto_unlock_setting_for_near_car_entries, R.array.two_values),
 
-            new NodePreference("follow_me_home_reversing_lights", 0x6f23, 0x6604, 0x20, 0), new NodePreference("accompany_me_home_low_beam", 0x6f24, 0x6604, 0x10, 0),
-            new NodePreference("follow_me_home_after_the_fog_lights", 0x6f25, 0x6604, 0x8, 0), new NodePreference("find_car_lights_indicate_reversing_lights", 0x6f26, 0x6604, 0x4, 0),
-            new NodePreference("find_car_light_indicator_low_beam", 0x6f27, 0x6604, 0x2, 0), new NodePreference("find_car_lights_indicate_rear_fog_lights", 0x6f28, 0x6604, 0x1, 0),
+            new NodePreference("follow_me_home_reversing_lights", 0x6f23, 0x6604, 0x20, 0), new NodePreference("accompany_me_home_low_beam", 0x6f24, 0x6604, 0x10, 0), new NodePreference("follow_me_home_after_the_fog_lights", 0x6f25, 0x6604, 0x8, 0), new NodePreference("find_car_lights_indicate_reversing_lights", 0x6f26, 0x6604, 0x4, 0), new NodePreference("find_car_light_indicator_low_beam", 0x6f27, 0x6604, 0x2, 0), new NodePreference("find_car_lights_indicate_rear_fog_lights", 0x6f28, 0x6604, 0x1, 0),
 
             new NodePreference("home_time", 0x6f29, 0x6605, 0xf0, 0, R.array.enhome_time, R.array.enhome_time_vaues),
 
@@ -91,8 +54,7 @@ public class Set132 extends PreferenceFragment implements Preference.OnPreferenc
             new NodePreference("search_car_indicator", 0x6f3b, 0x6602, 0x10, 0, R.array.saic_search_car_indicator_type_entries, R.array.two_values),
 
 
-            new NodePreference("folding", 0x6f3c, 0x6602, 0x4, 0), new NodePreference("driving_auto", 0x6f3d, 0x6602, 0x2, 0), new NodePreference("body_stability_control", 0x6f41, 0x6604, 0x80, 0),
-            new NodePreference("economic_driving", 0x6f42, 0x6604, 0x40, 0),
+            new NodePreference("folding", 0x6f3c, 0x6602, 0x4, 0), new NodePreference("driving_auto", 0x6f3d, 0x6602, 0x2, 0), new NodePreference("body_stability_control", 0x6f41, 0x6604, 0x80, 0), new NodePreference("economic_driving", 0x6f42, 0x6604, 0x40, 0),
 
             new NodePreference("battery_level", 0x6f43, 0x6606, 0x3, 0, R.array.power_management_entries, R.array.three_values),
 
@@ -120,6 +82,11 @@ public class Set132 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -207,9 +174,7 @@ public class Set132 extends PreferenceFragment implements Preference.OnPreferenc
         public void handleMessage(Message msg) {
             if (!mPaused) {
 
-                byte[] buf = new byte[]{
-                        0x3, (byte) 0x6a, 5, (byte) 1, (byte) (msg.what & 0xff)
-                };
+                byte[] buf = new byte[]{0x3, (byte) 0x6a, 5, (byte) 1, (byte) (msg.what & 0xff)};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
             }
         }

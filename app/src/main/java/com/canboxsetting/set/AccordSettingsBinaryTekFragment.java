@@ -1,66 +1,29 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class AccordSettingsBinaryTekFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class AccordSettingsBinaryTekFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";
 
     private int mType = 0;
@@ -83,21 +46,15 @@ public class AccordSettingsBinaryTekFragment extends PreferenceFragment implemen
             new Node("f_backlight", 0xc601, 0x32, 0x8000, 0x0), new Node("trip_a", 0xc602, 0x32, 0x30, 0x0), new Node("trip_b", 0xc603, 0x32, 0xc0, 0x0),
 
 
-            new Node("interior", 0xc604, 0x32, 0x300, 0x0), new Node("headlight", 0xc605, 0x32, 0xc00, 0x0), new Node("auto_light", 0xc606, 0x32, 0x7000, 0x0),
-            new Node("lock_with", 0xc607, 0x32, 0x30000, 0x0), new Node("unlock_with", 0xc608, 0x32, 0xc0000, 0x0), new Node("key_mode", 0xc609, 0x32, 0x400000, 0x0),
-            new Node("keyless", 0xc60a, 0x32, 0x800000, 0x0), new Node("security", 0xc60b, 0x32, 0x300000, 0x0), new Node("beep_vol", 0xc60c, 0x32, 0x80000000, 0x0),
-            new Node("access_beep", 0xc60d, 0x32, 0x40000000, 0x0),
+            new Node("interior", 0xc604, 0x32, 0x300, 0x0), new Node("headlight", 0xc605, 0x32, 0xc00, 0x0), new Node("auto_light", 0xc606, 0x32, 0x7000, 0x0), new Node("lock_with", 0xc607, 0x32, 0x30000, 0x0), new Node("unlock_with", 0xc608, 0x32, 0xc0000, 0x0), new Node("key_mode", 0xc609, 0x32, 0x400000, 0x0), new Node("keyless", 0xc60a, 0x32, 0x800000, 0x0), new Node("security", 0xc60b, 0x32, 0x300000, 0x0), new Node("beep_vol", 0xc60c, 0x32, 0x80000000, 0x0), new Node("access_beep", 0xc60d, 0x32, 0x40000000, 0x0),
 
             new Node("remote_start_system", 0xc618, 0x32, 0x8000000, 0x0), new Node("screen1", 0xc641, 0x0, 0x00, 0x0),
 
-            new Node("screen2", 0xc642, 0xd3, 0xff, 0x0), new Node("screen3", 0xc643, 0xd3, 0xff00, 0x0), new Node("screen4", 0xc644, 0xd3, 0xff0000, 0x0),
-            new Node("screen5", 0xc645, 0xd3, 0xff000000, 0x0),
+            new Node("screen2", 0xc642, 0xd3, 0xff, 0x0), new Node("screen3", 0xc643, 0xd3, 0xff00, 0x0), new Node("screen4", 0xc644, 0xd3, 0xff0000, 0x0), new Node("screen5", 0xc645, 0xd3, 0xff000000, 0x0),
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x3200, 0xd300
-    };
+    private final static int[] INIT_CMDS = {0x3200, 0xd300};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -125,6 +82,11 @@ public class AccordSettingsBinaryTekFragment extends PreferenceFragment implemen
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

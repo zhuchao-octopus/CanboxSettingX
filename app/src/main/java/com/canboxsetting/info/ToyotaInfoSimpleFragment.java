@@ -1,77 +1,37 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.charset.Charset;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
 import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreference2;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class ToyotaInfoSimpleFragment extends PreferenceFragment implements OnPreferenceClickListener {
+public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "ToyotaInfoSimpleFragment";
 
     private boolean mRudder = false;
@@ -118,6 +78,11 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragment implements OnPr
 
     }
 
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
     private int mFrontDoor = 0;
     private int mBackDoor = 0;
 
@@ -143,13 +108,11 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragment implements OnPr
         }
     }
 
-    private final static int[] INIT_CMDS = {
-            0x4101, 0x4102, 0x4103, 0x2400, 0x1f00, 0x2300,
+    private final static int[] INIT_CMDS = {0x4101, 0x4102, 0x4103, 0x2400, 0x1f00, 0x2300,
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
-             */
-    };
+             */};
 
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);

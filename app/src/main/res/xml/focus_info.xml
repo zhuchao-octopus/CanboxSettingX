@@ -14,17 +14,17 @@
         android:key="tyre_speed"
         android:persistent="false"
         android:title="@string/tyre_speed" />
-<!--     <com.common.view.MyPreference -->
-<!--         android:key="engine_hot" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/engine_hot" /> -->
-<!--     <com.common.view.MyPreference -->
-<!--         android:key="driving_fuel_mode" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/driving_fuel_mode" /> -->
-<!--     <com.common.view.MyPreference -->
-<!--         android:key="speed_fuel_mode" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/speed_fuel_mode" /> -->
+    <!--     <com.common.view.MyPreference -->
+    <!--         android:key="engine_hot" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/engine_hot" /> -->
+    <!--     <com.common.view.MyPreference -->
+    <!--         android:key="driving_fuel_mode" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/driving_fuel_mode" /> -->
+    <!--     <com.common.view.MyPreference -->
+    <!--         android:key="speed_fuel_mode" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/speed_fuel_mode" /> -->
 
 </PreferenceScreen>

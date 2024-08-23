@@ -1,769 +1,411 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <issues format="6" by="lint 8.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.0)" variant="fatal" version="8.2.0">
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/audi_raise_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/audi_raise_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.clw.vehicleinfos&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/beiqi_electric_car_infos.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/layout/beiqi_electric_car_infos.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/bmw_e90x1_union_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/bmw_e90x1_union_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/bmw_e90x1_union_settings.xml"
-            line="2"
-            column="28"/>
+        <location file="src/main/res/xml/bmw_e90x1_union_settings.xml" line="2" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/changcheng_bnr_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/changcheng_bnr_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/chery_od_settings.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/chery_od_settings.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.clw.vehicleinfos&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/chuanqi_electric_car_infos.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/layout/chuanqi_electric_car_infos.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/dongnan_od_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/dongnan_od_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/dongnan_raise_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/dongnan_raise_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/fiat_egea_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/fiat_egea_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/focus_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/focus_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/focus_raise_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/focus_raise_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/ford005_hiworld_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/ford005_hiworld_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/ford_hiworld_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/ford_hiworld_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/ford_hiworld_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/ford_hiworld_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/ford_quanxun_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/ford_quanxun_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/golf7_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/golf7_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.clw.vehicleinfos&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/honda_odyssey_vehicle_media_infos.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/layout/honda_odyssey_vehicle_media_infos.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/hy_raise_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/hy_raise_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/infinitiqx50_settings_raise.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/infinitiqx50_settings_raise.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/kadjar_raise_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/kadjar_raise_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/kadjar_raise_settings.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/kadjar_raise_settings.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/landrover_haozheng_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/landrover_haozheng_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/landrover_haozheng_settings.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/landrover_haozheng_settings.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/lufeng_od_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/lufeng_od_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/lufeng_raise_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/lufeng_raise_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/mazda3_binarytek_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/mazda3_binarytek_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/mazda3_hiworld_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/mazda3_hiworld_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:settings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout-nodpi/mazda_open_simple_settings.xml"
-            line="3"
-            column="21"/>
+        <location file="src/main/res/layout-nodpi/mazda_open_simple_settings.xml" line="3" column="21" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/mitsublishi_settings.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/mitsublishi_settings.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/nissan_hiworld_setting.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/nissan_hiworld_setting.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/nissan_raise_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/nissan_raise_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/obd_binarytek.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/obd_binarytek.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/porsche_union_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/porsche_union_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/psa_hiworld_setting.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/psa_hiworld_setting.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:settings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout-nodpi/psa_keyboard.xml"
-            line="3"
-            column="21"/>
+        <location file="src/main/res/layout-nodpi/psa_keyboard.xml" line="3" column="21" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/ram_fiat_settings.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/ram_fiat_settings.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/renault_baogu_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/renault_baogu_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/renault_hiworld_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/renault_hiworld_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/rx330_hz_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/rx330_hz_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.clw.vehicleinfos&quot;"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/saic_basic_settings.xml"
-            line="3"
-            column="20"/>
+        <location file="src/main/res/xml/saic_basic_settings.xml" line="3" column="20" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/subaru_luzheng.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/subaru_luzheng.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/subaru_luzheng_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/subaru_luzheng_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="  xmlns:vehicle=&quot;http://schemas.android.com/apk/res/com.canboxsetting&quot;"
         errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/toyota_hiworld_settings.xml"
-            line="3"
-            column="18"/>
+        <location file="src/main/res/xml/toyota_hiworld_settings.xml" line="3" column="18" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlsettings&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/toyota_settings.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/toyota_settings.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/vw_mqb_raisse_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/vw_mqb_raisse_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/vw_mqb_tpms_raisse_info.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/vw_mqb_tpms_raisse_info.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="ResAuto"
-        message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
+    <issue id="ResAuto" message="In Gradle projects, always use `http://schemas.android.com/apk/res-auto` for custom attributes"
         errorLine1="    xmlns:controlsettings=&quot;http://schemas.android.com/apk/res/com.microntek.controlinfo&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/xml/zhongxing_od.xml"
-            line="3"
-            column="28"/>
+        <location file="src/main/res/xml/zhongxing_od.xml" line="3" column="28" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
-        errorLine1="        android:id=&quot;@+android:id/icon&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference.xml"
-            line="12"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
+        errorLine1="        android:id=&quot;@+android:id/icon&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference.xml" line="12" column="9" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
-        errorLine1="            android:id=&quot;@+android:id/title&quot;"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference.xml"
-            line="28"
-            column="13"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
+        errorLine1="            android:id=&quot;@+android:id/title&quot;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference.xml" line="28" column="13" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/summary`?"
-        errorLine1="            android:id=&quot;@+android:id/summary&quot;"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference.xml"
-            line="40"
-            column="13"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/summary`?"
+        errorLine1="            android:id=&quot;@+android:id/summary&quot;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference.xml" line="40" column="13" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
-        errorLine1="        android:id=&quot;@+android:id/widget_frame&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference.xml"
-            line="53"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
+        errorLine1="        android:id=&quot;@+android:id/widget_frame&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference.xml" line="53" column="9" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
-        errorLine1="        android:id=&quot;@+android:id/icon&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_car_settings_submenu.xml"
-            line="30"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
+        errorLine1="        android:id=&quot;@+android:id/icon&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_car_settings_submenu.xml" line="30" column="9" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
-        errorLine1="        &lt;TextView android:id=&quot;@+android:id/title&quot;"
-        errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_car_settings_submenu.xml"
-            line="46"
-            column="19"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
+        errorLine1="        &lt;TextView android:id=&quot;@+android:id/title&quot;" errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_car_settings_submenu.xml" line="46" column="19" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/summary`?"
-        errorLine1="        &lt;TextView android:id=&quot;@+android:id/summary&quot;"
-        errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_car_settings_submenu.xml"
-            line="56"
-            column="19"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/summary`?"
+        errorLine1="        &lt;TextView android:id=&quot;@+android:id/summary&quot;" errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_car_settings_submenu.xml" line="56" column="19" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
-        errorLine1="    &lt;LinearLayout android:id=&quot;@+android:id/widget_frame&quot;"
-        errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_car_settings_submenu.xml"
-            line="69"
-            column="19"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
+        errorLine1="    &lt;LinearLayout android:id=&quot;@+android:id/widget_frame&quot;" errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_car_settings_submenu.xml" line="69" column="19" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
-        errorLine1="        android:id=&quot;@+android:id/icon&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_edit.xml"
-            line="11"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
+        errorLine1="        android:id=&quot;@+android:id/icon&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_edit.xml" line="11" column="9" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
-        errorLine1="            android:id=&quot;@+android:id/title&quot;"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_edit.xml"
-            line="26"
-            column="13"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
+        errorLine1="            android:id=&quot;@+android:id/title&quot;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_edit.xml" line="26" column="13" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/summary`?"
-        errorLine1="            android:id=&quot;@+android:id/summary&quot;"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_edit.xml"
-            line="48"
-            column="13"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/summary`?"
+        errorLine1="            android:id=&quot;@+android:id/summary&quot;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_edit.xml" line="48" column="13" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
-        errorLine1="        android:id=&quot;@+android:id/widget_frame&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_edit.xml"
-            line="83"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
+        errorLine1="        android:id=&quot;@+android:id/widget_frame&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_edit.xml" line="83" column="9" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
-        errorLine1="        android:id=&quot;@+android:id/icon&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_progressbar.xml"
-            line="11"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/icon`?"
+        errorLine1="        android:id=&quot;@+android:id/icon&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_progressbar.xml" line="11" column="9" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
-        errorLine1="            android:id=&quot;@+android:id/title&quot;"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_progressbar.xml"
-            line="26"
-            column="13"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/title`?"
+        errorLine1="            android:id=&quot;@+android:id/title&quot;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_progressbar.xml" line="26" column="13" />
     </issue>
 
-    <issue
-        id="InvalidId"
-        message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
-        errorLine1="        android:id=&quot;@+android:id/widget_frame&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/preference_progressbar.xml"
-            line="80"
-            column="9"/>
+    <issue id="InvalidId" message="Invalid id; ID definitions **must** be of the form `@+id/name`; did you mean `@+id/widget_frame`?"
+        errorLine1="        android:id=&quot;@+android:id/widget_frame&quot;" errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/layout/preference_progressbar.xml" line="80" column="9" />
     </issue>
 
-    <issue
-        id="MissingDefaultResource"
+    <issue id="MissingDefaultResource"
         message="The drawable &quot;bg&quot; in drawable-sw320dp-hdpi has no declaration in the base `drawable` folder or in a `drawable-`*density*`dpi` folder; this can lead to crashes when the drawable is queried in a configuration that does not match this qualifier">
-        <location
-            file="src/main/res/drawable-sw320dp-hdpi/bg.png"/>
+        <location file="src/main/res/drawable-sw320dp-hdpi/bg.png" />
     </issue>
 
-    <issue
-        id="MissingDefaultResource"
+    <issue id="MissingDefaultResource"
         message="The drawable &quot;btn_home_normal&quot; in drawable-sw320dp-hdpi has no declaration in the base `drawable` folder or in a `drawable-`*density*`dpi` folder; this can lead to crashes when the drawable is queried in a configuration that does not match this qualifier">
-        <location
-            file="src/main/res/drawable-sw320dp-hdpi/btn_home_normal.png"/>
+        <location file="src/main/res/drawable-sw320dp-hdpi/btn_home_normal.png" />
     </issue>
 
-    <issue
-        id="MissingDefaultResource"
+    <issue id="MissingDefaultResource"
         message="The drawable &quot;icon_oil_pressure&quot; in drawable-sw320dp-hdpi has no declaration in the base `drawable` folder or in a `drawable-`*density*`dpi` folder; this can lead to crashes when the drawable is queried in a configuration that does not match this qualifier">
-        <location
-            file="src/main/res/drawable-sw320dp-hdpi/icon_oil_pressure.png"/>
+        <location file="src/main/res/drawable-sw320dp-hdpi/icon_oil_pressure.png" />
     </issue>
 
-    <issue
-        id="MissingDefaultResource"
+    <issue id="MissingDefaultResource"
         message="The drawable &quot;icon_temperature&quot; in drawable-sw320dp-hdpi has no declaration in the base `drawable` folder or in a `drawable-`*density*`dpi` folder; this can lead to crashes when the drawable is queried in a configuration that does not match this qualifier">
-        <location
-            file="src/main/res/drawable-sw320dp-hdpi/icon_temperature.png"/>
+        <location file="src/main/res/drawable-sw320dp-hdpi/icon_temperature.png" />
     </issue>
 
-    <issue
-        id="ExtraTranslation"
+    <issue id="ExtraTranslation"
         message="The array &quot;power_consumption_select&quot; in values-ru has no declaration in the base `values` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier"
-        errorLine1="     &lt;string-array name=&quot;power_consumption_select&quot;>"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values-ru/arrays.xml"
-            line="1426"
-            column="20"/>
+        errorLine1="     &lt;string-array name=&quot;power_consumption_select&quot;>" errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values-ru/arrays.xml" line="1426" column="20" />
     </issue>
 
-    <issue
-        id="ExtraTranslation"
-        message="&quot;gac_settings_electric_rear_doorlarm&quot; is translated here but not found in default locale"
+    <issue id="ExtraTranslation" message="&quot;gac_settings_electric_rear_doorlarm&quot; is translated here but not found in default locale"
         errorLine1="    &lt;string name=&quot;gac_settings_electric_rear_doorlarm&quot;>電動尾門報警&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values-zh-rHK/strings.xml"
-            line="2880"
-            column="13"/>
+        <location file="src/main/res/values-zh-rHK/strings.xml" line="2880" column="13" />
     </issue>
 
-    <issue
-        id="ExtraTranslation"
-        message="&quot;gac_settings_electric_rear_doorlarm&quot; is translated here but not found in default locale"
+    <issue id="ExtraTranslation" message="&quot;gac_settings_electric_rear_doorlarm&quot; is translated here but not found in default locale"
         errorLine1="    &lt;string name=&quot;gac_settings_electric_rear_doorlarm&quot;>電動尾門報警&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values-zh-rTW/strings.xml"
-            line="2880"
-            column="13"/>
+        <location file="src/main/res/values-zh-rTW/strings.xml" line="2880" column="13" />
     </issue>
 
-    <issue
-        id="ExtraTranslation"
-        message="&quot;gac_settings_electric_rear_doorlarm&quot; is translated here but not found in default locale"
+    <issue id="ExtraTranslation" message="&quot;gac_settings_electric_rear_doorlarm&quot; is translated here but not found in default locale"
         errorLine1="    &lt;string name=&quot;gac_settings_electric_rear_doorlarm&quot;>电动尾门报警&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values-zh-rCN/strings.xml"
-            line="2928"
-            column="13"/>
+        <location file="src/main/res/values-zh-rCN/strings.xml" line="2928" column="13" />
     </issue>
 
 </issues>

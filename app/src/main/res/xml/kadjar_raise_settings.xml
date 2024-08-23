@@ -42,8 +42,8 @@
         android:key="external_welcome"
         android:persistent="false"
         android:title="@string/external_welcome" />
-    
-       <SwitchPreference
+
+    <SwitchPreference
         android:key="inside_light"
         android:persistent="false"
         android:title="@string/inside_light" />
@@ -59,13 +59,13 @@
         android:persistent="false"
         android:title="@string/prompt_volume" />
 
-            <ListPreference
+    <ListPreference
         android:entries="@array/launage_entries4"
         android:entryValues="@array/launage_entryValues4"
         android:key="langauage"
         android:persistent="false"
         android:title="@string/langauage5" />
-            
+
     <!-- <PreferenceScreen -->
     <!-- android:key="user_reset" -->
     <!-- android:persistent="false" -->
@@ -89,10 +89,10 @@
         android:persistent="false"
         android:title="@string/instrument_light" />
 
-<!--     <PreferenceScreen -->
-<!--         android:key="language_dialog" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/language_dialog" /> -->
+    <!--     <PreferenceScreen -->
+    <!--         android:key="language_dialog" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/language_dialog" /> -->
 
     <SwitchPreference
         android:key="blind_zone"

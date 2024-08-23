@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout="@layout/can_preference_list_fragment" >
+    android:layout="@layout/can_preference_list_fragment">
 
     <ListPreference
         android:key="manufacturer"
@@ -19,12 +19,12 @@
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/title_configuration" />
 
-    
-  	<MultiSelectListPreference
+
+    <MultiSelectListPreference
         android:key="pg_switch_settings"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/car_settings" />
-  	
+
     <MultiSelectListPreference
         android:key="canbox_key_change_ex"
         android:layout="@layout/preference_car_settings_submenu"
@@ -42,24 +42,24 @@
         android:key="canbox_rear_door"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/canbox_rear_door" />
-    
-        <ListPreference
+
+    <ListPreference
         android:key="canbox_car_type2"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/canbox_car_type2" />
-        
+
     <MultiSelectListPreference
         android:key="canbox_other_settings"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/other" />
 
 
-          <ListPreference
+    <ListPreference
         android:entries="@array/obd_view_spinner_values"
         android:entryValues="@array/four_values"
         android:key="external_radar"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/notes" />
-          
-          
+
+
 </PreferenceScreen>

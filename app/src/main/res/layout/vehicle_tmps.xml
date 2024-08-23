@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:paddingBottom="20px"
     android:paddingLeft="@dimen/content_padding_left"
-    android:paddingTop="40px" >
+    android:paddingTop="40px">
 
     <TextView
         android:id="@id/tmps"

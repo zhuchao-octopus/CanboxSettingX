@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-		<com.common.view.MyPreference
-		    android:key="commander_speed"
-		    android:persistent="false"
-		    android:title="@string/commander_speed" />
-		<com.common.view.MyPreference
-		    android:key="engine_speed55"
-		    android:persistent="false"
-		    android:title="@string/engine_speed55" />
-		<com.common.view.MyPreference
-		    android:key="brake_state"
-		    android:persistent="false"
-		    android:title="@string/brake_state" />
-		<com.common.view.MyPreference
-		    android:key="fuel"
-		    android:persistent="false"
-		    android:title="@string/fuel" />
-		<com.common.view.MyPreference
-		    android:key="battery_voltage"
-		    android:persistent="false"
-		    android:title="@string/battery_voltage" />
-		<com.common.view.MyPreference
-		    android:key="curent_gear"
-		    android:persistent="false"
-		    android:title="@string/curent_gear" />
-		<com.common.view.MyPreference
-		    android:key="left_front_windows"
-		    android:persistent="false"
-		    android:title="@string/left_front_windows" />
-		<com.common.view.MyPreference
-		    android:key="right_front_windows"
-		    android:persistent="false"
-		    android:title="@string/right_front_windows" />
-		<com.common.view.MyPreference
-		    android:key="left_rear_windows"
-		    android:persistent="false"
-		    android:title="@string/left_rear_windows" />
-		<com.common.view.MyPreference
-		    android:key="right_rear_windows"
-		    android:persistent="false"
-		    android:title="@string/right_rear_windows" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.common.view.MyPreference
+        android:key="commander_speed"
+        android:persistent="false"
+        android:title="@string/commander_speed" />
+    <com.common.view.MyPreference
+        android:key="engine_speed55"
+        android:persistent="false"
+        android:title="@string/engine_speed55" />
+    <com.common.view.MyPreference
+        android:key="brake_state"
+        android:persistent="false"
+        android:title="@string/brake_state" />
+    <com.common.view.MyPreference
+        android:key="fuel"
+        android:persistent="false"
+        android:title="@string/fuel" />
+    <com.common.view.MyPreference
+        android:key="battery_voltage"
+        android:persistent="false"
+        android:title="@string/battery_voltage" />
+    <com.common.view.MyPreference
+        android:key="curent_gear"
+        android:persistent="false"
+        android:title="@string/curent_gear" />
+    <com.common.view.MyPreference
+        android:key="left_front_windows"
+        android:persistent="false"
+        android:title="@string/left_front_windows" />
+    <com.common.view.MyPreference
+        android:key="right_front_windows"
+        android:persistent="false"
+        android:title="@string/right_front_windows" />
+    <com.common.view.MyPreference
+        android:key="left_rear_windows"
+        android:persistent="false"
+        android:title="@string/left_rear_windows" />
+    <com.common.view.MyPreference
+        android:key="right_rear_windows"
+        android:persistent="false"
+        android:title="@string/right_rear_windows" />
 </PreferenceScreen>

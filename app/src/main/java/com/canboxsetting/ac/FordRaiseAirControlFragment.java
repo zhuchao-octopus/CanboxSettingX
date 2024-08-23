@@ -100,9 +100,7 @@ public class FordRaiseAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.inner_loop, 0x03}, {R.id.ac_max, 0x4}, {R.id.max, 0x19}, {R.id.front, 0x5}, {R.id.rear, 0x6}, {R.id.dual, 0x18}, {R.id.wind_minus, 0x1f},
-            {R.id.wind_add, 0x1e},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.inner_loop, 0x03}, {R.id.ac_max, 0x4}, {R.id.max, 0x19}, {R.id.front, 0x5}, {R.id.rear, 0x6}, {R.id.dual, 0x18}, {R.id.wind_minus, 0x1f}, {R.id.wind_add, 0x1e},
 
             {R.id.ac_auto, 0x17}, {R.id.wheel, 0xb},
 
@@ -118,8 +116,7 @@ public class FordRaiseAirControlFragment extends MyFragment {
 
             {R.id.rear_lock, 0x12}, {R.id.wind_minus_rear, 0x15}, {R.id.wind_add_rear, 0x16},
 
-            {R.id.con_left_temp_rear_up, 0x14}, {R.id.con_left_temp_rear_down, 0x13},
-    };
+            {R.id.con_left_temp_rear_up, 0x14}, {R.id.con_left_temp_rear_down, 0x13},};
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {

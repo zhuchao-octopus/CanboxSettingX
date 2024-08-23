@@ -102,9 +102,7 @@ public class Info97 extends PreferenceFragment {
 
     private void sendCanboxInfo(int d0) {
 
-        byte[] buf = new byte[]{
-                (byte) 0x90, 0x02, (byte) ((d0 & 0xff00) >> 8), (byte) (d0 & 0xff)
-        };
+        byte[] buf = new byte[]{(byte) 0x90, 0x02, (byte) ((d0 & 0xff00) >> 8), (byte) (d0 & 0xff)};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

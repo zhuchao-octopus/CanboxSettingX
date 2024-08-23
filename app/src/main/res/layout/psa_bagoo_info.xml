@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/warning_layout"
@@ -12,17 +12,16 @@
         android:paddingBottom="0px"
         android:paddingLeft="20px"
         android:paddingRight="15px"
-        android:paddingTop="0px" >
-    </LinearLayout>
+        android:paddingTop="0px"></LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/bagoo_warning_info_00"
@@ -404,7 +403,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -426,7 +425,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -448,7 +447,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -460,22 +459,22 @@
             </RelativeLayout>
 
             <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="#ff000000" />
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ff000000" />
 
-                <Button
-                    android:id="@+id/booking_mileage"
-                    style="@style/CarInfoTextView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="68px"
-                    android:background="@drawable/button_click_back1"
-                    android:paddingBottom="5px"
-                    android:paddingLeft="20px"
-                    android:paddingRight="15px"
-                    android:paddingTop="5px"
-                    android:text="@string/booking_mileage" />
-                
+            <Button
+                android:id="@+id/booking_mileage"
+                style="@style/CarInfoTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="68px"
+                android:background="@drawable/button_click_back1"
+                android:paddingBottom="5px"
+                android:paddingLeft="20px"
+                android:paddingRight="15px"
+                android:paddingTop="5px"
+                android:text="@string/booking_mileage" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
@@ -496,7 +495,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -518,7 +517,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -540,7 +539,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -562,22 +561,22 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
-                	android:layout_width="match_parent"
+                    android:layout_width="match_parent"
                     android:id="@+id/fuelclear2"
                     android:background="@drawable/button_click_back1"
                     android:text="@string/fuelclear" />
 
             </RelativeLayout>
-            
-             <View
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="#ff000000" />
-             
+
             <TextView
                 style="@style/CarInfoTextView3"
                 android:text="@string/driving_page3" />
@@ -593,7 +592,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -615,7 +614,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -637,7 +636,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -659,22 +658,22 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
-                	android:layout_width="match_parent"
+                    android:layout_width="match_parent"
                     android:id="@+id/fuelclear3"
                     android:background="@drawable/button_click_back1"
                     android:text="@string/fuelclear" />
 
             </RelativeLayout>
-            
-             <View
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="#ff000000" />
-             
+
             <TextView
                 style="@style/CarInfoTextView3"
                 android:text="@string/carbodyinfo" />
@@ -690,7 +689,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -712,7 +711,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -734,7 +733,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -756,7 +755,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -778,7 +777,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -800,7 +799,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -822,7 +821,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -844,7 +843,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -866,7 +865,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -888,7 +887,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -910,7 +909,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -932,7 +931,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -954,7 +953,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"

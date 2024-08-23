@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/warning_layout"
@@ -13,12 +13,12 @@
         android:paddingLeft="20px"
         android:paddingRight="15px"
         android:paddingTop="0px"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <TextView
             style="@style/CarInfoTextView3"
             android:text="@string/str_req_diag" />
-        
+
         <TextView
             android:id="@+id/warning_title"
             style="@style/CarInfoTextView3" />
@@ -26,7 +26,7 @@
         <ScrollView
             android:id="@+id/scrollview_info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/warning_info"
@@ -39,12 +39,12 @@
     <ScrollView
         android:id="@+id/computer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:id="@+id/driving_page1_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -98,7 +98,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -120,7 +120,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -142,7 +142,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -188,7 +188,7 @@
                 android:id="@+id/driving_page2_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="match_parent"
@@ -201,7 +201,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -223,7 +223,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -245,7 +245,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -291,7 +291,7 @@
                 android:id="@+id/driving_page3_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="match_parent"
@@ -304,7 +304,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -326,7 +326,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"
@@ -348,7 +348,7 @@
                     android:paddingBottom="5px"
                     android:paddingLeft="20px"
                     android:paddingRight="15px"
-                    android:paddingTop="5px" >
+                    android:paddingTop="5px">
 
                     <TextView
                         style="@style/CarInfoTextView1"

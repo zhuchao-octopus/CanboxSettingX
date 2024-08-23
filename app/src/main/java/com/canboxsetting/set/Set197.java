@@ -1,96 +1,54 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.annotation.Nullable;
+
+import android.provider.Settings;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.NodePreference;
 import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class Set197 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set197 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "FocusSettingsFragment";
 
 
     private static final NodePreference[] NODES = {
             //group1
-            new NodePreference("rain_sensor_wiper", 0xC9, 0x28, 0x60, 1), new NodePreference("repeat_wiper_once", 0xC9, 0x28, 0x61, 1), new NodePreference("rear_wiper", 0xC9, 0x28, 0x62, 1),
-            new NodePreference("tire_pressure_unit", 0xC9, 0x28, 0x70, 1, R.array.tireunit_entries, R.array.brightness_control_value),
-            new NodePreference("degree", 0xC9, 0x28, 0x71, 1, R.array.degree_entries, R.array.brightness_control_value),
-            new NodePreference("temp_dis", 0xC9, 0x28, 0x72, 1, R.array.temp_dis_t, R.array.brightness_control_value),
+            new NodePreference("rain_sensor_wiper", 0xC9, 0x28, 0x60, 1), new NodePreference("repeat_wiper_once", 0xC9, 0x28, 0x61, 1), new NodePreference("rear_wiper", 0xC9, 0x28, 0x62, 1), new NodePreference("tire_pressure_unit", 0xC9, 0x28, 0x70, 1, R.array.tireunit_entries, R.array.brightness_control_value), new NodePreference("degree", 0xC9, 0x28, 0x71, 1, R.array.degree_entries, R.array.brightness_control_value), new NodePreference("temp_dis", 0xC9, 0x28, 0x72, 1, R.array.temp_dis_t, R.array.brightness_control_value),
 
 
             //group2
-            new NodePreference("active_braking", 0xC9, 0x28, 0x11, 2),
-            new NodePreference("security_alert_sensitivity", 0xC9, 0x28, 0x12, 2, R.array.trumpche_sensitivity_entries, R.array.brightness_control_value),
+            new NodePreference("active_braking", 0xC9, 0x28, 0x11, 2), new NodePreference("security_alert_sensitivity", 0xC9, 0x28, 0x12, 2, R.array.trumpche_sensitivity_entries, R.array.brightness_control_value),
 
             new NodePreference("blind_spot_monitoring", 0xC9, 0x28, 0x13, 2), new NodePreference("fatigue_driving_warning", 0xC9, 0x28, 0x14, 2),
 
             //3
-            new NodePreference("lane_keeping_mode", 0xC9, 0x28, 0x0, 3, R.array.lane_keeping_mode_entries, R.array.brightness_control_value),
-            new NodePreference("warning_intensity", 0xC9, 0x28, 0x1, 3, R.array.gwm_early_warning_sensitivity_entries, R.array.brightness_control_value),
+            new NodePreference("lane_keeping_mode", 0xC9, 0x28, 0x0, 3, R.array.lane_keeping_mode_entries, R.array.brightness_control_value), new NodePreference("warning_intensity", 0xC9, 0x28, 0x1, 3, R.array.gwm_early_warning_sensitivity_entries, R.array.brightness_control_value),
 
-            new NodePreference("incoming_reverse_gear_warning", 0xC9, 0x28, 0x2, 3), new NodePreference("tcs_traction_control", 0xC9, 0x28, 0x3, 3),
-            new NodePreference("automatic_engine_shutdown", 0xC9, 0x28, 0x5, 3),
+            new NodePreference("incoming_reverse_gear_warning", 0xC9, 0x28, 0x2, 3), new NodePreference("tcs_traction_control", 0xC9, 0x28, 0x3, 3), new NodePreference("automatic_engine_shutdown", 0xC9, 0x28, 0x5, 3),
 
             //4
 
-            new NodePreference("switch_prohibited", 0xC9, 0x28, 0x50, 4), new NodePreference("voice_feedback", 0xC9, 0x28, 0x51, 4), new NodePreference("false_lock_warning", 0xC9, 0x28, 0x52, 4),
-            new NodePreference("remote_unlock", 0xC9, 0x28, 0x53, 4, R.array.door_to_be_unlocked_entries, R.array.brightness_control_value),
+            new NodePreference("switch_prohibited", 0xC9, 0x28, 0x50, 4), new NodePreference("voice_feedback", 0xC9, 0x28, 0x51, 4), new NodePreference("false_lock_warning", 0xC9, 0x28, 0x52, 4), new NodePreference("remote_unlock", 0xC9, 0x28, 0x53, 4, R.array.door_to_be_unlocked_entries, R.array.brightness_control_value),
 
-            new NodePreference("str_auto_unlock", 0xC9, 0x28, 0x54, 4), new NodePreference("remote_control_on", 0xC9, 0x28, 0x55, 4), new NodePreference("remote_control_off", 0xC9, 0x28, 0x56, 4),
-            new NodePreference("activate_remote_start", 0xC9, 0x28, 0x57, 4), new NodePreference("air_control", 0xC9, 0x28, 0x58, 4, R.array.air_control_entries, R.array.brightness_control_value),
+            new NodePreference("str_auto_unlock", 0xC9, 0x28, 0x54, 4), new NodePreference("remote_control_on", 0xC9, 0x28, 0x55, 4), new NodePreference("remote_control_off", 0xC9, 0x28, 0x56, 4), new NodePreference("activate_remote_start", 0xC9, 0x28, 0x57, 4), new NodePreference("air_control", 0xC9, 0x28, 0x58, 4, R.array.air_control_entries, R.array.brightness_control_value),
 
             new NodePreference("key_car_lock_cycle", 0xC9, 0x28, 0x5a, 4, R.array.key_car_lock_cycle_entries, R.array.brightness_control_value),
             //5
@@ -99,13 +57,9 @@ public class Set197 extends PreferenceFragment implements Preference.OnPreferenc
             new NodePreference("automatic_high_beam", 0xC9, 0x28, 0x22, 5), new NodePreference("electric_trunk", 0xC9, 0x28, 0x30, 5), new NodePreference("auto_fold_wing_mirror", 0xC9, 0x28, 0x40, 5),
             //6
 
-            new NodePreference("korea_amp_treble", 0xC3, 0x0, 0x0, 0x06, -7, 7, 1), new NodePreference("korea_amp_middle", 0xC3, 0x1, 0x0, 0x06, -7, 7, 1),
-            new NodePreference("korea_amp_bass", 0xC3, 0x2, 0x0, 0x06, -7, 7, 1), new NodePreference("attenuation", 0xC3, 0x3, 0x0, 0x06, -7, 7, 1),
-            new NodePreference("blance", 0xC3, 0x4, 0x0, 0x06, -7, 7, 1),
+            new NodePreference("korea_amp_treble", 0xC3, 0x0, 0x0, 0x06, -7, 7, 1), new NodePreference("korea_amp_middle", 0xC3, 0x1, 0x0, 0x06, -7, 7, 1), new NodePreference("korea_amp_bass", 0xC3, 0x2, 0x0, 0x06, -7, 7, 1), new NodePreference("attenuation", 0xC3, 0x3, 0x0, 0x06, -7, 7, 1), new NodePreference("blance", 0xC3, 0x4, 0x0, 0x06, -7, 7, 1),
             //		new NodePreference("korea_amp_volume", 0xC3, 0x4, 0x0, 0x106, 0, 30, 1),
-            new NodePreference("speed_adjustment", 0xC3, 0, 0x5, 6, R.array.speed_compensated_vol_entries, R.array.brightness_control_value),
-            new NodePreference("sound_mode", 0xC3, 0, 0x6, 6, R.array.sound_effect_entries, R.array.brightness_control_value),
-            new NodePreference("allround", 0xC3, 0, 0x7, 6, R.array.orientation_selection, R.array.brightness_control_value),
+            new NodePreference("speed_adjustment", 0xC3, 0, 0x5, 6, R.array.speed_compensated_vol_entries, R.array.brightness_control_value), new NodePreference("sound_mode", 0xC3, 0, 0x6, 6, R.array.sound_effect_entries, R.array.brightness_control_value), new NodePreference("allround", 0xC3, 0, 0x7, 6, R.array.orientation_selection, R.array.brightness_control_value),
 
     };
 
@@ -172,6 +126,11 @@ public class Set197 extends PreferenceFragment implements Preference.OnPreferenc
 
         updateLedSetting();
         udpateShowWarning();
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     @Override

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="controlset"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-<!--     <SwitchPreference -->
-<!--         android:key="eq" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/there_is_no_indication_of_the_original_car_amplifier" /> -->
+    <!--     <SwitchPreference -->
+    <!--         android:key="eq" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/there_is_no_indication_of_the_original_car_amplifier" /> -->
     <SwitchPreference
         android:key="parking_assist"
         android:persistent="false"
@@ -58,14 +58,14 @@
         android:key="oil_unit"
         android:persistent="false"
         android:title="@string/oil_unit" />
-    
-<!--         <ListPreference -->
-<!--         android:entries="@array/entemp" -->
-<!--         android:entryValues="@array/entemp_vaues" -->
-<!--         android:key="temp" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/temp" /> -->
-        
+
+    <!--         <ListPreference -->
+    <!--         android:entries="@array/entemp" -->
+    <!--         android:entryValues="@array/entemp_vaues" -->
+    <!--         android:key="temp" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/temp" /> -->
+
     <ListPreference
         android:entries="@array/enlanguages61"
         android:entryValues="@array/enlanguages61_vaues"
@@ -179,44 +179,42 @@
         android:persistent="false"
         android:title="@string/speed5" />
 
-    
-    
+
     <SwitchPreference
         android:key="oushang_1d"
         android:persistent="false"
         android:title="@string/oushang_1d" />
-    
+
     <ListPreference
         android:entries="@array/psa_simple_1"
         android:entryValues="@array/three_values"
         android:key="oushang_1e"
         android:persistent="false"
         android:title="@string/oushang_1e" />
-    
-        <SwitchPreference
+
+    <SwitchPreference
         android:key="speed_recommendation"
         android:persistent="false"
         android:title="@string/speed_recommendation" />
-        
-    
+
+
     <SwitchPreference
         android:key="dynamic_bend"
         android:persistent="false"
         android:title="@string/dynamic_bend" />
-    
-    
-    
+
+
     <SwitchPreference
         android:key="automatic_rearview_mirror_folding"
         android:persistent="false"
         android:title="@string/automatic_rearview_mirror_folding" />
-    
+
     <PreferenceScreen
         android:key="keyboard"
-        android:title="@string/panel_buttons" >
+        android:title="@string/panel_buttons">
         <com.common.view.MyPreference2
             android:key="keyboard_content"
             android:layout="@layout/psa_keyboard" />
     </PreferenceScreen>
-    
+
 </PreferenceScreen>

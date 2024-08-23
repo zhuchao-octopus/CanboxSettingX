@@ -1,85 +1,40 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+import android.provider.Settings;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class BMWE90X1UnionSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "BMWE90X1UnionSettingsFragment";
-
-    private static final Node[] NODES = {
-
-            new Node("range", 0x8200, 0x0401), new Node("lang", 0x8201, 0x0401), new Node("age_full", 0x8202, 0x0401), new Node("temp", 0x8203, 0x0401),
-
-            new Node("lef_hot", 0x8501, 0x0), new Node("rif_hot", 0x8502, 0x0), new Node("redar", 0x8503, 0x0), new Node("curtain", 0x8504, 0x0),
-
-    };
-
+    private boolean mPaused = true;
     private final static int[] INIT_CMDS = {};
+    private byte[] mBufUnit = new byte[4];
+    private final Preference[] mPreferences = new Preference[NODES.length];
 
-    private Preference[] mPreferences = new Preference[NODES.length];
+    private static final Node[] NODES = {new Node("range", 0x8200, 0x0401), new Node("lang", 0x8201, 0x0401), new Node("age_full", 0x8202, 0x0401), new Node("temp", 0x8203, 0x0401), new Node("lef_hot", 0x8501, 0x0), new Node("rif_hot", 0x8502, 0x0), new Node("redar", 0x8503, 0x0), new Node("curtain", 0x8504, 0x0),};
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         addPreferencesFromResource(R.xml.bmw_e90x1_union_settings);
 
         for (int i = 0; i < NODES.length; ++i) {
@@ -96,7 +51,10 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements
 
     }
 
-    private boolean mPaused = true;
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
 
     @Override
     public void onPause() {
@@ -141,18 +99,14 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements
             t24 = 0;
         }
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff00) >> 8), 0x05, mBufUnit[0], mBufUnit[1], mBufUnit[2], mBufUnit[3], t24
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x05, mBufUnit[0], mBufUnit[1], mBufUnit[2], mBufUnit[3], t24};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
 
     private void sendCanboxData(int cmd) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff00) >> 8), 0x2, (byte) ((cmd & 0xff) >> 0), 0x1
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x2, (byte) ((cmd & 0xff) >> 0), 0x1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
         Util.doSleep(300);
@@ -160,8 +114,6 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
-
-    private byte[] mBufUnit = new byte[4];
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -180,8 +132,7 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
             udpatePreferenceValue(preference, newValue);
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
         }
         return false;
     }
@@ -190,10 +141,8 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements
 
         try {
             udpatePreferenceValue(arg0, null);
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
         }
-
         return false;
     }
 
@@ -307,6 +256,7 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragment implements
         }
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     private void registerListener() {
         if (mReceiver == null) {
             mReceiver = new BroadcastReceiver() {

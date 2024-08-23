@@ -1,1268 +1,3798 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translation>
-    <string name="通用机" value="Universal" />
-    <string name="欣朴" value="Simple" />
-    <string name="威驰" value="HIWORLD" />
-    <string name="睿志诚" value="Raise" />
-    <string name="鑫巴斯" value="Xinbas" />
-    <string name="迪恩杰" value="DigiEngine" />
-    <string name="思博" value="SiBo" />
-    <string name="金鹰" value="JinYing" />
-    <string name="比纳瑞" value="BINARY" />
-    <string name="道骏" value="DaoJun" />
-    <string name="长远通睿晟威" value="CYT" />
-    <string name="欧迪" value="Odie" />
-    <string name="华臣宇" value="HuaChenYu" />
-    <string name="路征豪正" value="LuZheng" />
-    <string name="和驰" value="HeChi" />
-    <string name="馨飞扬" value="XinFeiYang" />
-    <string name="保仕杰" value="BaoShiJie" />
-    <string name="和驰" value="Union" />
-    <string name="宝谷" value="BaoGu" />
-    <string name="巴谷" value="BaGu" />
-    <string name="唐度" value="TD" />
-    <string name="昕驰保仕杰" value="XinChiBaoshijie" />
-    <string name="大众" value="Volkswagen" />
-    <string name="丰田" value="Toyota" />
-    <string name="现代-起亚" value="Hyundai-Kia" />
-    <string name="本田" value="Honda" />
-    <string name="日产" value="Nissan" />
-    <string name="奔腾" value="Besturn" />
-    <string name="传祺" value="Trumpche" />
-    <string name="海马" value="HaiMa" />
-    <string name="中华" value="Brilliance Auto" />
-    <string name="长安" value="Changan" />
-    <string name="长城" value="Great Wall" />
-    <string name="众泰" value="Zotye" />
-    <string name="上汽" value="SAIC" />
-    <string name="江淮" value="Jac" />
-    <string name="吉普" value="Jeep" />
-    <string name="马自达" value="Mazda" />
-    <string name="保时捷" value="Porsche" />
-    <string name="吉利" value="Geely" />
-    <string name="奇瑞" value="Chery" />
-    <string name="北汽" value="Baic" />
-    <string name="通用" value="GM" />
-    <string name="福特" value="Ford" />
-    <string name="标致雪铁龙" value="Peugeot/Citroen" />
-    <string name="菲亚特" value="Fiat" />
-    <string name="广汽菲克" value="GacFiat" />
-    <string name="东风" value="DFM" />
-    <string name="力帆" value="Lifan" />
-    <string name="奔驰" value="Benz" />
-    <string name="东南" value="Soueast" />
-    <string name="雷诺" value="Renault" />
-    <string name="UAZ" value="UAZ" />
-    <string name="比速" value="BiSu" />
-    <string name="江西五十铃" value="ISUZU" />
-    <string name="博融" value="BoRong" />
-    <string name="宝马" value="Bmw" />
-    <string name="奥迪" value="Audi" />
-    <string name="汉腾" value="HanTeng" />
-    <string name="比亚迪" value="BYD" />
-    <string name="雷克萨斯" value="Lexus" />
-    <string name="金杯" value="GoldCup" />
-    <string name="三菱" value="Mitsubishi" />
-    <string name="观致" value="Qoros" />
-    <string name="野马" value="Mustang" />
-    <string name="大运" value="DaYun" />
-    <string name="启辰" value="Venucia" />
-    <string name="英菲尼迪" value="Infiniti" />
-    <string name="陆风" value="LandWind" />
-    <string name="欧宝" value="OPEL" />
-    <string name="大乘" value="DORCEN" />
-    <string name="铃木" value="SUZUKI" />
-    <string name="斯巴鲁" value="SUBARU" />
-    <string name="福田" value="FuTian" />
-    <string name="卡威" value="KaWei" />
-    <string name="斯威" value="SWM" />
-    <string name="乔治巴顿" value="GPATTON" />
-    <string name="沃尔沃" value="Volvo" />
-    <string name="江铃" value="JMC" />
-    <string name="双龙" value="SSANG YONG" />
-    <string name="道奇" value="Dodge" />
-    <string name="新特" value="New specia" />
-    <string name="林肯" value="LINCOLN" />
-    <string name="大众通用" value="VW universal" />
-    <string name="高尔夫7" value="Golf 7" />
-    <string name="明锐" value="Octavia" />
-    <string name="16款明锐(罗马尼亚)" value="16 Octavia(Romania)" />
-    <string name="斯柯达速派" value="Skoda Superb" />
-    <string name="凌渡" value="Lamando" />
-    <string name="17款迈腾" value="Magotan 2017" />
-    <string name="19款迈腾" value="Magotan 2019" />
-    <string name="IEV6E" value="IEV6E" />
-    <string name="17款嘉旅" value="Sportsvan 2017" />
-    <string name="17款途观L" value="TIGUAN L 2017" />
-    <string name="17款途昂" value="TERAMONT 2017" />
-    <string name="17款斯柯达柯迪亚克" value="Skoda Kodiaq 2017" />
-    <string name="18款迈腾" value="Magotan 2018" />
-    <string name="途锐" value="Toureg" />
-    <string name="13款途锐" value="Toureg 2013" />
-    <string name="18款速派" value="superb 2018" />
-    <string name="18款途安L" value="Tuan L 2018" />
-    <string name="17款西亚特" value="Ateca 2017" />
-    <string name="2018款探歌" value="T-ROC 2018" />
-    <string name="探岳" value="Tayron" />
-    <string name="18款朗逸" value="Lavida 2018" />
-    <string name="19款帕萨特" value="Passat 2019" />
-    <string name="老款途锐2010年以前" value="OldTouareg" />
-    <string name="辉昂" value="phideon" />
-    <string name="大众迈特威" value="Multivan" />
-    <string name="辉腾" value="Phaeton" />
-    <string name="11-17款途锐" value="Toureg 11-17" />
-    <string name="凯美瑞" value="Camry" />
-    <string name="RAV4" value="RAV4" />
-    <string name="普拉多(霸道)" value="Prado" />
-    <string name="汉兰达" value="Highlander" />
-    <string name="卡罗拉" value="Corolla" />
-    <string name="19款卡罗拉" value="Corolla 2019" />
-    <string name="雷凌" value="Levin" />
-    <string name="锐志" value="Reiz" />
-    <string name="19款S4" value="S4 2019" />
-    <string name="2009款卡宴" value="Cayenne 2009" />
-    <string name="03-10款卡宴" value="Cayenne 03-10" />
-    <string name="16款RAV4" value="RAV4 2016" />
-    <string name="16款普拉多(霸道)" value="Prado 2016" />
-    <string name="18款凯美瑞" value="Camry 2018" />
-    <string name="18款霸道(普拉多)" value="Prado 2018" />
-    <string name="13款皇冠" value="CROWN 2013" />
-    <string name="18款汉兰达" value="Highlander 2018" />
-    <string name="12款皇冠" value="CROWN 2012" />
-    <string name="12款皇冠(竖屏)" value="CROWN 2012 Vertical screen" />
-    <string name="12款兰酷" value="LAND CRUISER 2012" />
-    <string name="16款兰酷" value="LAND CRUISER 2016" />
-    <string name="09款汉兰达" value="Highlander 2009" />
-    <string name="14款坦途" value="Tundra 2014" />
-    <string name="07-15款兰酷" value="LAND CRUISER 2016 07-15" />
-    <string name="海狮" value="HIACE" />
-    <string name="19款RAV4(台湾)" value="RAV4 2019" />
-    <string name="海拉克斯" value="HILUX" />
-    <string name="IX35" value="IX35" />
-    <string name="IX45" value="IX45" />
-    <string name="索纳塔8" value="Sonata 8th" />
-    <string name="索兰托" value="Sorento" />
-    <string name="索纳塔9" value="Sonata 9th" />
-    <string name="16款起亚K5" value="K5 2016" />
-    <string name="16款起亚KX5" value="KX5 2016" />
-    <string name="海外KX5" value="Overseas KX5 " />
-    <string name="16款现代名图" value="Mistra 2016" />
-    <string name="16款现代领动" value="Elantra 2016" />
-    <string name="16款起亚K3" value="K3 2016" />
-    <string name="新途胜" value="Tucson" />
-    <string name="18款索纳塔9" value="Sonata 9th 2018" />
-    <string name="17款起亚KX7" value="KX7 2017" />
-    <string name="18款起亚智跑" value="Sportage 2018" />
-    <string name="18款现代昂希诺" value="Encino 2018" />
-    <string name="15款现代IX45" value="IX45 2018" />
-    <string name="17款索纳塔9" value="Sonata 9th 2017" />
-    <string name="17款起亚K4/凯绅" value="KX4 2016" />
-    <string name="20款现代昂希诺" value="Encino 2020" />
-    <string name="21款现代伊兰特" value="Elantra 2021" />
-    <string name="12款CRV" value="CRV 2012" />
-    <string name="15款CRV" value="CRV 2015" />
-    <string name="雅阁9(2.0)" value="Accord9 2.0" />
-    <string name="亚洲龙" value="Asian Dragon" />
-    <string name="17款X40" value="17X40" />
-    <string name="09款B50" value="2009 B50" />
-    <string name="13款B50" value="B50 2013" />
-    <string name="凌派" value="Crider" />
-    <string name="杰德" value="Jade" />
-    <string name="歌诗图" value="Crosstour" />
-    <string name="缤智" value="Vezel" />
-    <string name="奥德赛" value="Odyssey" />
-    <string name="15款奥德赛" value="Odyssey 2015" />
-    <string name="04-08款奥德赛" value=" Odyssey 2004-2008 " />
-    <string name="09-14款奥德赛" value=" Odyssey 2009-2014 " />
-    <string name="飞度" value="Fit" />
-    <string name="15款锋范" value="City 2015" />
-    <string name="16款凌派" value="Crider 2016" />
-    <string name="16款思域" value="Civic 2016" />
-    <string name="思域" value="Civic" />
-    <string name="XRV" value="XRV" />
-    <string name="哥瑞" value="Greiz" />
-    <string name="16款CRV" value="CRV 2016" />
-    <string name="雅阁7" value="Accord 7" />
-    <string name="雅阁7(双驱空调)" value="Accord 7(Double AC)" />
-    <string name="雅阁7(单驱空调)" value="Accord 7(Single AC)" />
-    <string name="17款竟瑞" value="Gienia 2017" />
-    <string name="雅阁9(2.4)" value="Accord9 2.4" />
-    <string name="冠道" value="Avancier" />
-    <string name="17款CRV" value="CRV 2017" />
-    <string name="12-15款艾力绅" value="Alice 2012-2015" />
-    <string name="18款雅阁10" value="Accord 10 2018" />
-    <string name="18款奥德赛" value="Odyssey 2018" />
-    <string name="雅阁8" value="Accord8" />
-    <string name="19款凌派" value="Crider 2019" />
-    <string name="15款思铂睿" value="Spirior 2015" />
-    <string name="19款英斯派" value="Inspire 2019" />
-    <string name="本田12思域" value="Civic 2012" />
-    <string name="本田14思域" value="Civic 2014" />
-    <string name="2019款XRV" value="CRV 2019" />
-    <string name="讴歌" value="Acura" />
-    <string name="04-16款思域" value="civic 04-16" />
-    <string name="12款思铂睿" value="Spirior 2012" />
-    <string name="19款艾力绅" value="Alice 2019" />
-    <string name="22 艾力绅" value="Alice 2022" />
-    <string name="19款享域" value="Envix 2019" />
-    <string name="天籁" value="Teana" />
-    <string name="20款纳瓦拉" value="Navarra 2020" />
-    <string name="奇骏" value="X-trail" />
-    <string name="楼兰" value="Murano" />
-    <string name="蓝鸟" value="Bluebird" />
-    <string name="逍客" value="Qashqai" />
-    <string name="16款西玛" value="Maxima 2016" />
-    <string name="2008款天籁" value="Teana 2008" />
-    <string name="2008款天籁(右舵)" value="Teana 2008(Right rudder)" />
-    <string name="2017款奇骏" value="X-trail 2017" />
-    <string name="2017款逍客" value="Qashqai 2017" />
-    <string name="2018款途达" value="TERRA 2018" />
-    <string name="2014款新奇骏" value="X-trail 2014" />
-    <string name="2017款奇峻" value="X-trail 2017" />
-    <string name="2019款奇峻" value="X-trail 2019" />
-    <string name="2021款奇骏" value="X-trail 2021" />
-    <string name="2019款奇骏(台湾)" value="X-trail(TaiWan) 2019" />
-    <string name="2019款奇骏(海外)" value="X-trail(Overseas) 2019" />
-    <string name="2019款奇峻(手动空调)" value="X-trail 2019(Manual AC)" />
-    <string name="2017款奇峻(手动空调)" value="X-trail 2017(Manual AC)" />
-    <string name="2014款新奇骏(手动空调)" value="X-trail 2014(Manual AC)" />
-    <string name="2016款新逍客" value="Qashqai 2016" />
-    <string name="2013款新天籁" value="Teana 2013" />
-    <string name="途乐SE/LE" value="Tu Le SE/LE" />
-    <string name="16款途乐" value="Tu Le 2016" />
-    <string name="17款途乐" value="Tu Le 2017" />
-    <string name="08-12款天籁" value="Teana 08-12" />
-    <string name="11-16款新骐达" value="Tiida 2011-2016" />
-    <string name="16款天籁" value="Teana 2016" />
-    <string name="20款天籁" value="Teana 2020" />
-    <string name="22款天籁" value="Teana 2022" />
-    <string name="11款天籁公爵" value="TeanaDuke 11" />
-    <string name="QX50" value="QX50" />
-    <string name="15款Q70" value="Q70 2015" />
-    <string name="14款QX60" value="QX60 2014" />
-    <string name="15款G37" value="G37 2015" />
-    <string name="16款Q50L" value="Q50L 2016" />
-    <string name="2015款T70" value="T70 2015" />
-    <string name="2016款T70" value="T70 2016" />
-    <string name="2017款T90" value="T90 2017" />
-    <string name="2018款D60" value="D60 2018" />
-    <string name="2018款T70" value="T70 2018" />
-    <string name="2017款D60" value="D60 2017" />
-    <string name="2017款M50V" value="M50V 2017" />
-    <string name="T60" value="T60" />
-    <string name="B50" value="B50" />
-    <string name="B70" value="B70" />
-    <string name="14款B70" value="2014 B70" />
-    <string name="12款B90" value="B90 2012" />
-    <string name="X80" value="X80 2013-2016" />
-    <string name="16款B50" value="16B50" />
-    <string name="16款B30" value="16B30" />
-    <string name="17款X80" value="17X80" />
-    <string name="17款X40" value="17X40" />
-    <string name="18款森雅R9" value="18 R9" />
-    <string name="18款CX65" value="18 CX65" />
-    <string name="19款B50" value="19 B50" />
-    <string name="GA3/GA3S" value="GA3/GA3S" />
-    <string name="GS5" value="GS5" />
-    <string name="GS5全景" value="GS5(With panorama)" />
-    <string name="GA6" value="GA6" />
-    <string name="GS4" value="GS4" />
-    <string name="16款GS4" value="GS4 2016" />
-    <string name="20款GS4" value="GS4 2020" />
-    <string name="22款GS4" value="GS4 2022" />
-    <string name="17款GS8" value="GS8 2017" />
-    <string name="17款GS3" value="GS3 2017" />
-    <string name="21款嘉际" value="21 jiaji" />
-    <string name="20款缤瑞" value="20 bingrui" />
-    <string name="20款豪越" value="20 haoyue" />
-    <string name="GA4" value="GA4" />
-    <string name="2017GS7" value="GA4" />
-    <string name="2018GS4" value="GS4 2018" />
-    <string name="2018款GE3" value="GE3 2018" />
-    <string name="2018款GS5" value="GS5 2018" />
-    <string name="2018款GS4混动版" value="GS4Mixing 2018" />
-    <string name="吉奥星朗" value="JiAoXingLang" />
-    <string name="14款海马M5" value="HaiMa M5 2014" />
-    <string name="13-15款海马S7" value="HaiMaS7 2013-1215" />
-    <string name="M8" value="M8" />
-    <string name="14款海马M3" value="HaiMa M3 2014" />
-    <string name="16款海马M3" value="HaiMaM3 2016" />
-    <string name="17款海马V70" value="HaiMaV70 2017" />
-    <string name="福美来3代" value="Family three generation" />
-    <string name="17款福美来" value="Family 2017" />
-    <string name="17款海马S7" value="HaiMaS7 2017" />
-    <string name="17款S5young" value="S5 YOUNG 2017" />
-    <string name="19款海马S5" value="HaiMaS5 2019" />
-    <string name="18款福美来F5" value="Family F5 2018" />
-    <string name="16款海马S7" value="HaiMa S7 2016" />
-    <string name="16款海马M6" value="HaiMa M6 2016" />
-    <string name="17款海马" value="HaiMa 2017" />
-    <string name="18款福美来" value="Family 2018" />
-    <string name="H530" value="H530" />
-    <string name="V5" value="V5" />
-    <string name="16款V3" value="V3 2016" />
-    <string name="17款H3" value="H3 2017" />
-    <string name="悦翔V7" value="Alsvin V7" />
-    <string name="18款悦翔" value="Alsvin 2018" />
-    <string name="CS75" value="CS75" />
-    <string name="奔奔" value="Benni" />
-    <string name="17款CS75" value="CS75 2017" />
-    <string name="17款欧尚" value="Auchan 2017" />
-    <string name="17款CX70" value="CX70 2017" />
-    <string name="17款CS55" value="CS55 2017" />
-    <string name="17款CS15" value="CS15 2017" />
-    <string name="18款逸动DT" value="YAT DT 2018" />
-    <string name="17款A800" value="A800 2017" />
-    <string name="17款X70A" value="X70A 2017" />
-    <string name="18款A600" value="A600 2018" />
-    <string name="18款凌轩" value="LingXuan 2018" />
-    <string name="18款科赛" value="Kordsa 2018" />
-    <string name="19款欧尚A800" value="Auchan 2018" />
-    <string name="18款CS55" value="CS55 2018" />
-    <string name="19款科赛" value="Kordsa 2019" />
-    <string name="CX70自动空调" value="CX70(AutoAir)" />
-    <string name="CX70手动空调" value="CX70(ManualAir)" />
-    <string name="2014款哈弗H2" value="H2 2014" />
-    <string name="风骏6" value="Wingle 6" />
-    <string name="20款风骏7" value="Wingle 7 2020" />
-    <string name="2018款哈弗H2" value="HavalH2 2018" />
-    <string name="2019款哈弗F7" value="HavalF7 2019" />
-    <string name="2019款哈弗F7(不带座椅通风)" value="HavalF7 2019(without seat ventilation)"/>
-    <string name="19款哈佛H7" value="HF H7 2019" />
-    <string name="19款H6运动版" value="Haval H6Sport 2019" />
-    <string name="C30" value="C30" />
-    <string name="2016款哈弗H6" value="HavaH6 2016" />
-    <string name="2017款风骏6" value="Wingle6 2017" />
-    <string name="17-18款哈弗H2蓝标" value="HavalH2BlueLable 2017-2018" />
-    <string name="18款H7蓝标" value="H7BlueLable 2018" />
-    <string name="17-18款哈弗H2红标" value="HavalH2RedLable 2017-2018" />
-    <string name="2017款哈弗H2s红标/蓝标" value="HavalH2sRed/BlueLable 2017" />
-    <string name="2018款哈弗H6" value="HavalH6 2018" />
-    <string name="2016款哈弗H6Coupe" value="HF H6 Coupe 2016" />
-    <string name="哈弗H9" value="HF H9" />
-    <string name="哈弗H8" value="HF H8" />
-    <string name="哈弗H7" value="HF H7" />
-    <string name="哈弗H6" value="HF H6" />
-    <string name="15-16款H6Coupe(全兼容)" value="15-16 h6 coupe (full compatibility)" />
-    <string name="17-18H6Coupe(全兼容)" value="17-18 h6 coupe (full compatibility)" />
-    <string name="H2(全兼容)" value="H2 (full compatibility)" />
-    <string name="16-17款H9" value="HF H9 2016-2017" />
-    <string name="2019款长城炮" value="Gwm pao 2019" />
-    <string name="2017款哈弗H6" value="H6 2017" />
-    <string name="2018款哈弗M6" value="M6 2018" />
-    <string name="2017款哈弗H6Coupe红标" value="HF H6RedLable 2017" />
-    <string name="2017款哈弗H6Coupe蓝标" value="HF H6BlueLable 2017" />
-    <string name="2018款哈弗H6-换代" value="HF H6HUAN 2018" />
-    <string name="20款哈佛H6-换代" value="HF H6HUAN 2020" />
-    <string name="20款哈佛H6Coupe" value="HF H6 Coupe 2020" />
-    <string name="2019款哈弗H6-换代" value="HF H6HUAN 2019" />
-    <string name="2017款哈弗H6运动版" value="HF H6Sport 2017" />
-    <string name="2017款哈弗M6/2019款哈弗M6" value="HF M6 2017,2019" />
-    <string name="2016款哈弗H1" value="HF H1 2016" />
-    <string name="2018款哈弗H6Coupe" value="HF H6 Coupe 2018" />
-    <string name="17-20款H4" value="HF H4 2017-2020" />
-    <string name="17款哈弗H7" value="HF H7 2017" />
-    <string name="欧拉" value="ora" />
-    <string name="T600" value="T600" />
-    <string name="大迈X5" value="Zotye X5" />
-    <string name="大迈X7" value="Zotye X7" />
-    <string name="2018款众泰T500" value="T500 Zotye 2018" />
-    <string name="2018款众泰T300" value="T300 Zotye 2018" />
-    <string name="潍柴U60V" value="Weichai U60V" />
-    <string name="黄海N2" value="N2" />
-    <string name="2017款众泰SR9" value="SR9 Zotye 2017" />
-    <string name="2018款君马S70" value="S70 2018" />
-    <string name="2017款众泰SR7" value="SR7 Zotye 2017" />
-    <string name="SR7" value="SR7" />
-    <string name="15款路虎发现" value="discovery Landrover 2015" />
-    <string name="18款众泰E200" value="E200  Zoyte 2018" />
-    <string name="2014款宝骏730" value="BaoJun730 2014" />
-    <string name="2015款宝骏560" value="BaoJun560 2015" />
-    <string name="2012款荣威550" value="Roewe 550 2012" />
-    <string name="2013款荣威550" value="Roewe 550 2013" />
-    <string name="名爵锐腾" value="MGGS" />
-    <string name="名爵6" value="MG6" />
-    <string name="18款名爵6" value="MG6 2018" />
-    <string name="荣威360" value="Roewe 360" />
-    <string name="2016款宝骏730" value="BaoJun730 2016" />
-    <string name="2017款宝骏730" value="BaoJun730 2017" />
-    <string name="2017款名爵ZS" value="MGZS 2017" />
-    <string name="荣威RX5" value="Roewe RX5" />
-    <string name="2017款宝骏510" value="BaoJun510 2017" />
-    <string name="2018款宝骏530" value="BaoJun530 2018" />
-    <string name="2018款五菱宏光S3" value="SGMW S3 2018" />
-    <string name="11-12款荣威550/名爵6" value="Roewe550/MGZS6 2011-2012" />
-    <string name="13-15款荣威550/名爵6" value="Roewe550/MGZS6 2013-2005" />
-    <string name="大通T60/V80" value="MaxUsT60/V80" />
-    <string name="大通T60" value="MaxUsT60" />
-    <string name="大通G10" value="MaxUsG10" />
-    <string name="17款锐腾" value="MGGS 2017" />
-    <string name="荣威RX3" value="Roewe RX3" />
-    <string name="荣威I6" value="Roewe I6" />
-    <string name="2020款宝骏RS-3" value="BaoJunRS-3 2020" />
-    <string name="S3" value="S3" />
-    <string name="S2" value="S2" />
-    <string name="S5" value="S5" />
-    <string name="2017款S3" value="S3 2017" />
-    <string name="2016款M4" value="M4 2016" />
-    <string name="2017S2MINI" value="S2MINI 2017" />
-    <string name="2017S2" value="S2 2017" />
-    <string name="S2_S3_S5全兼容" value="S2_S3_S5" />
-    <string name="S2_MINI" value="S2_MINI" />
-    <string name="江淮T8" value="JAC T8" />
-    <string name="瑞风S7" value="Refine S7" />
-    <string name="17-20款瑞风S7" value="Refine S7 2017-2020" />
-    <string name="Mazda6" value="Mazda6" />
-    <string name="MazdaCX5" value="MazdaCX5" />
-    <string name="Mazda5" value="Mazda5" />
-    <string name="Mazda8" value="Mazda8" />
-    <string name="MazdaCX7" value="MazdaCX7" />
-    <string name="Mazda3" value="Mazda3" />
-    <string name="MazdaCX4" value="MazdaCX4" />
-    <string name="睿翼" value="Mazda M6" />
-    <string name="14Mazda3" value="14Mazda3" />
-    <string name="17款阿特兹" value="17Atenza" />
-    <string name="Mazda7" value="Mazda7" />
-    <string name="昂克塞拉" value="Angkeira" />
-    <string name="20款昂科赛拉" value="Angkeira 2020" />
-    <string name="MazdaCX9" value="MazdaCX9" />
-    <string name="20款马自达3" value="20Mazda3" />
-    <string name="14款MazdaCX7" value="MazdaCX7 2014" />
-    <string name="马自达BT-50" value="BT-50" />
-    <string name="马自达CX-9" value="CX-9" />
-    <string name="马自达19200" value="Mazda 19200" />
-    <string name="20款阿特兹" value="20Atenza" />
-    <string name="GC7" value="GC7" />
-    <string name="14EC7" value="EC7 2014" />
-    <string name="远景" value="Vision" />
-    <string name="12-17科帕奇" value="12-17Cope" />
-    <string name="16款博越" value="Boyue 2016" />
-    <string name="帝豪GS" value="Dihao GS" />
-    <string name="帝豪GL" value="Dihao GL" />
-    <string name="帝豪远景X6" value="DihaoVision X6" />
-    <string name="帝豪远景X1" value="DihaoVision X1" />
-    <string name="博瑞" value="Borui" />
-    <string name="18款远景SUV" value="VisionSUV 2018" />
-    <string name="博越" value="Boyue" />
-    <string name="帝豪远景X3" value="DihaoVision X3" />
-    <string name="19-20款缤越" value="Binyue 2019" />
-    <string name="A3" value="A3" />
-    <string name="08-16款A4L" value="A4L 2008~2016" />
-    <string name="08-18款Q5" value="Q5 2008~2018" />
-    <string name="Q3" value="Q3" />
-    <string name="A3/S3 (2003-2013)" value="A3/S3 (2003-2013)" />
-    <string name="A4/S4(2002-2008)" value="A4/S4(2002-2008)" />
-    <string name="奥迪TT(2006-2012)" value="Audi TT(2006-2012)" />
-    <string name="新3系" value="New 3 Series" />
-    <string name="1系" value="Series 1" />
-    <string name="06-10款宝马老X3" value="old bwm 06~10" />
-    <string name="宝马老3系/老5系/老X5" value="BMW old 3,5,X5 Series" />
-    <string name="宝马E46/E39/E53" value="BMW E46/E39/E53" />
-    <string name="宝马E90-X1" value="BMW E90-X1" />
-    <string name="艾瑞泽5" value="Arrizo 5" />
-    <string name="瑞虎" value="Tiggo" />
-    <string name="18款瑞虎7" value="Tiggo 7 2018" />
-    <string name="18款瑞虎8" value="Tiggo 8 2018" />
-    <string name="瑞虎3X" value="Tiggo 3X" />
-    <string name="瑞虎5" value="Tiggo 5" />
-    <string name="瑞虎7" value="Tiggo 7" />
-    <string name="16款艾瑞泽7" value="Arrizo7 2016" />
-    <string name="18款艾瑞泽GX" value="ArrizoGX 2018" />
-    <string name="艾瑞泽GX/EX" value="ArrizoGX/EX" />
-    <string name="2018款捷途X70" value="Jetour X70 2018" />
-    <string name="凯翼X3" value="Covin X3" />
-    <string name="威旺M20" value="WeiWang M20" />
-    <string name="威旺M30" value="WeiWang M30" />
-    <string name="14款绅宝D60" value="Senova D60 2014" />
-    <string name="M30" value="M30" />
-    <string name="幻速H2" value="HS H2" />
-    <string name="幻速H3" value="HS H3" />
-    <string name="19款北汽智行" value="19 BAIC Zhixing" />
-    <string name="幻速S2" value="HS S2" />
-    <string name="幻速S3" value="HS S3" />
-    <string name="16款绅宝X55" value="Senova X55 2016" />
-    <string name="15-17款绅宝X25" value="Senova X25 2015-2017" />
-    <string name="幻速S6" value="HS S6" />
-    <string name="16款BJ20" value="16 BJ20" />
-    <string name="17款威旺M50F" value="WeiWang M50F 2017" />
-    <string name="EC180" value="EC180" />
-    <string name="16款BJ40" value="16 BJ40" />
-    <string name="16款绅宝X35" value="Senova X35 2016" />
-    <string name="17款昌河Q35" value="ChangHe Q35" />
-    <string name="15款绅宝X35" value="Senova X35 2015" />
-    <string name="17款绅宝X35" value="Senova X35 2017" />
-    <string name="18款绅宝X35" value="Senova X35 2018" />
-    <string name="绅宝X65" value="Senova X65" />
-    <string name="绅宝D70" value="Senova D70" />
-    <string name="幻速S5" value="HS S5" />
-    <string name="07-17款科鲁兹" value="Cruze 2007-2017" />
-    <string name="13款科鲁兹" value="Cruze 2013" />
-    <string name="15款新赛欧" value="Sail 2015" />
-    <string name="赛欧3" value="Sail3" />
-    <string name="爱唯欧" value="Aveo" />
-    <string name="昂科拉" value="Encore" />
-    <string name="英朗" value="Excelle-XT" />
-    <string name="19款英朗" value="Excelle-XT 2019" />
-    <string name="昂科威" value="Envision" />
-    <string name="凯越" value="Excelle" />
-    <string name="君威" value="Regal" />
-    <string name="威朗" value="Verano" />
-    <string name="GL8" value="GL8" />
-    <string name="迈锐宝" value="Malibu" />
-    <string name="2016款迈锐宝XL" value="Malibu XL2016" />
-    <string name="13款昂科雷" value="Enclave 2013" />
-    <string name="乐风RV" value="Lova RV" />
-    <string name="16款科沃兹" value="Cavalier 2016" />
-    <string name="创酷" value="CNankcu" />
-    <string name="19款创界" value=" creation circles 2019" />
-    <string name="19款科鲁泽" value="koluze 2019" />
-    <string name="君越" value="Lacrosse" />
-    <string name="2017款GL8" value="GL8 2017" />
-    <string name="2016ChevroletTahoe" value="ChevroletTahoe 2016" />
-    <string name="2014GMCYukon" value="2014GMCYukon" />
-    <string name="2017款探界者" value="Equinox 2017" />
-    <string name="19款探界者" value="Equinox 2017" />
-    <string name="旧款欧宝" value="old opel" />
-    <string name="2017款GL8(25S)" value="GL8 25S 2017" />
-    <string name="2018款GL6" value="GL6 2018" />
-    <string name="2014款GL8" value="GL8 2014" />
-    <string name="2018款沃兰多" value="Orlando 2018" />
-    <string name="2012款福克斯" value="Focus 2012" />
-    <string name="12-15款福克斯" value="Focus 2012-2015" />
-    <string name="14款新蒙迪欧" value="New Mondeo 2014" />
-    <string name="12-17款翼虎" value="Kuga 2012-2017" />
-    <string name="2013款翼虎" value="Kuga 2013" />
-    <string name="15款翼虎" value="Kuga 2015" />
-    <string name="2013款翼搏" value="Ecosport 2013" />
-    <string name="2013款嘉年华" value="Fiesta 2013" />
-    <string name="09-15款嘉年华" value="Fiesta 2009-2015" />
-    <string name="2015款福克斯" value="Focus 2015" />
-    <string name="2013款锐界" value="Edge 2013" />
-    <string name="2013款猛禽F-150" value="F-150 2013" />
-    <string name="2013款探险者" value="Explorer 2013" />
-    <string name="2013款金牛座" value="Taurus 2013" />
-    <string name="2013款蒙迪欧" value="Mondeo 2013" />
-    <string name="2018款蒙迪欧" value="Mondeo 2018" />
-    <string name="2015款锐界" value="Edge 2015" />
-    <string name="征服者" value="Expedition" />
-    <string name="进口野马" value="Mustang" />
-    <string name="2017款翼虎" value="Kuga 2017" />
-    <string name="2017款翼搏" value="Ecosport 2017" />
-    <string name="07-13款蒙迪欧致胜" value="Mondeo Zhisheng 2007-2013" />
-    <string name="麦柯斯" value="McKees" />
-    <string name="2016款撼路者" value="Pathfinder 2016" />
-    <string name="18款撼路者" value="Pathfinder 2018" />
-    <string name="2018款翼博" value="Ecosport 2018" />
-    <string name="2018款翼虎" value="Kuga 2018" />
-    <string name="2019款福克斯" value="Focus 2019" />
-    <string name="2018款F150" value="F150 2018" />
-    <string name="途睿欧" value="TourneoCustom" />
-    <string name="2017款蒙迪欧" value="Mondeo 2017" />
-    <string name="08-12款嘉年华" value="Fiesta 2008-2012" />
-    <string name="2018款锐界" value="Edge 2018" />
-    <string name="RANGER海外" value="RANGER overseas" />
-    <string name="18款林肯MKC" value="2018 Lincoln MKC" />
-    <string name="19款林肯航海家" value="2019 Lincoln navigators" />
-    <string name="19款林肯MKZ" value="2019 Lincoln MKZ" />
-    <string name="爱丽舍" value="Elysee" />
-    <string name="世嘉" value="C-Quatre" />
-    <string name="DS5LS" value="DS5LS" />
-    <string name="C4L" value="C4L" />
-    <string name="C3XR" value="C3XR" />
-    <string name="2008" value="2008" />
-    <string name="3008" value="3008" />
-    <string name="14款408" value="408 2014" />
-    <string name="301" value="301" />
-    <string name="16款308" value="308 2016" />
-    <string name="17款4008" value="4008 2017" />
-    <string name="DS5" value="DS5" />
-    <string name="DS4" value="DS4" />
-    <string name="508" value="508" />
-    <string name="4008" value="4008" />
-    <string name="保留屏车型" value="RESERVED SCREEN MODEL" />
-    <string name="18款天逸" value="aircross 2018" />
-    <string name="20款天逸C5" value="aircross C5 2020" />
-    <string name="DS6" value="DS6" />
-    <string name="19款海外Rifter" value="Overseas Rifter 2019" />
-    <string name="19款海外301" value="Overseas 301 2019" />
-    <string name="15款508" value="508 2015" />
-    <string name="C4" value="C4" />
-    <string name="C5" value="C5" />
-    <string name="2013款C5" value="C5 2013" />
-    <string name="307" value="307" />
-    <string name="308" value="308" />
-    <string name="408" value="408" />
-    <string name="308S" value="308S" />
-    <string name="巴西C4" value="C4 Brazil" />
-    <string name="10-13款牧马人" value="Rubicon 2010-2013" />
-    <string name="2016款自由光" value="Cherokee 2016" />
-    <string name="2016款自由侠" value="Renegade 2016" />
-    <string name="11-15款指南者" value="Compass 2011-2015" />
-    <string name="2017款指南者" value="Compass 2017" />
-    <string name="自由客" value="Patriot" />
-    <string name="2017款大切诺基" value="Grand Cherokee 2017" />
-    <string name="2018款牧马人" value="Rubicon 2018" />
-    <string name="2018款自由侠" value="Renegade 2018" />
-    <string name="菲亚特Aegea" value="Fiat Aegea" />
-    <string name="2018款指挥官" value="Commander 2018" />
-    <string name="老指南者" value="Compass old" />
-    <string name="19款挑战者" value="Challenger 2019" />
-    <string name="19款自由光" value="Free Light 2019" />
-    <string name="07-10款指南者/牧马人" value="Compass/Rubicon 2007-2010" />
-    <string name="菲翔" value="Viaggio" />
-    <string name="12款菲翔" value="Viaggio 2012" />
-    <string name="Fiorino" value="Fiorino" />
-    <string name="Doblo" value="Doblo" />
-    <string name="13款500L" value="500L 2013" />
-    <string name="19款500L" value="500L 2019" />
-    <string name="18款Aegea" value="Aegea 2018" />
-    <string name="19款Aegea" value="Aegea 2019" />
-    <string name="Egea" value="Egea" />
-    <string name="Ducato" value="Ducato" />
-    <string name="菲亚特博悦" value="Fiat Bravo" />
-    <string name="17款PANDA" value="PANDA 2017" />
-    <string name="2012领雅" value="Linea 2012" />
-    <string name="2009菲奥里诺" value="Fiorino 2009" />
-    <string name="风光360" value="FengGuang360" />
-    <string name="2018风光580" value="FengGuang580 2018" />
-    <string name="风光330S" value="FengGuang330S" />
-    <string name="2015款风神AX7" value="FengShenAX7 2015" />
-    <string name="20款风神AX7" value="FengShenAX7 2020" />
-    <string name="风光580" value="FengGuang580" />
-    <string name="风光500" value="FengGuang500" />
-    <string name="纳智捷" value="LUXGEN" />
-    <string name="EV3" value="EV3" />
-    <string name="景逸X5" value="Joyear X5" />
-    <string name="18款景逸X5" value="Joyear X5 2018" />
-    <string name="20款低配不带悬浮屏风行T5" value="Fashion T5 （Low matching）" />
-    <string name="2019低配不带悬浮屏景逸X5" value="Joyear X5 2019 （Low matching）" />
-    <string name="2016款风神AX5" value="FengShenAX5 2016" />
-    <string name="2016款风神AX7" value="FengShenAX7 2016" />
-    <string name="2016款风度MX5" value="FengDuMX5 2016" />
-    <string name="风光370" value="FengGuang370" />
-    <string name="风光S560" value="FengGuangS560" />
-    <string name="18款S560" value="FengGuangS560 2018" />
-    <string name="2018款锐琪6" value="RuiQi6 2018" />
-    <string name="16-18款风神AX7" value="AX7 2016-2018" />
-    <string name="16-18款风神AX7" value="AX7 2018(Panorama)" />
-    <string name="风神AX全系" value="FengShenAX" />
-    <string name="景逸S50" value="Joyear S50" />
-    <string name="力帆X60" value="Lifan X60" />
-    <string name="力帆X70" value="Lifan X70" />
-    <string name="力帆X720" value="Lifan X720" />
-    <string name="力帆X820" value="Lifan X820" />
-    <string name="13款力帆720" value="Lifan720 2013" />
-    <string name="18款力帆650EV" value="Lifan650EV 2018" />
-    <string name="Smart" value="Smart" />
-    <string name="B200" value="B200" />
-    <string name="威霆" value="Vito" />
-    <string name="19款Sprinter" value="Sprinter 2019" />
-    <string name="GLK300" value="GLK300" />
-    <string name="A180" value="A180" />
-    <string name="A级2004-2012款" value="Class A 2004-2012" />
-    <string name="B级2005-2011款" value="Class B 2005-2011" />
-    <string name="R级2006-2014款" value="Class R 2006-2014" />
-    <string name="ML级2005-2011款" value="Class ML 2005-2011" />
-    <string name="GL级2005-2013款" value="Class GL 2005-2013" />
-    <string name="GL级2003-2013款" value="Class GL 2003-2013" />
-    <string name="威雅诺2010-至今" value="Vijano 2010-present" />
-    <string name="斯宾特" value="Sprinter" />
-    <string name="ML" value="ML" />
-    <string name="R300" value="R300" />
-    <string name="ML320" value="ML320" />
-    <string name="ML350CDI" value="ML350CDI" />
-    <string name="全系列" value="CompleteSeries" />
-    <string name="DX7" value="DX7" />
-    <string name="V5" value="V5" />
-    <string name="V6" value="V6" />
-    <string name="18款DX3" value="DX3 2018" />
-    <string name="2016款科雷嘉" value="Kadjar 2016" />
-    <string name="2015款卡缤" value="Captur 2015" />
-    <string name="新梅甘娜" value="Megane" />
-    <string name="梅甘娜2" value="Megane2" />
-    <string name="梅甘娜3" value="Megane3" />
-    <string name="梅甘娜4" value="Megane4" />
-    <string name="Dester" value="Dester" />
-    <string name="Fluence" value="Fluence" />
-    <string name="2017款科雷傲" value="Koleos 2017" />
-    <string name="16款达斯特" value="Duster 2016" />
-    <string name="2018款科雷傲" value="Koleos 2018" />
-    <string name="2016款科雷傲" value="Koleos 2016" />
-    <string name="2019科雷缤" value="Kelebin 2016" />
-    <string name="09-16款科雷傲" value="Koleos 2009-2016" />
-    <string name="土耳其MEGANE" value="MEGANE" />
-    <string name="纬度" value="Latitude" />
-    <string name="PATRIOT" value="PATRIOT" />
-    <string name="PICKUP" value="PICKUP" />
-    <string name="M3" value="M3" />
-    <string name="T3" value="T3" />
-    <string name="T5" value="T5" />
-    <string name="瑞迈" value="ruimai" />
-    <string name="D-MAX" value="D-MAX" />
-    <string name="E39" value="E39" />
-    <string name="E90" value="E90" />
-    <string name="M40" value="M40" />
-    <string name="A3" value="A3" />
-    <string name="A4" value="A4" />
-    <string name="05-09款A6" value="A6 2005~2009" />
-    <string name="16款x7" value="x7 16" />
-    <string name="18款x5" value="x5 18" />
-    <string name="12-15款比亚迪F3" value="BYD F3 2012-2015" />
-    <string name="比亚迪S6" value="BYD S6" />
-    <string name="16-18款比亚迪元" value="BYD Yuan 2016-2018" />
-    <string name="12-16款速锐" value="Surui 2012-2018" />
-    <string name="比亚迪全兼容" value="BYD All" />
-    <string name="比亚迪全兼容(老协议盒)" value="BYD All(Old)" />
-    <string name="比亚迪S1/S2/E1/E2/E3/秦/唐" value="BYD S1/S2/E1/E2/E3/qin/tang" />
-    <string name="比亚迪G6" value="BYD G6" />
-    <string name="比亚迪M6" value="BYD M6" />
-    <string name="比亚迪F6" value="BYD F6" />
-    <string name="06款雷克萨斯" vaule="lexus 2016" />
-    <string name="X30L" value="X30L" />
-    <string name="18款海狮S" vlaue="HIACE S 2018" />
-    <string name="2014款欧蓝德" value="Outlander 2014" />
-    <string name="2019款欧蓝德" value="Outlander 2019" />
-    <string name="2018款欧蓝德" value="Outlander 2018" />
-    <string name="2018款奕歌" value="Eclipse Cross 2018" />
-    <string name="2018款帕杰罗" value="Pajero 2018" />
-    <string name="帕杰罗" value="Pajero" />
-    <string name="2019款奕歌台湾版" value="Eclipse Cross Taiwan 2019" />
-    <string name="2020款帕杰罗运动版" value="Pajero Sportline 2020" />
-    <string name="2020款帕杰罗劲畅" value="Pajero Sport 2020" />
-    <string name="观致3" value="Qoros3" />
-    <string name="17款野马T80" value="YeMa T80 2017" />
-    <strint name="重卡" value="Heavy truck" />
-    <string name="12款MINI" value="MINI 2012" />
-    <string name="逍遥" value="Carefree" />
-    <string name="K150" value="K150" />
-    <string name="NBT-EVO全系" value="NBT-EVO" />
-    <string name="安德拉2006-2012" value="Antara 2006-2012" />
-    <string name="赛飞利2006-2008" value="Zafira 2006-2008" />
-    <string name="雅特2005-2008" value="Astra 2005-2008" />
-    <string name="19款G70S" value="G70S 2019" />
-    <string name="天语SX4/英格尼斯" value="Tianyu SX4/Ingnes" />
-    <string name="斯巴鲁XV" value="subaru XV" />
-    <string name="斯巴鲁驰鹏" value="Tribeca XV" />
-    <string name="凯迪拉克SRX" value="Cadillac SRX" />
-    <string name="凯迪拉克ATS-L" value="Cadillac ats-l" />
-    <string name="拓陆者" value="TunLand" />
-    <string name="蒙派克" value="Mengpaike" />
-    <string name="19款逸动" value="19 models" />
-    <string name="战车" value="GX" />
-    <string name="V60" value="V60" />
-    <string name="S60" value="S60" />
-    <string name="04-13XC90" value="04-13XC90" />
-    <string name="S40" value="S40" />
-    <string name="X7" value="X7" />
-    <string name="17款瑞迈" value="Ruimai 2017" />
-    <string name="17款D-MAX" value="D-MAX 2017" />
-    <string name="19款瑞迈" value="Ruimai 2019" />
-    <string name="18-20款mu-X牧游侠" value="mu-X 2018~2020" />
-    <string name="达咖" value="Taga" />
-    <string name="蒂维拉" value="TIVOLAN" />
-    <string name="牧游侠" value="mu-X" />
-    <string name="14-17款陆丰X7" value="LandWind X7 2014~2017" />
-    <string name="易至EV3-E300" value="EV3-E300" />
-    <string name="E200N" value="E200N" />
-    <string name="酷威" value="Jcuv" />
-    <string name="酷威(保留原车屏)" value="Jcuv(Keep Screen)" />
-    <string name="驭胜" value="Yusheng" />
-    <string name="新特" value="New specia" />
-    <string name="2019款MG6" value="2019 MG6" />
-    <string name="同欣朴协议" value="Same as Simplesoft' CAN" />
-    <string name="客制化协议" value="Customer customized CAN" />
-    <string name="研发协议" value="Development of CAN" />
-    <string name="客制化协议1" value="Customer customized CAN 1" />
-    <string name="低配" value="Low version" />
-    <string name="中配" value="Middle version" />
-    <string name="高配" value="High version" />
-    <string name="18款斯威G01" value="18 G01" />
-    <string name="19款斯威G01" value="19 G01" />
-    <string name="20款潍柴U70" value="20 U70" />
-    <string name="依维柯" value="Iveco" />
-    <string name="2020款名爵ZS" value="MGZS 2020" /> 
-    <string name="17领航员" value="17 Navigator" /> 
-    <string name="17大陆" value="17 Continental" />    
-    <string name="途昂X" value="Touron X" />   
-    <string name="混动途观L" value="Hybrid Tiguan L" />
-    <string name="20款途观L" value="20 Tiguan" /> 
-    <string name="巴西捷达" value="17 Navigator" /> 
-    <string name="土耳其斯柯达SUPERB" value="Brazil Jetta" /> 
-    <string name="捷达VS7" value="Jetta VS7" /> 
-    <string name="20款宝来" value="20 Polaris" /> 
-    <string name="19款辉昂" value="19 models of Huiang" />
-    <string name="21款辉昂" value="21 models of Huiang" /> 
-    <string name="19款朗逸纯电动" value="20 models of pure electric golf" /> 
-    <string name="20款宝来纯电" value="20 models of Bora pure electric" /> 
-    <string name="20款高尔夫纯电" value="20 Golf pure electric" /> 
-    <string name="20款迈腾" value="20 Magotan" /> 
-    <string name="19款朗逸纯电动" value="19 models of Lavida pure electric" /> 
-    <string name="19-20款帕萨特混动" value="19-20 Passat Hybrid" /> 
-    <string name="20款途观L混动" value="20 Tiguan L Hybrid" /> 
-    <string name="2013款蒙迪欧(自动空调)" value="2013 Ford Mondeo (automatic air conditioning)" /> 
-    <string name="2018款翼博(自动空调)" value="2018 Yibo (Automatic Air Conditioning)" /> 
-    <string name="19-20款领界" value="19-20 styles" /> 
-    <string name="探险者" value="Explorer" /> 
-    <string name="2020款福克斯" value="2020 Fox" /> 
-    <string name="2019款翼虎" value="2019 Maverick" /> 
-    <string name="保留原车CD" value="Keep the original car CD" /> 
-    <string name="2020款锐界" value="2020 sharp world" /> 
-    <string name="2020款蒙迪欧" value="2020 Mondeo" /> 
-    <string name="2019款翼博" value="2019 Yibo" /> 
-    <string name="2019款金牛座" value="2019 Taurus" /> 
-    <string name="2019款F150" value="2019 F150" /> 
-    <string name="2019款福睿斯" value="2019 Forys" /> 
-    <string name="2019款中规野马" value="2019 Chinese Standard Mustang" /> 
-    <string name="2019款蒙迪欧混动" value="2019 Mondeo Hybrid" /> 
-    <string name="2020款锐际" value="2020 Ruiji" /> 
-    <string name="12款凯美瑞" value="12 Camry" /> 
-    <string name="15款凯美瑞" value="15 Camry" /> 
-    <string name="CHR(弈泽)" value="GHR (Yize)" /> 
-    <string name="18款RAV4" value="18 RAV4" /> 
-    <string name="07-15款酷路泽" value="07-15 Cool Road Ze" /> 
-    <string name="16款酷路泽" value="16 Cool Road Ze" /> 
-    <string name="19款大霸王" value="19 big overlords" /> 
-    <string name="06-15款大霸王" value="06-15 Big Overlord" /> 
-    <string name="06款埃尔法" value="06 Elfa" /> 
-    <string name="04款雷克萨斯RX300" value="04 Lexus RX300" /> 
-    <string name="20款RAV4" value="20 RAV4" /> 
-    <string name="20款威兰达" value="17 Navigator" /> 
-    <string name="20款CHR-EV(纯电动)" value="20 Veranda" /> 
-    <string name="21款雷凌" value="21 Ralink" /> 
-    <string name="现代IX35" value="Hyundai IX35" /> 
-    <string name="现代IX45" value="Hyundai IX45" /> 
-    <string name="19款现代菲斯塔" value="19 Hyundai Festa" /> 
-    <string name="19款现代胜达IX45" value="19 Hyundai Shengda IX45" /> 
-    <string name="19款现代途胜" value="19 Hyundai Tucson" /> 
-    <string name="15款嘉华" value="15 models of Jiahua" /> 
-    <string name="19款起亚KX5" value="19 Kia KX5" /> 
-    <string name="19款起亚K3" value="19 Kia K3" /> 
-    <string name="18款现代索纳塔九混动" value="18 Hyundai Sonata Nine Hybrids" />  
-    <string name="20款起亚KX3傲跑" value="20 Kia K3 proud running" />
-    <string name="19款k3新能源" value="19 models of K3 new energy" />
-    <string name="19款k5新能源" value="19 models of K5 new energy" /> 
-    <string name="19款现代名图" value="19 modern famous pictures" /> 
-    <string name="19款现代领动" value="19 modern leads" /> 
-    <string name="19款起亚智跑" value="19 Kia Smart Runs" /> 
-    <string name="享域" value="Share domain" /> 
-    <string name="19款CRV" value="19 CVR" /> 
-    <string name="20款皓影" value="20 Haoying" /> 
-    <string name="本田理念EV1" value="Honda Concept EV1" /> 
-    <string name="16-19款思域" value="16-19 Civic" /> 
-    <string name="20-21款思域" value="20-21 Civic" /> 
-    <string name="20-21款CRV" value="20-21 CRV" /> 
-    <string name="21款飞度" value="21 Fit" /> 
-    <string name="16款西玛" value="16 Maxima" /> 
-    <string name="04-07款天籁" value="04-07 Teana" /> 
-    <string name="19-21款天籁" value="19-21 Teana" /> 
-    <string name="2019款天籁" value="2019 Teana" /> 
-    <string name="19款骐达" value="19 Tiida" /> 
-    <string name="19款劲客" value="19 powerful customers" /> 
-    <string name="17款劲客" value="17 powerful customers" /> 
-    <string name="19款逍客" value="19 Qashqai" /> 
-    <string name="19款楼兰" value="19 Loulan" /> 
-    <string name="台版08~12款天籁" value="Taiwan Version 08~12 Sounds of Nature" /> 
-    <string name="20款轩逸" value="20 Sylphy" /> 
-    <string name="16款轩逸" value="16 Sylphy" /> 
-    <string name="16款奇骏(中东)" value="16 X-Trail (Middle East)" /> 
-    <string name="19款408" value="19 408" /> 
-    <string name="19款C3XR" value="19 C3XR" /> 
-    <string name="新C4L" value="New C4L" /> 
-    <string name="19款508L" value="19 508L" /> 
-    <string name="04_13款307" value="04-13 307" /> 
-    <string name="10_13款408" value="10-13 408" /> 
-    <string name="13_19款3008" value="13-19 3008" /> 
-    <string name="马来西亚508" value="Malaysia 508" /> 
-    <string name="19款5008" value="19 5008" /> 
-    <string name="19款4008" value="19 4008" /> 
-    <string name="14_19款408拆空调" value="14-19 408 Remove the air conditioner" /> 
-    <string name="20款2008" value="20 2008" /> 
-    <string name="16款瑞虎3X" value="16 Tiggo 3X" /> 
-    <string name="16款瑞虎7" value="16 Tiggo 7" /> 
-    <string name="瑞虎5X" value="Tiggo 5X" /> 
-    <string name="16款艾瑞泽5" value="16 Arrizo 5" /> 
-    <string name="16款瑞虎3" value="16 Tiggo 3" /> 
-    <string name="19款艾瑞泽5" value="19 Arrizo 5" /> 
-    <string name="19款瑞虎5X" value="19 Tiggo 5X" /> 
-    <string name="20款捷途X70M" value="20 JETTO X70M" /> 
-    <string name="20款瑞虎7" value="20 Tiggo 7" /> 
-    <string name="20款瑞虎3X" value="20 Tiggo 3X" /> 
-    <string name="20款瑞虎8" value="20 Tiggo 8" /> 
-    <string name="15款瑞虎5" value="15 Tiggo 5" /> 
-    <string name="20款瑞虎5X" value="20 Tiggo 5X" /> 
-    <string name="21款瑞虎3X" value="21 Tiggo 3X" /> 
-    <string name="17款马自达3" value="17 Mazda3" /> 
-    <string name="台湾版马自达3" value="Taiwan version of Mazda 3" /> 
-    <string name="18款台湾版CX-3" value="18 Taiwanese version of CX-3" /> 
-    <string name="19款台湾版CX-5" value="19 Taiwanese version of CX-5" /> 
-    <string name="19款CX-5" value="19 CX-5" /> 
-    <string name="马来西亚版CX-5" value="Malaysian version CX-5" /> 
-    <string name="马来西亚版CX-3" value="Malaysian version CX-3" /> 
-    <string name="17款MazdaCX5" value="17 MazdaCX5" /> 
-    <string name="14-19款昂科赛拉" value="14-19 Angkorsaila" /> 
-    <string name="14-15款致悦" value="14-15 Joy" /> 
-    <string name="2019款自由光" value="2019 free light" /> 
-    <string name="2020款指南者" value="2020 guide" /> 
-    <string name="2020款指挥官" value="2020 Commander" /> 
-    <string name="2020款牧马人" value="2020 Wrangler" /> 
-    <string name="2020款自由光" value="2020 Freeman" /> 
-    <string name="16_17款科雷嘉" value="16_17 Correga" /> 
-    <string name="巴西版SANDERO" value="Brazilian version of SANDERO" /> 
-    <string name="巴西版DUSTER" value="Brazilian version of DUSTER" /> 
-    <string name="巴西版CAPTURE" value="Brazil version of CAPTURE" /> 
-    <string name="土耳其CLIO" value="Turkey CLIO" /> 
-    <string name="土耳其KADJAR" value="KADJAR Turkey" /> 
-    <string name="土耳其CAPTURE" value="Turkey CAPTURE" /> 
-    <string name="20款铃拓" value="20 Lingtuo" /> 
-    <string name="18款庆铃" value="18 Qingling" /> 
-    <string name="21款庆铃-达咖" value="21 Qingling-Daka" /> 
-    <string name="TT 08-13款" value="TT 08-13" /> 
-    <string name="A3 04-12款" value="A3 04-12" /> 
-    <string name="A4 03-07款" value="A4 03-07" /> 
-    <string name="Q3 13-18款" value="Q3 13-18" /> 
-    <string name="Q5 10-18款" value="Q5 10-18" /> 
-    <string name="11-14款爱唯欧" value="11-14 Ai Weiou" /> 
-    <string name="13-19款昂科拉" value="13-19 Angkola" /> 
-    <string name="10-19款英朗" value="10-19 Hideo" /> 
-    <string name="13-19款昂科威" value="13-19 Angkewei" /> 
-    <string name="18款凯越" value="18 Excelle" /> 
-    <string name="09-19款君威" value="09-19 Regal" /> 
-    <string name="15-19款威朗" value="15-19 Weilang" /> 
-    <string name="11-15款GL8" value="11-15 GL8" /> 
-    <string name="12-18款迈锐宝" value="17 12-18 Mai Rui Bao" /> 
-    <string name="16-19款迈锐宝XL" value="16-19 Mai Rui Bao XL" /> 
-    <string name="13款昂科雷" value="13 Angcore" /> 
-    <string name="16-18款乐风RV" value="16-18 Lefeng RV" /> 
-    <string name="16款科沃兹" value="16 kowoz" /> 
-    <string name="14-18款创酷" value="14-18 Chuangku" /> 
-    <string name="09-19款君越" value="09-19 Lacrosse" /> 
-    <string name="2017款GL8" value="2017 GL8" /> 
-    <string name="2017款探界者" value="2017 Explorer" /> 
-    <string name="18-19款沃兰多" value="18-19 Volando" /> 
-    <string name="2015-2018款塞欧3" value="2015-2018 Sail 3" /> 
-    <string name="17-18款GL8ES" value="17-18 GL8ES" /> 
-    <string name="19款创酷" value="19 Chuangku" /> 
-    <string name="20款昂科拉" value="20 Angkola" /> 
-    <string name="20款开拓者" value="20 trailblazers" /> 
-    <string name="凯迪拉克CTS" value="Cadillac CTS" /> 
-    <string name="17-19款CousaE" value="17-19 CousaE" /> 
-    <string name="15-19款Insignia" value="15-19 Insignia" /> 
-    <string name="08-10款AstraH" value="08-10 AstraH" /> 
-    <string name="11款CorsaD" value="11 CorsaD" /> 
-    <string name="08款Combo" value="08 Combo" /> 
-    <string name="20款GL8 652T" value="20 GL8 652T" /> 
-    <string name="20款畅巡" value="20 ridges" /> 
-    <string name="21款英朗保留原车屏" value="21 Yinglang retains the original car screen" /> 
-    <string name="21款英朗不保留原车屏" value="21 Yinglang does not retain the original car screen" /> 
-    <string name="21款君越" value="21 Lacrosse" /> 
-    <string name="IAP升级" value="IAP upgrade" />
-    <string name="常发" value="Often" />
-    <string name="11-17款AstraJ" value="11-17 AstraJ" />
-    <string name="21款科鲁泽" value="21 Cruze" />
-    <string name="2021款全顺" value="2021 Transit" />
-    <string name="拆SYNC" value="Remove SYNC" />
-    <string name="2017款GS7" value="2017 GS7" />
-    <string name="2018款GS4" value="2018 GS4" />
-    <string name="2019款GS4" value="2019 GS4" />
-    <string name="2019款祺智EV" value="2019 Qizhi EV" />
-    <string name="2019款GS8" value="2019 GS8" />
-    <string name="2019款GM6" value="2019 GM6" />
-    <string name="2019款GA6" value="2019 GA6" />
-    <string name="20款GM8" value="20 GM8" />
-    <string name="20款GS5" value="20 GS5" />
-    <string name="21款GS3" value="21 GS3" />
-    <string name="20款GS8" value="20 GS8" />
-    <string name="20款GS4混动" value="20 GS4 hybrid" />
-    <string name="海马S5" value="Haima s5" />
-    <string name="16款帝豪GS" value="16 Emgrand GS" />
-    <string name="16款帝豪GL" value="16 Emgrand GL" />    
-    <string name="18款博越" value="18 Boyue" />
-    <string name="14款帝豪" value="14 Dihao" />
-    <string name="15款远景" value="15 visions" />
-    <string name="16款远景SUV" value="16 Vision SUVs" />
-    <string name="18款远景" value="18 visions" />
-    <string name="18款帝豪GS" value="18 Dihao GS" />
-    <string name="18款帝豪GL" value="18 Dihao GL" />
-    <string name="19款帝豪" value="19 Dihao" />
-    <string name="19款帝豪GL混动" value="19 Dihao GL Hybrid" />
-    <string name="18款帝豪" value="18 Dihao" />
-    <string name="19款帝豪纯电动" value="19 Dihao pure electric" />
-    <string name="18款远景S1" value="18 Vision S1" />
-    <string name="19款吉利GS" value="19 Geely GS" />
-    <string name="19-20款远景X3" value="19-20 Vision X3" />
-    <string name="15款宝腾PERSONA" value="15 Proton PERSONA" />
-    <string name="19款吉利GL" value="19 Geely GL" />
-    <string name="20款远景X6" value="20 Vision X6" />
-    <string name="19-20款缤越" value="19-20 Binyue" />
-    <string name="20款吉利GL" value="20 Geely GL" />
-    <string name="20款博越Pro" value="20 Boyue Pro" />
-    <string name="20款远景" value="20 visions" />
-    <string name="15款宝腾" value="15 Proton" />
-    <string name="20款博越" value="20 Boyue" />
-    <string name="17款远景" value="17 visions" />
-    <string name="20款GS" value="20 GS" />
-    <string name="19-21款帝豪" value="19-21 Dihao" />
-    <string name="20款吉利Gse" value="20 Geely Gse" />
-    <string name="18款V6 自动豪华版" value="18 V6 Automatic Deluxe Edition" />
-    <string name="18款V6 自动尊贵版" value="18 V6 automatic premium version" />
-    <string name="18款V6 手动都市版" value="18 V6 Manual City Edition" />
-    <string name="18款V6 自动旗舰版" value="18 V6 automatic flagship version" />
-    <string name="18款CS75" value="18 CS75" />
-    <string name="18款X70A" value="18 X70A" />
-    <string name="18款长安欧尚科赛" value="18 Changan Ouchan Corsai" />
-    <string name="20款欧尚X7" value="20 Auchan X7" />
-    <string name="19款悦翔" value="19 Yuexiang" />
-    <string name="19款CS15" value="19 CS15" />
-    <string name="20款CS75" value="20 CS75" />
-    <string name="19款CS35 PLUS" value="19 CS35 PLUS" />
-    <string name="19款长安欧尚科尚" value="19Changan Ouchan Koshan" />
-    <string name="19款长安悦翔低配" value="19 Changan Yuexiang low profile" />
-    <string name="新途锐" value="New Touareg" />
-    <string name="14代皇冠" value="14th generation crown" />
-    <string name="10-16款锐志" value="10-16 Reiz" />
-    <string name="09-13款经典凯美瑞" value="09-13 classic Camry" />
-    <string name="12款陆巡" value="12 land cruisers" />
-    <string name="15款汉兰达" value="15 highlanders" />
-    <string name="07-13款卡罗拉" value="07-13 Corolla" />
-    <string name="14-17款卡罗拉" value="14-17 Corolla" />
-    <string name="02-09款霸道" value="02-09 overbearing" />
-    <string name="09-12款RAV4" value="09-12 RAV4" />
-    <string name="15款埃尔法" value="15 Elfa" />
-    <string name="20款奔跑者" value="20 runners" />
-    <string name="奔跑者" value="runners" />
-    <string name="22款陆放" value="22 LuFang" />
-    <string name="09款汉兰达手动空调" value="09 Highlander Manual Air Conditioner" />
-    <string name="13款凯美瑞" value="13 Camry" />
-    <string name="15款锐志" value="15 Reiz" />
-    <string name="16款陆巡自动空调" value="16 automatic air conditioners for land patrol" />
-    <string name="16款陆巡手动空调" value="16 types of manual air conditioners for land cruisers" />
-    <string name="12款锐志自动空调" value="12 Reiz automatic air conditioners" />
-    <string name="12款锐志手动空调" value="12 Reiz manual air conditioners" />
-    <string name="15款索兰托" value="15 Sorento" />
-    <string name="19款胜达" value="19 Shengda" />
-    <string name="21款英朗" value="21 Hideo" />
-    <string name="2013款蒙迪欧(手动空调)" value="2013 Mondeo (manual air conditioner)" />
-    <string name="2018款翼博(手动空调)" value="2018 Yibo (manual air conditioner)" />
-    <string name="国外2019款自由侠" value="Foreign 2019 Freeman" />
-    <string name="国外2019款菲亚特500L" value="Foreign 2019 Fiat 500L" />
-    <string name="悍马" value="Hummer" />
-    <string name="观致" value="Qoros" />
-    <string name="凯迪拉克" value="Cadillac" />
-    <string name="路虎" value="LandRover" />
-    <string name="宝马120/130/318/320/325/X1" value="BMW 120/130/318/320/325/X1" />
-    <string name="宝马老3系/老5系/老X5" value="BMW Old 3 Series/Old 5 Series/Old X5" />
-    <string name="18款幻速S7" value="18 magic speed S7" />
-    <string name="19款新能源EC5" value="19 new energy EC5" />
-    <string name="18款新能源EU5" value="18 new energy EU5" />
-    <string name="18款绅宝D50" value="18 Saab D50" />
-    <string name="20款哈弗F7" value="20 Haval F7" />
-    <string name="20款哈弗H4" value="20 Haval H4" />
-    <string name="20款哈弗H9" value="20 Haval H9" />
-    <string name="18款哈弗H4" value="18 Haval H4" />
-    <string name="风光S560" value="Fengguang S560" />
-    <string name="18款风神AX7全景" value="18 Fengshen AX7 panorama" />
-    <string name="18款330S" value="18 330S" />
-    <string name="18款580" value="18 580" />
-    <string name="19款易至EV3" value="19 Easy to EV3" />
-    <string name="2019风神AX3" value="2019 Fengshen AX3" />
-    <string name="18款江铃E400" value="18 Jiangling E400" />
-    <string name="18款S560" value="18 S560" />
-    <string name="19款AX7" value="19 AX7" />
-    <string name="20款580" value="20 580" />
-    <string name="20款风神奕炫" value="20 Fengshen Yixuan" />
-    <string name="17款风神MX5" value="17 Fengshen MX5" />
-    <string name="19款SX6" value="19 SX6" />
-    <string name="20-21款S560" value="20-21 S560" />
-    <string name="21款580" value="21 580" />
-    <string name="21款500" value="21 500" />
-    <string name="19款风光E3" value="19 Fengguang E3" />
-    <string name="21款景逸S50" value="21 Jingyi S50" />
-    <string name="21款景逸S50EV" value="21 Jingyi S50EV" />
-    <string name="21款景逸SX6" value="21 Jingyi SX6" />
-    <string name="2019款野马博骏" value="2019 Mustang Bojun" />
-    <string name="12款路虎极光" value="12 Land Rover Aurora" />
-    <string name="20款潍柴U70V" value="20 Weichai U70V" />
-    <string name="2015款名爵锐腾" value="2015 MG Rui Teng" />
-    <string name="18-19款大通G10" value="18-19 Chase G10" />
-    <string name="2017款锐腾" value="2017 Ruiteng" />
-    <string name="2018款荣威RX3" value="2018 Roewe RX3" />
-    <string name="2019款大通EV30" value="2019 Chase EV30" />
-    <string name="2019款大通G50" value="2019 Chase G50" />
-    <string name="2018款大通V80" value="2018 Chase V80" />
-    <string name="2016款T60" value="2016 T60" />
-    <string name="16款名爵锐腾" value="16 MG Rui Teng" />
-    <string name="2015款名爵锐腾" value="2015 MG Rui Teng" />
-    <string name="19款名爵HS" value="19 MG HS" />
-    <string name="19款EZS" value="19 EZS" />
-    <string name="19款荣威EI5" value="19 Roewe EI5" />
-    <string name="19款荣威i5" value="19 Roewe i5" />
-    <string name="19款荣威i6" value="19 Roewe i6" />
-    <string name="16-18款荣威RX5" value="16-18 Roewe RX5" />
-    <string name="19款荣威RX8" value="19 Roewe RX8" />
-    <string name="19款大通T70" value="19 Chase T70" />
-    <string name="19款大通V90" value="19 Chase V90" />
-    <string name="2018款宝骏510" value="2018 Baojun 510" />
-    <string name="2019款宝骏51" value="2019 Baojun 51" />
-    <string name="2019款宝骏530" value="2019 Baojun 530" />
-    <string name="2015款宝骏730" value="2015 Baojun 730" />
-    <string name="2016款宝骏560" value="2016 Baojun 560" />
-    <string name="2017款宝骏560" value="2017 Baojun 560" />
-    <string name="2018款宝骏360" value="2018 Baojun 360" />
-    <string name="2019款宝骏730" value="2019 Baojun 730" />
-    <string name="2017款荣威Ei6混动" value="2017 Roewe Ei6 Hybrid" />
-    <string name="2018款荣威RX8" value="2018 Roewe RX8" />
-    <string name="2019款荣威950" value="2019 Roewe 950" />
-    <string name="2014款S3" value="2014 S3" />
-    <string name="2015款S2" value="2015 S2" />
-    <string name="18款R3" value="18 R3" />
-    <string name="18款带小屏 IEV6E" value="18 With small screen IEV6E" />
-    <string name="19款带小屏 IEV6E" value="19 With small screen IEV6E" />
-    <string name="2020款T60" value="2020 T60" />
-    <string name="2020款T70" value="2020 T70" />
-    <string name="2020款自由侠" value="2020 Freeman" />
-    <string name="19款DX5" value="19 DX5" />
-    <string name="10-13款XC60全系" value="10-13 XC60 series" />
-    <string name="速锐" value="Su Rui" />
-    <string name="农用机" value="Agricultural machinery" />
-    <string name="16款BJ20" value="16 BJ20" />
-    <string name="16款幻速S3L" value="16 magic speed S3L" />
-    <string name="16款BJ20" value="16 BJ20" />
-    <string name="16款BJ40" value="16 BJ40" />
-    <string name="2019款哈弗H6黑标" value="2019 Haval H6 Black Label" />
-    <string name="金杯观境" value="Golden Cup View" />
-    <string name="2019景逸X5" value="2019 Jingyi X5" />
-    <string name="2017景逸X5" value="2017 Jingyi X5" />
-    <string name="东风风度MX6" value="Dongfeng demeanor MX6" />
-    <string name="2018款哈弗H6运动版" value="2018 Haval H6 Sports Edition" />
-    <string name="2019款哈弗H6Coupe" value="2019 Haval H6Coupe" />
-    <string name="09-15款X1" value="09-15 X1" />
-    <string name="07-12款X3" value="07-12 X3" />
-    <string name="04-11款320" value="04-12 320" />
-    <string name="名爵ZS" value="MG ZS" />
-    <string name="17-18款荣威i6" value="17-18 Roewe i6" />
-    <string name="16悦翔V7" value="16Yuexiang V7" />
-    <string name="CX70手动空调" value="CX70 manual air conditioner" />
-    <string name="16款威霆METRIS" value="16 Vito METRIS" />
-    <string name="2020款欧蓝德" value="2020 Outlander" />
-    <string name="10款G37" value="10 G37" />
-    <string name="17款日产途乐" value="17 Nissan Patrol" />
-    <string name="2012款领雅" value="2012 Lingya" />
-    <string name="2009款菲奥里诺" value="2009 Fiorino" />
-    <string name="14款思域/15款CRV2.4" value="14 Civic/15 CRV2.4" />
-    <string name="华泰" value="Huatai" />
-    <string name="观致" value="Qoros" />
-    <string name="07-12款X3" value="07-12 X3" />
-    <string name="雅阁9(13-15款2.0)" value="Accord 9 (13-15 2.0)" />
-    <string name="雅阁9(13-15款2.4)" value="Accord 9 (13-15 2.4)" />
-    <string name="雅阁9(16款2.0)" value="Accord 9 (16 2.0)" />
-    <string name="雅阁9(16款2.4)" value="Accord 9 (16 2.4)" />
-    <string name="雅阁9(16款混动2.0)" value="Accord 9 (16 Hybrid 2.0)" />
-    <string name="12款思域" value="12 Civics" />
-    <string name="14款思域/15款CRV2.4" value="14 Civic/15 CRV2.4s" />
-    <string name="17款思域" value="17 Civics" />
-    <string name="14款霸道" value="14 Prado" />
-    <string name="10款霸道" value="10 Prado" />
-    <string name="12款汉兰达" value="12 highlanders" />
-    <string name="16款汉兰达" value="16 highlander" />
-    <string name="12款锐志" value="12 Reiz" />
-    <string name="10款霸道手动空调" value="10 Prado manual air conditioner" />
-    <string name="09款凯美瑞" value="09 Camry" />
-    <string name="15款汉兰达手动空调" value="15 highlander manual air conditioners" />
-    <string name="07款卡罗拉" value="07 Corolla" />
-    <string name="14款卡罗拉" value="14 Corolla" />
-    <string name="05-09款锐志" value="05-09 Reiz" />
-    <string name="14款坦途手动空调" value="14 Smooth manual air conditioner" />
-    <string name="18款霸道手动空调" value="18 Prado manual air conditioners" />
-    <string name="埃尔法" value="Elfa" />
-    <string name="圣达菲" value="Santa Fe" />
-    <string name="观致5" value="Qoros 5" />
-    <string name="林荫大道" value="Buick Electra" />
-    <string name="比亚迪E5" value="BYD E5" />
-    <string name="御轩" value="Yumsun" />
-    <string name="探路者" value="Pathfinder" />
-    <string name="18北京X5" value="18 Beijing X5" />
-    <string name="18北京X3" value="18 Beijing X3" />
-    <string name="18-19款哈佛H4" value="18-19 Harvard H4" />
-    <string name="2019款哈弗H6-换代" value="2019 Haval H6-replacement" />
-    <string name="凯雷德" value="Kered" />
-    <string name="赛威" value="Saiwei" />
-    <string name="宋元新能源" value="Songyuan New Energy" />
-    <string name="宋元燃油" value="Song Yuan Fuel" />
-    <string name="唐/s7新能源" value="Tang/s7 New Energy" />
-    <string name="唐/s7燃油" value="Tang/s7 fuel" />
-    <string name="比亚迪秦" value="BYD Qin" />
-    <string name="比亚迪E1/E2" value="BYD E1/E2" />
-    <string name="比亚迪G5" value="BYD G5" />
-    <string name="2005大捷龙" value="2005 Grand Victory" />
-    <string name="2004大切诺基" value="2004 Grand Cherokee" />
-    <string name="天籁公爵" value="Duke of Tian Lai" />
-    <string name="05-07风雅" value="05-07 Fengya" />
-    <string name="11-15款贵士" value="11-15 VIP" />
-    <string name="13款索兰托" value="13 Sorento" />
-    <string name="宋Max" value="Song Max" />
-    <string name="宋" value="Song" />
-    <string name="19款红旗H5" value="19 RedFlag H5" />
-    <string name="21款塞纳" value="21 Senna" />
-    <string name="神行者2" value="Freelander" />
-    <string name="菲跃" value="Freemont" />
-    <string name="其他兼容车型" value="Other models" />
-    <string name="其他带空调控制兼容车型" value="Other models(Witch AC)" />
-    <string name="10款劳恩斯" value="10 Genesis" />
-    <string name="15奥德赛高配(原车360)" value="15 Odyssey high configuration (original car 360)" />
-    <string name="15奥德赛高配(原车360吸顶屏)" value="15 Odyssey high configuration (original car 360 ceiling screen)" />
-    <string name="12思域CRV-14思域低配-15CRV低配(全兼容)" value="12 Civic CRV-14 Civic low-profile-15CRV low-profile (full compatibility)" />
-    <string name="19款艾力绅(原车360)" value="19 Allison (original car 360)" />
-    <string name="20款理念VE1" value="20 Ideas VE1" />
-    <string name="21款皓影" value="21 Haoying" />
-    <string name="22款思域" value="22 Civics" />
-    <string name="22款雅阁" value="22 Accord" />
-    <string name="22款凌派" value="22 Lingpai" />
-    <string name="新君威" value="New Regal" />
-    <string name="14款霸道手动空调" value="14 Prado Manual Air Conditioners" />
-    <string name="12-16款凯美瑞" value="12-16 Camry" />
-    <string name="10-17款霸道" value="10-17 Prado" />
-    <string name="格瑞斯" value="Grace" />
-    <string name="19款绅宝D50" value="19 Senova D50" />
-    <string name="18-21款绅宝X55" value="18-21 Senova X55" />
-    <string name="19-21款绅宝X35" value="19-21 Senova X35" />
-    <string name="2019款哈弗H6-换代" value="2019 Haval H6-Regeneration" />
-    <string name="2019款哈弗F7" value="2019 Haval F7" />
-    <string name="安德拉2006-2012(保留原车主机)" value="Andra 2006-2012(retain the original car host)" />
-    <string name="C200(保留原车主机)" value="C200(retain the original car host)" />
-    <string name="2020款法拉利" value="2020 Ferrari" />
-    <string name="2016款M" value="2016 M" />
-    <string name="20款A5翼舞" value="20 A5 Wing Dance" />
-    <string name="05-09丰田锐志" value="05-09 Toyota Reiz" />
-    <string name="10-17款霸道" value="10-17 Prado" />
-    <string name="发现4" value="Discovery 4" />
-    <string name="12款极光" value="Evoque" />
-    <string name="潍柴" value="Weichai" />
-    <string name="塔塔" value="Tata" />
-    <string name="阿尔法罗密欧" value="Alfa Romeo" />
-    <string name="马恒达" value="Mahindra" />  
-    <string name="森林人" value="Forester" /> 
-    <string name="雅阁7(9600)" value="Accord 7(9600)" /> 
-    <string name="知豆" value="Zhidou" />  
-    <string name="合众" value="HoZon" />  
-    <string name="哪吒" value="Naxie" /> 
-    <string name="霍顿" value="Holden" /> 
-    <string name="准将VF(双驱空调)" value="Commodore VF(Double AC)" />
-    <string name="准将VF(单驱空调)" value="Commodore VF(Single AC)" /> 
-    <string name="创维" value="Skyworth" /> 
-    <string name="丽驰" value="LiChi" /> 
-    <string name="其它" value="Other" />
-    <string name="QQ冰淇淋" value="QQ ice cream" /> 
-    <string name="21款小蚂蚁EQ1" value="21 ant EQ1" /> 
-    <string name="19款捷途 X90" value="19 JETTO X90" /> 
-    <string name="22款金刚炮" value="22 King Kong Cannons" />
-    <string name="18-21款凯美瑞" value="18-21 Camry" />
-    <string name="21款亚洲狮" value="21 Asian lion" />
-    <string name="22款汉兰达" value="22 highlander" />
-    <string name="22款塞纳" value="22 Senna" />  
-    <string name="22款凌放" value="22 LingFang" />  
-    <string name="22款锐放" value="22 YueFang" />  
-    <string name="22款锋兰达" value="22 FengLanDa" />  
-    <string name="22款威飒" value="22 WeiSa" />  
-    <string name="2015款名爵锐腾(SAF1)" value="2015 MG Rui Teng(SAF1)" />
-    <string name="2017款名爵锐腾(SAF1)" value="2017 MG Rui Teng(SAF1)" />
+    <string
+        name="通用机"
+        value="Universal" />
+    <string
+        name="欣朴"
+        value="Simple" />
+    <string
+        name="威驰"
+        value="HIWORLD" />
+    <string
+        name="睿志诚"
+        value="Raise" />
+    <string
+        name="鑫巴斯"
+        value="Xinbas" />
+    <string
+        name="迪恩杰"
+        value="DigiEngine" />
+    <string
+        name="思博"
+        value="SiBo" />
+    <string
+        name="金鹰"
+        value="JinYing" />
+    <string
+        name="比纳瑞"
+        value="BINARY" />
+    <string
+        name="道骏"
+        value="DaoJun" />
+    <string
+        name="长远通睿晟威"
+        value="CYT" />
+    <string
+        name="欧迪"
+        value="Odie" />
+    <string
+        name="华臣宇"
+        value="HuaChenYu" />
+    <string
+        name="路征豪正"
+        value="LuZheng" />
+    <string
+        name="和驰"
+        value="HeChi" />
+    <string
+        name="馨飞扬"
+        value="XinFeiYang" />
+    <string
+        name="保仕杰"
+        value="BaoShiJie" />
+    <string
+        name="和驰"
+        value="Union" />
+    <string
+        name="宝谷"
+        value="BaoGu" />
+    <string
+        name="巴谷"
+        value="BaGu" />
+    <string
+        name="唐度"
+        value="TD" />
+    <string
+        name="昕驰保仕杰"
+        value="XinChiBaoshijie" />
+    <string
+        name="大众"
+        value="Volkswagen" />
+    <string
+        name="丰田"
+        value="Toyota" />
+    <string
+        name="现代-起亚"
+        value="Hyundai-Kia" />
+    <string
+        name="本田"
+        value="Honda" />
+    <string
+        name="日产"
+        value="Nissan" />
+    <string
+        name="奔腾"
+        value="Besturn" />
+    <string
+        name="传祺"
+        value="Trumpche" />
+    <string
+        name="海马"
+        value="HaiMa" />
+    <string
+        name="中华"
+        value="Brilliance Auto" />
+    <string
+        name="长安"
+        value="Changan" />
+    <string
+        name="长城"
+        value="Great Wall" />
+    <string
+        name="众泰"
+        value="Zotye" />
+    <string
+        name="上汽"
+        value="SAIC" />
+    <string
+        name="江淮"
+        value="Jac" />
+    <string
+        name="吉普"
+        value="Jeep" />
+    <string
+        name="马自达"
+        value="Mazda" />
+    <string
+        name="保时捷"
+        value="Porsche" />
+    <string
+        name="吉利"
+        value="Geely" />
+    <string
+        name="奇瑞"
+        value="Chery" />
+    <string
+        name="北汽"
+        value="Baic" />
+    <string
+        name="通用"
+        value="GM" />
+    <string
+        name="福特"
+        value="Ford" />
+    <string
+        name="标致雪铁龙"
+        value="Peugeot/Citroen" />
+    <string
+        name="菲亚特"
+        value="Fiat" />
+    <string
+        name="广汽菲克"
+        value="GacFiat" />
+    <string
+        name="东风"
+        value="DFM" />
+    <string
+        name="力帆"
+        value="Lifan" />
+    <string
+        name="奔驰"
+        value="Benz" />
+    <string
+        name="东南"
+        value="Soueast" />
+    <string
+        name="雷诺"
+        value="Renault" />
+    <string
+        name="UAZ"
+        value="UAZ" />
+    <string
+        name="比速"
+        value="BiSu" />
+    <string
+        name="江西五十铃"
+        value="ISUZU" />
+    <string
+        name="博融"
+        value="BoRong" />
+    <string
+        name="宝马"
+        value="Bmw" />
+    <string
+        name="奥迪"
+        value="Audi" />
+    <string
+        name="汉腾"
+        value="HanTeng" />
+    <string
+        name="比亚迪"
+        value="BYD" />
+    <string
+        name="雷克萨斯"
+        value="Lexus" />
+    <string
+        name="金杯"
+        value="GoldCup" />
+    <string
+        name="三菱"
+        value="Mitsubishi" />
+    <string
+        name="观致"
+        value="Qoros" />
+    <string
+        name="野马"
+        value="Mustang" />
+    <string
+        name="大运"
+        value="DaYun" />
+    <string
+        name="启辰"
+        value="Venucia" />
+    <string
+        name="英菲尼迪"
+        value="Infiniti" />
+    <string
+        name="陆风"
+        value="LandWind" />
+    <string
+        name="欧宝"
+        value="OPEL" />
+    <string
+        name="大乘"
+        value="DORCEN" />
+    <string
+        name="铃木"
+        value="SUZUKI" />
+    <string
+        name="斯巴鲁"
+        value="SUBARU" />
+    <string
+        name="福田"
+        value="FuTian" />
+    <string
+        name="卡威"
+        value="KaWei" />
+    <string
+        name="斯威"
+        value="SWM" />
+    <string
+        name="乔治巴顿"
+        value="GPATTON" />
+    <string
+        name="沃尔沃"
+        value="Volvo" />
+    <string
+        name="江铃"
+        value="JMC" />
+    <string
+        name="双龙"
+        value="SSANG YONG" />
+    <string
+        name="道奇"
+        value="Dodge" />
+    <string
+        name="新特"
+        value="New specia" />
+    <string
+        name="林肯"
+        value="LINCOLN" />
+    <string
+        name="大众通用"
+        value="VW universal" />
+    <string
+        name="高尔夫7"
+        value="Golf 7" />
+    <string
+        name="明锐"
+        value="Octavia" />
+    <string
+        name="16款明锐(罗马尼亚)"
+        value="16 Octavia(Romania)" />
+    <string
+        name="斯柯达速派"
+        value="Skoda Superb" />
+    <string
+        name="凌渡"
+        value="Lamando" />
+    <string
+        name="17款迈腾"
+        value="Magotan 2017" />
+    <string
+        name="19款迈腾"
+        value="Magotan 2019" />
+    <string
+        name="IEV6E"
+        value="IEV6E" />
+    <string
+        name="17款嘉旅"
+        value="Sportsvan 2017" />
+    <string
+        name="17款途观L"
+        value="TIGUAN L 2017" />
+    <string
+        name="17款途昂"
+        value="TERAMONT 2017" />
+    <string
+        name="17款斯柯达柯迪亚克"
+        value="Skoda Kodiaq 2017" />
+    <string
+        name="18款迈腾"
+        value="Magotan 2018" />
+    <string
+        name="途锐"
+        value="Toureg" />
+    <string
+        name="13款途锐"
+        value="Toureg 2013" />
+    <string
+        name="18款速派"
+        value="superb 2018" />
+    <string
+        name="18款途安L"
+        value="Tuan L 2018" />
+    <string
+        name="17款西亚特"
+        value="Ateca 2017" />
+    <string
+        name="2018款探歌"
+        value="T-ROC 2018" />
+    <string
+        name="探岳"
+        value="Tayron" />
+    <string
+        name="18款朗逸"
+        value="Lavida 2018" />
+    <string
+        name="19款帕萨特"
+        value="Passat 2019" />
+    <string
+        name="老款途锐2010年以前"
+        value="OldTouareg" />
+    <string
+        name="辉昂"
+        value="phideon" />
+    <string
+        name="大众迈特威"
+        value="Multivan" />
+    <string
+        name="辉腾"
+        value="Phaeton" />
+    <string
+        name="11-17款途锐"
+        value="Toureg 11-17" />
+    <string
+        name="凯美瑞"
+        value="Camry" />
+    <string
+        name="RAV4"
+        value="RAV4" />
+    <string
+        name="普拉多(霸道)"
+        value="Prado" />
+    <string
+        name="汉兰达"
+        value="Highlander" />
+    <string
+        name="卡罗拉"
+        value="Corolla" />
+    <string
+        name="19款卡罗拉"
+        value="Corolla 2019" />
+    <string
+        name="雷凌"
+        value="Levin" />
+    <string
+        name="锐志"
+        value="Reiz" />
+    <string
+        name="19款S4"
+        value="S4 2019" />
+    <string
+        name="2009款卡宴"
+        value="Cayenne 2009" />
+    <string
+        name="03-10款卡宴"
+        value="Cayenne 03-10" />
+    <string
+        name="16款RAV4"
+        value="RAV4 2016" />
+    <string
+        name="16款普拉多(霸道)"
+        value="Prado 2016" />
+    <string
+        name="18款凯美瑞"
+        value="Camry 2018" />
+    <string
+        name="18款霸道(普拉多)"
+        value="Prado 2018" />
+    <string
+        name="13款皇冠"
+        value="CROWN 2013" />
+    <string
+        name="18款汉兰达"
+        value="Highlander 2018" />
+    <string
+        name="12款皇冠"
+        value="CROWN 2012" />
+    <string
+        name="12款皇冠(竖屏)"
+        value="CROWN 2012 Vertical screen" />
+    <string
+        name="12款兰酷"
+        value="LAND CRUISER 2012" />
+    <string
+        name="16款兰酷"
+        value="LAND CRUISER 2016" />
+    <string
+        name="09款汉兰达"
+        value="Highlander 2009" />
+    <string
+        name="14款坦途"
+        value="Tundra 2014" />
+    <string
+        name="07-15款兰酷"
+        value="LAND CRUISER 2016 07-15" />
+    <string
+        name="海狮"
+        value="HIACE" />
+    <string
+        name="19款RAV4(台湾)"
+        value="RAV4 2019" />
+    <string
+        name="海拉克斯"
+        value="HILUX" />
+    <string
+        name="IX35"
+        value="IX35" />
+    <string
+        name="IX45"
+        value="IX45" />
+    <string
+        name="索纳塔8"
+        value="Sonata 8th" />
+    <string
+        name="索兰托"
+        value="Sorento" />
+    <string
+        name="索纳塔9"
+        value="Sonata 9th" />
+    <string
+        name="16款起亚K5"
+        value="K5 2016" />
+    <string
+        name="16款起亚KX5"
+        value="KX5 2016" />
+    <string
+        name="海外KX5"
+        value="Overseas KX5 " />
+    <string
+        name="16款现代名图"
+        value="Mistra 2016" />
+    <string
+        name="16款现代领动"
+        value="Elantra 2016" />
+    <string
+        name="16款起亚K3"
+        value="K3 2016" />
+    <string
+        name="新途胜"
+        value="Tucson" />
+    <string
+        name="18款索纳塔9"
+        value="Sonata 9th 2018" />
+    <string
+        name="17款起亚KX7"
+        value="KX7 2017" />
+    <string
+        name="18款起亚智跑"
+        value="Sportage 2018" />
+    <string
+        name="18款现代昂希诺"
+        value="Encino 2018" />
+    <string
+        name="15款现代IX45"
+        value="IX45 2018" />
+    <string
+        name="17款索纳塔9"
+        value="Sonata 9th 2017" />
+    <string
+        name="17款起亚K4/凯绅"
+        value="KX4 2016" />
+    <string
+        name="20款现代昂希诺"
+        value="Encino 2020" />
+    <string
+        name="21款现代伊兰特"
+        value="Elantra 2021" />
+    <string
+        name="12款CRV"
+        value="CRV 2012" />
+    <string
+        name="15款CRV"
+        value="CRV 2015" />
+    <string
+        name="雅阁9(2.0)"
+        value="Accord9 2.0" />
+    <string
+        name="亚洲龙"
+        value="Asian Dragon" />
+    <string
+        name="17款X40"
+        value="17X40" />
+    <string
+        name="09款B50"
+        value="2009 B50" />
+    <string
+        name="13款B50"
+        value="B50 2013" />
+    <string
+        name="凌派"
+        value="Crider" />
+    <string
+        name="杰德"
+        value="Jade" />
+    <string
+        name="歌诗图"
+        value="Crosstour" />
+    <string
+        name="缤智"
+        value="Vezel" />
+    <string
+        name="奥德赛"
+        value="Odyssey" />
+    <string
+        name="15款奥德赛"
+        value="Odyssey 2015" />
+    <string
+        name="04-08款奥德赛"
+        value=" Odyssey 2004-2008 " />
+    <string
+        name="09-14款奥德赛"
+        value=" Odyssey 2009-2014 " />
+    <string
+        name="飞度"
+        value="Fit" />
+    <string
+        name="15款锋范"
+        value="City 2015" />
+    <string
+        name="16款凌派"
+        value="Crider 2016" />
+    <string
+        name="16款思域"
+        value="Civic 2016" />
+    <string
+        name="思域"
+        value="Civic" />
+    <string
+        name="XRV"
+        value="XRV" />
+    <string
+        name="哥瑞"
+        value="Greiz" />
+    <string
+        name="16款CRV"
+        value="CRV 2016" />
+    <string
+        name="雅阁7"
+        value="Accord 7" />
+    <string
+        name="雅阁7(双驱空调)"
+        value="Accord 7(Double AC)" />
+    <string
+        name="雅阁7(单驱空调)"
+        value="Accord 7(Single AC)" />
+    <string
+        name="17款竟瑞"
+        value="Gienia 2017" />
+    <string
+        name="雅阁9(2.4)"
+        value="Accord9 2.4" />
+    <string
+        name="冠道"
+        value="Avancier" />
+    <string
+        name="17款CRV"
+        value="CRV 2017" />
+    <string
+        name="12-15款艾力绅"
+        value="Alice 2012-2015" />
+    <string
+        name="18款雅阁10"
+        value="Accord 10 2018" />
+    <string
+        name="18款奥德赛"
+        value="Odyssey 2018" />
+    <string
+        name="雅阁8"
+        value="Accord8" />
+    <string
+        name="19款凌派"
+        value="Crider 2019" />
+    <string
+        name="15款思铂睿"
+        value="Spirior 2015" />
+    <string
+        name="19款英斯派"
+        value="Inspire 2019" />
+    <string
+        name="本田12思域"
+        value="Civic 2012" />
+    <string
+        name="本田14思域"
+        value="Civic 2014" />
+    <string
+        name="2019款XRV"
+        value="CRV 2019" />
+    <string
+        name="讴歌"
+        value="Acura" />
+    <string
+        name="04-16款思域"
+        value="civic 04-16" />
+    <string
+        name="12款思铂睿"
+        value="Spirior 2012" />
+    <string
+        name="19款艾力绅"
+        value="Alice 2019" />
+    <string
+        name="22 艾力绅"
+        value="Alice 2022" />
+    <string
+        name="19款享域"
+        value="Envix 2019" />
+    <string
+        name="天籁"
+        value="Teana" />
+    <string
+        name="20款纳瓦拉"
+        value="Navarra 2020" />
+    <string
+        name="奇骏"
+        value="X-trail" />
+    <string
+        name="楼兰"
+        value="Murano" />
+    <string
+        name="蓝鸟"
+        value="Bluebird" />
+    <string
+        name="逍客"
+        value="Qashqai" />
+    <string
+        name="16款西玛"
+        value="Maxima 2016" />
+    <string
+        name="2008款天籁"
+        value="Teana 2008" />
+    <string
+        name="2008款天籁(右舵)"
+        value="Teana 2008(Right rudder)" />
+    <string
+        name="2017款奇骏"
+        value="X-trail 2017" />
+    <string
+        name="2017款逍客"
+        value="Qashqai 2017" />
+    <string
+        name="2018款途达"
+        value="TERRA 2018" />
+    <string
+        name="2014款新奇骏"
+        value="X-trail 2014" />
+    <string
+        name="2017款奇峻"
+        value="X-trail 2017" />
+    <string
+        name="2019款奇峻"
+        value="X-trail 2019" />
+    <string
+        name="2021款奇骏"
+        value="X-trail 2021" />
+    <string
+        name="2019款奇骏(台湾)"
+        value="X-trail(TaiWan) 2019" />
+    <string
+        name="2019款奇骏(海外)"
+        value="X-trail(Overseas) 2019" />
+    <string
+        name="2019款奇峻(手动空调)"
+        value="X-trail 2019(Manual AC)" />
+    <string
+        name="2017款奇峻(手动空调)"
+        value="X-trail 2017(Manual AC)" />
+    <string
+        name="2014款新奇骏(手动空调)"
+        value="X-trail 2014(Manual AC)" />
+    <string
+        name="2016款新逍客"
+        value="Qashqai 2016" />
+    <string
+        name="2013款新天籁"
+        value="Teana 2013" />
+    <string
+        name="途乐SE/LE"
+        value="Tu Le SE/LE" />
+    <string
+        name="16款途乐"
+        value="Tu Le 2016" />
+    <string
+        name="17款途乐"
+        value="Tu Le 2017" />
+    <string
+        name="08-12款天籁"
+        value="Teana 08-12" />
+    <string
+        name="11-16款新骐达"
+        value="Tiida 2011-2016" />
+    <string
+        name="16款天籁"
+        value="Teana 2016" />
+    <string
+        name="20款天籁"
+        value="Teana 2020" />
+    <string
+        name="22款天籁"
+        value="Teana 2022" />
+    <string
+        name="11款天籁公爵"
+        value="TeanaDuke 11" />
+    <string
+        name="QX50"
+        value="QX50" />
+    <string
+        name="15款Q70"
+        value="Q70 2015" />
+    <string
+        name="14款QX60"
+        value="QX60 2014" />
+    <string
+        name="15款G37"
+        value="G37 2015" />
+    <string
+        name="16款Q50L"
+        value="Q50L 2016" />
+    <string
+        name="2015款T70"
+        value="T70 2015" />
+    <string
+        name="2016款T70"
+        value="T70 2016" />
+    <string
+        name="2017款T90"
+        value="T90 2017" />
+    <string
+        name="2018款D60"
+        value="D60 2018" />
+    <string
+        name="2018款T70"
+        value="T70 2018" />
+    <string
+        name="2017款D60"
+        value="D60 2017" />
+    <string
+        name="2017款M50V"
+        value="M50V 2017" />
+    <string
+        name="T60"
+        value="T60" />
+    <string
+        name="B50"
+        value="B50" />
+    <string
+        name="B70"
+        value="B70" />
+    <string
+        name="14款B70"
+        value="2014 B70" />
+    <string
+        name="12款B90"
+        value="B90 2012" />
+    <string
+        name="X80"
+        value="X80 2013-2016" />
+    <string
+        name="16款B50"
+        value="16B50" />
+    <string
+        name="16款B30"
+        value="16B30" />
+    <string
+        name="17款X80"
+        value="17X80" />
+    <string
+        name="17款X40"
+        value="17X40" />
+    <string
+        name="18款森雅R9"
+        value="18 R9" />
+    <string
+        name="18款CX65"
+        value="18 CX65" />
+    <string
+        name="19款B50"
+        value="19 B50" />
+    <string
+        name="GA3/GA3S"
+        value="GA3/GA3S" />
+    <string
+        name="GS5"
+        value="GS5" />
+    <string
+        name="GS5全景"
+        value="GS5(With panorama)" />
+    <string
+        name="GA6"
+        value="GA6" />
+    <string
+        name="GS4"
+        value="GS4" />
+    <string
+        name="16款GS4"
+        value="GS4 2016" />
+    <string
+        name="20款GS4"
+        value="GS4 2020" />
+    <string
+        name="22款GS4"
+        value="GS4 2022" />
+    <string
+        name="17款GS8"
+        value="GS8 2017" />
+    <string
+        name="17款GS3"
+        value="GS3 2017" />
+    <string
+        name="21款嘉际"
+        value="21 jiaji" />
+    <string
+        name="20款缤瑞"
+        value="20 bingrui" />
+    <string
+        name="20款豪越"
+        value="20 haoyue" />
+    <string
+        name="GA4"
+        value="GA4" />
+    <string
+        name="2017GS7"
+        value="GA4" />
+    <string
+        name="2018GS4"
+        value="GS4 2018" />
+    <string
+        name="2018款GE3"
+        value="GE3 2018" />
+    <string
+        name="2018款GS5"
+        value="GS5 2018" />
+    <string
+        name="2018款GS4混动版"
+        value="GS4Mixing 2018" />
+    <string
+        name="吉奥星朗"
+        value="JiAoXingLang" />
+    <string
+        name="14款海马M5"
+        value="HaiMa M5 2014" />
+    <string
+        name="13-15款海马S7"
+        value="HaiMaS7 2013-1215" />
+    <string
+        name="M8"
+        value="M8" />
+    <string
+        name="14款海马M3"
+        value="HaiMa M3 2014" />
+    <string
+        name="16款海马M3"
+        value="HaiMaM3 2016" />
+    <string
+        name="17款海马V70"
+        value="HaiMaV70 2017" />
+    <string
+        name="福美来3代"
+        value="Family three generation" />
+    <string
+        name="17款福美来"
+        value="Family 2017" />
+    <string
+        name="17款海马S7"
+        value="HaiMaS7 2017" />
+    <string
+        name="17款S5young"
+        value="S5 YOUNG 2017" />
+    <string
+        name="19款海马S5"
+        value="HaiMaS5 2019" />
+    <string
+        name="18款福美来F5"
+        value="Family F5 2018" />
+    <string
+        name="16款海马S7"
+        value="HaiMa S7 2016" />
+    <string
+        name="16款海马M6"
+        value="HaiMa M6 2016" />
+    <string
+        name="17款海马"
+        value="HaiMa 2017" />
+    <string
+        name="18款福美来"
+        value="Family 2018" />
+    <string
+        name="H530"
+        value="H530" />
+    <string
+        name="V5"
+        value="V5" />
+    <string
+        name="16款V3"
+        value="V3 2016" />
+    <string
+        name="17款H3"
+        value="H3 2017" />
+    <string
+        name="悦翔V7"
+        value="Alsvin V7" />
+    <string
+        name="18款悦翔"
+        value="Alsvin 2018" />
+    <string
+        name="CS75"
+        value="CS75" />
+    <string
+        name="奔奔"
+        value="Benni" />
+    <string
+        name="17款CS75"
+        value="CS75 2017" />
+    <string
+        name="17款欧尚"
+        value="Auchan 2017" />
+    <string
+        name="17款CX70"
+        value="CX70 2017" />
+    <string
+        name="17款CS55"
+        value="CS55 2017" />
+    <string
+        name="17款CS15"
+        value="CS15 2017" />
+    <string
+        name="18款逸动DT"
+        value="YAT DT 2018" />
+    <string
+        name="17款A800"
+        value="A800 2017" />
+    <string
+        name="17款X70A"
+        value="X70A 2017" />
+    <string
+        name="18款A600"
+        value="A600 2018" />
+    <string
+        name="18款凌轩"
+        value="LingXuan 2018" />
+    <string
+        name="18款科赛"
+        value="Kordsa 2018" />
+    <string
+        name="19款欧尚A800"
+        value="Auchan 2018" />
+    <string
+        name="18款CS55"
+        value="CS55 2018" />
+    <string
+        name="19款科赛"
+        value="Kordsa 2019" />
+    <string
+        name="CX70自动空调"
+        value="CX70(AutoAir)" />
+    <string
+        name="CX70手动空调"
+        value="CX70(ManualAir)" />
+    <string
+        name="2014款哈弗H2"
+        value="H2 2014" />
+    <string
+        name="风骏6"
+        value="Wingle 6" />
+    <string
+        name="20款风骏7"
+        value="Wingle 7 2020" />
+    <string
+        name="2018款哈弗H2"
+        value="HavalH2 2018" />
+    <string
+        name="2019款哈弗F7"
+        value="HavalF7 2019" />
+    <string
+        name="2019款哈弗F7(不带座椅通风)"
+        value="HavalF7 2019(without seat ventilation)" />
+    <string
+        name="19款哈佛H7"
+        value="HF H7 2019" />
+    <string
+        name="19款H6运动版"
+        value="Haval H6Sport 2019" />
+    <string
+        name="C30"
+        value="C30" />
+    <string
+        name="2016款哈弗H6"
+        value="HavaH6 2016" />
+    <string
+        name="2017款风骏6"
+        value="Wingle6 2017" />
+    <string
+        name="17-18款哈弗H2蓝标"
+        value="HavalH2BlueLable 2017-2018" />
+    <string
+        name="18款H7蓝标"
+        value="H7BlueLable 2018" />
+    <string
+        name="17-18款哈弗H2红标"
+        value="HavalH2RedLable 2017-2018" />
+    <string
+        name="2017款哈弗H2s红标/蓝标"
+        value="HavalH2sRed/BlueLable 2017" />
+    <string
+        name="2018款哈弗H6"
+        value="HavalH6 2018" />
+    <string
+        name="2016款哈弗H6Coupe"
+        value="HF H6 Coupe 2016" />
+    <string
+        name="哈弗H9"
+        value="HF H9" />
+    <string
+        name="哈弗H8"
+        value="HF H8" />
+    <string
+        name="哈弗H7"
+        value="HF H7" />
+    <string
+        name="哈弗H6"
+        value="HF H6" />
+    <string
+        name="15-16款H6Coupe(全兼容)"
+        value="15-16 h6 coupe (full compatibility)" />
+    <string
+        name="17-18H6Coupe(全兼容)"
+        value="17-18 h6 coupe (full compatibility)" />
+    <string
+        name="H2(全兼容)"
+        value="H2 (full compatibility)" />
+    <string
+        name="16-17款H9"
+        value="HF H9 2016-2017" />
+    <string
+        name="2019款长城炮"
+        value="Gwm pao 2019" />
+    <string
+        name="2017款哈弗H6"
+        value="H6 2017" />
+    <string
+        name="2018款哈弗M6"
+        value="M6 2018" />
+    <string
+        name="2017款哈弗H6Coupe红标"
+        value="HF H6RedLable 2017" />
+    <string
+        name="2017款哈弗H6Coupe蓝标"
+        value="HF H6BlueLable 2017" />
+    <string
+        name="2018款哈弗H6-换代"
+        value="HF H6HUAN 2018" />
+    <string
+        name="20款哈佛H6-换代"
+        value="HF H6HUAN 2020" />
+    <string
+        name="20款哈佛H6Coupe"
+        value="HF H6 Coupe 2020" />
+    <string
+        name="2019款哈弗H6-换代"
+        value="HF H6HUAN 2019" />
+    <string
+        name="2017款哈弗H6运动版"
+        value="HF H6Sport 2017" />
+    <string
+        name="2017款哈弗M6/2019款哈弗M6"
+        value="HF M6 2017,2019" />
+    <string
+        name="2016款哈弗H1"
+        value="HF H1 2016" />
+    <string
+        name="2018款哈弗H6Coupe"
+        value="HF H6 Coupe 2018" />
+    <string
+        name="17-20款H4"
+        value="HF H4 2017-2020" />
+    <string
+        name="17款哈弗H7"
+        value="HF H7 2017" />
+    <string
+        name="欧拉"
+        value="ora" />
+    <string
+        name="T600"
+        value="T600" />
+    <string
+        name="大迈X5"
+        value="Zotye X5" />
+    <string
+        name="大迈X7"
+        value="Zotye X7" />
+    <string
+        name="2018款众泰T500"
+        value="T500 Zotye 2018" />
+    <string
+        name="2018款众泰T300"
+        value="T300 Zotye 2018" />
+    <string
+        name="潍柴U60V"
+        value="Weichai U60V" />
+    <string
+        name="黄海N2"
+        value="N2" />
+    <string
+        name="2017款众泰SR9"
+        value="SR9 Zotye 2017" />
+    <string
+        name="2018款君马S70"
+        value="S70 2018" />
+    <string
+        name="2017款众泰SR7"
+        value="SR7 Zotye 2017" />
+    <string
+        name="SR7"
+        value="SR7" />
+    <string
+        name="15款路虎发现"
+        value="discovery Landrover 2015" />
+    <string
+        name="18款众泰E200"
+        value="E200  Zoyte 2018" />
+    <string
+        name="2014款宝骏730"
+        value="BaoJun730 2014" />
+    <string
+        name="2015款宝骏560"
+        value="BaoJun560 2015" />
+    <string
+        name="2012款荣威550"
+        value="Roewe 550 2012" />
+    <string
+        name="2013款荣威550"
+        value="Roewe 550 2013" />
+    <string
+        name="名爵锐腾"
+        value="MGGS" />
+    <string
+        name="名爵6"
+        value="MG6" />
+    <string
+        name="18款名爵6"
+        value="MG6 2018" />
+    <string
+        name="荣威360"
+        value="Roewe 360" />
+    <string
+        name="2016款宝骏730"
+        value="BaoJun730 2016" />
+    <string
+        name="2017款宝骏730"
+        value="BaoJun730 2017" />
+    <string
+        name="2017款名爵ZS"
+        value="MGZS 2017" />
+    <string
+        name="荣威RX5"
+        value="Roewe RX5" />
+    <string
+        name="2017款宝骏510"
+        value="BaoJun510 2017" />
+    <string
+        name="2018款宝骏530"
+        value="BaoJun530 2018" />
+    <string
+        name="2018款五菱宏光S3"
+        value="SGMW S3 2018" />
+    <string
+        name="11-12款荣威550/名爵6"
+        value="Roewe550/MGZS6 2011-2012" />
+    <string
+        name="13-15款荣威550/名爵6"
+        value="Roewe550/MGZS6 2013-2005" />
+    <string
+        name="大通T60/V80"
+        value="MaxUsT60/V80" />
+    <string
+        name="大通T60"
+        value="MaxUsT60" />
+    <string
+        name="大通G10"
+        value="MaxUsG10" />
+    <string
+        name="17款锐腾"
+        value="MGGS 2017" />
+    <string
+        name="荣威RX3"
+        value="Roewe RX3" />
+    <string
+        name="荣威I6"
+        value="Roewe I6" />
+    <string
+        name="2020款宝骏RS-3"
+        value="BaoJunRS-3 2020" />
+    <string
+        name="S3"
+        value="S3" />
+    <string
+        name="S2"
+        value="S2" />
+    <string
+        name="S5"
+        value="S5" />
+    <string
+        name="2017款S3"
+        value="S3 2017" />
+    <string
+        name="2016款M4"
+        value="M4 2016" />
+    <string
+        name="2017S2MINI"
+        value="S2MINI 2017" />
+    <string
+        name="2017S2"
+        value="S2 2017" />
+    <string
+        name="S2_S3_S5全兼容"
+        value="S2_S3_S5" />
+    <string
+        name="S2_MINI"
+        value="S2_MINI" />
+    <string
+        name="江淮T8"
+        value="JAC T8" />
+    <string
+        name="瑞风S7"
+        value="Refine S7" />
+    <string
+        name="17-20款瑞风S7"
+        value="Refine S7 2017-2020" />
+    <string
+        name="Mazda6"
+        value="Mazda6" />
+    <string
+        name="MazdaCX5"
+        value="MazdaCX5" />
+    <string
+        name="Mazda5"
+        value="Mazda5" />
+    <string
+        name="Mazda8"
+        value="Mazda8" />
+    <string
+        name="MazdaCX7"
+        value="MazdaCX7" />
+    <string
+        name="Mazda3"
+        value="Mazda3" />
+    <string
+        name="MazdaCX4"
+        value="MazdaCX4" />
+    <string
+        name="睿翼"
+        value="Mazda M6" />
+    <string
+        name="14Mazda3"
+        value="14Mazda3" />
+    <string
+        name="17款阿特兹"
+        value="17Atenza" />
+    <string
+        name="Mazda7"
+        value="Mazda7" />
+    <string
+        name="昂克塞拉"
+        value="Angkeira" />
+    <string
+        name="20款昂科赛拉"
+        value="Angkeira 2020" />
+    <string
+        name="MazdaCX9"
+        value="MazdaCX9" />
+    <string
+        name="20款马自达3"
+        value="20Mazda3" />
+    <string
+        name="14款MazdaCX7"
+        value="MazdaCX7 2014" />
+    <string
+        name="马自达BT-50"
+        value="BT-50" />
+    <string
+        name="马自达CX-9"
+        value="CX-9" />
+    <string
+        name="马自达19200"
+        value="Mazda 19200" />
+    <string
+        name="20款阿特兹"
+        value="20Atenza" />
+    <string
+        name="GC7"
+        value="GC7" />
+    <string
+        name="14EC7"
+        value="EC7 2014" />
+    <string
+        name="远景"
+        value="Vision" />
+    <string
+        name="12-17科帕奇"
+        value="12-17Cope" />
+    <string
+        name="16款博越"
+        value="Boyue 2016" />
+    <string
+        name="帝豪GS"
+        value="Dihao GS" />
+    <string
+        name="帝豪GL"
+        value="Dihao GL" />
+    <string
+        name="帝豪远景X6"
+        value="DihaoVision X6" />
+    <string
+        name="帝豪远景X1"
+        value="DihaoVision X1" />
+    <string
+        name="博瑞"
+        value="Borui" />
+    <string
+        name="18款远景SUV"
+        value="VisionSUV 2018" />
+    <string
+        name="博越"
+        value="Boyue" />
+    <string
+        name="帝豪远景X3"
+        value="DihaoVision X3" />
+    <string
+        name="19-20款缤越"
+        value="Binyue 2019" />
+    <string
+        name="A3"
+        value="A3" />
+    <string
+        name="08-16款A4L"
+        value="A4L 2008~2016" />
+    <string
+        name="08-18款Q5"
+        value="Q5 2008~2018" />
+    <string
+        name="Q3"
+        value="Q3" />
+    <string
+        name="A3/S3 (2003-2013)"
+        value="A3/S3 (2003-2013)" />
+    <string
+        name="A4/S4(2002-2008)"
+        value="A4/S4(2002-2008)" />
+    <string
+        name="奥迪TT(2006-2012)"
+        value="Audi TT(2006-2012)" />
+    <string
+        name="新3系"
+        value="New 3 Series" />
+    <string
+        name="1系"
+        value="Series 1" />
+    <string
+        name="06-10款宝马老X3"
+        value="old bwm 06~10" />
+    <string
+        name="宝马老3系/老5系/老X5"
+        value="BMW old 3,5,X5 Series" />
+    <string
+        name="宝马E46/E39/E53"
+        value="BMW E46/E39/E53" />
+    <string
+        name="宝马E90-X1"
+        value="BMW E90-X1" />
+    <string
+        name="艾瑞泽5"
+        value="Arrizo 5" />
+    <string
+        name="瑞虎"
+        value="Tiggo" />
+    <string
+        name="18款瑞虎7"
+        value="Tiggo 7 2018" />
+    <string
+        name="18款瑞虎8"
+        value="Tiggo 8 2018" />
+    <string
+        name="瑞虎3X"
+        value="Tiggo 3X" />
+    <string
+        name="瑞虎5"
+        value="Tiggo 5" />
+    <string
+        name="瑞虎7"
+        value="Tiggo 7" />
+    <string
+        name="16款艾瑞泽7"
+        value="Arrizo7 2016" />
+    <string
+        name="18款艾瑞泽GX"
+        value="ArrizoGX 2018" />
+    <string
+        name="艾瑞泽GX/EX"
+        value="ArrizoGX/EX" />
+    <string
+        name="2018款捷途X70"
+        value="Jetour X70 2018" />
+    <string
+        name="凯翼X3"
+        value="Covin X3" />
+    <string
+        name="威旺M20"
+        value="WeiWang M20" />
+    <string
+        name="威旺M30"
+        value="WeiWang M30" />
+    <string
+        name="14款绅宝D60"
+        value="Senova D60 2014" />
+    <string
+        name="M30"
+        value="M30" />
+    <string
+        name="幻速H2"
+        value="HS H2" />
+    <string
+        name="幻速H3"
+        value="HS H3" />
+    <string
+        name="19款北汽智行"
+        value="19 BAIC Zhixing" />
+    <string
+        name="幻速S2"
+        value="HS S2" />
+    <string
+        name="幻速S3"
+        value="HS S3" />
+    <string
+        name="16款绅宝X55"
+        value="Senova X55 2016" />
+    <string
+        name="15-17款绅宝X25"
+        value="Senova X25 2015-2017" />
+    <string
+        name="幻速S6"
+        value="HS S6" />
+    <string
+        name="16款BJ20"
+        value="16 BJ20" />
+    <string
+        name="17款威旺M50F"
+        value="WeiWang M50F 2017" />
+    <string
+        name="EC180"
+        value="EC180" />
+    <string
+        name="16款BJ40"
+        value="16 BJ40" />
+    <string
+        name="16款绅宝X35"
+        value="Senova X35 2016" />
+    <string
+        name="17款昌河Q35"
+        value="ChangHe Q35" />
+    <string
+        name="15款绅宝X35"
+        value="Senova X35 2015" />
+    <string
+        name="17款绅宝X35"
+        value="Senova X35 2017" />
+    <string
+        name="18款绅宝X35"
+        value="Senova X35 2018" />
+    <string
+        name="绅宝X65"
+        value="Senova X65" />
+    <string
+        name="绅宝D70"
+        value="Senova D70" />
+    <string
+        name="幻速S5"
+        value="HS S5" />
+    <string
+        name="07-17款科鲁兹"
+        value="Cruze 2007-2017" />
+    <string
+        name="13款科鲁兹"
+        value="Cruze 2013" />
+    <string
+        name="15款新赛欧"
+        value="Sail 2015" />
+    <string
+        name="赛欧3"
+        value="Sail3" />
+    <string
+        name="爱唯欧"
+        value="Aveo" />
+    <string
+        name="昂科拉"
+        value="Encore" />
+    <string
+        name="英朗"
+        value="Excelle-XT" />
+    <string
+        name="19款英朗"
+        value="Excelle-XT 2019" />
+    <string
+        name="昂科威"
+        value="Envision" />
+    <string
+        name="凯越"
+        value="Excelle" />
+    <string
+        name="君威"
+        value="Regal" />
+    <string
+        name="威朗"
+        value="Verano" />
+    <string
+        name="GL8"
+        value="GL8" />
+    <string
+        name="迈锐宝"
+        value="Malibu" />
+    <string
+        name="2016款迈锐宝XL"
+        value="Malibu XL2016" />
+    <string
+        name="13款昂科雷"
+        value="Enclave 2013" />
+    <string
+        name="乐风RV"
+        value="Lova RV" />
+    <string
+        name="16款科沃兹"
+        value="Cavalier 2016" />
+    <string
+        name="创酷"
+        value="CNankcu" />
+    <string
+        name="19款创界"
+        value=" creation circles 2019" />
+    <string
+        name="19款科鲁泽"
+        value="koluze 2019" />
+    <string
+        name="君越"
+        value="Lacrosse" />
+    <string
+        name="2017款GL8"
+        value="GL8 2017" />
+    <string
+        name="2016ChevroletTahoe"
+        value="ChevroletTahoe 2016" />
+    <string
+        name="2014GMCYukon"
+        value="2014GMCYukon" />
+    <string
+        name="2017款探界者"
+        value="Equinox 2017" />
+    <string
+        name="19款探界者"
+        value="Equinox 2017" />
+    <string
+        name="旧款欧宝"
+        value="old opel" />
+    <string
+        name="2017款GL8(25S)"
+        value="GL8 25S 2017" />
+    <string
+        name="2018款GL6"
+        value="GL6 2018" />
+    <string
+        name="2014款GL8"
+        value="GL8 2014" />
+    <string
+        name="2018款沃兰多"
+        value="Orlando 2018" />
+    <string
+        name="2012款福克斯"
+        value="Focus 2012" />
+    <string
+        name="12-15款福克斯"
+        value="Focus 2012-2015" />
+    <string
+        name="14款新蒙迪欧"
+        value="New Mondeo 2014" />
+    <string
+        name="12-17款翼虎"
+        value="Kuga 2012-2017" />
+    <string
+        name="2013款翼虎"
+        value="Kuga 2013" />
+    <string
+        name="15款翼虎"
+        value="Kuga 2015" />
+    <string
+        name="2013款翼搏"
+        value="Ecosport 2013" />
+    <string
+        name="2013款嘉年华"
+        value="Fiesta 2013" />
+    <string
+        name="09-15款嘉年华"
+        value="Fiesta 2009-2015" />
+    <string
+        name="2015款福克斯"
+        value="Focus 2015" />
+    <string
+        name="2013款锐界"
+        value="Edge 2013" />
+    <string
+        name="2013款猛禽F-150"
+        value="F-150 2013" />
+    <string
+        name="2013款探险者"
+        value="Explorer 2013" />
+    <string
+        name="2013款金牛座"
+        value="Taurus 2013" />
+    <string
+        name="2013款蒙迪欧"
+        value="Mondeo 2013" />
+    <string
+        name="2018款蒙迪欧"
+        value="Mondeo 2018" />
+    <string
+        name="2015款锐界"
+        value="Edge 2015" />
+    <string
+        name="征服者"
+        value="Expedition" />
+    <string
+        name="进口野马"
+        value="Mustang" />
+    <string
+        name="2017款翼虎"
+        value="Kuga 2017" />
+    <string
+        name="2017款翼搏"
+        value="Ecosport 2017" />
+    <string
+        name="07-13款蒙迪欧致胜"
+        value="Mondeo Zhisheng 2007-2013" />
+    <string
+        name="麦柯斯"
+        value="McKees" />
+    <string
+        name="2016款撼路者"
+        value="Pathfinder 2016" />
+    <string
+        name="18款撼路者"
+        value="Pathfinder 2018" />
+    <string
+        name="2018款翼博"
+        value="Ecosport 2018" />
+    <string
+        name="2018款翼虎"
+        value="Kuga 2018" />
+    <string
+        name="2019款福克斯"
+        value="Focus 2019" />
+    <string
+        name="2018款F150"
+        value="F150 2018" />
+    <string
+        name="途睿欧"
+        value="TourneoCustom" />
+    <string
+        name="2017款蒙迪欧"
+        value="Mondeo 2017" />
+    <string
+        name="08-12款嘉年华"
+        value="Fiesta 2008-2012" />
+    <string
+        name="2018款锐界"
+        value="Edge 2018" />
+    <string
+        name="RANGER海外"
+        value="RANGER overseas" />
+    <string
+        name="18款林肯MKC"
+        value="2018 Lincoln MKC" />
+    <string
+        name="19款林肯航海家"
+        value="2019 Lincoln navigators" />
+    <string
+        name="19款林肯MKZ"
+        value="2019 Lincoln MKZ" />
+    <string
+        name="爱丽舍"
+        value="Elysee" />
+    <string
+        name="世嘉"
+        value="C-Quatre" />
+    <string
+        name="DS5LS"
+        value="DS5LS" />
+    <string
+        name="C4L"
+        value="C4L" />
+    <string
+        name="C3XR"
+        value="C3XR" />
+    <string
+        name="2008"
+        value="2008" />
+    <string
+        name="3008"
+        value="3008" />
+    <string
+        name="14款408"
+        value="408 2014" />
+    <string
+        name="301"
+        value="301" />
+    <string
+        name="16款308"
+        value="308 2016" />
+    <string
+        name="17款4008"
+        value="4008 2017" />
+    <string
+        name="DS5"
+        value="DS5" />
+    <string
+        name="DS4"
+        value="DS4" />
+    <string
+        name="508"
+        value="508" />
+    <string
+        name="4008"
+        value="4008" />
+    <string
+        name="保留屏车型"
+        value="RESERVED SCREEN MODEL" />
+    <string
+        name="18款天逸"
+        value="aircross 2018" />
+    <string
+        name="20款天逸C5"
+        value="aircross C5 2020" />
+    <string
+        name="DS6"
+        value="DS6" />
+    <string
+        name="19款海外Rifter"
+        value="Overseas Rifter 2019" />
+    <string
+        name="19款海外301"
+        value="Overseas 301 2019" />
+    <string
+        name="15款508"
+        value="508 2015" />
+    <string
+        name="C4"
+        value="C4" />
+    <string
+        name="C5"
+        value="C5" />
+    <string
+        name="2013款C5"
+        value="C5 2013" />
+    <string
+        name="307"
+        value="307" />
+    <string
+        name="308"
+        value="308" />
+    <string
+        name="408"
+        value="408" />
+    <string
+        name="308S"
+        value="308S" />
+    <string
+        name="巴西C4"
+        value="C4 Brazil" />
+    <string
+        name="10-13款牧马人"
+        value="Rubicon 2010-2013" />
+    <string
+        name="2016款自由光"
+        value="Cherokee 2016" />
+    <string
+        name="2016款自由侠"
+        value="Renegade 2016" />
+    <string
+        name="11-15款指南者"
+        value="Compass 2011-2015" />
+    <string
+        name="2017款指南者"
+        value="Compass 2017" />
+    <string
+        name="自由客"
+        value="Patriot" />
+    <string
+        name="2017款大切诺基"
+        value="Grand Cherokee 2017" />
+    <string
+        name="2018款牧马人"
+        value="Rubicon 2018" />
+    <string
+        name="2018款自由侠"
+        value="Renegade 2018" />
+    <string
+        name="菲亚特Aegea"
+        value="Fiat Aegea" />
+    <string
+        name="2018款指挥官"
+        value="Commander 2018" />
+    <string
+        name="老指南者"
+        value="Compass old" />
+    <string
+        name="19款挑战者"
+        value="Challenger 2019" />
+    <string
+        name="19款自由光"
+        value="Free Light 2019" />
+    <string
+        name="07-10款指南者/牧马人"
+        value="Compass/Rubicon 2007-2010" />
+    <string
+        name="菲翔"
+        value="Viaggio" />
+    <string
+        name="12款菲翔"
+        value="Viaggio 2012" />
+    <string
+        name="Fiorino"
+        value="Fiorino" />
+    <string
+        name="Doblo"
+        value="Doblo" />
+    <string
+        name="13款500L"
+        value="500L 2013" />
+    <string
+        name="19款500L"
+        value="500L 2019" />
+    <string
+        name="18款Aegea"
+        value="Aegea 2018" />
+    <string
+        name="19款Aegea"
+        value="Aegea 2019" />
+    <string
+        name="Egea"
+        value="Egea" />
+    <string
+        name="Ducato"
+        value="Ducato" />
+    <string
+        name="菲亚特博悦"
+        value="Fiat Bravo" />
+    <string
+        name="17款PANDA"
+        value="PANDA 2017" />
+    <string
+        name="2012领雅"
+        value="Linea 2012" />
+    <string
+        name="2009菲奥里诺"
+        value="Fiorino 2009" />
+    <string
+        name="风光360"
+        value="FengGuang360" />
+    <string
+        name="2018风光580"
+        value="FengGuang580 2018" />
+    <string
+        name="风光330S"
+        value="FengGuang330S" />
+    <string
+        name="2015款风神AX7"
+        value="FengShenAX7 2015" />
+    <string
+        name="20款风神AX7"
+        value="FengShenAX7 2020" />
+    <string
+        name="风光580"
+        value="FengGuang580" />
+    <string
+        name="风光500"
+        value="FengGuang500" />
+    <string
+        name="纳智捷"
+        value="LUXGEN" />
+    <string
+        name="EV3"
+        value="EV3" />
+    <string
+        name="景逸X5"
+        value="Joyear X5" />
+    <string
+        name="18款景逸X5"
+        value="Joyear X5 2018" />
+    <string
+        name="20款低配不带悬浮屏风行T5"
+        value="Fashion T5 （Low matching）" />
+    <string
+        name="2019低配不带悬浮屏景逸X5"
+        value="Joyear X5 2019 （Low matching）" />
+    <string
+        name="2016款风神AX5"
+        value="FengShenAX5 2016" />
+    <string
+        name="2016款风神AX7"
+        value="FengShenAX7 2016" />
+    <string
+        name="2016款风度MX5"
+        value="FengDuMX5 2016" />
+    <string
+        name="风光370"
+        value="FengGuang370" />
+    <string
+        name="风光S560"
+        value="FengGuangS560" />
+    <string
+        name="18款S560"
+        value="FengGuangS560 2018" />
+    <string
+        name="2018款锐琪6"
+        value="RuiQi6 2018" />
+    <string
+        name="16-18款风神AX7"
+        value="AX7 2016-2018" />
+    <string
+        name="16-18款风神AX7"
+        value="AX7 2018(Panorama)" />
+    <string
+        name="风神AX全系"
+        value="FengShenAX" />
+    <string
+        name="景逸S50"
+        value="Joyear S50" />
+    <string
+        name="力帆X60"
+        value="Lifan X60" />
+    <string
+        name="力帆X70"
+        value="Lifan X70" />
+    <string
+        name="力帆X720"
+        value="Lifan X720" />
+    <string
+        name="力帆X820"
+        value="Lifan X820" />
+    <string
+        name="13款力帆720"
+        value="Lifan720 2013" />
+    <string
+        name="18款力帆650EV"
+        value="Lifan650EV 2018" />
+    <string
+        name="Smart"
+        value="Smart" />
+    <string
+        name="B200"
+        value="B200" />
+    <string
+        name="威霆"
+        value="Vito" />
+    <string
+        name="19款Sprinter"
+        value="Sprinter 2019" />
+    <string
+        name="GLK300"
+        value="GLK300" />
+    <string
+        name="A180"
+        value="A180" />
+    <string
+        name="A级2004-2012款"
+        value="Class A 2004-2012" />
+    <string
+        name="B级2005-2011款"
+        value="Class B 2005-2011" />
+    <string
+        name="R级2006-2014款"
+        value="Class R 2006-2014" />
+    <string
+        name="ML级2005-2011款"
+        value="Class ML 2005-2011" />
+    <string
+        name="GL级2005-2013款"
+        value="Class GL 2005-2013" />
+    <string
+        name="GL级2003-2013款"
+        value="Class GL 2003-2013" />
+    <string
+        name="威雅诺2010-至今"
+        value="Vijano 2010-present" />
+    <string
+        name="斯宾特"
+        value="Sprinter" />
+    <string
+        name="ML"
+        value="ML" />
+    <string
+        name="R300"
+        value="R300" />
+    <string
+        name="ML320"
+        value="ML320" />
+    <string
+        name="ML350CDI"
+        value="ML350CDI" />
+    <string
+        name="全系列"
+        value="CompleteSeries" />
+    <string
+        name="DX7"
+        value="DX7" />
+    <string
+        name="V5"
+        value="V5" />
+    <string
+        name="V6"
+        value="V6" />
+    <string
+        name="18款DX3"
+        value="DX3 2018" />
+    <string
+        name="2016款科雷嘉"
+        value="Kadjar 2016" />
+    <string
+        name="2015款卡缤"
+        value="Captur 2015" />
+    <string
+        name="新梅甘娜"
+        value="Megane" />
+    <string
+        name="梅甘娜2"
+        value="Megane2" />
+    <string
+        name="梅甘娜3"
+        value="Megane3" />
+    <string
+        name="梅甘娜4"
+        value="Megane4" />
+    <string
+        name="Dester"
+        value="Dester" />
+    <string
+        name="Fluence"
+        value="Fluence" />
+    <string
+        name="2017款科雷傲"
+        value="Koleos 2017" />
+    <string
+        name="16款达斯特"
+        value="Duster 2016" />
+    <string
+        name="2018款科雷傲"
+        value="Koleos 2018" />
+    <string
+        name="2016款科雷傲"
+        value="Koleos 2016" />
+    <string
+        name="2019科雷缤"
+        value="Kelebin 2016" />
+    <string
+        name="09-16款科雷傲"
+        value="Koleos 2009-2016" />
+    <string
+        name="土耳其MEGANE"
+        value="MEGANE" />
+    <string
+        name="纬度"
+        value="Latitude" />
+    <string
+        name="PATRIOT"
+        value="PATRIOT" />
+    <string
+        name="PICKUP"
+        value="PICKUP" />
+    <string
+        name="M3"
+        value="M3" />
+    <string
+        name="T3"
+        value="T3" />
+    <string
+        name="T5"
+        value="T5" />
+    <string
+        name="瑞迈"
+        value="ruimai" />
+    <string
+        name="D-MAX"
+        value="D-MAX" />
+    <string
+        name="E39"
+        value="E39" />
+    <string
+        name="E90"
+        value="E90" />
+    <string
+        name="M40"
+        value="M40" />
+    <string
+        name="A3"
+        value="A3" />
+    <string
+        name="A4"
+        value="A4" />
+    <string
+        name="05-09款A6"
+        value="A6 2005~2009" />
+    <string
+        name="16款x7"
+        value="x7 16" />
+    <string
+        name="18款x5"
+        value="x5 18" />
+    <string
+        name="12-15款比亚迪F3"
+        value="BYD F3 2012-2015" />
+    <string
+        name="比亚迪S6"
+        value="BYD S6" />
+    <string
+        name="16-18款比亚迪元"
+        value="BYD Yuan 2016-2018" />
+    <string
+        name="12-16款速锐"
+        value="Surui 2012-2018" />
+    <string
+        name="比亚迪全兼容"
+        value="BYD All" />
+    <string
+        name="比亚迪全兼容(老协议盒)"
+        value="BYD All(Old)" />
+    <string
+        name="比亚迪S1/S2/E1/E2/E3/秦/唐"
+        value="BYD S1/S2/E1/E2/E3/qin/tang" />
+    <string
+        name="比亚迪G6"
+        value="BYD G6" />
+    <string
+        name="比亚迪M6"
+        value="BYD M6" />
+    <string
+        name="比亚迪F6"
+        value="BYD F6" />
+    <string
+        name="06款雷克萨斯"
+        vaule="lexus 2016" />
+    <string
+        name="X30L"
+        value="X30L" />
+    <string
+        name="18款海狮S"
+        vlaue="HIACE S 2018" />
+    <string
+        name="2014款欧蓝德"
+        value="Outlander 2014" />
+    <string
+        name="2019款欧蓝德"
+        value="Outlander 2019" />
+    <string
+        name="2018款欧蓝德"
+        value="Outlander 2018" />
+    <string
+        name="2018款奕歌"
+        value="Eclipse Cross 2018" />
+    <string
+        name="2018款帕杰罗"
+        value="Pajero 2018" />
+    <string
+        name="帕杰罗"
+        value="Pajero" />
+    <string
+        name="2019款奕歌台湾版"
+        value="Eclipse Cross Taiwan 2019" />
+    <string
+        name="2020款帕杰罗运动版"
+        value="Pajero Sportline 2020" />
+    <string
+        name="2020款帕杰罗劲畅"
+        value="Pajero Sport 2020" />
+    <string
+        name="观致3"
+        value="Qoros3" />
+    <string
+        name="17款野马T80"
+        value="YeMa T80 2017" />
+    <strint
+        name="重卡"
+        value="Heavy truck" />
+    <string
+        name="12款MINI"
+        value="MINI 2012" />
+    <string
+        name="逍遥"
+        value="Carefree" />
+    <string
+        name="K150"
+        value="K150" />
+    <string
+        name="NBT-EVO全系"
+        value="NBT-EVO" />
+    <string
+        name="安德拉2006-2012"
+        value="Antara 2006-2012" />
+    <string
+        name="赛飞利2006-2008"
+        value="Zafira 2006-2008" />
+    <string
+        name="雅特2005-2008"
+        value="Astra 2005-2008" />
+    <string
+        name="19款G70S"
+        value="G70S 2019" />
+    <string
+        name="天语SX4/英格尼斯"
+        value="Tianyu SX4/Ingnes" />
+    <string
+        name="斯巴鲁XV"
+        value="subaru XV" />
+    <string
+        name="斯巴鲁驰鹏"
+        value="Tribeca XV" />
+    <string
+        name="凯迪拉克SRX"
+        value="Cadillac SRX" />
+    <string
+        name="凯迪拉克ATS-L"
+        value="Cadillac ats-l" />
+    <string
+        name="拓陆者"
+        value="TunLand" />
+    <string
+        name="蒙派克"
+        value="Mengpaike" />
+    <string
+        name="19款逸动"
+        value="19 models" />
+    <string
+        name="战车"
+        value="GX" />
+    <string
+        name="V60"
+        value="V60" />
+    <string
+        name="S60"
+        value="S60" />
+    <string
+        name="04-13XC90"
+        value="04-13XC90" />
+    <string
+        name="S40"
+        value="S40" />
+    <string
+        name="X7"
+        value="X7" />
+    <string
+        name="17款瑞迈"
+        value="Ruimai 2017" />
+    <string
+        name="17款D-MAX"
+        value="D-MAX 2017" />
+    <string
+        name="19款瑞迈"
+        value="Ruimai 2019" />
+    <string
+        name="18-20款mu-X牧游侠"
+        value="mu-X 2018~2020" />
+    <string
+        name="达咖"
+        value="Taga" />
+    <string
+        name="蒂维拉"
+        value="TIVOLAN" />
+    <string
+        name="牧游侠"
+        value="mu-X" />
+    <string
+        name="14-17款陆丰X7"
+        value="LandWind X7 2014~2017" />
+    <string
+        name="易至EV3-E300"
+        value="EV3-E300" />
+    <string
+        name="E200N"
+        value="E200N" />
+    <string
+        name="酷威"
+        value="Jcuv" />
+    <string
+        name="酷威(保留原车屏)"
+        value="Jcuv(Keep Screen)" />
+    <string
+        name="驭胜"
+        value="Yusheng" />
+    <string
+        name="新特"
+        value="New specia" />
+    <string
+        name="2019款MG6"
+        value="2019 MG6" />
+    <string
+        name="同欣朴协议"
+        value="Same as Simplesoft' CAN" />
+    <string
+        name="客制化协议"
+        value="Customer customized CAN" />
+    <string
+        name="研发协议"
+        value="Development of CAN" />
+    <string
+        name="客制化协议1"
+        value="Customer customized CAN 1" />
+    <string
+        name="低配"
+        value="Low version" />
+    <string
+        name="中配"
+        value="Middle version" />
+    <string
+        name="高配"
+        value="High version" />
+    <string
+        name="18款斯威G01"
+        value="18 G01" />
+    <string
+        name="19款斯威G01"
+        value="19 G01" />
+    <string
+        name="20款潍柴U70"
+        value="20 U70" />
+    <string
+        name="依维柯"
+        value="Iveco" />
+    <string
+        name="2020款名爵ZS"
+        value="MGZS 2020" />
+    <string
+        name="17领航员"
+        value="17 Navigator" />
+    <string
+        name="17大陆"
+        value="17 Continental" />
+    <string
+        name="途昂X"
+        value="Touron X" />
+    <string
+        name="混动途观L"
+        value="Hybrid Tiguan L" />
+    <string
+        name="20款途观L"
+        value="20 Tiguan" />
+    <string
+        name="巴西捷达"
+        value="17 Navigator" />
+    <string
+        name="土耳其斯柯达SUPERB"
+        value="Brazil Jetta" />
+    <string
+        name="捷达VS7"
+        value="Jetta VS7" />
+    <string
+        name="20款宝来"
+        value="20 Polaris" />
+    <string
+        name="19款辉昂"
+        value="19 models of Huiang" />
+    <string
+        name="21款辉昂"
+        value="21 models of Huiang" />
+    <string
+        name="19款朗逸纯电动"
+        value="20 models of pure electric golf" />
+    <string
+        name="20款宝来纯电"
+        value="20 models of Bora pure electric" />
+    <string
+        name="20款高尔夫纯电"
+        value="20 Golf pure electric" />
+    <string
+        name="20款迈腾"
+        value="20 Magotan" />
+    <string
+        name="19款朗逸纯电动"
+        value="19 models of Lavida pure electric" />
+    <string
+        name="19-20款帕萨特混动"
+        value="19-20 Passat Hybrid" />
+    <string
+        name="20款途观L混动"
+        value="20 Tiguan L Hybrid" />
+    <string
+        name="2013款蒙迪欧(自动空调)"
+        value="2013 Ford Mondeo (automatic air conditioning)" />
+    <string
+        name="2018款翼博(自动空调)"
+        value="2018 Yibo (Automatic Air Conditioning)" />
+    <string
+        name="19-20款领界"
+        value="19-20 styles" />
+    <string
+        name="探险者"
+        value="Explorer" />
+    <string
+        name="2020款福克斯"
+        value="2020 Fox" />
+    <string
+        name="2019款翼虎"
+        value="2019 Maverick" />
+    <string
+        name="保留原车CD"
+        value="Keep the original car CD" />
+    <string
+        name="2020款锐界"
+        value="2020 sharp world" />
+    <string
+        name="2020款蒙迪欧"
+        value="2020 Mondeo" />
+    <string
+        name="2019款翼博"
+        value="2019 Yibo" />
+    <string
+        name="2019款金牛座"
+        value="2019 Taurus" />
+    <string
+        name="2019款F150"
+        value="2019 F150" />
+    <string
+        name="2019款福睿斯"
+        value="2019 Forys" />
+    <string
+        name="2019款中规野马"
+        value="2019 Chinese Standard Mustang" />
+    <string
+        name="2019款蒙迪欧混动"
+        value="2019 Mondeo Hybrid" />
+    <string
+        name="2020款锐际"
+        value="2020 Ruiji" />
+    <string
+        name="12款凯美瑞"
+        value="12 Camry" />
+    <string
+        name="15款凯美瑞"
+        value="15 Camry" />
+    <string
+        name="CHR(弈泽)"
+        value="GHR (Yize)" />
+    <string
+        name="18款RAV4"
+        value="18 RAV4" />
+    <string
+        name="07-15款酷路泽"
+        value="07-15 Cool Road Ze" />
+    <string
+        name="16款酷路泽"
+        value="16 Cool Road Ze" />
+    <string
+        name="19款大霸王"
+        value="19 big overlords" />
+    <string
+        name="06-15款大霸王"
+        value="06-15 Big Overlord" />
+    <string
+        name="06款埃尔法"
+        value="06 Elfa" />
+    <string
+        name="04款雷克萨斯RX300"
+        value="04 Lexus RX300" />
+    <string
+        name="20款RAV4"
+        value="20 RAV4" />
+    <string
+        name="20款威兰达"
+        value="17 Navigator" />
+    <string
+        name="20款CHR-EV(纯电动)"
+        value="20 Veranda" />
+    <string
+        name="21款雷凌"
+        value="21 Ralink" />
+    <string
+        name="现代IX35"
+        value="Hyundai IX35" />
+    <string
+        name="现代IX45"
+        value="Hyundai IX45" />
+    <string
+        name="19款现代菲斯塔"
+        value="19 Hyundai Festa" />
+    <string
+        name="19款现代胜达IX45"
+        value="19 Hyundai Shengda IX45" />
+    <string
+        name="19款现代途胜"
+        value="19 Hyundai Tucson" />
+    <string
+        name="15款嘉华"
+        value="15 models of Jiahua" />
+    <string
+        name="19款起亚KX5"
+        value="19 Kia KX5" />
+    <string
+        name="19款起亚K3"
+        value="19 Kia K3" />
+    <string
+        name="18款现代索纳塔九混动"
+        value="18 Hyundai Sonata Nine Hybrids" />
+    <string
+        name="20款起亚KX3傲跑"
+        value="20 Kia K3 proud running" />
+    <string
+        name="19款k3新能源"
+        value="19 models of K3 new energy" />
+    <string
+        name="19款k5新能源"
+        value="19 models of K5 new energy" />
+    <string
+        name="19款现代名图"
+        value="19 modern famous pictures" />
+    <string
+        name="19款现代领动"
+        value="19 modern leads" />
+    <string
+        name="19款起亚智跑"
+        value="19 Kia Smart Runs" />
+    <string
+        name="享域"
+        value="Share domain" />
+    <string
+        name="19款CRV"
+        value="19 CVR" />
+    <string
+        name="20款皓影"
+        value="20 Haoying" />
+    <string
+        name="本田理念EV1"
+        value="Honda Concept EV1" />
+    <string
+        name="16-19款思域"
+        value="16-19 Civic" />
+    <string
+        name="20-21款思域"
+        value="20-21 Civic" />
+    <string
+        name="20-21款CRV"
+        value="20-21 CRV" />
+    <string
+        name="21款飞度"
+        value="21 Fit" />
+    <string
+        name="16款西玛"
+        value="16 Maxima" />
+    <string
+        name="04-07款天籁"
+        value="04-07 Teana" />
+    <string
+        name="19-21款天籁"
+        value="19-21 Teana" />
+    <string
+        name="2019款天籁"
+        value="2019 Teana" />
+    <string
+        name="19款骐达"
+        value="19 Tiida" />
+    <string
+        name="19款劲客"
+        value="19 powerful customers" />
+    <string
+        name="17款劲客"
+        value="17 powerful customers" />
+    <string
+        name="19款逍客"
+        value="19 Qashqai" />
+    <string
+        name="19款楼兰"
+        value="19 Loulan" />
+    <string
+        name="台版08~12款天籁"
+        value="Taiwan Version 08~12 Sounds of Nature" />
+    <string
+        name="20款轩逸"
+        value="20 Sylphy" />
+    <string
+        name="16款轩逸"
+        value="16 Sylphy" />
+    <string
+        name="16款奇骏(中东)"
+        value="16 X-Trail (Middle East)" />
+    <string
+        name="19款408"
+        value="19 408" />
+    <string
+        name="19款C3XR"
+        value="19 C3XR" />
+    <string
+        name="新C4L"
+        value="New C4L" />
+    <string
+        name="19款508L"
+        value="19 508L" />
+    <string
+        name="04_13款307"
+        value="04-13 307" />
+    <string
+        name="10_13款408"
+        value="10-13 408" />
+    <string
+        name="13_19款3008"
+        value="13-19 3008" />
+    <string
+        name="马来西亚508"
+        value="Malaysia 508" />
+    <string
+        name="19款5008"
+        value="19 5008" />
+    <string
+        name="19款4008"
+        value="19 4008" />
+    <string
+        name="14_19款408拆空调"
+        value="14-19 408 Remove the air conditioner" />
+    <string
+        name="20款2008"
+        value="20 2008" />
+    <string
+        name="16款瑞虎3X"
+        value="16 Tiggo 3X" />
+    <string
+        name="16款瑞虎7"
+        value="16 Tiggo 7" />
+    <string
+        name="瑞虎5X"
+        value="Tiggo 5X" />
+    <string
+        name="16款艾瑞泽5"
+        value="16 Arrizo 5" />
+    <string
+        name="16款瑞虎3"
+        value="16 Tiggo 3" />
+    <string
+        name="19款艾瑞泽5"
+        value="19 Arrizo 5" />
+    <string
+        name="19款瑞虎5X"
+        value="19 Tiggo 5X" />
+    <string
+        name="20款捷途X70M"
+        value="20 JETTO X70M" />
+    <string
+        name="20款瑞虎7"
+        value="20 Tiggo 7" />
+    <string
+        name="20款瑞虎3X"
+        value="20 Tiggo 3X" />
+    <string
+        name="20款瑞虎8"
+        value="20 Tiggo 8" />
+    <string
+        name="15款瑞虎5"
+        value="15 Tiggo 5" />
+    <string
+        name="20款瑞虎5X"
+        value="20 Tiggo 5X" />
+    <string
+        name="21款瑞虎3X"
+        value="21 Tiggo 3X" />
+    <string
+        name="17款马自达3"
+        value="17 Mazda3" />
+    <string
+        name="台湾版马自达3"
+        value="Taiwan version of Mazda 3" />
+    <string
+        name="18款台湾版CX-3"
+        value="18 Taiwanese version of CX-3" />
+    <string
+        name="19款台湾版CX-5"
+        value="19 Taiwanese version of CX-5" />
+    <string
+        name="19款CX-5"
+        value="19 CX-5" />
+    <string
+        name="马来西亚版CX-5"
+        value="Malaysian version CX-5" />
+    <string
+        name="马来西亚版CX-3"
+        value="Malaysian version CX-3" />
+    <string
+        name="17款MazdaCX5"
+        value="17 MazdaCX5" />
+    <string
+        name="14-19款昂科赛拉"
+        value="14-19 Angkorsaila" />
+    <string
+        name="14-15款致悦"
+        value="14-15 Joy" />
+    <string
+        name="2019款自由光"
+        value="2019 free light" />
+    <string
+        name="2020款指南者"
+        value="2020 guide" />
+    <string
+        name="2020款指挥官"
+        value="2020 Commander" />
+    <string
+        name="2020款牧马人"
+        value="2020 Wrangler" />
+    <string
+        name="2020款自由光"
+        value="2020 Freeman" />
+    <string
+        name="16_17款科雷嘉"
+        value="16_17 Correga" />
+    <string
+        name="巴西版SANDERO"
+        value="Brazilian version of SANDERO" />
+    <string
+        name="巴西版DUSTER"
+        value="Brazilian version of DUSTER" />
+    <string
+        name="巴西版CAPTURE"
+        value="Brazil version of CAPTURE" />
+    <string
+        name="土耳其CLIO"
+        value="Turkey CLIO" />
+    <string
+        name="土耳其KADJAR"
+        value="KADJAR Turkey" />
+    <string
+        name="土耳其CAPTURE"
+        value="Turkey CAPTURE" />
+    <string
+        name="20款铃拓"
+        value="20 Lingtuo" />
+    <string
+        name="18款庆铃"
+        value="18 Qingling" />
+    <string
+        name="21款庆铃-达咖"
+        value="21 Qingling-Daka" />
+    <string
+        name="TT 08-13款"
+        value="TT 08-13" />
+    <string
+        name="A3 04-12款"
+        value="A3 04-12" />
+    <string
+        name="A4 03-07款"
+        value="A4 03-07" />
+    <string
+        name="Q3 13-18款"
+        value="Q3 13-18" />
+    <string
+        name="Q5 10-18款"
+        value="Q5 10-18" />
+    <string
+        name="11-14款爱唯欧"
+        value="11-14 Ai Weiou" />
+    <string
+        name="13-19款昂科拉"
+        value="13-19 Angkola" />
+    <string
+        name="10-19款英朗"
+        value="10-19 Hideo" />
+    <string
+        name="13-19款昂科威"
+        value="13-19 Angkewei" />
+    <string
+        name="18款凯越"
+        value="18 Excelle" />
+    <string
+        name="09-19款君威"
+        value="09-19 Regal" />
+    <string
+        name="15-19款威朗"
+        value="15-19 Weilang" />
+    <string
+        name="11-15款GL8"
+        value="11-15 GL8" />
+    <string
+        name="12-18款迈锐宝"
+        value="17 12-18 Mai Rui Bao" />
+    <string
+        name="16-19款迈锐宝XL"
+        value="16-19 Mai Rui Bao XL" />
+    <string
+        name="13款昂科雷"
+        value="13 Angcore" />
+    <string
+        name="16-18款乐风RV"
+        value="16-18 Lefeng RV" />
+    <string
+        name="16款科沃兹"
+        value="16 kowoz" />
+    <string
+        name="14-18款创酷"
+        value="14-18 Chuangku" />
+    <string
+        name="09-19款君越"
+        value="09-19 Lacrosse" />
+    <string
+        name="2017款GL8"
+        value="2017 GL8" />
+    <string
+        name="2017款探界者"
+        value="2017 Explorer" />
+    <string
+        name="18-19款沃兰多"
+        value="18-19 Volando" />
+    <string
+        name="2015-2018款塞欧3"
+        value="2015-2018 Sail 3" />
+    <string
+        name="17-18款GL8ES"
+        value="17-18 GL8ES" />
+    <string
+        name="19款创酷"
+        value="19 Chuangku" />
+    <string
+        name="20款昂科拉"
+        value="20 Angkola" />
+    <string
+        name="20款开拓者"
+        value="20 trailblazers" />
+    <string
+        name="凯迪拉克CTS"
+        value="Cadillac CTS" />
+    <string
+        name="17-19款CousaE"
+        value="17-19 CousaE" />
+    <string
+        name="15-19款Insignia"
+        value="15-19 Insignia" />
+    <string
+        name="08-10款AstraH"
+        value="08-10 AstraH" />
+    <string
+        name="11款CorsaD"
+        value="11 CorsaD" />
+    <string
+        name="08款Combo"
+        value="08 Combo" />
+    <string
+        name="20款GL8 652T"
+        value="20 GL8 652T" />
+    <string
+        name="20款畅巡"
+        value="20 ridges" />
+    <string
+        name="21款英朗保留原车屏"
+        value="21 Yinglang retains the original car screen" />
+    <string
+        name="21款英朗不保留原车屏"
+        value="21 Yinglang does not retain the original car screen" />
+    <string
+        name="21款君越"
+        value="21 Lacrosse" />
+    <string
+        name="IAP升级"
+        value="IAP upgrade" />
+    <string
+        name="常发"
+        value="Often" />
+    <string
+        name="11-17款AstraJ"
+        value="11-17 AstraJ" />
+    <string
+        name="21款科鲁泽"
+        value="21 Cruze" />
+    <string
+        name="2021款全顺"
+        value="2021 Transit" />
+    <string
+        name="拆SYNC"
+        value="Remove SYNC" />
+    <string
+        name="2017款GS7"
+        value="2017 GS7" />
+    <string
+        name="2018款GS4"
+        value="2018 GS4" />
+    <string
+        name="2019款GS4"
+        value="2019 GS4" />
+    <string
+        name="2019款祺智EV"
+        value="2019 Qizhi EV" />
+    <string
+        name="2019款GS8"
+        value="2019 GS8" />
+    <string
+        name="2019款GM6"
+        value="2019 GM6" />
+    <string
+        name="2019款GA6"
+        value="2019 GA6" />
+    <string
+        name="20款GM8"
+        value="20 GM8" />
+    <string
+        name="20款GS5"
+        value="20 GS5" />
+    <string
+        name="21款GS3"
+        value="21 GS3" />
+    <string
+        name="20款GS8"
+        value="20 GS8" />
+    <string
+        name="20款GS4混动"
+        value="20 GS4 hybrid" />
+    <string
+        name="海马S5"
+        value="Haima s5" />
+    <string
+        name="16款帝豪GS"
+        value="16 Emgrand GS" />
+    <string
+        name="16款帝豪GL"
+        value="16 Emgrand GL" />
+    <string
+        name="18款博越"
+        value="18 Boyue" />
+    <string
+        name="14款帝豪"
+        value="14 Dihao" />
+    <string
+        name="15款远景"
+        value="15 visions" />
+    <string
+        name="16款远景SUV"
+        value="16 Vision SUVs" />
+    <string
+        name="18款远景"
+        value="18 visions" />
+    <string
+        name="18款帝豪GS"
+        value="18 Dihao GS" />
+    <string
+        name="18款帝豪GL"
+        value="18 Dihao GL" />
+    <string
+        name="19款帝豪"
+        value="19 Dihao" />
+    <string
+        name="19款帝豪GL混动"
+        value="19 Dihao GL Hybrid" />
+    <string
+        name="18款帝豪"
+        value="18 Dihao" />
+    <string
+        name="19款帝豪纯电动"
+        value="19 Dihao pure electric" />
+    <string
+        name="18款远景S1"
+        value="18 Vision S1" />
+    <string
+        name="19款吉利GS"
+        value="19 Geely GS" />
+    <string
+        name="19-20款远景X3"
+        value="19-20 Vision X3" />
+    <string
+        name="15款宝腾PERSONA"
+        value="15 Proton PERSONA" />
+    <string
+        name="19款吉利GL"
+        value="19 Geely GL" />
+    <string
+        name="20款远景X6"
+        value="20 Vision X6" />
+    <string
+        name="19-20款缤越"
+        value="19-20 Binyue" />
+    <string
+        name="20款吉利GL"
+        value="20 Geely GL" />
+    <string
+        name="20款博越Pro"
+        value="20 Boyue Pro" />
+    <string
+        name="20款远景"
+        value="20 visions" />
+    <string
+        name="15款宝腾"
+        value="15 Proton" />
+    <string
+        name="20款博越"
+        value="20 Boyue" />
+    <string
+        name="17款远景"
+        value="17 visions" />
+    <string
+        name="20款GS"
+        value="20 GS" />
+    <string
+        name="19-21款帝豪"
+        value="19-21 Dihao" />
+    <string
+        name="20款吉利Gse"
+        value="20 Geely Gse" />
+    <string
+        name="18款V6 自动豪华版"
+        value="18 V6 Automatic Deluxe Edition" />
+    <string
+        name="18款V6 自动尊贵版"
+        value="18 V6 automatic premium version" />
+    <string
+        name="18款V6 手动都市版"
+        value="18 V6 Manual City Edition" />
+    <string
+        name="18款V6 自动旗舰版"
+        value="18 V6 automatic flagship version" />
+    <string
+        name="18款CS75"
+        value="18 CS75" />
+    <string
+        name="18款X70A"
+        value="18 X70A" />
+    <string
+        name="18款长安欧尚科赛"
+        value="18 Changan Ouchan Corsai" />
+    <string
+        name="20款欧尚X7"
+        value="20 Auchan X7" />
+    <string
+        name="19款悦翔"
+        value="19 Yuexiang" />
+    <string
+        name="19款CS15"
+        value="19 CS15" />
+    <string
+        name="20款CS75"
+        value="20 CS75" />
+    <string
+        name="19款CS35 PLUS"
+        value="19 CS35 PLUS" />
+    <string
+        name="19款长安欧尚科尚"
+        value="19Changan Ouchan Koshan" />
+    <string
+        name="19款长安悦翔低配"
+        value="19 Changan Yuexiang low profile" />
+    <string
+        name="新途锐"
+        value="New Touareg" />
+    <string
+        name="14代皇冠"
+        value="14th generation crown" />
+    <string
+        name="10-16款锐志"
+        value="10-16 Reiz" />
+    <string
+        name="09-13款经典凯美瑞"
+        value="09-13 classic Camry" />
+    <string
+        name="12款陆巡"
+        value="12 land cruisers" />
+    <string
+        name="15款汉兰达"
+        value="15 highlanders" />
+    <string
+        name="07-13款卡罗拉"
+        value="07-13 Corolla" />
+    <string
+        name="14-17款卡罗拉"
+        value="14-17 Corolla" />
+    <string
+        name="02-09款霸道"
+        value="02-09 overbearing" />
+    <string
+        name="09-12款RAV4"
+        value="09-12 RAV4" />
+    <string
+        name="15款埃尔法"
+        value="15 Elfa" />
+    <string
+        name="20款奔跑者"
+        value="20 runners" />
+    <string
+        name="奔跑者"
+        value="runners" />
+    <string
+        name="22款陆放"
+        value="22 LuFang" />
+    <string
+        name="09款汉兰达手动空调"
+        value="09 Highlander Manual Air Conditioner" />
+    <string
+        name="13款凯美瑞"
+        value="13 Camry" />
+    <string
+        name="15款锐志"
+        value="15 Reiz" />
+    <string
+        name="16款陆巡自动空调"
+        value="16 automatic air conditioners for land patrol" />
+    <string
+        name="16款陆巡手动空调"
+        value="16 types of manual air conditioners for land cruisers" />
+    <string
+        name="12款锐志自动空调"
+        value="12 Reiz automatic air conditioners" />
+    <string
+        name="12款锐志手动空调"
+        value="12 Reiz manual air conditioners" />
+    <string
+        name="15款索兰托"
+        value="15 Sorento" />
+    <string
+        name="19款胜达"
+        value="19 Shengda" />
+    <string
+        name="21款英朗"
+        value="21 Hideo" />
+    <string
+        name="2013款蒙迪欧(手动空调)"
+        value="2013 Mondeo (manual air conditioner)" />
+    <string
+        name="2018款翼博(手动空调)"
+        value="2018 Yibo (manual air conditioner)" />
+    <string
+        name="国外2019款自由侠"
+        value="Foreign 2019 Freeman" />
+    <string
+        name="国外2019款菲亚特500L"
+        value="Foreign 2019 Fiat 500L" />
+    <string
+        name="悍马"
+        value="Hummer" />
+    <string
+        name="观致"
+        value="Qoros" />
+    <string
+        name="凯迪拉克"
+        value="Cadillac" />
+    <string
+        name="路虎"
+        value="LandRover" />
+    <string
+        name="宝马120/130/318/320/325/X1"
+        value="BMW 120/130/318/320/325/X1" />
+    <string
+        name="宝马老3系/老5系/老X5"
+        value="BMW Old 3 Series/Old 5 Series/Old X5" />
+    <string
+        name="18款幻速S7"
+        value="18 magic speed S7" />
+    <string
+        name="19款新能源EC5"
+        value="19 new energy EC5" />
+    <string
+        name="18款新能源EU5"
+        value="18 new energy EU5" />
+    <string
+        name="18款绅宝D50"
+        value="18 Saab D50" />
+    <string
+        name="20款哈弗F7"
+        value="20 Haval F7" />
+    <string
+        name="20款哈弗H4"
+        value="20 Haval H4" />
+    <string
+        name="20款哈弗H9"
+        value="20 Haval H9" />
+    <string
+        name="18款哈弗H4"
+        value="18 Haval H4" />
+    <string
+        name="风光S560"
+        value="Fengguang S560" />
+    <string
+        name="18款风神AX7全景"
+        value="18 Fengshen AX7 panorama" />
+    <string
+        name="18款330S"
+        value="18 330S" />
+    <string
+        name="18款580"
+        value="18 580" />
+    <string
+        name="19款易至EV3"
+        value="19 Easy to EV3" />
+    <string
+        name="2019风神AX3"
+        value="2019 Fengshen AX3" />
+    <string
+        name="18款江铃E400"
+        value="18 Jiangling E400" />
+    <string
+        name="18款S560"
+        value="18 S560" />
+    <string
+        name="19款AX7"
+        value="19 AX7" />
+    <string
+        name="20款580"
+        value="20 580" />
+    <string
+        name="20款风神奕炫"
+        value="20 Fengshen Yixuan" />
+    <string
+        name="17款风神MX5"
+        value="17 Fengshen MX5" />
+    <string
+        name="19款SX6"
+        value="19 SX6" />
+    <string
+        name="20-21款S560"
+        value="20-21 S560" />
+    <string
+        name="21款580"
+        value="21 580" />
+    <string
+        name="21款500"
+        value="21 500" />
+    <string
+        name="19款风光E3"
+        value="19 Fengguang E3" />
+    <string
+        name="21款景逸S50"
+        value="21 Jingyi S50" />
+    <string
+        name="21款景逸S50EV"
+        value="21 Jingyi S50EV" />
+    <string
+        name="21款景逸SX6"
+        value="21 Jingyi SX6" />
+    <string
+        name="2019款野马博骏"
+        value="2019 Mustang Bojun" />
+    <string
+        name="12款路虎极光"
+        value="12 Land Rover Aurora" />
+    <string
+        name="20款潍柴U70V"
+        value="20 Weichai U70V" />
+    <string
+        name="2015款名爵锐腾"
+        value="2015 MG Rui Teng" />
+    <string
+        name="18-19款大通G10"
+        value="18-19 Chase G10" />
+    <string
+        name="2017款锐腾"
+        value="2017 Ruiteng" />
+    <string
+        name="2018款荣威RX3"
+        value="2018 Roewe RX3" />
+    <string
+        name="2019款大通EV30"
+        value="2019 Chase EV30" />
+    <string
+        name="2019款大通G50"
+        value="2019 Chase G50" />
+    <string
+        name="2018款大通V80"
+        value="2018 Chase V80" />
+    <string
+        name="2016款T60"
+        value="2016 T60" />
+    <string
+        name="16款名爵锐腾"
+        value="16 MG Rui Teng" />
+    <string
+        name="2015款名爵锐腾"
+        value="2015 MG Rui Teng" />
+    <string
+        name="19款名爵HS"
+        value="19 MG HS" />
+    <string
+        name="19款EZS"
+        value="19 EZS" />
+    <string
+        name="19款荣威EI5"
+        value="19 Roewe EI5" />
+    <string
+        name="19款荣威i5"
+        value="19 Roewe i5" />
+    <string
+        name="19款荣威i6"
+        value="19 Roewe i6" />
+    <string
+        name="16-18款荣威RX5"
+        value="16-18 Roewe RX5" />
+    <string
+        name="19款荣威RX8"
+        value="19 Roewe RX8" />
+    <string
+        name="19款大通T70"
+        value="19 Chase T70" />
+    <string
+        name="19款大通V90"
+        value="19 Chase V90" />
+    <string
+        name="2018款宝骏510"
+        value="2018 Baojun 510" />
+    <string
+        name="2019款宝骏51"
+        value="2019 Baojun 51" />
+    <string
+        name="2019款宝骏530"
+        value="2019 Baojun 530" />
+    <string
+        name="2015款宝骏730"
+        value="2015 Baojun 730" />
+    <string
+        name="2016款宝骏560"
+        value="2016 Baojun 560" />
+    <string
+        name="2017款宝骏560"
+        value="2017 Baojun 560" />
+    <string
+        name="2018款宝骏360"
+        value="2018 Baojun 360" />
+    <string
+        name="2019款宝骏730"
+        value="2019 Baojun 730" />
+    <string
+        name="2017款荣威Ei6混动"
+        value="2017 Roewe Ei6 Hybrid" />
+    <string
+        name="2018款荣威RX8"
+        value="2018 Roewe RX8" />
+    <string
+        name="2019款荣威950"
+        value="2019 Roewe 950" />
+    <string
+        name="2014款S3"
+        value="2014 S3" />
+    <string
+        name="2015款S2"
+        value="2015 S2" />
+    <string
+        name="18款R3"
+        value="18 R3" />
+    <string
+        name="18款带小屏 IEV6E"
+        value="18 With small screen IEV6E" />
+    <string
+        name="19款带小屏 IEV6E"
+        value="19 With small screen IEV6E" />
+    <string
+        name="2020款T60"
+        value="2020 T60" />
+    <string
+        name="2020款T70"
+        value="2020 T70" />
+    <string
+        name="2020款自由侠"
+        value="2020 Freeman" />
+    <string
+        name="19款DX5"
+        value="19 DX5" />
+    <string
+        name="10-13款XC60全系"
+        value="10-13 XC60 series" />
+    <string
+        name="速锐"
+        value="Su Rui" />
+    <string
+        name="农用机"
+        value="Agricultural machinery" />
+    <string
+        name="16款BJ20"
+        value="16 BJ20" />
+    <string
+        name="16款幻速S3L"
+        value="16 magic speed S3L" />
+    <string
+        name="16款BJ20"
+        value="16 BJ20" />
+    <string
+        name="16款BJ40"
+        value="16 BJ40" />
+    <string
+        name="2019款哈弗H6黑标"
+        value="2019 Haval H6 Black Label" />
+    <string
+        name="金杯观境"
+        value="Golden Cup View" />
+    <string
+        name="2019景逸X5"
+        value="2019 Jingyi X5" />
+    <string
+        name="2017景逸X5"
+        value="2017 Jingyi X5" />
+    <string
+        name="东风风度MX6"
+        value="Dongfeng demeanor MX6" />
+    <string
+        name="2018款哈弗H6运动版"
+        value="2018 Haval H6 Sports Edition" />
+    <string
+        name="2019款哈弗H6Coupe"
+        value="2019 Haval H6Coupe" />
+    <string
+        name="09-15款X1"
+        value="09-15 X1" />
+    <string
+        name="07-12款X3"
+        value="07-12 X3" />
+    <string
+        name="04-11款320"
+        value="04-12 320" />
+    <string
+        name="名爵ZS"
+        value="MG ZS" />
+    <string
+        name="17-18款荣威i6"
+        value="17-18 Roewe i6" />
+    <string
+        name="16悦翔V7"
+        value="16Yuexiang V7" />
+    <string
+        name="CX70手动空调"
+        value="CX70 manual air conditioner" />
+    <string
+        name="16款威霆METRIS"
+        value="16 Vito METRIS" />
+    <string
+        name="2020款欧蓝德"
+        value="2020 Outlander" />
+    <string
+        name="10款G37"
+        value="10 G37" />
+    <string
+        name="17款日产途乐"
+        value="17 Nissan Patrol" />
+    <string
+        name="2012款领雅"
+        value="2012 Lingya" />
+    <string
+        name="2009款菲奥里诺"
+        value="2009 Fiorino" />
+    <string
+        name="14款思域/15款CRV2.4"
+        value="14 Civic/15 CRV2.4" />
+    <string
+        name="华泰"
+        value="Huatai" />
+    <string
+        name="观致"
+        value="Qoros" />
+    <string
+        name="07-12款X3"
+        value="07-12 X3" />
+    <string
+        name="雅阁9(13-15款2.0)"
+        value="Accord 9 (13-15 2.0)" />
+    <string
+        name="雅阁9(13-15款2.4)"
+        value="Accord 9 (13-15 2.4)" />
+    <string
+        name="雅阁9(16款2.0)"
+        value="Accord 9 (16 2.0)" />
+    <string
+        name="雅阁9(16款2.4)"
+        value="Accord 9 (16 2.4)" />
+    <string
+        name="雅阁9(16款混动2.0)"
+        value="Accord 9 (16 Hybrid 2.0)" />
+    <string
+        name="12款思域"
+        value="12 Civics" />
+    <string
+        name="14款思域/15款CRV2.4"
+        value="14 Civic/15 CRV2.4s" />
+    <string
+        name="17款思域"
+        value="17 Civics" />
+    <string
+        name="14款霸道"
+        value="14 Prado" />
+    <string
+        name="10款霸道"
+        value="10 Prado" />
+    <string
+        name="12款汉兰达"
+        value="12 highlanders" />
+    <string
+        name="16款汉兰达"
+        value="16 highlander" />
+    <string
+        name="12款锐志"
+        value="12 Reiz" />
+    <string
+        name="10款霸道手动空调"
+        value="10 Prado manual air conditioner" />
+    <string
+        name="09款凯美瑞"
+        value="09 Camry" />
+    <string
+        name="15款汉兰达手动空调"
+        value="15 highlander manual air conditioners" />
+    <string
+        name="07款卡罗拉"
+        value="07 Corolla" />
+    <string
+        name="14款卡罗拉"
+        value="14 Corolla" />
+    <string
+        name="05-09款锐志"
+        value="05-09 Reiz" />
+    <string
+        name="14款坦途手动空调"
+        value="14 Smooth manual air conditioner" />
+    <string
+        name="18款霸道手动空调"
+        value="18 Prado manual air conditioners" />
+    <string
+        name="埃尔法"
+        value="Elfa" />
+    <string
+        name="圣达菲"
+        value="Santa Fe" />
+    <string
+        name="观致5"
+        value="Qoros 5" />
+    <string
+        name="林荫大道"
+        value="Buick Electra" />
+    <string
+        name="比亚迪E5"
+        value="BYD E5" />
+    <string
+        name="御轩"
+        value="Yumsun" />
+    <string
+        name="探路者"
+        value="Pathfinder" />
+    <string
+        name="18北京X5"
+        value="18 Beijing X5" />
+    <string
+        name="18北京X3"
+        value="18 Beijing X3" />
+    <string
+        name="18-19款哈佛H4"
+        value="18-19 Harvard H4" />
+    <string
+        name="2019款哈弗H6-换代"
+        value="2019 Haval H6-replacement" />
+    <string
+        name="凯雷德"
+        value="Kered" />
+    <string
+        name="赛威"
+        value="Saiwei" />
+    <string
+        name="宋元新能源"
+        value="Songyuan New Energy" />
+    <string
+        name="宋元燃油"
+        value="Song Yuan Fuel" />
+    <string
+        name="唐/s7新能源"
+        value="Tang/s7 New Energy" />
+    <string
+        name="唐/s7燃油"
+        value="Tang/s7 fuel" />
+    <string
+        name="比亚迪秦"
+        value="BYD Qin" />
+    <string
+        name="比亚迪E1/E2"
+        value="BYD E1/E2" />
+    <string
+        name="比亚迪G5"
+        value="BYD G5" />
+    <string
+        name="2005大捷龙"
+        value="2005 Grand Victory" />
+    <string
+        name="2004大切诺基"
+        value="2004 Grand Cherokee" />
+    <string
+        name="天籁公爵"
+        value="Duke of Tian Lai" />
+    <string
+        name="05-07风雅"
+        value="05-07 Fengya" />
+    <string
+        name="11-15款贵士"
+        value="11-15 VIP" />
+    <string
+        name="13款索兰托"
+        value="13 Sorento" />
+    <string
+        name="宋Max"
+        value="Song Max" />
+    <string
+        name="宋"
+        value="Song" />
+    <string
+        name="19款红旗H5"
+        value="19 RedFlag H5" />
+    <string
+        name="21款塞纳"
+        value="21 Senna" />
+    <string
+        name="神行者2"
+        value="Freelander" />
+    <string
+        name="菲跃"
+        value="Freemont" />
+    <string
+        name="其他兼容车型"
+        value="Other models" />
+    <string
+        name="其他带空调控制兼容车型"
+        value="Other models(Witch AC)" />
+    <string
+        name="10款劳恩斯"
+        value="10 Genesis" />
+    <string
+        name="15奥德赛高配(原车360)"
+        value="15 Odyssey high configuration (original car 360)" />
+    <string
+        name="15奥德赛高配(原车360吸顶屏)"
+        value="15 Odyssey high configuration (original car 360 ceiling screen)" />
+    <string
+        name="12思域CRV-14思域低配-15CRV低配(全兼容)"
+        value="12 Civic CRV-14 Civic low-profile-15CRV low-profile (full compatibility)" />
+    <string
+        name="19款艾力绅(原车360)"
+        value="19 Allison (original car 360)" />
+    <string
+        name="20款理念VE1"
+        value="20 Ideas VE1" />
+    <string
+        name="21款皓影"
+        value="21 Haoying" />
+    <string
+        name="22款思域"
+        value="22 Civics" />
+    <string
+        name="22款雅阁"
+        value="22 Accord" />
+    <string
+        name="22款凌派"
+        value="22 Lingpai" />
+    <string
+        name="新君威"
+        value="New Regal" />
+    <string
+        name="14款霸道手动空调"
+        value="14 Prado Manual Air Conditioners" />
+    <string
+        name="12-16款凯美瑞"
+        value="12-16 Camry" />
+    <string
+        name="10-17款霸道"
+        value="10-17 Prado" />
+    <string
+        name="格瑞斯"
+        value="Grace" />
+    <string
+        name="19款绅宝D50"
+        value="19 Senova D50" />
+    <string
+        name="18-21款绅宝X55"
+        value="18-21 Senova X55" />
+    <string
+        name="19-21款绅宝X35"
+        value="19-21 Senova X35" />
+    <string
+        name="2019款哈弗H6-换代"
+        value="2019 Haval H6-Regeneration" />
+    <string
+        name="2019款哈弗F7"
+        value="2019 Haval F7" />
+    <string
+        name="安德拉2006-2012(保留原车主机)"
+        value="Andra 2006-2012(retain the original car host)" />
+    <string
+        name="C200(保留原车主机)"
+        value="C200(retain the original car host)" />
+    <string
+        name="2020款法拉利"
+        value="2020 Ferrari" />
+    <string
+        name="2016款M"
+        value="2016 M" />
+    <string
+        name="20款A5翼舞"
+        value="20 A5 Wing Dance" />
+    <string
+        name="05-09丰田锐志"
+        value="05-09 Toyota Reiz" />
+    <string
+        name="10-17款霸道"
+        value="10-17 Prado" />
+    <string
+        name="发现4"
+        value="Discovery 4" />
+    <string
+        name="12款极光"
+        value="Evoque" />
+    <string
+        name="潍柴"
+        value="Weichai" />
+    <string
+        name="塔塔"
+        value="Tata" />
+    <string
+        name="阿尔法罗密欧"
+        value="Alfa Romeo" />
+    <string
+        name="马恒达"
+        value="Mahindra" />
+    <string
+        name="森林人"
+        value="Forester" />
+    <string
+        name="雅阁7(9600)"
+        value="Accord 7(9600)" />
+    <string
+        name="知豆"
+        value="Zhidou" />
+    <string
+        name="合众"
+        value="HoZon" />
+    <string
+        name="哪吒"
+        value="Naxie" />
+    <string
+        name="霍顿"
+        value="Holden" />
+    <string
+        name="准将VF(双驱空调)"
+        value="Commodore VF(Double AC)" />
+    <string
+        name="准将VF(单驱空调)"
+        value="Commodore VF(Single AC)" />
+    <string
+        name="创维"
+        value="Skyworth" />
+    <string
+        name="丽驰"
+        value="LiChi" />
+    <string
+        name="其它"
+        value="Other" />
+    <string
+        name="QQ冰淇淋"
+        value="QQ ice cream" />
+    <string
+        name="21款小蚂蚁EQ1"
+        value="21 ant EQ1" />
+    <string
+        name="19款捷途 X90"
+        value="19 JETTO X90" />
+    <string
+        name="22款金刚炮"
+        value="22 King Kong Cannons" />
+    <string
+        name="18-21款凯美瑞"
+        value="18-21 Camry" />
+    <string
+        name="21款亚洲狮"
+        value="21 Asian lion" />
+    <string
+        name="22款汉兰达"
+        value="22 highlander" />
+    <string
+        name="22款塞纳"
+        value="22 Senna" />
+    <string
+        name="22款凌放"
+        value="22 LingFang" />
+    <string
+        name="22款锐放"
+        value="22 YueFang" />
+    <string
+        name="22款锋兰达"
+        value="22 FengLanDa" />
+    <string
+        name="22款威飒"
+        value="22 WeiSa" />
+    <string
+        name="2015款名爵锐腾(SAF1)"
+        value="2015 MG Rui Teng(SAF1)" />
+    <string
+        name="2017款名爵锐腾(SAF1)"
+        value="2017 MG Rui Teng(SAF1)" />
 </translation>

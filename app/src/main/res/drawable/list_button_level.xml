@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:drawable="@drawable/list_button0" android:maxLevel="0" />
-    <item android:drawable="@drawable/list_button1" android:maxLevel="1" />
-    <item android:drawable="@drawable/list_button2" android:maxLevel="2" />
+    <item
+        android:drawable="@drawable/list_button0"
+        android:maxLevel="0" />
+    <item
+        android:drawable="@drawable/list_button1"
+        android:maxLevel="1" />
+    <item
+        android:drawable="@drawable/list_button2"
+        android:maxLevel="2" />
 
 </shape>

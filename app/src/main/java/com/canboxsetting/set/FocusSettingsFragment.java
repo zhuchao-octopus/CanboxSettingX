@@ -3,29 +3,26 @@ package com.canboxsetting.set;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
-
-import android.util.Log;
 
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
 import com.common.util.MyCmd;
 import com.common.util.SystemConfig;
 import com.common.util.Util;
-
-import android.provider.Settings;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.viewmodel.CreationExtras;
-import androidx.preference.PreferenceFragmentCompat;
 
 public class FocusSettingsFragment extends PreferenceFragmentCompat implements androidx.preference.Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "FocusSettingsFragment";
@@ -61,13 +58,9 @@ public class FocusSettingsFragment extends PreferenceFragmentCompat implements a
         findPreference("enhanced_assistance").setOnPreferenceChangeListener(this);
         findPreference("tyre_monitor").setOnPreferenceClickListener(this);
 
-        updateView(new byte[]{
-                0x24, 0, 0, 0, 0, 0, 0, 0
-        });
+        updateView(new byte[]{0x24, 0, 0, 0, 0, 0, 0, 0});
 
-        updateView(new byte[]{
-                0x21, 0, 0, 0, 0, 0, 0, 0
-        });
+        updateView(new byte[]{0x21, 0, 0, 0, 0, 0, 0, 0});
         registerListener();
 
         updateLedSetting();
@@ -223,17 +216,13 @@ public class FocusSettingsFragment extends PreferenceFragmentCompat implements a
 
     private void sendCanboxInfo(int d0, int d1) {
 
-        byte[] buf = new byte[]{
-                (byte) 0xc6, 0x02, (byte) d0, (byte) d1
-        };
+        byte[] buf = new byte[]{(byte) 0xc6, 0x02, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
 
-        byte[] buf = new byte[]{
-                (byte) 0xc6, 0x02, (byte) d0, (byte) d1, (byte) d2
-        };
+        byte[] buf = new byte[]{(byte) 0xc6, 0x02, (byte) d0, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

@@ -3,12 +3,12 @@
     android:id="@+id/vehicle_hybrid_power"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center" >
+    android:gravity="center">
 
     <RelativeLayout
         android:layout_width="713px"
         android:layout_height="348px"
-        android:background="@drawable/canbus8_car_bg" >
+        android:background="@drawable/canbus8_car_bg">
 
         <View
             android:id="@+id/canbus8_arrow_set"

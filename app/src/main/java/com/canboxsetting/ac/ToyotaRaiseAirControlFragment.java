@@ -106,9 +106,7 @@ public class ToyotaRaiseAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x0080}, {R.id.ac, 0x0002}, {R.id.ac_auto, 0x0020}, {R.id.rear, 0x0104}, {R.id.inner_loop, 0x0201}, {R.id.ac_max, 0x0010}, {R.id.max, 0x0010}, {R.id.dual, 0x0108},
-            {R.id.wind_minus, 0x0101}, {R.id.wind_add, 0x0102}, {R.id.mode, 0x0040},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x0080}, {R.id.ac, 0x0002}, {R.id.ac_auto, 0x0020}, {R.id.rear, 0x0104}, {R.id.inner_loop, 0x0201}, {R.id.ac_max, 0x0010}, {R.id.max, 0x0010}, {R.id.dual, 0x0108}, {R.id.wind_minus, 0x0101}, {R.id.wind_add, 0x0102}, {R.id.mode, 0x0040},
 
 
             {R.id.con_left_temp_up, 0x302}, {R.id.con_left_temp_down, 0x301}, {R.id.con_right_temp_up, 0x402}, {R.id.con_right_temp_down, 0x401},

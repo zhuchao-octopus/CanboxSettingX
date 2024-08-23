@@ -1,79 +1,39 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.annotation.Nullable;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
-import com.common.view.MyPreferenceEdit;
-import com.common.view.MyPreferenceSeekBar;
-import com.common.view.MyPreferenceEdit.IButtonCallBack;
 
-public class Set248 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set248 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
 
-            new NodePreference("ambient_lighting", 0x8401, 0x1a00, 0xff, 0, R.array.yema_brightness_entries, R.array.three_values),
-            new NodePreference("ambient_lighting_color", 0x8402, 0x1a01, 0xff, 0, R.array.yema_display_color_entries, R.array.five_values),
-            new NodePreference("ambient_lighting_brightness", 0x8403, 0x1a02, 0xff, 0, R.array.four_values, R.array.four_values),
+            new NodePreference("ambient_lighting", 0x8401, 0x1a00, 0xff, 0, R.array.yema_brightness_entries, R.array.three_values), new NodePreference("ambient_lighting_color", 0x8402, 0x1a01, 0xff, 0, R.array.yema_display_color_entries, R.array.five_values), new NodePreference("ambient_lighting_brightness", 0x8403, 0x1a02, 0xff, 0, R.array.four_values, R.array.four_values),
 
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x1a
+    private final static int[] INIT_CMDS = {0x1a
 
     };
 
@@ -86,6 +46,11 @@ public class Set248 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -151,9 +116,7 @@ public class Set248 extends PreferenceFragment implements Preference.OnPreferenc
         public void handleMessage(Message msg) {
             if (!mPaused) {
 
-                byte[] buf = new byte[]{
-                        (byte) 0x90, (byte) 1, (byte) (msg.what & 0xff)
-                };
+                byte[] buf = new byte[]{(byte) 0x90, (byte) 1, (byte) (msg.what & 0xff)};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
             }

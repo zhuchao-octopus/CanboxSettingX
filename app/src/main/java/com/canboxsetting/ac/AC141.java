@@ -199,9 +199,7 @@ public class AC141 extends MyFragment {
     };
 
     private void sendCanboxInf(int d0, int d1) {
-        byte[] buf = new byte[]{
-                (byte) 0xa8, 0x2, (byte) d0, (byte) d1
-        };
+        byte[] buf = new byte[]{(byte) 0xa8, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

@@ -17,7 +17,7 @@
         android:key="show_when_reversing"
         android:persistent="false"
         android:title="@string/show_when_reversing" />
-     <SwitchPreference
+    <SwitchPreference
         android:key="close_the_window_rainy_day"
         android:persistent="false"
         android:title="@string/close_the_window_rainy_day" />

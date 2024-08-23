@@ -16,7 +16,6 @@
 
 package com.canboxsetting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -25,11 +24,40 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.canboxsetting.info.Nission2013InfoSimpleFragment;
 import com.canboxsetting.keyboard.PSABagooKeyboardFragment;
+import com.canboxsetting.set.Accord2013SettingsSimpleFragment;
+import com.canboxsetting.set.AccordSettingsBinaryTekFragment;
+import com.canboxsetting.set.BMWE90X1UnionSettingsFragment;
+import com.canboxsetting.set.CheryODSettingFragment;
+import com.canboxsetting.set.FiatEGEARaiseSettingFragment;
 import com.canboxsetting.set.FocusSettingsFragment;
+import com.canboxsetting.set.FordExplorerSimpleSettingsFragment;
 import com.canboxsetting.set.GMSettingsSimpleFragment;
 import com.canboxsetting.set.Golf7SettingsSimpleFragment;
+import com.canboxsetting.set.HaferH2Setting;
+import com.canboxsetting.set.HondaSettingsSimpleFragment;
+import com.canboxsetting.set.JeepSettingsSimpleFragment;
+import com.canboxsetting.set.JeepSettingsXinbasFragment;
+import com.canboxsetting.set.KadjarRaiseSettingFragment;
+import com.canboxsetting.set.LandRoverHaoZhengSettingsFragment;
+import com.canboxsetting.set.Mazda3BinarytekSettingsFragment;
+import com.canboxsetting.set.Mazda3SettingsSimpleFragment;
+import com.canboxsetting.set.Mazda3XinbasiSettingsFragment;
+import com.canboxsetting.set.MazdaCX5SettingsSimpleFragment;
+import com.canboxsetting.set.MazdaRaiseSettingsFragment;
+import com.canboxsetting.set.MitsubishiSettingsSimpleFragment;
+import com.canboxsetting.set.OpelSettingsSimpleFragment;
+import com.canboxsetting.set.OuShangSettingsRaiseFragment;
 import com.canboxsetting.set.PSASettingsBagooFragment;
+import com.canboxsetting.set.PSASettingsRaiseFragment;
+import com.canboxsetting.set.PSASettingsSimpleFragment;
+import com.canboxsetting.set.RAMFiatSettingSimpleFragment;
+import com.canboxsetting.set.SmartHaoZhengSettingsFragment;
+import com.canboxsetting.set.SubaruSimpleSettingFragment;
+import com.canboxsetting.set.TouaregHiworldSettingFragment;
+import com.canboxsetting.set.ToyotaSettingsSimpleFragment;
+import com.canboxsetting.set.VWMQBSettingsRaiseFragment;
 import com.canboxsetting.set.SlimSettingsFragment;
 import com.car.ui.GlobalDef;
 import com.common.util.MachineConfig;
@@ -51,9 +79,7 @@ import java.util.Objects;
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "CanboxSetting.MainActivity";
-
     private FragmentManager mFragmentManager;
-
     private Fragment mSetting;
 
     @Override
@@ -162,105 +188,104 @@ public class MainActivity extends AppCompatActivity {
                     mSetting = new PSASettingsBagooFragment();
                 }
                 break;
-			/*case MachineConfig.VALUE_CANBOX_OPEL:
-				mSetting = new OpelSettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
-				mSetting = new Golf7SettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:
-				mSetting = new VWMQBSettingsRaiseFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION:
-				mSetting = new BMWE90X1UnionSettingsFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_RAM_FIAT:
-				mSetting = new RAMFiatSettingSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_KADJAR_RAISE:
-				mSetting = new KadjarRaiseSettingFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_PSA:
-				mSetting = new PSASettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_TOYOTA:
-			case MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK:
-			case MachineConfig.VALUE_CANBOX_TOYOTA_RAISE:
-				mSetting = new ToyotaSettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE:
-			case MachineConfig.VALUE_CANBOX_HONDA_RAISE:
-				mSetting = new HondaSettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_JEEP_SIMPLE:
-				mSetting = new JeepSettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_ACCORD2013:
-				mSetting = new Accord2013SettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK:
-				mSetting = new Mazda3BinarytekSettingsFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_MAZDA_XINBAS:
-				mSetting = new Mazda3XinbasiSettingsFragment();
-				///	((Mazda3XinbasiSettingsFragment) mSetting).setType2(mCarType2);
-				break;
-			case MachineConfig.VALUE_CANBOX_MAZDA_RAISE:
-				mSetting = new MazdaRaiseSettingsFragment();
-				//((MazdaRaiseSettingsFragment) mSetting).setType2(mCarType2);
-				break;
-			case MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD:
-				mSetting = new TouaregHiworldSettingFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
-			case MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE:
-				mSetting = new PSASettingsRaiseFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_FORD_EXPLORER_SIMPLE:
-				mSetting = new FordExplorerSimpleSettingsFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE:
-				mSetting = new MitsubishiSettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK:
-				mSetting = new AccordSettingsBinaryTekFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_NISSAN2013:
-				mSetting = new Nission2013InfoSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_CHERY_OD:
-				mSetting = new CheryODSettingFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_HAFER_H2:
-				mSetting = new HaferH2Setting();
-				break;
-			case MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE:
-				mSetting = new Mazda3SettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_SMART_HAOZHENG:
-				mSetting = new SmartHaoZhengSettingsFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG:
-				mSetting = new LandRoverHaoZhengSettingsFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE:
-				mSetting = new MazdaCX5SettingsSimpleFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_JEEP_XINBAS:
-				mSetting = new JeepSettingsXinbasFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_OUSHANG_RAISE:
-				mSetting = new OuShangSettingsRaiseFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE:
-				mSetting = new FiatEGEARaiseSettingFragment();
-				break;
-			case MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE:
-				mSetting = new SubaruSimpleSettingFragment();
-				break;*/
+            case MachineConfig.VALUE_CANBOX_OPEL:
+                mSetting = new OpelSettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
+                mSetting = new Golf7SettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:
+                mSetting = new VWMQBSettingsRaiseFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION:
+                mSetting = new BMWE90X1UnionSettingsFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_RAM_FIAT:
+                mSetting = new RAMFiatSettingSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_KADJAR_RAISE:
+                mSetting = new KadjarRaiseSettingFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_PSA:
+                mSetting = new PSASettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_TOYOTA:
+            case MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK:
+            case MachineConfig.VALUE_CANBOX_TOYOTA_RAISE:
+                mSetting = new ToyotaSettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_HONDA_DA_SIMPLE:
+            case MachineConfig.VALUE_CANBOX_HONDA_RAISE:
+                mSetting = new HondaSettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_JEEP_SIMPLE:
+                mSetting = new JeepSettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_ACCORD2013:
+                mSetting = new Accord2013SettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK:
+                mSetting = new Mazda3BinarytekSettingsFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_MAZDA_XINBAS:
+                mSetting = new Mazda3XinbasiSettingsFragment();
+                ///	((Mazda3XinbasiSettingsFragment) mSetting).setType2(mCarType2);
+                break;
+            case MachineConfig.VALUE_CANBOX_MAZDA_RAISE:
+                mSetting = new MazdaRaiseSettingsFragment();
+                //((MazdaRaiseSettingsFragment) mSetting).setType2(mCarType2);
+                break;
+            case MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD:
+                mSetting = new TouaregHiworldSettingFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
+            case MachineConfig.VALUE_CANBOX_PETGEO_SCREEN_RAISE:
+                mSetting = new PSASettingsRaiseFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_FORD_EXPLORER_SIMPLE:
+                mSetting = new FordExplorerSimpleSettingsFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_MITSUBISHI_OUTLANDER_SIMPLE:
+                mSetting = new MitsubishiSettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK:
+                mSetting = new AccordSettingsBinaryTekFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_NISSAN2013:
+                mSetting = new Nission2013InfoSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_CHERY_OD:
+                mSetting = new CheryODSettingFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_HAFER_H2:
+                mSetting = new HaferH2Setting();
+                break;
+            case MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE:
+                mSetting = new Mazda3SettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_SMART_HAOZHENG:
+                mSetting = new SmartHaoZhengSettingsFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_LANDROVER_HAOZHENG:
+                //mSetting = new LandRoverHaoZhengSettingsFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE:
+                mSetting = new MazdaCX5SettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_JEEP_XINBAS:
+                mSetting = new JeepSettingsXinbasFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_OUSHANG_RAISE:
+                mSetting = new OuShangSettingsRaiseFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE:
+                mSetting = new FiatEGEARaiseSettingFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE:
+                mSetting = new SubaruSimpleSettingFragment();
+                break;
             case MachineConfig.VALUE_CANBOX_NONE:
                 break;
-
         }
 
         if (mSetting == null) mSetting = new FocusSettingsFragment();

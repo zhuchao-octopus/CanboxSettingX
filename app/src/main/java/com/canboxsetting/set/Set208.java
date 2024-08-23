@@ -1,64 +1,29 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
 import com.common.util.Util;
-import com.common.view.MyPreferenceSeekBar;
 
-public class Set208 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set208 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
@@ -77,8 +42,7 @@ public class Set208 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("winter_tyres", 0x6f11, 0x6103, 0xf0, 0, R.array.winter_tyres, R.array.eight_values),
 
-            new NodePreference("standby_mode", 0x6f12, 0x6103, 0x1, 0), new NodePreference("central_door_lock_sound_feedback", 0x6f13, 0x6104, 0x10, 0),
-            new NodePreference("gac_settings_auto_door_locks", 0x6f14, 0x6104, 0x1, 0), new NodePreference("ambient_lighting", 0x6f21, 0x6105, 0x10, 0),
+            new NodePreference("standby_mode", 0x6f12, 0x6103, 0x1, 0), new NodePreference("central_door_lock_sound_feedback", 0x6f13, 0x6104, 0x10, 0), new NodePreference("gac_settings_auto_door_locks", 0x6f14, 0x6104, 0x1, 0), new NodePreference("ambient_lighting", 0x6f21, 0x6105, 0x10, 0),
 
             new NodePreference("external_lighting_delay_off", 0x6f22, 0x6105, 0xf, 0, R.array.swee_flow_me_home_times, R.array.five_values),
 
@@ -91,8 +55,7 @@ public class Set208 extends PreferenceFragment implements Preference.OnPreferenc
             new NodePreference("factory_reset_settings", 0x6f33, 0, 0),
 
 
-            new NodePreference("main_lane_assist", 0x6f34, 0x6100, 0x20, 0),
-    };
+            new NodePreference("main_lane_assist", 0x6f34, 0x6100, 0x20, 0),};
 
     private final static int[] INIT_CMDS = {0x61};
 
@@ -104,6 +67,11 @@ public class Set208 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -142,9 +110,7 @@ public class Set208 extends PreferenceFragment implements Preference.OnPreferenc
         getPreferenceScreen().removeAll();
     }
 
-    private byte[] mVisible = new byte[]{
-            0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff
-    };
+    private byte[] mVisible = new byte[]{0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff};
 
     private boolean mPaused = true;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout="@layout/can_preference_list_fragment" >
+    android:layout="@layout/can_preference_list_fragment">
 
     <ListPreference
         android:entries="@array/canbox_select_manufacturer"
@@ -17,12 +17,12 @@
         android:key="canbox_car_type"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/canbox_car_type" />
-    
+
     <ListPreference
         android:key="canbox_car_type2"
         android:layout="@layout/preference_car_settings_submenu"
         android:title="@string/canbox_special_settings" />
-        
+
     <ListPreference
         android:key="canbox_key_mode"
         android:layout="@layout/preference_car_settings_submenu"

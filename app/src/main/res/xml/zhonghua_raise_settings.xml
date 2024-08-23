@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:vehicle="http://schemas.android.com/apk/res-auto"
-    android:title="@string/controlset" >
-	<PreferenceScreen
-        android:title="@string/lock" >
+    android:title="@string/controlset">
+    <PreferenceScreen android:title="@string/lock">
         <SwitchPreference
-                android:key="unlock_the_door"
-                android:persistent="false"
-                android:title="@string/unlock_the_door" />
+            android:key="unlock_the_door"
+            android:persistent="false"
+            android:title="@string/unlock_the_door" />
         <SwitchPreference
-                android:key="latch_flashing"
-                android:persistent="false"
-                android:title="@string/latch_flashing" />
+            android:key="latch_flashing"
+            android:persistent="false"
+            android:title="@string/latch_flashing" />
         <SwitchPreference
             android:key="unlock_flicker"
             android:persistent="false"
@@ -32,10 +31,10 @@
             android:key="zhonghua_auto_lock"
             android:persistent="false"
             android:title="@string/zhonghua_auto_lock" />
-	</PreferenceScreen>
-	  <PreferenceScreen
+    </PreferenceScreen>
+    <PreferenceScreen
         android:key="tire"
-        android:title="@string/reversing_camera_settings" >
+        android:title="@string/reversing_camera_settings">
         <SwitchPreference
             android:key="reversing_camera"
             android:persistent="false"
@@ -49,7 +48,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="door_lock_settings"
-        android:title="@string/door_lock_settings" >
+        android:title="@string/door_lock_settings">
         <ListPreference
             android:entries="@array/zhonghua_door_unlocking_entries"
             android:entryValues="@array/two_values"
@@ -61,19 +60,19 @@
             android:persistent="false"
             android:title="@string/str_daytime_running_lamp" />
         <com.common.view.MyPreferenceSeekBar
-	            android:key="vehicle_background_light"
-	            android:persistent="false"
-	            android:title="@string/vehicle_background_light"
-	            vehicle:max="15"
-	            vehicle:min="0"
-	            vehicle:step="1" />
+            android:key="vehicle_background_light"
+            android:persistent="false"
+            android:title="@string/vehicle_background_light"
+            vehicle:max="15"
+            vehicle:min="0"
+            vehicle:step="1" />
         <com.common.view.MyPreferenceSeekBar
-	            android:key="instrument_cluster_brightness"
-	            android:persistent="false"
-	            android:title="@string/instrument_cluster_brightness"
-	            vehicle:max="8"
-	            vehicle:min="0"
-	            vehicle:step="1" />
+            android:key="instrument_cluster_brightness"
+            android:persistent="false"
+            android:title="@string/instrument_cluster_brightness"
+            vehicle:max="8"
+            vehicle:min="0"
+            vehicle:step="1" />
         <ListPreference
             android:entries="@array/zhonghua_lock_unlock_feedback"
             android:entryValues="@array/trumpche_num_level_entries"

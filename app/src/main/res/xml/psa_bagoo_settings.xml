@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
         android:key="parking_assist"
@@ -17,11 +17,11 @@
         android:key="auto_parking"
         android:title="@string/auto_parking" />
 
-<!--     <ListPreference -->
-<!--         android:entries="@array/temp_dis_t" -->
-<!--         android:entryValues="@array/common_s2" -->
-<!--         android:key="temp_dis_k" -->
-<!--         android:title="@string/temp_dis" /> -->
+    <!--     <ListPreference -->
+    <!--         android:entries="@array/temp_dis_t" -->
+    <!--         android:entryValues="@array/common_s2" -->
+    <!--         android:key="temp_dis_k" -->
+    <!--         android:title="@string/temp_dis" /> -->
     <ListPreference
         android:entries="@array/enwelcome_lig"
         android:entryValues="@array/enwelcome_lig_values"

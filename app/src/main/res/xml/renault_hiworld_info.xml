@@ -27,20 +27,20 @@
         android:persistent="false"
         android:title="@string/non_expendable_mileage" />
 
-    
+
     <com.common.view.MyPreference
         android:key="left_and_right_inclination"
         android:persistent="false"
         android:title="@string/left_and_right_inclination" />
-    
+
     <com.common.view.MyPreference
         android:key="back_and_forth_tilt"
         android:persistent="false"
         android:title="@string/back_and_forth_tilt" />
-    
-         <PreferenceScreen
-            android:key="fuelclear"
-            android:persistent="false"
-            android:title="@string/fuelclear" />
-         
+
+    <PreferenceScreen
+        android:key="fuelclear"
+        android:persistent="false"
+        android:title="@string/fuelclear" />
+
 </PreferenceScreen>

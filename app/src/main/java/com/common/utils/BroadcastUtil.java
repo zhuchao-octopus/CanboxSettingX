@@ -1,21 +1,14 @@
 package com.common.utils;
 
-import com.common.util.AppConfig;
-import com.common.util.MyCmd;
-import com.common.util.MyCmd.Cmd;
-import com.common.util.MyCmd.KeyPressType;
-
-import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.util.Log;
-import android.view.KeyEvent;
+
+import com.common.util.AppConfig;
+import com.common.util.MyCmd;
 
 public class BroadcastUtil {
     // ---------------以下是公共部分广播---------------
+
     /**
      * 发送按键广播
      *

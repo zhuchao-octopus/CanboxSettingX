@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/controlset">
-	<SwitchPreference
+    <SwitchPreference
         android:key="automatic_folding_outer_rearview_mirror"
         android:persistent="false"
         android:title="@string/automatic_folding_outer_rearview_mirror" />
@@ -34,6 +34,6 @@
         android:persistent="false"
         android:title="@string/str_daytime_running_lamp" />
     <PreferenceScreen
-            android:key="restore"
-            android:title="@string/restore" />
+        android:key="restore"
+        android:title="@string/restore" />
 </PreferenceScreen>

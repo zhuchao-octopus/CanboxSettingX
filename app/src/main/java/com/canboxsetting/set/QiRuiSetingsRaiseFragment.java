@@ -1,69 +1,32 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
+import androidx.annotation.Nullable;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceDialog;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class QiRuiSetingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
 
     private static final NodePreference[] NODES = {
 
@@ -80,10 +43,7 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragment implements Pre
 
             new NodePreference("backlighting", 0xc6, 0x40, 0xa, 0, R.array.dashboard_brightness_value, R.array.dashboard_brightness_value),
 
-            new NodePreference("steering_auxiliary_lighting", 0xc6, 0x40, 0xb, 0), new NodePreference("str_auto_unlock", 0xc6, 0x40, 0xc, 0),
-            new NodePreference("remote_open_trunk", 0xc6, 0x40, 0xd, 0), new NodePreference("blind_spot_monitoring", 0xc6, 0x40, 0xf, 0),
-            new NodePreference("lane_offset_warning", 0xc6, 0x40, 0x10, 0), new NodePreference("rear_view", 0xc6, 0x40, 0x11, 0), new NodePreference("gesture_enable", 0xc6, 0x40, 0x12, 0),
-            new NodePreference("gesture_skylight", 0xc6, 0x40, 0x13, 0),
+            new NodePreference("steering_auxiliary_lighting", 0xc6, 0x40, 0xb, 0), new NodePreference("str_auto_unlock", 0xc6, 0x40, 0xc, 0), new NodePreference("remote_open_trunk", 0xc6, 0x40, 0xd, 0), new NodePreference("blind_spot_monitoring", 0xc6, 0x40, 0xf, 0), new NodePreference("lane_offset_warning", 0xc6, 0x40, 0x10, 0), new NodePreference("rear_view", 0xc6, 0x40, 0x11, 0), new NodePreference("gesture_enable", 0xc6, 0x40, 0x12, 0), new NodePreference("gesture_skylight", 0xc6, 0x40, 0x13, 0),
 
 
             new NodePreference("accompany_me_home", 0xc6, 0x40, 0x14, 0, R.array.qirui1, R.array.eleven_values),
@@ -101,20 +61,15 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragment implements Pre
             new NodePreference("ambient_light_brightness", 0xc6, 0x40, 0x20, 0, R.array.chery_ambient_light_brightness_entries, R.array.eleven_values),
 
 
-            new NodePreference("delayed_closure_of_blower", 0xc6, 0x40, 0x1a, 0), new NodePreference("greeting_lights", 0xc6, 0x40, 0x1c, 0),
-            new NodePreference("intelligent_key_sensor_unlock_unlock_lock", 0xc6, 0x40, 0x1d, 0), new NodePreference("ambient_related_driving_modes", 0xc6, 0x40, 0x1e, 0),
-            new NodePreference("ambient_light_music_rhythm", 0xc6, 0x40, 0x1f, 0), new NodePreference("steering_force_mode_associated_driving_mode", 0xc6, 0x40, 0x22, 0),
-            new NodePreference("display_distance_waring", 0xc6, 0x40, 0x24, 0), new NodePreference("gwm_automatic_emergency_braking_system", 0xc6, 0x40, 0x25, 0),
+            new NodePreference("delayed_closure_of_blower", 0xc6, 0x40, 0x1a, 0), new NodePreference("greeting_lights", 0xc6, 0x40, 0x1c, 0), new NodePreference("intelligent_key_sensor_unlock_unlock_lock", 0xc6, 0x40, 0x1d, 0), new NodePreference("ambient_related_driving_modes", 0xc6, 0x40, 0x1e, 0), new NodePreference("ambient_light_music_rhythm", 0xc6, 0x40, 0x1f, 0), new NodePreference("steering_force_mode_associated_driving_mode", 0xc6, 0x40, 0x22, 0), new NodePreference("display_distance_waring", 0xc6, 0x40, 0x24, 0), new NodePreference("gwm_automatic_emergency_braking_system", 0xc6, 0x40, 0x25, 0),
 
 
             new NodePreference("adaptive_cruise_system", 0xc6, 0x40, 0x27, 0, R.array.adaptive_cruise_system_entries, R.array.eleven_values),
 
-            new NodePreference("adaptive_cruise_system_last_distance_selected", 0xc6, 0x40, 0x28, 0), new NodePreference("smart_key_sensor_tailgate_opens", 0xc6, 0x40, 0x29, 0),
-            new NodePreference("air_purification", 0xc6, 0x40, 0x2a, 0),
+            new NodePreference("adaptive_cruise_system_last_distance_selected", 0xc6, 0x40, 0x28, 0), new NodePreference("smart_key_sensor_tailgate_opens", 0xc6, 0x40, 0x29, 0), new NodePreference("air_purification", 0xc6, 0x40, 0x2a, 0),
 
 
-            new NodePreference("language", 0xc6, 0x40, 0x0, 0, R.array.chery_language_status_entries, R.array.two_values),
-    };
+            new NodePreference("language", 0xc6, 0x40, 0x0, 0, R.array.chery_language_status_entries, R.array.two_values),};
 
 
     @Override
@@ -124,6 +79,11 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragment implements Pre
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

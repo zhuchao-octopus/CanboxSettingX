@@ -102,8 +102,7 @@ public class AC149 extends MyFragment {
 
     private final static int[][] CMD_ID = new int[][]{
 
-            {R.id.ac_auto, 0x01}, {R.id.dual, 0x2}, {R.id.inner_loop, 0x03}, {R.id.max, 0x04}, {R.id.rear, 0x05}, {R.id.wind_add, 0x06}, {R.id.wind_minus, 0x07}, {R.id.ac, 0x08}, {R.id.mode, 0x9},
-            {R.id.power, 0x0a},
+            {R.id.ac_auto, 0x01}, {R.id.dual, 0x2}, {R.id.inner_loop, 0x03}, {R.id.max, 0x04}, {R.id.rear, 0x05}, {R.id.wind_add, 0x06}, {R.id.wind_minus, 0x07}, {R.id.ac, 0x08}, {R.id.mode, 0x9}, {R.id.power, 0x0a},
 
             {R.id.con_left_temp_up, 0x0c}, {R.id.con_left_temp_down, 0x0d}, {R.id.con_right_temp_up, 0xe}, {R.id.con_right_temp_down, 0xf},
 

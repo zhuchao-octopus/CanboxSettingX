@@ -3,7 +3,7 @@
     android:id="@+id/usb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,15 +11,14 @@
         android:layout_marginTop="60px"
         android:layout_weight="2"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:src="@drawable/usb" >
-        </ImageView>
+            android:src="@drawable/usb"></ImageView>
 
         <TextView
             android:id="@+id/usb_status"
@@ -47,7 +46,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="15px"
-        android:paddingRight="15px" >
+        android:paddingRight="15px">
 
         <SeekBar
             android:id="@+id/seekbar"
@@ -74,12 +73,12 @@
         android:layout_height="0px"
         android:layout_weight="0.8"
         android:background="@drawable/radio_bottom_bg"
-        android:gravity="center" >
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" >
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/usb_prev"

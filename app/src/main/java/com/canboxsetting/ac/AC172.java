@@ -153,9 +153,7 @@ public class AC172 extends MyFragment {
             if (CMD_ID[i][0] == id) {
                 mMsgInterface.callBack(0);
 
-                byte[] buf = new byte[]{
-                        0x2, (byte) 0x3d, (byte) CMD_ID[i][1], down
-                };
+                byte[] buf = new byte[]{0x2, (byte) 0x3d, (byte) CMD_ID[i][1], down};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
             }
         }

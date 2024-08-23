@@ -90,9 +90,7 @@ public class AC285 extends MyFragment {
 
     private void sendCanboxInfo0xc7(int d0) {
         mSwitch = !mSwitch;
-        byte[] buf = new byte[]{
-                (byte) 0x33, 0x4, (byte) d0, (byte) (mSwitch ? 0xcc : 0x22), 0, 0,
-        };
+        byte[] buf = new byte[]{(byte) 0x33, 0x4, (byte) d0, (byte) (mSwitch ? 0xcc : 0x22), 0, 0,};
 
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 

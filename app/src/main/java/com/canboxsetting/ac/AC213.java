@@ -146,9 +146,7 @@ public class AC213 extends MyFragment {
         for (int i = 0; i < CMD_ID.length; ++i) {
             if (CMD_ID[i][0] == id) {
 
-                byte[] buf = new byte[]{
-                        (byte) (0xe0), 0x2, (byte) (CMD_ID[i][1] & 0xff), 1
-                };
+                byte[] buf = new byte[]{(byte) (0xe0), 0x2, (byte) (CMD_ID[i][1] & 0xff), 1};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
                 Util.doSleep(200);
                 buf[3] = 0;

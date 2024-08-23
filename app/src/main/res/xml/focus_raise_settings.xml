@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceScreen android:title="@string/vehicle_settings" >
+    <PreferenceScreen android:title="@string/vehicle_settings">
         <SwitchPreference
             android:defaultValue="false"
             android:key="information_tone_volume"
@@ -53,28 +53,22 @@
             android:key="enhanced_assistance"
             android:title="@string/enhanced_assistance" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/mirrors_and_wipers" >
-    </PreferenceScreen>
-    
-    <PreferenceScreen android:title="@string/safety_warning" >
-    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/mirrors_and_wipers"></PreferenceScreen>
 
-     
-    <PreferenceScreen android:title="@string/str_drive_assit" >
-    </PreferenceScreen>
-    
-     
-    <PreferenceScreen android:title="@string/key_car_lock" >
-    </PreferenceScreen>
-     
-    <PreferenceScreen android:title="@string/light_settings" >
-    </PreferenceScreen>
-    
-       
-    <PreferenceScreen android:title="@string/amplifier_status" >
-    </PreferenceScreen>
-         
-<!--     <PreferenceScreen android:title="@string/seat_massage" > -->
-<!--     </PreferenceScreen> -->
-    
+    <PreferenceScreen android:title="@string/safety_warning"></PreferenceScreen>
+
+
+    <PreferenceScreen android:title="@string/str_drive_assit"></PreferenceScreen>
+
+
+    <PreferenceScreen android:title="@string/key_car_lock"></PreferenceScreen>
+
+    <PreferenceScreen android:title="@string/light_settings"></PreferenceScreen>
+
+
+    <PreferenceScreen android:title="@string/amplifier_status"></PreferenceScreen>
+
+    <!--     <PreferenceScreen android:title="@string/seat_massage" > -->
+    <!--     </PreferenceScreen> -->
+
 </PreferenceScreen>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/safe_driving" >
+    <PreferenceScreen android:title="@string/safe_driving">
         <ListPreference
             android:entries="@array/enparksense"
             android:entryValues="@array/en_cartype_vaues"
@@ -89,7 +89,7 @@
             android:persistent="false"
             android:title="@string/rear_parkSense" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/lights" >
+    <PreferenceScreen android:title="@string/lights">
         <ListPreference
             android:entries="@array/enheadlights_off"
             android:entryValues="@array/enheadlights_off_vaues"
@@ -136,7 +136,7 @@
             android:persistent="false"
             android:title="@string/turn_lights_set" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/door_lock" >
+    <PreferenceScreen android:title="@string/door_lock">
         <SwitchPreference
             android:key="outlock"
             android:persistent="false"
@@ -174,7 +174,7 @@
             android:persistent="false"
             android:title="@string/power_alarm" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/tail_off" >
+    <PreferenceScreen android:title="@string/tail_off">
         <SwitchPreference
             android:key="seat"
             android:persistent="false"
@@ -193,7 +193,7 @@
             android:persistent="false"
             android:title="@string/delayed_extinguishing_when_door_closes" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/unit_setting" >
+    <PreferenceScreen android:title="@string/unit_setting">
         <ListPreference
             android:entries="@array/enunit_set"
             android:entryValues="@array/enunit_set_vaues"
@@ -225,7 +225,7 @@
             android:persistent="false"
             android:title="@string/temperature" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/mirrors_and_wipers" >
+    <PreferenceScreen android:title="@string/mirrors_and_wipers">
         <SwitchPreference
             android:key="backview"
             android:persistent="false"
@@ -241,9 +241,9 @@
             android:persistent="false"
             android:title="@string/rearview_dimming" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/other" >
-        
-          <ListPreference
+    <PreferenceScreen android:title="@string/other">
+
+        <ListPreference
             android:entries="@array/enoutseat_heating"
             android:entryValues="@array/enoutseat_heating_vaues"
             android:key="outseat_heating"
@@ -262,8 +262,8 @@
             android:key="auto_parking"
             android:persistent="false"
             android:title="@string/auto_parking" />
-        
-        
+
+
         <SwitchPreference
             android:key="auto_adjustment"
             android:persistent="false"
@@ -287,7 +287,7 @@
             android:key="dis_suspension"
             android:persistent="false"
             android:title="@string/dis_suspension" />
-        
+
         <ListPreference
             android:entries="@array/jeep_raise_cartype_entries"
             android:entryValues="@array/car_type_values"

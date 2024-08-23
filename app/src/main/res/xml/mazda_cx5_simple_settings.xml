@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <ListPreference
         android:entries="@array/autodoorlockmode14_entries"
@@ -68,11 +68,11 @@
         android:persistent="false"
         android:title="@string/wipers14" />
 
-<!--     <ListPreference -->
-<!--         android:entries="@array/Language14_entries" -->
-<!--         android:entryValues="@array/language14_entryValues" -->
-<!--         android:key="langauage" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/langauage14" /> -->
+    <!--     <ListPreference -->
+    <!--         android:entries="@array/Language14_entries" -->
+    <!--         android:entryValues="@array/language14_entryValues" -->
+    <!--         android:key="langauage" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/langauage14" /> -->
 
 </PreferenceScreen>

@@ -80,8 +80,7 @@ public class AC211 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.ac_profile, 0xb100}, {R.id.icon_power, 0x1b2ff},
+    private final static int[][] CMD_ID = new int[][]{{R.id.ac_profile, 0xb100}, {R.id.icon_power, 0x1b2ff},
 
 
             {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},

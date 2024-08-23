@@ -16,20 +16,6 @@
 
 package com.my.factory;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-
-import com.common.util.AppConfig;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.UtilSystem;
-import com.canboxsetting.R;
-import com.zhuchao.android.fbase.MMLog;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -37,15 +23,29 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+import com.canboxsetting.R;
+import com.common.util.AppConfig;
+import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
+import com.common.util.MyCmd;
+import com.common.util.SystemConfig;
+import com.common.util.UtilSystem;
+import com.zhuchao.android.fbase.MMLog;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * This activity plays a video from a specified URI.
@@ -1451,7 +1451,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             mCanboxSettingPreference.setValue(which);
         }
 
-        MMLog.d("updateCanboxSetting", String.valueOf(mCanboxSettingPreference.getEntry()));
+        MMLog.d("UpdateCanboxSetting", String.valueOf(mCanboxSettingPreference.getEntry()));
         mCanboxSettingPreference.setSummary(mCanboxSettingPreference.getEntry());
         updateCanboxKey(mCanboxSettingPreference.getValue());
         updateCanboxEQ(mCanboxSettingPreference.getValue());
@@ -1488,15 +1488,18 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         }
         lp.setSummary(lp.getEntry());
 
-        lp = (ListPreference) findPreference("canbox_air");
-
+        ///lp = (ListPreference) findPreference("canbox_air");
         String[] entry1 = {getString(R.string.normal), getString(R.string.temp_change), getString(R.string.hide), getString(R.string.air_single), getString(R.string.show_air_controller)};
         String[] value1 = {"0", "1", "2", "3", "4"};
 
         lp = (ListPreference) findPreference("canbox_air");
+
         if (MachineConfig.VALUE_CANBOX_HY.equalsIgnoreCase(mCanboxType)) {
             entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), "17°C ~ 32°C", "15°C ~ 32°C", "15°C ~ 30°C"};
             value1 = new String[]{"0", "1", "2", "3", "4", "5", "6"};
+        } else if (MachineConfig.VALUE_CANBOX_PSA.equalsIgnoreCase(mCanboxType)) {
+            entry1 = new String[]{getString(R.string.normal), getString(R.string.change), getString(R.string.hide), getString(R.string.air_single), getString(R.string.air_condition_simple_508)};
+            value1 = new String[]{"0", "1", "2", "3", "4"};
         } else {
             try {
                 int a = Integer.parseInt(mAirCondition);
@@ -1514,6 +1517,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         }
         lp.setSummary(lp.getEntry());
         lp.setOnPreferenceChangeListener(this);
+
         // lp = (ListPreference) findPreference("canbox_car_type");
         // if (mCarType != null) {
         // lp.setValue(mCarType);
@@ -1653,7 +1657,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         return false;
     }
 
-    private static void updateHideAppConboxVersion1(String value, String msCarType) {
+    private static void updateHideAppCanboxVersion1(String value, String msCarType) {
 
         boolean hideSync = true;
         boolean hideConboxSetting = true;
@@ -1670,7 +1674,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
         } catch (Exception ignored) {
         }
 
-        MMLog.d(TAG, "updateHideAppConboxVersion1 msCarType:" + " mCarType:" + mCarType);
+        MMLog.d(TAG, "UpdateHideAppCanboxVersion1 msCarType:" + " mCarType:" + mCarType);
 
         if (null != value) {
             switch (value) {
@@ -1848,16 +1852,17 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
     }
 
     private void updateMachineConfig() {
-        updateHideAppConboxVersion1(mCanboxType, mCarType);
-        MMLog.d(TAG, "updateMachineConfig() mCanboxType = " + mCanboxType);
-
+        updateHideAppCanboxVersion1(mCanboxType, mCarType);
+        MMLog.d(TAG, "UpdateMachineConfig() mCanboxType = " + mCanboxType);
+        String newCanboxValue = mCanboxType;
         if (mCanboxType == null || MachineConfig.VALUE_CANBOX_NONE.equals(mCanboxType)) {
+            MMLog.d(TAG, "Send broadcast MyCmd.BROADCAST_MACHINECONFIG_UPDATE mCanboxType=null");
             MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, null);
             Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
             it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
             sendBroadcast(it);
         } else {
-            String newCanboxValue = mCanboxType;
+            newCanboxValue = mCanboxType;
 
             if (mKeyType != null) {
                 newCanboxValue += "," + MachineConfig.KEY_SUB_CANBOX_KEY_TYPE + mKeyType;
@@ -1890,10 +1895,12 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             }
             newCanboxValue += ",v2";
             if (!newCanboxValue.equals(mCanboxValue)) {
+                MMLog.d(TAG, "Send broadcast MyCmd.BROADCAST_MACHINECONFIG_UPDATE " + newCanboxValue);
                 MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, newCanboxValue);
                 Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
                 it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
                 sendBroadcast(it);
+                //BroadcastUtil.sendToCarService(this,it);
             }
         }
     }

@@ -94,17 +94,14 @@ public class VWMQBACHiworldFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x2}, {R.id.inner_loop_auto, 0x0e}, {R.id.ac, 0xf}, {R.id.sync, 0x11}, {R.id.rear_lock, 0x12}, {R.id.ac_max, 0x8101}, {R.id.ac_auto, 0x8100}, {R.id.max, 0x8102},
-            {R.id.inner_loop, 0x0113},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x2}, {R.id.inner_loop_auto, 0x0e}, {R.id.ac, 0xf}, {R.id.sync, 0x11}, {R.id.rear_lock, 0x12}, {R.id.ac_max, 0x8101}, {R.id.ac_auto, 0x8100}, {R.id.max, 0x8102}, {R.id.inner_loop, 0x0113},
 
             {R.id.wind_horizontal1, 0x18}, {R.id.wind_down1, 0x19}, {R.id.wind_up1, 0x1a},
 
             {R.id.wind_minus, 0x117}, {R.id.wind_add, 0x117},
             //
             //
-            {R.id.con_left_temp_up, 0x114}, {R.id.con_left_temp_down, 0x114}, {R.id.con_right_temp_up, 0x115}, {R.id.con_right_temp_down, 0x115}, {R.id.con_left_temp_rear_up, 0x116},
-            {R.id.con_left_temp_rear_down, 0x116},
+            {R.id.con_left_temp_up, 0x114}, {R.id.con_left_temp_down, 0x114}, {R.id.con_right_temp_up, 0x115}, {R.id.con_right_temp_down, 0x115}, {R.id.con_left_temp_rear_up, 0x116}, {R.id.con_left_temp_rear_down, 0x116},
 
             {R.id.left_seat_heat, 0x121}, {R.id.right_seat_heat, 0x122}, {R.id.left_seat_refrigeration, 0x125}, {R.id.right_seat_refrigeration, 0x126},
 

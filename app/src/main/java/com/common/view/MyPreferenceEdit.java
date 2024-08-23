@@ -1,106 +1,79 @@
 package com.common.view;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import com.canboxsetting.R;
-import com.common.util.Kernel;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.StatFs;
-import android.preference.Preference;
-import android.provider.Settings;
-import android.text.format.DateFormat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
+
+import com.canboxsetting.R;
 
 public class MyPreferenceEdit extends Preference {
 
-	public int title;
+    public int title;
 
-	public MyPreferenceEdit(Context context, AttributeSet attrs,
-			int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
+    public MyPreferenceEdit(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
 
-		init(context, attrs);
-	}
+    public MyPreferenceEdit(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs);
+    }
 
-	public MyPreferenceEdit(Context context, AttributeSet attrs) {
-		super(context, attrs);
+    public MyPreferenceEdit(Context context) {
+        super(context);
+        init(context, null);
+    }
 
-		init(context, attrs);
+    @Override
+    public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        //ViewGroup viewGroup = (ViewGroup) holder.itemView;
+        initView(holder.itemView);
+    }
 
-	}
+    private void init(Context context, AttributeSet attrs) {
+        setLayoutResource(R.layout.preference_edit);
+    }
 
-	public MyPreferenceEdit(Context context) {
-		super(context);
-		init(context, null);
-	}
+    private void initView(View view) {
+        ((Button) view.findViewById(R.id.prefrence_a)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if (mButtonCallBack != null) {
+                    mButtonCallBack.callback(getKey(), true);
+                }
+            }
+        });
+        ((Button) view.findViewById(R.id.prefrence_m)).setOnClickListener(new OnClickListener() {
 
-	private void init(Context context, AttributeSet attrs) {
-		setLayoutResource(R.layout.preference_edit);
-	}
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if (mButtonCallBack != null) {
+                    mButtonCallBack.callback(getKey(), false);
+                }
+            }
+        });
 
-	protected View onCreateView(ViewGroup parent) {
-		View v = super.onCreateView(parent);
-		// Log.d("bb", ""+v.findViewById(R.id.prefrence_button1));
-		// getKey()
-		((Button) v.findViewById(R.id.prefrence_a))
-				.setOnClickListener(new OnClickListener() {
+    }
 
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						if(mButtonCallBack!=null){
-							mButtonCallBack.callback(getKey(), true);
-						}
-					}
-				});
-		((Button) v.findViewById(R.id.prefrence_m))
-				.setOnClickListener(new OnClickListener() {
+    public void setCallback(IButtonCallBack cb) {
+        mButtonCallBack = cb;
+    }
 
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						if(mButtonCallBack!=null){
-							mButtonCallBack.callback(getKey(), false);
-						}
-					}
-				});
-		
-		return v;
-	}
+    private IButtonCallBack mButtonCallBack;
 
-	public void setCallback(IButtonCallBack cb){
-		mButtonCallBack = cb;
-	}
-	private IButtonCallBack mButtonCallBack;
-	public static interface IButtonCallBack {
-		public void callback(String key, boolean add);
-	};
+    public static interface IButtonCallBack {
+        public void callback(String key, boolean add);
+    }
+
+    ;
 }

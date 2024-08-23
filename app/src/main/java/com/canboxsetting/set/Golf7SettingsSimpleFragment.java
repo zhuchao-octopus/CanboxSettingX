@@ -15,11 +15,9 @@ import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
-
 
 import com.canboxsetting.R;
 import com.common.util.BroadcastUtil;
@@ -52,67 +50,47 @@ public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implem
 
             new Node("speedunits1", 0x0, 0x40200000, 0x2, 0x0, Node.TYPE_DEFINE1), new Node("speeddata", 0x0, 0x40200000, 0xff00, 0x0, Node.TYPE_DEFINE1),
 
-            new Node("lanesystem", 0xc630, 0x40300001, 0x1, 0x0), new Node("fatigueystem", 0xc631, 0x40300002, 0x2, 0x0), new Node("lastdistance", 0xc632, 0x40310001, 0x1, 0x0),
-            new Node("frontasssystem", 0xc633, 0x40310002, 0x2, 0x0), new Node("warning", 0xc634, 0x40310004, 0x4, 0x0), new Node("showdistancecontrol", 0xc635, 0x40310000, 0x8, 0x0),
-            new Node("accrdriveprogram", 0xc637, 0x40310000, 0xf00, 0x0), new Node("accvehicle", 0xc638, 0x40310000, 0xf000, 0x0), new Node("blind_spot_monitor", 0xc639, 0x40300000, 0x4, 0x0),
+            new Node("lanesystem", 0xc630, 0x40300001, 0x1, 0x0), new Node("fatigueystem", 0xc631, 0x40300002, 0x2, 0x0), new Node("lastdistance", 0xc632, 0x40310001, 0x1, 0x0), new Node("frontasssystem", 0xc633, 0x40310002, 0x2, 0x0), new Node("warning", 0xc634, 0x40310004, 0x4, 0x0), new Node("showdistancecontrol", 0xc635, 0x40310000, 0x8, 0x0), new Node("accrdriveprogram", 0xc637, 0x40310000, 0xf00, 0x0), new Node("accvehicle", 0xc638, 0x40310000, 0xf000, 0x0), new Node("blind_spot_monitor", 0xc639, 0x40300000, 0x4, 0x0),
 
-            new Node("autoaction", 0xc640, 0x40400000, 0x1), new Node("frontvol", 0xc641, 0x40400000, 0xf00), new Node("frontpitch", 0xc642, 0x40400000, 0xf000),
-            new Node("rearvol", 0xc643, 0x40400000, 0xf0000), new Node("rearpitch", 0xc644, 0x40400000, 0xf00000),
+            new Node("autoaction", 0xc640, 0x40400000, 0x1), new Node("frontvol", 0xc641, 0x40400000, 0xf00), new Node("frontpitch", 0xc642, 0x40400000, 0xf000), new Node("rearvol", 0xc643, 0x40400000, 0xf0000), new Node("rearpitch", 0xc644, 0x40400000, 0xf00000),
 
-            new Node("turnontime", 0xc650, 0x40500000, 0xf), new Node("autorunlights", 0xc651, 0x40500000, 0x10), new Node("turnlights", 0xc652, 0x40500000, 0x20),
-            new Node("switchlight", 0xc653, 0x40500000, 0xff00), new Node("homeinmode", 0xc654, 0x40500000, 0xff0000), new Node("homeoutmode", 0xc655, 0x40500000, 0xff000000),
-            new Node("str_daytime_running_lamp", 0xc6c8, 0x40500000, 0x40),
+            new Node("turnontime", 0xc650, 0x40500000, 0xf), new Node("autorunlights", 0xc651, 0x40500000, 0x10), new Node("turnlights", 0xc652, 0x40500000, 0x20), new Node("switchlight", 0xc653, 0x40500000, 0xff00), new Node("homeinmode", 0xc654, 0x40500000, 0xff0000), new Node("homeoutmode", 0xc655, 0x40500000, 0xff000000), new Node("str_daytime_running_lamp", 0xc6c8, 0x40500000, 0x40),
 
-            new Node("travlemode", 0xc656, 0x40510000, 0x1), new Node("doorlight", 0xc657, 0x40510000, 0xff00), new Node("footlight", 0xc658, 0x40510000, 0xff0000),
-            new Node("headlight_range_control", 0xc65F, 0x40510000, 0xe0000000),
+            new Node("travlemode", 0xc656, 0x40510000, 0x1), new Node("doorlight", 0xc657, 0x40510000, 0xff00), new Node("footlight", 0xc658, 0x40510000, 0xff0000), new Node("headlight_range_control", 0xc65F, 0x40510000, 0xe0000000),
 
-            new Node("mirrorsyncadj", 0xc660, 0x40600000, 0x1), new Node("mirrorlower", 0xc661, 0x40600000, 0x2), new Node("autorain", 0xc662, 0x40600000, 0x4),
-            new Node("rearrain", 0xc663, 0x40600000, 0x8), new Node("parking", 0xc664, 0x40600000, 0x100),
+            new Node("mirrorsyncadj", 0xc660, 0x40600000, 0x1), new Node("mirrorlower", 0xc661, 0x40600000, 0x2), new Node("autorain", 0xc662, 0x40600000, 0x4), new Node("rearrain", 0xc663, 0x40600000, 0x8), new Node("parking", 0xc664, 0x40600000, 0x100),
 
-            new Node("acousticconfirmation", 0xc6c9, 0x40700000, 0x10000), new Node("windowsopen", 0xc670, 0x40700000, 0xf), new Node("centrallock", 0xc671, 0x40700000, 0xf0),
-            new Node("autolock", 0xc672, 0x40700000, 0x100), new Node("induction_rear_rear_cover", 0xc673, 0x40700000, 0x200), new Node("interior_monitoring", 0xc674, 0x40700000, 0x400),
+            new Node("acousticconfirmation", 0xc6c9, 0x40700000, 0x10000), new Node("windowsopen", 0xc670, 0x40700000, 0xf), new Node("centrallock", 0xc671, 0x40700000, 0xf0), new Node("autolock", 0xc672, 0x40700000, 0x100), new Node("induction_rear_rear_cover", 0xc673, 0x40700000, 0x200), new Node("interior_monitoring", 0xc674, 0x40700000, 0x400),
 
-            new Node("miunit", 0xc690, 0x40900000, 0x1), new Node("speedunits", 0xc691, 0x40900000, 0x2), new Node("temperature", 0xc692, 0x40900000, 0x4),
-            new Node("volume", 0xc693, 0x40900000, 0xf0), new Node("fulecons", 0xc694, 0x40900000, 0xf00), new Node("tireunit", 0xc695, 0x40900000, 0xf000),
+            new Node("miunit", 0xc690, 0x40900000, 0x1), new Node("speedunits", 0xc691, 0x40900000, 0x2), new Node("temperature", 0xc692, 0x40900000, 0x4), new Node("volume", 0xc693, 0x40900000, 0xf0), new Node("fulecons", 0xc694, 0x40900000, 0xf00), new Node("tireunit", 0xc695, 0x40900000, 0xf000),
 
-            new Node("currentfuel", 0xc680, 0x40800000, 0x1), new Node("averagefuel", 0xc681, 0x40800000, 0x2), new Node("averageapeed", 0xc686, 0x40800000, 0x40),
-            new Node("comfort", 0xc682, 0x40800000, 0x4), new Node("tipeconomy", 0xc683, 0x40800000, 0x8), new Node("digitalspeed", 0xc687, 0x40800000, 0x80),
-            new Node("oil", 0xc689, 0x40800000, 0x200), new Node("mileage", 0xc685, 0x40800000, 0x20), new Node("traveltime", 0xc684, 0x40800000, 0x10),
-            new Node("speedalarm1", 0xc688, 0x40800000, 0x100),
+            new Node("currentfuel", 0xc680, 0x40800000, 0x1), new Node("averagefuel", 0xc681, 0x40800000, 0x2), new Node("averageapeed", 0xc686, 0x40800000, 0x40), new Node("comfort", 0xc682, 0x40800000, 0x4), new Node("tipeconomy", 0xc683, 0x40800000, 0x8), new Node("digitalspeed", 0xc687, 0x40800000, 0x80), new Node("oil", 0xc689, 0x40800000, 0x200), new Node("mileage", 0xc685, 0x40800000, 0x20), new Node("traveltime", 0xc684, 0x40800000, 0x10), new Node("speedalarm1", 0xc688, 0x40800000, 0x100),
 
             new Node("auto_supple_heater", 0xc6BD, 0x40c00000, 0x1),
 
             new Node("steer_heat", 0xc6AC, 0x21000000, 0x580, 0, Node.TYPE_BUFF1_INDEX),
 
 
-            new Node("automatic_air", 0xc6b1, 0x21000000, 0x6ff, 0, Node.TYPE_BUFF1_INDEX), new Node("air_switch", 0xc6b2, 0x21000000, 0x0080, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("aqs_auto", 0xc6b0, 0x21000000, 0x420, 0, Node.TYPE_BUFF1_INDEX),
+            new Node("automatic_air", 0xc6b1, 0x21000000, 0x6ff, 0, Node.TYPE_BUFF1_INDEX), new Node("air_switch", 0xc6b2, 0x21000000, 0x0080, 0, Node.TYPE_BUFF1_INDEX), new Node("aqs_auto", 0xc6b0, 0x21000000, 0x420, 0, Node.TYPE_BUFF1_INDEX),
 
             new Node("radar_sound", 0xc6ab, 0x25000000, 0x1, 0, Node.TYPE_BUFF1), new Node("tpms", 0xc62201, 0x0, 0x0),
 
-            new Node("background_lighting1", 0xc65e, 0x40520000, 0xf0000), new Node("background_lighting2", 0xc65d, 0x40520000, 0xff000000), new Node("background_lighting3", 0xc65b, 0x40520000, 0xff),
-            new Node("background_lighting4", 0xc65c, 0x40520000, 0xff00),
+            new Node("background_lighting1", 0xc65e, 0x40520000, 0xf0000), new Node("background_lighting2", 0xc65d, 0x40520000, 0xff000000), new Node("background_lighting3", 0xc65b, 0x40520000, 0xff), new Node("background_lighting4", 0xc65c, 0x40520000, 0xff00),
 
 
-            new Node("reverse_video1", 0xc646, 0x40d00000, 0xff), new Node("reverse_video2", 0xc647, 0x40d00000, 0xff00), new Node("reverse_video3", 0xc648, 0x40d00000, 0xff0000),
-            new Node("reverse_video4", 0xc649, 0x40d00000, 0xff000000),
+            new Node("reverse_video1", 0xc646, 0x40d00000, 0xff), new Node("reverse_video2", 0xc647, 0x40d00000, 0xff00), new Node("reverse_video3", 0xc648, 0x40d00000, 0xff0000), new Node("reverse_video4", 0xc649, 0x40d00000, 0xff000000),
 
             // drive
 
-            new Node("normal", 0xc6d0, 0x0, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("sport", 0xc6d0, 0x1, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("driv_eco", 0xc6d0, 0x2, 0x0, 0x0, Node.TYPE_CUSTOM),
-            new Node("individual", 0xc6d0, 0x3, 0x0, 0x0, Node.TYPE_CUSTOM),
+            new Node("normal", 0xc6d0, 0x0, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("sport", 0xc6d0, 0x1, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("driv_eco", 0xc6d0, 0x2, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("individual", 0xc6d0, 0x3, 0x0, 0x0, Node.TYPE_CUSTOM),
 
-            new Node("individual_steering", 0xc6d1, 0x40a00000, 0x100), new Node("individual_engine", 0xc6d2, 0x40a00000, 0x1000), new Node("individual_climate", 0xc6d3, 0x40a00000, 0x30000),
-            new Node("individual_reset", 0xc6d4, 0x0, 0x0),
-    };
+            new Node("individual_steering", 0xc6d1, 0x40a00000, 0x100), new Node("individual_engine", 0xc6d2, 0x40a00000, 0x1000), new Node("individual_climate", 0xc6d3, 0x40a00000, 0x30000), new Node("individual_reset", 0xc6d4, 0x0, 0x0),};
 
-    private final static int[] INIT_CMDS = {
-            0x41ff, 0x40ff,
+    private final static int[] INIT_CMDS = {0x41ff, 0x40ff,
             /*0x4010, 0x4020, 0x4030,
             0x4031, 0x4040, 0x4050, 0x4051,
             0x4060, 0x4070, 0x4080, 0x4090,
-            */
-    };
+            */};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/controlset">
-	<PreferenceScreen android:title="@string/vehicle_settings" >
+    <PreferenceScreen android:title="@string/vehicle_settings">
         <ListPreference
             android:entries="@array/enmileage_unit"
             android:entryValues="@array/miunit_entryValues_1"
@@ -16,12 +16,12 @@
             android:key="bzs"
             android:persistent="false"
             android:title="@string/bzs" />
-<!--         <ListPreference -->
-<!--             android:entries="@array/trumpche_language_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="language_status" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/language_status" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/trumpche_language_entries" -->
+        <!--             android:entryValues="@array/open_closevaues" -->
+        <!--             android:key="language_status" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/language_status" /> -->
         <SwitchPreference
             android:key="traction_control_system"
             android:persistent="false"
@@ -40,61 +40,61 @@
             android:key="waring_tone"
             android:persistent="false"
             android:title="@string/waring_tone" />
-<!--         <SwitchPreference -->
-<!--             android:key="rain_sensing_wipers" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/rain_sensing_wipers" /> -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="ambient_light_brightness" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/ambient_light_brightness" -->
-<!-- 	            vehicle:max="100" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/reverse_video_zoom_status_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="reverse_video_zoom_status" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/reverse_video_zoom_status" /> -->
-<!--        <SwitchPreference -->
-<!--             android:key="enhanced_parking_assist" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/enhanced_parking_assist" /> -->
-<!--        <SwitchPreference -->
-<!--             android:key="compass_switch" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/compass_switch" /> -->
-<!--        <ListPreference -->
-<!--             android:entries="@array/distance_unit_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="degree" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/degree" /> -->
-       <ListPreference
+        <!--         <SwitchPreference -->
+        <!--             android:key="rain_sensing_wipers" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/rain_sensing_wipers" /> -->
+        <!--         <com.common.view.MyPreferenceSeekBar -->
+        <!-- 	            android:key="ambient_light_brightness" -->
+        <!-- 	            android:persistent="false" -->
+        <!-- 	            android:title="@string/ambient_light_brightness" -->
+        <!-- 	            vehicle:max="100" -->
+        <!-- 	            vehicle:min="0" -->
+        <!-- 	            vehicle:step="1" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/reverse_video_zoom_status_entries" -->
+        <!--             android:entryValues="@array/open_closevaues" -->
+        <!--             android:key="reverse_video_zoom_status" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/reverse_video_zoom_status" /> -->
+        <!--        <SwitchPreference -->
+        <!--             android:key="enhanced_parking_assist" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/enhanced_parking_assist" /> -->
+        <!--        <SwitchPreference -->
+        <!--             android:key="compass_switch" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/compass_switch" /> -->
+        <!--        <ListPreference -->
+        <!--             android:entries="@array/distance_unit_entries" -->
+        <!--             android:entryValues="@array/open_closevaues" -->
+        <!--             android:key="degree" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/degree" /> -->
+        <ListPreference
             android:entries="@array/hiworld_atmosphere_light_color_entries"
             android:entryValues="@array/entrumpchi_vaues"
             android:key="atmosphere_light_color"
             android:persistent="false"
             android:title="@string/atmosphere_light_color" />
-       <ListPreference
+        <ListPreference
             android:entries="@array/temperature_unit_entries"
             android:entryValues="@array/open_closevaues"
             android:key="temp47"
             android:persistent="false"
             android:title="@string/temp47" />
-<!--        <ListPreference -->
-<!--             android:entries="@array/automatic_air_conditioning_mode_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="mfd_screen_brightness" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/mfd_screen_brightness" /> -->
-       <SwitchPreference
+        <!--        <ListPreference -->
+        <!--             android:entries="@array/automatic_air_conditioning_mode_entries" -->
+        <!--             android:entryValues="@array/open_closevaues" -->
+        <!--             android:key="mfd_screen_brightness" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/mfd_screen_brightness" /> -->
+        <SwitchPreference
             android:key="park_lock_ctrl"
             android:persistent="false"
             android:title="@string/park_lock_ctrl" />
     </PreferenceScreen>
-	<PreferenceScreen android:title="@string/power_amplifier_settings" >
+    <PreferenceScreen android:title="@string/power_amplifier_settings">
         <ListPreference
             android:entries="@array/speed_compensated_vol_entries"
             android:entryValues="@array/trumpche_num_level_entries"
@@ -115,188 +115,188 @@
             android:key="reset_all"
             android:persistent="false"
             android:title="@string/reset_all" />
-<!--         <ListPreference -->
-<!--             android:entries="@array/orientation_selection" -->
-<!--             android:entryValues="@array/pressure_values" -->
-<!--             android:key="orientation_selection" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/orientation_selection" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/ford_eq_mode" -->
-<!--             android:entryValues="@array/auto_adjust_head_light_sensity_values" -->
-<!--             android:key="eq_mode" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/eq_mode" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/orientation_selection" -->
+        <!--             android:entryValues="@array/pressure_values" -->
+        <!--             android:key="orientation_selection" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/orientation_selection" /> -->
+        <!--         <ListPreference -->
+        <!--             android:entries="@array/ford_eq_mode" -->
+        <!--             android:entryValues="@array/auto_adjust_head_light_sensity_values" -->
+        <!--             android:key="eq_mode" -->
+        <!--             android:persistent="false" -->
+        <!--             android:title="@string/eq_mode" /> -->
     </PreferenceScreen>
-<!-- 	<PreferenceScreen android:title="@string/amplifier_status" > -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="attenuation" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/attenuation" -->
-<!-- 	            vehicle:max="14" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/speed_compensated_vol_entries" -->
-<!--             android:entryValues="@array/trumpche_num_level_entries" -->
-<!--             android:key="speed_adjustment" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/speed_adjustment" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/sound_effect_entries" -->
-<!--             android:entryValues="@array/speed_values" -->
-<!--             android:key="sound_mode" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/sound_mode" /> -->
-<!--          <ListPreference -->
-<!--             android:entries="@array/allround_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="allround" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/allround" /> -->
-<!--     </PreferenceScreen> -->
-<!-- 	<PreferenceScreen android:title="@string/territorial_setting" > -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/low_speed_warning_tone_entries" -->
-<!--             android:entryValues="@array/pressure_values" -->
-<!--             android:key="automatic_headlight_sensitivity" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/automatic_headlight_sensitivity" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/request_radar_data_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="intelligent_unlocking" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/intelligent_unlocking" /> -->
-<!--        <ListPreference -->
-<!--             android:entries="@array/welcome_date_length" -->
-<!--             android:entryValues="@array/remote_lock_vaues" -->
-<!--             android:key="length_welcome_light" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/length_welcome_light" /> -->
-<!--        <ListPreference -->
-<!--             android:entries="@array/request_radar_data_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="smartwindow" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/smartwindow" /> -->
-<!--        <ListPreference -->
-<!--             android:entries="@array/request_radar_data_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="wireless_charging" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/wireless_charging" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/request_radar_data_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="str_speed_lock" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/str_speed_lock" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/indoor_lamp_length_entries" -->
-<!--             android:entryValues="@array/enIntelligence_car_vaues" -->
-<!--             android:key="indoor_lamp_length" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/indoor_lamp_length" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/driving_display_brightness_control_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="rear_view_mirror_folding_mode" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/rear_view_mirror_folding_mode" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/post_defrosting_time_key_entries" -->
-<!--             android:entryValues="@array/open_closevaues" -->
-<!--             android:key="post_defrosting_time" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/post_defrosting_time" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/h2_gohome" -->
-<!--             android:entryValues="@array/remote_lock_vaues" -->
-<!--             android:key="with_me_i_go_home" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/with_me_i_go_home" /> -->
-<!--         <SwitchPreference -->
-<!--             android:key="instrument_arrow" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/instrument_arrow" /> -->
-<!--     </PreferenceScreen> -->
-<!-- 	<PreferenceScreen android:title="@string/seat_massage" > -->
-<!--          <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="drive_adjustment_high" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/drive_adjustment_high" -->
-<!-- 	            vehicle:max="10" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="drive_adjustment_medium" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/drive_adjustment_medium" -->
-<!-- 	            vehicle:max="10" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="drive_adjustment_low" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/drive_adjustment_low" -->
-<!-- 	            vehicle:max="10" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/hendlight_not_warning_device_entries" -->
-<!--             android:entryValues="@array/pressure_values" -->
-<!--             android:key="drive_message_backrest" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/drive_message_backrest" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/hendlight_not_warning_device_entries" -->
-<!--             android:entryValues="@array/pressure_values" -->
-<!--             android:key="drive_message_cushion" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/drive_message_cushion" /> -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="passenger_adjustment_high" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/passenger_adjustment_high" -->
-<!-- 	            vehicle:max="10" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="passenger_adjustment_medium" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/passenger_adjustment_medium" -->
-<!-- 	            vehicle:max="10" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--         <com.common.view.MyPreferenceSeekBar -->
-<!-- 	            android:key="passenger_adjustment_low" -->
-<!-- 	            android:persistent="false" -->
-<!-- 	            android:title="@string/passenger_adjustment_low" -->
-<!-- 	            vehicle:max="10" -->
-<!-- 	            vehicle:min="0" -->
-<!-- 	            vehicle:step="1" /> -->
-<!--          <ListPreference -->
-<!--             android:entries="@array/hendlight_not_warning_device_entries" -->
-<!--             android:entryValues="@array/pressure_values" -->
-<!--             android:key="passenger_message_backrest" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/passenger_message_backrest" /> -->
-<!--         <ListPreference -->
-<!--             android:entries="@array/hendlight_not_warning_device_entries" -->
-<!--             android:entryValues="@array/pressure_values" -->
-<!--             android:key="passenger_message_cushion" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/passenger_message_cushion" /> -->
-<!--     </PreferenceScreen> -->
-<!--     <PreferenceScreen android:title="@string/original_car_video" > -->
-<!--      	<SwitchPreference -->
-<!--             android:key="wide_angle_view" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/wide_angle_view" /> -->
-<!--      	<SwitchPreference -->
-<!--             android:key="depression_view" -->
-<!--             android:persistent="false" -->
-<!--             android:title="@string/depression_view" /> -->
-<!--     </PreferenceScreen> -->
+    <!-- 	<PreferenceScreen android:title="@string/amplifier_status" > -->
+    <!--         <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="attenuation" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/attenuation" -->
+    <!-- 	            vehicle:max="14" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/speed_compensated_vol_entries" -->
+    <!--             android:entryValues="@array/trumpche_num_level_entries" -->
+    <!--             android:key="speed_adjustment" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/speed_adjustment" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/sound_effect_entries" -->
+    <!--             android:entryValues="@array/speed_values" -->
+    <!--             android:key="sound_mode" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/sound_mode" /> -->
+    <!--          <ListPreference -->
+    <!--             android:entries="@array/allround_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="allround" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/allround" /> -->
+    <!--     </PreferenceScreen> -->
+    <!-- 	<PreferenceScreen android:title="@string/territorial_setting" > -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/low_speed_warning_tone_entries" -->
+    <!--             android:entryValues="@array/pressure_values" -->
+    <!--             android:key="automatic_headlight_sensitivity" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/automatic_headlight_sensitivity" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/request_radar_data_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="intelligent_unlocking" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/intelligent_unlocking" /> -->
+    <!--        <ListPreference -->
+    <!--             android:entries="@array/welcome_date_length" -->
+    <!--             android:entryValues="@array/remote_lock_vaues" -->
+    <!--             android:key="length_welcome_light" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/length_welcome_light" /> -->
+    <!--        <ListPreference -->
+    <!--             android:entries="@array/request_radar_data_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="smartwindow" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/smartwindow" /> -->
+    <!--        <ListPreference -->
+    <!--             android:entries="@array/request_radar_data_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="wireless_charging" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/wireless_charging" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/request_radar_data_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="str_speed_lock" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/str_speed_lock" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/indoor_lamp_length_entries" -->
+    <!--             android:entryValues="@array/enIntelligence_car_vaues" -->
+    <!--             android:key="indoor_lamp_length" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/indoor_lamp_length" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/driving_display_brightness_control_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="rear_view_mirror_folding_mode" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/rear_view_mirror_folding_mode" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/post_defrosting_time_key_entries" -->
+    <!--             android:entryValues="@array/open_closevaues" -->
+    <!--             android:key="post_defrosting_time" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/post_defrosting_time" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/h2_gohome" -->
+    <!--             android:entryValues="@array/remote_lock_vaues" -->
+    <!--             android:key="with_me_i_go_home" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/with_me_i_go_home" /> -->
+    <!--         <SwitchPreference -->
+    <!--             android:key="instrument_arrow" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/instrument_arrow" /> -->
+    <!--     </PreferenceScreen> -->
+    <!-- 	<PreferenceScreen android:title="@string/seat_massage" > -->
+    <!--          <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="drive_adjustment_high" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/drive_adjustment_high" -->
+    <!-- 	            vehicle:max="10" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--         <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="drive_adjustment_medium" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/drive_adjustment_medium" -->
+    <!-- 	            vehicle:max="10" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--         <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="drive_adjustment_low" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/drive_adjustment_low" -->
+    <!-- 	            vehicle:max="10" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/hendlight_not_warning_device_entries" -->
+    <!--             android:entryValues="@array/pressure_values" -->
+    <!--             android:key="drive_message_backrest" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/drive_message_backrest" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/hendlight_not_warning_device_entries" -->
+    <!--             android:entryValues="@array/pressure_values" -->
+    <!--             android:key="drive_message_cushion" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/drive_message_cushion" /> -->
+    <!--         <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="passenger_adjustment_high" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/passenger_adjustment_high" -->
+    <!-- 	            vehicle:max="10" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--         <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="passenger_adjustment_medium" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/passenger_adjustment_medium" -->
+    <!-- 	            vehicle:max="10" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--         <com.common.view.MyPreferenceSeekBar -->
+    <!-- 	            android:key="passenger_adjustment_low" -->
+    <!-- 	            android:persistent="false" -->
+    <!-- 	            android:title="@string/passenger_adjustment_low" -->
+    <!-- 	            vehicle:max="10" -->
+    <!-- 	            vehicle:min="0" -->
+    <!-- 	            vehicle:step="1" /> -->
+    <!--          <ListPreference -->
+    <!--             android:entries="@array/hendlight_not_warning_device_entries" -->
+    <!--             android:entryValues="@array/pressure_values" -->
+    <!--             android:key="passenger_message_backrest" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/passenger_message_backrest" /> -->
+    <!--         <ListPreference -->
+    <!--             android:entries="@array/hendlight_not_warning_device_entries" -->
+    <!--             android:entryValues="@array/pressure_values" -->
+    <!--             android:key="passenger_message_cushion" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/passenger_message_cushion" /> -->
+    <!--     </PreferenceScreen> -->
+    <!--     <PreferenceScreen android:title="@string/original_car_video" > -->
+    <!--      	<SwitchPreference -->
+    <!--             android:key="wide_angle_view" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/wide_angle_view" /> -->
+    <!--      	<SwitchPreference -->
+    <!--             android:key="depression_view" -->
+    <!--             android:persistent="false" -->
+    <!--             android:title="@string/depression_view" /> -->
+    <!--     </PreferenceScreen> -->
 </PreferenceScreen>

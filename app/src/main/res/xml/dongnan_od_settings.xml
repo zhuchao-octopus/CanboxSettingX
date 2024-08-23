@@ -17,7 +17,7 @@
         android:key="ford_warning_67"
         android:persistent="false"
         android:title="@string/ford_warning_67" />
-     <SwitchPreference
+    <SwitchPreference
         android:key="close_the_window_rainy_day"
         android:persistent="false"
         android:title="@string/close_the_window_rainy_day" />

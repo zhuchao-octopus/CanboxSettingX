@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:my="http://schemas.android.com/apk/res-auto"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <PreferenceScreen
         android:icon="@drawable/asr"
-        android:title="@string/esc_setting" >
+        android:title="@string/esc_setting">
         <ListPreference
             android:entries="@array/enactionstate"
             android:entryValues="@array/enactionstate_vaues"
@@ -24,7 +24,7 @@
             android:key="driver_mode"
             android:title="@string/driver_mode" />
 
-        <PreferenceCategory android:title="@string/individual" >
+        <PreferenceCategory android:title="@string/individual">
             <SwitchPreference
                 android:key="individual"
                 android:persistent="false"
@@ -79,14 +79,14 @@
     <PreferenceScreen
         android:icon="@drawable/tyre"
         android:key="tire"
-        android:title="@string/tire" >
-        <PreferenceCategory android:title="@string/tpms" >
+        android:title="@string/tire">
+        <PreferenceCategory android:title="@string/tpms">
             <PreferenceScreen
                 android:key="tpms"
                 android:persistent="false"
                 android:title="@string/set" />
         </PreferenceCategory>
-        <PreferenceCategory android:title="@string/winter_tyres" >
+        <PreferenceCategory android:title="@string/winter_tyres">
             <SwitchPreference
                 android:key="speedalarm"
                 android:persistent="false"
@@ -117,8 +117,8 @@
     <PreferenceScreen
         android:icon="@drawable/driver_assistant"
         android:key="driverassistance"
-        android:title="@string/driverassistance" >
-        <PreferenceCategory android:title="@string/driverassistance" >
+        android:title="@string/driverassistance">
+        <PreferenceCategory android:title="@string/driverassistance">
             <ListPreference
                 android:entries="@array/accrdriveprogram_entries"
                 android:entryValues="@array/accrdriveprogram_entryValues"
@@ -153,7 +153,7 @@
         <PreferenceCategory
             android:key="category_front_assist_key"
             android:persistent="false"
-            android:title="@string/front_assist" >
+            android:title="@string/front_assist">
             <SwitchPreference
                 android:key="frontasssystem"
                 android:persistent="false"
@@ -170,7 +170,7 @@
         <PreferenceCategory
             android:key="category_driver_alert_system_key"
             android:persistent="false"
-            android:title="@string/driver_alert_system" >
+            android:title="@string/driver_alert_system">
             <SwitchPreference
                 android:key="fatigueystem"
                 android:persistent="false"
@@ -183,7 +183,7 @@
         <PreferenceCategory
             android:key="category_lane_assist_key"
             android:persistent="false"
-            android:title="@string/lane_assist" >
+            android:title="@string/lane_assist">
             <SwitchPreference
                 android:key="lanesystem"
                 android:persistent="false"
@@ -207,7 +207,7 @@
     <PreferenceScreen
         android:icon="@drawable/parking"
         android:key="parkshunt"
-        android:title="@string/parkshunt" >
+        android:title="@string/parkshunt">
         <SwitchPreference
             android:key="autoaction"
             android:persistent="false"
@@ -249,11 +249,11 @@
     <PreferenceScreen
         android:icon="@drawable/light"
         android:key="lights"
-        android:title="@string/lights" >
+        android:title="@string/lights">
         <PreferenceCategory
             android:key="cateogry_light_assist_key"
             android:persistent="false"
-            android:title="@string/light_assist" >
+            android:title="@string/light_assist">
             <ListPreference
                 android:entries="@array/turnontime_entries"
                 android:entryValues="@array/turnontime_entryValues"
@@ -292,7 +292,7 @@
                 android:key="headlight_distance_adjustment_key"
                 android:title="@string/headlight_distance_adjustment" />
         </PreferenceCategory>
-        <PreferenceCategory android:title="@string/background_lighting" >
+        <PreferenceCategory android:title="@string/background_lighting">
             <ListPreference
                 android:entries="@array/switchlight_entries"
                 android:entryValues="@array/switchlight_entryValues"
@@ -311,30 +311,29 @@
                 android:key="footlight"
                 android:persistent="false"
                 android:title="@string/footlight" />
-            
-             
+
+
             <ListPreference
                 android:entries="@array/ambient_lighting_entries"
                 android:entryValues="@array/three_values"
                 android:key="ambient_lighting"
                 android:persistent="false"
                 android:title="@string/ambient_lighting" />
-            
+
             <ListPreference
                 android:entries="@array/interior_space_light_color"
                 android:entryValues="@array/alarm_vol"
                 android:key="interior_space_light_color"
                 android:persistent="false"
                 android:title="@string/interior_space_light_color" />
-            
-           
-            
-<!--             <ListPreference -->
-<!--                 android:entries="@array/ambient_lighting_tones" -->
-<!--                 android:entryValues="@array/ambient_lighting_tones_value" -->
-<!--                 android:key="background_lighting1" -->
-<!--                 android:persistent="false" -->
-<!--                 android:title="@string/background_lighting1" /> -->
+
+
+            <!--             <ListPreference -->
+            <!--                 android:entries="@array/ambient_lighting_tones" -->
+            <!--                 android:entryValues="@array/ambient_lighting_tones_value" -->
+            <!--                 android:key="background_lighting1" -->
+            <!--                 android:persistent="false" -->
+            <!--                 android:title="@string/background_lighting1" /> -->
             <ListPreference
                 android:entries="@array/background_lighting"
                 android:entryValues="@array/background_lighting_value"
@@ -363,7 +362,7 @@
         <PreferenceCategory
             android:key="cateogry_coming_leaving_key"
             android:persistent="false"
-            android:title="@string/coming_leaving_function" >
+            android:title="@string/coming_leaving_function">
             <ListPreference
                 android:entries="@array/homemode_entries"
                 android:entryValues="@array/homemode_entryValues"
@@ -387,11 +386,11 @@
     <PreferenceScreen
         android:icon="@drawable/wiper"
         android:key="mirrorswipers"
-        android:title="@string/mirrorswipers" >
+        android:title="@string/mirrorswipers">
         <PreferenceCategory
             android:key="category_mirrors_key"
             android:persistent="false"
-            android:title="@string/mirrors" >
+            android:title="@string/mirrors">
             <SwitchPreference
                 android:key="mirrorsyncadj"
                 android:persistent="false"
@@ -404,7 +403,7 @@
         <PreferenceCategory
             android:key="category_wipers_key"
             android:persistent="false"
-            android:title="@string/wipers" >
+            android:title="@string/wipers">
             <SwitchPreference
                 android:key="autorain"
                 android:persistent="false"
@@ -426,11 +425,11 @@
     <PreferenceScreen
         android:icon="@drawable/lock"
         android:key="onoff"
-        android:title="@string/onoff" >
+        android:title="@string/onoff">
         <PreferenceCategory
             android:key="category_window_key"
             android:persistent="false"
-            android:title="@string/window_opration" >
+            android:title="@string/window_opration">
             <ListPreference
                 android:entries="@array/windowsopen_entries"
                 android:entryValues="@array/windowsopen_entryValues"
@@ -441,7 +440,7 @@
         <PreferenceCategory
             android:key="category_door_key"
             android:persistent="false"
-            android:title="@string/central_locking" >
+            android:title="@string/central_locking">
             <ListPreference
                 android:entries="@array/centrallock_entries"
                 android:entryValues="@array/centrallock_entryValues"
@@ -461,7 +460,7 @@
         <PreferenceCategory
             android:key="category_seat_key"
             android:persistent="false"
-            android:title="@string/seat_settings" >
+            android:title="@string/seat_settings">
             <SwitchPreference
                 android:key="remote_control_key_memory_matching"
                 android:persistent="false"
@@ -491,7 +490,7 @@
     <PreferenceScreen
         android:icon="@drawable/unit"
         android:key="unit"
-        android:title="@string/unit" >
+        android:title="@string/unit">
         <ListPreference
             android:entries="@array/miunit_entries"
             android:entryValues="@array/miunit_entryValues"
@@ -532,7 +531,7 @@
     <PreferenceScreen
         android:icon="@drawable/multi"
         android:key="multidisplay"
-        android:title="@string/multidisplay" >
+        android:title="@string/multidisplay">
         <SwitchPreference
             android:key="currentfuel"
             android:persistent="false"
@@ -574,31 +573,31 @@
             android:persistent="false"
             android:title="@string/speedalarm" />
 
-        
+
         <ListPreference
             android:entries="@array/vw_meter_entries"
             android:entryValues="@array/korea_sound_atmosphere_light_brightness_values"
             android:key="vw_meter_mode"
             android:persistent="false"
             android:title="@string/vw_meter_mode" />
-        
-                
+
+
         <ListPreference
             android:entries="@array/vw_meter_set_entries"
             android:entryValues="@array/nine_values"
             android:key="vw_left_meter"
             android:persistent="false"
             android:title="@string/vw_left_meter" />
-        
-        
-          <ListPreference
+
+
+        <ListPreference
             android:entries="@array/vw_meter_set_entries"
             android:entryValues="@array/nine_values"
             android:key="vw_right_meter"
             android:persistent="false"
             android:title="@string/vw_right_meter" />
-          
-        
+
+
         <com.common.view.MyPreferenceDialog
             android:dialogMessage="@string/reset_since_start_driving_data_message"
             android:dialogTitle="@string/reset_since_start_driving_data"
@@ -619,10 +618,10 @@
     <PreferenceScreen
         android:id="@+id/factory_settings"
         android:icon="@drawable/factory"
-        android:title="@string/factory_settings" >
+        android:title="@string/factory_settings">
         <PreferenceCategory
             android:persistent="false"
-            android:title="@string/factory_settings" >
+            android:title="@string/factory_settings">
             <PreferenceScreen
                 android:key="all_settings_key"
                 android:persistent="false"
@@ -669,14 +668,14 @@
         android:key="service_settings"
         android:id="@+id/service_settings"
         android:icon="@drawable/service"
-        android:title="@string/service" >
-        
-        
+        android:title="@string/service">
+
+
         <Preference
             android:key="vehicle"
             android:persistent="false"
             android:title="@string/vehicle" />
-        
+
         <com.common.view.MyPreference
             android:key="vi_days"
             android:persistent="false"
@@ -693,22 +692,22 @@
             android:key="oil_change"
             android:persistent="false"
             android:title="@string/oil_change" />
-        
+
         <com.common.view.MyPreferenceProgress
             android:key="oil_data"
-        	my:max="9"
+            my:max="9"
             android:title="@string/oil_data" />
-        
+
         <PreferenceScreen
             android:id="@+id/reset_main_info"
             android:key="reset_main_info"
             android:title="@string/reset_main_info" />
 
-	</PreferenceScreen>
+    </PreferenceScreen>
     <PreferenceScreen
         android:id="@+id/amp_settings"
         android:icon="@drawable/amp"
-        android:title="@string/amp_info" >
+        android:title="@string/amp_info">
         <ListPreference
             android:entries="@array/eight_values"
             android:entryValues="@array/eight_values"

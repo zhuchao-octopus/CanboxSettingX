@@ -70,7 +70,7 @@ public class RaiseAirControlFragment extends MyFragment {
             mMainView.findViewById(id.wheel).setVisibility(View.GONE);
         }
 
-        byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50,0x03,0x00};//去掉原车空调面板
+        byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50, 0x03, 0x00};//去掉原车空调面板
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
         MMLog.d(TAG, "RaiseAirControlFragment.onCreateView!");
@@ -97,29 +97,7 @@ public class RaiseAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {id.air_title_ce_max, 0x010c},
-            {id.air_title_ce_rear, 0x010e},
-            {id.air_title_ce_ac_1, 0x0101},
-            {id.air_title_ce_inner_loop, 0x0103},
-            {id.air_title_ce_auto_large, 0x0102},
-            {id.air_title_ce_ac_max, 0x010f},
-            {id.wheel, 0x0118},
-            {id.con_left_temp_up, 0x0104},
-            {id.con_left_temp_down, 0x0105},
-            {id.con_right_temp_up, 0x0114},
-            {id.con_right_temp_down, 0x0115},
-            {id.canbus21_mode1, 0x0108},
-            {id.canbus21_mode3, 0x0109},
-            {id.canbus21_mode2, 0x010a},
-            {id.canbus21_mode4, 0x010b},
-            {id.con_seathotleft, 0x0111},
-            {id.con_seathotright, 0x0112},
-            {id.air_title_sync, 0x010d},
-            {id.icon_power, 0x0110},
-            {id.wind_add, 0x0106},
-            {id.wind_minus, 0x0107},
-    };
+    private final static int[][] CMD_ID = new int[][]{{id.air_title_ce_max, 0x010c}, {id.air_title_ce_rear, 0x010e}, {id.air_title_ce_ac_1, 0x0101}, {id.air_title_ce_inner_loop, 0x0103}, {id.air_title_ce_auto_large, 0x0102}, {id.air_title_ce_ac_max, 0x010f}, {id.wheel, 0x0118}, {id.con_left_temp_up, 0x0104}, {id.con_left_temp_down, 0x0105}, {id.con_right_temp_up, 0x0114}, {id.con_right_temp_down, 0x0115}, {id.canbus21_mode1, 0x0108}, {id.canbus21_mode3, 0x0109}, {id.canbus21_mode2, 0x010a}, {id.canbus21_mode4, 0x010b}, {id.con_seathotleft, 0x0111}, {id.con_seathotright, 0x0112}, {id.air_title_sync, 0x010d}, {id.icon_power, 0x0110}, {id.wind_add, 0x0106}, {id.wind_minus, 0x0107},};
 
     private void updateSelect(int id, int s) {
         View v = mMainView.findViewById(id);
@@ -398,10 +376,8 @@ public class RaiseAirControlFragment extends MyFragment {
     }
 
     private void switchStatus(View v, byte id) {
-        if (v.isSelected())
-            sendCanboxInfo0x8A(id, 0x00);
-        else
-            sendCanboxInfo0x8A(id, 0x01);
+        if (v.isSelected()) sendCanboxInfo0x8A(id, 0x00);
+        else sendCanboxInfo0x8A(id, 0x01);
     }
 
     private void sendCmd(int id) {

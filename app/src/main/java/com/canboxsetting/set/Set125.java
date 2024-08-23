@@ -1,64 +1,29 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
 import com.common.util.Util;
-import com.common.view.MyPreferenceSeekBar;
 
-public class Set125 extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class Set125 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
@@ -72,16 +37,9 @@ public class Set125 extends PreferenceFragment implements Preference.OnPreferenc
             //			new NodePreference("left_rear_windows", 0x6d03, 0x6800, 0x01, 0),
             //			new NodePreference("right_front_windows", 0x6d04, 0x6800, 0x01, 0),
             //			new NodePreference("right_rear_windows", 0x6d05, 0x6800, 0x01, 0),
-            new NodePreference("fatigue_driving_warning", 0x6d08, 0x6800, 0x04, 0), new NodePreference("collision_safety_assistance", 0x6d09, 0x6801, 0x80, 0),
-            new NodePreference("pedestrian_safety_assistance", 0x6d0a, 0x6801, 0x40, 0),
-            new NodePreference("gwm_early_warning_sensitivity", 0x6d0b, 0x6801, 0x30, 0, R.array.volumeset, R.array.twelve_values),
-            new NodePreference("gac_settings_departure_waring", 0x6d0c, 0x6800, 0x10, 0), new NodePreference("traffic_sign_information", 0x6d0d, 0x6800, 0x08, 0),
-            new NodePreference("parallel_auxiliary", 0x6d0e, 0x6801, 0x08, 0), new NodePreference("gwm_back_side_aid", 0x6d0f, 0x6801, 0x04, 0),
-            new NodePreference("opening_early_warning", 0x6d10, 0x6801, 0x02, 0),
+            new NodePreference("fatigue_driving_warning", 0x6d08, 0x6800, 0x04, 0), new NodePreference("collision_safety_assistance", 0x6d09, 0x6801, 0x80, 0), new NodePreference("pedestrian_safety_assistance", 0x6d0a, 0x6801, 0x40, 0), new NodePreference("gwm_early_warning_sensitivity", 0x6d0b, 0x6801, 0x30, 0, R.array.volumeset, R.array.twelve_values), new NodePreference("gac_settings_departure_waring", 0x6d0c, 0x6800, 0x10, 0), new NodePreference("traffic_sign_information", 0x6d0d, 0x6800, 0x08, 0), new NodePreference("parallel_auxiliary", 0x6d0e, 0x6801, 0x08, 0), new NodePreference("gwm_back_side_aid", 0x6d0f, 0x6801, 0x04, 0), new NodePreference("opening_early_warning", 0x6d10, 0x6801, 0x02, 0),
 
-            new NodePreference("instrument_color_setting", 0x6d11, 0x6802, 0x03, 0, R.array.blue_red_gold, R.array.twelve_values),
-            new NodePreference("rain_light_sensor_settings", 0x6d12, 0x6803, 0x02, 0, R.array.rain_light_sensor_settings_entries, R.array.twelve_values),
-            new NodePreference("trailer_settings", 0x6d13, 0x6803, 0x01, 0),
+            new NodePreference("instrument_color_setting", 0x6d11, 0x6802, 0x03, 0, R.array.blue_red_gold, R.array.twelve_values), new NodePreference("rain_light_sensor_settings", 0x6d12, 0x6803, 0x02, 0, R.array.rain_light_sensor_settings_entries, R.array.twelve_values), new NodePreference("trailer_settings", 0x6d13, 0x6803, 0x01, 0),
 
     };
 
@@ -95,6 +53,11 @@ public class Set125 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -131,9 +94,7 @@ public class Set125 extends PreferenceFragment implements Preference.OnPreferenc
         getPreferenceScreen().removeAll();
     }
 
-    private byte[] mVisible = new byte[]{
-            0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff
-    };
+    private byte[] mVisible = new byte[]{0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff};
 
     private boolean mPaused = true;
 
@@ -207,9 +168,7 @@ public class Set125 extends PreferenceFragment implements Preference.OnPreferenc
     }
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
-        byte[] buf = new byte[]{
-                0x4, (byte) d0, (byte) d1, (byte) d2, (byte) 0xff, (byte) 0xff
-        };
+        byte[] buf = new byte[]{0x4, (byte) d0, (byte) d1, (byte) d2, (byte) 0xff, (byte) 0xff};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

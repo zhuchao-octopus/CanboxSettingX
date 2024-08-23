@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/controlsettings" >
+    <PreferenceScreen android:title="@string/controlsettings">
         <ListPreference
             android:entries="@array/enheadlight_off_timer"
             android:entryValues="@array/mazda3_homeinmode_values"
@@ -61,7 +61,7 @@
             android:persistent="false"
             android:title="@string/mazda3_2020_settings_6" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/driving_display" >
+    <PreferenceScreen android:title="@string/driving_display">
         <ListPreference
             android:entries="@array/height"
             android:entryValues="@array/height_value"
@@ -114,7 +114,7 @@
             android:persistent="false"
             android:title="@string/mazda3_binarytek_settings2_12" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/door_open" >
+    <PreferenceScreen android:title="@string/door_open">
         <ListPreference
             android:entries="@array/enauto_lights_off"
             android:entryValues="@array/enauto_lights_off_vaues"
@@ -122,7 +122,7 @@
             android:persistent="false"
             android:title="@string/auto_lights_off" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/door_close" >
+    <PreferenceScreen android:title="@string/door_close">
         <ListPreference
             android:entries="@array/enauto_lights_off2"
             android:entryValues="@array/enauto_lights_off2_vaues"
@@ -130,7 +130,7 @@
             android:persistent="false"
             android:title="@string/auto_lights_off" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/fuel_economy" >
+    <PreferenceScreen android:title="@string/fuel_economy">
         <SwitchPreference
             android:key="sync_avg"
             android:persistent="false"
@@ -140,7 +140,7 @@
             android:persistent="false"
             android:title="@string/reset_avg" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/other" >
+    <PreferenceScreen android:title="@string/other">
         <SwitchPreference
             android:key="wipers_induction"
             android:persistent="false"
@@ -222,7 +222,6 @@
             android:key="monitor_volume"
             android:persistent="false"
             android:title="@string/monitor_volume" />
-
 
 
         <SwitchPreference

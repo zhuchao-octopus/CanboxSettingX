@@ -1,73 +1,34 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 
-
-public class LuFengSettingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class LuFengSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "LuFengSettingsRaiseFragment";
     private int mType = 0;
 
@@ -75,8 +36,7 @@ public class LuFengSettingsRaiseFragment extends PreferenceFragment implements P
         mType = t;
     }
 
-    private static final Node[] NODES = {
-            new Node("automatic_folding_outer_rearview_mirror", 0x8306, 0x27010000, 0x08, 0, Node.TYPE_BUFF1),
+    private static final Node[] NODES = {new Node("automatic_folding_outer_rearview_mirror", 0x8306, 0x27010000, 0x08, 0, Node.TYPE_BUFF1),
 
             new Node("str_avm", 0x8302, 0x27010000, 0x40, 0, Node.TYPE_BUFF1),
 
@@ -88,15 +48,13 @@ public class LuFengSettingsRaiseFragment extends PreferenceFragment implements P
 
             new Node("remote_lift_window", 0x8303, 0x27010000, 0x20, 0, Node.TYPE_BUFF1),
 
-            new Node("str_daytime_running_lamp", 0x8304, 0x27010000, 0x10, 0, Node.TYPE_BUFF1),
-    };
+            new Node("str_daytime_running_lamp", 0x8304, 0x27010000, 0x10, 0, Node.TYPE_BUFF1),};
 
     private final static int[] INIT_CMDS = {
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
-             */
-    };
+             */};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -116,6 +74,11 @@ public class LuFengSettingsRaiseFragment extends PreferenceFragment implements P
                 }
             }
         }
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     private boolean mPaused = true;

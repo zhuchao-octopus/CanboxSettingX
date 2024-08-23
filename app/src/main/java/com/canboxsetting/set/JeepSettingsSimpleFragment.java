@@ -1,66 +1,29 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
 import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class JeepSettingsSimpleFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
 
     private int mType = 0;
@@ -96,17 +59,13 @@ public class JeepSettingsSimpleFragment extends PreferenceFragment implements Pr
 
             new Node("headlights_off", 0xC620, 0x40200000, 0x7f, 0x0), new Node("bright_headlights", 0xC621, 0x40200000, 0x7f00, 0x0),
 
-            new Node("wipers_start", 0xC626, 0x40200000, 0x40000, 0x0), new Node("running_lights", 0xC624, 0x40200000, 0x10000, 0x0), new Node("lights_flash", 0xC623, 0x40200000, 0x8000, 0x0),
-            new Node("outhigh_beam", 0xC628, 0x40200000, 0x100000, 0x0),
+            new Node("wipers_start", 0xC626, 0x40200000, 0x40000, 0x0), new Node("running_lights", 0xC624, 0x40200000, 0x10000, 0x0), new Node("lights_flash", 0xC623, 0x40200000, 0x8000, 0x0), new Node("outhigh_beam", 0xC628, 0x40200000, 0x100000, 0x0),
 
-            new Node("welcome_light", 0xC62a, 0x40200000, 0x800000, 0x0), new Node("turn_lights_set", 0xC625, 0x40200000, 0x20000, 0x0), new Node("rearview_dimming", 0xC627, 0x40200000, 0x80000, 0x0),
-            new Node("rearview_auto_folding", 0xC69d, 0x40a00000, 0x200000, 0x0), new Node("high_beam_control", 0xC62c, 0x40200000, 0x80, 0x0),
-            new Node("front_light", 0xC629, 0x40200000, 0x600000, 0x0),
+            new Node("welcome_light", 0xC62a, 0x40200000, 0x800000, 0x0), new Node("turn_lights_set", 0xC625, 0x40200000, 0x20000, 0x0), new Node("rearview_dimming", 0xC627, 0x40200000, 0x80000, 0x0), new Node("rearview_auto_folding", 0xC69d, 0x40a00000, 0x200000, 0x0), new Node("high_beam_control", 0xC62c, 0x40200000, 0x80, 0x0), new Node("front_light", 0xC629, 0x40200000, 0x600000, 0x0),
 
             //		new Node("headlights_off", 0xC620, 0x40200000, 0x7f, 0x0),
 
-            new Node("driving_auto", 0xC630, 0x40300000, 0x1, 0x0), new Node("unlock_driving", 0xC631, 0x40300000, 0x2, 0x0), new Node("door_lights_flash", 0xC632, 0x40300000, 0x4, 0x0),
-            new Node("beep_lock", 0xC637, 0x40300000, 0x18, 0x0),
+            new Node("driving_auto", 0xC630, 0x40300000, 0x1, 0x0), new Node("unlock_driving", 0xC631, 0x40300000, 0x2, 0x0), new Node("door_lights_flash", 0xC632, 0x40300000, 0x4, 0x0), new Node("beep_lock", 0xC637, 0x40300000, 0x18, 0x0),
 
 
             new Node("key_unlock", 0xC634, 0x40300000, 0x100, 0x0), new Node("keyless_entry", 0xC636, 0x40300000, 0x400, 0x0),
@@ -126,14 +85,12 @@ public class JeepSettingsSimpleFragment extends PreferenceFragment implements Pr
             //		new Node("power_off", 0xC641, 0x40400000, 0x10000, 0x0),
 
 
-            new Node("auto_adjustment", 0xC6d0, 0x40d00000, 0x1, 0x0), new Node("tire_mode", 0xC6d1, 0x40d00000, 0x2, 0x0), new Node("transport_mode", 0xC6d2, 0x40d00000, 0x4, 0x0),
-            new Node("wheel_mode", 0xC6d3, 0x40d00000, 0x8, 0x0), new Node("dis_suspension", 0xC6d4, 0x40d00000, 0x10, 0x0),
+            new Node("auto_adjustment", 0xC6d0, 0x40d00000, 0x1, 0x0), new Node("tire_mode", 0xC6d1, 0x40d00000, 0x2, 0x0), new Node("transport_mode", 0xC6d2, 0x40d00000, 0x4, 0x0), new Node("wheel_mode", 0xC6d3, 0x40d00000, 0x8, 0x0), new Node("dis_suspension", 0xC6d4, 0x40d00000, 0x10, 0x0),
 
 
             new Node("unit_set", 0xC601, 0x40010000, 0x1, 0x0),
 
-            new Node("outseat_heating", 0xC690, 0x40900000, 0x3, 0x0), new Node("fulecons", 0xC605, 0x40010000, 0x6, 0x0), new Node("tireunit", 0xC607, 0x40010000, 0x60, 0x0),
-            new Node("range", 0xC603, 0x40010000, 0x8, 0x0),
+            new Node("outseat_heating", 0xC690, 0x40900000, 0x3, 0x0), new Node("fulecons", 0xC605, 0x40010000, 0x6, 0x0), new Node("tireunit", 0xC607, 0x40010000, 0x60, 0x0), new Node("range", 0xC603, 0x40010000, 0x8, 0x0),
             //		new Node("temperature", 0xC604, 0x40010000, 0x10, 0x0),
 
             new Node("auto_parking", 0xC6c1, 0x40c00000, 0x2, 0x0),
@@ -179,6 +136,11 @@ public class JeepSettingsSimpleFragment extends PreferenceFragment implements Pr
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

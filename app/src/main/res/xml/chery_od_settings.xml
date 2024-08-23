@@ -2,14 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/controlset">
 
-    
+
     <ListPreference
         android:entries="@array/enlanguages"
         android:entryValues="@array/enoil_vaues2"
         android:key="langauage5"
         android:persistent="false"
         android:title="@string/langauage5" />
-    
+
 
     <ListPreference
         android:entries="@array/enfort_tips"

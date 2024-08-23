@@ -98,8 +98,7 @@ public class ToyotaLuZhengAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 1}, {R.id.con_left_temp_up, 3}, {R.id.con_left_temp_down, 2}, {R.id.con_right_temp_up, 5}, {R.id.con_right_temp_down, 4},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 1}, {R.id.con_left_temp_up, 3}, {R.id.con_left_temp_down, 2}, {R.id.con_right_temp_up, 5}, {R.id.con_right_temp_down, 4},
 
 
             {R.id.wind_minus, 0x9}, {R.id.wind_add, 0xa}, {R.id.dual, 0x10}, {R.id.max, 0x12}, {R.id.rear, 0x14}, {R.id.ac_auto, 0x15},

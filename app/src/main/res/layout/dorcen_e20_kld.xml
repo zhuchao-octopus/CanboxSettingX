@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/toyaota_car_bk"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="0px"
@@ -11,18 +11,18 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="0px" >
+        android:paddingBottom="0px">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="420px"
             android:gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="265px"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="165px"
@@ -30,7 +30,7 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/toyaota_car_door"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <View
                         android:id="@+id/toyaota_car_light_back_normal"
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="110px"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <View
                         android:id="@+id/door_status_1"
@@ -209,7 +209,7 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
-            android:gravity="center" >
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/toyota_car_light"
@@ -217,8 +217,7 @@
                 android:layout_height="45px"
                 android:background="#ff19182a"
                 android:gravity="center"
-                android:orientation="vertical" >
-            </TextView>
+                android:orientation="vertical"></TextView>
         </RelativeLayout>
     </LinearLayout>
 
@@ -230,7 +229,7 @@
         android:orientation="vertical"
         android:paddingBottom="40px"
         android:paddingRight="40px"
-        android:paddingTop="40px" >
+        android:paddingTop="40px">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -238,7 +237,7 @@
             android:layout_weight="1"
             android:background="@drawable/vw_back1"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0px"
@@ -249,7 +248,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -280,7 +279,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -311,7 +310,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -341,7 +340,7 @@
             android:layout_weight="1"
             android:background="@drawable/vw_back2"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0px"
@@ -352,7 +351,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -383,7 +382,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -414,7 +413,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -443,7 +442,7 @@
             android:layout_weight="1"
             android:background="@drawable/vw_back3"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0px"
@@ -454,7 +453,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -485,7 +484,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -516,7 +515,7 @@
                 android:paddingBottom="10px"
                 android:paddingLeft="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px" >
+                android:paddingTop="10px">
 
                 <TextView
                     android:layout_width="match_parent"

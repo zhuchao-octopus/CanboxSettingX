@@ -1,67 +1,31 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "MingjueRongweiSettingsRaiseFragment";
 
     private int mType = 0;
@@ -72,18 +36,14 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragment impl
 
     private static final Node[] NODES = {
 
-            new Node("key_driving_lock", 0xc60101, 0x39, 0x0, 0x0), new Node("key_unlock", 0xc60102, 0x39, 0x0, 0x0), new Node("key_unlock_mode", 0xc60103, 0x39, 0x0, 0x0),
-            new Node("key_unlock_near_car", 0xc60104, 0x39, 0x0, 0x0), new Node("key_flow_me_home", 0xc60201, 0x39, 0x0, 0x0), new Node("key_flow_me_home_times", 0xc60202, 0x4001, 0xf, 0x0),
-            new Node("key_search_car_indicator", 0xc60203, 0x39, 0x0, 0x0), new Node("key_search_car_indicator_times", 0xc60204, 0x4002, 0xf, 0x0),
+            new Node("key_driving_lock", 0xc60101, 0x39, 0x0, 0x0), new Node("key_unlock", 0xc60102, 0x39, 0x0, 0x0), new Node("key_unlock_mode", 0xc60103, 0x39, 0x0, 0x0), new Node("key_unlock_near_car", 0xc60104, 0x39, 0x0, 0x0), new Node("key_flow_me_home", 0xc60201, 0x39, 0x0, 0x0), new Node("key_flow_me_home_times", 0xc60202, 0x4001, 0xf, 0x0), new Node("key_search_car_indicator", 0xc60203, 0x39, 0x0, 0x0), new Node("key_search_car_indicator_times", 0xc60204, 0x4002, 0xf, 0x0),
 
 
-            new Node("key_flow_me_home_switch", 0xc60301, 0x4100, 0x80, 0x0), new Node("key_search_car_indicator_type", 0xc60302, 0x4100, 0x40, 0x0),
-            new Node("key_steering_handle", 0xc60303, 0x4100, 0x30, 0x0), new Node("greeting_lights", 0xc60304, 0x4108, 0x80, 0x0),
+            new Node("key_flow_me_home_switch", 0xc60301, 0x4100, 0x80, 0x0), new Node("key_search_car_indicator_type", 0xc60302, 0x4100, 0x40, 0x0), new Node("key_steering_handle", 0xc60303, 0x4100, 0x30, 0x0), new Node("greeting_lights", 0xc60304, 0x4108, 0x80, 0x0),
 
             new Node("reduction_of_fetal_pressure_key", 0xc60401, 0x4102, 0x80, 0x0), new Node("body_stability_control", 0xc60402, 0x4102, 0x40, 0x0),
 
-            new Node("rear_window_defrost_defogging_linkage_key", 0xc60501, 0x39, 0x0, 0x0), new Node("volumeset_key", 0xc60502, 0x39, 0x0, 0x0),
-            new Node("air_temperature_settings_key", 0xc60503, 0x4101, 0x18, 0x0),
+            new Node("rear_window_defrost_defogging_linkage_key", 0xc60501, 0x39, 0x0, 0x0), new Node("volumeset_key", 0xc60502, 0x39, 0x0, 0x0), new Node("air_temperature_settings_key", 0xc60503, 0x4101, 0x18, 0x0),
 
             new Node("automatic_folding_of_rearview_mirror_key", 0xc60801, 0x39, 0x0, 0x0),
             // new Node("factory_reset_settings_key", 0xc60101, 0x39, 0x0, 0x0),
@@ -96,8 +56,7 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragment impl
             new Node("warning_pedestrian_cues", 0xc60601, 0x39, 0x0, 0x0), new Node("warning_pedestrian_cues", 0xc60601, 0x39, 0x0, 0x0),
 
 
-            new Node("sunroof", 0xc60901, 0x39, 0x0, 0x0), new Node("front_left_window", 0xc60902, 0x39, 0x0, 0x0), new Node("rear_left_window", 0xc60903, 0x39, 0x0, 0x0),
-            new Node("front_right_window", 0xc60904, 0x39, 0x0, 0x0), new Node("rear_right_window", 0xc60905, 0x39, 0x0, 0x0),
+            new Node("sunroof", 0xc60901, 0x39, 0x0, 0x0), new Node("front_left_window", 0xc60902, 0x39, 0x0, 0x0), new Node("rear_left_window", 0xc60903, 0x39, 0x0, 0x0), new Node("front_right_window", 0xc60904, 0x39, 0x0, 0x0), new Node("rear_right_window", 0xc60905, 0x39, 0x0, 0x0),
 
             new Node("opening_degree_of_reserve_box", 0xc60906, 0x39, 0x0, 0x0), new Node("language1", 0xc60a01, 0x39, 0x0, 0x0),
 
@@ -109,9 +68,7 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragment impl
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x5300, 0x5100
-    };
+    private final static int[] INIT_CMDS = {0x5300, 0x5100};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -143,6 +100,11 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragment impl
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

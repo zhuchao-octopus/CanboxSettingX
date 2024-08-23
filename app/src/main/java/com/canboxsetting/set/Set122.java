@@ -1,64 +1,31 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
 import com.common.util.Util;
-import com.common.view.MyPreferenceSeekBar;
 
-public class Set122 extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class Set122 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
@@ -70,12 +37,9 @@ public class Set122 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("off_car_lock", 0x7e03, 0x7807, 0x04, 0x780220),
 
-            new NodePreference("keyless_access_beep_vol", 0x7e04, 0x7807, 0x03, 0x780210, R.array.volume_as_fast_entries, R.array.twelve_values),
-            new NodePreference("security_relock_timer", 0x7e05, 0x7808, 0xc0, 0x780208, R.array.honda_security_relock_timer_entries, R.array.twelve_values),
-            new NodePreference("unlock_mode", 0x7e06, 0x7808, 0x20, 0x780204, R.array.auto_unlock_entries, R.array.twelve_values),
+            new NodePreference("keyless_access_beep_vol", 0x7e04, 0x7807, 0x03, 0x780210, R.array.volume_as_fast_entries, R.array.twelve_values), new NodePreference("security_relock_timer", 0x7e05, 0x7808, 0xc0, 0x780208, R.array.honda_security_relock_timer_entries, R.array.twelve_values), new NodePreference("unlock_mode", 0x7e06, 0x7808, 0x20, 0x780204, R.array.auto_unlock_entries, R.array.twelve_values),
 
-            new NodePreference("three_signal", 0x7e07, 0x7808, 0x10, 0x780202),
-            new NodePreference("turn_volume", 0x7e08, 0x7808, 0x08, 0x780201, R.array.steering_signal_volume_entries, R.array.twelve_values),
+            new NodePreference("three_signal", 0x7e07, 0x7808, 0x10, 0x780202), new NodePreference("turn_volume", 0x7e08, 0x7808, 0x08, 0x780201, R.array.steering_signal_volume_entries, R.array.twelve_values),
 
             new NodePreference("wipers_induction", 0x7e09, 0x7808, 0x04, 0x780380),
 
@@ -102,8 +66,7 @@ public class Set122 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("distance_unit", 0x7e26, 0x780e, 0x20, 0, R.array.mileage_unit_t, R.array.twelve_values),
 
-            new NodePreference("temperature_unit", 0x7e27, 0x780e, 0x10, 0, R.array.temperature_unit, R.array.twelve_values),
-    };
+            new NodePreference("temperature_unit", 0x7e27, 0x780e, 0x10, 0, R.array.temperature_unit, R.array.twelve_values),};
 
     private final static int[] INIT_CMDS = {0x78};
 
@@ -115,6 +78,11 @@ public class Set122 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -151,9 +119,7 @@ public class Set122 extends PreferenceFragment implements Preference.OnPreferenc
         getPreferenceScreen().removeAll();
     }
 
-    private byte[] mVisible = new byte[]{
-            0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff
-    };
+    private byte[] mVisible = new byte[]{0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff};
 
     private boolean mPaused = true;
 

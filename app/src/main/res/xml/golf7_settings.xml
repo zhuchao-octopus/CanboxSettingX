@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-    <PreferenceCategory android:title="@string/controlsettings" >
-    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/controlsettings"></PreferenceCategory>
 
     <ListPreference
         android:entries="@array/launage_entries"
@@ -25,7 +24,7 @@
 
     <PreferenceScreen
         android:key="tire"
-        android:title="@string/tire" >
+        android:title="@string/tire">
         <SwitchPreference
             android:key="speedalarm"
             android:persistent="false"
@@ -42,7 +41,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="driverassistance"
-        android:title="@string/driverassistance" >
+        android:title="@string/driverassistance">
         <SwitchPreference
             android:key="lanesystem"
             android:persistent="false"
@@ -80,7 +79,7 @@
             android:key="accvehicle"
             android:persistent="false"
             android:title="@string/accvehicle" />
-        
+
         <SwitchPreference
             android:key="blind_spot_monitor"
             android:persistent="false"
@@ -88,7 +87,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="parkshunt"
-        android:title="@string/parkshunt" >
+        android:title="@string/parkshunt">
         <SwitchPreference
             android:key="autoaction"
             android:persistent="false"
@@ -121,7 +120,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="lights"
-        android:title="@string/lights" >
+        android:title="@string/lights">
         <ListPreference
             android:entries="@array/turnontime_entries"
             android:entryValues="@array/turnontime_entryValues"
@@ -180,15 +179,15 @@
             android:key="headlight_range_control"
             android:persistent="false"
             android:title="@string/headlight_range_control" />
-        
-              <SwitchPreference
-                android:key="str_daytime_running_lamp"
-                android:persistent="false"
-                android:title="@string/str_daytime_running_lamp" />
+
+        <SwitchPreference
+            android:key="str_daytime_running_lamp"
+            android:persistent="false"
+            android:title="@string/str_daytime_running_lamp" />
     </PreferenceScreen>
     <PreferenceScreen
         android:key="mirrorswipers"
-        android:title="@string/mirrorswipers" >
+        android:title="@string/mirrorswipers">
         <SwitchPreference
             android:key="mirrorsyncadj"
             android:persistent="false"
@@ -212,7 +211,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="onoff"
-        android:title="@string/onoff" >
+        android:title="@string/onoff">
         <SwitchPreference
             android:key="acousticconfirmation"
             android:persistent="false"
@@ -246,7 +245,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="unit"
-        android:title="@string/unit" >
+        android:title="@string/unit">
         <ListPreference
             android:entries="@array/miunit_entries"
             android:entryValues="@array/miunit_entryValues"
@@ -286,7 +285,7 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="multidisplay"
-        android:title="@string/multidisplay" >
+        android:title="@string/multidisplay">
         <SwitchPreference
             android:key="currentfuel"
             android:persistent="false"
@@ -328,7 +327,7 @@
             android:persistent="false"
             android:title="@string/speedalarm" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/air_cmd" >
+    <PreferenceScreen android:title="@string/air_cmd">
         <ListPreference
             android:entries="@array/air_con_profile_entries"
             android:entryValues="@array/enauto_cmd_vaues"
@@ -348,15 +347,15 @@
             android:key="auto_supple_heater"
             android:persistent="false"
             android:title="@string/auto_supple_heater" />
-        
-        
+
+
         <SwitchPreference
             android:key="steer_heat"
             android:persistent="false"
             android:title="@string/steer_heat" />
-        
+
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/background_lighting" >
+    <PreferenceScreen android:title="@string/background_lighting">
         <ListPreference
             android:entries="@array/ambient_lighting_tones"
             android:entryValues="@array/ambient_lighting_tones_value"
@@ -382,7 +381,7 @@
             android:persistent="false"
             android:title="@string/background_lighting4" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/reverse_video" >
+    <PreferenceScreen android:title="@string/reverse_video">
         <ListPreference
             android:entries="@array/reverse_mode"
             android:entryValues="@array/reverse_mode_value"
@@ -415,15 +414,15 @@
         android:persistent="false"
         android:title="@string/radar_sound" />
 
-<!--     <PreferenceScreen -->
-<!--         android:key="tpms" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/tpms_set" /> -->
+    <!--     <PreferenceScreen -->
+    <!--         android:key="tpms" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/tpms_set" /> -->
     <!-- </PreferenceScreen> -->
 
     <PreferenceScreen
         android:key="driving_mode"
-        android:title="@string/driving_mode" >
+        android:title="@string/driving_mode">
         <SwitchPreference
             android:key="normal"
             android:persistent="false"

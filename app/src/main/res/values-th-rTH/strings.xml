@@ -2,28 +2,28 @@
 <resources>
 
     <string name="app_name">ในการตั้งค่าการควบคุม</string>
-    
-    
-<!--     focus -->
 
-<!--     <string name="temp_dis">温度显示单位</string>     -->
-<!--     <string name="turn_lights_set">转向灯设置</string>     -->
-<!--     <string name="control_system">牵引力控制系统</string>    -->
-<!--     <string name="information_tone">信息提示音</string>     -->
-<!--     <string name="warning_tone">警告音</string> -->
-<!--     <string name="warning_contorl">警告音控制</string> -->
-<!--     <string name="mileage_unit">里程单位设置</string> -->
-<!--     <string name="brightness">亮度</string> -->
-<!--     <string name="disc_indicator">碟片指示灯</string> -->
-<!--     <string name="acoustic_key">音响按键指示灯</string> -->
-<!--     <string name="five_key">五方向键指示灯</string> -->
-<!--     <string name="type_monitor">Type Monito</string> -->
-<!--     <string name="off_Warning_info">关闭车身警告信息</string> -->
-<!--     <string name="wipers_induction">雨水感应器</string> -->
-<!--     <string name="incar_light">车内照明</string> -->
-<!--     <string name="parking_mode">泊车控制</string> -->
-<!--     <string name="ramp">坡道起步辅助</string> -->
-<!--     <string name="reverse_zoom">倒车视频放大</string> -->
-<!--     <string name="enhanced_assistance">增强汽车辅助</string> -->
+
+    <!--     focus -->
+
+    <!--     <string name="temp_dis">温度显示单位</string>     -->
+    <!--     <string name="turn_lights_set">转向灯设置</string>     -->
+    <!--     <string name="control_system">牵引力控制系统</string>    -->
+    <!--     <string name="information_tone">信息提示音</string>     -->
+    <!--     <string name="warning_tone">警告音</string> -->
+    <!--     <string name="warning_contorl">警告音控制</string> -->
+    <!--     <string name="mileage_unit">里程单位设置</string> -->
+    <!--     <string name="brightness">亮度</string> -->
+    <!--     <string name="disc_indicator">碟片指示灯</string> -->
+    <!--     <string name="acoustic_key">音响按键指示灯</string> -->
+    <!--     <string name="five_key">五方向键指示灯</string> -->
+    <!--     <string name="type_monitor">Type Monito</string> -->
+    <!--     <string name="off_Warning_info">关闭车身警告信息</string> -->
+    <!--     <string name="wipers_induction">雨水感应器</string> -->
+    <!--     <string name="incar_light">车内照明</string> -->
+    <!--     <string name="parking_mode">泊车控制</string> -->
+    <!--     <string name="ramp">坡道起步辅助</string> -->
+    <!--     <string name="reverse_zoom">倒车视频放大</string> -->
+    <!--     <string name="enhanced_assistance">增强汽车辅助</string> -->
 
 </resources>

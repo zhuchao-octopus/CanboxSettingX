@@ -1,87 +1,47 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
 import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class MazdaRaiseSettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Mazda3BinarytekFragment";
 
     private static final Node[] NODES = {
 
             // // settings mazda3 2020 v1.14
 
-            new Node("mazda3_2020_settings_c", 0xA40b01, 0x7408, 0x80, 0x1), new Node("mazda3_2020_settings_d", 0xA40b02, 0x7408, 0x60, 0x1),
-            new Node("mazda3_2020_settings_e", 0xA40b03, 0x7408, 0x18, 0x1), new Node("safe_reset", 0xA40b04, 0, 0, 0),
+            new Node("mazda3_2020_settings_c", 0xA40b01, 0x7408, 0x80, 0x1), new Node("mazda3_2020_settings_d", 0xA40b02, 0x7408, 0x60, 0x1), new Node("mazda3_2020_settings_e", 0xA40b03, 0x7408, 0x18, 0x1), new Node("safe_reset", 0xA40b04, 0, 0, 0),
 
-            new Node("mazda3_2020_settings_10", 0xA40701, 0x7405, 0x80, 0x1), new Node("mazda3_2020_settings_11", 0xA40702, 0x7405, 0x60, 0x1),
-            new Node("mazda3_2020_settings_12", 0xA40703, 0x7405, 0x18, 0x1), new Node("speed_warning_reset", 0xA40704, 0, 0, 0),
+            new Node("mazda3_2020_settings_10", 0xA40701, 0x7405, 0x80, 0x1), new Node("mazda3_2020_settings_11", 0xA40702, 0x7405, 0x60, 0x1), new Node("mazda3_2020_settings_12", 0xA40703, 0x7405, 0x18, 0x1), new Node("speed_warning_reset", 0xA40704, 0, 0, 0),
 
-            new Node("homeinmode", 0x8381, 0x4107, 0x70, 0x0), new Node("homeoutmode", 0x8380, 0x4107, 0x80, 0x0), new Node("backwindowdefog", 0x8316, 0x4105, 0x08, 0x0),
-            new Node("mazda3_2020_settings_1", 0x8317, 0x4105, 0x07, 0x0), new Node("mazda3_2020_settings_2", 0xA40801, 0x7407, 0x80, 0x1),
-            new Node("mazda3_2020_settings_3", 0xA40902, 0x7407, 0x38, 0x1), new Node("psa_simple_17", 0x831a, 0x4106, 0x0c, 0x0), new Node("mazda3_2020_settings_4", 0x8319, 0x4106, 0x30, 0x0),
-            new Node("mazda3_2020_settings_5", 0xA40901, 0x7407, 0x40, 0x1), new Node("mazda3_2020_settings_6", 0xA40a, 0x7407, 0x04, 0x1),
-            new Node("mazda3_2020_settings_8", 0xA40c01, 0x7409, 0x80, 0x1), new Node("mazda3_2020_settings_9", 0xA40c02, 0x7409, 0x40, 0x1),
-            new Node("mazda3_2020_settings_a", 0xA40c03, 0x7409, 0x20, 0x1),
+            new Node("homeinmode", 0x8381, 0x4107, 0x70, 0x0), new Node("homeoutmode", 0x8380, 0x4107, 0x80, 0x0), new Node("backwindowdefog", 0x8316, 0x4105, 0x08, 0x0), new Node("mazda3_2020_settings_1", 0x8317, 0x4105, 0x07, 0x0), new Node("mazda3_2020_settings_2", 0xA40801, 0x7407, 0x80, 0x1), new Node("mazda3_2020_settings_3", 0xA40902, 0x7407, 0x38, 0x1), new Node("psa_simple_17", 0x831a, 0x4106, 0x0c, 0x0), new Node("mazda3_2020_settings_4", 0x8319, 0x4106, 0x30, 0x0), new Node("mazda3_2020_settings_5", 0xA40901, 0x7407, 0x40, 0x1), new Node("mazda3_2020_settings_6", 0xA40a, 0x7407, 0x04, 0x1), new Node("mazda3_2020_settings_8", 0xA40c01, 0x7409, 0x80, 0x1), new Node("mazda3_2020_settings_9", 0xA40c02, 0x7409, 0x40, 0x1), new Node("mazda3_2020_settings_a", 0xA40c03, 0x7409, 0x20, 0x1),
 
-            new Node("rear_view", 0x8318, 0x4106, 0x40, 0x0), new Node("daylight", 0x8385, 0x4107, 0x01, 0x0), new Node("range", 0x8382, 0x4107, 0x08, 0x0),
-            new Node("temp", 0x8383, 0x4107, 0x04, 0x0), new Node("background_lighting", 0x8386, 0x4108, 0xc0, 0x0), new Node("mazda3_2020_settings_7", 0x8313, 0x4105, 0x30, 0x0),
+            new Node("rear_view", 0x8318, 0x4106, 0x40, 0x0), new Node("daylight", 0x8385, 0x4107, 0x01, 0x0), new Node("range", 0x8382, 0x4107, 0x08, 0x0), new Node("temp", 0x8383, 0x4107, 0x04, 0x0), new Node("background_lighting", 0x8386, 0x4108, 0xc0, 0x0), new Node("mazda3_2020_settings_7", 0x8313, 0x4105, 0x30, 0x0),
 
             // // v1.2
             new Node("leavehome", 0x8380, 0x4107, 0x80, 0x0),
@@ -186,6 +146,11 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragment implements Pr
         ((SwitchPreference) findPreference("touch_switch")).setChecked(i == 0);
     }
 
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
     private boolean mPaused = true;
 
     @Override
@@ -224,9 +189,7 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragment implements Pr
         public void handleMessage(Message msg) {
             if (!mPaused) {
                 // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
-                byte[] buf = new byte[]{
-                        (byte) ((msg.what & 0xff00) >> 8), 0x01, (byte) (msg.what & 0xff)
-                };
+                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x01, (byte) (msg.what & 0xff)};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
             }
         }
@@ -323,9 +286,7 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragment implements Pr
     }
 
     private void sendCanboxInfo(int d0, int d1, int d2, int d3) {
-        byte[] buf = new byte[]{
-                (byte) d0, 0x03, (byte) d1, (byte) d2, (byte) d3
-        };
+        byte[] buf = new byte[]{(byte) d0, 0x03, (byte) d1, (byte) d2, (byte) d3};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

@@ -6,19 +6,19 @@
         android:key="mileage"
         android:persistent="false"
         android:title="@string/mileage24"
-         
-          />
+
+        />
     <com.common.view.MyPreference
         android:key="averagespeed"
         android:persistent="false"
         android:title="@string/averagespeed24"
-         
-          />
+
+        />
     <com.common.view.MyPreference
         android:key="averagefuel"
         android:persistent="false"
         android:title="@string/averagefuel24"
-         
-          />
+
+        />
 
 </PreferenceScreen>

@@ -1,90 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:vehicle="http://schemas.android.com/apk/res-auto"
-    android:title="@string/controlset" >
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="trip_settings"
-	    android:title="@string/trip_settings" >
-      	<com.common.view.MyPreferenceSeekBar
-	            android:key="adjust_outside_temp"
-	            android:persistent="false"
-	            android:title="@string/adjust_outside_temp"
-	            vehicle:max="3"
-	            vehicle:min="-3"
-	            vehicle:step="1" />
-      	<ListPreference
-               android:entries="@array/honda_trip_reset_entries"
-               android:entryValues="@array/new_tourui_three_values"
-               android:key="tripa_reset_time"
-               android:persistent="false"
-               android:title="@string/tripa_reset_time" />
-      	<ListPreference
-               android:entries="@array/honda_trip_reset_entries"
-               android:entryValues="@array/new_tourui_three_values"
-               android:key="tripb_reset_time"
-               android:persistent="false"
-               android:title="@string/tripb_reset_time" />
-	</PreferenceScreen>
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="light_settings"
-	    android:title="@string/light_settings" >
+    android:title="@string/controlset">
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="trip_settings"
+        android:title="@string/trip_settings">
+        <com.common.view.MyPreferenceSeekBar
+            android:key="adjust_outside_temp"
+            android:persistent="false"
+            android:title="@string/adjust_outside_temp"
+            vehicle:max="3"
+            vehicle:min="-3"
+            vehicle:step="1" />
         <ListPreference
-               android:entries="@array/honda_il_dimming_entries"
-               android:entryValues="@array/fiat_headlight_sensitivity"
-               android:key="il_dimming_time"
-               android:persistent="false"
-               android:title="@string/il_dimming_time" />
-      	<ListPreference
-               android:entries="@array/honda_hl_auto_off_entries"
-               android:entryValues="@array/inner_lights_close_time_values"
-               android:key="hl_auto_off_time"
-               android:persistent="false"
-               android:title="@string/hl_auto_off_time" />
-	</PreferenceScreen>
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="lock"
-	    android:title="@string/lock" >
+            android:entries="@array/honda_trip_reset_entries"
+            android:entryValues="@array/new_tourui_three_values"
+            android:key="tripa_reset_time"
+            android:persistent="false"
+            android:title="@string/tripa_reset_time" />
+        <ListPreference
+            android:entries="@array/honda_trip_reset_entries"
+            android:entryValues="@array/new_tourui_three_values"
+            android:key="tripb_reset_time"
+            android:persistent="false"
+            android:title="@string/tripb_reset_time" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="light_settings"
+        android:title="@string/light_settings">
+        <ListPreference
+            android:entries="@array/honda_il_dimming_entries"
+            android:entryValues="@array/fiat_headlight_sensitivity"
+            android:key="il_dimming_time"
+            android:persistent="false"
+            android:title="@string/il_dimming_time" />
+        <ListPreference
+            android:entries="@array/honda_hl_auto_off_entries"
+            android:entryValues="@array/inner_lights_close_time_values"
+            android:key="hl_auto_off_time"
+            android:persistent="false"
+            android:title="@string/hl_auto_off_time" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="lock"
+        android:title="@string/lock">
         <SwitchPreference
-	    	android:key="keyless_unlock_answer_back"
-	        android:persistent="false"
-	        android:title="@string/keyless_unlock_answer_back" />
-      	<ListPreference
-               android:entries="@array/honda_security_relock_timer_entries"
-               android:entryValues="@array/new_tourui_three_values"
-               android:key="security_relock_timer"
-               android:persistent="false"
-               android:title="@string/security_relock_timer" />
-     
-	</PreferenceScreen>
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="system_settings"
-	    android:title="@string/wireless_lock_settings" >
-	    <SwitchPreference
-	    	android:key="keyless_access_beep"
-	        android:persistent="false"
-	        android:title="@string/keyless_access_beep" />
-	    <SwitchPreference
-	    	android:key="keyless_access_light_flash"
-	        android:persistent="false"
-	        android:title="@string/keyless_access_light_flash" /> 
-	    <SwitchPreference
-	    	android:key="remote_start_system"
-	        android:persistent="false"
-	        android:title="@string/remote_start_system" />
-	</PreferenceScreen>
-	<PreferenceScreen
-		android:icon ="@drawable/tyre"
-	    android:key  ="system_settings"
-	    android:title="@string/system_settings" >
-	  
-	    <PreferenceScreen
+            android:key="keyless_unlock_answer_back"
+            android:persistent="false"
+            android:title="@string/keyless_unlock_answer_back" />
+        <ListPreference
+            android:entries="@array/honda_security_relock_timer_entries"
+            android:entryValues="@array/new_tourui_three_values"
+            android:key="security_relock_timer"
+            android:persistent="false"
+            android:title="@string/security_relock_timer" />
+
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="system_settings"
+        android:title="@string/wireless_lock_settings">
+        <SwitchPreference
+            android:key="keyless_access_beep"
+            android:persistent="false"
+            android:title="@string/keyless_access_beep" />
+        <SwitchPreference
+            android:key="keyless_access_light_flash"
+            android:persistent="false"
+            android:title="@string/keyless_access_light_flash" />
+        <SwitchPreference
+            android:key="remote_start_system"
+            android:persistent="false"
+            android:title="@string/remote_start_system" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/tyre"
+        android:key="system_settings"
+        android:title="@string/system_settings">
+
+        <PreferenceScreen
             android:key="deflation_warning_system"
             android:title="@string/deflation_warning_system" />
-	    <PreferenceScreen
+        <PreferenceScreen
             android:key="restore"
-            android:title="@string/restore" /></PreferenceScreen>
+            android:title="@string/restore" />
+    </PreferenceScreen>
 </PreferenceScreen>

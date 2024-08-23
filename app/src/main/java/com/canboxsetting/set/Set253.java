@@ -1,76 +1,35 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
-import com.common.view.MyPreferenceEdit;
-import com.common.view.MyPreferenceSeekBar;
-import com.common.view.MyPreferenceEdit.IButtonCallBack;
 
-public class Set253 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set253 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
 
-            new NodePreference("parking_assist_system_setting", 0x9701, 0x700, 0xc0, 0, R.array.kuwei_park_entries, R.array.three_values),
-            new NodePreference("gac_settings_headlight_off_delay", 0x9711, 0x702, 0xc0, 0, R.array.fiat_headlight_off_delay, R.array.four_values),
-            new NodePreference("gac_settings_illuminated_approach", 0x9712, 0x702, 0x30, 0, R.array.fiat_headlight_off_delay, R.array.four_values),
+            new NodePreference("parking_assist_system_setting", 0x9701, 0x700, 0xc0, 0, R.array.kuwei_park_entries, R.array.three_values), new NodePreference("gac_settings_headlight_off_delay", 0x9711, 0x702, 0xc0, 0, R.array.fiat_headlight_off_delay, R.array.four_values), new NodePreference("gac_settings_illuminated_approach", 0x9712, 0x702, 0x30, 0, R.array.fiat_headlight_off_delay, R.array.four_values),
 
-            new NodePreference("gac_settings_light_when_wiper", 0x9713, 0x702, 0x08, 0), new NodePreference("gac_settings_flash_lights_w_lock", 0x9714, 0x702, 0x02, 0),
-            new NodePreference("gac_settings_auto_unlock_on_exit", 0x9722, 0x703, 0x40, 0),
+            new NodePreference("gac_settings_light_when_wiper", 0x9713, 0x702, 0x08, 0), new NodePreference("gac_settings_flash_lights_w_lock", 0x9714, 0x702, 0x02, 0), new NodePreference("gac_settings_auto_unlock_on_exit", 0x9722, 0x703, 0x40, 0),
 
             new NodePreference("first_press_of_key_unlocks", 0x9724, 0x703, 0x08, 0, R.array.nearly_unclock, R.array.radarrange_entries1),
 
@@ -82,8 +41,7 @@ public class Set253 extends PreferenceFragment implements Preference.OnPreferenc
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x7
+    private final static int[] INIT_CMDS = {0x7
 
     };
 
@@ -96,6 +54,11 @@ public class Set253 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -161,9 +124,7 @@ public class Set253 extends PreferenceFragment implements Preference.OnPreferenc
         public void handleMessage(Message msg) {
             if (!mPaused) {
 
-                byte[] buf = new byte[]{
-                        (byte) 0x1f, (byte) 1, (byte) (msg.what & 0xff)
-                };
+                byte[] buf = new byte[]{(byte) 0x1f, (byte) 1, (byte) (msg.what & 0xff)};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
             }

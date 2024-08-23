@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
-<!--     <com.common.view.MyPreference -->
-<!--         android:key="beoilmass" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/beoilmass" /> -->
+    <!--     <com.common.view.MyPreference -->
+    <!--         android:key="beoilmass" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/beoilmass" /> -->
     <com.common.view.MyPreference
         android:key="oil_change"
         android:persistent="false"
         android:title="@string/oil_change" />
 
-<!--     <com.common.view.MyPreference2 -->
-<!--         android:key="tpms_content" -->
-<!--         android:layout="@layout/type_info_oushang" /> -->
+    <!--     <com.common.view.MyPreference2 -->
+    <!--         android:key="tpms_content" -->
+    <!--         android:layout="@layout/type_info_oushang" /> -->
 
 </PreferenceScreen>

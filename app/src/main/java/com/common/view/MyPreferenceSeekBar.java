@@ -1,236 +1,204 @@
 package com.common.view;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import com.canboxsetting.R;
-import com.common.util.Kernel;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-
-import com.common.util.SystemConfig;
-
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnKeyListener;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.StatFs;
-import android.preference.Preference;
-import android.provider.Settings;
-import android.text.format.DateFormat;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
+
+import com.canboxsetting.R;
 
 public class MyPreferenceSeekBar extends Preference {
+    private int mMax = 0;
+    private int mMin = 0;
+    private int mStep = 1;
+    private String mUnit = null;
+    private SeekBar mSeekBar;
+    private TextView mSeekBarValue;
+    private AlertDialog mAlertDialog;
+    private AlertDialog.Builder alertDialogBuilder;
 
-	@Override
-	protected void onClick() {
-		// TODO Auto-generated method stub
-		super.onClick();
-		showDialog();
-	}
+    public MyPreferenceSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initAttrs(attrs, defStyleAttr);
+    }
 
-	public MyPreferenceSeekBar(Context context, AttributeSet attrs,
-			int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		initAttrs(attrs, defStyleAttr);
-	}
+    public MyPreferenceSeekBar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initAttrs(attrs, 0);
+    }
 
-	public MyPreferenceSeekBar(Context context, AttributeSet attrs) {
-		super(context, attrs);initAttrs(attrs, 0);
-	}
+    @Override
+    public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        ViewGroup parent = (ViewGroup) holder.itemView;
+        initView(parent);
+    }
 
-	public MyPreferenceSeekBar(Context context) {
-		super(context);
-	}
-	
+    public void initView(ViewGroup parent) {
+        alertDialogBuilder = new AlertDialog.Builder(getContext());
+        alertDialogBuilder.setPositiveButton(R.string.ok, new Dialog.OnClickListener() {
 
-	private void initAttrs(AttributeSet attrs, int defStyle) {
-		TypedArray a = getContext().obtainStyledAttributes(attrs,
-				R.styleable.MyPreferenceSeekBar, defStyle, 0);
-		mMin = a.getInteger(R.styleable.MyPreferenceSeekBar_min, 0);
-		mMax = a.getInteger(R.styleable.MyPreferenceSeekBar_max, 0);
-		mStep = a.getInteger(R.styleable.MyPreferenceSeekBar_step, 0);
-		if (mStep <= 0) {
-			mStep = 1;
-		}
-		mUnit = a.getString(R.styleable.MyPreferenceSeekBar_unit);
-	}
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                doSetValue();
+            }
+        });
 
-	private int mMax = 0;
-	private int mMin = 0;
-	private int mStep = 1;
-	private String mUnit = null;
-	private SeekBar mSeekBar;
-	private TextView mSeekBarValue;
+        alertDialogBuilder.setNegativeButton(R.string.cancel, new Dialog.OnClickListener() {
 
-	@Override
-	public void setSummary(CharSequence summary) {
-		// TODO Auto-generated method stub
-		if (mUnit != null) {
-			summary = summary.toString() + " " + mUnit;
-		}
-		super.setSummary(summary);
-	}
-	
-	public void setUnit(String unit) {
-		mUnit = unit;
-	}
-	
-	public void updateSeekBar(int min, int max, int step) {
-		mMax = max;
-		mMin = min;
-		if (step > 0){
-			mStep = step;
-		}
-		if (mSeekBar != null){
-			mSeekBar.setMax((mMax-mMin)/mStep);
-		}
-	}
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
 
-	private void showDialog() {
-		mAlertDialog.setTitle(getTitle());
-		CharSequence s = getSummary();
-		if (s != null) {
-			String[] ss = s.toString().split(" ");
-			try {
-				int i = Integer.parseInt(ss[0]);
-				mSeekBarValue.setText(i + "");
-				mSeekBar.setProgress((i - mMin) / mStep);
-			} catch (Exception e) {
+            }
+        });
 
-			}
-		}
-		mAlertDialog.show();
-	}
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.seekbar_dialog_preferece, parent, false);
 
-	private void doStep(boolean f) {
-		int v = mSeekBar.getProgress();
-		v = mMin + v*mStep;
-		if (f) {
-			v += mStep;
-			if (v > mMax) {
-				v = mMax;
-			}
-		} else {
-			v -= mStep;
-			if (v < mMin) {
-				v = mMin;
-			}
-		}
+        mAlertDialog = alertDialogBuilder.create();
+        mAlertDialog.setView(view);
 
-		mSeekBar.setProgress((v - mMin) / mStep);
-	}
+        mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
+        mSeekBarValue = (TextView) view.findViewById(R.id.value);
+        mSeekBar.setMax((mMax - mMin) / mStep);
+        mSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
-	private void doSetValue() {
-		if (getOnPreferenceChangeListener() != null) {
-			getOnPreferenceChangeListener().onPreferenceChange(this,
-					mSeekBarValue.getText());
-		}
-	}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
 
-	AlertDialog mAlertDialog;
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
-	@Override
-	protected View onCreateView(ViewGroup parent) {
-		// TODO Auto-generated method stub
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-				getContext());
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mSeekBarValue.setText("" + (progress * mStep + mMin));
+            }
+        });
 
-		alertDialogBuilder.setPositiveButton(R.string.ok,
-				new Dialog.OnClickListener() {
+        view.findViewById(R.id.btn_minus).setOnClickListener(new OnClickListener() {
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						doSetValue();
-					}
-				});
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                doStep(false);
+            }
+        });
 
-		alertDialogBuilder.setNegativeButton(R.string.cancel,
-				new Dialog.OnClickListener() {
+        view.findViewById(R.id.btn_add).setOnClickListener(new OnClickListener() {
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                doStep(true);
+            }
+        });
+    }
 
-					}
-				});
+    @Override
+    protected void onClick() {
+        // TODO Auto-generated method stub
+        super.onClick();
+        showDialog();
+    }
 
-		View view = LayoutInflater.from(getContext()).inflate(
-				R.layout.seekbar_dialog_preferece, parent, false);
+    @Override
+    public void setSummary(CharSequence summary) {
+        // TODO Auto-generated method stub
+        if (mUnit != null) {
+            summary = summary.toString() + " " + mUnit;
+        }
+        super.setSummary(summary);
+    }
 
-		mAlertDialog = alertDialogBuilder.create();
-		mAlertDialog.setView(view);
+    public void setUnit(String unit) {
+        mUnit = unit;
+    }
 
-		mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
-		mSeekBarValue = (TextView) view.findViewById(R.id.value);
-		mSeekBar.setMax((mMax-mMin)/mStep);
-		mSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+    @SuppressLint("Recycle")
+    private void initAttrs(AttributeSet attrs, int defStyle) {
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.MyPreferenceSeekBar, defStyle, 0);
+        mMin = a.getInteger(R.styleable.MyPreferenceSeekBar_min, 0);
+        mMax = a.getInteger(R.styleable.MyPreferenceSeekBar_max, 0);
+        mStep = a.getInteger(R.styleable.MyPreferenceSeekBar_step, 0);
+        if (mStep <= 0) {
+            mStep = 1;
+        }
+        mUnit = a.getString(R.styleable.MyPreferenceSeekBar_unit);
+    }
 
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
+    public void updateSeekBar(int min, int max, int step) {
+        mMax = max;
+        mMin = min;
+        if (step > 0) {
+            mStep = step;
+        }
+        if (mSeekBar != null) {
+            mSeekBar.setMax((mMax - mMin) / mStep);
+        }
+    }
 
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
+    @SuppressLint("SetTextI18n")
+    private void showDialog() {
+        mAlertDialog.setTitle(getTitle());
+        CharSequence s = getSummary();
+        if (s != null) {
+            String[] ss = s.toString().split(" ");
+            try {
+                int i = Integer.parseInt(ss[0]);
+                mSeekBarValue.setText(i + "");
+                mSeekBar.setProgress((i - mMin) / mStep);
+            } catch (Exception ignored) {
+            }
+        }
+        mAlertDialog.show();
+    }
 
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				mSeekBarValue.setText("" + (progress*mStep + mMin));
-			}
-		});
+    private void doStep(boolean f) {
+        int v = mSeekBar.getProgress();
+        v = mMin + v * mStep;
+        if (f) {
+            v += mStep;
+            if (v > mMax) {
+                v = mMax;
+            }
+        } else {
+            v -= mStep;
+            if (v < mMin) {
+                v = mMin;
+            }
+        }
 
-		view.findViewById(R.id.btn_minus).setOnClickListener(
-				new OnClickListener() {
+        mSeekBar.setProgress((v - mMin) / mStep);
+    }
 
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						doStep(false);
-					}
-				});
+    private void doSetValue() {
+        if (getOnPreferenceChangeListener() != null) {
+            getOnPreferenceChangeListener().onPreferenceChange(this, mSeekBarValue.getText());
+        }
+    }
 
-		view.findViewById(R.id.btn_add).setOnClickListener(
-				new OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						doStep(true);
-					}
-				});
+    public MyPreferenceSeekBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
 
-		return super.onCreateView(parent);
-	}
 }

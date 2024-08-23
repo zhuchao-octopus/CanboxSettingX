@@ -1,73 +1,37 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceSeekBar;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 
-
-public class HondaSettingHiworldFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class HondaSettingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingHiworldFragment";
     private int mType = 0;
 
@@ -122,28 +86,15 @@ public class HondaSettingHiworldFragment extends PreferenceFragment implements P
 
             new Node("headlight_wiper", 0x6C05, 0x67010000, 0x08, 0, Node.TYPE_BUFF1),
             ////驾驶辅助系统设置
-            new Node("voice_alarm_system_volume", 0x6B02, 0x66010000, 0x0200, 0, Node.TYPE_BUFF1), new Node("engine_automatic_start_stop_tips", 0x6F08, 0x69010000, 0x08, 0, Node.TYPE_BUFF1),
-            new Node("acc_detection_prompt_tone", 0x6E02, 0x68010000, 0x0400, 0, Node.TYPE_BUFF1), new Node("tone_of_pause_lkas", 0x6E03, 0x68010000, 0x0800, 0, Node.TYPE_BUFF1),
-            new Node("set_risk_distance_head_of_car", 0x6E01, 0x68010000, 0x0300, 0, Node.TYPE_BUFF1), new Node("driver_attention_monitor", 0x6E07, 0x68010000, 0xC000, 0, Node.TYPE_BUFF1),
+            new Node("voice_alarm_system_volume", 0x6B02, 0x66010000, 0x0200, 0, Node.TYPE_BUFF1), new Node("engine_automatic_start_stop_tips", 0x6F08, 0x69010000, 0x08, 0, Node.TYPE_BUFF1), new Node("acc_detection_prompt_tone", 0x6E02, 0x68010000, 0x0400, 0, Node.TYPE_BUFF1), new Node("tone_of_pause_lkas", 0x6E03, 0x68010000, 0x0800, 0, Node.TYPE_BUFF1), new Node("set_risk_distance_head_of_car", 0x6E01, 0x68010000, 0x0300, 0, Node.TYPE_BUFF1), new Node("driver_attention_monitor", 0x6E07, 0x68010000, 0xC000, 0, Node.TYPE_BUFF1),
 
-            new Node("static_boot_line", 0xF20D, 0xE8020000, 0x010000, 0, Node.TYPE_BUFF1), new Node("dynamic_boot_line", 0xF20D, 0xE8020000, 0x020000, 0, Node.TYPE_BUFF1),
-            new Node("rear_camera", 0xF20D, 0xE8020000, 0x040000, 0, Node.TYPE_BUFF1), new Node("rear_view_dynamic_reminder_system_settings", 0xF20E, 0xE8020000, 0xFF00, 0, Node.TYPE_BUFF1),
-            new Node("head_up_warning", 0x6E08, 0x68010000, 0x01, 0, Node.TYPE_BUFF1), new Node("turn_off_with_the_steering_light", 0xF20C, 0xE8010000, 0x01000000, 0, Node.TYPE_BUFF1),
+            new Node("static_boot_line", 0xF20D, 0xE8020000, 0x010000, 0, Node.TYPE_BUFF1), new Node("dynamic_boot_line", 0xF20D, 0xE8020000, 0x020000, 0, Node.TYPE_BUFF1), new Node("rear_camera", 0xF20D, 0xE8020000, 0x040000, 0, Node.TYPE_BUFF1), new Node("rear_view_dynamic_reminder_system_settings", 0xF20E, 0xE8020000, 0xFF00, 0, Node.TYPE_BUFF1), new Node("head_up_warning", 0x6E08, 0x68010000, 0x01, 0, Node.TYPE_BUFF1), new Node("turn_off_with_the_steering_light", 0xF20C, 0xE8010000, 0x01000000, 0, Node.TYPE_BUFF1),
 
-            new Node("the_duration_is_displayed_after_the_turn_off", 0xF20C, 0xE8010000, 0x0C000000, 0, Node.TYPE_BUFF1),
-            new Node("lane_offset_suppression_system", 0x6E09, 0x68010000, 0x0E, 0, Node.TYPE_BUFF1), new Node("minor_lane_departure_system_set", 0x6E04, 0x68010000, 0x3000, 0, Node.TYPE_BUFF1),
-            new Node("parking_space_width", 0xF20D, 0xE8020000, 0x080000, 0, Node.TYPE_BUFF1),
+            new Node("the_duration_is_displayed_after_the_turn_off", 0xF20C, 0xE8010000, 0x0C000000, 0, Node.TYPE_BUFF1), new Node("lane_offset_suppression_system", 0x6E09, 0x68010000, 0x0E, 0, Node.TYPE_BUFF1), new Node("minor_lane_departure_system_set", 0x6E04, 0x68010000, 0x3000, 0, Node.TYPE_BUFF1), new Node("parking_space_width", 0xF20D, 0xE8020000, 0x080000, 0, Node.TYPE_BUFF1),
             //系统设置
-            new Node("reset_main_info", 0x6E0601, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("traffic_sign_recognition_system", 0x6F0D, 0x69010000, 0x8000, 0, Node.TYPE_BUFF1),
-            new Node("electronic_preload_belt_set", 0x6F0C, 0x64010000, 0x010000, 0, Node.TYPE_BUFF1), new Node("deflation_warning_system", 0x4B0401, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1),
-            new Node("restore", 0x6E0501, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("reverse_tone", 0x6F09, 0x69010000, 0x40, 0, Node.TYPE_BUFF1),
-            new Node("electric_tail_door_remote_opening_condition_setting", 0x7A01, 0x75010000, 0x0100, 0, Node.TYPE_BUFF1),
-            new Node("electric_rear_door_outer_handle_for_electric_open", 0x7A02, 0x75010000, 0x0200, 0, Node.TYPE_BUFF1),
-            new Node("driving_posture_set_personalized_memory_location_linkage", 0x6F0B, 0x64010000, 0x020000, 0, Node.TYPE_BUFF1),
-    };
+            new Node("reset_main_info", 0x6E0601, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("traffic_sign_recognition_system", 0x6F0D, 0x69010000, 0x8000, 0, Node.TYPE_BUFF1), new Node("electronic_preload_belt_set", 0x6F0C, 0x64010000, 0x010000, 0, Node.TYPE_BUFF1), new Node("deflation_warning_system", 0x4B0401, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("restore", 0x6E0501, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("reverse_tone", 0x6F09, 0x69010000, 0x40, 0, Node.TYPE_BUFF1), new Node("electric_tail_door_remote_opening_condition_setting", 0x7A01, 0x75010000, 0x0100, 0, Node.TYPE_BUFF1), new Node("electric_rear_door_outer_handle_for_electric_open", 0x7A02, 0x75010000, 0x0200, 0, Node.TYPE_BUFF1), new Node("driving_posture_set_personalized_memory_location_linkage", 0x6F0B, 0x64010000, 0x020000, 0, Node.TYPE_BUFF1),};
 
-    private final static int[] INIT_CMDS = {
-            0x64, 0x75, 0x69, 0xe8, 0x68, 0x65, 0x66, 0x67
+    private final static int[] INIT_CMDS = {0x64, 0x75, 0x69, 0xe8, 0x68, 0x65, 0x66, 0x67
 
     };
 
@@ -165,6 +116,11 @@ public class HondaSettingHiworldFragment extends PreferenceFragment implements P
                 }
             }
         }
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
     }
 
     private boolean mPaused = true;

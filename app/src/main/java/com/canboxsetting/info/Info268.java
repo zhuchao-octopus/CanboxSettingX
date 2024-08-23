@@ -1,73 +1,29 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
-import com.common.view.MyPreferenceSeekBar;
 
-public class Info268 extends PreferenceFragment {
+public class Info268 extends PreferenceFragmentCompat {
     private static final String TAG = "HYSettingsRaiseFragment";
-
-    private static final NodePreference[] NODES = {
-
-            new NodePreference("remaining_power", 0x31), new NodePreference("battery_temperature", 0x31), new NodePreference("battery_voltage", 0x31), new NodePreference("battery_current", 0x31),
-            new NodePreference("motor_temperature", 0x31), new NodePreference("control_module_voltage", 0x31), new NodePreference("motor_controller_failure", 0x31),
-
-
-    };
+    private static final NodePreference[] NODES = {new NodePreference("remaining_power", 0x31), new NodePreference("battery_temperature", 0x31), new NodePreference("battery_voltage", 0x31), new NodePreference("battery_current", 0x31), new NodePreference("motor_temperature", 0x31), new NodePreference("control_module_voltage", 0x31), new NodePreference("motor_controller_failure", 0x31),};
 
     private final static int[] INIT_CMDS = {0x31};
 
@@ -78,6 +34,11 @@ public class Info268 extends PreferenceFragment {
         addPreferencesFromResource(R.xml.empty_setting);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

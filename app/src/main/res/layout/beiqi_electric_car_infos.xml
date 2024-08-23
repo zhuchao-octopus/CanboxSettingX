@@ -11,24 +11,24 @@
         android:layout_height="0px"
         android:layout_weight="5"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/page0"
             android:layout_width="1024px"
             android:layout_height="400px"
             android:orientation="vertical"
-            android:visibility="visible" >
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/baic_energy_background" >
+                android:background="@drawable/baic_energy_background">
 
                 <RelativeLayout
                     android:layout_width="@dimen/baic_environmental_icon_view_width"
                     android:layout_height="@dimen/baic_environmental_icon_view_height"
-                    android:layout_centerInParent="true" >
+                    android:layout_centerInParent="true">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_centerHorizontal="true" >
+                    android:layout_centerHorizontal="true">
 
                     <TextView
                         android:id="@id/km_tv"
@@ -170,7 +170,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -178,7 +178,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -193,8 +193,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -202,7 +201,7 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <TextView
                     android:id="@+id/gs4_energy_recovery_title"
@@ -218,8 +217,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1px"
-                android:background="#88888888" >
-            </View>
+                android:background="#88888888"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -229,14 +227,14 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="20px"
                 android:paddingRight="15px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <LinearLayout
                     android:id="@+id/warning_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="gone" >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/warning_msg"
@@ -254,7 +252,7 @@
                         android:layout_height="0px"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <Button
                             android:id="@+id/warning_cancel"
@@ -269,7 +267,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -277,8 +275,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/baic_car" >
-                    </ImageView>
+                        android:src="@drawable/baic_car"></ImageView>
 
                     <SeekBar
                         android:id="@+id/enag"
@@ -304,7 +301,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -313,11 +310,11 @@
                 android:paddingBottom="5px"
                 android:paddingLeft="80px"
                 android:paddingRight="80px"
-                android:paddingTop="5px" >
+                android:paddingTop="5px">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="360px" >
+                    android:layout_height="360px">
 
                     <com.car.view.LineGraphicView
                         android:id="@+id/line_graphic"
@@ -333,7 +330,7 @@
                         android:layout_height="20px"
                         android:layout_alignParentBottom="true"
                         android:orientation="horizontal"
-                        android:paddingLeft="40px" >
+                        android:paddingLeft="40px">
 
                         <TextView
                             android:layout_width="0px"
@@ -388,7 +385,7 @@
                         android:layout_width="100px"
                         android:layout_height="fill_parent"
                         android:orientation="vertical"
-                        android:paddingBottom="10px" >
+                        android:paddingBottom="10px">
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -398,7 +395,7 @@
                             android:text="@string/degree_100_km"
                             android:textColor="#ffffff"
                             android:textSize="18px" />
-                        
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="0px"
@@ -455,14 +452,13 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:background="#88888888" >
-    </View>
+        android:background="#88888888"></View>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0px"
         android:layout_weight="1"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/charging_settings"
@@ -473,14 +469,12 @@
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/environmental_contribution"
-            android:textSize="24px" >
-        </TextView>
+            android:textSize="24px"></TextView>
 
         <View
             android:layout_width="1px"
             android:layout_height="fill_parent"
-            android:background="#88888888" >
-        </View>
+            android:background="#88888888"></View>
 
         <TextView
             android:id="@+id/energy_information"
@@ -491,14 +485,12 @@
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/flow_of_energy"
-            android:textSize="24px" >
-        </TextView>
+            android:textSize="24px"></TextView>
 
         <View
             android:layout_width="1px"
             android:layout_height="fill_parent"
-            android:background="#88888888" >
-        </View>
+            android:background="#88888888"></View>
 
         <TextView
             android:id="@+id/energy_statistics"
@@ -510,14 +502,12 @@
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/energy_statistics"
-            android:textSize="24px" >
-        </TextView>
+            android:textSize="24px"></TextView>
 
         <View
             android:layout_width="1px"
             android:layout_height="fill_parent"
-            android:background="#88888888" >
-        </View>
+            android:background="#88888888"></View>
     </LinearLayout>
 
 </LinearLayout>

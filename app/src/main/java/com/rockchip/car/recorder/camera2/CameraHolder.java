@@ -62,6 +62,7 @@ public class CameraHolder {
     private static CameraProxy mMockCamera[];
     private static CameraInfo mMockCameraInfo[];
     private SurfaceHolder[] mSurfaceHolder = new SurfaceHolder[CameraSettings.MAX_SUPPORT_CAMERAS];
+
     public SurfaceHolder getHolder(int cameraId) {
         if (cameraId > -1 && cameraId < mSurfaceHolder.length) {
             return mSurfaceHolder[cameraId];
@@ -71,18 +72,19 @@ public class CameraHolder {
     }
 
     public void setHolder(SurfaceHolder holder, int cameraId) {
-        if (cameraId > -1 && cameraId < mSurfaceHolder.length)
-            mSurfaceHolder[cameraId] = holder;
+        if (cameraId > -1 && cameraId < mSurfaceHolder.length) mSurfaceHolder[cameraId] = holder;
     }
 
     /* Debug double-open issue */
     private static final boolean DEBUG_OPEN_RELEASE = true;
+
     private static class OpenReleaseState {
         long time;
         int id;
         String device;
         String[] stack;
     }
+
     private static ArrayList<OpenReleaseState> sOpenReleaseStates = new ArrayList<OpenReleaseState>();
     private static SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
@@ -138,6 +140,7 @@ public class CameraHolder {
 
     // Use a singleton.
     private static CameraHolder sHolder;
+
     public static synchronized CameraHolder instance() {
         if (sHolder == null) {
             sHolder = new CameraHolder(CameraSettings.MAX_SUPPORT_CAMERAS);
@@ -305,8 +308,7 @@ public class CameraHolder {
     }
 
     public Camera getCamera(int id) {
-        if (id < 0 || id >= mCameraDevice.length)
-            return null;
+        if (id < 0 || id >= mCameraDevice.length) return null;
         if (mCameraDevice != null && mCameraDevice.length > id && mCameraDevice[id] != null) {
             return mCameraDevice[id].getCamera();
         }

@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/controlset">
 
-    <PreferenceScreen android:title="@string/lock" >
+    <PreferenceScreen android:title="@string/lock">
         <SwitchPreference
             android:key="cardoorspeed"
             android:persistent="false"
@@ -67,7 +67,7 @@
     <!-- <PreferenceCategory -->
     <!-- android:key="climate_settings" -->
     <!-- android:title="@string/climate_settings" /> -->
-    <PreferenceScreen android:title="@string/air_light" >
+    <PreferenceScreen android:title="@string/air_light">
         <SwitchPreference
             android:key="airautokey"
             android:persistent="false"
@@ -112,7 +112,7 @@
     <!-- android:entries="@array/lightingime_entries" -->
     <!-- android:entryValues="@array/lightingime_entryValues" /> -->
 
-    <PreferenceScreen android:title="@string/other" >
+    <PreferenceScreen android:title="@string/other">
         <ListPreference
             android:entries="@array/radarvol_entries"
             android:entryValues="@array/radarvol_entryValues1"

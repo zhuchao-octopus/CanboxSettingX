@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-	<com.common.view.MyPreference
-	    android:key="consumption_hundredkilometer"
-	    android:persistent="false"
-	    android:title="@string/consumption_hundredkilometer" />
-	<com.common.view.MyPreference
-	    android:key="mileagex"
-	    android:persistent="false"
-	    android:title="@string/mileagex" />
-	<com.common.view.MyPreference
-	    android:key="camry_distance"
-	    android:persistent="false"
-	    android:title="@string/camry_distance" />
-	<com.common.view.MyPreference
-	    android:key="am_beoilmass"
-	    android:persistent="false"
-	    android:title="@string/am_beoilmass" />
-	<com.common.view.MyPreference
-	    android:key="safebelt_driver"
-	    android:persistent="false"
-	    android:title="@string/safebelt_driver" />
-	<com.common.view.MyPreference
-	    android:key="safebelt_passenger"
-	    android:persistent="false"
-	    android:title="@string/safebelt_passenger" />
-	<com.common.view.MyPreference
-	    android:key="brake_state"
-	    android:persistent="false"
-	    android:title="@string/brake_state" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.common.view.MyPreference
+        android:key="consumption_hundredkilometer"
+        android:persistent="false"
+        android:title="@string/consumption_hundredkilometer" />
+    <com.common.view.MyPreference
+        android:key="mileagex"
+        android:persistent="false"
+        android:title="@string/mileagex" />
+    <com.common.view.MyPreference
+        android:key="camry_distance"
+        android:persistent="false"
+        android:title="@string/camry_distance" />
+    <com.common.view.MyPreference
+        android:key="am_beoilmass"
+        android:persistent="false"
+        android:title="@string/am_beoilmass" />
+    <com.common.view.MyPreference
+        android:key="safebelt_driver"
+        android:persistent="false"
+        android:title="@string/safebelt_driver" />
+    <com.common.view.MyPreference
+        android:key="safebelt_passenger"
+        android:persistent="false"
+        android:title="@string/safebelt_passenger" />
+    <com.common.view.MyPreference
+        android:key="brake_state"
+        android:persistent="false"
+        android:title="@string/brake_state" />
 </PreferenceScreen>

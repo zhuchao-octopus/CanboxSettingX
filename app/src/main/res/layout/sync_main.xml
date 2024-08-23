@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="800px"
-    android:layout_height="480px" >
+    android:layout_height="480px">
 
     <View
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0px"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="120px"
@@ -21,7 +21,7 @@
             android:layout_gravity="bottom"
             android:background="#88000000"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/menu"
@@ -88,13 +88,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40px"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/sync"
@@ -163,7 +163,7 @@
                 android:layout_height="282px"
                 android:layout_marginLeft="1px"
                 android:background="@drawable/sub_background"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -172,13 +172,13 @@
                     android:paddingBottom="1px"
                     android:paddingLeft="1px"
                     android:paddingRight="1px"
-                    android:paddingTop="1px" >
+                    android:paddingTop="1px">
 
                     <LinearLayout
                         android:layout_width="400px"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <View
                             android:layout_width="match_parent"
@@ -238,18 +238,18 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <TableLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:gravity="center" >
+                            android:gravity="center">
 
                             <TableRow
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center" >
+                                android:gravity="center">
 
                                 <TextView
                                     android:id="@+id/num1"
@@ -270,7 +270,7 @@
                             <TableRow
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center" >
+                                android:gravity="center">
 
                                 <TextView
                                     android:id="@+id/num4"
@@ -291,7 +291,7 @@
                             <TableRow
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center" >
+                                android:gravity="center">
 
                                 <TextView
                                     android:id="@+id/num7"
@@ -312,7 +312,7 @@
                             <TableRow
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center" >
+                                android:gravity="center">
 
                                 <TextView
                                     android:id="@+id/num_x"
@@ -335,7 +335,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="88px"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@+id/dial"
@@ -362,13 +362,13 @@
                         android:layout_width="278px"
                         android:layout_height="match_parent"
                         android:layout_marginTop="20px"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="58px"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@+id/up"
@@ -383,7 +383,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="68px"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@+id/left"
@@ -411,7 +411,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="58px"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@+id/down"
@@ -426,7 +426,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="78px"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@+id/prev"
@@ -457,7 +457,7 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/bottom_background"
                 android:gravity="right"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button1"

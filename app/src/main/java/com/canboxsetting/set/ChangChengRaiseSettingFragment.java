@@ -1,80 +1,37 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceFragmentCompat;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class ChangChengRaiseSettingFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class ChangChengRaiseSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "KadjarRaiseSettingFragment";
 
     private static final Node[] NODES = {
 
-            new Node("top_light_delayed_time", 0x8304, 0x3100, 0xf0, 3), new Node("go_home_delayed_time", 0x8305, 0x3100, 0xf, 3), new Node("economize_on_electricity", 0x8306, 0x3101, 0xf0, 3),
-            new Node("rain_light_sensor_settings", 0x8307, 0x3101, 0x8, 1), new Node("headlamp_brightness_setting", 0x8308, 0x3101, 0x4, 1),
-            new Node("automatic_folding_of_rearview_mirror_key", 0x8309, 0x3101, 0x2),
+            new Node("top_light_delayed_time", 0x8304, 0x3100, 0xf0, 3), new Node("go_home_delayed_time", 0x8305, 0x3100, 0xf, 3), new Node("economize_on_electricity", 0x8306, 0x3101, 0xf0, 3), new Node("rain_light_sensor_settings", 0x8307, 0x3101, 0x8, 1), new Node("headlamp_brightness_setting", 0x8308, 0x3101, 0x4, 1), new Node("automatic_folding_of_rearview_mirror_key", 0x8309, 0x3101, 0x2),
 
 
-            new Node("trailer_settings", 0x8319, 0x3103, 0x10), new Node("headlight_mode_key", 0x830c, 0x3101, 0x1), new Node("seat_memory_key", 0x830d, 0x3102, 0x80),
-            new Node("parking_setting_key", 0x830f, 0x3102, 0x40), new Node("antitheft_prevention_key", 0x830e, 0x3102, 0x30), new Node("gate_setting_key", 0x8310, 0x3102, 0x8),
-            new Node("electric_sidestepping_system_key", 0x8311, 0x3102, 0x4), new Node("roof_mode_key", 0x8312, 0x3102, 0x2), new Node("full_terrain_key", 0x8313, 0x3102, 0x1),
-            new Node("precollision_warning_system_key", 0x8317, 0x3103, 0x80), new Node("automatic_emergency_braking_system_key", 0x8318, 0x3103, 0x40),
-            new Node("intelligent_start_and_stop_key", 0x830b, 0x3103, 0x20),
+            new Node("trailer_settings", 0x8319, 0x3103, 0x10), new Node("headlight_mode_key", 0x830c, 0x3101, 0x1), new Node("seat_memory_key", 0x830d, 0x3102, 0x80), new Node("parking_setting_key", 0x830f, 0x3102, 0x40), new Node("antitheft_prevention_key", 0x830e, 0x3102, 0x30), new Node("gate_setting_key", 0x8310, 0x3102, 0x8), new Node("electric_sidestepping_system_key", 0x8311, 0x3102, 0x4), new Node("roof_mode_key", 0x8312, 0x3102, 0x2), new Node("full_terrain_key", 0x8313, 0x3102, 0x1), new Node("precollision_warning_system_key", 0x8317, 0x3103, 0x80), new Node("automatic_emergency_braking_system_key", 0x8318, 0x3103, 0x40), new Node("intelligent_start_and_stop_key", 0x830b, 0x3103, 0x20),
 
 
             new Node("fatigue_driving_warning", 0x833c, 0x3105, 0x10), new Node("early_warning_sensitivity", 0x8332, 0x3104, 0x30),
@@ -122,6 +79,11 @@ public class ChangChengRaiseSettingFragment extends PreferenceFragment implement
 
     }
 
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
     private boolean mPaused = true;
 
     @Override
@@ -158,27 +120,21 @@ public class ChangChengRaiseSettingFragment extends PreferenceFragment implement
 
     private void sendCanboxData2(int cmd, int value) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff00) >> 8), 0x02, (byte) (cmd & 0xff), (byte) value
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x02, (byte) (cmd & 0xff), (byte) value};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
 
     private void sendCanboxData(int cmd, int value) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff00) >> 8), 0x03, (byte) (cmd & 0xff), (byte) value, 0
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x03, (byte) (cmd & 0xff), (byte) value, 0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
 
     private void sendCanboxData(int cmd) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff0000) >> 16), 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff0000) >> 16), 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }

@@ -91,9 +91,7 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
     }
 
     private void sendCanboxInfo0xc7(int d0, int d1, int d2, int d3, int d4) {
-        byte[] buf = new byte[]{
-                (byte) 0xc7, 0x5, (byte) d0, (byte) d1, (byte) d2, (byte) d3, (byte) d4
-        };
+        byte[] buf = new byte[]{(byte) 0xc7, 0x5, (byte) d0, (byte) d1, (byte) d2, (byte) d3, (byte) d4};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

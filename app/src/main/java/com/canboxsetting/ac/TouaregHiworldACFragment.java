@@ -68,9 +68,7 @@ public class TouaregHiworldACFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.icon_power, 0x106ff}, {R.id.air_title_ce_aqs, 0x10100}, {R.id.air_title_ce_auto_large, 0x10200}, {R.id.air_title_ce_max, 0x10b00}, {R.id.wheel, 0x10a00},
-            {R.id.canbus21_mode1, 0x10400}, {R.id.canbus21_mode2, 0x10500}, {R.id.canbus21_mode5, 0x10300},
+    private final static int[][] CMD_ID = new int[][]{{R.id.icon_power, 0x106ff}, {R.id.air_title_ce_aqs, 0x10100}, {R.id.air_title_ce_auto_large, 0x10200}, {R.id.air_title_ce_max, 0x10b00}, {R.id.wheel, 0x10a00}, {R.id.canbus21_mode1, 0x10400}, {R.id.canbus21_mode2, 0x10500}, {R.id.canbus21_mode5, 0x10300},
 
             {R.id.point0, 0x0701}, {R.id.point1, 0x0702}, {R.id.point2, 0x0703}, {R.id.point3, 0x0704}, {R.id.point4, 0x0705}, {R.id.point5, 0x0706}, {R.id.point6, 0x0707},
 

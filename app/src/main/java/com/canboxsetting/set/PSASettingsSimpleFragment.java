@@ -1,71 +1,34 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
 import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreference2;
 import com.common.view.MyPreferenceEdit;
 import com.common.view.MyPreferenceEdit.IButtonCallBack;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class PSASettingsSimpleFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "PSASimpleFragment";
 
     private int mType = 0;
@@ -89,37 +52,27 @@ public class PSASettingsSimpleFragment extends PreferenceFragment implements Pre
             new Node("parking_assist", 0x8001, 0x38000000, 0x0210, 0, Node.TYPE_BUFF1_INDEX), new Node("bwiper", 0x8002, 0x38000000, 0x0180, 0, Node.TYPE_BUFF1_INDEX),
 
 
-            new Node("atmosphere_lighting", 0x8004, 0x38000000, 0x02e0, 0, Node.TYPE_BUFF1_INDEX), new Node("radar_stop", 0x8005, 0x38000000, 0x0208, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("home_lighting", 0x8006, 0x38000000, 0x03c0, 0, Node.TYPE_BUFF1_INDEX), new Node("welcome_lig", 0x8007, 0x38000000, 0x0330, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("daytime_lights", 0x8008, 0x38000000, 0x0308, 0, Node.TYPE_BUFF1_INDEX),
+            new Node("atmosphere_lighting", 0x8004, 0x38000000, 0x02e0, 0, Node.TYPE_BUFF1_INDEX), new Node("radar_stop", 0x8005, 0x38000000, 0x0208, 0, Node.TYPE_BUFF1_INDEX), new Node("home_lighting", 0x8006, 0x38000000, 0x03c0, 0, Node.TYPE_BUFF1_INDEX), new Node("welcome_lig", 0x8007, 0x38000000, 0x0330, 0, Node.TYPE_BUFF1_INDEX), new Node("daytime_lights", 0x8008, 0x38000000, 0x0308, 0, Node.TYPE_BUFF1_INDEX),
 
 
-            new Node("sound", 0x8009, 0x38000000, 0x0306, 0, Node.TYPE_BUFF1_INDEX), new Node("oil_unit", 0x800A, 0x38000000, 0x0301, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("languages", 0x800B, 0x38000000, 0x040f, 0, Node.TYPE_BUFF1_INDEX),
+            new Node("sound", 0x8009, 0x38000000, 0x0306, 0, Node.TYPE_BUFF1_INDEX), new Node("oil_unit", 0x800A, 0x38000000, 0x0301, 0, Node.TYPE_BUFF1_INDEX), new Node("languages", 0x800B, 0x38000000, 0x040f, 0, Node.TYPE_BUFF1_INDEX),
 
 
             new Node("blind_detection", 0x800C, 0x38000000, 0x0480, 0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("engine_stop", 0x800D, 0x38000000, 0x0440, 0, Node.TYPE_BUFF1_INDEX), new Node("welcome_cmd", 0x800E, 0x38000000, 0x0420, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("setdoor", 0x800F, 0x38000000, 0x0410, 0, Node.TYPE_BUFF1_INDEX),
+            new Node("engine_stop", 0x800D, 0x38000000, 0x0440, 0, Node.TYPE_BUFF1_INDEX), new Node("welcome_cmd", 0x800E, 0x38000000, 0x0420, 0, Node.TYPE_BUFF1_INDEX), new Node("setdoor", 0x800F, 0x38000000, 0x0410, 0, Node.TYPE_BUFF1_INDEX),
 
             new Node("lamp_no", 0x8012, 0x38000000, 0x0530, 0, Node.TYPE_BUFF1_INDEX), new Node("unlock_trunk_only", 0x8013, 0x38000000, 0x0110, 0, Node.TYPE_BUFF1_INDEX),
 
-            new Node("psa_simple_14", 0x8014, 0x38000000, 0x0108, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_15", 0x8015, 0x38000000, 0x0104, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("psa_simple_16", 0x8016, 0x38000000, 0x0102, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_17", 0x8017, 0x38000000, 0x0000, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("psa_simple_18", 0x8018, 0x38000000, 0x0504, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_19", 0x8019, 0x38000000, 0x0502, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("psa_simple_1a", 0x801a, 0x38000000, 0x0501, 0, Node.TYPE_BUFF1_INDEX),
+            new Node("psa_simple_14", 0x8014, 0x38000000, 0x0108, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_15", 0x8015, 0x38000000, 0x0104, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_16", 0x8016, 0x38000000, 0x0102, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_17", 0x8017, 0x38000000, 0x0000, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_18", 0x8018, 0x38000000, 0x0504, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_19", 0x8019, 0x38000000, 0x0502, 0, Node.TYPE_BUFF1_INDEX), new Node("psa_simple_1a", 0x801a, 0x38000000, 0x0501, 0, Node.TYPE_BUFF1_INDEX),
 
 
-            new Node("oushang_1d", 0x801b, 0x38000000, 0x0680, 0, Node.TYPE_BUFF1_INDEX), new Node("oushang_1e", 0x801c, 0x38000000, 0x0660, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("speed_recommendation", 0x801d, 0x38000000, 0x0610, 0, Node.TYPE_BUFF1_INDEX), new Node("dynamic_bend", 0x801e, 0x38000000, 0x0608, 0, Node.TYPE_BUFF1_INDEX),
-            new Node("automatic_rearview_mirror_folding", 0x801f, 0x38000000, 0x0604, 0, Node.TYPE_BUFF1_INDEX),
+            new Node("oushang_1d", 0x801b, 0x38000000, 0x0680, 0, Node.TYPE_BUFF1_INDEX), new Node("oushang_1e", 0x801c, 0x38000000, 0x0660, 0, Node.TYPE_BUFF1_INDEX), new Node("speed_recommendation", 0x801d, 0x38000000, 0x0610, 0, Node.TYPE_BUFF1_INDEX), new Node("dynamic_bend", 0x801e, 0x38000000, 0x0608, 0, Node.TYPE_BUFF1_INDEX), new Node("automatic_rearview_mirror_folding", 0x801f, 0x38000000, 0x0604, 0, Node.TYPE_BUFF1_INDEX),
 
             new Node("tpms_cal", 0x8010, 0, 0), new Node("keyboard", 0x0, 0, 0),
 
 
-            new Node("memory_speed", 0x0, 0x3B000000, 0x80, 0, Node.TYPE_CUSTOM), new Node("speed1", 0x01, 0x3b000000, 0x01ff), new Node("speed2", 0x02, 0x3b000000, 0x02ff),
-            new Node("speed3", 0x03, 0x3b000000, 0x03ff), new Node("speed4", 0x04, 0x3b000000, 0x04ff), new Node("speed5", 0x05, 0x3b000000, 0x05ff),
+            new Node("memory_speed", 0x0, 0x3B000000, 0x80, 0, Node.TYPE_CUSTOM), new Node("speed1", 0x01, 0x3b000000, 0x01ff), new Node("speed2", 0x02, 0x3b000000, 0x02ff), new Node("speed3", 0x03, 0x3b000000, 0x03ff), new Node("speed4", 0x04, 0x3b000000, 0x04ff), new Node("speed5", 0x05, 0x3b000000, 0x05ff),
 
 
     };
@@ -135,9 +88,7 @@ public class PSASettingsSimpleFragment extends PreferenceFragment implements Pre
 
                     int index = NODES[i].mCmd;
                     if (index > 0 && index < mData3B.length) {
-                        byte[] buf = new byte[]{
-                                (byte) 0x88, 0x06, 0x40, mData3B[1], mData3B[2], mData3B[3], mData3B[4], mData3B[5]
-                        };
+                        byte[] buf = new byte[]{(byte) 0x88, 0x06, 0x40, mData3B[1], mData3B[2], mData3B[3], mData3B[4], mData3B[5]};
 
                         int value = mData3B[index] & 0xff;
                         if (add) {
@@ -165,13 +116,11 @@ public class PSASettingsSimpleFragment extends PreferenceFragment implements Pre
         }
     };
 
-    private final static int[] INIT_CMDS = {
-            0x38, 0x3B,
+    private final static int[] INIT_CMDS = {0x38, 0x3B,
             /*0x4010, 0x4020, 0x4030,
             0x4031, 0x4040, 0x4050, 0x4051,
             0x4060, 0x4070, 0x4080, 0x4090,
-            */
-    };
+            */};
 
     private Preference[] mPreferences = new Preference[NODES.length];
 
@@ -202,6 +151,11 @@ public class PSASettingsSimpleFragment extends PreferenceFragment implements Pre
         //		} else {
         //			((SwitchPreference)p).setChecked(true);
         //		}
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -292,9 +246,7 @@ public class PSASettingsSimpleFragment extends PreferenceFragment implements Pre
                                 mData3B[0] |= 0x40;
                             }
 
-                            byte[] buf = new byte[]{
-                                    (byte) 0x88, 0x06, mData3B[0], mData3B[1], mData3B[2], mData3B[3], mData3B[4], mData3B[5]
-                            };
+                            byte[] buf = new byte[]{(byte) 0x88, 0x06, mData3B[0], mData3B[1], mData3B[2], mData3B[3], mData3B[4], mData3B[5]};
                             BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
                         } else {
@@ -393,9 +345,7 @@ public class PSASettingsSimpleFragment extends PreferenceFragment implements Pre
         return ret;
     }
 
-    private final static int[][] BUTTON_ID = {
-            {R.id.mode, 0x2}, {R.id.up, 0x7}, {R.id.menu, 0x4}, {R.id.left, 0x6}, {R.id.right, 0x5}, {R.id.ok, 0x9}, {R.id.dark, 0x1}, {R.id.down, 0x8}, {R.id.esc, 0x3},
-    };
+    private final static int[][] BUTTON_ID = {{R.id.mode, 0x2}, {R.id.up, 0x7}, {R.id.menu, 0x4}, {R.id.left, 0x6}, {R.id.right, 0x5}, {R.id.ok, 0x9}, {R.id.dark, 0x1}, {R.id.down, 0x8}, {R.id.esc, 0x3},};
 
     private void sendCanboxInfo(int d0, int d1) {
         byte[] buf = new byte[]{(byte) d0, 0x01, (byte) d1};

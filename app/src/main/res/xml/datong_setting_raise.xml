@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:my="http://schemas.android.com/apk/res-auto"
-    android:persistent="false" >
+    android:persistent="false">
 
     <SwitchPreference
         android:key="key_flow_me_home"

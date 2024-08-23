@@ -2,13 +2,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/controlset">
 
-        <ListPreference
+    <ListPreference
         android:entries="@array/launage_entries2"
         android:entryValues="@array/launage_entryValues2"
         android:key="langauage"
         android:persistent="false"
         android:title="@string/langauage5" />
-        
+
     <ListPreference
         android:entries="@array/enunit_set"
         android:entryValues="@array/enunit_set_vaues"

@@ -75,11 +75,7 @@ public class JeepAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.air_title_ce_max, 0x010c}, {R.id.air_title_ce_rear, 0x010e}, {R.id.air_title_ce_ac_1, 0x0101}, {R.id.air_title_ce_inner_loop, 0x0103}, {R.id.air_title_ce_auto_large, 0x0102},
-            {R.id.air_title_ce_ac_max, 0x010f}, {R.id.wheel, 0x0118}, {R.id.con_left_temp_up, 0x0104}, {R.id.con_left_temp_down, 0x0105}, {R.id.con_right_temp_up, 0x0114},
-            {R.id.con_right_temp_down, 0x0115}, {R.id.canbus21_mode1, 0x0108}, {R.id.canbus21_mode3, 0x0109}, {R.id.canbus21_mode2, 0x010a}, {R.id.canbus21_mode4, 0x010b},
-            {R.id.con_seathotleft, 0x0111}, {R.id.con_seathotright, 0x0112}, {R.id.air_title_sync, 0x010d}, {R.id.icon_power, 0x0110}, {R.id.wind_add, 0x0106}, {R.id.wind_minus, 0x0107},
+    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 0x010c}, {R.id.air_title_ce_rear, 0x010e}, {R.id.air_title_ce_ac_1, 0x0101}, {R.id.air_title_ce_inner_loop, 0x0103}, {R.id.air_title_ce_auto_large, 0x0102}, {R.id.air_title_ce_ac_max, 0x010f}, {R.id.wheel, 0x0118}, {R.id.con_left_temp_up, 0x0104}, {R.id.con_left_temp_down, 0x0105}, {R.id.con_right_temp_up, 0x0114}, {R.id.con_right_temp_down, 0x0115}, {R.id.canbus21_mode1, 0x0108}, {R.id.canbus21_mode3, 0x0109}, {R.id.canbus21_mode2, 0x010a}, {R.id.canbus21_mode4, 0x010b}, {R.id.con_seathotleft, 0x0111}, {R.id.con_seathotright, 0x0112}, {R.id.air_title_sync, 0x010d}, {R.id.icon_power, 0x0110}, {R.id.wind_add, 0x0106}, {R.id.wind_minus, 0x0107},
 
     };
 
@@ -229,7 +225,7 @@ public class JeepAirControlFragment extends MyFragment {
     }
 
     private void updateView(byte[] buf) {
-        MMLog.d(TAG,"updateView buf:"+ ByteUtils.BytesToHexStr(buf));
+        MMLog.d(TAG, "updateView buf:" + ByteUtils.BytesToHexStr(buf));
         switch (buf[0]) {
             case 0x21:
                 // if (buf[2]&0x80)
@@ -328,7 +324,7 @@ public class JeepAirControlFragment extends MyFragment {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
-                    if(action == null) return;
+                    if (action == null) return;
                     if (action.equals(MyCmd.BROADCAST_SEND_FROM_CAN)) {
                         byte[] buf = intent.getByteArrayExtra("buf");
                         if (buf != null) {

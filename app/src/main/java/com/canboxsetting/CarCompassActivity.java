@@ -19,15 +19,16 @@ package com.canboxsetting;
 import com.car.ui.GlobalDef;
 import com.common.util.MachineConfig;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.view.View;
 
 
-public class CarCompassActivity extends Activity {
+public class CarCompassActivity extends AppCompatActivity {
     private static final String TAG = "CanAirControlActivity";
 
     private FragmentManager mFragmentManager;
@@ -38,7 +39,7 @@ public class CarCompassActivity extends Activity {
         super.onCreate(icicle);
 
         setContentView(R.layout.main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         String value = null;
         String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);

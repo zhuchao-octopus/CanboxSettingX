@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <ListPreference
         android:entries="@array/adjust_outside"
@@ -83,8 +83,8 @@
         android:key="access_beep"
         android:persistent="false"
         android:title="@string/access_beep" />
-    
-     <SwitchPreference
+
+    <SwitchPreference
         android:key="remote_start_system"
         android:persistent="false"
         android:title="@string/remote_start_system" />

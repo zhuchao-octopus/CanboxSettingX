@@ -1,6 +1,5 @@
 package com.common.view;
 
-import com.canboxsetting.R;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -11,6 +10,8 @@ import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+
+import com.canboxsetting.R;
 
 public class CircularRingPercentageView extends View {
     private Paint paint;
@@ -72,7 +73,7 @@ public class CircularRingPercentageView extends View {
 
     public CircularRingPercentageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        
+
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.DashCircle);
         circleWidth = mTypedArray.getDimensionPixelOffset(R.styleable.DashCircle_circleRadiu, getDpValue(180));
         roundBackgroundColor = mTypedArray.getColor(R.styleable.DashCircle_firstColor, 0xffdddddd);
@@ -82,27 +83,21 @@ public class CircularRingPercentageView extends View {
         colors[0] = mTypedArray.getColor(R.styleable.DashCircle_outCircleColor, 0xffff4639);
         colors[1] = mTypedArray.getColor(R.styleable.DashCircle_firstColor, 0xffcdd513);
         colors[2] = mTypedArray.getColor(R.styleable.DashCircle_secondColor, 0xff3cdf5f);
-        
-		top_arc_degree_start = mTypedArray.getFloat(
-				R.styleable.DashCircle_top_arc_degree_start, 0);
-		top_arc_degree_end = mTypedArray.getFloat(
-				R.styleable.DashCircle_top_arc_degree_end, 360);
-		top_arc_value_max = mTypedArray.getInt(
-				R.styleable.DashCircle_top_arc_value_max, 100);
-		top_arc_value_min = mTypedArray.getInt(
-				R.styleable.DashCircle_top_arc_value_min, 0);
-		maxColorNumber = mTypedArray.getInt(
-				R.styleable.DashCircle_top_arc_count, 40);
-        
-		
-		top_arc_value_count = mTypedArray.getInt(
-				R.styleable.DashCircle_top_arc_value_count, 7);
-		
-		top_arc_degree =  (float)((360.0 - top_arc_degree_start) + top_arc_degree_end);        
-		singlPoint = (float) (top_arc_degree/maxColorNumber);	//(float) 360 / (float) maxColorNumber;		
-		mStep = (float) (top_arc_degree/100);		
-        
-        
+
+        top_arc_degree_start = mTypedArray.getFloat(R.styleable.DashCircle_top_arc_degree_start, 0);
+        top_arc_degree_end = mTypedArray.getFloat(R.styleable.DashCircle_top_arc_degree_end, 360);
+        top_arc_value_max = mTypedArray.getInt(R.styleable.DashCircle_top_arc_value_max, 100);
+        top_arc_value_min = mTypedArray.getInt(R.styleable.DashCircle_top_arc_value_min, 0);
+        maxColorNumber = mTypedArray.getInt(R.styleable.DashCircle_top_arc_count, 40);
+
+
+        top_arc_value_count = mTypedArray.getInt(R.styleable.DashCircle_top_arc_value_count, 7);
+
+        top_arc_degree = (float) ((360.0 - top_arc_degree_start) + top_arc_degree_end);
+        singlPoint = (float) (top_arc_degree / maxColorNumber);    //(float) 360 / (float) maxColorNumber;
+        mStep = (float) (top_arc_degree / 100);
+
+
         initView();
         mTypedArray.recycle();
     }
@@ -226,7 +221,7 @@ public class CircularRingPercentageView extends View {
 
         int roundLineWidth = 2;
         circleCenter = circleWidth / 2;//半径
-       // singlPoint = (float) 360 / (float) maxColorNumber;
+        // singlPoint = (float) 360 / (float) maxColorNumber;
         radius = (int) (circleCenter - roundWidth / 2); // 圆环的半径
         sweepGradientInit();
         mPaintText = new Paint();
@@ -240,12 +235,12 @@ public class CircularRingPercentageView extends View {
         mPaintTextValue.setTextAlign(Paint.Align.CENTER);
         mPaintTextValue.setTextSize(60);
         mPaintTextValue.setAntiAlias(true);
-        
-		paint = new Paint();
-		paint.setColor(roundBackgroundColor);
-		paint.setStyle(Paint.Style.STROKE);
-		paint.setStrokeWidth(roundWidth - roundLineWidth * 4);
-		paint.setAntiAlias(true);
+
+        paint = new Paint();
+        paint.setColor(roundBackgroundColor);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(roundWidth - roundLineWidth * 4);
+        paint.setAntiAlias(true);
 
         paintRound = new Paint();
         paintRound.setColor(0xffffffff);
@@ -253,10 +248,8 @@ public class CircularRingPercentageView extends View {
         paintRound.setStrokeWidth(roundLineWidth);
         paintRound.setAntiAlias(true);
         // 用于定义的圆弧的形状和大小的界限
-		oval = new RectF(circleCenter - radius, circleCenter - radius,
-				circleCenter + radius, circleCenter + radius);
-		ovalRound = new RectF(roundLineWidth, roundLineWidth,
-				circleWidth-roundLineWidth, circleWidth-roundLineWidth);
+        oval = new RectF(circleCenter - radius, circleCenter - radius, circleCenter + radius, circleCenter + radius);
+        ovalRound = new RectF(roundLineWidth, roundLineWidth, circleWidth - roundLineWidth, circleWidth - roundLineWidth);
 
     }
 
@@ -264,65 +257,58 @@ public class CircularRingPercentageView extends View {
     private float top_arc_degree_end;
     private int top_arc_value_max;
     private int top_arc_value_min;
-    private float mStep = 360/100;;
-    private float top_arc_degree;;
+    private float mStep = 360 / 100;
+    ;
+    private float top_arc_degree;
+    ;
     private float top_arc_value_count;
-	
-	
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
 
-      canvas.drawArc(ovalRound, top_arc_degree_start, top_arc_degree, false, paintRound);
-        
+        canvas.drawArc(ovalRound, top_arc_degree_start, top_arc_degree, false, paintRound);
+
         paint.setColor(colors[2]);
         //背景渐变颜色
-//        paint.setShader(sweepGradient);
+        //        paint.setShader(sweepGradient);
         float sweepAngle = progress * mStep;
         canvas.drawArc(oval, top_arc_degree_start, sweepAngle, false, paint);
         paint.setShader(null);
 
         //绘制剩下的空白区域
         paint.setColor(colors[1]);
-		canvas.drawArc(
-				oval,
-				(float) (top_arc_degree_start + sweepAngle),
-				(float) (top_arc_degree - sweepAngle),
-				false, paint);
-		
-        paint.setColor(0xff000000);
-        
-        //是否是线条模式
-//        if (!isLine) {
-            float start = top_arc_degree_start;
-            for (int i = 0; i < maxColorNumber; i++) {
-                canvas.drawArc(oval, start + singlPoint - lineWidth, lineWidth, false, paint); // 绘制间隔快
-                start = (start + singlPoint);
-            }
-//        }
-//   
-		int num = 7;
-		if (top_arc_value_max>100){ //....
-			num = 5;
-		}
-            
-		int step = (int) ((top_arc_value_max - top_arc_value_min) / (top_arc_value_count - 1));
-		// 绘制文字刻度
+        canvas.drawArc(oval, (float) (top_arc_degree_start + sweepAngle), (float) (top_arc_degree - sweepAngle), false, paint);
 
-		canvas.drawText(mValue + "", circleCenter,
-				circleWidth/2 + 20, mPaintTextValue);
-		
-		for (int i = 0; i < top_arc_value_count; i++) {
-			canvas.save();// 保存当前画布
-			canvas.rotate(90 + top_arc_degree_start
-					+ (top_arc_degree / (top_arc_value_count - 1)) * i, circleCenter,
-					circleCenter);
-			canvas.drawText(top_arc_value_min + (step * i) + "", circleCenter,
-					circleCenter - radius + roundWidth / 2 + getDpValue(4)
-							+ textSize, mPaintText);
-			canvas.restore();//
-		}
+        paint.setColor(0xff000000);
+
+        //是否是线条模式
+        //        if (!isLine) {
+        float start = top_arc_degree_start;
+        for (int i = 0; i < maxColorNumber; i++) {
+            canvas.drawArc(oval, start + singlPoint - lineWidth, lineWidth, false, paint); // 绘制间隔快
+            start = (start + singlPoint);
+        }
+        //        }
+        //
+        int num = 7;
+        if (top_arc_value_max > 100) { //....
+            num = 5;
+        }
+
+        int step = (int) ((top_arc_value_max - top_arc_value_min) / (top_arc_value_count - 1));
+        // 绘制文字刻度
+
+        canvas.drawText(mValue + "", circleCenter, circleWidth / 2 + 20, mPaintTextValue);
+
+        for (int i = 0; i < top_arc_value_count; i++) {
+            canvas.save();// 保存当前画布
+            canvas.rotate(90 + top_arc_degree_start + (top_arc_degree / (top_arc_value_count - 1)) * i, circleCenter, circleCenter);
+            canvas.drawText(top_arc_value_min + (step * i) + "", circleCenter, circleCenter - radius + roundWidth / 2 + getDpValue(4) + textSize, mPaintText);
+            canvas.restore();//
+        }
     }
 
 
@@ -337,17 +323,16 @@ public class CircularRingPercentageView extends View {
         progress = p;
         postInvalidate();
     }
-    
+
     public void setValue(int v) {
-    	
-    	mValue = v/100;
-    	int len = (top_arc_value_max - top_arc_value_min);
-    	len = (v - top_arc_value_min*100)/len;   
-    	
-    	if (len < 0 || len > 100)
-			return;
-    	progress = len;
-    	
+
+        mValue = v / 100;
+        int len = (top_arc_value_max - top_arc_value_min);
+        len = (v - top_arc_value_min * 100) / len;
+
+        if (len < 0 || len > 100) return;
+        progress = len;
+
         postInvalidate();
     }
 

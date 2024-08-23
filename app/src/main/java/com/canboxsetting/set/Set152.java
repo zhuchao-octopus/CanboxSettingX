@@ -1,65 +1,30 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
+import android.util.Log;
+
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.car.ui.GlobalDef;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 import com.common.view.MyPreferenceSeekBar;
 
-public class Set152 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+public class Set152 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
 
@@ -94,8 +59,7 @@ public class Set152 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("str_language", 0x8217, 0x403, 0x4, 0, R.array.chery_language_status_entries, R.array.two_values),
 
-            new NodePreference("start_stop_dis", 0x8219, 0x403, 0x8, 0), new NodePreference("acc_detection_prompt_tone", 0x821c, 0x404, 0x40, 0),
-            new NodePreference("tone_of_pause_lkas", 0x821e, 0x404, 0x08, 0),
+            new NodePreference("start_stop_dis", 0x8219, 0x403, 0x8, 0), new NodePreference("acc_detection_prompt_tone", 0x821c, 0x404, 0x40, 0), new NodePreference("tone_of_pause_lkas", 0x821e, 0x404, 0x08, 0),
 
 
             new NodePreference("tpms_calibration", 0x8211, 0), new NodePreference("restore_factory_settings", 0x820f, 0),
@@ -134,8 +98,7 @@ public class Set152 extends PreferenceFragment implements Preference.OnPreferenc
 
             new NodePreference("str_language", 0x8f17, 0xa03, 0x4, 0, R.array.chery_language_status_entries, R.array.two_values),
 
-            new NodePreference("start_stop_dis", 0x8f19, 0xa03, 0x8, 0), new NodePreference("acc_detection_prompt_tone", 0x8f1c, 0xa04, 0x40, 0),
-            new NodePreference("tone_of_pause_lkas", 0x8f1e, 0xa04, 0x08, 0),
+            new NodePreference("start_stop_dis", 0x8f19, 0xa03, 0x8, 0), new NodePreference("acc_detection_prompt_tone", 0x8f1c, 0xa04, 0x40, 0), new NodePreference("tone_of_pause_lkas", 0x8f1e, 0xa04, 0x08, 0),
 
 
             new NodePreference("tpms_calibration", 0x8f11, 0), new NodePreference("restore_factory_settings", 0x8f0f, 0),
@@ -163,11 +126,14 @@ public class Set152 extends PreferenceFragment implements Preference.OnPreferenc
 
     }
 
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
     private void sendCmd(int cmd, int value) {
 
-        byte[] buf = new byte[]{
-                (byte) ((cmd & 0xff00) >> 8), 0x2, (byte) ((cmd & 0xff)), (byte) value
-        };
+        byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x2, (byte) ((cmd & 0xff)), (byte) value};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

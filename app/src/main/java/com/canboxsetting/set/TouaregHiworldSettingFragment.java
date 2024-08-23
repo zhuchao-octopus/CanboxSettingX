@@ -1,69 +1,32 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
+
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.string;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.common.util.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
 import com.common.view.MyPreferenceEdit;
 import com.common.view.MyPreferenceEdit.IButtonCallBack;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-
-public class TouaregHiworldSettingFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class TouaregHiworldSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "TouaregHiworldSettingFragment";
 
     private int mType = 0;
@@ -76,8 +39,7 @@ public class TouaregHiworldSettingFragment extends PreferenceFragment implements
 
             new Node("wiper", 0xcc02, 0xc3, 10, Node.TYPE_BUFF1), new Node("reset", 0xcc01, 0, 0, 0),
 
-            new Node("fvol", 0x7a01, 0x71, 0x3, Node.TYPE_BUFF1), new Node("fvol_on", 0x7a02, 0x71, 0x4, Node.TYPE_BUFF1), new Node("bvol", 0x7a03, 0x71, 0x5, Node.TYPE_BUFF1),
-            new Node("bvol_on", 0x7a04, 0x71, 0x6, Node.TYPE_BUFF1),
+            new Node("fvol", 0x7a01, 0x71, 0x3, Node.TYPE_BUFF1), new Node("fvol_on", 0x7a02, 0x71, 0x4, Node.TYPE_BUFF1), new Node("bvol", 0x7a03, 0x71, 0x5, Node.TYPE_BUFF1), new Node("bvol_on", 0x7a04, 0x71, 0x6, Node.TYPE_BUFF1),
 
             new Node("fwindow", 0x6f01, 0x64, 0x800000, 0x0), new Node("bwindow", 0x6f02, 0x64, 0x400000, 0x0), new Node("hwindow", 0x6f03, 0x64, 0x200000, 0x0),
 
@@ -99,8 +61,7 @@ public class TouaregHiworldSettingFragment extends PreferenceFragment implements
 
             new Node("car_light", 0x6d10, 0x68, 0x10000000, 0), new Node("intelligent_driving", 0x6d12, 0x68, 0x20000000, 0), new Node("left_drive", 0x6d13, 0x68, 0x40000000, 0),
 
-            new Node("range", 0xca01, 0xc1, 0x8000, Node.TYPE_BUFF2), new Node("speed", 0xca02, 0xc1, 0x4000, Node.TYPE_BUFF2), new Node("temp", 0xca03, 0xc1, 0x2000, Node.TYPE_BUFF2),
-            new Node("volume", 0xca04, 0xc1, 0x1800, Node.TYPE_BUFF2), new Node("energy", 0xca05, 0xc1, 0x0600, Node.TYPE_BUFF2), new Node("tpms", 0xca06, 0xc1, 0xc00000, Node.TYPE_BUFF2),
+            new Node("range", 0xca01, 0xc1, 0x8000, Node.TYPE_BUFF2), new Node("speed", 0xca02, 0xc1, 0x4000, Node.TYPE_BUFF2), new Node("temp", 0xca03, 0xc1, 0x2000, Node.TYPE_BUFF2), new Node("volume", 0xca04, 0xc1, 0x1800, Node.TYPE_BUFF2), new Node("energy", 0xca05, 0xc1, 0x0600, Node.TYPE_BUFF2), new Node("tpms", 0xca06, 0xc1, 0xc00000, Node.TYPE_BUFF2),
 
             new Node("air_switch", 0x3a06, 0x31, 0x40, 0),
 
@@ -147,6 +108,11 @@ public class TouaregHiworldSettingFragment extends PreferenceFragment implements
         // findPreference(s).setOnPreferenceChangeListener(this);
         // }
         // }
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 

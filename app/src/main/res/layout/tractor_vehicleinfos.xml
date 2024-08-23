@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/time"
@@ -24,11 +24,11 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="28.0px"
-        android:paddingRight="28.0px" >
+        android:paddingRight="28.0px">
 
         <RelativeLayout
             android:layout_width="368px"
-            android:layout_height="368px" >
+            android:layout_height="368px">
 
             <com.common.view.CircularRingPercentageView
                 android:id="@+id/dashboard_1"
@@ -85,13 +85,13 @@
             android:layout_width="190.0px"
             android:layout_height="228.0dip"
             android:layout_centerInParent="true"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0.0dip"
                 android:layout_weight="1.0"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -118,7 +118,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0.0dip"
                 android:layout_weight="1.0"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -144,7 +144,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0.0dip"
                 android:layout_weight="1.0"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <!-- <TextView -->
                 <!-- android:id="@+id/ehr" -->
@@ -180,7 +180,7 @@
 
         <RelativeLayout
             android:layout_width="368px"
-            android:layout_height="368px" >
+            android:layout_height="368px">
 
             <com.common.view.CircularRingPercentageView
                 android:id="@+id/dashboard_2"
@@ -247,7 +247,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0.0dip"
-        android:layout_weight="14.0" >
+        android:layout_weight="14.0">
 
         <ImageButton
             android:id="@+id/btn_home"

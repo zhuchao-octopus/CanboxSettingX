@@ -171,8 +171,7 @@ public class ReynoldsACRaiselFragment extends MyFragment {
 
             {R.id.power, 0x00}, {R.id.ac, 0x1}, {R.id.ac_auto, 0x2}, {R.id.dual, 0x3}, {R.id.inner_loop, 0x15}, {R.id.inner_loop_auto, 0x16}, {R.id.max, 0x6}, {R.id.rear, 0x17},
 
-            {R.id.wind_horizontal1, 0x7}, {R.id.wind_down1, 0x9}, {R.id.wind_up1, 0x18}, {R.id.wind_minus, 0xc}, {R.id.wind_add, 0xb}, {R.id.con_left_temp_up, 0xd}, {R.id.con_left_temp_down, 0xe},
-            {R.id.con_right_temp_up, 0xf}, {R.id.con_right_temp_down, 0x10}, {R.id.tab_wind_mode, 0xf},
+            {R.id.wind_horizontal1, 0x7}, {R.id.wind_down1, 0x9}, {R.id.wind_up1, 0x18}, {R.id.wind_minus, 0xc}, {R.id.wind_add, 0xb}, {R.id.con_left_temp_up, 0xd}, {R.id.con_left_temp_down, 0xe}, {R.id.con_right_temp_up, 0xf}, {R.id.con_right_temp_down, 0x10}, {R.id.tab_wind_mode, 0xf},
 
             {R.id.left_seat_heat, 0x24}, {R.id.right_seat_heat, 0x25},
 

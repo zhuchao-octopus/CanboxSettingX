@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceScreen android:title="@string/air_settings" >
+    <PreferenceScreen android:title="@string/air_settings">
         <ListPreference
             android:entries="@array/automodewindlevel_entries"
             android:entryValues="@array/automodewindlevel_entryValues"
@@ -43,7 +43,7 @@
             android:persistent="false"
             android:title="@string/ari_mode" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/car_normal_settings" >
+    <PreferenceScreen android:title="@string/car_normal_settings">
         <SwitchPreference
             android:key="blind"
             android:persistent="false"
@@ -95,7 +95,7 @@
             android:persistent="false"
             android:title="@string/status_notifi" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/light_settings" >
+    <PreferenceScreen android:title="@string/light_settings">
         <SwitchPreference
             android:key="findlight"
             android:persistent="false"
@@ -108,7 +108,7 @@
             android:persistent="false"
             android:title="@string/headlightdelay" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/center_locking_settings" >
+    <PreferenceScreen android:title="@string/center_locking_settings">
         <SwitchPreference
             android:key="dooropenlock"
             android:persistent="false"
@@ -130,7 +130,7 @@
             android:persistent="false"
             android:title="@string/delaylock" />
     </PreferenceScreen>
-    <PreferenceScreen android:title="@string/smart_remote_settings" >
+    <PreferenceScreen android:title="@string/smart_remote_settings">
         <SwitchPreference
             android:key="remoteunlock5"
             android:persistent="false"
@@ -188,7 +188,7 @@
     </PreferenceScreen>
     <!-- <PreferenceScreen android:title="@string/collision_detection_settings" > -->
     <!-- </PreferenceScreen> -->
-    <PreferenceScreen android:title="@string/other" >
+    <PreferenceScreen android:title="@string/other">
         <SwitchPreference
             android:key="radarswitch"
             android:title="@string/radarswitch" />
@@ -219,7 +219,6 @@
     <!-- android:persistent="false" -->
     <!-- android:title="@string/radarswitch" /> -->
 
-
     <!-- <ListPreference -->
     <!-- android:entries="@array/en" -->
     <!-- android:entryValues="@array/en_vaues" -->
@@ -227,12 +226,10 @@
     <!-- android:persistent="false" -->
     <!-- android:title="@string/alarm_vol" /> -->
 
-
     <!-- <PreferenceScreen -->
     <!-- android:key="factory_settings" -->
     <!-- android:persistent="false" -->
     <!-- android:title="@string/restore_factory_settings5" /> -->
-
 
     <!-- <SwitchPreference -->
     <!-- android:key="remote_start55" -->

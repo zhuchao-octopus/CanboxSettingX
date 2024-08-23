@@ -19,12 +19,12 @@
         android:persistent="false"
         android:title="@string/beoilmass" />
 
-<!--     <PreferenceScreen -->
-<!--         android:key="tpms" -->
-<!--         android:title="@string/tireinfo" > -->
-<!--         <com.common.view.MyPreference2 -->
-<!--             android:key="tpms_content" -->
-<!--             android:layout="@layout/type_info" /> -->
-<!--     </PreferenceScreen> -->
+    <!--     <PreferenceScreen -->
+    <!--         android:key="tpms" -->
+    <!--         android:title="@string/tireinfo" > -->
+    <!--         <com.common.view.MyPreference2 -->
+    <!--             android:key="tpms_content" -->
+    <!--             android:layout="@layout/type_info" /> -->
+    <!--     </PreferenceScreen> -->
 
 </PreferenceScreen>

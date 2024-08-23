@@ -157,8 +157,7 @@ public class AC160 extends MyFragment {
         }
     };
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x01},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x01},
 
             {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},
 

@@ -103,9 +103,7 @@ public class JeepAirRaiseControlFragment extends MyFragment {
 
     private final static int[][] CMD_ID = new int[][]{
 
-            {R.id.ac, 0x11}, {R.id.ac_max, 0x12}, {R.id.inner_loop, 0x13}, {R.id.ac_auto, 0x14}, {R.id.max, 0x15}, {R.id.rear, 0x16}, {R.id.sync, 0x17}, {R.id.wind_horizontal1, 0x18},
-            {R.id.wind_horizontal_down, 0x19}, {R.id.wind_down1, 0x1a}, {R.id.wind_up_down, 0x1b}, {R.id.wind_minus, 0x1c}, {R.id.wind_add, 0x1d}, {R.id.con_left_temp_up, 0x1f},
-            {R.id.con_left_temp_down, 0x1e}, {R.id.con_right_temp_up, 0x21}, {R.id.con_right_temp_down, 0x20},
+            {R.id.ac, 0x11}, {R.id.ac_max, 0x12}, {R.id.inner_loop, 0x13}, {R.id.ac_auto, 0x14}, {R.id.max, 0x15}, {R.id.rear, 0x16}, {R.id.sync, 0x17}, {R.id.wind_horizontal1, 0x18}, {R.id.wind_horizontal_down, 0x19}, {R.id.wind_down1, 0x1a}, {R.id.wind_up_down, 0x1b}, {R.id.wind_minus, 0x1c}, {R.id.wind_add, 0x1d}, {R.id.con_left_temp_up, 0x1f}, {R.id.con_left_temp_down, 0x1e}, {R.id.con_right_temp_up, 0x21}, {R.id.con_right_temp_down, 0x20},
 
             {R.id.left_seat_heat, 0x30}, {R.id.right_seat_heat, 0x32},
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:persistent="false" >
+    android:persistent="false">
 
     <ListPreference
         android:entries="@array/top_light_delayed_time_entries"
@@ -90,10 +90,8 @@
         android:key="intelligent_start_and_stop_key"
         android:persistent="false"
         android:title="@string/gwm_intelligent_start_and_stop" />
-   
-    
-    
-    
+
+
     <SwitchPreference
         android:key="fatigue_driving_warning"
         android:persistent="false"
@@ -105,22 +103,7 @@
         android:key="early_warning_sensitivity"
         android:title="@string/early_warning_sensitivity" />
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     <SwitchPreference
         android:key="parallel_auxiliary"
         android:persistent="false"
@@ -272,44 +255,44 @@
         android:persistent="false"
         android:title="@string/compressed_audio_source_repair" />
 
-<!--     <PreferenceCategory -->
-<!--         android:key="left_seat_status" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/left_seat_status" > -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="left_app_seat_heating" -->
-<!--             android:title="@string/str_driver_seat_heater_level" /> -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="left_seat_ventilation" -->
-<!--             android:title="@string/seat_ventilation" /> -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="left_seat_massage" -->
-<!--             android:title="@string/seat_massage" /> -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="left_seat_waist_stripping" -->
-<!--             android:title="@string/seat_waist_stripping" /> -->
-<!--     </PreferenceCategory> -->
-<!--     <PreferenceCategory -->
-<!--         android:key="right_seat_status" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/right_seat_status" > -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="right_app_seat_heating" -->
-<!--             android:title="@string/app_seat_heating" /> -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="right_seat_ventilation" -->
-<!--             android:title="@string/seat_ventilation" /> -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="right_seat_massage" -->
-<!--             android:title="@string/seat_massage" /> -->
-<!--         <com.common.view.MyPreferenceEdit -->
-<!--             android:key="right_seat_waist_stripping" -->
-<!--             android:title="@string/seat_waist_stripping" /> -->
-<!--     </PreferenceCategory> -->
+    <!--     <PreferenceCategory -->
+    <!--         android:key="left_seat_status" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/left_seat_status" > -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="left_app_seat_heating" -->
+    <!--             android:title="@string/str_driver_seat_heater_level" /> -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="left_seat_ventilation" -->
+    <!--             android:title="@string/seat_ventilation" /> -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="left_seat_massage" -->
+    <!--             android:title="@string/seat_massage" /> -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="left_seat_waist_stripping" -->
+    <!--             android:title="@string/seat_waist_stripping" /> -->
+    <!--     </PreferenceCategory> -->
+    <!--     <PreferenceCategory -->
+    <!--         android:key="right_seat_status" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/right_seat_status" > -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="right_app_seat_heating" -->
+    <!--             android:title="@string/app_seat_heating" /> -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="right_seat_ventilation" -->
+    <!--             android:title="@string/seat_ventilation" /> -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="right_seat_massage" -->
+    <!--             android:title="@string/seat_massage" /> -->
+    <!--         <com.common.view.MyPreferenceEdit -->
+    <!--             android:key="right_seat_waist_stripping" -->
+    <!--             android:title="@string/seat_waist_stripping" /> -->
+    <!--     </PreferenceCategory> -->
     <PreferenceCategory
         android:key="safety_assistance"
         android:persistent="false"
-        android:title="@string/safety_assistance" >
+        android:title="@string/safety_assistance">
         <SwitchPreference
             android:key="collision_safety_assistance"
             android:persistent="false"

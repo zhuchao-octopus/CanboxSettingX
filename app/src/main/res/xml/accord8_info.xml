@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/controlset">
 
-    <PreferenceCategory android:title="@string/realtime_consumption_and_mileage_information" >        
+    <PreferenceCategory android:title="@string/realtime_consumption_and_mileage_information">
         <com.common.view.MyPreference
             android:key="instant"
             android:persistent="false"

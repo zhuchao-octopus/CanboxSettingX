@@ -1,91 +1,48 @@
 package com.canboxsetting.set;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
+
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
-import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
 import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
-import com.common.util.Node;
 import com.common.util.NodePreference;
-import com.common.util.Util;
 
-public class Set230 extends PreferenceFragment implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
+public class Set230 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "HYSettingsRaiseFragment";
 
     private static final NodePreference[] NODES = {
             //group1
 
 
-            new NodePreference("redar", 0x9201, 0x2900, 0x1, 0), new NodePreference("remote_lift_window", 0x9203, 0x2900, 0x10, 0), new NodePreference("remote_drop_window", 0x9204, 0x2900, 0x20, 0),
-            new NodePreference("long_press_micro_switch_unlocking_lifting_window", 0x9205, 0x2900, 0x40, 0),
-            new NodePreference("lower_window_unlocked_by_long_press_micro_switch", 0x9206, 0x2900, 0x80, 0), new NodePreference("outside_automatic_folding_of_rearview_mirror", 0x9207, 0x2902, 0x1, 0),
-            new NodePreference("zhonghua_xx", 0x9208, 0x2902, 0x2, 0), new NodePreference("driver_seat_auto_return", 0x9209, 0x2902, 0x4, 0),
-            new NodePreference("str_turn_mode", 0x920a, 0x2902, 0x8, 0),
+            new NodePreference("redar", 0x9201, 0x2900, 0x1, 0), new NodePreference("remote_lift_window", 0x9203, 0x2900, 0x10, 0), new NodePreference("remote_drop_window", 0x9204, 0x2900, 0x20, 0), new NodePreference("long_press_micro_switch_unlocking_lifting_window", 0x9205, 0x2900, 0x40, 0), new NodePreference("lower_window_unlocked_by_long_press_micro_switch", 0x9206, 0x2900, 0x80, 0), new NodePreference("outside_automatic_folding_of_rearview_mirror", 0x9207, 0x2902, 0x1, 0), new NodePreference("zhonghua_xx", 0x9208, 0x2902, 0x2, 0), new NodePreference("driver_seat_auto_return", 0x9209, 0x2902, 0x4, 0), new NodePreference("str_turn_mode", 0x920a, 0x2902, 0x8, 0),
 
             new NodePreference("str_remote_unlock", 0x920b, 0x2902, 0x10, 0, R.array.auto_unlock_setting_for_near_car_entries, R.array.two_values),
 
-            new NodePreference("go_home_lighting_delay", 0x920c, 0x2902, 0xe0, 0, R.array.byd_go_home, R.array.eight_values),
-            new NodePreference("leave_home_lighting_delay", 0x920d, 0x2903, 0x07, 0, R.array.byd_go_home, R.array.eight_values),
+            new NodePreference("go_home_lighting_delay", 0x920c, 0x2902, 0xe0, 0, R.array.byd_go_home, R.array.eight_values), new NodePreference("leave_home_lighting_delay", 0x920d, 0x2903, 0x07, 0, R.array.byd_go_home, R.array.eight_values),
             //group2
 
 
-            new NodePreference("in_car_inspection", 0x9301, 0x2a05, 0x40, 1), new NodePreference("outside_inspection", 0x9302, 0x2a05, 0x80, 1),
-            new NodePreference("power_on_detection", 0x9303, 0x2a00, 0x80, 1), new NodePreference("door_detection", 0x9304, 0x2a00, 0x20, 1),
-            new NodePreference("thirty_minute_timing_test", 0x9305, 0x2a00, 0x10, 1),
+            new NodePreference("in_car_inspection", 0x9301, 0x2a05, 0x40, 1), new NodePreference("outside_inspection", 0x9302, 0x2a05, 0x80, 1), new NodePreference("power_on_detection", 0x9303, 0x2a00, 0x80, 1), new NodePreference("door_detection", 0x9304, 0x2a00, 0x20, 1), new NodePreference("thirty_minute_timing_test", 0x9305, 0x2a00, 0x10, 1),
 
 
     };
 
-    private final static int[] INIT_CMDS = {
-            0x29, 0x2a, 0x2b
+    private final static int[] INIT_CMDS = {0x29, 0x2a, 0x2b
 
     };
 
@@ -100,6 +57,11 @@ public class Set230 extends PreferenceFragment implements Preference.OnPreferenc
         addPreferencesFromResource(R.xml.byd_cyt_setting_header);
 
         init();
+
+    }
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
 
@@ -161,9 +123,7 @@ public class Set230 extends PreferenceFragment implements Preference.OnPreferenc
         public void handleMessage(Message msg) {
             if (!mPaused) {
 
-                byte[] buf = new byte[]{
-                        (byte) 0x90, (byte) 4, (byte) (msg.what & 0xff), 0, 0, 0
-                };
+                byte[] buf = new byte[]{(byte) 0x90, (byte) 4, (byte) (msg.what & 0xff), 0, 0, 0};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
             }
@@ -250,9 +210,7 @@ public class Set230 extends PreferenceFragment implements Preference.OnPreferenc
         }
 
         //		Log.d("ffck", Util.byte2HexStr(mNewEnergy));
-        byte[] buf = new byte[]{
-                0x8, (byte) 0xa9, (byte) 0x0a, mNewEnergy[0], mNewEnergy[1], mNewEnergy[2]
-        };
+        byte[] buf = new byte[]{0x8, (byte) 0xa9, (byte) 0x0a, mNewEnergy[0], mNewEnergy[1], mNewEnergy[2]};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

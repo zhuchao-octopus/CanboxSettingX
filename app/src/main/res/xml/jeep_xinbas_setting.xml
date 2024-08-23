@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <PreferenceCategory android:title="@string/safe_driving" />
 
@@ -81,7 +81,6 @@
         android:title="@string/parking_brake" />
 
 
-
     <SwitchPreference
         android:key="rear_parkSense"
         android:persistent="false"
@@ -149,22 +148,22 @@
         android:key="turn_lights_set"
         android:persistent="false"
         android:title="@string/turn_lights_set" />
-    
+
     <ListPreference
         android:entries="@array/volbackdoor_entries"
         android:entryValues="@array/volbackdoor_entries"
         android:key="car_in_light"
         android:persistent="false"
         android:title="@string/car_in_light" />
-    
-    
-        <ListPreference
+
+
+    <ListPreference
         android:entries="@array/volbackdoor_entries"
         android:entryValues="@array/volbackdoor_entries"
         android:key="front_light"
         android:persistent="false"
         android:title="@string/front_light" />
-        
+
 
     <PreferenceCategory android:title="@string/door_lock" />
 

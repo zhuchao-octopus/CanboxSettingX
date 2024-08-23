@@ -103,8 +103,7 @@ public class PSAHiworldAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.power, 0x01}, {R.id.ac, 0x02}, {R.id.ac_max, 0x03}, {R.id.ac_auto, 0x04},
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x01}, {R.id.ac, 0x02}, {R.id.ac_max, 0x03}, {R.id.ac_auto, 0x04},
 
             {R.id.max, 0x5}, {R.id.rear, 0x6},
 

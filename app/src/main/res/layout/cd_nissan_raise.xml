@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20px" >
+    android:padding="20px">
 
     <LinearLayout
         android:id="@+id/bottom"
@@ -11,7 +11,7 @@
         android:layout_height="0px"
         android:layout_weight="0.8"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/playstatus"
@@ -26,7 +26,7 @@
         android:layout_height="0px"
         android:layout_weight="2.8"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ListView
             android:id="@+id/list_view"
@@ -44,30 +44,30 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0px"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="50px"
-                            android:layout_gravity="center" >
+                            android:layout_gravity="center">
 
                             <TextView
                                 style="@style/shadowTextCommonStyleFonts"
@@ -96,7 +96,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <TextView
                             style="@style/shadowTextCommonStyleFonts"
@@ -124,7 +124,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50px"
-                        android:layout_gravity="center" >
+                        android:layout_gravity="center">
 
                         <TextView
                             style="@style/shadowTextCommonStyleFonts"
@@ -155,7 +155,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.4"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/status"
@@ -169,7 +169,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
                 android:layout_weight="0.4"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/repeat_tag"

@@ -115,9 +115,7 @@ public class ChengRaiselACFragment extends MyFragment {
     };
 
     private void sendCanboxInf(int d0, int d1) {
-        byte[] buf = new byte[]{
-                (byte) 0xa8, 0x2, (byte) d0, (byte) d1
-        };
+        byte[] buf = new byte[]{(byte) 0xa8, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
@@ -125,9 +123,7 @@ public class ChengRaiselACFragment extends MyFragment {
         for (int i = 0; i < CMD_ID.length; ++i) {
             if (CMD_ID[i][0] == id) {
 
-                byte[] buf = new byte[]{
-                        (byte) 0xa8, 0x2, (byte) (CMD_ID[i][1] & 0xff), (byte) 1
-                };
+                byte[] buf = new byte[]{(byte) 0xa8, 0x2, (byte) (CMD_ID[i][1] & 0xff), (byte) 1};
                 BroadcastUtil.sendCanboxInfo(getActivity(), buf);
                 Util.doSleep(200);
                 buf[3] = 0;

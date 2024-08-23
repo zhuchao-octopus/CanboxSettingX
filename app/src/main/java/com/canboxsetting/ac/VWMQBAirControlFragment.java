@@ -68,11 +68,7 @@ public class VWMQBAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-            {R.id.air_title_ce_max, 0xbb03}, {R.id.ac_profile, 0xb100}, {R.id.air_title_ce_rear_lock, 0x1bc00}, {R.id.air_title_ce_aqs, 0x1b000}, {R.id.air_title_ce_ac_1, 0x1bd01},
-            {R.id.air_title_ce_inner_loop, 0xbe00}, {R.id.air_title_ce_auto_large, 0xbb01}, {R.id.air_title_ce_ac_max, 0xbb02}, {R.id.wheel, 0x1AC00}, {R.id.con_left_temp_up, 0xb801},
-            {R.id.con_left_temp_down, 0xb800}, {R.id.con_right_temp_up, 0xb901}, {R.id.con_right_temp_down, 0xb900}, {R.id.canbus21_mode1, 0x1b4ff}, {R.id.canbus21_mode2, 0x1b5ff},
-            {R.id.canbus21_mode5, 0x1b6ff}, {R.id.con_seathotleft, 0xad00}, {R.id.con_seathotright, 0xae00}, {R.id.air_title_sync, 0x1b3ff}, {R.id.icon_power, 0x1b2ff},
+    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 0xbb03}, {R.id.ac_profile, 0xb100}, {R.id.air_title_ce_rear_lock, 0x1bc00}, {R.id.air_title_ce_aqs, 0x1b000}, {R.id.air_title_ce_ac_1, 0x1bd01}, {R.id.air_title_ce_inner_loop, 0xbe00}, {R.id.air_title_ce_auto_large, 0xbb01}, {R.id.air_title_ce_ac_max, 0xbb02}, {R.id.wheel, 0x1AC00}, {R.id.con_left_temp_up, 0xb801}, {R.id.con_left_temp_down, 0xb800}, {R.id.con_right_temp_up, 0xb901}, {R.id.con_right_temp_down, 0xb900}, {R.id.canbus21_mode1, 0x1b4ff}, {R.id.canbus21_mode2, 0x1b5ff}, {R.id.canbus21_mode5, 0x1b6ff}, {R.id.con_seathotleft, 0xad00}, {R.id.con_seathotright, 0xae00}, {R.id.air_title_sync, 0x1b3ff}, {R.id.icon_power, 0x1b2ff},
 
             {R.id.point0, 0xb701}, {R.id.point1, 0xb702}, {R.id.point2, 0xb703}, {R.id.point3, 0xb704}, {R.id.point4, 0xb705}, {R.id.point5, 0xb706}, {R.id.point6, 0xb707},
 

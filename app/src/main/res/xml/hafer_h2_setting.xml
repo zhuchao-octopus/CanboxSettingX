@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/controlset" >
+    android:title="@string/controlset">
 
     <ListPreference
         android:entries="@array/h2_light"
@@ -27,12 +27,12 @@
         android:persistent="false"
         android:title="@string/asl_set" />
 
-<!--         <ListPreference -->
-<!--         android:entries="@array/launage_entries3" -->
-<!--         android:entryValues="@array/launage_entryValues3" -->
-<!--         android:key="langauage5" -->
-<!--         android:persistent="false" -->
-<!--         android:title="@string/langauage5" /> -->
-    
-        
+    <!--         <ListPreference -->
+    <!--         android:entries="@array/launage_entries3" -->
+    <!--         android:entryValues="@array/launage_entryValues3" -->
+    <!--         android:key="langauage5" -->
+    <!--         android:persistent="false" -->
+    <!--         android:title="@string/langauage5" /> -->
+
+
 </PreferenceScreen>
