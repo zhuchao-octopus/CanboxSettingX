@@ -239,6 +239,13 @@
         <item>3</item>
         <item>4</item>
     </string-array>
+
+    <string-array name="common_s4">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
     <string-array name="common_s2">
         <item>0</item>
         <item>1</item>
@@ -894,7 +901,7 @@
         <item>0</item>
         <item>1</item>
     </string-array>
-     <string-array name="jeep_launage_entries">         
+    <string-array name="jeep_launage_entries">
         <item>English(US)</item>
         <item>Français</item>
         <item>Deutsch</item>
@@ -909,7 +916,7 @@
         <item>Português(BR)</item>
         <item>Russian</item>
     </string-array>
-    
+
     <string-array name="honda_entries">
         <item>60</item>
         <item>0 MPG</item>
@@ -8213,7 +8220,7 @@
         <item>11</item>
         <item>12</item>
         <item>13</item>
-    </string-array> 
+    </string-array>
     <string-array name="thirteen_high_values">
         <item>1</item>
         <item>2</item>
@@ -8728,7 +8735,7 @@
         <item>170Km/h</item>
         <item>180Km/h</item>
     </string-array>
-    
+
     <string-array name="skyworth1">
         <item>@string/gs4_close</item>
         <item>60Km/h</item>
@@ -8741,7 +8748,7 @@
         <item>130Km/h</item>
         <item>140Km/h</item>
     </string-array>
-    
+
     <string-array name="wiper_control_entries">
         <item>@string/open_wiper</item>
         <item>@string/close_wiper</item>
@@ -9128,11 +9135,11 @@
         <item>@string/yellow</item>
         <item>@string/instrum_show_color_orange</item>
     </string-array>
-<string-array name="tata_2">
-    <item>0s</item>
-    <item>5s</item>
-    <item>10s</item>
-</string-array>
+    <string-array name="tata_2">
+        <item>0s</item>
+        <item>5s</item>
+        <item>10s</item>
+    </string-array>
     <string-array name="tata_a">
         <item>@string/white</item>
         <item>@string/red</item>
@@ -9143,12 +9150,93 @@
         <item>@string/green</item>
         <item>@string/blue</item>
     </string-array>
-    
-    
+
+
     <string-array name="psa_brake">
         <item>@string/gs4_close</item>
         <item>@string/commander_near</item>
         <item>@string/byd_standard</item>
         <item>@string/commander_far</item>
+    </string-array>
+
+    <string-array name="avm_quitting_speed">
+        <item>30 km/h</item>
+        <item>40 km/h</item>
+        <item>50 km/h</item>
+        <item>60 km/h</item>
+    </string-array>
+    <string-array name="over_speed_alarm">
+        <item>Turned Off</item>
+        <item>30 km/h</item>
+        <item>35 km/h</item>
+        <item>40 km/h</item>
+        <item>45 km/h</item>
+        <item>50 km/h</item>
+        <item>55 km/h</item>
+        <item>60 km/h</item>
+        <item>65 km/h</item>
+        <item>70 km/h</item>
+        <item>75 km/h</item>
+        <item>80 km/h</item>
+        <item>85 km/h</item>
+        <item>90 km/h</item>
+        <item>95 km/h</item>
+        <item>100 km/h</item>
+        <item>105 km/h</item>
+        <item>110 km/h</item>
+        <item>115 km/h</item>
+        <item>120 km/h</item>
+        <item>125 km/h</item>
+        <item>130 km/h</item>
+    </string-array>
+
+    <string-array name="fatigue_driving">
+        <item>Turned Off</item>
+        <item>1 h</item>
+        <item>1.5 h</item>
+        <item>2 h</item>
+        <item>2.5 h</item>
+        <item>3 h</item>
+        <item>3.5 h</item>
+        <item>4 h</item>
+    </string-array>
+
+    <string-array name="security_tips">
+        <item>@string/light</item>
+        <item>@string/light_and_horn</item>
+    </string-array>
+
+    <string-array name="slim_theme">
+        <item>SX theme</item>
+        <item>DX theme</item>
+    </string-array>
+
+    <string-array name="slim_21">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+    </string-array>
+    <string-array name="slim_time_format">
+        <item>12</item>
+        <item>24</item>
     </string-array>
 </resources>

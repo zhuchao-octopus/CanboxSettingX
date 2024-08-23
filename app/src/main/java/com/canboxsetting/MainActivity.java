@@ -30,6 +30,7 @@ import com.canboxsetting.set.FocusSettingsFragment;
 import com.canboxsetting.set.GMSettingsSimpleFragment;
 import com.canboxsetting.set.Golf7SettingsSimpleFragment;
 import com.canboxsetting.set.PSASettingsBagooFragment;
+import com.canboxsetting.set.SlimSettingsFragment;
 import com.car.ui.GlobalDef;
 import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
@@ -145,12 +146,14 @@ public class MainActivity extends AppCompatActivity {
         switch (Objects.requireNonNull(value)) {
             case MachineConfig.VALUE_CANBOX_GM_SIMPLE:
             case MachineConfig.VALUE_CANBOX_GM_RAISE:
-            case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                 mSetting = new GMSettingsSimpleFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_FORD_SIMPLE:
             case MachineConfig.VALUE_CANBOX_FORD_RAISE:
                 mSetting = new FocusSettingsFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_SLIMKEY2:
+                mSetting = new SlimSettingsFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_PSA_BAGOO:
                 if (mCarType == 2) {

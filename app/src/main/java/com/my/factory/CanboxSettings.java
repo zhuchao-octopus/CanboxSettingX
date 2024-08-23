@@ -1712,10 +1712,17 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                 case MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE:
                 case MachineConfig.VALUE_CANBOX_PETGEO_RAISE:
                 case MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD:
-                case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                     hideConboxSetting = false;
                     hideCanboxCarInfo = false;
                     hideCanboxAirControl = false;
+                    break;
+                case MachineConfig.VALUE_CANBOX_SLIMKEY2:
+                    hideConboxSetting = false;
+                    hideCanboxCarInfo = true;
+                    hideCanboxAirControl = false;
+                    hideSync = true;
+                    hideTpms = true;
+                    hideCarCD = true;
                     break;
                 case MachineConfig.VALUE_CANBOX_VW:
                 case MachineConfig.VALUE_CANBOX_PEUGEOT206:

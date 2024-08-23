@@ -42,6 +42,7 @@ import com.canboxsetting.R.layout;
 import com.canboxsetting.R.string;
 import com.car.ui.GlobalDef;
 import com.common.util.BroadcastUtil;
+import com.common.util.MachineConfig;
 import com.common.util.MyCmd;
 import com.zhuchao.android.fbase.ByteUtils;
 import com.zhuchao.android.fbase.MMLog;
@@ -73,6 +74,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
         //BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
         MMLog.d(TAG, "SlimKeyAirControlFragment.onCreateView!");
+        initSlimKeyACData();
         return mMainView;
     }
 
@@ -91,6 +93,14 @@ public class SlimKeyAirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
+    private void sendCanboxSlim(byte d0, byte d1) {
+        byte[] buf = new byte[]{
+                0x00, (byte) 0xA4, 0x01, 0x00, 0x02, d0, d1, (byte) (0xA7 + d0 + d1)
+        };
+        MMLog.d(TAG, "sendCanboxInfo: buf = " + ByteUtils.BuffToHexStr(buf));
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
     private void sendCanboxInfo0x8f(int d0) {
         byte[] buf = new byte[]{0x4, (byte) 0x8f, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -106,7 +116,8 @@ public class SlimKeyAirControlFragment extends MyFragment {
     }
 
     private void setSpeed(int speed) {
-        for (int i = 0; i < 7; ++i) {
+        currAirWind = (byte) speed;
+        for (int i = 0; i <= 7; ++i) {
             View v = mMainView.findViewById(id.point0 + i);
             if (v != null) {
                 if (i < speed) {
@@ -201,6 +212,34 @@ public class SlimKeyAirControlFragment extends MyFragment {
                 //				}
             }
             v.setText(s);
+        }
+    }
+
+    private byte currTemp = 1;
+    private void setSlimTemp(byte temp) {
+        Log.d(TAG, "setSlimTemp: temp " + temp);
+        if (temp > 0 && temp <= 16) {
+            sendCanboxSlim((byte) 0x83, temp);
+            updateTempView(temp);
+
+        } else if (temp < 1) {
+            setSlimTemp((byte) 1);
+        } else if (temp > 16) {
+            setSlimTemp((byte) 16);
+        }
+    }
+
+    private void updateTempView(byte temp) {
+        currTemp = temp;
+        TextView leftT = mMainView.findViewById(id.con_txt_left_temp);
+        TextView rightT = mMainView.findViewById(id.con_txt_right_temp);
+        if (leftT != null) {
+            Log.d(TAG, "updateTempView: leftT");
+            leftT.setText(String.valueOf(temp));
+        }
+        if (rightT != null) {
+            Log.d(TAG, "updateTempView: rightT");
+            rightT.setText(String.valueOf(temp));
         }
     }
 
@@ -317,7 +356,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
                 setSpeed(buf[4]);
             } else if (buf[3] == 0x03 && buf[4] > 0 && buf[4] <= 16) {
                 MMLog.d(TAG, "updateSlimView: 温度调节 = " + buf[4]);
-                //TODO 暂时还未实现,不确定温度的显示方式
+                updateTempView(buf[4]);
             } else if (buf[3] == 0x04 && (buf[4] == 0x00 || buf[4] == 0x01)) {
                 MMLog.d(TAG, "updateSlimView: 空调开关 = " + buf[4]);
                 updateSelect(id.icon_power, buf[4]);
@@ -360,67 +399,106 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
+    private void controlAirDirection(byte cmd) {
+        sendCanboxSlim((byte) 0x81, cmd);
+        updateAirDirection(cmd);
+    }
+
     private void updateAirDirection(byte cmd) {
-        updateSelect(id.canbus21_mode1, cmd == 0x00?1:0);
-        updateSelect(id.canbus21_mode2, cmd == 0x02?1:0);
-        updateSelect(id.canbus21_mode3, cmd == 0x01?1:0);
-        updateSelect(id.canbus21_mode4, cmd == 0x03?1:0);
-        updateSelect(id.canbus21_mode5, cmd == 0x04?1:0);
+        updateSelect(id.canbus21_mode1, cmd == 0x00 ? 1 : 0);
+        updateSelect(id.canbus21_mode2, cmd == 0x02 ? 1 : 0);
+        updateSelect(id.canbus21_mode3, cmd == 0x01 ? 1 : 0);
+        updateSelect(id.canbus21_mode4, cmd == 0x03 ? 1 : 0);
+        updateSelect(id.canbus21_mode5, cmd == 0x04 ? 1 : 0);
+        updateSelect(id.air_title_ce_max, cmd == 0x04 ? 1 : 0);
     }
 
     public void onClick(View v) {
         ///sendCmd(v.getId());
         if (v.getId() == id.air_title_ce_auto_large) {
-            switchStatus(v, (byte) 0x01);
+
         } else if (v.getId() == id.air_title_ce_ac_1) {
-            switchStatus(v, (byte) 0x02);
+            switchStatus(v, (byte) 0x85);
         } else if (v.getId() == id.air_title_ce_ac_max) {
-            switchStatus(v, (byte) 0x03);
+            switchStatus(v, (byte) 0x86);
         } else if (v.getId() == id.con_left_temp_up) {
-            sendCanboxInfo0x8A(0x04, 0x01);
+            setSlimTemp(++currTemp);
         } else if (v.getId() == id.con_left_temp_down) {
-            sendCanboxInfo0x8A(0x04, 0x02);
+            setSlimTemp(--currTemp);
         } else if (v.getId() == id.con_right_temp_up) {
-            sendCanboxInfo0x8A(0x05, 0x01);
+            setSlimTemp(++currTemp);
         } else if (v.getId() == id.con_right_temp_down) {
-            sendCanboxInfo0x8A(0x05, 0x02);
+            setSlimTemp(--currTemp);
         } else if (v.getId() == id.canbus21_mode1) {
-            switchStatus(v, (byte) 0x06);
+            controlAirDirection((byte) 0x00);
         } else if (v.getId() == id.canbus21_mode2) {
-            switchStatus(v, (byte) 0x08);
+            controlAirDirection((byte) 0x02);
         } else if (v.getId() == id.canbus21_mode3) {
-            switchStatus(v, (byte) 0x07);
+            controlAirDirection((byte) 0x01);
+        } else if (v.getId() == id.canbus21_mode4) {
+            controlAirDirection((byte) 0x03);
+        } else if (v.getId() == id.canbus21_mode5) {
+            controlAirDirection((byte) 0x04);
         } else if (v.getId() == id.wind_minus) {
-            sendCanboxInfo0x8A(0x0A, 0x02);
+            airWindControl(--currAirWind);
         } else if (v.getId() == id.wind_add) {
-            sendCanboxInfo0x8A(0x0A, 0x01);
+            airWindControl(++currAirWind);
         } else if (v.getId() == id.air_title_sync) {
-            switchStatus(v, (byte) 0x0B);
+
         } else if (v.getId() == id.icon_power) {
-            ///if (v.isSelected())
-            sendCanboxInfo0x8A(0x0C, 0x01);
-            ///else
-            sendCanboxInfo0x8A(0x0C, 0x00);
+            switchStatus(v, (byte) 0x84);
         } else if (v.getId() == id.air_title_ce_max) {//前窗
-            ///sendCanboxInfo0x8A(0x11, 0x01);
-            ///sendCanboxInfo0x8A(0x11, 0x00);
-            switchStatus(v, (byte) 0x11);
+//            updateAirDirection((byte) 0x04);
+            if (v.isSelected()) {
+                controlAirDirection((byte) 0x00);
+            } else {
+                controlAirDirection((byte) 0x04);
+            }
         } else if (v.getId() == id.air_title_ce_rear) {//后窗
-            ///if (v.isSelected())
-            sendCanboxInfo0x8A(0x12, 0x01);
-            ///else
-            sendCanboxInfo0x8A(0x12, 0x00);
+            if (v.isSelected()) {
+                updateSelect(id.air_title_ce_rear, 0);
+                sendCanboxSlim((byte) 0x80, (byte) 0x04);
+            } else {
+                updateSelect(id.air_title_ce_rear, 1);
+                sendCanboxSlim((byte) 0x80, (byte) 0x05);
+            }
         } else if (v.getId() == id.air_title_ce_inner_loop) {
-            ImageView vv = (ImageView) mMainView.findViewById(id.air_title_ce_inner_loop);
+            ImageView vv = (ImageView) v;
             int level = vv.getDrawable().getLevel();
-            if (level == 0) vv.getDrawable().setLevel(1);
-            else vv.getDrawable().setLevel(0);
+            if (level == 0) {
+                sendCanboxSlim((byte) 0x80, (byte) 0x03);
+                vv.getDrawable().setLevel(1);
+            } else {
+                sendCanboxSlim((byte) 0x80, (byte) 0x02);
+                vv.getDrawable().setLevel(0);
+            }
         }
     }
 
+    private byte currAirWind = 1;
+
+    private void airWindControl(byte windValue) {
+        MMLog.d(TAG, "airWindControl: windValue = " + windValue);
+        if (windValue > 0 && windValue <= 7) {
+            sendCanboxSlim((byte) 0x82, windValue);
+            setSpeed(windValue);
+
+        } else if (windValue < 1){
+            airWindControl((byte) 1);
+        } else if (windValue > 7) {
+            airWindControl((byte) 7);
+        }
+    }
+
+
     private void switchStatus(View v, byte id) {
-        if (v.isSelected()) sendCanboxInfo0x8A(id, 0x00);
-        else sendCanboxInfo0x8A(id, 0x01);
+        if (v.isSelected()) {
+            sendCanboxSlim(id, (byte) 0x00);
+            v.setSelected(false);
+        } else {
+            sendCanboxSlim(id, (byte) 0x01);
+            v.setSelected(true);
+        }
     }
 
     private void sendCmd(int id) {
@@ -429,5 +507,33 @@ public class SlimKeyAirControlFragment extends MyFragment {
         ///        sendCanboxInfo0x8A((ints[1] & 0xff00) >> 8, (ints[1] & 0xff));
         ///    }
         ///}
+    }
+
+    private void initSlimKeyACData() {
+        String acData = MachineConfig.getProperty("AC_UPDATE_DATA");
+        Log.d(TAG, "initSlimKeyACData: acData = " + acData);
+        byte[] slimKeyACData = HexStr2Bytes(acData.replace(" ",""));
+        updateACAllView(slimKeyACData);
+    }
+
+    private void updateACAllView(byte[] slimKeyACData) {
+        ImageView vv = (ImageView) mMainView.findViewById(id.air_title_ce_inner_loop);
+        vv.getDrawable().setLevel(slimKeyACData[2] & 0x02);
+        updateSelect(id.air_title_ce_rear, slimKeyACData[2] & 0x04);//后窗加热
+        updateAirDirection(slimKeyACData[3]);
+        setSpeed(slimKeyACData[4]);
+        updateTempView(slimKeyACData[5]);
+        updateSelect(id.icon_power, slimKeyACData[6]);
+        updateSelect(id.air_title_ce_ac_1, slimKeyACData[7]);
+        updateSelect(id.air_title_ce_ac_max, slimKeyACData[8]);
+    }
+
+    public static byte[] HexStr2Bytes(String src) {
+        int l = src.length() / 2;
+        byte[] ret = new byte[l];
+        for (int i = 0; i < l; i++) {
+            ret[i] = (byte) Integer.valueOf(src.substring(i * 2, i * 2 + 2), 16).byteValue();
+        }
+        return ret;
     }
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <SwitchPreference
+        android:key="lane_departure_warning"
+        android:defaultValue="false"
+        android:title="@string/lane_departure_warning" />
+
+    <ListPreference
+        android:entries="@array/avm_quitting_speed"
+        android:entryValues="@array/ensound_vaues"
+        android:key="avm_quitting_speed"
+        android:title="@string/avm_quitting_speed" />
+
+    <SwitchPreference
+        android:key="power_down_auto_unlock"
+        android:defaultValue="false"
+        android:title="@string/power_down_auto_unlock" />
+
+    <SwitchPreference
+        android:key="driving_auto_lock"
+        android:defaultValue="false"
+        android:title="@string/driving_auto_lock" />
+
+    <SwitchPreference
+        android:key="approaching_lock"
+        android:defaultValue="false"
+        android:title="@string/approaching_lock" />
+
+    <SwitchPreference
+        android:key="welcome_light"
+        android:defaultValue="false"
+        android:title="@string/welcome_light" />
+
+    <ListPreference
+        android:entries="@array/dashboard_brightness_value"
+        android:entryValues="@array/dashboard_brightness_value"
+        android:key="backlight_level"
+        android:title="@string/backlight_level" />
+
+    <ListPreference
+        android:entries="@array/over_speed_alarm"
+        android:entryValues="@array/slim_21"
+        android:key="over_speed_alarm"
+        android:title="@string/over_speed_alarm" />
+
+    <ListPreference
+        android:entries="@array/fatigue_driving"
+        android:entryValues="@array/enwind_speed"
+        android:key="fatigue_driving"
+        android:title="@string/fatigue_driving" />
+
+    <ListPreference
+        android:entries="@array/security_tips"
+        android:entryValues="@array/radarrange_entryValues"
+        android:key="security_tips"
+        android:title="@string/security_tips" />
+    <SwitchPreference
+        android:key="wireless_charging"
+        android:defaultValue="false"
+        android:title="@string/wireless_charging" />
+    <SwitchPreference
+        android:key="mobile_forgotten_tips"
+        android:defaultValue="false"
+        android:title="@string/mobile_forgotten_tips" />
+    <ListPreference
+        android:entries="@array/entimes"
+        android:entryValues="@array/slim_time_format"
+        android:key="clock_format"
+        android:title="@string/clock_format" />
+
+    <ListPreference
+        android:entries="@array/slim_theme"
+        android:entryValues="@array/common_s2"
+        android:key="theme"
+        android:title="@string/theme" />
+      
+</PreferenceScreen>
