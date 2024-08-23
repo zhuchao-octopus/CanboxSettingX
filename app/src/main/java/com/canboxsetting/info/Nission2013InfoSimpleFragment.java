@@ -3,21 +3,24 @@ package com.canboxsetting.info;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.preference.ListPreference;
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
+import com.common.utils.SettingProperties;
+
 
 public class Nission2013InfoSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Nission2013InfoSimpleFragment";
+    ListPreference mLPCarType;
+    String mCarType;
+    private String mCanboxType;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,6 @@ public class Nission2013InfoSimpleFragment extends PreferenceFragmentCompat impl
 
     }
 
-    ListPreference mLPCarType;
-
-
     private void updateCarType(String can) {
 
 
@@ -61,25 +61,18 @@ public class Nission2013InfoSimpleFragment extends PreferenceFragmentCompat impl
 
     }
 
-
-    private String mCanboxType;
-
-
     private void updateMachineConfig() {
-        SystemConfig.setProperty(getActivity(), MachineConfig.VALUE_CANBOX_NISSAN2013, mCarType);
+        SettingProperties.setProperty(getActivity(), MachineConfig.VALUE_CANBOX_NISSAN2013, mCarType);
 
         Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
         it.putExtra(MyCmd.EXTRA_COMMON_CMD, MachineConfig.KEY_CAN_BOX);
         getActivity().sendBroadcast(it);
     }
 
-
     private void getCanboxSetting() {
-        mCarType = SystemConfig.getProperty(getActivity(), MachineConfig.VALUE_CANBOX_NISSAN2013);
+        mCarType = SettingProperties.getProperty(getActivity(), MachineConfig.VALUE_CANBOX_NISSAN2013);
 
     }
-
-    String mCarType;
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();

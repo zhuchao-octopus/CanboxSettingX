@@ -16,11 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -30,51 +25,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC232 extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private CommonUpdateView mCommonUpdateView;
-    private View mMainView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.ac_bentengb70_hiworld, container, false);
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-
-
-        return mMainView;
-    }
-
-
-    private void sendCanboxInfo0xc7(int d0) {
-        byte[] buf;
-
-
-        buf = new byte[]{0x2, (byte) 0xd3, (byte) d0, 0};
-
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-    }
-
-    private void sendCanboxInfo0x90(int d0) {
-
-        byte[] buf;
-        buf = new byte[]{0x2, (byte) 0x6a, (byte) d0, 0};
-
-
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-    }
-
     private final static int[][] CMD_ID = new int[][]{
 
             {R.id.wind_up1, 0x1},
@@ -103,7 +63,44 @@ public class AC232 extends MyFragment {
 
 
     };
+    private CommonUpdateView mCommonUpdateView;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_bentengb70_hiworld, container, false);
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
+
+
+        return mMainView;
+    }
+
+    private void sendCanboxInfo0xc7(int d0) {
+        byte[] buf;
+
+
+        buf = new byte[]{0x2, (byte) 0xd3, (byte) d0, 0};
+
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+
+        byte[] buf;
+        buf = new byte[]{0x2, (byte) 0x6a, (byte) d0, 0};
+
+
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+    }
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -136,7 +133,6 @@ public class AC232 extends MyFragment {
         }
     }
 
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -149,8 +145,6 @@ public class AC232 extends MyFragment {
         //		sendCanboxInfo0x90(0x82);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -7,27 +7,35 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 import com.common.view.MyPreference2;
 
 public class VWMQBInfoRaiseFragmentListViewNoUsed extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "VWMQBInfoRaiseFragment";
 
     PreferenceScreen mTpms;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+        }
+    };
+    private View mTpmsView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,15 +93,6 @@ public class VWMQBInfoRaiseFragmentListViewNoUsed extends PreferenceFragmentComp
 
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -105,8 +104,6 @@ public class VWMQBInfoRaiseFragmentListViewNoUsed extends PreferenceFragmentComp
             p.setSummary(s);
         }
     }
-
-    private View mTpmsView;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -396,8 +393,6 @@ public class VWMQBInfoRaiseFragmentListViewNoUsed extends PreferenceFragmentComp
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

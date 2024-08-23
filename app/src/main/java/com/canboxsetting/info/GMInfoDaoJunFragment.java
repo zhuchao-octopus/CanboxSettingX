@@ -16,13 +16,15 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
 import com.common.utils.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 public class GMInfoDaoJunFragment extends PreferenceFragmentCompat {
     private static final String TAG = "GMInfoSimpleFragment";
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,6 @@ public class GMInfoDaoJunFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
 
     @NonNull
     @Override
@@ -175,8 +175,6 @@ public class GMInfoDaoJunFragment extends PreferenceFragmentCompat {
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

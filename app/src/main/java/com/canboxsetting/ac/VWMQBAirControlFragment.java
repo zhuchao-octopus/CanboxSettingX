@@ -16,13 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -37,19 +30,38 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+
+import java.util.Locale;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class VWMQBAirControlFragment extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 0xbb03}, {R.id.ac_profile, 0xb100}, {R.id.air_title_ce_rear_lock, 0x1bc00}, {R.id.air_title_ce_aqs, 0x1b000}, {R.id.air_title_ce_ac_1, 0x1bd01}, {R.id.air_title_ce_inner_loop, 0xbe00}, {R.id.air_title_ce_auto_large, 0xbb01}, {R.id.air_title_ce_ac_max, 0xbb02}, {R.id.wheel, 0x1AC00}, {R.id.con_left_temp_up, 0xb801}, {R.id.con_left_temp_down, 0xb800}, {R.id.con_right_temp_up, 0xb901}, {R.id.con_right_temp_down, 0xb900}, {R.id.canbus21_mode1, 0x1b4ff}, {R.id.canbus21_mode2, 0x1b5ff}, {R.id.canbus21_mode5, 0x1b6ff}, {R.id.con_seathotleft, 0xad00}, {R.id.con_seathotright, 0xae00}, {R.id.air_title_sync, 0x1b3ff}, {R.id.icon_power, 0x1b2ff},
+
+            {R.id.point0, 0xb701}, {R.id.point1, 0xb702}, {R.id.point2, 0xb703}, {R.id.point3, 0xb704}, {R.id.point4, 0xb705}, {R.id.point5, 0xb706}, {R.id.point6, 0xb707},
+
+            {R.id.wind_minus, 0xb700}, {R.id.wind_add, 0xb700},
+
+    };
+    private View mMainView;
+    private int mWindStep = 0;
+    private int mInner = 0;
+    private int mSeatHeatLeft = 0;
+    private int mSeatHeatRight = 0;
+    private int mACProfileLevel = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,19 +79,6 @@ public class VWMQBAirControlFragment extends MyFragment {
         byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, 0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 0xbb03}, {R.id.ac_profile, 0xb100}, {R.id.air_title_ce_rear_lock, 0x1bc00}, {R.id.air_title_ce_aqs, 0x1b000}, {R.id.air_title_ce_ac_1, 0x1bd01}, {R.id.air_title_ce_inner_loop, 0xbe00}, {R.id.air_title_ce_auto_large, 0xbb01}, {R.id.air_title_ce_ac_max, 0xbb02}, {R.id.wheel, 0x1AC00}, {R.id.con_left_temp_up, 0xb801}, {R.id.con_left_temp_down, 0xb800}, {R.id.con_right_temp_up, 0xb901}, {R.id.con_right_temp_down, 0xb900}, {R.id.canbus21_mode1, 0x1b4ff}, {R.id.canbus21_mode2, 0x1b5ff}, {R.id.canbus21_mode5, 0x1b6ff}, {R.id.con_seathotleft, 0xad00}, {R.id.con_seathotright, 0xae00}, {R.id.air_title_sync, 0x1b3ff}, {R.id.icon_power, 0x1b2ff},
-
-            {R.id.point0, 0xb701}, {R.id.point1, 0xb702}, {R.id.point2, 0xb703}, {R.id.point3, 0xb704}, {R.id.point4, 0xb705}, {R.id.point5, 0xb706}, {R.id.point6, 0xb707},
-
-            {R.id.wind_minus, 0xb700}, {R.id.wind_add, 0xb700},
-
-    };
-
-    private int mWindStep = 0;
-    private int mInner = 0;
-    private int mSeatHeatLeft = 0;
-    private int mSeatHeatRight = 0;
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -143,8 +142,6 @@ public class VWMQBAirControlFragment extends MyFragment {
             v.setSelected(s != 0);
         }
     }
-
-    private int mACProfileLevel = 0;
 
     private void setACProfile(int level) {
         TextView tv = (TextView) mMainView.findViewById(R.id.ac_profile);
@@ -314,8 +311,6 @@ public class VWMQBAirControlFragment extends MyFragment {
         }, 1000);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

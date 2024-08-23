@@ -231,11 +231,11 @@
             android:persistent="false"
             android:title="@string/backview" />
         <ListPreference
+            android:entries="@array/autorelockdoors"
+            android:entryValues="@array/two_values"
             android:key="wipers_induction"
             android:persistent="false"
-            android:title="@string/wipers_induction"
-            android:entries="@array/autorelockdoors"
-            android:entryValues="@array/two_values" />
+            android:title="@string/wipers_induction" />
         <SwitchPreference
             android:key="rearview_dimming"
             android:persistent="false"

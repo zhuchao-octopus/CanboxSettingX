@@ -16,12 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.utils.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,64 +25,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC223 extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private CommonUpdateView mCommonUpdateView;
-    private View mMainView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.ac_crown13_hiworld, container, false);
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-
-
-        return mMainView;
-    }
-
-    private boolean isHighCrown13() {//for future to do
-        if (GlobalDef.getCarConfig() == 2) {
-            return true;
-        }
-        return false;
-    }
-
-    private void sendCanboxInfo0xc7(int d0) {
-        byte[] buf;
-
-        if (isHighCrown13()) {
-            buf = new byte[]{0x2, (byte) 0xe1, (byte) d0, 0};
-        } else {
-            buf = new byte[]{0x2, (byte) 0xe0, (byte) d0, 0};
-        }
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-        //		Util.doSleep(200);
-        //		buf[3] = 0;
-        //		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendCanboxInfo0x90(int d0) {
-
-        byte[] buf;
-        if (isHighCrown13()) {
-            buf = new byte[]{0x3, (byte) 0x6a, 0x5, 0x1, (byte) d0};
-        } else {
-            buf = new byte[]{0x2, (byte) 0x6a, (byte) d0, 0};
-        }
-
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-    }
-
     private final static int[][] CMD_ID = new int[][]{
 
 
@@ -139,7 +86,58 @@ public class AC223 extends MyFragment {
             //		{ R.id.con_left_temp_rear_down, 0x41 },
 
     };
+    private CommonUpdateView mCommonUpdateView;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_crown13_hiworld, container, false);
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
+
+
+        return mMainView;
+    }
+
+    private boolean isHighCrown13() {//for future to do
+        if (GlobalDef.getCarConfig() == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    private void sendCanboxInfo0xc7(int d0) {
+        byte[] buf;
+
+        if (isHighCrown13()) {
+            buf = new byte[]{0x2, (byte) 0xe1, (byte) d0, 0};
+        } else {
+            buf = new byte[]{0x2, (byte) 0xe0, (byte) d0, 0};
+        }
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        //		Util.doSleep(200);
+        //		buf[3] = 0;
+        //		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+
+        byte[] buf;
+        if (isHighCrown13()) {
+            buf = new byte[]{0x3, (byte) 0x6a, 0x5, 0x1, (byte) d0};
+        } else {
+            buf = new byte[]{0x2, (byte) 0x6a, (byte) d0, 0};
+        }
+
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+    }
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -172,7 +170,6 @@ public class AC223 extends MyFragment {
         }
     }
 
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -187,8 +184,6 @@ public class AC223 extends MyFragment {
         //		sendCanboxInfo0x90(0x58);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -6,8 +6,8 @@
     <com.common.view.MyPreferenceProgress
         android:key="oil_data"
         android:persistent="false"
-        my:max="8"
-        android:title="@string/oil_data" />
+        android:title="@string/oil_data"
+        my:max="8" />
     <com.common.view.MyPreference
         android:key="mkm"
         android:persistent="false"

@@ -11,21 +11,42 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.MMLog;
 
 public class GMSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "GMSettingsSimpleFragment";
+    private final static String[] KEYS = {
+            // air set
+            "automodewindlevel", "airqualitysensor", "airpartition", "backwindowdefog", "frontwindowdefog", "remote_seat", "ari_mode",
+
+            // control set
+
+            "findlight", "headlightdelay", "dooropenlock", "startlatch", "parkunlock", "delaylock", "remoteunlock5", "remotelock5", "remoteunlocksettings", "car_unlocked", "automatic_latch", "wipers", "remote_start", "unkey", "by_drive", "auto_relock", "blind", "lfRight", "adaptive", "folding", "rtmirror", "easyeeat", "memory", "auto_wipers", "auto_collision", "status_notifi", "window_control",};
+    private final static int[] CMDS = {0x3008200, 0x3008201, 0x3008202, 0x3008203, 0x3008204, 0x3008205, 0x3008206,
+
+            0x3008300, 0x3008301, 0x3008302, 0x3008303, 0x3008304, 0x3008305, 0x3008306, 0x3008307, 0x3008308, 0x300830c, 0x3008317, 0x3008309, 0x300830b, 0x300830d, 0x300830e, 0x300830f, 0x3008316, 0x3008310, 0x3008311, 0x300835b, 0x3008313, 0x3008359, 0x3008358, 0x3008309, 0x3008318, 0x3008319, 0x300831b,
+
+    };
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo(0x90, msg.what);
+        }
+    };
+    private Preference[] mPreferences = new Preference[KEYS.length];
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,32 +103,6 @@ public class GMSettingsRaiseFragment extends PreferenceFragmentCompat implements
         //		mHandler.sendEmptyMessageDelayed(0x0d, 500);
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo(0x90, msg.what);
-        }
-    };
-
-
-    private Preference[] mPreferences = new Preference[KEYS.length];
-
-    private final static String[] KEYS = {
-            // air set
-            "automodewindlevel", "airqualitysensor", "airpartition", "backwindowdefog", "frontwindowdefog", "remote_seat", "ari_mode",
-
-            // control set
-
-            "findlight", "headlightdelay", "dooropenlock", "startlatch", "parkunlock", "delaylock", "remoteunlock5", "remotelock5", "remoteunlocksettings", "car_unlocked", "automatic_latch", "wipers", "remote_start", "unkey", "by_drive", "auto_relock", "blind", "lfRight", "adaptive", "folding", "rtmirror", "easyeeat", "memory", "auto_wipers", "auto_collision", "status_notifi", "window_control",};
-
-    private final static int[] CMDS = {0x3008200, 0x3008201, 0x3008202, 0x3008203, 0x3008204, 0x3008205, 0x3008206,
-
-            0x3008300, 0x3008301, 0x3008302, 0x3008303, 0x3008304, 0x3008305, 0x3008306, 0x3008307, 0x3008308, 0x300830c, 0x3008317, 0x3008309, 0x300830b, 0x300830d, 0x300830e, 0x300830f, 0x3008316, 0x3008310, 0x3008311, 0x300835b, 0x3008313, 0x3008359, 0x3008358, 0x3008309, 0x3008318, 0x3008319, 0x300831b,
-
-    };
 
     private void sendCanboxData(int cmd, int value) {
         if ((cmd & 0xff000000) == 0x3000000) {
@@ -357,8 +352,6 @@ public class GMSettingsRaiseFragment extends PreferenceFragmentCompat implements
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

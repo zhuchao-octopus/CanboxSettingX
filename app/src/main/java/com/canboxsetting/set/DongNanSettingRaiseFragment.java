@@ -7,7 +7,9 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
@@ -15,26 +17,16 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
-import androidx.annotation.Nullable;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
-import com.common.util.Util;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 
 public class DongNanSettingRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "DongNanSettingRaiseFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {new Node("steering_assist_photography", 0x8301, 0x40010000, 0x80, 0, Node.TYPE_BUFF1),
 
             new Node("turning_lighting", 0x8302, 0x40010000, 0x40, 0, Node.TYPE_BUFF1),
@@ -44,10 +36,23 @@ public class DongNanSettingRaiseFragment extends PreferenceFragmentCompat implem
             new Node("show_when_reversing", 0x8304, 0x40010000, 0x10, 0, Node.TYPE_BUFF1),
 
             new Node("close_the_window_rainy_day", 0x8305, 0x40010000, 0x08, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {0x40};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,8 +75,6 @@ public class DongNanSettingRaiseFragment extends PreferenceFragmentCompat implem
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -101,15 +104,6 @@ public class DongNanSettingRaiseFragment extends PreferenceFragmentCompat implem
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -374,8 +368,6 @@ public class DongNanSettingRaiseFragment extends PreferenceFragmentCompat implem
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

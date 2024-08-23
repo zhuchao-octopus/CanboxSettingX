@@ -2,8 +2,8 @@ package com.canboxsetting.tpms;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
@@ -13,14 +13,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class TPMS139 extends PreferenceFragment {
 
+    int mColor;
+    private View mTpmsView;
+    private BroadcastReceiver mReceiver;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         mTpmsView = inflater.inflate(R.layout.type_info4, container, false);
         return mTpmsView;
     }
@@ -44,9 +47,6 @@ public class TPMS139 extends PreferenceFragment {
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private View mTpmsView;
-
 
     private void setTpmsTextInfo(int id, int value, int color) {
 
@@ -284,8 +284,6 @@ public class TPMS139 extends PreferenceFragment {
         return 0;
     }
 
-    int mColor;
-
     private void updateView(byte[] buf) {
         switch (buf[0]) {
             case (byte) 0x48:
@@ -320,8 +318,6 @@ public class TPMS139 extends PreferenceFragment {
 
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

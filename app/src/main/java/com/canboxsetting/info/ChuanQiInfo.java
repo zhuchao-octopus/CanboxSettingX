@@ -1,85 +1,67 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
 import android.widget.TimePicker;
 
-import com.canboxsetting.CarInfoActivity;
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.common.util.BroadcastUtil;
-import com.common.util.Kernel;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import java.util.Locale;
 
 public class ChuanQiInfo extends MyFragment {
     private static final String TAG = "FiatFragment";
 
     View mMainView;
+    int hStart;
+    int mStart;
+    TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            hStart = hourOfDay;
+            mStart = minute;
+            String s = String.format("%02d:%02d", hStart, mStart, Locale.ENGLISH);
+
+            ((TextView) mMainView.findViewById(R.id.time_of_appointment1)).setText(s);
+        }
+
+    };
+    int hEnd;
+    int mEnd;
+    TimePickerDialog.OnTimeSetListener onTimeSetListenerEnd = new TimePickerDialog.OnTimeSetListener() {
+
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            hEnd = hourOfDay;
+            mEnd = minute;
+
+            String s = String.format("%02d:%02d", hEnd, mEnd, Locale.ENGLISH);
+
+            ((TextView) mMainView.findViewById(R.id.time_of_appointment2)).setText(s);
+        }
+
+    };
+    private boolean mPause = false;
+    private boolean mSetSource = false;
+    private boolean mPlayStatus = false;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -173,33 +155,6 @@ public class ChuanQiInfo extends MyFragment {
         }
     }
 
-    TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            hStart = hourOfDay;
-            mStart = minute;
-            String s = String.format("%02d:%02d", hStart, mStart, Locale.ENGLISH);
-
-            ((TextView) mMainView.findViewById(R.id.time_of_appointment1)).setText(s);
-        }
-
-    };
-
-    TimePickerDialog.OnTimeSetListener onTimeSetListenerEnd = new TimePickerDialog.OnTimeSetListener() {
-
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            hEnd = hourOfDay;
-            mEnd = minute;
-
-            String s = String.format("%02d:%02d", hEnd, mEnd, Locale.ENGLISH);
-
-            ((TextView) mMainView.findViewById(R.id.time_of_appointment2)).setText(s);
-        }
-
-    };
-
     private void showPage(int page) {
 
         setViewVisible(R.id.page1, false);
@@ -231,12 +186,6 @@ public class ChuanQiInfo extends MyFragment {
             v.setSelected(s);
         }
     }
-
-    int hStart;
-    int mStart;
-    int hEnd;
-    int mEnd;
-    private boolean mPause = false;
 
     @Override
     public void onPause() {
@@ -384,11 +333,6 @@ public class ChuanQiInfo extends MyFragment {
             break;
         }
     }
-
-    private boolean mSetSource = false;
-    private boolean mPlayStatus = false;
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -9,27 +9,28 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.view.MyPreference2;
 
 public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "VWMQBInfoRaiseFragment";
 
     PreferenceScreen mTpms;
+    private View mTpmsView;
+    private byte[] mTpmsWarning = new byte[4];
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,20 @@ public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implemen
         unregisterListener();
 
         mHandler.removeMessages(0x1);
-    }
+    }    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    initTpmsView();
+                    if (mTpmsView == null) {
+                        mHandler.sendEmptyMessageDelayed(0x1, 500);
+                    }
+                    break;
+            }
+            // sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+        }
+    };
 
     @Override
     public void onResume() {
@@ -83,21 +97,6 @@ public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    initTpmsView();
-                    if (mTpmsView == null) {
-                        mHandler.sendEmptyMessageDelayed(0x1, 500);
-                    }
-                    break;
-            }
-            // sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -109,8 +108,6 @@ public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implemen
             p.setSummary(s);
         }
     }
-
-    private View mTpmsView;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -130,8 +127,6 @@ public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implemen
         TextView tv = ((TextView) mTpmsView.findViewById(id));
         tv.setText(s + "bar");
     }
-
-    private byte[] mTpmsWarning = new byte[4];
 
     private void setTpmsWarningText(int id, int text) {
         String s = null;
@@ -239,8 +234,6 @@ public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -273,5 +266,7 @@ public class OuShangeInfoRaiseFragment extends PreferenceFragmentCompat implemen
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

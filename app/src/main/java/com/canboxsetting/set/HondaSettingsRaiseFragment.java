@@ -7,31 +7,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
-import android.util.Log;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class HondaSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
 
             new Node("ctm_system", 0xC660, 0, 0),
@@ -64,10 +56,24 @@ public class HondaSettingsRaiseFragment extends PreferenceFragmentCompat impleme
             new Node("trunk_lid_induction_opening_closing_function", 0xC646, 0x32000000, 0x0a80, 0x0, Node.TYPE_BUFF1_INDEX), new Node("view_mirror_automatically_folded", 0xC647, 0x32000000, 0x0a40, 0x0, Node.TYPE_BUFF1_INDEX),
 
     };
-
     private final static int[] INIT_CMDS = {0x3200,};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private int mSetCTM = -1;
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,8 +106,6 @@ public class HondaSettingsRaiseFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -139,15 +143,6 @@ public class HondaSettingsRaiseFragment extends PreferenceFragmentCompat impleme
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
 
@@ -182,8 +177,6 @@ public class HondaSettingsRaiseFragment extends PreferenceFragmentCompat impleme
             }
         }
     }
-
-    private int mSetCTM = -1;
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
@@ -404,8 +397,6 @@ public class HondaSettingsRaiseFragment extends PreferenceFragmentCompat impleme
         showPreference(id, show, "driving_mode");
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

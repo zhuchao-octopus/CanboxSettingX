@@ -53,13 +53,13 @@
         android:title="@string/speed_alarm" />
 
     <com.common.view.MyPreferenceSeekBar
+        android:dependency="key_speed_alarm"
         android:key="key_speed_settings"
         android:persistent="false"
-        android:dependency="key_speed_alarm"
         android:title="@string/speed_settings"
-        my:unit="km/h"
         my:max="220"
         my:min="30"
-        my:step="1" />
+        my:step="1"
+        my:unit="km/h" />
 
 </PreferenceScreen>

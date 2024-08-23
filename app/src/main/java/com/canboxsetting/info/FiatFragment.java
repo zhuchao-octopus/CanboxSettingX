@@ -17,11 +17,18 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.CarInfoActivity;
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class FiatFragment extends PreferenceFragmentCompat {
     private static final String TAG = "FiatFragment";
+    private View mMainView;
+    private TextView mTVTime;
+    private ImageView mPP;
+    private boolean mPause = false;
+    private boolean mSetSource = false;
+    private boolean mPlayStatus = false;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +43,6 @@ public class FiatFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
-    private TextView mTVTime;
-
-    private ImageView mPP;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,7 +89,7 @@ public class FiatFragment extends PreferenceFragmentCompat {
         return mMainView;
     }
 
-    private boolean mPause = false;
+    ;
 
     @Override
     public void onPause() {
@@ -112,8 +114,6 @@ public class FiatFragment extends PreferenceFragmentCompat {
             // MyCmd.SOURCE_MX51);
         }
     }
-
-    ;
 
     private void sendCanboxData(byte cmd) {
         byte[] buf = new byte[]{(byte) 0x92, 0x1, cmd};
@@ -168,11 +168,6 @@ public class FiatFragment extends PreferenceFragmentCompat {
                 break;
         }
     }
-
-    private boolean mSetSource = false;
-    private boolean mPlayStatus = false;
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -7,14 +7,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -22,33 +14,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
-import com.common.util.Util;
+import com.common.utils.Util;
 import com.common.view.MyPreference2;
 import com.common.view.MyPreferenceEdit;
 import com.common.view.MyPreferenceEdit.IButtonCallBack;
 
 public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "PSASimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-        // if (mType == 1) {
-        // PreferenceScreen p = (PreferenceScreen)
-        // findPreference("driving_mode");
-        // if (p != null) {
-        // setPreferenceScreen(p);
-        // }
-        // }
-    }
-
     private static final Node[] NODES = {
 
             new Node("parking_assist", 0x8001, 0x38000000, 0x0108, 0, Node.TYPE_BUFF1_INDEX), new Node("bwiper", 0x8002, 0x38000000, 0x0180, 0, Node.TYPE_BUFF1_INDEX),
@@ -83,7 +67,14 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
 
 
     };
-
+    private final static int[] INIT_CMDS = {0x38,
+            /*
+             * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
+             * 0x4080, 0x4090,
+             */};
+    private final static int[][] BUTTON_ID = {{R.id.mode, 0x40}, {R.id.up, 0x4}, {R.id.menu, 0x01}, {R.id.left, 0x10}, {R.id.right, 0x20}, {R.id.ok, 0x2000}, {R.id.dark, 0x80}, {R.id.down, 0x08}, {R.id.esc, 0x2},};
+    String mCan;
+    private int mType = 0;
     private byte[] mData3B = new byte[6];
     private IButtonCallBack mButtonCallBack = new IButtonCallBack() {
         @Override
@@ -122,16 +113,64 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
             }
         }
     };
-
-    private final static int[] INIT_CMDS = {0x38,
-            /*
-             * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
-             * 0x4080, 0x4090,
-             */};
-
     private Preference[] mPreferences = new Preference[NODES.length];
-
     private View mControlSetView;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                byte[] buf = new byte[]{0x04, (byte) 0x8f, (byte) msg.what,};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private int mKeyId;
+    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+        public boolean onTouch(View v, android.view.MotionEvent event) {
+            // Log.d("allen3", "onKey!!");
+            mKeyId = getKey(v.getId());
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                mHandler.removeMessages(0);
+                if (mKeyId != 0) {
+                    sendCanboxInfo(mKeyId);
+                }
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                mHandler.removeMessages(0);
+                sendCanboxInfo(0);
+                mKeyId = 0;
+            }
+
+            return false;
+        }
+
+        ;
+    };
+    View.OnLongClickListener mOnLongClickListener = new View.OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(View v) {
+            // TODO Auto-generated method stub
+            if (mKeyId != 0) {
+                // sendCanboxInfo(mKeyId, );
+            }
+            mHandler.sendEmptyMessageDelayed(0, 300);
+            return false;
+        }
+    };
+
+    public void setType(int t) {
+        mType = t;
+        // if (mType == 1) {
+        // PreferenceScreen p = (PreferenceScreen)
+        // findPreference("driving_mode");
+        // if (p != null) {
+        // setPreferenceScreen(p);
+        // }
+        // }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -144,8 +183,6 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
             return super.onCreateView(inflater, container, savedInstanceState);
         }
     }
-
-    String mCan;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -193,8 +230,6 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -230,17 +265,6 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                byte[] buf = new byte[]{0x04, (byte) 0x8f, (byte) msg.what,};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -560,8 +584,6 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
 
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -600,40 +622,11 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private int mKeyId;
-    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
-        public boolean onTouch(View v, android.view.MotionEvent event) {
-            // Log.d("allen3", "onKey!!");
-            mKeyId = getKey(v.getId());
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                mHandler.removeMessages(0);
-                if (mKeyId != 0) {
-                    sendCanboxInfo(mKeyId);
-                }
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                mHandler.removeMessages(0);
-                sendCanboxInfo(0);
-                mKeyId = 0;
-            }
-
-            return false;
-        }
-
-        ;
-    };
-
-    View.OnLongClickListener mOnLongClickListener = new View.OnLongClickListener() {
-
-        @Override
-        public boolean onLongClick(View v) {
-            // TODO Auto-generated method stub
-            if (mKeyId != 0) {
-                // sendCanboxInfo(mKeyId, );
-            }
-            mHandler.sendEmptyMessageDelayed(0, 300);
-            return false;
-        }
-    };
+    //
+    // private final static int[][] BUTTON_ID = { { R.id.mode, 0x1 },
+    // { R.id.up, 0x5 }, { R.id.menu, 0x3 }, { R.id.left, 0x6 },
+    // { R.id.right, 0x8 }, { R.id.ok, 0x7 }, { R.id.dark, 0x2 },
+    // { R.id.down, 0x9 }, { R.id.esc, 0x4 }, };
 
     private int getKey(int id) {
         int ret = 0;
@@ -645,13 +638,5 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
         }
         return ret;
     }
-
-    //
-    // private final static int[][] BUTTON_ID = { { R.id.mode, 0x1 },
-    // { R.id.up, 0x5 }, { R.id.menu, 0x3 }, { R.id.left, 0x6 },
-    // { R.id.right, 0x8 }, { R.id.ok, 0x7 }, { R.id.dark, 0x2 },
-    // { R.id.down, 0x9 }, { R.id.esc, 0x4 }, };
-
-    private final static int[][] BUTTON_ID = {{R.id.mode, 0x40}, {R.id.up, 0x4}, {R.id.menu, 0x01}, {R.id.left, 0x10}, {R.id.right, 0x20}, {R.id.ok, 0x2000}, {R.id.dark, 0x80}, {R.id.down, 0x08}, {R.id.esc, 0x2},};
 
 }

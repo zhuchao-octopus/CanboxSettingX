@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.MyCmd;
+import com.common.utils.MyCmd;
 import com.common.view.CircularRingBottomView;
 import com.common.view.CircularRingPercentageView;
 
@@ -26,6 +26,12 @@ import java.util.Date;
 
 public class Info224 extends PreferenceFragmentCompat {
     private static final String TAG = "GMInfoSimpleFragment";
+    CircularRingPercentageView mDashboard1;
+    CircularRingPercentageView mDashboard2;
+    CircularRingBottomView mDashboard12;
+    CircularRingBottomView mDashboard21;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,8 +45,6 @@ public class Info224 extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
 
     private void setFullScreen() {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -87,11 +91,6 @@ public class Info224 extends PreferenceFragmentCompat {
         setTime();
         return mMainView;
     }
-
-    CircularRingPercentageView mDashboard1;
-    CircularRingPercentageView mDashboard2;
-    CircularRingBottomView mDashboard12;
-    CircularRingBottomView mDashboard21;
 
     @Override
     public void onPause() {
@@ -149,8 +148,6 @@ public class Info224 extends PreferenceFragmentCompat {
             ((TextView) mMainView.findViewById(id)).setText(s);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

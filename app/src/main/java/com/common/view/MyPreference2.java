@@ -10,6 +10,8 @@ import androidx.preference.PreferenceViewHolder;
 
 public class MyPreference2 extends Preference {
 
+    private View mMainView;
+
     public MyPreference2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
@@ -21,8 +23,6 @@ public class MyPreference2 extends Preference {
     public MyPreference2(Context context) {
         super(context);
     }
-
-    private View mMainView;
 
     @Override
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {

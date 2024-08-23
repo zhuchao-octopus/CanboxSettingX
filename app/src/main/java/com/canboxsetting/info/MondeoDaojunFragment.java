@@ -7,26 +7,41 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 import java.util.Locale;
 
 public class MondeoDaojunFragment extends PreferenceFragmentCompat {
     private static final String TAG = "ToyotaInfoSimpleFragment";
-
+    private final static int[] INIT_CMDS = {0x65, 0x16};
     private boolean mRudder = false;
     private int mFlashLight = 0;
+    private int mFrontDoor = 0;
+    private int mBackDoor = 0;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                // case 0:
+                // requestInitData();
+                // break;
+                case 1:
+                    sendCanboxInfo0x90(msg.arg1 & 0xff);
+                    break;
+            }
+        }
+    };
+    private boolean mPaused = true;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +54,6 @@ public class MondeoDaojunFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private int mFrontDoor = 0;
-    private int mBackDoor = 0;
 
     private void getCanboxSetting() {
         mFrontDoor = 0;
@@ -65,8 +77,6 @@ public class MondeoDaojunFragment extends PreferenceFragmentCompat {
         }
     }
 
-    private final static int[] INIT_CMDS = {0x65, 0x16};
-
     private void requestInitData() {
         if (mPaused) {
             return;
@@ -78,20 +88,6 @@ public class MondeoDaojunFragment extends PreferenceFragmentCompat {
 
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                // case 0:
-                // requestInitData();
-                // break;
-                case 1:
-                    sendCanboxInfo0x90(msg.arg1 & 0xff);
-                    break;
-            }
-        }
-    };
-
     private void sendCanboxInfo0xff(int d1) {// no canbox cmd.
         byte[] buf = new byte[]{(byte) 0xff, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -101,8 +97,6 @@ public class MondeoDaojunFragment extends PreferenceFragmentCompat {
         byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, (byte) 0xff};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -151,8 +145,6 @@ public class MondeoDaojunFragment extends PreferenceFragmentCompat {
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -5,22 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class Peugeot206SimpleFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "Peugeot206SimpleFragment";
+    private static final Node[] NODES = {
+
+            new Node("fuelclear", 0x0),
+
+    };
+    private boolean mPaused = true;
+    private Preference[] mPreferences = new Preference[NODES.length];
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,8 +75,6 @@ public class Peugeot206SimpleFragment extends PreferenceFragmentCompat implement
         return false;
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -92,13 +96,6 @@ public class Peugeot206SimpleFragment extends PreferenceFragmentCompat implement
             p.setSummary(s);
         }
     }
-
-    private static final Node[] NODES = {
-
-            new Node("fuelclear", 0x0),
-
-    };
-    private Preference[] mPreferences = new Preference[NODES.length];
 
     private void updateView(byte[] buf) {
 
@@ -139,8 +136,6 @@ public class Peugeot206SimpleFragment extends PreferenceFragmentCompat implement
 
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

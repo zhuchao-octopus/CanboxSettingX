@@ -8,43 +8,42 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "Golf7InfoSimpleFragment";
-
     // PreferenceScreen mTpms;
-
     // @Override
     // public void onCreate(Bundle savedInstanceState) {
     // super.onCreate(savedInstanceState);
     //
     // addPreferencesFromResource(R.xml.vw_mqb_tpms_raisse_info);
-
     // mTpms = (PreferenceScreen) findPreference("tpms");
     // mTpms.setOnPreferenceClickListener(this);
 
     // }
-
+    private final static int[] INIT_CMDS = {0x6600, 0x6601, 0x6800};
     String mCanboxType;
     String mProIndex = null;
+    private boolean mPause = true;
+    private View mTpmsView;
+    private View mTpmsReset;
+    private int mColor = 0;
+    private int mUnit = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
@@ -82,7 +81,19 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
         stopRequestInitData();
         super.onPause();
         unregisterListener();
-    }
+    }    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    requestInitData();
+                    break;
+                case 1:
+                    sendCanboxInfo(0x90, (msg.arg1 & 0xff00) >> 8, msg.arg1 & 0xff);
+                    break;
+            }
+        }
+    };
 
     private void initTpmsView() {
 
@@ -110,8 +121,6 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
         // }
     }
 
-    private final static int[] INIT_CMDS = {0x6600, 0x6601, 0x6800};
-
     private void requestInitData() {
         if (mPause) {
             return;
@@ -128,8 +137,6 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
         mHandler.removeMessages(1);
         mHandler.removeMessages(1);
     }
-
-    private boolean mPause = true;
 
     @Override
     public void onResume() {
@@ -158,27 +165,10 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    requestInitData();
-                    break;
-                case 1:
-                    sendCanboxInfo(0x90, (msg.arg1 & 0xff00) >> 8, msg.arg1 & 0xff);
-                    break;
-            }
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private View mTpmsView;
-    private View mTpmsReset;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -227,8 +217,6 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
             }
         }
     }
-
-    private int mColor = 0;
 
     private void updateViewRaise(byte[] buf) {
         if (mTpmsView == null) {
@@ -291,8 +279,6 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
                 break;
         }
     }
-
-    private int mUnit = 0;
 
     private void setTpmsTextValue(int id, int value, int color) {
 
@@ -519,8 +505,6 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -558,5 +542,7 @@ public class VWMQBTpmsInfoRaiseFragment extends PreferenceFragmentCompat impleme
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

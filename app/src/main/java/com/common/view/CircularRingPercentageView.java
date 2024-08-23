@@ -14,6 +14,7 @@ import android.view.View;
 import com.canboxsetting.R;
 
 public class CircularRingPercentageView extends View {
+    OnProgressScore onProgressScore;
     private Paint paint;
     private Paint paintRound;
     private int circleWidth;
@@ -35,32 +36,13 @@ public class CircularRingPercentageView extends View {
     private int circleCenter;
     private SweepGradient sweepGradient;
     private boolean isLine = false;
-
-
-    /**
-     * 分割的数量
-     *
-     * @param maxColorNumber 数量
-     */
-    public void setMaxColorNumber(int maxColorNumber) {
-        this.maxColorNumber = maxColorNumber;
-        singlPoint = (float) 360 / (float) maxColorNumber;
-        invalidate();
-    }
-
-    /**
-     * 是否是线条
-     *
-     * @param line true 是 false否
-     */
-    public void setLine(boolean line) {
-        isLine = line;
-        invalidate();
-    }
-
-    public int getCircleWidth() {
-        return circleWidth;
-    }
+    private float top_arc_degree_start;
+    private float top_arc_degree_end;
+    private int top_arc_value_max;
+    private int top_arc_value_min;
+    private float mStep = 360 / 100;
+    private float top_arc_degree;
+    private float top_arc_value_count;
 
     public CircularRingPercentageView(Context context) {
         this(context, null);
@@ -102,6 +84,50 @@ public class CircularRingPercentageView extends View {
         mTypedArray.recycle();
     }
 
+    /**
+     * 分割的数量
+     *
+     * @param maxColorNumber 数量
+     */
+    public void setMaxColorNumber(int maxColorNumber) {
+        this.maxColorNumber = maxColorNumber;
+        singlPoint = (float) 360 / (float) maxColorNumber;
+        invalidate();
+    }
+
+    /**
+     * 是否是线条
+     *
+     * @param line true 是 false否
+     */
+    public void setLine(boolean line) {
+        isLine = line;
+        invalidate();
+    }
+
+    public int getCircleWidth() {
+        return circleWidth;
+    }
+
+    /**
+     * 圆环的直径
+     *
+     * @param circleWidth 直径
+     */
+    public void setCircleWidth(int circleWidth) {
+        this.circleWidth = circleWidth;
+        circleCenter = circleWidth / 2;
+
+        if (roundWidth > circleCenter) {
+            roundWidth = circleCenter;
+        }
+        setRoundWidth(roundWidth);
+        sweepGradient = new SweepGradient(this.circleWidth / 2, this.circleWidth / 2, colors, null);
+        //旋转 不然是从0度开始渐变
+        Matrix matrix = new Matrix();
+        matrix.setRotate(-90, this.circleWidth / 2, this.circleWidth / 2);
+        sweepGradient.setLocalMatrix(matrix);
+    }
 
     /**
      * 空白出颜色背景
@@ -150,7 +176,6 @@ public class CircularRingPercentageView extends View {
         invalidate();
     }
 
-
     /**
      * 间隔角度大小
      *
@@ -161,10 +186,10 @@ public class CircularRingPercentageView extends View {
         invalidate();
     }
 
-
     private int getDpValue(int w) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, w, getContext().getResources().getDisplayMetrics());
     }
+    ;
 
     /**
      * 圆环宽度
@@ -184,26 +209,7 @@ public class CircularRingPercentageView extends View {
         paint.setStrokeWidth(this.roundWidth);
         invalidate();
     }
-
-    /**
-     * 圆环的直径
-     *
-     * @param circleWidth 直径
-     */
-    public void setCircleWidth(int circleWidth) {
-        this.circleWidth = circleWidth;
-        circleCenter = circleWidth / 2;
-
-        if (roundWidth > circleCenter) {
-            roundWidth = circleCenter;
-        }
-        setRoundWidth(roundWidth);
-        sweepGradient = new SweepGradient(this.circleWidth / 2, this.circleWidth / 2, colors, null);
-        //旋转 不然是从0度开始渐变
-        Matrix matrix = new Matrix();
-        matrix.setRotate(-90, this.circleWidth / 2, this.circleWidth / 2);
-        sweepGradient.setLocalMatrix(matrix);
-    }
+    ;
 
     /**
      * 渐变初始化
@@ -253,17 +259,6 @@ public class CircularRingPercentageView extends View {
 
     }
 
-    private float top_arc_degree_start;
-    private float top_arc_degree_end;
-    private int top_arc_value_max;
-    private int top_arc_value_min;
-    private float mStep = 360 / 100;
-    ;
-    private float top_arc_degree;
-    ;
-    private float top_arc_value_count;
-
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -311,14 +306,6 @@ public class CircularRingPercentageView extends View {
         }
     }
 
-
-    OnProgressScore onProgressScore;
-
-    public interface OnProgressScore {
-        void setProgressScore(float score);
-
-    }
-
     public synchronized void setProgress(final float p) {
         progress = p;
         postInvalidate();
@@ -343,6 +330,11 @@ public class CircularRingPercentageView extends View {
         this.onProgressScore = onProgressScore;
         progress = p;
         postInvalidate();
+    }
+
+    public interface OnProgressScore {
+        void setProgressScore(float score);
+
     }
 
 }

@@ -9,6 +9,9 @@ import java.io.IOException;
 
 public class ParkBrake {
 
+    public static boolean checkCamera0IfFacing = false;
+    public static int dvrExist = 0;
+
     public static String readLine(String path) {
 
         File file = new File(path);
@@ -46,10 +49,6 @@ public class ParkBrake {
         }
 
     }
-
-    public static boolean checkCamera0IfFacing = false;
-
-    public static int dvrExist = 0;
 
     public static void saveCameraStatasIfSleep() {
         Log.d("ParkBrake", "saveCameraStatas");

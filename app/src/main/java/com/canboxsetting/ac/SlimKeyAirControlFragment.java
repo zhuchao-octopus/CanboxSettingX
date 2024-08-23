@@ -40,9 +40,9 @@ import com.canboxsetting.R;
 import com.canboxsetting.R.id;
 import com.canboxsetting.R.layout;
 import com.canboxsetting.R.string;
+import com.common.utils.BroadcastUtil;
 import com.common.utils.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.ByteUtils;
 import com.zhuchao.android.fbase.MMLog;
 
@@ -54,13 +54,20 @@ import java.util.Objects;
  */
 public class SlimKeyAirControlFragment extends MyFragment {
     private static final String TAG = "SlimKeyAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{{id.air_title_ce_max, 0x010c}, {id.air_title_ce_rear, 0x010e}, {id.air_title_ce_ac_1, 0x0101}, {id.air_title_ce_inner_loop, 0x0103}, {id.air_title_ce_auto_large, 0x0102}, {id.air_title_ce_ac_max, 0x010f}, {id.wheel, 0x0118}, {id.con_left_temp_up, 0x0104}, {id.con_left_temp_down, 0x0105}, {id.con_right_temp_up, 0x0114}, {id.con_right_temp_down, 0x0115}, {id.canbus21_mode1, 0x0108}, {id.canbus21_mode3, 0x0109}, {id.canbus21_mode2, 0x010a}, {id.canbus21_mode4, 0x010b}, {id.con_seathotleft, 0x0111}, {id.con_seathotright, 0x0112}, {id.air_title_sync, 0x010d}, {id.icon_power, 0x0110}, {id.wind_add, 0x0106}, {id.wind_minus, 0x0107},};
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            sendCanboxInfo0x8f(0x21);
+        }
+    };
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -95,8 +102,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
         byte[] buf = new byte[]{0x4, (byte) 0x8f, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private final static int[][] CMD_ID = new int[][]{{id.air_title_ce_max, 0x010c}, {id.air_title_ce_rear, 0x010e}, {id.air_title_ce_ac_1, 0x0101}, {id.air_title_ce_inner_loop, 0x0103}, {id.air_title_ce_auto_large, 0x0102}, {id.air_title_ce_ac_max, 0x010f}, {id.wheel, 0x0118}, {id.con_left_temp_up, 0x0104}, {id.con_left_temp_down, 0x0105}, {id.con_right_temp_up, 0x0114}, {id.con_right_temp_down, 0x0115}, {id.canbus21_mode1, 0x0108}, {id.canbus21_mode3, 0x0109}, {id.canbus21_mode2, 0x010a}, {id.canbus21_mode4, 0x010b}, {id.con_seathotleft, 0x0111}, {id.con_seathotright, 0x0112}, {id.air_title_sync, 0x010d}, {id.icon_power, 0x0110}, {id.wind_add, 0x0106}, {id.wind_minus, 0x0107},};
 
     private void updateSelect(int id, int s) {
         View v = mMainView.findViewById(id);
@@ -227,13 +232,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
-    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            sendCanboxInfo0x8f(0x21);
-        }
-    };
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -248,8 +246,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
         mHandler.sendEmptyMessageDelayed(0, 1000);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

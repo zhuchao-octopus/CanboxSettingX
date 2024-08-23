@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="38px"
-        android:paddingTop="10px">
+        android:paddingTop="10px"
+        android:paddingBottom="38px">
 
         <TextView
             android:id="@+id/car_status"

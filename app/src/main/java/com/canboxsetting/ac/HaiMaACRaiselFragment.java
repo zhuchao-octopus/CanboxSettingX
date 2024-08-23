@@ -16,66 +16,49 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class HaiMaACRaiselFragment extends MyFragment {
     private static final String TAG = "JeepAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{
+
+            {R.id.power, 0x1}, {R.id.ac, 0xa4}, {R.id.inner_loop, 0xa5}, {R.id.rear, 0xa7},
+
+            {R.id.max, 0xa304}, {R.id.wind_horizontal1, 0xa300}, {R.id.wind_horizontal_down, 0xa301}, {R.id.wind_down1, 0xa303}, {R.id.wind_up_down, 0xa302},
+
+            {R.id.wind_minus, 0xa000}, {R.id.wind_add, 0xa001},
+
+            {R.id.con_left_temp_up, 0xa101}, {R.id.con_left_temp_down, 0xa100}, {R.id.con_right_temp_up, 0xa201}, {R.id.con_right_temp_down, 0xa200},
+
+
+    };
+    private View mMainView;
+
+    private CommonUpdateView mCommonUpdateView;
+    private BroadcastReceiver mReceiver;
+    private int power = 0;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private View mMainView;
-
-    private CommonUpdateView mCommonUpdateView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -95,21 +78,6 @@ public class HaiMaACRaiselFragment extends MyFragment {
         byte[] buf = new byte[]{(byte) 0x83, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-
-    private final static int[][] CMD_ID = new int[][]{
-
-            {R.id.power, 0x1}, {R.id.ac, 0xa4}, {R.id.inner_loop, 0xa5}, {R.id.rear, 0xa7},
-
-            {R.id.max, 0xa304}, {R.id.wind_horizontal1, 0xa300}, {R.id.wind_horizontal_down, 0xa301}, {R.id.wind_down1, 0xa303}, {R.id.wind_up_down, 0xa302},
-
-            {R.id.wind_minus, 0xa000}, {R.id.wind_add, 0xa001},
-
-            {R.id.con_left_temp_up, 0xa101}, {R.id.con_left_temp_down, 0xa100}, {R.id.con_right_temp_up, 0xa201}, {R.id.con_right_temp_down, 0xa200},
-
-
-    };
-
 
     public void onClick(View v) {
         int id = v.getId();
@@ -143,16 +111,12 @@ public class HaiMaACRaiselFragment extends MyFragment {
         sendCanboxInfo0x90(0x23);
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             getActivity().unregisterReceiver(mReceiver);
             mReceiver = null;
         }
     }
-
-    private int power = 0;
 
     private void registerListener() {
         if (mReceiver == null) {

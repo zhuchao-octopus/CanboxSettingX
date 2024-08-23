@@ -73,8 +73,8 @@
                     android:id="@id/unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
                     android:textSize="@dimen/conv_normal_text_size" />
 
                 <ProgressBar
@@ -89,8 +89,8 @@
                     android:id="@id/progress_min"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_below="@id/progressbar"
+                    android:layout_alignParentLeft="true"
                     android:text="@string/zero"
                     android:textSize="@dimen/conv_normal_text_size" />
 
@@ -98,8 +98,8 @@
                     android:id="@id/progress_center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/progress_min"
                     android:layout_below="@id/progressbar"
+                    android:layout_alignBottom="@id/progress_min"
                     android:layout_centerHorizontal="true"
                     android:text="@string/zero"
                     android:textSize="@dimen/conv_normal_text_size" />
@@ -108,9 +108,9 @@
                     android:id="@id/progress_max"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/progressbar"
                     android:layout_alignBottom="@id/progress_min"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@id/progressbar"
                     android:text="@string/zero"
                     android:textSize="@dimen/conv_normal_text_size" />
             </RelativeLayout>

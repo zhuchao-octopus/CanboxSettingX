@@ -7,20 +7,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
     private static final String TAG = "JeepInfoSimpleFragment";
+    private final static int[] INIT_CMDS = {0x4001, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xa};
+    private final static int MSG_REQUEST_INIT = 1000;
+    private boolean mPaused = true;
+    private byte mUnit = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,6 @@ public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -61,23 +62,7 @@ public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
         requestInitData();
 
         registerListener();
-    }
-
-    private final static int[] INIT_CMDS = {0x4001, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xa};
-    private final static int MSG_REQUEST_INIT = 1000;
-
-    private void requestInitData() {
-        // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
-        for (int i = 0; i < INIT_CMDS.length; ++i) {
-            mHandler.removeMessages(INIT_CMDS[i]);
-            mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 100));
-        }
-
-        mHandler.removeMessages(MSG_REQUEST_INIT);
-        mHandler.sendEmptyMessageDelayed(MSG_REQUEST_INIT, 15000);
-    }
-
-    private Handler mHandler = new Handler() {
+    }    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
@@ -93,6 +78,17 @@ public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
             }
         }
     };
+
+    private void requestInitData() {
+        // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
+        for (int i = 0; i < INIT_CMDS.length; ++i) {
+            mHandler.removeMessages(INIT_CMDS[i]);
+            mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 100));
+        }
+
+        mHandler.removeMessages(MSG_REQUEST_INIT);
+        mHandler.sendEmptyMessageDelayed(MSG_REQUEST_INIT, 15000);
+    }
 
     private void sendCanboxInfo2(int cmd) {
         byte[] buf = new byte[]{(byte) 0x90, 0x02, (byte) ((cmd & 0xff00) >> 8), (byte) (cmd & 0xff)};
@@ -139,8 +135,6 @@ public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
         }
         return c;
     }
-
-    private byte mUnit = 0;
 
     private String getFuelUnit() {
         String s;
@@ -346,8 +340,6 @@ public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -381,5 +373,7 @@ public class JeepInfoSimpleFragment extends PreferenceFragmentCompat {
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

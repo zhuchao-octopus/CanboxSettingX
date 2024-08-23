@@ -7,41 +7,46 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
-
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class FiatEGEARaiseSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
 
             new Node("fulecons", 0x80, 0x40, 0x1, 0x0), new Node("range", 0x80, 0x40, 0x2, 0x0), new Node("temperature", 0x80, 0x40, 0x3, 0x0), new Node("metric", 0x80, 0x40, 0x4, 0x0), new Node("running_lights", 0x80, 0x40, 0x10, 0x0), new Node("turn_lights_set", 0x80, 0x40, 0x11, 0x0), new Node("headlights_off", 0x80, 0x40, 0x12, 0x0), new Node("lights_flash", 0x80, 0x40, 0x13, 0x0), new Node("front_light", 0x80, 0x40, 0x14, 0x0), new Node("driving_auto", 0x80, 0x40, 0x20, 0x0), new Node("parksense", 0x80, 0x40, 0x30, 0x0), new Node("b_parksense", 0x80, 0x40, 0x31, 0x0), new Node("brake_control", 0x80, 0x40, 0x32, 0x0), new Node("brake_control_sensitivity", 0x80, 0x40, 0x33, 0x0), new Node("rear_view_camera_delay", 0x80, 0x40, 0x34, 0x0), new Node("parkView", 0x80, 0x40, 0x35, 0x0), new Node("wipers_induction", 0x80, 0x40, 0x36, 0x0), new Node("dis_trip_b", 0x80, 0x40, 0xF0, 0x0), new Node("trip_b", 0x80, 0x40, 0xF1, 0x0), new Node("trip_a", 0x80, 0x40, 0xF2, 0x0), new Node("buzzer", 0x80, 0x40, 0xF3, 0x0), new Node("car_type", 0x80, 0x40, 0xF4, 0x0),
 
     };
-
     private final static int[] INIT_CMDS = {0x40ff};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private int mSetCTM = -1;
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,8 +70,6 @@ public class FiatEGEARaiseSettingFragment extends PreferenceFragmentCompat imple
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -104,15 +107,6 @@ public class FiatEGEARaiseSettingFragment extends PreferenceFragmentCompat imple
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(0x80, ((cmd & 0xff)), ((value & 0xff)));
 
@@ -135,8 +129,6 @@ public class FiatEGEARaiseSettingFragment extends PreferenceFragmentCompat imple
             }
         }
     }
-
-    private int mSetCTM = -1;
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
@@ -254,8 +246,6 @@ public class FiatEGEARaiseSettingFragment extends PreferenceFragmentCompat imple
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

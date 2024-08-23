@@ -97,11 +97,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="0.0dip"
                     android:layout_weight="1.0"
-                    android:visibility="gone"
                     android:gravity="bottom|center"
                     android:text="@string/volt"
                     android:textColor="@android:color/white"
-                    android:textSize="20.0px" />
+                    android:textSize="20.0px"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/volt"
@@ -253,10 +253,10 @@
             android:id="@+id/btn_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="36.0dip"
+            android:layout_alignParentBottom="true"
             android:layout_marginRight="70.0dip"
+            android:layout_marginBottom="36.0dip"
             android:background="@drawable/btn_home_normal"
             android:tag="ak_paramter=100,50" />
     </RelativeLayout>

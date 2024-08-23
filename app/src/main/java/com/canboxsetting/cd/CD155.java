@@ -16,11 +16,6 @@
 
 package com.canboxsetting.cd;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,12 +27,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class CD155 extends MyFragment {
 
     private View mMainView;
+    private BroadcastReceiver mReceiver;
+    private int mSource = MyCmd.SOURCE_NONE;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -203,8 +205,6 @@ public class CD155 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             getActivity().unregisterReceiver(mReceiver);
@@ -253,8 +253,6 @@ public class CD155 extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private int mSource = MyCmd.SOURCE_NONE;
 
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);

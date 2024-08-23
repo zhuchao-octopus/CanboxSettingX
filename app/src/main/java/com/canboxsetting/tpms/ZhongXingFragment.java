@@ -8,28 +8,21 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-
-import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "ZhongXingFragment";
@@ -45,9 +38,15 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
     // mTpms = (PreferenceScreen) findPreference("tpms");
     // mTpms.setOnPreferenceClickListener(this);
     // }
-
+    private final static int[] INIT_CMDS = {0x3800, 0x3900, 0x2400, 0x3000};
     String mCanboxType;
     String mProIndex = null;
+    private boolean mPause = true;
+    private View mTpmsView;
+    private View mTpmsReset;
+    private int mColor = 0;
+    private int mUnit = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
@@ -87,7 +86,19 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
         stopRequestInitData();
         super.onPause();
         unregisterListener();
-    }
+    }    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    requestInitData();
+                    break;
+                case 1:
+                    sendCanboxInfo(0x90, (msg.arg1 & 0xff00) >> 8, msg.arg1 & 0xff);
+                    break;
+            }
+        }
+    };
 
     private void initTpmsView() {
 
@@ -102,8 +113,6 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
         }
 
     }
-
-    private final static int[] INIT_CMDS = {0x3800, 0x3900, 0x2400, 0x3000};
 
     private void requestInitData() {
         if (mPause) {
@@ -121,8 +130,6 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
         mHandler.removeMessages(1);
         mHandler.removeMessages(1);
     }
-
-    private boolean mPause = true;
 
     @Override
     public void onResume() {
@@ -151,27 +158,10 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    requestInitData();
-                    break;
-                case 1:
-                    sendCanboxInfo(0x90, (msg.arg1 & 0xff00) >> 8, msg.arg1 & 0xff);
-                    break;
-            }
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x01, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private View mTpmsView;
-    private View mTpmsReset;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -220,8 +210,6 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
             }
         }
     }
-
-    private int mColor = 0;
 
     private void updateViewRaise(byte[] buf) {
         if (mTpmsView == null) {
@@ -284,8 +272,6 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
                 break;
         }
     }
-
-    private int mUnit = 0;
 
     private void setTpmsTextValue(int id, int value, int color) {
 
@@ -549,8 +535,6 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -588,5 +572,7 @@ public class ZhongXingFragment extends PreferenceFragmentCompat implements OnPre
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

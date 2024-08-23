@@ -22,17 +22,17 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
+        android:orientation="horizontal"
         android:paddingLeft="20px"
-        android:paddingRight="20px"
-        android:orientation="horizontal">
+        android:paddingRight="20px">
 
         <Button
             android:id="@+id/btn_minus"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-"
             android:gravity="center"
+            android:text="-"
             android:textSize="40.0px" />
 
         <SeekBar

@@ -16,13 +16,7 @@
 
 package com.canboxsetting.radio;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.adapter.MyListViewAdapterRadio;
-import com.common.utils.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -37,21 +31,37 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.adapter.MyListViewAdapterRadio;
+import com.common.utils.AuxInUI;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class Radio155 extends MyFragment {
     private static final String TAG = "Radio153";
-
+    private final static int[] INIT_CMDS = {0x22, 0x21};
     private View mMainView;
-
     private ListView mListViewCD;
-
     private MyListViewAdapterRadio mMyListViewAdapter;
-
     private ListView mListViewPreset;
-
     private MyListViewAdapterRadio mMyListViewAdapterPreset;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                byte[] buf = new byte[]{(byte) 0x1f, 0x1, (byte) (msg.what & 0xff)};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private AuxInUI mAuxInUI;
+    private int mSource = MyCmd.SOURCE_NONE;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,7 +87,6 @@ public class Radio155 extends MyFragment {
         return mMainView;
     }
 
-
     private void sendCanboxInfo0x83(int d0) {
         sendCanboxInfo0x83(d0, 1);
     }
@@ -92,7 +101,7 @@ public class Radio155 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-
+    @SuppressLint("DefaultLocale")
     private void updateView(byte[] buf) {
         String s = "";
         switch (buf[0]) {
@@ -124,8 +133,6 @@ public class Radio155 extends MyFragment {
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -144,22 +151,6 @@ public class Radio155 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
         super.onResume();
     }
-
-    private final static int[] INIT_CMDS = {0x22, 0x21};
-
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                byte[] buf = new byte[]{(byte) 0x1f, 0x1, (byte) (msg.what & 0xff)};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-            }
-        }
-    };
-
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
@@ -209,10 +200,6 @@ public class Radio155 extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private AuxInUI mAuxInUI;
-
-    private int mSource = MyCmd.SOURCE_NONE;
 
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);

@@ -16,10 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -29,11 +25,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class HondaAirControl extends Activity {
     private static final String TAG = "HondaAirControl";
+    private boolean mShow = false;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -85,8 +87,6 @@ public class HondaAirControl extends Activity {
         }
     }
 
-    private boolean mShow = false;
-
     private void updateView(byte[] buf) {
 
         if ((buf[0] & 0xff) == 0x21) {
@@ -110,8 +110,6 @@ public class HondaAirControl extends Activity {
         registerListener();
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

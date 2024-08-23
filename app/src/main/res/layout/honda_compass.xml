@@ -62,8 +62,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="80.0dip"
-            android:paddingTop="80.0dip">
+            android:paddingTop="80.0dip"
+            android:paddingBottom="80.0dip">
 
             <TextView
                 android:id="@id/zone_string"

@@ -16,66 +16,50 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class LuFengACRaise extends MyFragment {
     private static final String TAG = "JeepAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{
+
+            {R.id.off, 0x80}, {R.id.ac, 0x2}, {R.id.ac_auto, 0x20}, {R.id.max, 0x10}, {R.id.inner_loop, 0x10000},
+
+            {R.id.wind_horizontal1, 0x20000}, {R.id.wind_horizontal_down, 0x40000}, {R.id.wind_down1, 0x80000}, {R.id.wind_up_down, 0x100000},
+
+            //		{ R.id.wind_minus, 0x1d },
+            //		{ R.id.wind_add, 0x1c },
+            //		{ R.id.con_left_temp_up, 0x1e },
+            //		{ R.id.con_left_temp_down, 0x1f },
+    };
+    byte[] AirBuf = new byte[]{(byte) 0x82, 0x5, 0, 0, 0, 0, 0};
+    private View mMainView;
+    private CommonUpdateView mCommonUpdateView;
+    private int mWindStep = -1;
+    private int mTempStep = -1;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private View mMainView;
-
-    private CommonUpdateView mCommonUpdateView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -107,8 +91,6 @@ public class LuFengACRaise extends MyFragment {
         }
     }
 
-    byte[] AirBuf = new byte[]{(byte) 0x82, 0x5, 0, 0, 0, 0, 0};
-
     private void sendKeyEx(int key) {
         AirBuf[2] = (byte) ((key & 0xff) >> 0);
         //		AirBuf[3] = (byte) ((key & 0xff00) >> 8);
@@ -124,18 +106,6 @@ public class LuFengACRaise extends MyFragment {
         sendKeyEx(0);
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-
-            {R.id.off, 0x80}, {R.id.ac, 0x2}, {R.id.ac_auto, 0x20}, {R.id.max, 0x10}, {R.id.inner_loop, 0x10000},
-
-            {R.id.wind_horizontal1, 0x20000}, {R.id.wind_horizontal_down, 0x40000}, {R.id.wind_down1, 0x80000}, {R.id.wind_up_down, 0x100000},
-
-            //		{ R.id.wind_minus, 0x1d },
-            //		{ R.id.wind_add, 0x1c },
-            //		{ R.id.con_left_temp_up, 0x1e },
-            //		{ R.id.con_left_temp_down, 0x1f },
-    };
-
     private void sendCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
             if (CMD_ID[i][0] == id) {
@@ -143,9 +113,6 @@ public class LuFengACRaise extends MyFragment {
             }
         }
     }
-
-    private int mWindStep = -1;
-    private int mTempStep = -1;
 
     private void sendWind(boolean add) {
         mWindStep = (byte) ((mCommonUpdateView.getWind() & 0xF) << 4);
@@ -217,8 +184,6 @@ public class LuFengACRaise extends MyFragment {
 
         sendCanboxInfo0x90(0x23);
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

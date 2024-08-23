@@ -33,9 +33,9 @@ import android.widget.TextView;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 import java.util.Locale;
 
@@ -44,14 +44,28 @@ import java.util.Locale;
  */
 public class X30RaiseAirControlFragment extends MyFragment {
     private static final String TAG = "X30RaiseAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{{R.id.icon_power, 0x0}, {R.id.air_title_ce_ac_1, 0x1}, {R.id.air_title_ce_auto_large, 0x02}, {R.id.air_title_ce_max, 0x06}, {R.id.canbus21_mode1, 0x07}, {R.id.canbus21_mode3, 0x08}, {R.id.canbus21_mode2, 0x09}, {R.id.canbus21_mode4, 0x0a}, {R.id.canbus21_mode5, 0x11}, {R.id.wind_add, 0x0b}, {R.id.wind_minus, 0x0c}, {R.id.con_left_temp_up, 0x0d}, {R.id.con_left_temp_down, 0x0e}, {R.id.air_title_ce_inner_loop, 0x15}, {R.id.air_title_ce_rear, 0x17},
+
+    };
+    private final static int[] AUTO_AIR_HIDE = new int[]{R.id.canbus21_mode1, R.id.canbus21_mode3, R.id.canbus21_mode2, R.id.canbus21_mode4};
+    private final static int[] MANUAL_AIR_HIDE = new int[]{R.id.canbus21_mode5, R.id.icon_power, R.id.air_title_ce_auto_large};
+    boolean mPaused = true;
+    private View mMainView;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0xA8((msg.arg1), msg.arg2);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,29 +88,10 @@ public class X30RaiseAirControlFragment extends MyFragment {
         return mMainView;
     }
 
-    boolean mPaused = true;
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0xA8((msg.arg1), msg.arg2);
-            }
-        }
-    };
-
     private void sendCanboxInfo0xA8(int d0, int d1) {
         byte[] buf = new byte[]{(byte) 0xa8, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private final static int[][] CMD_ID = new int[][]{{R.id.icon_power, 0x0}, {R.id.air_title_ce_ac_1, 0x1}, {R.id.air_title_ce_auto_large, 0x02}, {R.id.air_title_ce_max, 0x06}, {R.id.canbus21_mode1, 0x07}, {R.id.canbus21_mode3, 0x08}, {R.id.canbus21_mode2, 0x09}, {R.id.canbus21_mode4, 0x0a}, {R.id.canbus21_mode5, 0x11}, {R.id.wind_add, 0x0b}, {R.id.wind_minus, 0x0c}, {R.id.con_left_temp_up, 0x0d}, {R.id.con_left_temp_down, 0x0e}, {R.id.air_title_ce_inner_loop, 0x15}, {R.id.air_title_ce_rear, 0x17},
-
-    };
-
-    private final static int[] AUTO_AIR_HIDE = new int[]{R.id.canbus21_mode1, R.id.canbus21_mode3, R.id.canbus21_mode2, R.id.canbus21_mode4};
-
-    private final static int[] MANUAL_AIR_HIDE = new int[]{R.id.canbus21_mode5, R.id.icon_power, R.id.air_title_ce_auto_large};
 
     private void updateAutoManualView() {
         int[] hide;
@@ -291,8 +286,6 @@ public class X30RaiseAirControlFragment extends MyFragment {
         // sendCanboxInfo0x90(0x21);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

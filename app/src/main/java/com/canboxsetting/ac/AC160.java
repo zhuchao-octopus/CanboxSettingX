@@ -16,27 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.array;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -44,119 +23,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC160 extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private CommonUpdateView mCommonUpdateView;
-    private View invalidButton;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.ac_byd_ods, container, false);
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-        initButtonTouch();
-
-        invalidButton(R.id.ac_auto_rear);
-        invalidButton(R.id.con_left_temp_rear_up);
-        invalidButton(R.id.con_left_temp_rear_down);
-        mMainView.findViewById(R.id.wind_horizontal_down_rear).setVisibility(View.GONE);
-        //		mMainView.findViewById(R.id.reartemp).setVisibility(View.INVISIBLE);
-        return mMainView;
-    }
-
-    private View mMainView;
-
-    private void invalidButton(int id) {
-        ImageView iv = (ImageView) mMainView.findViewById(id);
-        if (iv != null) {
-            iv.setImageDrawable(null);
-            iv.setClickable(false);
-        }
-    }
-
-
-    private void sendCanboxInfo(int cmd, int d0, int d1) {
-        byte[] buf = new byte[]{(byte) cmd, 0x2, (byte) d0, (byte) d1};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendCanboxKeyInfo(int d0, int d1) {
-        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void initButtonTouch() {
-        for (int i = 0; i < CMD_ID.length; ++i) {
-            View v = mMainView.findViewById(CMD_ID[i][0]);
-            if (v != null) {
-                v.setOnTouchListener(mTouchListener);
-            }
-        }
-    }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            sendCmd(msg.arg1, 2);
-            mHandler.removeMessages(0);
-            mHandler.sendMessageDelayed(mHandler.obtainMessage(0, msg.arg1, 0), 400);
-
-        }
-    };
-
-    private void sendCmd(int id, int down) {
-        int cmd = getCmd(id);
-        if (cmd != -1) {
-            sendCanboxKeyInfo(cmd & 0xff, down);
-        }
-    }
-
-    View.OnTouchListener mTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
-            switch (event.getAction()) {
-                case KeyEvent.ACTION_DOWN:
-                    sendCmd(v.getId(), 1);
-                    mHandler.removeMessages(0);
-                    mHandler.sendMessageDelayed(mHandler.obtainMessage(0, v.getId(), 0), 2000);
-                    break;
-                case KeyEvent.ACTION_UP:
-                    sendCmd(v.getId(), 0);
-                    mHandler.removeMessages(0);
-                    break;
-            }
-            return false;
-        }
-    };
-
     private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x01},
 
             {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},
@@ -179,6 +62,89 @@ public class AC160 extends MyFragment {
 
 
     };
+    private CommonUpdateView mCommonUpdateView;
+    private View invalidButton;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_byd_ods, container, false);
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
+        initButtonTouch();
+
+        invalidButton(R.id.ac_auto_rear);
+        invalidButton(R.id.con_left_temp_rear_up);
+        invalidButton(R.id.con_left_temp_rear_down);
+        mMainView.findViewById(R.id.wind_horizontal_down_rear).setVisibility(View.GONE);
+        //		mMainView.findViewById(R.id.reartemp).setVisibility(View.INVISIBLE);
+        return mMainView;
+    }
+
+    private void invalidButton(int id) {
+        ImageView iv = (ImageView) mMainView.findViewById(id);
+        if (iv != null) {
+            iv.setImageDrawable(null);
+            iv.setClickable(false);
+        }
+    }
+
+    private void sendCanboxInfo(int cmd, int d0, int d1) {
+        byte[] buf = new byte[]{(byte) cmd, 0x2, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxKeyInfo(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            sendCmd(msg.arg1, 2);
+            mHandler.removeMessages(0);
+            mHandler.sendMessageDelayed(mHandler.obtainMessage(0, msg.arg1, 0), 400);
+
+        }
+    };
+
+    private void initButtonTouch() {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            View v = mMainView.findViewById(CMD_ID[i][0]);
+            if (v != null) {
+                v.setOnTouchListener(mTouchListener);
+            }
+        }
+    }
+
+    private void sendCmd(int id, int down) {
+        int cmd = getCmd(id);
+        if (cmd != -1) {
+            sendCanboxKeyInfo(cmd & 0xff, down);
+        }
+    }    View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO Auto-generated method stub
+            switch (event.getAction()) {
+                case KeyEvent.ACTION_DOWN:
+                    sendCmd(v.getId(), 1);
+                    mHandler.removeMessages(0);
+                    mHandler.sendMessageDelayed(mHandler.obtainMessage(0, v.getId(), 0), 2000);
+                    break;
+                case KeyEvent.ACTION_UP:
+                    sendCmd(v.getId(), 0);
+                    mHandler.removeMessages(0);
+                    break;
+            }
+            return false;
+        }
+    };
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -188,7 +154,6 @@ public class AC160 extends MyFragment {
         }
         return -1;
     }
-
 
     public void onClick(View v) {
         int id = v.getId();
@@ -236,8 +201,6 @@ public class AC160 extends MyFragment {
         super.onResume();
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             getActivity().unregisterReceiver(mReceiver);
@@ -270,4 +233,8 @@ public class AC160 extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
+
+
 }

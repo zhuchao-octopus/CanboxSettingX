@@ -26,22 +26,17 @@ import java.util.Objects;
 //import com.rockchip.car.recorder.render.GLFrameSurface;
 
 public class MyGLSurfaceView {
-    private final Context mContext;
-    //VideoUI mVideoUI;
-
-    private final ViewGroup mMain;
-    //private GLFrameSurface gl;
-    private int mCameraIndex = 0;
-
     private static final int MSG_REFRESH_ADCAMERA_UI = 100;
-
+    //VideoUI mVideoUI;
+    private final static String DEV_CAMERA_MIRROR = "/sys/class/ak/source/cam_rot_mir";
     private static int screenWidth = 1024;
     private static int screenHeight = 600;
     private static int screenX = 0;
     private static int screenY = 0;
-
-    private final static String DEV_CAMERA_MIRROR = "/sys/class/ak/source/cam_rot_mir";
-
+    @SuppressLint("StaticFieldLeak")
+    private static Button mADCameraSelfRefresh = null;
+    private final Context mContext;
+    private final ViewGroup mMain;
     private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         public void handleMessage(Message msg) {
             if (msg.what == MSG_REFRESH_ADCAMERA_UI) {
@@ -55,30 +50,8 @@ public class MyGLSurfaceView {
             }
         }
     };
-
-    @SuppressLint("StaticFieldLeak")
-    private static Button mADCameraSelfRefresh = null;
-
-    private void addADCameraRefreshButton(Context context, ViewGroup ll) {
-        if (ll != null) {
-            if (isAndroidR()) {
-                //ll.setBackgroundColor(Color.TRANSPARENT);
-                ll.setBackgroundColor(Color.BLACK);
-            } else {
-                ll.setBackgroundColor(Color.rgb(0x03, 0x05, 0x01));
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                layoutParams.leftMargin = -1000;
-                layoutParams.topMargin = -1000;
-                mADCameraSelfRefresh = new Button(context);
-                mADCameraSelfRefresh.setLayoutParams(layoutParams);
-                mADCameraSelfRefresh.setAlpha(0.0f);
-                mADCameraSelfRefresh.setClickable(false);
-                mADCameraSelfRefresh.setText("Refresh");
-                ll.addView(mADCameraSelfRefresh);
-                Log.d("GLSufaceView", "add refresh button ok");
-            }
-        }
-    }
+    //private GLFrameSurface gl;
+    private int mCameraIndex = 0;
 
     public MyGLSurfaceView(Context c, ViewGroup v) {
         mContext = c;
@@ -130,6 +103,97 @@ public class MyGLSurfaceView {
 			Log.d("GLSufaceView", ""+v.getChildCount());
 		}*/
         mMain = v;
+    }
+
+    public static boolean isPX5() {
+        if (Build.DISPLAY.contains("px5") || Build.DISPLAY.contains("rk3368")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isPX6() {
+        if (Build.DISPLAY.contains("px6") || Build.DISPLAY.contains("rk3399")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isPX30() {
+        if (Build.DISPLAY.contains("px30") || Build.DISPLAY.contains("rk3326")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isAndroidP() {
+        if (Build.VERSION.SDK_INT == 28) {        //Build.VERSION.SDK.contains(Build.P)
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRK356X() {
+        if (Build.DISPLAY.contains("rk356")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRK3566() {
+        if (Build.DISPLAY.contains("rk3566")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRK3568() {
+        if (Build.DISPLAY.contains("rk3568")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isAndroidQ() {
+        if (Build.VERSION.SDK_INT == 29) {        //Build.VERSION.SDK.contains(Build.Q)
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isAndroidR() {
+        if (Build.VERSION.SDK_INT == 30) {        //Build.VERSION.SDK.contains(Build.R)
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRKSystem() {
+        if (isPX5() || isPX6() || isPX30() || isRK356X() || isAndroidP() || isAndroidQ() || isAndroidR()) {
+            return true;
+        }
+        return false;
+    }
+
+    private void addADCameraRefreshButton(Context context, ViewGroup ll) {
+        if (ll != null) {
+            if (isAndroidR()) {
+                //ll.setBackgroundColor(Color.TRANSPARENT);
+                ll.setBackgroundColor(Color.BLACK);
+            } else {
+                ll.setBackgroundColor(Color.rgb(0x03, 0x05, 0x01));
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                layoutParams.leftMargin = -1000;
+                layoutParams.topMargin = -1000;
+                mADCameraSelfRefresh = new Button(context);
+                mADCameraSelfRefresh.setLayoutParams(layoutParams);
+                mADCameraSelfRefresh.setAlpha(0.0f);
+                mADCameraSelfRefresh.setClickable(false);
+                mADCameraSelfRefresh.setText("Refresh");
+                ll.addView(mADCameraSelfRefresh);
+                Log.d("GLSufaceView", "add refresh button ok");
+            }
+        }
     }
 
     private boolean setFileValue(String file, String value) {
@@ -232,75 +296,5 @@ public class MyGLSurfaceView {
 
     public int getCameraIndex() {
         return mCameraIndex;
-    }
-
-    public static boolean isPX5() {
-        if (Build.DISPLAY.contains("px5") || Build.DISPLAY.contains("rk3368")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isPX6() {
-        if (Build.DISPLAY.contains("px6") || Build.DISPLAY.contains("rk3399")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isPX30() {
-        if (Build.DISPLAY.contains("px30") || Build.DISPLAY.contains("rk3326")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isAndroidP() {
-        if (Build.VERSION.SDK_INT == 28) {        //Build.VERSION.SDK.contains(Build.P)
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isRK356X() {
-        if (Build.DISPLAY.contains("rk356")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isRK3566() {
-        if (Build.DISPLAY.contains("rk3566")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isRK3568() {
-        if (Build.DISPLAY.contains("rk3568")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isAndroidQ() {
-        if (Build.VERSION.SDK_INT == 29) {        //Build.VERSION.SDK.contains(Build.Q)
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isAndroidR() {
-        if (Build.VERSION.SDK_INT == 30) {        //Build.VERSION.SDK.contains(Build.R)
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isRKSystem() {
-        if (isPX5() || isPX6() || isPX30() || isRK356X() || isAndroidP() || isAndroidQ() || isAndroidR()) {
-            return true;
-        }
-        return false;
     }
 }

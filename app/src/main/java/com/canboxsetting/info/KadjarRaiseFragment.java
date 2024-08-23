@@ -5,21 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class KadjarRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "KadjarRaiseFragment";
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class KadjarRaiseFragment extends PreferenceFragmentCompat implements OnP
         return false;
     }
 
-
     private void setPreference(String key, String s) {
         Preference p = findPreference(key);
         if (p != null) {
@@ -89,8 +87,6 @@ public class KadjarRaiseFragment extends PreferenceFragmentCompat implements OnP
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

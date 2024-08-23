@@ -15,6 +15,7 @@ import com.canboxsetting.R;
 public class MyPreferenceEdit extends Preference {
 
     public int title;
+    private IButtonCallBack mButtonCallBack;
 
     public MyPreferenceEdit(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -68,8 +69,6 @@ public class MyPreferenceEdit extends Preference {
     public void setCallback(IButtonCallBack cb) {
         mButtonCallBack = cb;
     }
-
-    private IButtonCallBack mButtonCallBack;
 
     public static interface IButtonCallBack {
         public void callback(String key, boolean add);

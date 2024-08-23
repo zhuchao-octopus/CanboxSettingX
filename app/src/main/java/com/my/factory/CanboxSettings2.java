@@ -33,10 +33,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.canboxsetting.R;
-import com.common.util.AppConfig;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.common.utils.AppConfig;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 import com.my.factory.JsonParser.CanBaud;
 import com.my.factory.JsonParser.CanSetting;
 import com.zhuchao.android.fbase.MMLog;
@@ -57,23 +57,97 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     private static final String KEY_CATEGORY = "category";
     private static final String KEY_MODEL = "model";
     private static final String KEY_CONFIGURATION = "configuration";
-
+    XlmParser mXlmParser = new XlmParser();
+    JsonParser mJsonParser;
+    //advanced settings
+    ListPreference mLPFrontDoor;
+    ListPreference mLPBackDoor;
+    MultiSelectListPreference mLPAC;
+    MultiSelectListPreference mOtherSettings;
+    MultiSelectListPreference mCarSettings;
+    MultiSelectListPreference mKeyChangeSettings;
+    ListPreference mLPCarType2;
     private ListPreference mManufacturerPreference;
     private ListPreference mCategoryPreference;
     private ListPreference mModelPreference;
     private ListPreference mConfigurationPreference;
-
     private String[] mManufacturer;
     private String[] mManufacturerValue;
-
     private String[] mCategory;
     private String[] mCategoryValue;
-
     private String[] mModel;
     private String[] mModelValue;
-
     private String[] mConfiguration;
     private String[] mConfigurationValue;
+
+    // private String mManufacturerName;
+    private String mManufacturerName;
+    private String mCategoryName;
+    private String mModelName;
+    private String mExternalRadar = null;
+    private String mExternalRadarOrg = null;
+    private String mProId = null;
+    private String mManaId = null;
+    private String mCateId = null;
+    private String mModelId = null;
+    private String mKeyType = null;
+    private String mChangeKey = null;
+
+
+    //	private void initExternalBoxes() {
+    //
+    //		int i = MachineConfig.getIntProperty2(MachineConfig.KEY_EXTERNAL_BOX);
+    //		String[] ss = getResources().getStringArray(
+    //				R.array.obd_view_spinner_values);
+    //		String s;
+    //		if (i < 0 || i >= ss.length) {
+    //			i = 0;
+    //		}
+    //		s = ss[i];
+    //
+    //		((TextView) findViewById(R.id.external_boxes)).setText(s);
+    //	}
+    //
+    //	private void setExternalBoxes(int index) {
+    //		MachineConfig.setProperty(MachineConfig.KEY_EXTERNAL_BOX, "" + index);
+    //
+    //		Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
+    //		it.putExtra(MyCmd.EXTRA_COMMON_CMD,
+    //				MachineConfig.KEY_CAN_BOX);
+    //		sendBroadcast(it);
+    //
+    //		initExternalBoxes();
+    //	}
+    //
+    //	private void showExternalBoxes(){
+    //		AlertDialog ad = new AlertDialog.Builder(this).
+    //				setItems(getResources().getStringArray(R.array.obd_view_spinner_values),
+    //						new DialogInterface.OnClickListener() {
+    //					public void onClick(DialogInterface dialog,
+    //							int whichButton) {
+    //						setExternalBoxes(whichButton);
+    //					}
+    //
+    //				}).setNegativeButton(R.string.cancel,null).create();
+    //
+    //		ad.show();
+    //	}
+    private String mFrontDoor = null;
+    private String mBackDoor = null;
+    private String mAirCondition = null;
+    private String mCarType = null;
+    private String mCarType2 = null;
+    private String mCarEQ = null;
+    private String mCarOtherSettings = null;
+    private String mCarConfig = null;
+    private String mAppShow = null;
+    private String mCarSettingsValue = null;
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+        public void handleMessage(@NonNull Message msg) {
+            setCanSettings();
+        }
+    };
+    private boolean mAdvanceVisible = true;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -92,9 +166,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         initView();
         updateView();
     }
-
-    XlmParser mXlmParser = new XlmParser();
-    JsonParser mJsonParser;
 
     private void initData() {
         mXlmParser.parser(this);
@@ -186,12 +257,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             }
         }
     }
-
-    private String mManufacturerName;
-    private String mCategoryName;
-    private String mModelName;
-
-    // private String mManufacturerName;
 
     private void updateView() {
         MMLog.d(TAG, "updateView()");
@@ -373,15 +438,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         return true;
     }
 
-    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
-        public void handleMessage(@NonNull Message msg) {
-            setCanSettings();
-        }
-    };
-
-    private String mExternalRadar = null;
-    private String mExternalRadarOrg = null;
-
     private void initExternalBoxes() {
 
         mExternalRadarOrg = MachineConfig.getProperty(MachineConfig.KEY_EXTERNAL_BOX);
@@ -397,46 +453,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
 
     }
 
-
-    //	private void initExternalBoxes() {
-    //
-    //		int i = MachineConfig.getIntProperty2(MachineConfig.KEY_EXTERNAL_BOX);
-    //		String[] ss = getResources().getStringArray(
-    //				R.array.obd_view_spinner_values);
-    //		String s;
-    //		if (i < 0 || i >= ss.length) {
-    //			i = 0;
-    //		}
-    //		s = ss[i];
-    //
-    //		((TextView) findViewById(R.id.external_boxes)).setText(s);
-    //	}
-    //
-    //	private void setExternalBoxes(int index) {
-    //		MachineConfig.setProperty(MachineConfig.KEY_EXTERNAL_BOX, "" + index);
-    //
-    //		Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-    //		it.putExtra(MyCmd.EXTRA_COMMON_CMD,
-    //				MachineConfig.KEY_CAN_BOX);
-    //		sendBroadcast(it);
-    //
-    //		initExternalBoxes();
-    //	}
-    //
-    //	private void showExternalBoxes(){
-    //		AlertDialog ad = new AlertDialog.Builder(this).
-    //				setItems(getResources().getStringArray(R.array.obd_view_spinner_values),
-    //						new DialogInterface.OnClickListener() {
-    //					public void onClick(DialogInterface dialog,
-    //							int whichButton) {
-    //						setExternalBoxes(whichButton);
-    //					}
-    //
-    //				}).setNegativeButton(R.string.cancel,null).create();
-    //
-    //		ad.show();
-    //	}
-
     @Override
     public void onClick(View arg0) {
         int id = arg0.getId();
@@ -451,24 +467,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             ///	break;
         }
     }
-
-    private String mProId = null;
-    private String mManaId = null;
-    private String mCateId = null;
-    private String mModelId = null;
-
-    private String mKeyType = null;
-    private String mChangeKey = null;
-    private String mFrontDoor = null;
-    private String mBackDoor = null;
-    private String mAirCondition = null;
-    private String mCarType = null;
-    private String mCarType2 = null;
-    private String mCarEQ = null;
-    private String mCarOtherSettings = null;
-    private String mCarConfig = null;
-    private String mAppShow = null;
-    private String mCarSettingsValue = null;
 
     private void initCanMachineConfig() {
         String mCanboxValue;
@@ -780,16 +778,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         }
     }
 
-
-    //advanced settings
-    ListPreference mLPFrontDoor;
-    ListPreference mLPBackDoor;
-    MultiSelectListPreference mLPAC;
-
-    MultiSelectListPreference mOtherSettings;
-    MultiSelectListPreference mCarSettings;
-    MultiSelectListPreference mKeyChangeSettings;
-
     private void updateAdvancedVisible(String name) {
         if (name != null && name.equals(mXlmParser.getTranslation("通用机"))) {
             updateAdvancedVisible(false);
@@ -798,8 +786,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         }
 
     }
-
-    private boolean mAdvanceVisible = true;
 
     private void updateAdvancedVisible(boolean show) {
         if (mAdvanceVisible == show) {
@@ -927,7 +913,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         updateACSettings();
     }
 
-
     private void updateCarSettings() {
         if (mCarSettings == null) {
 
@@ -1030,7 +1015,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         mOtherSettings.setValues(ss);
         mOtherSettings.setSummary(summary.toString());
     }
-
 
     private void updateKeysChangeSettings() {
         if (mKeyChangeSettings == null) {
@@ -1151,9 +1135,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         }
         mLPAC.setValues(ss);
     }
-
-
-    ListPreference mLPCarType2;
 
     private void updateCarType2() {
 

@@ -16,12 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,20 +25,62 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC253 extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{
+
+            {R.id.power, 0x9500}, {R.id.ac, 0x9501}, {R.id.inner_loop, 0x9503}, {R.id.ac_auto, 0x9504}, {R.id.max, 0x9505}, {R.id.rear, 0x9506}, {R.id.sync, 0x9507},
+
+
+            {R.id.wind_down1, 0x950a}, {R.id.wind_horizontal1, 0x9508}, {R.id.wind_horizontal_down, 0x9509},
+
+            {R.id.wind_up_down, 0x950b},
+
+            {R.id.wind_add, 0x950d}, {R.id.wind_minus, 0x950c},
+
+
+            {R.id.con_left_temp_up, 0x950f}, {R.id.con_left_temp_down, 0x950e},
+
+
+            {R.id.con_right_temp_up, 0x9511}, {R.id.con_right_temp_down, 0x9510},
+
+
+            {R.id.left_seat_heat, 0x9520}, {R.id.right_seat_heat, 0x9522},
+
+
+            {R.id.left_seat_refrigeration, 0x9521}, {R.id.right_seat_refrigeration, 0x9523},
+
+
+            {R.id.wheel, 0x9524},
+
+            {R.id.rear_lock, 0x961f},
+
+            {R.id.power_rear, 0x9600}, {R.id.ac_auto_rear, 0x9604}, {R.id.con_left_temp_rear_up, 0x960e}, {R.id.con_left_temp_rear_down, 0x960f},
+
+            {R.id.wind_add_rear, 0x960d}, {R.id.wind_minus_rear, 0x960c},
+
+            {R.id.wind_horizontal1_rear, 0x9608}, {R.id.wind_down1_rear, 0x960a}, {R.id.wind_horizontal_down_rear, 0x9609},
+
+
+    };
+    private CommonUpdateView mCommonUpdateView;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private CommonUpdateView mCommonUpdateView;
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,44 +123,6 @@ public class AC253 extends MyFragment {
 
     }
 
-    private final static int[][] CMD_ID = new int[][]{
-
-            {R.id.power, 0x9500}, {R.id.ac, 0x9501}, {R.id.inner_loop, 0x9503}, {R.id.ac_auto, 0x9504}, {R.id.max, 0x9505}, {R.id.rear, 0x9506}, {R.id.sync, 0x9507},
-
-
-            {R.id.wind_down1, 0x950a}, {R.id.wind_horizontal1, 0x9508}, {R.id.wind_horizontal_down, 0x9509},
-
-            {R.id.wind_up_down, 0x950b},
-
-            {R.id.wind_add, 0x950d}, {R.id.wind_minus, 0x950c},
-
-
-            {R.id.con_left_temp_up, 0x950f}, {R.id.con_left_temp_down, 0x950e},
-
-
-            {R.id.con_right_temp_up, 0x9511}, {R.id.con_right_temp_down, 0x9510},
-
-
-            {R.id.left_seat_heat, 0x9520}, {R.id.right_seat_heat, 0x9522},
-
-
-            {R.id.left_seat_refrigeration, 0x9521}, {R.id.right_seat_refrigeration, 0x9523},
-
-
-            {R.id.wheel, 0x9524},
-
-            {R.id.rear_lock, 0x961f},
-
-            {R.id.power_rear, 0x9600}, {R.id.ac_auto_rear, 0x9604}, {R.id.con_left_temp_rear_up, 0x960e}, {R.id.con_left_temp_rear_down, 0x960f},
-
-            {R.id.wind_add_rear, 0x960d}, {R.id.wind_minus_rear, 0x960c},
-
-            {R.id.wind_horizontal1_rear, 0x9608}, {R.id.wind_down1_rear, 0x960a}, {R.id.wind_horizontal_down_rear, 0x9609},
-
-
-    };
-
-
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
             if (CMD_ID[i][0] == id) {
@@ -160,7 +158,6 @@ public class AC253 extends MyFragment {
         }
     }
 
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -175,8 +172,6 @@ public class AC253 extends MyFragment {
         sendCanboxInfo0x90(0x6);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

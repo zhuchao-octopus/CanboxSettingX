@@ -16,7 +16,6 @@
 
 package com.rockchip.car.recorder.activity;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.Gravity;
@@ -25,44 +24,18 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.rockchip.car.recorder.camera2.CameraHolder;
-import com.rockchip.car.recorder.model.CameraInfo;
 import com.rockchip.car.recorder.render.GLFrameSurface;
 import com.rockchip.car.recorder.service.BufferManager;
 import com.rockchip.car.recorder.service.CameraService;
-import com.rockchip.car.recorder.service.Config;
-import com.rockchip.car.recorder.service.IService;
 import com.rockchip.car.recorder.service.ServiceImpl;
 import com.rockchip.car.recorder.utils.SLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class VideoUI extends AVideoUI {
     private static final String TAG = "CAM_RVideoUI";
-
-    protected GLFrameSurface[] mSurfaceViews;
     private final VideoUI mThis;
-    private int mOpenId = 0;
-
-    public VideoUI(View surfaceView, int id) {
-        super();
-        SLog.d(TAG, "VideoUI::VideoUI()");
-        mThis = this;
-        mOpenId = id;
-        this.mSurfaceViews = new GLFrameSurface[2];
-        // initializeSurfaceView(id);
-        // SLog.d(TAG, "VideoUI::initializeSurfaceView()");
-        mSurfaceViews[id] = (GLFrameSurface) surfaceView;
-        mSurfaceViews[id].setId(id, mCallbackRender);
-        mSurfaceViews[id].getHolder().addCallback(new SurfaceCallback(id));
-        surfaceVisible(id, View.VISIBLE);
-
-        mCameraService = new CameraService();
-        mCameraService.registerCallback(mICameraCallback);
-        initMap();
-        // connect();
-    }
-
+    protected GLFrameSurface[] mSurfaceViews;
     protected ServiceImpl.CameraCallback mICameraCallback = new ServiceImpl.CameraCallback() {
 
         @Override
@@ -116,10 +89,54 @@ public class VideoUI extends AVideoUI {
 
         }
     };
+    ICallbackRender mCallbackRender = new ICallbackRender() {
+
+        @Override
+        public void addCallBackBuffer(int id, byte[] data) {
+            mCameraService.addCallbackBuffer((int) mCameraService.getSurfaceToCamera().get(id), data);
+        }
+    };
+    private int mOpenId = 0;
+    private List<Surfaces> mSurfaceInfos;
+
+    public VideoUI(View surfaceView, int id) {
+        super();
+        SLog.d(TAG, "VideoUI::VideoUI()");
+        mThis = this;
+        mOpenId = id;
+        this.mSurfaceViews = new GLFrameSurface[2];
+        // initializeSurfaceView(id);
+        // SLog.d(TAG, "VideoUI::initializeSurfaceView()");
+        mSurfaceViews[id] = (GLFrameSurface) surfaceView;
+        mSurfaceViews[id].setId(id, mCallbackRender);
+        mSurfaceViews[id].getHolder().addCallback(new SurfaceCallback(id));
+        surfaceVisible(id, View.VISIBLE);
+
+        mCameraService = new CameraService();
+        mCameraService.registerCallback(mICameraCallback);
+        initMap();
+        // connect();
+    }
 
     public void disconnect() {
 
     }
+
+    // public void initializeSurfaceView(int id) {
+    // // super.initializeSurfaceView();
+    // SLog.d(TAG, "VideoUI::initializeSurfaceView()");
+    // mSurfaceViews[id] = (GLFrameSurface)
+    // mRootView.findViewById(R.id.preview_content0);
+    // mSurfaceViews[id].setId(0, mCallbackRender);
+    // mSurfaceViews[id].getHolder().addCallback(new SurfaceCallback(0));
+    // surfaceVisible(id, View.VISIBLE );
+    // // mSurfaceViews[1] = (GLFrameSurface)
+    // mRootView.findViewById(R.id.preview_content0);
+    // // mSurfaceViews[1].setId(1, mCallbackRender);
+    // // mSurfaceViews[1].getHolder().addCallback(new SurfaceCallback(1));
+    // // mSurfaceViews[1].setZOrderMediaOverlay(true);
+    // // surfaceVisible(1, View.VISIBLE );
+    // }
 
     public void connect() {
         //mCameraService.registerCallback(mICameraCallback);
@@ -146,22 +163,6 @@ public class VideoUI extends AVideoUI {
             mCameraService.getCameraToSurface().put(camera1, 1);
         }
     }
-
-    // public void initializeSurfaceView(int id) {
-    // // super.initializeSurfaceView();
-    // SLog.d(TAG, "VideoUI::initializeSurfaceView()");
-    // mSurfaceViews[id] = (GLFrameSurface)
-    // mRootView.findViewById(R.id.preview_content0);
-    // mSurfaceViews[id].setId(0, mCallbackRender);
-    // mSurfaceViews[id].getHolder().addCallback(new SurfaceCallback(0));
-    // surfaceVisible(id, View.VISIBLE );
-    // // mSurfaceViews[1] = (GLFrameSurface)
-    // mRootView.findViewById(R.id.preview_content0);
-    // // mSurfaceViews[1].setId(1, mCallbackRender);
-    // // mSurfaceViews[1].getHolder().addCallback(new SurfaceCallback(1));
-    // // mSurfaceViews[1].setZOrderMediaOverlay(true);
-    // // surfaceVisible(1, View.VISIBLE );
-    // }
 
     public void scaleSurface(int id) {
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mSurfaceViews[id].getLayoutParams();
@@ -211,8 +212,6 @@ public class VideoUI extends AVideoUI {
             }
         }
     }
-
-    private List<Surfaces> mSurfaceInfos;
 
     @Override
     public void reverse(final int state) {
@@ -429,12 +428,4 @@ public class VideoUI extends AVideoUI {
 
         }
     }
-
-    ICallbackRender mCallbackRender = new ICallbackRender() {
-
-        @Override
-        public void addCallBackBuffer(int id, byte[] data) {
-            mCameraService.addCallbackBuffer((int) mCameraService.getSurfaceToCamera().get(id), data);
-        }
-    };
 }

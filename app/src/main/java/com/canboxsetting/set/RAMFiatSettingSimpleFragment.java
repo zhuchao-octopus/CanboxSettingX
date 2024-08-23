@@ -18,26 +18,12 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class RAMFiatSettingSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-        // if (mType == 1) {
-        // PreferenceScreen p = (PreferenceScreen)
-        // findPreference("driving_mode");
-        // if (p != null) {
-        // setPreferenceScreen(p);
-        // }
-        // }
-    }
-
     private static final Node[] NODES = {
 
             new Node("langauage", 0xc600, 0x40000000, 0xff),
@@ -61,12 +47,32 @@ public class RAMFiatSettingSimpleFragment extends PreferenceFragmentCompat imple
 
 
             new Node("trailer_m", 0xc650, 0x40500000, 0xf0), new Node("trailer_type", 0xc651, 0x40500000, 0xf),};
-
     private final static int[] INIT_CMDS = {0x4000, 0x4001, 0x4002, 0x4003, 0x4010, 0x4020, 0x4030, 0x4040, 0x4050, 0x4070,
 
     };
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+        // if (mType == 1) {
+        // PreferenceScreen p = (PreferenceScreen)
+        // findPreference("driving_mode");
+        // if (p != null) {
+        // setPreferenceScreen(p);
+        // }
+        // }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,8 +105,6 @@ public class RAMFiatSettingSimpleFragment extends PreferenceFragmentCompat imple
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -137,15 +141,6 @@ public class RAMFiatSettingSimpleFragment extends PreferenceFragmentCompat imple
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 100));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -281,7 +276,6 @@ public class RAMFiatSettingSimpleFragment extends PreferenceFragmentCompat imple
         return ((value & mask) >> start);
     }
 
-
     private void updateView(byte[] buf) {
 
 
@@ -387,8 +381,6 @@ public class RAMFiatSettingSimpleFragment extends PreferenceFragmentCompat imple
         showPreference(id, show, "driving_mode");
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

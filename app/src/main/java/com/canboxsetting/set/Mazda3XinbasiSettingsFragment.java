@@ -7,45 +7,24 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
-import androidx.preference.PreferenceFragmentCompat;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class Mazda3XinbasiSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Mazda3BinarytekFragment";
-
-    private int mType = 0;
-    private int mType2 = 0;
-
-    public void setType(int t) {
-        mType = t;
-        // if (mType == 1) {
-        // PreferenceScreen p = (PreferenceScreen)
-        // findPreference("driving_mode");
-        // if (p != null) {
-        // setPreferenceScreen(p);
-        // }
-        // }
-    }
-
-    public void setType2(int t) {
-        mType2 = t;
-    }
-
     private static final Node[] NODES = {
 
             new Node("headlight_off_timer", 0x840c, 0x3, 0x38, 0x0),
@@ -91,10 +70,37 @@ public class Mazda3XinbasiSettingsFragment extends PreferenceFragmentCompat impl
             new Node("homeinmode", 0x8419, 0x0, 0xe0, 0x1), new Node("homeoutmode", 0x841a, 0x0, 0x10, 0x1), new Node("backwindowdefog", 0x841b, 0x0, 0x08, 0x1), new Node("mazda3_2020_settings_1", 0x841c, 0x0, 0x07, 0x1), new Node("mazda3_2020_settings_2", 0x841d, 0x1, 0x80, 0x1), new Node("mazda3_2020_settings_3", 0x841e, 0x1, 0x70, 0x1), new Node("psa_simple_17", 0x8420, 0x1, 0x06, 0x1), new Node("mazda3_2020_settings_4", 0x8421, 0x2, 0xc0, 0x1), new Node("mazda3_2020_settings_5", 0x8422, 0x1, 0x08, 0x1), new Node("mazda3_2020_settings_6", 0x8423, 0x2, 0x20, 0x1),
             //v1.2
             new Node("leavehome", 0x8430, 0x7, 0x80, 0x0),};
-
     private final static int[] INIT_CMDS = {0x8309, 0x830d};
-
+    private int mType = 0;
+    private int mType2 = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
+                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x02, (byte) (msg.what & 0xff), 0};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+        // if (mType == 1) {
+        // PreferenceScreen p = (PreferenceScreen)
+        // findPreference("driving_mode");
+        // if (p != null) {
+        // setPreferenceScreen(p);
+        // }
+        // }
+    }
+
+    public void setType2(int t) {
+        mType2 = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,8 +151,6 @@ public class Mazda3XinbasiSettingsFragment extends PreferenceFragmentCompat impl
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -185,17 +189,6 @@ public class Mazda3XinbasiSettingsFragment extends PreferenceFragmentCompat impl
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
-                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x02, (byte) (msg.what & 0xff), 0};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -365,8 +358,6 @@ public class Mazda3XinbasiSettingsFragment extends PreferenceFragmentCompat impl
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

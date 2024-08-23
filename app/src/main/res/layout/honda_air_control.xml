@@ -5,8 +5,8 @@
     android:background="#090d10"
     android:gravity="center"
     android:paddingLeft="10px"
-    android:paddingRight="10px"
-    android:paddingTop="5px">
+    android:paddingTop="5px"
+    android:paddingRight="10px">
 
     <LinearLayout
         android:layout_width="match_parent"

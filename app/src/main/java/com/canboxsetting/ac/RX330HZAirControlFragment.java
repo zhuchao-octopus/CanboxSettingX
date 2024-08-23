@@ -16,13 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -37,37 +30,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+
+import java.util.Locale;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class RX330HZAirControlFragment extends MyFragment {
     private static final String TAG = "RX330HZAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private View mMainView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.ac_rx330_hz, container, false);
-
-        return mMainView;
-    }
-
-    private void sendCanboxInfo0xc6(int d0, int d1) {
-        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1,};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendCanboxInfo0x90(int d0) {
-        byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, 0};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
     private final static int[][] CMD_ID = new int[][]{
 
             {R.id.air_perple, 0x0803}, {R.id.wind_up1, 0x1200}, {R.id.wind_up2, 0x1200},
@@ -87,11 +61,35 @@ public class RX330HZAirControlFragment extends MyFragment {
             {R.id.canbus21_mode3, 0x2000}, {R.id.canbus21_mode4, 0x2100},
 
     };
-
+    private View mMainView;
     private int mWindStep = 0;
     private int mInner = 0;
     private int mSeatHeatLeft = 0;
     private int mSeatHeatRight = 0;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_rx330_hz, container, false);
+
+        return mMainView;
+    }
+
+    private void sendCanboxInfo0xc6(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1,};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, 0};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -101,6 +99,8 @@ public class RX330HZAirControlFragment extends MyFragment {
         }
         return 0;
     }
+
+    // private Handler mHandler = new Handler();
 
     public void onClick(View v) {
         int cmd = getCmd(v.getId());
@@ -156,8 +156,6 @@ public class RX330HZAirControlFragment extends MyFragment {
         // }, 1000);
 
     }
-
-    // private Handler mHandler = new Handler();
 
     private void updateSelect(int id, int s) {
         View v = mMainView.findViewById(id);
@@ -329,8 +327,6 @@ public class RX330HZAirControlFragment extends MyFragment {
         }, 1000);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

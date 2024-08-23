@@ -7,29 +7,26 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
+import com.common.utils.SettingProperties;
+import com.common.utils.Util;
 
 public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Mazda3BinarytekFragment";
-
     private static final Node[] NODES = {
 
             // // settings mazda3 2020 v1.14
@@ -91,6 +88,18 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat impleme
 
     private int mType = 0;
     private int mType2 = 0;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
+                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x01, (byte) (msg.what & 0xff)};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     public void setType(int t) {
         mType = t;
@@ -141,7 +150,7 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat impleme
             getPreferenceScreen().removePreference(findPreference("text_360"));
         }
 
-        int i = SystemConfig.getIntProperty(getActivity(), SystemConfig.KEY_CANBOX_TOUCH_PANNEL);
+        int i = SettingProperties.getIntProperty(getActivity(), SettingProperties.KEY_CANBOX_TOUCH_PANNEL);
         ((SwitchPreference) findPreference("touch_switch")).setChecked(i == 0);
     }
 
@@ -149,8 +158,6 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -183,17 +190,6 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat impleme
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
-                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x01, (byte) (msg.what & 0xff)};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
         if ((cmd & 0xff0000) != 0) {
             sendCanboxInfo(((cmd & 0xff0000) >> 16), ((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -221,7 +217,7 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat impleme
                     if (NODES[i].mType == Node.TYPE_CUSTOM) {
                         sendCanboxData(NODES[i].mCmd, NODES[i].mStatus);
                     } else if (key.equals("touch_switch")) {
-                        SystemConfig.setIntProperty(getActivity(), SystemConfig.KEY_CANBOX_TOUCH_PANNEL, ((Boolean) newValue) ? 0x0 : 0x1);
+                        SettingProperties.setIntProperty(getActivity(), SettingProperties.KEY_CANBOX_TOUCH_PANNEL, ((Boolean) newValue) ? 0x0 : 0x1);
                         ((SwitchPreference) preference).setChecked(((Boolean) newValue));
                     } else {
                         if ("mazda3_2020_settings_2".equals(key) || "mazda3_2020_settings_5".equals(key) || "mazda3_2020_settings_8".equals(key) || "mazda3_2020_settings_9".equals(key) || "mazda3_2020_settings_a".equals(key) || "mazda3_2020_settings_c".equals(key) || "mazda3_2020_settings_10".equals(key)) {
@@ -401,8 +397,6 @@ public class MazdaRaiseSettingsFragment extends PreferenceFragmentCompat impleme
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

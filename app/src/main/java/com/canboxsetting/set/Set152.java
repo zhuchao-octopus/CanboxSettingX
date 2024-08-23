@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -15,12 +16,10 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
 import com.common.utils.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.MyCmd;
 import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 
@@ -104,11 +103,20 @@ public class Set152 extends PreferenceFragmentCompat implements Preference.OnPre
             new NodePreference("tpms_calibration", 0x8f11, 0), new NodePreference("restore_factory_settings", 0x8f0f, 0),
 
     };
-
-    private static NodePreference[] NODES = NODES_152;
     private final static int[] INIT_CMDS_152 = {0x830400};
     private final static int[] INIT_CMDS_153 = {0x8d0a00};
+    private static NodePreference[] NODES = NODES_152;
     private static int[] INIT_CMDS = INIT_CMDS_152;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo((msg.what & 0xff0000) >> 16, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -163,8 +171,6 @@ public class Set152 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -192,15 +198,6 @@ public class Set152 extends PreferenceFragmentCompat implements Preference.OnPre
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo((msg.what & 0xff0000) >> 16, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -328,8 +325,6 @@ public class Set152 extends PreferenceFragmentCompat implements Preference.OnPre
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

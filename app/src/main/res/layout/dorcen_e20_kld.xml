@@ -227,9 +227,9 @@
         android:layout_weight="1.5"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="40px"
+        android:paddingTop="40px"
         android:paddingRight="40px"
-        android:paddingTop="40px">
+        android:paddingBottom="40px">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -245,10 +245,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -276,10 +276,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -307,10 +307,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -321,8 +321,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:singleLine="true"
                     android:gravity="center"
+                    android:singleLine="true"
                     android:text="@string/gear" />
 
                 <TextView
@@ -348,10 +348,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -379,10 +379,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -410,10 +410,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -450,10 +450,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -481,10 +481,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -512,10 +512,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="10px"
                 android:paddingLeft="10px"
+                android:paddingTop="10px"
                 android:paddingRight="10px"
-                android:paddingTop="10px">
+                android:paddingBottom="10px">
 
                 <TextView
                     android:layout_width="match_parent"

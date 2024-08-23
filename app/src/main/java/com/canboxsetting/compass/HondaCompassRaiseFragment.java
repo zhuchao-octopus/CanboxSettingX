@@ -2,8 +2,8 @@ package com.canboxsetting.compass;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.preference.PreferenceScreen;
 import android.view.LayoutInflater;
@@ -15,15 +15,16 @@ import android.widget.TextView;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
 import com.common.utils.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.MyCmd;
 
 public class HondaCompassRaiseFragment extends MyFragment {
 
     PreferenceScreen mTpms;
-    private View mMainView;
     SeekBar mSeekBar;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,8 +113,6 @@ public class HondaCompassRaiseFragment extends MyFragment {
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

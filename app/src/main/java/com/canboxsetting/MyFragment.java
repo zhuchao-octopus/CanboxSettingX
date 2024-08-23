@@ -27,13 +27,11 @@ import androidx.preference.PreferenceFragmentCompat;
  * This activity plays a video from a specified URI.
  */
 public class MyFragment extends PreferenceFragmentCompat {
-
     public final static int TYPE_SEATHEAT_ONLY = 0x10000;
     public final static int TYPE_MASK = 0xff0000;
-
     public final static int TYPE_CAR_TYPE = 0xff;
-
     public int mCarType = 0;
+    public MsgInterface mMsgInterface;
 
     public void onClick(View v) {
     }
@@ -51,15 +49,6 @@ public class MyFragment extends PreferenceFragmentCompat {
 
     }
 
-
-    public interface MsgInterface {
-
-        public void callBack(int msg);
-
-    }
-
-    public MsgInterface mMsgInterface;
-
     public void setCallback(MsgInterface i) {
         mMsgInterface = i;
     }
@@ -71,6 +60,12 @@ public class MyFragment extends PreferenceFragmentCompat {
     }
 
     protected void onNewIntent(Intent intent) {
+
+    }
+
+    public interface MsgInterface {
+
+        public void callBack(int msg);
 
     }
 }

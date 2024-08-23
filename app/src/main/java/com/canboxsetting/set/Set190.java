@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -15,24 +16,16 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
-import com.common.util.Util;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 
 public class Set190 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "LuFengSettingsRaiseFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {new Node("automatic_folding_outer_rearview_mirror", 0xc897, 0x41010000, 0x04, 0, Node.TYPE_BUFF1),
 
             new Node("str_avm", 0xc893, 0x41010000, 0x40, 0, Node.TYPE_BUFF1),
@@ -46,14 +39,27 @@ public class Set190 extends PreferenceFragmentCompat implements Preference.OnPre
             new Node("remote_lift_window", 0xc894, 0x41010000, 0x20, 0, Node.TYPE_BUFF1),
 
             new Node("str_daytime_running_lamp", 0xc895, 0x41010000, 0x10, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
              */};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,8 +83,6 @@ public class Set190 extends PreferenceFragmentCompat implements Preference.OnPre
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -108,15 +112,6 @@ public class Set190 extends PreferenceFragmentCompat implements Preference.OnPre
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -381,8 +376,6 @@ public class Set190 extends PreferenceFragmentCompat implements Preference.OnPre
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

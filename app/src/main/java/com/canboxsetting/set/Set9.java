@@ -10,7 +10,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
+import com.common.utils.BroadcastUtil;
 import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 

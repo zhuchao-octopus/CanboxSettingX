@@ -14,6 +14,7 @@ import android.view.View;
 import com.canboxsetting.R;
 
 public class CircularRingBottomView extends View {
+    OnProgressScore onProgressScore;
     private Paint paint;
     private Paint paintRound;
     private int circleWidth;
@@ -33,32 +34,12 @@ public class CircularRingBottomView extends View {
     private int circleCenter;
     private SweepGradient sweepGradient;
     private boolean isLine = false;
-
-
-    /**
-     * 分割的数量
-     *
-     * @param maxColorNumber 数量
-     */
-    public void setMaxColorNumber(int maxColorNumber) {
-        this.maxColorNumber = maxColorNumber;
-        singlPoint = (float) 360 / (float) maxColorNumber;
-        invalidate();
-    }
-
-    /**
-     * 是否是线条
-     *
-     * @param line true 是 false否
-     */
-    public void setLine(boolean line) {
-        isLine = line;
-        invalidate();
-    }
-
-    public int getCircleWidth() {
-        return circleWidth;
-    }
+    private float top_arc_degree_start;
+    private float top_arc_degree_end;
+    private int top_arc_value_max;
+    private int top_arc_value_min;
+    private float mStep = 360 / 100;
+    private float top_arc_degree;
 
     public CircularRingBottomView(Context context) {
         this(context, null);
@@ -67,7 +48,6 @@ public class CircularRingBottomView extends View {
     public CircularRingBottomView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
-
 
     public CircularRingBottomView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -97,6 +77,50 @@ public class CircularRingBottomView extends View {
         mTypedArray.recycle();
     }
 
+    /**
+     * 分割的数量
+     *
+     * @param maxColorNumber 数量
+     */
+    public void setMaxColorNumber(int maxColorNumber) {
+        this.maxColorNumber = maxColorNumber;
+        singlPoint = (float) 360 / (float) maxColorNumber;
+        invalidate();
+    }
+
+    /**
+     * 是否是线条
+     *
+     * @param line true 是 false否
+     */
+    public void setLine(boolean line) {
+        isLine = line;
+        invalidate();
+    }
+
+    public int getCircleWidth() {
+        return circleWidth;
+    }
+
+    /**
+     * 圆环的直径
+     *
+     * @param circleWidth 直径
+     */
+    public void setCircleWidth(int circleWidth) {
+        this.circleWidth = circleWidth;
+        circleCenter = circleWidth / 2;
+
+        if (roundWidth > circleCenter) {
+            roundWidth = circleCenter;
+        }
+        setRoundWidth(roundWidth);
+        sweepGradient = new SweepGradient(this.circleWidth / 2, this.circleWidth / 2, colors, null);
+        //旋转 不然是从0度开始渐变
+        Matrix matrix = new Matrix();
+        matrix.setRotate(-90, this.circleWidth / 2, this.circleWidth / 2);
+        sweepGradient.setLocalMatrix(matrix);
+    }
 
     /**
      * 空白出颜色背景
@@ -145,7 +169,6 @@ public class CircularRingBottomView extends View {
         invalidate();
     }
 
-
     /**
      * 间隔角度大小
      *
@@ -155,7 +178,6 @@ public class CircularRingBottomView extends View {
         this.lineWidth = lineWidth;
         invalidate();
     }
-
 
     private int getDpValue(int w) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, w, getContext().getResources().getDisplayMetrics());
@@ -179,26 +201,7 @@ public class CircularRingBottomView extends View {
         paint.setStrokeWidth(this.roundWidth);
         invalidate();
     }
-
-    /**
-     * 圆环的直径
-     *
-     * @param circleWidth 直径
-     */
-    public void setCircleWidth(int circleWidth) {
-        this.circleWidth = circleWidth;
-        circleCenter = circleWidth / 2;
-
-        if (roundWidth > circleCenter) {
-            roundWidth = circleCenter;
-        }
-        setRoundWidth(roundWidth);
-        sweepGradient = new SweepGradient(this.circleWidth / 2, this.circleWidth / 2, colors, null);
-        //旋转 不然是从0度开始渐变
-        Matrix matrix = new Matrix();
-        matrix.setRotate(-90, this.circleWidth / 2, this.circleWidth / 2);
-        sweepGradient.setLocalMatrix(matrix);
-    }
+    ;
 
     /**
      * 渐变初始化
@@ -211,6 +214,7 @@ public class CircularRingBottomView extends View {
         matrix.setRotate(-90, this.circleWidth / 2, this.circleWidth / 2);
         sweepGradient.setLocalMatrix(matrix);
     }
+    ;
 
     public void initView() {
 
@@ -241,16 +245,6 @@ public class CircularRingBottomView extends View {
         ovalRound = new RectF(roundLineWidth, roundLineWidth, circleWidth - roundLineWidth, circleWidth - roundLineWidth);
 
     }
-
-    private float top_arc_degree_start;
-    private float top_arc_degree_end;
-    private int top_arc_value_max;
-    private int top_arc_value_min;
-    private float mStep = 360 / 100;
-    ;
-    private float top_arc_degree;
-    ;
-
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -300,14 +294,6 @@ public class CircularRingBottomView extends View {
 
     }
 
-
-    OnProgressScore onProgressScore;
-
-    public interface OnProgressScore {
-        void setProgressScore(float score);
-
-    }
-
     public synchronized void setProgress(final float p) {
         if (p < 0 || p > 100) return;
         progress = p;
@@ -321,6 +307,11 @@ public class CircularRingBottomView extends View {
         this.onProgressScore = onProgressScore;
         progress = p;
         postInvalidate();
+    }
+
+    public interface OnProgressScore {
+        void setProgressScore(float score);
+
     }
 
 }

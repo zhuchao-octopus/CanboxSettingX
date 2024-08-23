@@ -6,8 +6,8 @@
     <TextView
         android:id="@+id/lang"
         style="@style/CarInfoTextView2"
-        android:tag="ak_paramter=100,50"
         android:layout_width="match_parent"
+        android:tag="ak_paramter=100,50"
         android:text="@string/languages" />
 
 </LinearLayout>

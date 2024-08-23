@@ -16,88 +16,27 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.array;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC289 extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private CommonUpdateView mCommonUpdateView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.ac_skyworth_od, container, false);
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-
-        return mMainView;
-    }
-
-    private View mMainView;
-
-
-    private void sendCanboxKey0x82(int d0) {
-        sendCanboxInfo(d0, 1);
-        Util.doSleep(300);
-        sendCanboxInfo(d0, 0);
-    }
-
-    private void sendCanboxInfo(int d0, int d1) {
-        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
     private final static int[][] CMD_ID = new int[][]{
 
             {R.id.power, 0x01},
@@ -118,6 +57,34 @@ public class AC289 extends MyFragment {
 
 
     };
+    private CommonUpdateView mCommonUpdateView;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.ac_skyworth_od, container, false);
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
+
+        return mMainView;
+    }
+
+    private void sendCanboxKey0x82(int d0) {
+        sendCanboxInfo(d0, 1);
+        Util.doSleep(300);
+        sendCanboxInfo(d0, 0);
+    }
+
+    private void sendCanboxInfo(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xe0, 0x2, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -172,8 +139,6 @@ public class AC289 extends MyFragment {
             tv.setText(getString(str_id) + s + getString(R.string.temp_unic));
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

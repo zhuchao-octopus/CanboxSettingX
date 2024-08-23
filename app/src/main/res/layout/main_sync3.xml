@@ -171,10 +171,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:paddingBottom="1px"
                     android:paddingLeft="1px"
+                    android:paddingTop="1px"
                     android:paddingRight="1px"
-                    android:paddingTop="1px">
+                    android:paddingBottom="1px">
 
                     <LinearLayout
                         android:layout_width="400px"

@@ -7,23 +7,30 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.annotation.Nullable;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class Info147 extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "Golf7InfoSimpleFragment";
+    private final static int[] INIT_CMDS = {0x13, 0x14};
+    boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +55,6 @@ public class Info147 extends PreferenceFragmentCompat implements OnPreferenceCli
         return false;
     }
 
-    boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -72,22 +77,11 @@ public class Info147 extends PreferenceFragmentCompat implements OnPreferenceCli
         super.onDestroy();
     }
 
-    private final static int[] INIT_CMDS = {0x13, 0x14};
-
     private void requestInitData() {
         for (int i = 0; i < INIT_CMDS.length; ++i) {
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(msg.what & 0xff);
-            }
-        }
-    };
 
     private void setPreference(String key, String s) {
         Preference p = findPreference(key);
@@ -95,7 +89,6 @@ public class Info147 extends PreferenceFragmentCompat implements OnPreferenceCli
             p.setSummary(s);
         }
     }
-
 
     private void sendCanboxInfo(int d0) {
         byte[] buf = new byte[]{0x3, (byte) 0x6a, 0x5, 1, (byte) d0};
@@ -166,8 +159,6 @@ public class Info147 extends PreferenceFragmentCompat implements OnPreferenceCli
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

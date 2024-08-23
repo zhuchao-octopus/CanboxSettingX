@@ -42,6 +42,10 @@ public class MyPreferenceSeekBar extends Preference {
         initAttrs(attrs, 0);
     }
 
+    public MyPreferenceSeekBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
@@ -194,11 +198,6 @@ public class MyPreferenceSeekBar extends Preference {
         if (getOnPreferenceChangeListener() != null) {
             getOnPreferenceChangeListener().onPreferenceChange(this, mSeekBarValue.getText());
         }
-    }
-
-
-    public MyPreferenceSeekBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
 }

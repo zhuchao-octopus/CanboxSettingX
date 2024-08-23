@@ -1,7 +1,6 @@
 package com.canboxsetting;
 
 public class FragmentProRadioData {
-
     public String mId;
     public Class<?> mFragmentRaido;
 

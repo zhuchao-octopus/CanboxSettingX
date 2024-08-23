@@ -16,13 +16,6 @@
 
 package com.canboxsetting.radio;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.adapter.MyListViewAdapterRadio;
-import com.common.utils.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -35,25 +28,44 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.adapter.MyListViewAdapterRadio;
+import com.common.utils.AuxInUI;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class Radio40 extends MyFragment {
     private static final String TAG = "Radio153";
-
+    private final static int[] INIT_CMDS = {0x90d101, 0x90d102, 0x90d103};
     private View mMainView;
-
     private ListView mListViewCD;
-
     private MyListViewAdapterRadio mMyListViewAdapter;
-
     private ListView mListViewPreset;
-
     private MyListViewAdapterRadio mMyListViewAdapterPreset;
+    private int mFlashList = 0;
+    private int mListIndex;
+    private int mStatus;
+    private byte mAMFM = 0;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo((msg.what & 0xff0000) >> 16, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private AuxInUI mAuxInUI;
+    private int mSource = MyCmd.SOURCE_NONE;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -210,12 +222,6 @@ public class Radio40 extends MyFragment {
         }
     }
 
-    private int mFlashList = 0;
-
-    private int mListIndex;
-    private int mStatus;
-    private byte mAMFM = 0;
-
     private void updateStatus(byte b) {
         mStatus = (b & 0xff);
         mListIndex = (b & 0x0f);
@@ -297,8 +303,6 @@ public class Radio40 extends MyFragment {
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -316,29 +320,16 @@ public class Radio40 extends MyFragment {
         super.onResume();
     }
 
-    private final static int[] INIT_CMDS = {0x90d101, 0x90d102, 0x90d103};
-
     private void requestInitData() {
         for (int i = 0; i < INIT_CMDS.length; ++i) {
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo((msg.what & 0xff0000) >> 16, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxInfo(int cmd, int d0, int d1) {
         byte[] buf = new byte[]{(byte) cmd, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
@@ -388,10 +379,6 @@ public class Radio40 extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private AuxInUI mAuxInUI;
-
-    private int mSource = MyCmd.SOURCE_NONE;
 
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);

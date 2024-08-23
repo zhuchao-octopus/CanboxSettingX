@@ -17,72 +17,13 @@ import java.util.ArrayList;
  */
 public class JsonParser {
 
-    class CanSetting {
-        public String mId;
-        public String mPro;
-        public String mExt;
-        public String mAppShow;
-
-        public CanSetting(String id, String pro, String ext, String appShow) {
-            mId = id;
-            mPro = pro;
-            mExt = ext;
-            mAppShow = appShow;
-        }
-    }
-
-    ;
-
-    class CanAppShowIDS {
-        public String mMenaID;
-        public String mCategoryID;
-        public String[] mModelID;
-
-        public CanAppShowIDS(String id, String modeId) {
-            String[] ss = id.split(",");
-            mMenaID = ss[0];
-            if (ss.length > 1) {
-                mCategoryID = ss[1];
-            }
-            mModelID = modeId.split(",");
-        }
-    }
-
-    class CanAppShow {
-        public CanAppShowIDS[] mIds;
-        public String[] mPros;
-        public String mApp;
-
-        public CanAppShow(CanAppShowIDS[] ids, String app, String pro) {
-            mIds = ids;
-            if (pro != null) {
-                mPros = pro.split(",");
-            }
-            mApp = app;
-        }
-    }
-
-    ;
-
-    class CanBaud {
-        public String[] mPros;
-        public String mBaud;
-        public String mConfig;
-
-        public CanBaud(String baud, String config, String pro) {
-            mBaud = baud;
-            if (pro != null) {
-                mPros = pro.split(",");
-            }
-            mConfig = config;
-        }
-    }
-
-    ;
-
     private ArrayList<CanSetting> mCanSettings = new ArrayList<CanSetting>();
+
+    ;
     private ArrayList<CanAppShow> mCanAppShows = new ArrayList<CanAppShow>();
     private ArrayList<CanBaud> mCanBaudConfig = new ArrayList<CanBaud>();
+
+    ;
 
     public CanBaud getCanBaudConfig(String id) {
         for (int i = 0; i < mCanBaudConfig.size(); ++i) {
@@ -95,6 +36,8 @@ public class JsonParser {
         }
         return mCanBaudConfig.get(0);
     }
+
+    ;
 
     public CanSetting getCanSetting(String id) {
         for (int i = 0; i < mCanSettings.size(); ++i) {
@@ -268,7 +211,6 @@ public class JsonParser {
         }
     }
 
-
     private void parserCanBaud(Context c) {
 
         try {
@@ -299,6 +241,63 @@ public class JsonParser {
 
         } catch (Exception e) {
 
+        }
+    }
+
+    class CanSetting {
+        public String mId;
+        public String mPro;
+        public String mExt;
+        public String mAppShow;
+
+        public CanSetting(String id, String pro, String ext, String appShow) {
+            mId = id;
+            mPro = pro;
+            mExt = ext;
+            mAppShow = appShow;
+        }
+    }
+
+    class CanAppShowIDS {
+        public String mMenaID;
+        public String mCategoryID;
+        public String[] mModelID;
+
+        public CanAppShowIDS(String id, String modeId) {
+            String[] ss = id.split(",");
+            mMenaID = ss[0];
+            if (ss.length > 1) {
+                mCategoryID = ss[1];
+            }
+            mModelID = modeId.split(",");
+        }
+    }
+
+    class CanAppShow {
+        public CanAppShowIDS[] mIds;
+        public String[] mPros;
+        public String mApp;
+
+        public CanAppShow(CanAppShowIDS[] ids, String app, String pro) {
+            mIds = ids;
+            if (pro != null) {
+                mPros = pro.split(",");
+            }
+            mApp = app;
+        }
+    }
+
+    class CanBaud {
+        public String[] mPros;
+        public String mBaud;
+        public String mConfig;
+
+        public CanBaud(String baud, String config, String pro) {
+            mBaud = baud;
+            if (pro != null) {
+                mPros = pro.split(",");
+            }
+            mConfig = config;
         }
     }
 

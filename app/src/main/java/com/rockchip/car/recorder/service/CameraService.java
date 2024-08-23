@@ -1,10 +1,8 @@
 package com.rockchip.car.recorder.service;
 
 import android.content.ContentResolver;
-import android.content.Intent;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
-import android.os.IBinder;
 import android.os.SystemClock;
 
 import com.rockchip.car.recorder.camera2.CameraHolder;
@@ -22,13 +20,17 @@ public class CameraService extends ServiceImpl {
     private static final String TAG = "CAM_CameraService2";
     private static CameraService mService;
 
-    public void onCreate(ContentResolver c) {
-        super.onCreate(c);
+    public static CameraService getService() {
+        return mService;
     }
 
     //    public IBinder onBind(Intent intent) {
     //        return super.onBind(intent);
     //    }
+
+    public void onCreate(ContentResolver c) {
+        super.onCreate(c);
+    }
 
     @Override
     public void afterOpenedBeforePreview() {
@@ -48,10 +50,6 @@ public class CameraService extends ServiceImpl {
             mCameraCallback.setPreviewFormat(id, CameraHolder.instance().getParameters(id).getPreviewFormat());
         }
         return res;
-    }
-
-    public static CameraService getService() {
-        return mService;
     }
 
     @Override
@@ -90,6 +88,8 @@ public class CameraService extends ServiceImpl {
         private int mTimes;
 
         private byte[] mTmp;
+        private long mLastPreviewTime;
+        private int mPreviewCount;
 
         public CameraPreviewCallback(int id, int buffer) {
             SLog.d(TAG, "CameraService.CameraPreviewCallback::CameraPreviewCallback. id:" + id + "; buffer:" + buffer);
@@ -169,9 +169,6 @@ public class CameraService extends ServiceImpl {
                 }
             }
         }
-
-        private long mLastPreviewTime;
-        private int mPreviewCount;
 
         private void frameRate(byte[] data) {
             if (mLastPreviewTime == 0) {

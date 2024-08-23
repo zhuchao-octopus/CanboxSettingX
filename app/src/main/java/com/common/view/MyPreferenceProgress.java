@@ -14,6 +14,10 @@ import com.canboxsetting.R;
 public class MyPreferenceProgress extends Preference {
 
     public int title;
+    int mMax;
+    private ProgressBar mProgressBar;
+    private TextView tv;
+    private int mProgress = 0;
 
     public MyPreferenceProgress(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -29,23 +33,16 @@ public class MyPreferenceProgress extends Preference {
         initAttrs(attrs, 0);
 
     }
-
     public MyPreferenceProgress(Context context) {
         super(context);
         init(context, null);
     }
-
-    int mMax;
 
     private void initAttrs(AttributeSet attrs, int defStyle) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.MyPreferenceSeekBar, defStyle, 0);
 
         mMax = a.getInteger(R.styleable.MyPreferenceSeekBar_max, 0);
     }
-
-    private ProgressBar mProgressBar;
-    private TextView tv;
-    private int mProgress = 0;
 
     private void init(Context context, AttributeSet attrs) {
         setLayoutResource(R.layout.preference_progressbar);

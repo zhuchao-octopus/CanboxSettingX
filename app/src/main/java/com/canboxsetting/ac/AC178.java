@@ -16,110 +16,27 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC178 extends MyFragment {
     private static final String TAG = "JeepAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private View mMainView;
-
-    private CommonUpdateView mCommonUpdateView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mMainView = inflater.inflate(R.layout.ac_changan_hiworld, container, false);
-
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-
-        init();
-        return mMainView;
-    }
-
-    private void init() {
-        for (int i = 0; i < CMD_ID.length; ++i) {
-            View v = mMainView.findViewById(CMD_ID[i][0]);
-            if (v != null) {
-                v.setOnTouchListener(mOnTouchListener);
-            }
-        }
-    }
-
-    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    sendCmd(v.getId(), (byte) 1);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    sendCmd(v.getId(), (byte) 0);
-                    break;
-
-            }
-            return false;
-        }
-    };
-
-    private void sendCanboxInfo0x90(int d0) {
-        byte[] buf = new byte[]{(byte) 0x90, 0x1, (byte) d0,};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-
     private final static int[][] CMD_ID = new int[][]{
 
             {R.id.power, 0x1}, {R.id.ac, 0x2}, {R.id.ac_auto, 0x4},
@@ -151,7 +68,56 @@ public class AC178 extends MyFragment {
             {R.id.rear_lock, 0x2e},
 
     };
+    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO Auto-generated method stub
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    sendCmd(v.getId(), (byte) 1);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    sendCmd(v.getId(), (byte) 0);
+                    break;
 
+            }
+            return false;
+        }
+    };
+    private View mMainView;
+    private CommonUpdateView mCommonUpdateView;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mMainView = inflater.inflate(R.layout.ac_changan_hiworld, container, false);
+
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
+
+        init();
+        return mMainView;
+    }
+
+    private void init() {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            View v = mMainView.findViewById(CMD_ID[i][0]);
+            if (v != null) {
+                v.setOnTouchListener(mOnTouchListener);
+            }
+        }
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x1, (byte) d0,};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
     private void sendCmd(int id, byte down) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -180,8 +146,6 @@ public class AC178 extends MyFragment {
 
         sendCanboxInfo0x90(0x21);
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

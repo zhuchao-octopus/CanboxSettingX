@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.WindowManager;
 
 import com.rockchip.car.recorder.activity.AVideoUI;
-import com.rockchip.car.recorder.camera2.CameraHolder;
 import com.rockchip.car.recorder.service.BufferManager;
 import com.rockchip.car.recorder.utils.SLog;
 

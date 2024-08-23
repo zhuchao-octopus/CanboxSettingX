@@ -16,12 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,20 +25,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC261 extends MyFragment {
     private static final String TAG = "VWMQBAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{
+
+            {R.id.ac, 0x2}, {R.id.ac_auto, 0x4},
+
+            {R.id.max, 0x5}, {R.id.rear, 0x6}, {R.id.inner_loop, 0x7}, {R.id.wind_add, 0xb}, {R.id.wind_minus, 0xc},
+
+
+            {R.id.con_left_temp_up, 0xd}, {R.id.con_left_temp_down, 0xe},
+
+
+            {R.id.mode, 0x15},
+
+
+    };
+    private CommonUpdateView mCommonUpdateView;
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private CommonUpdateView mCommonUpdateView;
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,7 +68,6 @@ public class AC261 extends MyFragment {
 
         return mMainView;
     }
-
 
     private void sendCanboxInfo0xc7(int d0, int d1) {
         byte[] buf;
@@ -76,22 +89,6 @@ public class AC261 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
-
-    private final static int[][] CMD_ID = new int[][]{
-
-            {R.id.ac, 0x2}, {R.id.ac_auto, 0x4},
-
-            {R.id.max, 0x5}, {R.id.rear, 0x6}, {R.id.inner_loop, 0x7}, {R.id.wind_add, 0xb}, {R.id.wind_minus, 0xc},
-
-
-            {R.id.con_left_temp_up, 0xd}, {R.id.con_left_temp_down, 0xe},
-
-
-            {R.id.mode, 0x15},
-
-
-    };
-
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -123,7 +120,6 @@ public class AC261 extends MyFragment {
 
     }
 
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -136,8 +132,6 @@ public class AC261 extends MyFragment {
         sendCanboxInfo0x90(0x31);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

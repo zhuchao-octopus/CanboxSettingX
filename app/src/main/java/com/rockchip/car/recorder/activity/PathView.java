@@ -13,9 +13,8 @@ import android.view.View;
  * Created by Administrator on 2016/8/12.
  */
 public class PathView extends View {
-    private Path p = new Path();
-
     Region re = new Region();
+    private Path p = new Path();
 
     public PathView(Context context) {
         super(context);

@@ -7,34 +7,26 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
-import com.common.util.Util;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 
 public class Jeep002SettingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Jeep002SettingHiworldFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
             //单位
             new Node("temp47", 0xCA03, 0xC1010000, 0xFF00, 0, Node.TYPE_BUFF1),
@@ -128,14 +120,27 @@ public class Jeep002SettingHiworldFragment extends PreferenceFragmentCompat impl
             new Node("compass_offset_setting", 0x9B00, 0x9C010000, 0xFF00, 0, Node.TYPE_BUFF1),
             //DSP相关的信息
             new Node("speed_compensated_vol", 0xAD07, 0xA6020000, 0x060000, 0, Node.TYPE_BUFF1), new Node("surround_volume", 0xAD08, 0xA6020000, 0x010000, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
              */};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -159,8 +164,6 @@ public class Jeep002SettingHiworldFragment extends PreferenceFragmentCompat impl
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -191,19 +194,9 @@ public class Jeep002SettingHiworldFragment extends PreferenceFragmentCompat impl
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxData3(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), value);
     }
-
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -472,8 +465,6 @@ public class Jeep002SettingHiworldFragment extends PreferenceFragmentCompat impl
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

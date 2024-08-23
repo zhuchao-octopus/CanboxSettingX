@@ -12,10 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,44 +25,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
 import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.NodeDrivingData;
-import com.common.util.Util;
-import com.common.util.UtilSystem;
+import com.common.utils.Util;
+import com.common.utils.UtilSystem;
 import com.common.view.MyPopDialog;
 
 import java.util.Locale;
 
 public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "VWMQBInfoRaiseFragment";
-
+    private static final NodeDrivingData[] NODES_DRIVINGDATA = {new NodeDrivingData(R.string.since_start), new NodeDrivingData(R.string.long_term), new NodeDrivingData(R.string.since_refuelling)};
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.setting, R.id.views, R.id.set,};
+    private static final int[] POP_LIST = new int[]{R.string.driving_data, R.string.conv_consumers, R.string.vehicle_status, R.string.energy_flow_view};
+    ArrayAdapter<String> mAdapter;
+    ListView mLv;
     private View mMainView;
-
-    @Override
-    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mMainView = inflater.inflate(R.layout.vw_raise_info, container, false);
-
-        initPresentationUI();
-
-        showUI(R.string.driving_data);
-
-        mBatteryView = mMainView.findViewById(R.id.vehicle_hybrid_power);
-        return mMainView;
-    }
-
     private MyPopDialog mDialog;
-
     private View.OnClickListener mOnClick = new View.OnClickListener() {
         public void onClick(View v) {
             Log.d("ccfk", "" + v.getId());
@@ -80,24 +62,7 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
 
         ;
     };
-
-    private View.OnClickListener mOnClickDrivingData = new View.OnClickListener() {
-        public void onClick(View v) {
-            int id = v.getId();
-            if (id == R.id.bt_left) {
-                mDrivingDataPage = (mDrivingDataPage + 1) % NODES_DRIVINGDATA.length;
-                showDrivingData();
-            } else if (id == R.id.bt_right) {
-                mDrivingDataPage = (mDrivingDataPage + NODES_DRIVINGDATA.length - 1) % NODES_DRIVINGDATA.length;
-                showDrivingData();
-            }
-        }
-
-        ;
-    };
-
-    private static final NodeDrivingData[] NODES_DRIVINGDATA = {new NodeDrivingData(R.string.since_start), new NodeDrivingData(R.string.long_term), new NodeDrivingData(R.string.since_refuelling)};
-
+    private int mVehiclePage = 0;
     private View.OnClickListener mOnClickVehicleStatus = new View.OnClickListener() {
         public void onClick(View v) {
             int id = v.getId();
@@ -116,8 +81,58 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
 
         ;
     };
-    ArrayAdapter<String> mAdapter;
-    ListView mLv;
+    private int mDrivingDataPage = 0;
+    private View.OnClickListener mOnClickDrivingData = new View.OnClickListener() {
+        public void onClick(View v) {
+            int id = v.getId();
+            if (id == R.id.bt_left) {
+                mDrivingDataPage = (mDrivingDataPage + 1) % NODES_DRIVINGDATA.length;
+                showDrivingData();
+            } else if (id == R.id.bt_right) {
+                mDrivingDataPage = (mDrivingDataPage + NODES_DRIVINGDATA.length - 1) % NODES_DRIVINGDATA.length;
+                showDrivingData();
+            }
+        }
+
+        ;
+    };
+    private int mCurPage = -1;
+    private Handler mHandlerDialog = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            showUI(POP_LIST[msg.what]);
+        }
+    };
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+        }
+    };
+    private View mTpmsView;
+    private byte mHybrid;
+    private View mBatteryView;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mMainView = inflater.inflate(R.layout.vw_raise_info, container, false);
+
+        initPresentationUI();
+
+        showUI(R.string.driving_data);
+
+        mBatteryView = mMainView.findViewById(R.id.vehicle_hybrid_power);
+        return mMainView;
+    }
 
     private void showStopStartStatusDialog() {
 
@@ -155,8 +170,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
 
     }
 
-    private int mVehiclePage = 0;
-
     private void showVehicletatus() {
         int id = R.string.vehicle_status;
         switch (mVehiclePage) {
@@ -174,8 +187,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
         setTextViewStringEx(mMainView.findViewById(R.id.vehicle_status), R.id.title, id);
 
     }
-
-    private int mDrivingDataPage = 0;
 
     private void showDrivingData() {
 
@@ -195,10 +206,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
             v.setVisibility(value != 0 ? View.VISIBLE : View.GONE);
         }
     }
-
-    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.setting, R.id.views, R.id.set,};
-
-    private static final int[] POP_LIST = new int[]{R.string.driving_data, R.string.conv_consumers, R.string.vehicle_status, R.string.energy_flow_view};
 
     private void initPresentationUI() {
         for (int i : BUTTON_ON_CLICK) {
@@ -223,15 +230,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
 
         // setMovementMethod(ScrollingMovementMethod.getInstance());
     }
-
-    private Handler mHandlerDialog = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            showUI(POP_LIST[msg.what]);
-        }
-    };
-
-    private int mCurPage = -1;
 
     private void showUI(int id) {
         if (mCurPage != id) {
@@ -297,15 +295,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
 
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -317,8 +306,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
             p.setSummary(s);
         }
     }
-
-    private View mTpmsView;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -938,10 +925,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
         }
     }
 
-
-    private byte mHybrid;
-    private View mBatteryView;
-
     private void clearHybird() {
         mBatteryView.findViewById(R.id.canbus8_wheel_motor).setVisibility(View.GONE);
 
@@ -1003,9 +986,6 @@ public class VWMQBInfoRaiseFragment extends PreferenceFragmentCompat implements 
             mBatteryView.findViewById(R.id.canbus8_img_lf2_1).setVisibility(View.VISIBLE);
         }
     }
-
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -16,12 +16,6 @@
 
 package com.canboxsetting.cd;
 
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -36,11 +30,36 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class MazdaBinarytekCarCDFragment extends MyFragment {
     private static final String TAG = "JeepCarCDFragment";
+    private final static int[] INIT_CMDS = {0xe, 0x10, 0x11, 0x12, 0x13};
+    byte mPlayStatus = 0;
+    byte mRepeatMode = 0;
+    private View mMainView;
+    private int totalSong = -1;
+    private int curSong = 0;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                // sendCanboxInfo0x83((msg.what & 0xff00) >> 8, msg.what &
+                // 0xff);
+                sendCanboxInfo0x90(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private int mSource = MyCmd.SOURCE_NONE;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -49,8 +68,6 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
         // setContentView(R.layout.jeep_car_cd_player);
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,13 +87,13 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
+    // private final static int[] INIT_CMDS = { 0x0400, 0x0500, 0x0600, 0x0601,
+    // 0x0602, 0x0603 };
+
     private void sendCanboxInfo0x83(int d0, int d1) {
         byte[] buf = new byte[]{(byte) 0x83, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    byte mPlayStatus = 0;
-    byte mRepeatMode = 0;
 
     public void onClick(View v) {
         int id = v.getId();
@@ -108,9 +125,6 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
             }
         }
     }
-
-    private int totalSong = -1;
-    private int curSong = 0;
 
     private void updateView(byte[] buf) {
 
@@ -295,11 +309,6 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
 
     }
 
-    // private final static int[] INIT_CMDS = { 0x0400, 0x0500, 0x0600, 0x0601,
-    // 0x0602, 0x0603 };
-
-    private final static int[] INIT_CMDS = {0xe, 0x10, 0x11, 0x12, 0x13};
-
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
         for (int i = 0; i < INIT_CMDS.length; ++i) {
@@ -307,19 +316,6 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
         }
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                // sendCanboxInfo0x83((msg.what & 0xff00) >> 8, msg.what &
-                // 0xff);
-                sendCanboxInfo0x90(msg.what & 0xff);
-            }
-        }
-    };
-
-    private boolean mPaused = true;
 
     @Override
     public void onDestroy() {
@@ -340,8 +336,6 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
 
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
@@ -390,8 +384,6 @@ public class MazdaBinarytekCarCDFragment extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private int mSource = MyCmd.SOURCE_NONE;
 
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);

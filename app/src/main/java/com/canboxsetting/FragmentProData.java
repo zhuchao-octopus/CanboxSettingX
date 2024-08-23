@@ -1,7 +1,6 @@
 package com.canboxsetting;
 
 public class FragmentProData {
-
     public String mId;
     public Class<?> mFragmentAC;
     public Class<?> mFragmentInfo;

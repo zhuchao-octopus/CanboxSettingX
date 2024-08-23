@@ -16,9 +16,9 @@
 
 package com.rockchip.car.recorder.activity;
 
-import com.rockchip.car.recorder.model.CameraInfo;
-
 import android.view.View;
+
+import com.rockchip.car.recorder.model.CameraInfo;
 
 
 public interface VideoController {

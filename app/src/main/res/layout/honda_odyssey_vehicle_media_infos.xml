@@ -3,8 +3,8 @@
     android:id="@+id/infos"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="20px"
-    android:paddingTop="20px">
+    android:paddingTop="20px"
+    android:paddingBottom="20px">
 
     <LinearLayout
         android:layout_width="fill_parent"

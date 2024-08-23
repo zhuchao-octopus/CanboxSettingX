@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -15,11 +16,9 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.NodePreference;
 
 public class Set193 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
@@ -65,10 +64,22 @@ public class Set193 extends PreferenceFragmentCompat implements Preference.OnPre
     private final static int[] INIT_CMDS = {0x66, 0x67, 0x68
 
     };
-
+    private final static byte[] SPEED = new byte[]{(byte) 0xFE, (byte) 0x5a, (byte) 0x64, (byte) 0x6e, (byte) 0x78, (byte) 0x82};
     private byte[] mNewEnergy = new byte[]{0, 0, 0};
-
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+
+                byte[] buf = new byte[]{0x3, (byte) 0x6a, (byte) 5, 1, (byte) (msg.what & 0xff)};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,8 +118,6 @@ public class Set193 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -138,18 +147,6 @@ public class Set193 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-
-                byte[] buf = new byte[]{0x3, (byte) 0x6a, (byte) 5, 1, (byte) (msg.what & 0xff)};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
 
@@ -159,8 +156,6 @@ public class Set193 extends PreferenceFragmentCompat implements Preference.OnPre
         sendCanboxInfo(((cmd & 0xff0000) >> 16), ((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0));
 
     }
-
-    private final static byte[] SPEED = new byte[]{(byte) 0xFE, (byte) 0x5a, (byte) 0x64, (byte) 0x6e, (byte) 0x78, (byte) 0x82};
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -303,15 +298,12 @@ public class Set193 extends PreferenceFragmentCompat implements Preference.OnPre
         //		}
     }
 
-
     private void showPreferenceEnable(String id, boolean enabled) {
         Preference ps = (Preference) findPreference(id);
         if (ps != null) {
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

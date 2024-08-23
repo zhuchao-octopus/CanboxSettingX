@@ -5,24 +5,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
 import android.provider.Settings;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.NodePreference;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
+import com.common.utils.SettingProperties;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set197 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
@@ -62,6 +61,9 @@ public class Set197 extends PreferenceFragmentCompat implements Preference.OnPre
             new NodePreference("speed_adjustment", 0xC3, 0, 0x5, 6, R.array.speed_compensated_vol_entries, R.array.brightness_control_value), new NodePreference("sound_mode", 0xC3, 0, 0x6, 6, R.array.sound_effect_entries, R.array.brightness_control_value), new NodePreference("allround", 0xC3, 0, 0x7, 6, R.array.orientation_selection, R.array.brightness_control_value),
 
     };
+    private final String LED_SETTINGS = "canboxsetting_ledsetting";
+    private int mLedSeting = 0;
+    private BroadcastReceiver mReceiver;
 
     private void init() {
 
@@ -150,9 +152,6 @@ public class Set197 extends PreferenceFragmentCompat implements Preference.OnPre
         //		sendCanboxInfo(0x90, 0x62, 0);
     }
 
-    private int mLedSeting = 0;
-    private final String LED_SETTINGS = "canboxsetting_ledsetting";
-
     private void updateLedSetting() {
         //		mLedSeting = Settings.System.getInt(getActivity().getContentResolver(),
         //				LED_SETTINGS, 0);
@@ -180,7 +179,7 @@ public class Set197 extends PreferenceFragmentCompat implements Preference.OnPre
     }
 
     private void udpateShowWarning() {
-        int show = Settings.System.getInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, 0);
+        int show = Settings.System.getInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, 0);
 
         if (show != 0) {
             ((SwitchPreference) findPreference("off_Warning_info")).setChecked(true);
@@ -191,9 +190,9 @@ public class Set197 extends PreferenceFragmentCompat implements Preference.OnPre
     private void setWarningSetting(boolean b) {
         int i = b ? 1 : 0;
 
-        Settings.System.putInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, i);
+        Settings.System.putInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, i);
         Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG);
+        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG);
         this.getActivity().sendBroadcast(it);
     }
 
@@ -317,7 +316,6 @@ public class Set197 extends PreferenceFragmentCompat implements Preference.OnPre
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
 
     private void setPreference(String key, int index) {
         Preference p = findPreference(key);
@@ -445,8 +443,6 @@ public class Set197 extends PreferenceFragmentCompat implements Preference.OnPre
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

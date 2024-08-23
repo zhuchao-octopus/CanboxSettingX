@@ -2,30 +2,29 @@ package com.canboxsetting.tpms;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.view.MyPreference2;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class MingjueRongweiTpmsInfoaRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
+
+    private View mTpmsView;
+    private byte mUnit = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
@@ -60,8 +59,6 @@ public class MingjueRongweiTpmsInfoaRaiseFragment extends PreferenceFragmentComp
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private View mTpmsView;
-
     public boolean onPreferenceClick(Preference arg0) {
 
         try {
@@ -76,8 +73,6 @@ public class MingjueRongweiTpmsInfoaRaiseFragment extends PreferenceFragmentComp
 
         return false;
     }
-
-    private byte mUnit = 0;
 
     private void setTpmsTextValue(int id, int value, int color) {
 
@@ -157,8 +152,6 @@ public class MingjueRongweiTpmsInfoaRaiseFragment extends PreferenceFragmentComp
 
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

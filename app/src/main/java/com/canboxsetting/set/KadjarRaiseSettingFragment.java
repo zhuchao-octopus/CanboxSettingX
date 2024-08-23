@@ -18,8 +18,8 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
@@ -51,6 +51,16 @@ public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat impleme
     private final static int[] INIT_CMDS = {0x9071};
 
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxData(msg.what, 0);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,8 +87,6 @@ public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat impleme
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -102,15 +110,6 @@ public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat impleme
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxData(msg.what, 0);
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
 
         byte[] buf = new byte[]{(byte) ((cmd & 0xff00) >> 8), 0x02, (byte) (cmd & 0xff), (byte) value};
@@ -125,7 +124,6 @@ public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat impleme
 
 
     }
-
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -200,7 +198,6 @@ public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat impleme
         }
     }
 
-
     private int getStatusValue1(int value, int mask) {
 
         int start = 0;
@@ -271,8 +268,6 @@ public class KadjarRaiseSettingFragment extends PreferenceFragmentCompat impleme
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

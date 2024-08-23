@@ -37,9 +37,9 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/layout_id3"
                 android:layout_width="match_parent"
                 android:layout_height="0px"
-                android:id="@+id/layout_id3"
                 android:layout_marginTop="40px"
                 android:layout_weight="5"
                 android:gravity="center"

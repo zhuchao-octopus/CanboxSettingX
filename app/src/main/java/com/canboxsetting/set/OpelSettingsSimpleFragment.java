@@ -16,14 +16,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.SystemConfig;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.SettingProperties;
 
 import java.util.Objects;
 
 public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
     private static final String TAG = "OpelSettingsSimpleFragment";
+    private final static int[][] BUTTON_ID = {{R.id.ok, 0x1}, {R.id.settings, 0x2}, {R.id.bc, 0x3}, {R.id.left, 0x4}, {R.id.right, 0x5}, {R.id.fam, 0x6}, {R.id.cdmp3, 0x7}, {R.id.num1, 0x8}, {R.id.num2, 0x9}, {R.id.num3, 0xa}, {R.id.num4, 0xb}, {R.id.num5, 0xc}, {R.id.num6, 0xd}, {R.id.num7, 0xe}, {R.id.num8, 0xf}, {R.id.num9, 0x10}, {R.id.clock, 0x15}, {R.id.set, 0x16},};
+    final String[] single_list = {"Low", "Middle, High"};
+    int mSelectItem;
+    private View mMainView;
+    private int mKeyId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,9 +39,6 @@ public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,14 +63,11 @@ public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
             }
         });
 
-        mSelectItem = SystemConfig.getIntProperty(getActivity(), MachineConfig.VALUE_CANBOX_OPEL);
+        mSelectItem = SettingProperties.getIntProperty(getActivity(), MachineConfig.VALUE_CANBOX_OPEL);
         ((TextView) v).setText(single_list[mSelectItem]);
 
         return mMainView;
     }
-
-    int mSelectItem;
-    final String[] single_list = {"Low", "Middle, High"};
 
     private void showSingleChoiceDialog() {
 
@@ -78,7 +77,7 @@ public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                SystemConfig.setIntProperty(getActivity(), MachineConfig.VALUE_CANBOX_OPEL, which);
+                SettingProperties.setIntProperty(getActivity(), MachineConfig.VALUE_CANBOX_OPEL, which);
                 TextView v = (TextView) mMainView.findViewById(R.id.key_type);
                 v.setText(single_list[which]);
                 mSelectItem = which;
@@ -90,14 +89,10 @@ public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
         dialog.show();
     }
 
-
     private void sendCanboxInfo(int d0) {
         byte[] buf = new byte[]{0x05, 0x6, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private int mKeyId;
-    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+    }    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
         public boolean onTouch(View v, android.view.MotionEvent event) {
             //			Log.d("allen3", "onKey!!");
             mKeyId = getKey(v.getId());
@@ -121,7 +116,16 @@ public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
         mHandler.removeMessages(0);
     }
 
-    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+    private int getKey(int id) {
+        int ret = 0;
+        for (int[] ints : BUTTON_ID) {
+            if (ints[0] == id) {
+                ret = ints[1];
+                break;
+            }
+        }
+        return ret;
+    }    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (mKeyId != 0) {
@@ -144,18 +148,9 @@ public class OpelSettingsSimpleFragment extends PreferenceFragmentCompat {
         }
     };
 
-    private int getKey(int id) {
-        int ret = 0;
-        for (int[] ints : BUTTON_ID) {
-            if (ints[0] == id) {
-                ret = ints[1];
-                break;
-            }
-        }
-        return ret;
-    }
 
-    private final static int[][] BUTTON_ID = {{R.id.ok, 0x1}, {R.id.settings, 0x2}, {R.id.bc, 0x3}, {R.id.left, 0x4}, {R.id.right, 0x5}, {R.id.fam, 0x6}, {R.id.cdmp3, 0x7}, {R.id.num1, 0x8}, {R.id.num2, 0x9}, {R.id.num3, 0xa}, {R.id.num4, 0xb}, {R.id.num5, 0xc}, {R.id.num6, 0xd}, {R.id.num7, 0xe}, {R.id.num8, 0xf}, {R.id.num9, 0x10}, {R.id.clock, 0x15}, {R.id.set, 0x16},};
+
+
 
 
 }

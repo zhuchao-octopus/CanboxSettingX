@@ -2,8 +2,8 @@ package com.canboxsetting.info;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,19 +12,28 @@ import android.preference.PreferenceFragment;
 import android.util.Log;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class AudiInfoRaiseFragment extends PreferenceFragment {
     private static final String TAG = "KadjarRaiseFragment";
+    private final static int[] INIT_CMDS = {0x4101, 0x4102, 0x4103,};
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.audi_raise_info);
     }
-
-    private final static int[] INIT_CMDS = {0x4101, 0x4102, 0x4103,};
 
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
@@ -34,21 +43,10 @@ public class AudiInfoRaiseFragment extends PreferenceFragment {
 
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxInfo0x90(int d0, int d1) {
         byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -114,7 +112,6 @@ public class AudiInfoRaiseFragment extends PreferenceFragment {
         }
         return ret;
     }
-
 
     private void updateView(byte[] buf) {
 
@@ -193,8 +190,6 @@ public class AudiInfoRaiseFragment extends PreferenceFragment {
 
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -10,34 +10,26 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
-import com.common.util.Util;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 
 public class HondaSettingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingHiworldFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
             ////里程设置
             new Node("adjust_outside_temp", 0x6F01, 0x69010000, 0x0700, 0, Node.TYPE_BUFF1),
@@ -92,12 +84,25 @@ public class HondaSettingHiworldFragment extends PreferenceFragmentCompat implem
             new Node("the_duration_is_displayed_after_the_turn_off", 0xF20C, 0xE8010000, 0x0C000000, 0, Node.TYPE_BUFF1), new Node("lane_offset_suppression_system", 0x6E09, 0x68010000, 0x0E, 0, Node.TYPE_BUFF1), new Node("minor_lane_departure_system_set", 0x6E04, 0x68010000, 0x3000, 0, Node.TYPE_BUFF1), new Node("parking_space_width", 0xF20D, 0xE8020000, 0x080000, 0, Node.TYPE_BUFF1),
             //系统设置
             new Node("reset_main_info", 0x6E0601, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("traffic_sign_recognition_system", 0x6F0D, 0x69010000, 0x8000, 0, Node.TYPE_BUFF1), new Node("electronic_preload_belt_set", 0x6F0C, 0x64010000, 0x010000, 0, Node.TYPE_BUFF1), new Node("deflation_warning_system", 0x4B0401, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("restore", 0x6E0501, 0x00000000, 0x0000, 0, Node.TYPE_BUFF1), new Node("reverse_tone", 0x6F09, 0x69010000, 0x40, 0, Node.TYPE_BUFF1), new Node("electric_tail_door_remote_opening_condition_setting", 0x7A01, 0x75010000, 0x0100, 0, Node.TYPE_BUFF1), new Node("electric_rear_door_outer_handle_for_electric_open", 0x7A02, 0x75010000, 0x0200, 0, Node.TYPE_BUFF1), new Node("driving_posture_set_personalized_memory_location_linkage", 0x6F0B, 0x64010000, 0x020000, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {0x64, 0x75, 0x69, 0xe8, 0x68, 0x65, 0x66, 0x67
 
     };
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -121,8 +126,6 @@ public class HondaSettingHiworldFragment extends PreferenceFragmentCompat implem
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -152,15 +155,6 @@ public class HondaSettingHiworldFragment extends PreferenceFragmentCompat implem
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 100));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxInfo(int d0) {
         byte[] buf = new byte[]{0x3, (byte) 0x6a, 0x5, 0x1, (byte) d0};
@@ -480,8 +474,6 @@ public class HondaSettingHiworldFragment extends PreferenceFragmentCompat implem
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

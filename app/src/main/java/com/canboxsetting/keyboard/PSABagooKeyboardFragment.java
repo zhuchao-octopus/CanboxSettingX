@@ -12,10 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
+import com.common.utils.BroadcastUtil;
 
 public class PSABagooKeyboardFragment extends PreferenceFragmentCompat {
     private static final String TAG = "OpelSettingsSimpleFragment";
+    private final static int[][] BUTTON_ID = {{R.id.mode, 0x1}, {R.id.up, 0x5}, {R.id.menu, 0x3}, {R.id.left, 0x6}, {R.id.right, 0x8}, {R.id.ok, 0x7}, {R.id.dark, 0x2}, {R.id.down, 0x9}, {R.id.esc, 0x4},};
+    private View mMainView;
+    private int mKeyId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,6 @@ public class PSABagooKeyboardFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,11 +50,7 @@ public class PSABagooKeyboardFragment extends PreferenceFragmentCompat {
     private void sendCanboxInfo(int d0) {
         byte[] buf = new byte[]{(byte) 0x91, 0x1, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-
-    private int mKeyId;
-    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+    }    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
         public boolean onTouch(View v, android.view.MotionEvent event) {
             //			Log.d("allen3", "onKey!!");
             mKeyId = getKey(v.getId());
@@ -81,8 +77,16 @@ public class PSABagooKeyboardFragment extends PreferenceFragmentCompat {
         mHandler.removeMessages(0);
     }
 
-
-    private Handler mHandler = new Handler() {
+    private int getKey(int id) {
+        int ret = 0;
+        for (int i = 0; i < BUTTON_ID.length; ++i) {
+            if (BUTTON_ID[i][0] == id) {
+                ret = BUTTON_ID[i][1];
+                break;
+            }
+        }
+        return ret;
+    }    private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (mKeyId != 0) {
@@ -104,18 +108,9 @@ public class PSABagooKeyboardFragment extends PreferenceFragmentCompat {
         }
     };
 
-    private int getKey(int id) {
-        int ret = 0;
-        for (int i = 0; i < BUTTON_ID.length; ++i) {
-            if (BUTTON_ID[i][0] == id) {
-                ret = BUTTON_ID[i][1];
-                break;
-            }
-        }
-        return ret;
-    }
 
-    private final static int[][] BUTTON_ID = {{R.id.mode, 0x1}, {R.id.up, 0x5}, {R.id.menu, 0x3}, {R.id.left, 0x6}, {R.id.right, 0x8}, {R.id.ok, 0x7}, {R.id.dark, 0x2}, {R.id.down, 0x9}, {R.id.esc, 0x4},};
+
+
 
 
 }

@@ -7,17 +7,16 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 
 public class SmartHaoZhengSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
@@ -32,6 +31,18 @@ public class SmartHaoZhengSettingsFragment extends PreferenceFragmentCompat impl
     private final static int[] INIT_CMDS = {0x3800};
 
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private byte mLockMode = 0;
+    private byte mBackWiper = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,8 +66,6 @@ public class SmartHaoZhengSettingsFragment extends PreferenceFragmentCompat impl
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -79,18 +88,6 @@ public class SmartHaoZhengSettingsFragment extends PreferenceFragmentCompat impl
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
-    private byte mLockMode = 0;
-    private byte mBackWiper = 0;
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -158,8 +155,6 @@ public class SmartHaoZhengSettingsFragment extends PreferenceFragmentCompat impl
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

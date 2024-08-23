@@ -58,8 +58,8 @@ import com.canboxsetting.set.TouaregHiworldSettingFragment;
 import com.canboxsetting.set.ToyotaSettingsSimpleFragment;
 import com.canboxsetting.set.VWMQBSettingsRaiseFragment;
 import com.common.utils.GlobalDef;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.MMLog;
 
 import java.util.Objects;

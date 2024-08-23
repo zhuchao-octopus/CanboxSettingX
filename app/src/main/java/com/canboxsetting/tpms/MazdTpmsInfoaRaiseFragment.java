@@ -8,46 +8,34 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class MazdTpmsInfoaRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "Golf7InfoSimpleFragment";
-
-    PreferenceScreen mTpms;
-
-    @Override
-    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mTpmsView = inflater.inflate(R.layout.type_info3, container, false);
-        return mTpmsView;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        unregisterListener();
-    }
+    private PreferenceScreen mTpms;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+        }
+    };
+    private View mTpmsView;
+    private View mTpmsReset;
 
     // private void initTpmsView() {
     //
@@ -71,6 +59,26 @@ public class MazdTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impleme
     // }
     // }
     // }
+    private int mUnit = 0;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mTpmsView = inflater.inflate(R.layout.type_info3, container, false);
+        return mTpmsView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterListener();
+    }
 
     @Override
     public void onResume() {
@@ -88,22 +96,10 @@ public class MazdTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impleme
         // };
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x02, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private View mTpmsView;
-    private View mTpmsReset;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -152,8 +148,6 @@ public class MazdTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impleme
             }
         }
     }
-
-    private int mUnit = 0;
 
     private void setTpmsTextValue(int id, int value, int color) {
 
@@ -209,8 +203,6 @@ public class MazdTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impleme
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

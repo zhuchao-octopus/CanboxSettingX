@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -16,18 +17,33 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.Node;
 import com.common.view.MyPreferenceSeekBar;
 
 public class DaTongSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";
+    private static final Node[] NODES = {
 
+            new Node("key_flow_me_home", 0x8300, 0x5100, 0x80, 0x0), new Node("key_flow_me_home_times", 0x8301, 0x5100, 0x60, 0x0), new Node("key_unlock_near_car", 0x8302, 0x5100, 0x18, 0x0), new Node("key_driving_lock", 0x8303, 0x5100, 0x04, 0x0), new Node("key_unlock", 0x8304, 0x5100, 0x02, 0x0), new Node("key_unlock_mode", 0x8305, 0x5100, 0x01, 0x0), new Node("key_keyless_unlock", 0x8306, 0x5101, 0x80, 0x0), new Node("key_unlocks", 0x8307, 0x5101, 0x40, 0x0), new Node("key_rear_view_mirror_automatically_folded", 0x830a, 0x5101, 0x20, 0x0), new Node("key_speed_alarm", 0x8308, 0x5101, 0x10, 0x0), new Node("key_speed_settings", 0x8309, 0x5102, 0xff, 30, 220),
+
+
+    };
+    private final static int[] INIT_CMDS = {0x5100};
     private int mType = 0;
+    private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     public void setType(int t) {
         mType = t;
@@ -39,17 +55,6 @@ public class DaTongSettingsRaiseFragment extends PreferenceFragmentCompat implem
         // }
         // }
     }
-
-    private static final Node[] NODES = {
-
-            new Node("key_flow_me_home", 0x8300, 0x5100, 0x80, 0x0), new Node("key_flow_me_home_times", 0x8301, 0x5100, 0x60, 0x0), new Node("key_unlock_near_car", 0x8302, 0x5100, 0x18, 0x0), new Node("key_driving_lock", 0x8303, 0x5100, 0x04, 0x0), new Node("key_unlock", 0x8304, 0x5100, 0x02, 0x0), new Node("key_unlock_mode", 0x8305, 0x5100, 0x01, 0x0), new Node("key_keyless_unlock", 0x8306, 0x5101, 0x80, 0x0), new Node("key_unlocks", 0x8307, 0x5101, 0x40, 0x0), new Node("key_rear_view_mirror_automatically_folded", 0x830a, 0x5101, 0x20, 0x0), new Node("key_speed_alarm", 0x8308, 0x5101, 0x10, 0x0), new Node("key_speed_settings", 0x8309, 0x5102, 0xff, 30, 220),
-
-
-    };
-
-    private final static int[] INIT_CMDS = {0x5100};
-
-    private Preference[] mPreferences = new Preference[NODES.length];
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,8 +92,6 @@ public class DaTongSettingsRaiseFragment extends PreferenceFragmentCompat implem
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -124,15 +127,6 @@ public class DaTongSettingsRaiseFragment extends PreferenceFragmentCompat implem
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -291,9 +285,6 @@ public class DaTongSettingsRaiseFragment extends PreferenceFragmentCompat implem
         }
 
     }
-
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
