@@ -216,7 +216,7 @@ public class XlmParser {
 
         Locale lc = Locale.getDefault();
         if (lc.getLanguage().equals("zh")) {
-            if (lc.getCountry().equals("TW") || lc.getCountry().equals("HK")) {
+            if (lc.getCountry().equals("TW") || lc.getCountry().equals("HK") || lc.getCountry().equals("CN")) {
                 for (int i = 0; i < mTranslations.size(); ++i) {
                     Translation cs = mTranslations.get(i);
                     if (key.equals(cs.mZH)) {
