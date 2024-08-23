@@ -6355,6 +6355,19 @@ information?"</string>
 
     <string name="main_lane_assist">Active Lane Keeping Assist</string>
 
+
+    <string name="avm_quitting_speed">AVM Quitting Speed</string>
+    <string name="power_down_auto_unlock">Power Down Auto Unlock</string>
+    <string name="driving_auto_lock">Driving Auto Lock</string>
+    <string name="approaching_lock">Approaching Lock</string>
+    <string name="backlight_level">Backlight Level</string>
+    <string name="over_speed_alarm">Over Speed Alarm</string>
+    <string name="fatigue_driving">Fatigue Driving</string>
+    <string name="security_tips">Security Tips</string>
+    <string name="mobile_forgotten_tips">Mobile Forgotten Tips</string>
+    <string name="clock_format">Clock Format</string>
+    <string name="theme">Theme</string>
+
     <string name="air_condition_simple_508">2012 Peugeot 508 high match</string>
 
 </resources>

@@ -5641,4 +5641,16 @@
     <string name="info_key">原车INFO按键</string>
 
     <string name="main_lane_assist">主动车道保持辅助系统</string>
+
+    <string name="avm_quitting_speed">AVM退出速度</string>
+    <string name="power_down_auto_unlock">关机自动解锁</string>
+    <string name="driving_auto_lock">自动驾驶锁</string>
+    <string name="approaching_lock">接近锁</string>
+    <string name="backlight_level">背光强度</string>
+    <string name="over_speed_alarm">超速报警</string>
+    <string name="fatigue_driving">疲劳驾驶</string>
+    <string name="security_tips">安全提示</string>
+    <string name="mobile_forgotten_tips">手机遗忘提示</string>
+    <string name="clock_format">时间格式</string>
+    <string name="theme">主题</string>
 </resources>
