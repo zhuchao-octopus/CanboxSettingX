@@ -51,9 +51,7 @@ import java.util.Set;
  * This activity plays a video from a specified URI.
  */
 public class CanboxSettings extends PreferenceActivity implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener, OnClickListener {
-
     private static final String TAG = "CanboxSettings";
-
     private static final String KEY_MANUFACTURER = "canbox_manufacturer";
     private static final String KEY_CANBOX = "canbox_setting";
     private static final String KEY_CANBOX_KEY = "canbox_key_mode";
@@ -70,11 +68,49 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
     private final int M_VALUE_ARRARY_INDX_HIWORLD = 8;
     private final int M_VALUE_ARRARY_INDX_OD = 9;
     private final int M_VALUE_ARRARY_INDX_COUNT = M_VALUE_ARRARY_INDX_OD + 1;
+
+    private ListPreference mCanboxManufacturerPreference;
+    private ListPreference mCanboxSettingPreference;
+    private ListPreference mCanboxKeyPreference;
+    private ListPreference mCanboxEQPreference;
+    private String[] mManufacturerPreferenceValue;
+    private PreferenceScreen mEQVolume;
+    private String mWillSetCan = null;
+    private String mCanboxValue;
+    private String mCanboxType;
+    private String mPreCanboxType;
+    private String mKeyType = null;
+    private String mChangeKey = null;
+    private String mFrontDoor = null;
+    private String mBackDoor = null;
+    private String mCarType = null;
+
+    MultiSelectListPreference mOtherSettings;
+    MultiSelectListPreference mKeyChangeSettings;
+    ListPreference mLPCarType2;
+    ListPreference mLPCarType;
+    TextView mTextVolume;
+    SeekBar mLevel;
+    CanboxSettings mThis;
+    int max = 0;
+    int volume = -1;
+    // private String getKeyType(String s) {
+    // String ss[] = s.split(",");
+    // if (ss.length > 1) {
+    // return ss[1];
+    // }
+    // return null;
+    // }
+    private String mCarType2 = null;
+    private String mCarEQ = null;
+    private String mCarOtherSettings = null;
     /**
      * canbox_all & mCanboxValueXXX must correspond to the array in arrarys.xml
      * canbox_select_xxx
      */
-    private final String[] canbox_all = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
+    private final String[] canbox_all = {//
+            MachineConfig.VALUE_CANBOX_NONE,//
+            MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
             MachineConfig.VALUE_CANBOX_TOYOTA, // 2
             MachineConfig.VALUE_CANBOX_MAZDA, // 3
             MachineConfig.VALUE_CANBOX_BESTURN_X80, // 4
@@ -135,10 +171,26 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_RX330_HAOZHENG, // 41
             MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
-            MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, MachineConfig.VALUE_CANBOX_JEEP_XINBAS, MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, MachineConfig.VALUE_CANBOX_HY_RAISE, MachineConfig.VALUE_CANBOX_ALPHA_BAGOO, MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, MachineConfig.VALUE_CANBOX_GM_OD, MachineConfig.VALUE_CANBOX_MAZDA_RAISE, MachineConfig.VALUE_CANBOX_GM_RAISE,
+            MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, //
+            MachineConfig.VALUE_CANBOX_JEEP_XINBAS, //
+            MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, //
+            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, //
+            MachineConfig.VALUE_CANBOX_HY_RAISE, //
+            MachineConfig.VALUE_CANBOX_ALPHA_BAGOO, //
+            MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, //
+            MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, //
+            MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, //
+            MachineConfig.VALUE_CANBOX_GM_OD, //
+            MachineConfig.VALUE_CANBOX_MAZDA_RAISE, //
+            MachineConfig.VALUE_CANBOX_GM_RAISE,//
             //MachineConfig.VALUE_CANBOX_AUDI_RAISE,
-            MachineConfig.VALUE_CANBOX_ZHONGXING_OD, MachineConfig.VALUE_CANBOX_SLIMKEY2};
-    private final String[] mCanboxValueSimple = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
+            MachineConfig.VALUE_CANBOX_ZHONGXING_OD,//
+            MachineConfig.VALUE_CANBOX_SLIMKEY2//
+    };
+
+    private final String[] mCanboxValueSimple = {//
+            MachineConfig.VALUE_CANBOX_NONE,//
+            MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
             MachineConfig.VALUE_CANBOX_TOYOTA, // 2
             MachineConfig.VALUE_CANBOX_TEANA_2013, // 5
             MachineConfig.VALUE_CANBOX_OPEL, // 6
@@ -168,7 +220,10 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE};
-    private final String[] mCanboxValueRaise = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_MAZDA, // 3
+
+    private final String[] mCanboxValueRaise = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_MAZDA, // 3
             MachineConfig.VALUE_CANBOX_BESTURN_X80, // 4
             MachineConfig.VALUE_CANBOX_VW, // 7
             MachineConfig.VALUE_CANBOX_VW_GOLF_SIMPLE, // 13
@@ -181,72 +236,62 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_FORD_RAISE, // 51
             MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
             MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, // 41
-            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, MachineConfig.VALUE_CANBOX_HY_RAISE, MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, MachineConfig.VALUE_CANBOX_MAZDA_RAISE, MachineConfig.VALUE_CANBOX_SLIMKEY2,//75
-            MachineConfig.VALUE_CANBOX_GM_RAISE,};
-    private final String[] mCanboxValuebagoo = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_PSA_BAGOO, // 10
+            MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE,//
+            MachineConfig.VALUE_CANBOX_HY_RAISE, //
+            MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, //
+            MachineConfig.VALUE_CANBOX_MAZDA_RAISE, //
+            MachineConfig.VALUE_CANBOX_SLIMKEY2,//75
+            MachineConfig.VALUE_CANBOX_GM_RAISE,//
+    };
+
+    private final String[] mCanboxValuebagoo = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_PSA_BAGOO, // 10
             MachineConfig.VALUE_CANBOX_BENZ_BAGOO, // 20
             MachineConfig.VALUE_CANBOX_SUBARU_ODS, // 42
             MachineConfig.VALUE_CANBOX_ALPHA_BAGOO,};
-    private final String[] mCanboxValueUnion = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION, // 16
+    private final String[] mCanboxValueUnion = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_BMW_E90X1_UNION, // 16
             MachineConfig.VALUE_CANBOX_FIAT, // 17
             MachineConfig.VALUE_CANBOX_BENZ_B200_UNION, // 23
             MachineConfig.VALUE_CANBOX_PORSCHE_UNION, // 32
             MachineConfig.VALUE_CANBOX_BRAVO_UNION, // 34
             MachineConfig.VALUE_CANBOX_PEUGEOT307_UNION, // 41
     };
-    private final String[] mCanboxValueCYT = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_ACCORD7_CHANGYUANTONG, // 26
+
+    private final String[] mCanboxValueCYT = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_ACCORD7_CHANGYUANTONG, // 26
     };
-    private final String[] mCanboxValueOD = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_CHERY_OD, // 41
+
+    private final String[] mCanboxValueOD = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_CHERY_OD, // 41
             MachineConfig.VALUE_CANBOX_RX330_HAOZHENG, // 41
             MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, // 41
-            MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, MachineConfig.VALUE_CANBOX_GM_OD, MachineConfig.VALUE_CANBOX_ZHONGXING_OD};
-    private final String[] mCanboxValueBinarytek = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK, // 27
+            MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, MachineConfig.VALUE_CANBOX_GM_OD, //
+            MachineConfig.VALUE_CANBOX_ZHONGXING_OD};
+
+    private final String[] mCanboxValueBinarytek = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_TOYOTA_BINARYTEK, // 27
             MachineConfig.VALUE_CANBOX_MAZDA3_BINARYTEK, // 33
             MachineConfig.VALUE_CANBOX_ACCORD_BINARYTEK, // 40
             MachineConfig.VALUE_CANBOX_NISSAN_BINARYTEK, // 42
             MachineConfig.VALUE_CANBOX_OBD_BINARUI, // 50
     };
-    private final String[] mCanboxValueXinbas = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_MAZDA_XINBAS, // 28
+
+    private final String[] mCanboxValueXinbas = {//
+            MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_MAZDA_XINBAS, // 28
             MachineConfig.VALUE_CANBOX_HAFER_H2, // 51
             MachineConfig.VALUE_CANBOX_JEEP_XINBAS,};
-    private final String[] mCanboxValueHiworld = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD, // 35
+    private final String[] mCanboxValueHiworld = {MachineConfig.VALUE_CANBOX_NONE, //
+            MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD, // 35
             MachineConfig.VALUE_CANBOX_MINI_HIWORD // 43
     };
-    MultiSelectListPreference mOtherSettings;
-    MultiSelectListPreference mKeyChangeSettings;
-    ListPreference mLPCarType2;
-    ListPreference mLPCarType;
-    TextView mTextVolume;
-    SeekBar mLevel;
-    CanboxSettings mThis;
-    int max = 0;
-    int volume = -1;
-    private ListPreference mCanboxManufacturerPreference;
-    private ListPreference mCanboxSettingPreference;
-    private ListPreference mCanboxKeyPreference;
-    private ListPreference mCanboxEQPreference;
-    private String[] mManufacturerPreferenceValue;
-    private PreferenceScreen mEQVolume;
-    private String mWillSetCan = null;
-    private String mCanboxValue;
-    private String mCanboxType;
-    private String mPreCanboxType;
-    private String mKeyType = null;
-    private String mChangeKey = null;
-    private String mFrontDoor = null;
-    private String mBackDoor = null;
-    private String mCarType = null;
 
-    // private String getKeyType(String s) {
-    // String ss[] = s.split(",");
-    // if (ss.length > 1) {
-    // return ss[1];
-    // }
-    // return null;
-    // }
-    private String mCarType2 = null;
-    private String mCarEQ = null;
-    private String mCarOtherSettings = null;
 
     private static void updateHideAppCanboxVersion1(String value, String msCarType) {
 

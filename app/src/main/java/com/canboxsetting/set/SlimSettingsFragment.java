@@ -19,11 +19,11 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.SystemProperties;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.SettingProperties;
+import com.common.utils.SystemProperties;
+import com.common.utils.Util;
 import com.zhuchao.android.fbase.ByteUtils;
 import com.zhuchao.android.fbase.MMLog;
 
@@ -133,7 +133,7 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
     }
 
     private void updateShowWarning() {
-        int show = Settings.System.getInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, 0);
+        int show = Settings.System.getInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, 0);
 
         if (show != 0) {
 //            ((SwitchPreference) findPreference("off_Warning_info")).setChecked(true);
@@ -144,9 +144,9 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
     private void setWarningSetting(boolean b) {
         int i = b ? 1 : 0;
 
-        Settings.System.putInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, i);
+        Settings.System.putInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, i);
         Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG);
+        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG);
         this.getActivity().sendBroadcast(it);
     }
 
