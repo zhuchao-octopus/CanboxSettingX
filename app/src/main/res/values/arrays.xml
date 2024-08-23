@@ -79,6 +79,7 @@
         <item>"73:GM(Raise)"</item>
         <item>"74:Audi(Raise)"</item>
         <item>"75:CF006(SLIMKEY)"</item>
+        <item>"76:DF08(Hiworld)"</item>
     </string-array>
 
     <string-array name="canbox_manufacturer_values" translatable="false">
@@ -208,6 +209,7 @@
         <item>"0:NONE"</item>
         <item>"35:Touarg(Hiworld)"</item>
         <item>"43:Mini(Hiworld)"</item>
+        <item>"76:DF08(Hiworld)"</item>
     </string-array>
     <string-array name="enwarning_control">
         <item>Closed</item>

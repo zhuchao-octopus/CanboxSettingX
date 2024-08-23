@@ -145,7 +145,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
             MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, MachineConfig.VALUE_CANBOX_JEEP_XINBAS, MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, MachineConfig.VALUE_CANBOX_FIAT_EGEA_RAISE, MachineConfig.VALUE_CANBOX_HY_RAISE, MachineConfig.VALUE_CANBOX_ALPHA_BAGOO, MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, MachineConfig.VALUE_CANBOX_GM_OD, MachineConfig.VALUE_CANBOX_MAZDA_RAISE, MachineConfig.VALUE_CANBOX_GM_RAISE,
             //MachineConfig.VALUE_CANBOX_AUDI_RAISE,
-            MachineConfig.VALUE_CANBOX_ZHONGXING_OD, MachineConfig.VALUE_CANBOX_SLIMKEY2};
+            MachineConfig.VALUE_CANBOX_ZHONGXING_OD, MachineConfig.VALUE_CANBOX_SLIMKEY2,"hiworld_df08"};
 
     private final String[] mCanboxValueSimple = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_FORD_SIMPLE, // 1
             MachineConfig.VALUE_CANBOX_TOYOTA, // 2
@@ -222,7 +222,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_HAFER_H2, // 51
             MachineConfig.VALUE_CANBOX_JEEP_XINBAS,};
     private final String[] mCanboxValueHiworld = {MachineConfig.VALUE_CANBOX_NONE, MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD, // 35
-            MachineConfig.VALUE_CANBOX_MINI_HIWORD // 43
+            MachineConfig.VALUE_CANBOX_MINI_HIWORD, "hiworld_df08"
     };
 
     private String getManufacturer(String canboxType) {
