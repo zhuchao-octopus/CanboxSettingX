@@ -16,14 +16,6 @@
 
 package com.canboxsetting.ac;
 
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -38,19 +30,30 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
+
+import java.util.Locale;
+
 /**
  * This activity plays a video from a specified URI.
  */
 public class JeepAirControlXinbasFragment extends MyFragment {
     private static final String TAG = "JeepAirControlXinbasFragment";
+    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 5}, {R.id.air_title_ce_rear, 6}, {R.id.air_title_ce_ac_1, 2}, {R.id.air_title_ce_inner_loop, 7}, {R.id.air_title_ce_auto_large, 4}, {R.id.air_title_ce_ac_max, 0x14}, {R.id.wheel, 0x0118}, {R.id.con_left_temp_up, 0xe}, {R.id.con_left_temp_down, 0xf}, {R.id.con_right_temp_up, 0x10}, {R.id.con_right_temp_down, 0x11}, {R.id.canbus21_mode1, 0x8}, {R.id.canbus21_mode3, 0xb}, {R.id.canbus21_mode2, 0x9}, {R.id.canbus21_mode4, 0xa}, {R.id.con_seathotleft, 0x12}, {R.id.con_seathotright, 0x13}, {R.id.air_title_sync, 3}, {R.id.icon_power, 1}, {R.id.wind_add, 0xc}, {R.id.wind_minus, 0xd},
+
+    };
+    private View mMainView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,10 +72,6 @@ public class JeepAirControlXinbasFragment extends MyFragment {
         byte[] buf = new byte[]{(byte) 0xff, 0x2, (byte) d0, 0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private final static int[][] CMD_ID = new int[][]{{R.id.air_title_ce_max, 5}, {R.id.air_title_ce_rear, 6}, {R.id.air_title_ce_ac_1, 2}, {R.id.air_title_ce_inner_loop, 7}, {R.id.air_title_ce_auto_large, 4}, {R.id.air_title_ce_ac_max, 0x14}, {R.id.wheel, 0x0118}, {R.id.con_left_temp_up, 0xe}, {R.id.con_left_temp_down, 0xf}, {R.id.con_right_temp_up, 0x10}, {R.id.con_right_temp_down, 0x11}, {R.id.canbus21_mode1, 0x8}, {R.id.canbus21_mode3, 0xb}, {R.id.canbus21_mode2, 0x9}, {R.id.canbus21_mode4, 0xa}, {R.id.con_seathotleft, 0x12}, {R.id.con_seathotright, 0x13}, {R.id.air_title_sync, 3}, {R.id.icon_power, 1}, {R.id.wind_add, 0xc}, {R.id.wind_minus, 0xd},
-
-    };
 
     private void sendCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -208,8 +207,8 @@ public class JeepAirControlXinbasFragment extends MyFragment {
 
 				/* 参考欣朴大众协议v2.61.002,考虑兼容性，不完全一致
 				 * data[0]
-				 * 
-				 *  
+				 *
+				 *
 			Bit7: 空调开关指示
 			Bit6: A/C指示
 			Bit5: 内外循环指示
@@ -221,15 +220,15 @@ public class JeepAirControlXinbasFragment extends MyFragment {
 
 			data[1] 0:OFF 1:ON
 
-			Bit7	向上送风指示	
-			Bit6	水平送风指示	
-			Bit5	向下送风指示	
+			Bit7	向上送风指示
+			Bit6	水平送风指示
+			Bit5	向下送风指示
 			Bit4	空调显示请求
 			Bit3~Bit0
 			风速	0x0~07	风速等级 指示 0-7级
 
 			data[2] 左边设定温度
-			          
+
 			0x00: LO
 			0xff: HI
 			0xfa: hide
@@ -271,10 +270,10 @@ public class JeepAirControlXinbasFragment extends MyFragment {
 			Bit3 AUTO REAR SWITCH
 			Bit4 AUTO 超大风灯指示
 			Bit5 前窗除雾 （有些车有前窗除雾 MAX FRONT灯指示，又另外有一个前窗除雾）
-			Bit6 0：手动空调, 1:自动空调 
+			Bit6 0：手动空调, 1:自动空调
 			Bit7 sync 指示
 
-			data[8] 
+			data[8]
 			Bit7 rest 指示
 			Bit6 temp show level 指示
 
@@ -347,8 +346,6 @@ public class JeepAirControlXinbasFragment extends MyFragment {
 
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

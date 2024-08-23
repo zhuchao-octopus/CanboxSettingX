@@ -6,7 +6,6 @@ import android.media.CameraProfile;
 
 import com.rockchip.car.recorder.camera2.CameraHolder;
 import com.rockchip.car.recorder.utils.SLog;
-import com.rockchip.car.recorder.utils.SystemProperties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +18,8 @@ import java.util.Map;
 public class ParametersSet {
 
     private static final String TAG = "CAM_ParametersSet";
-
+    public static int mMirror = 0;
+    public static int mChannel = 1;
     private static Map<Integer, Integer> mQualitiesToIndex = new HashMap<Integer, Integer>();
     private static Map<Integer, Integer> mIndexToQualities = new HashMap<Integer, Integer>();
     private static int mMin;
@@ -217,10 +217,6 @@ public class ParametersSet {
         }
         return true;
     }
-
-    public static int mMirror = 0;
-    public static int mChannel = 1;
-
 
     private static String getSuffix(int id) {
         switch (id) {

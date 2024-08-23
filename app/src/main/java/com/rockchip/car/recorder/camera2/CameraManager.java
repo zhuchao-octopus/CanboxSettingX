@@ -43,6 +43,19 @@ import android.view.SurfaceHolder;
  */
 public interface CameraManager {
     /**
+     * Opens the camera_surfaceview of the specified ID synchronously.
+     *
+     * @param handler  The {@link Handler} in which the callback
+     *                 was handled.
+     * @param callback The callback when any error happens.
+     * @param cameraId The camera_surfaceview ID to open.
+     * @return An instance of {@link CameraProxy} on success. null on failure.
+     */
+    public CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback);
+
+    public <T> CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback, boolean preview, boolean record, T t);
+
+    /**
      * An interface which wraps
      * {@link Camera.AutoFocusCallback}.
      */
@@ -66,6 +79,7 @@ public interface CameraManager {
         public void onShutter(CameraProxy camera);
     }
 
+
     /**
      * An interface which wraps
      * {@link Camera.PictureCallback}.
@@ -74,6 +88,7 @@ public interface CameraManager {
         public void onPictureTaken(byte[] data, CameraProxy camera);
     }
 
+
     /**
      * An interface which wraps
      * {@link Camera.PreviewCallback}.
@@ -81,7 +96,6 @@ public interface CameraManager {
     public interface CameraPreviewDataCallback {
         public void onPreviewFrame(byte[] data, CameraProxy camera);
     }
-
 
     /**
      * wo jiad
@@ -93,7 +107,6 @@ public interface CameraManager {
 
         public void onFailure(int cameraId, int reason);
     }
-
 
     /**
      * An interface which wraps
@@ -132,19 +145,6 @@ public interface CameraManager {
          */
         public void onFailure(int cameraId, int reason);
     }
-
-    /**
-     * Opens the camera_surfaceview of the specified ID synchronously.
-     *
-     * @param handler  The {@link Handler} in which the callback
-     *                 was handled.
-     * @param callback The callback when any error happens.
-     * @param cameraId The camera_surfaceview ID to open.
-     * @return An instance of {@link CameraProxy} on success. null on failure.
-     */
-    public CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback);
-
-    public <T> CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback, boolean preview, boolean record, T t);
 
 
     /**
@@ -331,19 +331,19 @@ public interface CameraManager {
         public void setErrorCallback(ErrorCallback cb);
 
         /**
-         * Sets the camera_surfaceview parameters.
-         *
-         * @param params The camera_surfaceview parameters to use.
-         */
-        public void setParameters(Parameters params);
-
-        /**
          * Gets the current camera_surfaceview parameters synchronously. This method is
          * synchronous since the caller has to wait for the camera_surfaceview to return
          * the parameters. If the parameters are already cached, it returns
          * immediately.
          */
         public Parameters getParameters();
+
+        /**
+         * Sets the camera_surfaceview parameters.
+         *
+         * @param params The camera_surfaceview parameters to use.
+         */
+        public void setParameters(Parameters params);
 
         /**
          * Forces {@code CameraProxy} to update the cached version of the camera_surfaceview

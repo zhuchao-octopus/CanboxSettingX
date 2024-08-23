@@ -16,69 +16,77 @@
 
 package com.canboxsetting.anstar;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.array;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.adapter.MyListViewAdapterCD;
-import com.common.adapter.MyListViewAdapterRadio;
-import com.common.util.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.AuxInUI;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class GMOnStarFragment extends MyFragment {
 
-    private View mMainView;
-
+    private static final int[] BUTTON_ON_CLICK_DIAL = new int[]{R.id.number_1, R.id.number_2, R.id.number_3, R.id.number_4, R.id.number_5, R.id.number_6, R.id.number_7, R.id.number_8, R.id.number_9, R.id.number_0, R.id.number_star, R.id.number_pound};
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.del_onstar, R.id.dial_dialout, R.id.dial_handup,};
     public TextView mDigit;
+    private View mMainView;
+    private int mStatus = 0;
+    private View.OnClickListener mOnClickDial = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+
+            if (mStatus == 4) {
+                byte b = 0;
+                String s = ((TextView) v).getText().toString();
+                if (s.equals("*")) {
+                    b = 0xA;
+                } else if (s.equals("*")) {
+                    b = 0xB;
+                } else {
+                    b = (byte) (s.charAt(0) - '0');
+                }
+                sendCanboxInfo(0x85, 0x80 | b);
+            }
+
+            mDigit.setText("" + mDigit.getText() + ((TextView) v).getText());
+
+        }
+    };
+    private View.OnClickListener mOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            int id = v.getId();
+            if (id == R.id.del_onstar) {
+                String str = mDigit.getText().toString();
+                if (str.length() > 0) {
+                    mDigit.setText(str.substring(0, str.length() - 1));
+                }
+            } else if (id == R.id.dial_dialout) {
+                onDail();
+            } else if (id == R.id.dial_handup) {
+                sendCanboxInfo(0x85, 0x3);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private AuxInUI mAuxInUI;
+    private int mSource = MyCmd.SOURCE_NONE;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -108,47 +116,6 @@ public class GMOnStarFragment extends MyFragment {
         });
         return mMainView;
     }
-
-    private View.OnClickListener mOnClickDial = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-
-            if (mStatus == 4) {
-                byte b = 0;
-                String s = ((TextView) v).getText().toString();
-                if (s.equals("*")) {
-                    b = 0xA;
-                } else if (s.equals("*")) {
-                    b = 0xB;
-                } else {
-                    b = (byte) (s.charAt(0) - '0');
-                }
-                sendCanboxInfo(0x85, 0x80 | b);
-            }
-
-            mDigit.setText("" + mDigit.getText() + ((TextView) v).getText());
-
-        }
-    };
-
-    private View.OnClickListener mOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            int id = v.getId();
-            if (id == R.id.del_onstar) {
-                String str = mDigit.getText().toString();
-                if (str.length() > 0) {
-                    mDigit.setText(str.substring(0, str.length() - 1));
-                }
-            } else if (id == R.id.dial_dialout) {
-                onDail();
-            } else if (id == R.id.dial_handup) {
-                sendCanboxInfo(0x85, 0x3);
-            }
-        }
-    };
 
     private void onDail() {
         if (mStatus == 0) {
@@ -195,11 +162,6 @@ public class GMOnStarFragment extends MyFragment {
         byte[] buf = new byte[]{(byte) d0, 0x01, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private static final int[] BUTTON_ON_CLICK_DIAL = new int[]{R.id.number_1, R.id.number_2, R.id.number_3, R.id.number_4, R.id.number_5, R.id.number_6, R.id.number_7, R.id.number_8, R.id.number_9, R.id.number_0, R.id.number_star, R.id.number_pound};
-    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.del_onstar, R.id.dial_dialout, R.id.dial_handup,};
-
-    private int mStatus = 0;
 
     private void updateStatus(int status) {
         if (mStatus != status) {
@@ -310,8 +272,6 @@ public class GMOnStarFragment extends MyFragment {
         super.onResume();
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             getActivity().unregisterReceiver(mReceiver);
@@ -360,10 +320,6 @@ public class GMOnStarFragment extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private AuxInUI mAuxInUI;
-
-    private int mSource = MyCmd.SOURCE_NONE;
 
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);

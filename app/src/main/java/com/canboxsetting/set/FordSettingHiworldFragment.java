@@ -8,30 +8,24 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 import com.zhuchao.android.fbase.MMLog;
 
 
 public class FordSettingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "FordSettingHiworldFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
             ////车辆设置
             new Node("trip_settings", 0x6C05, 0x67010000, 0x0400, 0, Node.TYPE_BUFF1),
@@ -96,10 +90,25 @@ public class FordSettingHiworldFragment extends PreferenceFragmentCompat impleme
             //			Node.TYPE_BUFF1),
             //原车视频状态设置
             new Node("video_view_switching", 0xF208, 0xE8010000, 0x0800, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {0x61, 0x67, 0xa6, 0xe8, 0x8a};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+
+                byte[] buf = new byte[]{0x03, (byte) 0x6a, 0x5, 1, (byte) (msg.what & 0xff)};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,8 +131,6 @@ public class FordSettingHiworldFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -153,17 +160,6 @@ public class FordSettingHiworldFragment extends PreferenceFragmentCompat impleme
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-
-                byte[] buf = new byte[]{0x03, (byte) 0x6a, 0x5, 1, (byte) (msg.what & 0xff)};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -434,8 +430,6 @@ public class FordSettingHiworldFragment extends PreferenceFragmentCompat impleme
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

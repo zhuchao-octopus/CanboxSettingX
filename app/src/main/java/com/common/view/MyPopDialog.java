@@ -22,6 +22,11 @@ public class MyPopDialog extends Dialog {
 
     private String[] mListString;
     private int[] mListTextID;
+    private Handler mHandler;
+
+    public MyPopDialog(Context context) {
+        super(context);
+    }
 
     public void updateList(String[] ss) {
         mListString = ss;
@@ -36,12 +41,6 @@ public class MyPopDialog extends Dialog {
 
         }
     }
-
-    public MyPopDialog(Context context) {
-        super(context);
-    }
-
-    private Handler mHandler;
 
     public void setCallbackHandler(Handler h) {
         mHandler = h;

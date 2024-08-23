@@ -7,32 +7,25 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
-import android.util.Log;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 
 
 public class NissanSettingHiworldGMPFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "NissanSettingHiworldGMPFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
             ////空调系统设置
             new Node("volumeset", 0x3A01, 0x35010000, 0xC00000, 0, Node.TYPE_BUFF1),
@@ -157,10 +150,23 @@ public class NissanSettingHiworldGMPFragment extends PreferenceFragmentCompat im
             new Node("sport_model_engine_status_setting", 0x8A01, 0x85010000, 0x8000, 0, Node.TYPE_BUFF1),
 
             new Node("sport_model_backlight_setting", 0x8A02, 0x85010000, 0x4000, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {0x35, 0x47, 0x55, 0x65, 0x66, 0x75, 0x85};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x60, 5, 1, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -183,8 +189,6 @@ public class NissanSettingHiworldGMPFragment extends PreferenceFragmentCompat im
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -214,15 +218,6 @@ public class NissanSettingHiworldGMPFragment extends PreferenceFragmentCompat im
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x60, 5, 1, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -479,8 +474,6 @@ public class NissanSettingHiworldGMPFragment extends PreferenceFragmentCompat im
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

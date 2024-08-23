@@ -16,67 +16,29 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.MyFragment.MsgInterface;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.PixelFormat;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment.MsgInterface;
+import com.canboxsetting.R;
+import com.common.utils.GlobalDef;
+
+import java.util.Locale;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class CommonUpdateView extends Handler {
-    private static final String TAG = "CommonUpdateView";
-
     public static final int MESSAGE_AIR_CONDITION = 0x01;
+    private static final String TAG = "CommonUpdateView";
     // public static final int MESSAGE_AIR_OUTDOOR_TEMP = 0x02;
     // public static final int MESSAGE_AIR_HIDE = 0x03;
-
-    private byte[] mAirData = new byte[15]; // 同步CarService
+    private final static int TYPE_AIRCONDITON_CHANGE_TEMP = 2;
     /*
      * 参考欣朴大众协议v2.61.002,考虑兼容性，不完全一致 data[0]
      *
@@ -140,11 +102,28 @@ public class CommonUpdateView extends Handler {
      * 01~11:1~3级温度
      */
     // private Toast mToast = null;
-
-    private final static int TYPE_AIRCONDITON_CHANGE_TEMP = 2;
     private final static int TYPE_AIRCONDITON_SINGLE_TEMP = 2;
+    View mMainView = null;
+    private byte[] mAirData = new byte[15]; // 同步CarService
     private int mAirConditionType = 0;
     private boolean mRudder = false;
+    private MsgInterface mMsgInterface;
+    private int outDoorTemp = 0xff;
+    private int mSeatHeat = 0;
+    private int mSeatCold = 0;
+    private boolean mSeatColdExit = false;
+
+    public CommonUpdateView(View view) {
+
+        mMainView = view;
+
+    }
+
+    public CommonUpdateView(View view, MsgInterface i) {
+
+        mMainView = view;
+        mMsgInterface = i;
+    }
 
     public void postChanged(int type, Object obj) {
         // if (hasMessages(type))
@@ -172,8 +151,6 @@ public class CommonUpdateView extends Handler {
         // }
         return false;
     }
-
-    private MsgInterface mMsgInterface;
 
     public void setCallback(MsgInterface i) {
         mMsgInterface = i;
@@ -277,20 +254,6 @@ public class CommonUpdateView extends Handler {
                 }
                 break;
         }
-    }
-
-    View mMainView = null;
-
-    public CommonUpdateView(View view) {
-
-        mMainView = view;
-
-    }
-
-    public CommonUpdateView(View view, MsgInterface i) {
-
-        mMainView = view;
-        mMsgInterface = i;
     }
 
     void setAirCondtionTitle(View view) {
@@ -629,8 +592,6 @@ public class CommonUpdateView extends Handler {
 
     }
 
-    private int outDoorTemp = 0xff;
-
     void setAirCondtionTemperature(View view) {
         int leftTemp = (int) (mAirData[2] & 0xff);
         int rightTemp = (int) (mAirData[3] & 0xff);
@@ -800,6 +761,60 @@ public class CommonUpdateView extends Handler {
         }
     }
 
+    // private int getLeftHeat(int i){
+    // switch(i){
+    // case 1:
+    // return R.id.seat_heat_left_1;
+    // case 2:
+    // return R.id.seat_heat_left_2;
+    // case 3:
+    // return R.id.seat_heat_left_3;
+    // case 4:
+    // return R.id.seat_heat_left_4;
+    // }
+    // return 0;
+    // }
+    // private int getRightHeat(int i){
+    // switch(i){
+    // case 1:
+    // return R.id.seat_heat_right_1;
+    // case 2:
+    // return R.id.seat_heat_right_2;
+    // case 3:
+    // return R.id.seat_heat_right_3;
+    // case 4:
+    // return R.id.seat_heat_right_4;
+    // }
+    // return 0;
+    // }
+    //
+    // private int getLeftCold(int i){
+    // switch(i){
+    // case 1:
+    // return R.id.seat_cold_left_1;
+    // case 2:
+    // return R.id.seat_cold_left_2;
+    // case 3:
+    // return R.id.seat_cold_left_3;
+    // case 4:
+    // return R.id.seat_cold_left_4;
+    // }
+    // return 0;
+    // }
+    // private int getRightCold(int i){
+    // switch(i){
+    // case 1:
+    // return R.id.seat_cold_right_1;
+    // case 2:
+    // return R.id.seat_cold_right_2;
+    // case 3:
+    // return R.id.seat_cold_right_3;
+    // case 4:
+    // return R.id.seat_cold_right_4;
+    // }
+    // return 0;
+    // }
+
     private void setSeatheat(int id, int level) {
 
         ImageButton v = (ImageButton) mMainView.findViewById(id);
@@ -922,64 +937,6 @@ public class CommonUpdateView extends Handler {
             v.setImageResource(drawable);
         }
     }
-
-    // private int getLeftHeat(int i){
-    // switch(i){
-    // case 1:
-    // return R.id.seat_heat_left_1;
-    // case 2:
-    // return R.id.seat_heat_left_2;
-    // case 3:
-    // return R.id.seat_heat_left_3;
-    // case 4:
-    // return R.id.seat_heat_left_4;
-    // }
-    // return 0;
-    // }
-    // private int getRightHeat(int i){
-    // switch(i){
-    // case 1:
-    // return R.id.seat_heat_right_1;
-    // case 2:
-    // return R.id.seat_heat_right_2;
-    // case 3:
-    // return R.id.seat_heat_right_3;
-    // case 4:
-    // return R.id.seat_heat_right_4;
-    // }
-    // return 0;
-    // }
-    //
-    // private int getLeftCold(int i){
-    // switch(i){
-    // case 1:
-    // return R.id.seat_cold_left_1;
-    // case 2:
-    // return R.id.seat_cold_left_2;
-    // case 3:
-    // return R.id.seat_cold_left_3;
-    // case 4:
-    // return R.id.seat_cold_left_4;
-    // }
-    // return 0;
-    // }
-    // private int getRightCold(int i){
-    // switch(i){
-    // case 1:
-    // return R.id.seat_cold_right_1;
-    // case 2:
-    // return R.id.seat_cold_right_2;
-    // case 3:
-    // return R.id.seat_cold_right_3;
-    // case 4:
-    // return R.id.seat_cold_right_4;
-    // }
-    // return 0;
-    // }
-
-    private int mSeatHeat = 0;
-    private int mSeatCold = 0;
-    private boolean mSeatColdExit = false;
 
     void setAirCondtionAction(View view) {
 

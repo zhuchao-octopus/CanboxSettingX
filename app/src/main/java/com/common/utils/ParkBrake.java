@@ -2,14 +2,15 @@ package com.common.utils;
 
 import android.util.Log;
 
-import com.car.ui.GlobalDef;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class ParkBrake {
+
+    public static boolean checkCamera0IfFacing = false;
+    public static int dvrExist = 0;
 
     public static String readLine(String path) {
 
@@ -48,10 +49,6 @@ public class ParkBrake {
         }
 
     }
-
-    public static boolean checkCamera0IfFacing = false;
-
-    public static int dvrExist = 0;
 
     public static void saveCameraStatasIfSleep() {
         Log.d("ParkBrake", "saveCameraStatas");

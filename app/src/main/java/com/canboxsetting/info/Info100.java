@@ -7,19 +7,17 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
 
 public class Info100 extends PreferenceFragmentCompat {
     private static final String TAG = "HYSettingsRaiseFragment";
@@ -45,6 +43,16 @@ public class Info100 extends PreferenceFragmentCompat {
     };
 
     private final static int[] INIT_CMDS = {0x27};
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,8 +84,6 @@ public class Info100 extends PreferenceFragmentCompat {
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -105,15 +111,6 @@ public class Info100 extends PreferenceFragmentCompat {
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxInfo(int d0) {
         byte[] buf = new byte[]{(byte) 0x90, 2, (byte) d0, 0};
@@ -235,8 +232,6 @@ public class Info100 extends PreferenceFragmentCompat {
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

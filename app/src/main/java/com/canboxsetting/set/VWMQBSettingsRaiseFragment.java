@@ -1,6 +1,5 @@
 package com.canboxsetting.set;
 
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -25,11 +24,11 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 import java.util.Objects;
@@ -37,17 +36,6 @@ import java.util.Objects;
 
 public class VWMQBSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
-    private final Preference[] mPreferences = new Preference[NODES.length];
-    private int mWarningUnit = 0;
-    private String mWarningUnitText = "km/h";
-    private boolean mPaused = true;
-
     private static final Node[] NODES = {
 
             new Node("speed_adjustment", 0xa806, 0x51000000, 0x06ff, 0, Node.TYPE_BUFF1_INDEX),
@@ -137,14 +125,30 @@ public class VWMQBSettingsRaiseFragment extends PreferenceFragmentCompat impleme
             // new Node("individual_climate", 0xc6d3, 0x40a00000, 0x30000),
 
             new Node("individual_reset", 0xc6d4, 0x0, 0x0), new Node("reset_main_info", 0xc6d4, 0x0, 0x0),};
-
     //初始状态
     private final static int[] INIT_CMDS = {0x6310, 0x6311, 0x6320, 0x6321, 0x6322, 0x6300, 0x4000, 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4052, 0x4053, 0x4060, 0x4070, 0x4080, 0x4090, 0x40a0, 0x40b0, 0x40b1, 0x40b2, 0x40c0, 0x40c1, 0x51ff, 0x5080,
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
              */};
+    private final Preference[] mPreferences = new Preference[NODES.length];
+    private int mType = 0;
+    private int mWarningUnit = 0;
+    private String mWarningUnitText = "km/h";
+    private boolean mPaused = true;
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
+    public void setType(int t) {
+        mType = t;
+    }
 
     private void updateWarningAtUnit() {
         if (mWarningUnit == 0) {
@@ -155,7 +159,6 @@ public class VWMQBSettingsRaiseFragment extends PreferenceFragmentCompat impleme
             ((MyPreferenceSeekBar) findPreference("speed_warning_at_key")).updateSeekBar(20, 150, 5);
         }
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -239,15 +242,6 @@ public class VWMQBSettingsRaiseFragment extends PreferenceFragmentCompat impleme
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 80));
         }
     }
-
-    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -762,8 +756,6 @@ public class VWMQBSettingsRaiseFragment extends PreferenceFragmentCompat impleme
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

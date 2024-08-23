@@ -16,24 +16,6 @@
 
 package com.canboxsetting.cd;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.common.adapter.MyListViewAdapterCD;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -42,28 +24,53 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.adapter.MyListViewAdapterCD;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class MazdaSimpleCarCDFragment extends MyFragment {
     private static final String TAG = "JeepCarCDFragment";
+    private final static int[] INIT_CMDS = {0xf0};
+    private final static String CD_TITLE = "    CD   Track    ";
+    byte mPlayStatus = 0;
+    byte mRepeatMode = 0;
+    private View mMainView;
+    private int totalSong = -1;
+    private int curSong = 0;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                // sendCanboxInfo0x83((msg.what & 0xff00) >> 8, msg.what &
+                // 0xff);
+                sendCanboxInfo0xc7(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private int mSource = MyCmd.SOURCE_NONE;
+    private MyListViewAdapterCD mMyListViewAdapter;
+    private ListView mListViewCD;
+
+    // private final static int[] INIT_CMDS = { 0x0400, 0x0500, 0x0600, 0x0601,
+    // 0x0602, 0x0603 };
+    private int mTrackNum = 0;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -72,8 +79,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
         // setContentView(R.layout.jeep_car_cd_player);
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -94,9 +99,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
         byte[] buf = new byte[]{(byte) 0xc7, 0x5, (byte) d0, (byte) d1, (byte) d2, (byte) d3, (byte) d4};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    byte mPlayStatus = 0;
-    byte mRepeatMode = 0;
 
     public void onClick(View v) {
         int id = v.getId();
@@ -128,9 +130,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
             }
         }
     }
-
-    private int totalSong = -1;
-    private int curSong = 0;
 
     private void updateView(byte[] buf) {
 
@@ -231,11 +230,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
         super.onPause();
     }
 
-    // private final static int[] INIT_CMDS = { 0x0400, 0x0500, 0x0600, 0x0601,
-    // 0x0602, 0x0603 };
-
-    private final static int[] INIT_CMDS = {0xf0};
-
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
         for (int i = 0; i < INIT_CMDS.length; ++i) {
@@ -243,19 +237,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
         }
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                // sendCanboxInfo0x83((msg.what & 0xff00) >> 8, msg.what &
-                // 0xff);
-                sendCanboxInfo0xc7(msg.what & 0xff);
-            }
-        }
-    };
-
-    private boolean mPaused = true;
 
     @Override
     public void onDestroy() {
@@ -278,8 +259,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
         BroadcastUtil.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_AUX);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
@@ -328,13 +307,6 @@ public class MazdaSimpleCarCDFragment extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private int mSource = MyCmd.SOURCE_NONE;
-
-    private MyListViewAdapterCD mMyListViewAdapter;
-    private ListView mListViewCD;
-    private final static String CD_TITLE = "    CD   Track    ";
-    private int mTrackNum = 0;
 
     private void updateCDList() {
         if (mMyListViewAdapter != null) {

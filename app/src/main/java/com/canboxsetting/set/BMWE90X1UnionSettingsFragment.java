@@ -17,20 +17,19 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 
 public class BMWE90X1UnionSettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "BMWE90X1UnionSettingsFragment";
-    private boolean mPaused = true;
     private final static int[] INIT_CMDS = {};
-    private byte[] mBufUnit = new byte[4];
-    private final Preference[] mPreferences = new Preference[NODES.length];
-
     private static final Node[] NODES = {new Node("range", 0x8200, 0x0401), new Node("lang", 0x8201, 0x0401), new Node("age_full", 0x8202, 0x0401), new Node("temp", 0x8203, 0x0401), new Node("lef_hot", 0x8501, 0x0), new Node("rif_hot", 0x8502, 0x0), new Node("redar", 0x8503, 0x0), new Node("curtain", 0x8504, 0x0),};
-
+    private final Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private byte[] mBufUnit = new byte[4];
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,12 +72,6 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragmentCompat impl
 
     }
 
-    private void requestInitData() {
-        // for (int i = 0; i < INIT_CMDS.length; ++i) {
-        // mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], i * 100);
-        // }
-    }
-
     // private Handler mHandler = new Handler() {
     // @Override
     // public void handleMessage(Message msg) {
@@ -87,6 +80,12 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragmentCompat impl
     // }
     // }
     // };
+
+    private void requestInitData() {
+        // for (int i = 0; i < INIT_CMDS.length; ++i) {
+        // mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], i * 100);
+        // }
+    }
 
     private void sendCanboxData(int cmd, int value) {
         int index = ((cmd & 0xff) >> 0);
@@ -246,8 +245,6 @@ public class BMWE90X1UnionSettingsFragment extends PreferenceFragmentCompat impl
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

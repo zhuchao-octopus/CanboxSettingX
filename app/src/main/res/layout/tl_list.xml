@@ -14,9 +14,9 @@
         android:layout_alignWithParentIfMissing="true"
         android:layout_centerVertical="true"
         android:ellipsize="end"
+        android:gravity="left"
         android:paddingLeft="1.0px"
         android:singleLine="true"
-        android:gravity="left"
         android:textColor="#ffffffff"
         android:textSize="26.0px" />
 

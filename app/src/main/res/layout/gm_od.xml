@@ -41,9 +41,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0px"
-        android:layout_marginEnd="1.0dip"
         android:layout_marginStart="1.0dip"
         android:layout_marginTop="1.0dip"
+        android:layout_marginEnd="1.0dip"
         android:layout_weight="2"
         android:orientation="horizontal">
 
@@ -105,9 +105,9 @@
                 style="@style/AirButtonStyle1"
                 android:layout_width="fill_parent"
                 android:layout_height="0.0dip"
-                android:clickable="false"
                 android:layout_marginTop="1.0dip"
                 android:layout_weight="1.0"
+                android:clickable="false"
                 android:src="@drawable/canbus21_mode2" />
 
             <ImageButton

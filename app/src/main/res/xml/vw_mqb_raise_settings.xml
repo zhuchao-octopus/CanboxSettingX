@@ -665,9 +665,9 @@
         </PreferenceCategory>
     </PreferenceScreen>
     <PreferenceScreen
-        android:key="service_settings"
         android:id="@+id/service_settings"
         android:icon="@drawable/service"
+        android:key="service_settings"
         android:title="@string/service">
 
 
@@ -695,8 +695,8 @@
 
         <com.common.view.MyPreferenceProgress
             android:key="oil_data"
-            my:max="9"
-            android:title="@string/oil_data" />
+            android:title="@string/oil_data"
+            my:max="9" />
 
         <PreferenceScreen
             android:id="@+id/reset_main_info"

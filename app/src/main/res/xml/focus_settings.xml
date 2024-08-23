@@ -3,14 +3,14 @@
 
 
     <SwitchPreference
-        android:key="information_tone_volume"
         android:defaultValue="false"
+        android:key="information_tone_volume"
         android:title="@string/information_tone" />
 
 
     <SwitchPreference
-        android:key="warning_tone"
         android:defaultValue="false"
+        android:key="warning_tone"
         android:title="@string/warning_tone" />
 
     <ListPreference
@@ -40,8 +40,8 @@
         android:title="@string/brightness" />
 
     <SwitchPreference
-        android:key="control_system"
         android:defaultValue="false"
+        android:key="control_system"
         android:title="@string/control_system" />
     <!--     <SwitchPreference -->
     <!--         android:key="disc_indicator" -->
@@ -56,16 +56,16 @@
         android:key="off_Warning_info"
         android:title="@string/off_Warning_info" />
     <SwitchPreference
-        android:key="wipers_induction"
         android:defaultValue="false"
+        android:key="wipers_induction"
         android:title="@string/wipers_induction" />
     <SwitchPreference
-        android:key="incar_light"
         android:defaultValue="false"
+        android:key="incar_light"
         android:title="@string/incar_light" />
     <SwitchPreference
-        android:key="parking_mode"
         android:defaultValue="false"
+        android:key="parking_mode"
         android:title="@string/parking_mode" />
 
     <SwitchPreference

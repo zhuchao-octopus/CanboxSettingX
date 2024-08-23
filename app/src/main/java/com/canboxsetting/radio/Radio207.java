@@ -16,35 +16,8 @@
 
 package com.canboxsetting.radio;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.Objects;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.array;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.adapter.MyListViewAdapterCD;
-import com.common.adapter.MyListViewAdapterRadio;
-import com.common.util.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -52,42 +25,49 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.SeekBar;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.adapter.MyListViewAdapterRadio;
+import com.common.utils.AuxInUI;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
+
+import java.util.Objects;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class Radio207 extends MyFragment {
     private static final String TAG = "Radio153";
-
+    private final static int[] INIT_CMDS = {0x22, 0x21};
+    byte mStatus;
     private View mMainView;
-
     private ListView mListViewCD;
-
     private MyListViewAdapterRadio mMyListViewAdapter;
-
     private ListView mListViewPreset;
-
     private MyListViewAdapterRadio mMyListViewAdapterPreset;
+    private boolean mPaused = true;
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                byte[] buf = new byte[]{(byte) 0x1f, 0x1, (byte) (msg.what & 0xff)};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+    private AuxInUI mAuxInUI;
+    private int mSource = MyCmd.SOURCE_NONE;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -123,7 +103,6 @@ public class Radio207 extends MyFragment {
         return mMainView;
     }
 
-
     private void sendCanboxInfo0x83(int d0) {
         sendCanboxInfo0x83(d0, 1);
     }
@@ -137,7 +116,6 @@ public class Radio207 extends MyFragment {
         byte[] buf = new byte[]{0x2, (byte) 0xf1, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
 
     private void updatePresetList(int index, String name, int freq) {
 
@@ -163,8 +141,6 @@ public class Radio207 extends MyFragment {
         }
 
     }
-
-    byte mStatus;
 
     private void updateView(byte[] buf) {
         String s = "";
@@ -211,8 +187,6 @@ public class Radio207 extends MyFragment {
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -236,20 +210,6 @@ public class Radio207 extends MyFragment {
         sendCanboxInfo0x90(0xa7);
         super.onResume();
     }
-
-    private final static int[] INIT_CMDS = {0x22, 0x21};
-
-    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                byte[] buf = new byte[]{(byte) 0x1f, 0x1, (byte) (msg.what & 0xff)};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-            }
-        }
-    };
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
@@ -299,10 +259,6 @@ public class Radio207 extends MyFragment {
             getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
-
-    private AuxInUI mAuxInUI;
-
-    private int mSource = MyCmd.SOURCE_NONE;
 
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);

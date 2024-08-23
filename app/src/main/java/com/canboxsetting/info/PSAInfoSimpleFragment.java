@@ -1,87 +1,88 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.Intent;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Color;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
 import android.text.InputType;
-import android.text.format.DateFormat;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.AppConfig;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import java.util.Locale;
 
 public class PSAInfoSimpleFragment extends MyFragment {
     private static final String TAG = "GMInfoSimpleFragment";
+    ScrollView mScrollView;
+    private View mMainView;
+    private int cmd82 = 0;
+    OnClickListener mOnClickClearListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+
+            int id = v.getId();
+            if (id == R.id.fuelclear1) {
+                cmd82 |= 0x40;
+                cmd82 &= ~0x20;
+            } else if (id == R.id.fuelclear2) {
+                cmd82 |= 0x20;
+                cmd82 &= ~0x40;
+            } else if (id == R.id.booking_mileage) {
+                showBookingMileageDialog();
+
+                return;
+            }
+            sendCanboxInfo82((byte) cmd82);
+        }
+    };
+    private int mDiagCmd = -1;
+    private int mDiagCmdMax = -1;
+    private int mCurUI = 0;
+    private byte mLang = 1;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo90(msg.what);
+        }
+    };
+    OnClickListener mOnClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+
+            showUI(v.getId());
+        }
+    };
+    // private boolean isEmtpy(byte buf, int s, int e){
+    // if (){
+    //
+    // }
+    // }
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,9 +91,6 @@ public class PSAInfoSimpleFragment extends MyFragment {
         // addPreferencesFromResource(R.xml.gm_simple_info);
 
     }
-
-    private View mMainView;
-    ScrollView mScrollView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -114,7 +112,20 @@ public class PSAInfoSimpleFragment extends MyFragment {
         showUI(R.id.driving_page1);
 
         return mMainView;
-    }
+    }    private Handler mHandlerDiag = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+
+            mHandlerDiag.removeMessages(0);
+            if (mDiagCmd >= 0 && mDiagCmd < mDiagCmdMax) {
+                sendCanboxInfo87(mDiagCmd);
+                mHandlerDiag.sendEmptyMessageDelayed(0, 200);
+                mDiagCmd++;
+            } else {
+                stopDiag();
+            }
+        }
+    };
 
     @Override
     public void onPause() {
@@ -203,54 +214,6 @@ public class PSAInfoSimpleFragment extends MyFragment {
         });
     }
 
-    OnClickListener mOnClickClearListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-
-            int id = v.getId();
-            if (id == R.id.fuelclear1) {
-                cmd82 |= 0x40;
-                cmd82 &= ~0x20;
-            } else if (id == R.id.fuelclear2) {
-                cmd82 |= 0x20;
-                cmd82 &= ~0x40;
-            } else if (id == R.id.booking_mileage) {
-                showBookingMileageDialog();
-
-                return;
-            }
-            sendCanboxInfo82((byte) cmd82);
-        }
-    };
-    OnClickListener mOnClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-
-            showUI(v.getId());
-        }
-    };
-
-    private int cmd82 = 0;
-
-    private int mDiagCmd = -1;
-    private int mDiagCmdMax = -1;
-    private Handler mHandlerDiag = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-            mHandlerDiag.removeMessages(0);
-            if (mDiagCmd >= 0 && mDiagCmd < mDiagCmdMax) {
-                sendCanboxInfo87(mDiagCmd);
-                mHandlerDiag.sendEmptyMessageDelayed(0, 200);
-                mDiagCmd++;
-            } else {
-                stopDiag();
-            }
-        }
-    };
-
     private void startDiag() {
         mDiagCmd = -1;
         mDiagCmdMax = -1;
@@ -270,8 +233,6 @@ public class PSAInfoSimpleFragment extends MyFragment {
         // showUI(0);
         // ((TextView)mMainView.findViewById(R.id.computer_layout)).setText(R.string.str_info_3b);
     }
-
-    private int mCurUI = 0;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -331,8 +292,6 @@ public class PSAInfoSimpleFragment extends MyFragment {
         }
     }
 
-    private byte mLang = 1;
-
     private void sendCanboxInfo87(int d0) {
 
         byte[] buf = new byte[]{(byte) 0x87, 0x02, (byte) d0, mLang};
@@ -350,15 +309,6 @@ public class PSAInfoSimpleFragment extends MyFragment {
         byte[] buf = new byte[]{(byte) 0x90, 0x4, (byte) d0, 0, 0, 0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo90(msg.what);
-        }
-    };
 
     private boolean checkIsGBK(byte[] buf) {
         for (int i = 0; i < buf.length; ++i) {
@@ -491,13 +441,6 @@ public class PSAInfoSimpleFragment extends MyFragment {
         }
     }
 
-    // private boolean isEmtpy(byte buf, int s, int e){
-    // if (){
-    //
-    // }
-    // }
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -531,5 +474,7 @@ public class PSAInfoSimpleFragment extends MyFragment {
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

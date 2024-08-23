@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
@@ -13,18 +16,13 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.provider.Settings;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
-
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
+import com.common.utils.SettingProperties;
+import com.common.utils.Util;
 import com.common.view.MyPreferenceSeekBar;
 
 public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
@@ -111,7 +109,10 @@ public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat impleme
     };
 
     private static NodePreference[] NODES = NODES_NORMAL;
-
+    private final String LED_SETTINGS = "canboxsetting_ledsetting";
+    private int mLedSeting = 0;
+    private byte[] m61 = new byte[]{1, 100};
+    private BroadcastReceiver mReceiver;
 
     private void init() {
         if (GlobalDef.getModelId() == 30) {
@@ -205,9 +206,6 @@ public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat impleme
         sendCanboxInfo(0x90, 0x28, 0);
     }
 
-    private int mLedSeting = 0;
-    private final String LED_SETTINGS = "canboxsetting_ledsetting";
-
     private void updateLedSetting() {
         //		mLedSeting = Settings.System.getInt(getActivity().getContentResolver(),
         //				LED_SETTINGS, 0);
@@ -235,7 +233,7 @@ public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat impleme
     }
 
     private void udpateShowWarning() {
-        int show = Settings.System.getInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, 0);
+        int show = Settings.System.getInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, 0);
 
         if (show != 0) {
             ((SwitchPreference) findPreference("off_Warning_info")).setChecked(true);
@@ -246,9 +244,9 @@ public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat impleme
     private void setWarningSetting(boolean b) {
         int i = b ? 1 : 0;
 
-        Settings.System.putInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, i);
+        Settings.System.putInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, i);
         Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG);
+        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG);
         this.getActivity().sendBroadcast(it);
     }
 
@@ -327,8 +325,6 @@ public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat impleme
         }
         return false;
     }
-
-    private byte[] m61 = new byte[]{1, 100};
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -523,8 +519,6 @@ public class FocusSettingsRaiseFragment extends PreferenceFragmentCompat impleme
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

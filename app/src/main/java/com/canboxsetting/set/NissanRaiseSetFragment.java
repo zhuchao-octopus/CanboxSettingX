@@ -7,29 +7,25 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceEdit;
 import com.common.view.MyPreferenceEdit.IButtonCallBack;
 import com.common.view.MyPreferenceSeekBar;
 
 public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "HYSettingsRaiseFragment";
-
     private static final NodePreference[] NODES = {
 
 
@@ -57,7 +53,33 @@ public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements 
     };
 
     private final static int[] INIT_CMDS = {0x25};
-
+    private IButtonCallBack mButtonCallBack = new IButtonCallBack() {
+        public void callback(String key, boolean add) {
+            if ("speed_linkage_volume".equals(key)) {
+                if (add) {
+                    sendCanboxInfo(0x83, 0x26, 0x21);
+                } else {
+                    sendCanboxInfo(0x83, 0x26, 0x31);
+                }
+            } else if ("surround_volume".equals(key)) {
+                if (add) {
+                    sendCanboxInfo(0x83, 0x28, 0x21);
+                } else {
+                    sendCanboxInfo(0x83, 0x28, 0x31);
+                }
+            }
+        }
+    };
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, msg.what & 0xff, 0);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,25 +118,6 @@ public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements 
         ((MyPreferenceEdit) findPreference("surround_volume")).setCallback(mButtonCallBack);
     }
 
-    private IButtonCallBack mButtonCallBack = new IButtonCallBack() {
-        public void callback(String key, boolean add) {
-            if ("speed_linkage_volume".equals(key)) {
-                if (add) {
-                    sendCanboxInfo(0x83, 0x26, 0x21);
-                } else {
-                    sendCanboxInfo(0x83, 0x26, 0x31);
-                }
-            } else if ("surround_volume".equals(key)) {
-                if (add) {
-                    sendCanboxInfo(0x83, 0x28, 0x21);
-                } else {
-                    sendCanboxInfo(0x83, 0x28, 0x31);
-                }
-            }
-        }
-    };
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -142,16 +145,6 @@ public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements 
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, msg.what & 0xff, 0);
-            }
-        }
-    };
-
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -182,7 +175,6 @@ public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements 
         }
         return false;
     }
-
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x2, (byte) d1, (byte) d2};
@@ -247,7 +239,6 @@ public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements 
         return ((value & mask) >> start);
     }
 
-
     private void updateView(byte[] buf) {
 
         int cmd;
@@ -272,8 +263,6 @@ public class NissanRaiseSetFragment extends PreferenceFragmentCompat implements 
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

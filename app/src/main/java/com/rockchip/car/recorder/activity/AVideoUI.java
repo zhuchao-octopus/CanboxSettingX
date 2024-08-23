@@ -1,68 +1,45 @@
 package com.rockchip.car.recorder.activity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.location.LocationManager;
-import android.os.Handler;
-import android.os.Message;
 import android.os.SystemClock;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.rockchip.car.recorder.camera2.CameraHolder;
 import com.rockchip.car.recorder.model.CameraInfo;
 import com.rockchip.car.recorder.service.CameraService;
-import com.rockchip.car.recorder.service.Config;
 import com.rockchip.car.recorder.service.IService;
 import com.rockchip.car.recorder.service.ParametersSet;
-import com.rockchip.car.recorder.service.ServiceImpl;
 import com.rockchip.car.recorder.utils.SLog;
-
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/8/9.
  */
 public abstract class AVideoUI implements View.OnClickListener {
 
+    public static final int DRAW_ADASRESULT = 2;
     private static final String TAG = "CAM_AVideoUI";
+    private static final int MSG_UPDATE_RECORDING_TIME = 0x00000001;
     protected View mRootView;
-
     protected CameraService mCameraService;
     protected View[] mSurfaces;
     protected boolean mSwitchDefault;
     protected boolean mNeedStartRecord;
-
-    // ======== Views ========
-    private ImageButton mRecorderButton;
-
-    private TextView mRecordingTimeView;
-
     protected View mAdasSettings;
     protected ImageView mADASResultImageView;
     protected Bitmap mAdasResultBitMap;
-
+    protected boolean mFromReverse;
+    // ======== Views ========
+    private ImageButton mRecorderButton;
+    private TextView mRecordingTimeView;
     private View mListViewLayout;
     private ListView mListView;
     private ImageView mListItemView;
     private View mCurrentActionView;
-
-    protected boolean mFromReverse;
-
     private long mStartRecordTime;
     private long mMaxRecordTime;
-    private static final int MSG_UPDATE_RECORDING_TIME = 0x00000001;
-    public static final int DRAW_ADASRESULT = 2;
 
     public AVideoUI() {
         // this.mVideomController = controller;
@@ -70,6 +47,51 @@ public abstract class AVideoUI implements View.OnClickListener {
         this.mSurfaces = new View[2];
 
         initViews();
+    }
+
+    private static String millisecondToTimeString(long milliSeconds, boolean displayCentiSeconds) {
+        long seconds = milliSeconds / 1000; // round down to compute seconds
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        long remainderMinutes = minutes - (hours * 60);
+        long remainderSeconds = seconds - (minutes * 60);
+
+        StringBuilder timeStringBuilder = new StringBuilder();
+
+        // Hours
+        if (hours > 0) {
+            if (hours < 10) {
+                timeStringBuilder.append('0');
+            }
+            timeStringBuilder.append(hours);
+
+            timeStringBuilder.append(':');
+        }
+
+        // Minutes
+        if (remainderMinutes < 10) {
+            timeStringBuilder.append('0');
+        }
+        timeStringBuilder.append(remainderMinutes);
+        timeStringBuilder.append(':');
+
+        // Seconds
+        if (remainderSeconds < 10) {
+            timeStringBuilder.append('0');
+        }
+        timeStringBuilder.append(remainderSeconds);
+
+        // Centi seconds
+        if (displayCentiSeconds) {
+            timeStringBuilder.append('.');
+            long remainderCentiSeconds = (milliSeconds - seconds * 1000) / 10;
+            if (remainderCentiSeconds < 10) {
+                timeStringBuilder.append('0');
+            }
+            timeStringBuilder.append(remainderCentiSeconds);
+        }
+
+        return timeStringBuilder.toString();
     }
 
     private void initViews() {
@@ -173,51 +195,6 @@ public abstract class AVideoUI implements View.OnClickListener {
 
     }
 
-    private static String millisecondToTimeString(long milliSeconds, boolean displayCentiSeconds) {
-        long seconds = milliSeconds / 1000; // round down to compute seconds
-        long minutes = seconds / 60;
-        long hours = minutes / 60;
-        long remainderMinutes = minutes - (hours * 60);
-        long remainderSeconds = seconds - (minutes * 60);
-
-        StringBuilder timeStringBuilder = new StringBuilder();
-
-        // Hours
-        if (hours > 0) {
-            if (hours < 10) {
-                timeStringBuilder.append('0');
-            }
-            timeStringBuilder.append(hours);
-
-            timeStringBuilder.append(':');
-        }
-
-        // Minutes
-        if (remainderMinutes < 10) {
-            timeStringBuilder.append('0');
-        }
-        timeStringBuilder.append(remainderMinutes);
-        timeStringBuilder.append(':');
-
-        // Seconds
-        if (remainderSeconds < 10) {
-            timeStringBuilder.append('0');
-        }
-        timeStringBuilder.append(remainderSeconds);
-
-        // Centi seconds
-        if (displayCentiSeconds) {
-            timeStringBuilder.append('.');
-            long remainderCentiSeconds = (milliSeconds - seconds * 1000) / 10;
-            if (remainderCentiSeconds < 10) {
-                timeStringBuilder.append('0');
-            }
-            timeStringBuilder.append(remainderCentiSeconds);
-        }
-
-        return timeStringBuilder.toString();
-    }
-
     private void showCameraSettingUI() {
         SLog.i(TAG, "showCameraSettingsUI");
         if (mCurrentActionView != null) mCurrentActionView.setVisibility(View.GONE);
@@ -256,12 +233,12 @@ public abstract class AVideoUI implements View.OnClickListener {
 
     }
 
-    public void setNeedStartRecord(boolean needStartRecord) {
-        this.mNeedStartRecord = needStartRecord;
-    }
-
     public boolean isNeedStartRecord() {
         return mNeedStartRecord;
+    }
+
+    public void setNeedStartRecord(boolean needStartRecord) {
+        this.mNeedStartRecord = needStartRecord;
     }
 
     public abstract void surfaceVisible(int id, int visible);
@@ -290,6 +267,16 @@ public abstract class AVideoUI implements View.OnClickListener {
 
     }
 
+    public abstract boolean switchAadas();
+
+    public void drawAdasResult(Bitmap bitmap) {
+
+    }
+
+    public void enableCameraButton(boolean enable) {
+
+    }
+
     public interface ICallbackRender {
         void addCallBackBuffer(int id, byte[] data);
     }
@@ -313,50 +300,40 @@ public abstract class AVideoUI implements View.OnClickListener {
             return id;
         }
 
-        public int getVisible() {
-            return visible;
-        }
-
-        public int getWidth() {
-            return width;
-        }
-
-        public int getHeight() {
-            return height;
-        }
-
-        public float getZ() {
-            return z;
-        }
-
         public void setId(int id) {
             this.id = id;
+        }
+
+        public int getVisible() {
+            return visible;
         }
 
         public void setVisible(int visible) {
             this.visible = visible;
         }
 
+        public int getWidth() {
+            return width;
+        }
+
         public void setWidth(int width) {
             this.width = width;
+        }
+
+        public int getHeight() {
+            return height;
         }
 
         public void setHeight(int height) {
             this.height = height;
         }
 
+        public float getZ() {
+            return z;
+        }
+
         public void setZ(float z) {
             this.z = z;
         }
-    }
-
-    public abstract boolean switchAadas();
-
-    public void drawAdasResult(Bitmap bitmap) {
-
-    }
-
-    public void enableCameraButton(boolean enable) {
-
     }
 }

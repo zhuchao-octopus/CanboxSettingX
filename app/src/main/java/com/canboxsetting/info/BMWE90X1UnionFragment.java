@@ -14,11 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 public class BMWE90X1UnionFragment extends PreferenceFragmentCompat {
     private static final String TAG = "Golf7InfoSimpleFragment";
+    private byte[] mBufUnit = new byte[4];
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,15 +49,12 @@ public class BMWE90X1UnionFragment extends PreferenceFragmentCompat {
 
     }
 
-
     private void setPreference(String key, String s) {
         Preference p = findPreference(key);
         if (p != null) {
             p.setSummary(s);
         }
     }
-
-    private byte[] mBufUnit = new byte[4];
 
     private void updateView(byte[] buf) {
         int index;
@@ -99,8 +98,6 @@ public class BMWE90X1UnionFragment extends PreferenceFragmentCompat {
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

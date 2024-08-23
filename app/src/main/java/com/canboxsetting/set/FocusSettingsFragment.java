@@ -19,13 +19,16 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.SettingProperties;
+import com.common.utils.Util;
 
 public class FocusSettingsFragment extends PreferenceFragmentCompat implements androidx.preference.Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "FocusSettingsFragment";
+    private final String LED_SETTINGS = "canboxsetting_ledsetting";
+    private int mLedSeting = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,9 +90,6 @@ public class FocusSettingsFragment extends PreferenceFragmentCompat implements a
         sendCanboxInfo(0x90, 0x21, 0);
     }
 
-    private int mLedSeting = 0;
-    private final String LED_SETTINGS = "canboxsetting_ledsetting";
-
     private void updateLedSetting() {
         //		mLedSeting = Settings.System.getInt(getActivity().getContentResolver(),
         //				LED_SETTINGS, 0);
@@ -117,7 +117,7 @@ public class FocusSettingsFragment extends PreferenceFragmentCompat implements a
     }
 
     private void updateShowWarning() {
-        int show = Settings.System.getInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, 0);
+        int show = Settings.System.getInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, 0);
 
         if (show != 0) {
             ((SwitchPreference) findPreference("off_Warning_info")).setChecked(true);
@@ -128,9 +128,9 @@ public class FocusSettingsFragment extends PreferenceFragmentCompat implements a
     private void setWarningSetting(boolean b) {
         int i = b ? 1 : 0;
 
-        Settings.System.putInt(getActivity().getContentResolver(), SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG, i);
+        Settings.System.putInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, i);
         Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SystemConfig.SHOW_FOCUS_CAR_WARNING_MSG);
+        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG);
         this.getActivity().sendBroadcast(it);
     }
 
@@ -321,8 +321,6 @@ public class FocusSettingsFragment extends PreferenceFragmentCompat implements a
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

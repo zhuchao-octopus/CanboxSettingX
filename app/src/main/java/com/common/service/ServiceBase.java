@@ -3,7 +3,7 @@ package com.common.service;
 import android.content.Context;
 import android.content.Intent;
 
-import com.common.util.MyCmd;
+import com.common.utils.MyCmd;
 
 public abstract class ServiceBase {
     public Context mContext;

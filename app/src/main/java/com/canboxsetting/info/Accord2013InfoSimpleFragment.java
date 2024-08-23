@@ -7,21 +7,31 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class Accord2013InfoSimpleFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "KadjarRaiseFragment";
+    private final static int[] INIT_CMDS = {0x3301, 0x3302, 0xd300};
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
+
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,8 +44,6 @@ public class Accord2013InfoSimpleFragment extends PreferenceFragmentCompat imple
 
     }
 
-    private final static int[] INIT_CMDS = {0x3301, 0x3302, 0xd300};
-
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
         for (int i = 0; i < INIT_CMDS.length; ++i) {
@@ -43,16 +51,6 @@ public class Accord2013InfoSimpleFragment extends PreferenceFragmentCompat imple
         }
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
-
-            }
-        }
-    };
 
     private void sendCanboxInfo0x90(int d0, int d1) {
         byte[] buf = new byte[]{(byte) 0x90, 0x2, (byte) d0, (byte) d1};
@@ -63,8 +61,6 @@ public class Accord2013InfoSimpleFragment extends PreferenceFragmentCompat imple
 
         return false;
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -342,8 +338,6 @@ public class Accord2013InfoSimpleFragment extends PreferenceFragmentCompat imple
 
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

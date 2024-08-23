@@ -16,10 +16,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginBottom="2dip"
-        android:layout_marginEnd="6dip"
         android:layout_marginStart="15dip"
         android:layout_marginTop="2px"
+        android:layout_marginEnd="6dip"
+        android:layout_marginBottom="2dip"
         android:layout_weight="1">
 
         <TextView
@@ -30,16 +30,16 @@
             android:fadingEdge="horizontal"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:textColor="#ffffff"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="220px"
             android:layout_height="match_parent"
-            android:layout_marginTop="6px"
-            android:layout_marginBottom="6px"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="6px"
             android:layout_marginRight="70px"
+            android:layout_marginBottom="6px"
             android:background="#88000000"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -49,13 +49,13 @@
             android:layout_width="220px"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="70px"
             android:layout_marginTop="6px"
+            android:layout_marginRight="70px"
             android:layout_marginBottom="6px"
             android:background="#88000000"
             android:gravity="center"
-            android:textColor="#ffffff"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/prefrence_a"
@@ -72,8 +72,8 @@
             android:layout_height="188px"
             android:layout_alignParentRight="true"
             android:layout_marginRight="290px"
-            android:textColor="#ffffff"
             android:text="@string/minus"
+            android:textColor="#ffffff"
             android:textSize="28px" />
     </RelativeLayout>
 

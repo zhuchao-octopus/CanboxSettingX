@@ -7,22 +7,19 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set150 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
@@ -51,6 +48,18 @@ public class Set150 extends PreferenceFragmentCompat implements Preference.OnPre
     };
 
     private final static int[] INIT_CMDS = {0x36};
+    private byte[] mCmdSend = new byte[]{(byte) 0xc6, 0x8, 0, 0, 0, 0, 0, 0, 0, 0};
+    private byte[] mVisible = new byte[]{0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff};
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,8 +75,6 @@ public class Set150 extends PreferenceFragmentCompat implements Preference.OnPre
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private byte[] mCmdSend = new byte[]{(byte) 0xc6, 0x8, 0, 0, 0, 0, 0, 0, 0, 0};
 
     private void sendCmd(int cmd, int value) {
         int mask = cmd & 0xff;
@@ -124,10 +131,6 @@ public class Set150 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private byte[] mVisible = new byte[]{0x78, 0, 0, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff};
-
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -155,15 +158,6 @@ public class Set150 extends PreferenceFragmentCompat implements Preference.OnPre
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(msg.what & 0xff);
-            }
-        }
-    };
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -276,8 +270,6 @@ public class Set150 extends PreferenceFragmentCompat implements Preference.OnPre
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

@@ -8,14 +8,14 @@
         android:layout_width="330px"
         android:layout_height="243px"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/car_info_bottom_height"
         android:layout_marginLeft="@dimen/pop_menu_x"
+        android:layout_marginBottom="@dimen/car_info_bottom_height"
         android:background="@drawable/dialog"
         android:orientation="vertical"
-        android:paddingBottom="16.0px"
         android:paddingLeft="10.0px"
+        android:paddingTop="4.0dip"
         android:paddingRight="18.0px"
-        android:paddingTop="4.0dip">
+        android:paddingBottom="16.0px">
 
         <ListView
             android:id="@id/pop_views"

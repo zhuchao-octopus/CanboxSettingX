@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -13,12 +14,10 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 
 public class SiWeiSetingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
@@ -46,7 +45,8 @@ public class SiWeiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
             new NodePreference("topic_association", 0xc60e, 0x41, 0x0101, 0),
 
     };
-
+    private boolean mPaused = true;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,8 +85,6 @@ public class SiWeiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -109,6 +107,15 @@ public class SiWeiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         super.onDestroy();
     }
 
+    //	private Handler mHandler = new Handler() {
+    //		@Override
+    //		public void handleMessage(Message msg) {
+    //			if (!mPaused) {
+    //				sendCanboxInfo(0x90, 0x52, msg.what & 0xff);
+    //			}
+    //		}
+    //	};
+
     private void requestInitData() {
         sendCanboxInfo(0x90, 0x41, 0x0);
 
@@ -118,15 +125,6 @@ public class SiWeiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         //			}
         //		}
     }
-
-    //	private Handler mHandler = new Handler() {
-    //		@Override
-    //		public void handleMessage(Message msg) {
-    //			if (!mPaused) {
-    //				sendCanboxInfo(0x90, 0x52, msg.what & 0xff);
-    //			}
-    //		}
-    //	};
 
     private void sendCanboxData(int cmd) {
         sendCanboxInfo(((cmd & 0xff0000) >> 16), ((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0));
@@ -253,8 +251,6 @@ public class SiWeiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

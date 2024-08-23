@@ -16,6 +16,9 @@
 
 package com.rockchip.car.recorder.camera2;
 
+import static com.rockchip.car.recorder.camera2.CameraManager.CameraOpenCallback;
+import static com.rockchip.car.recorder.camera2.CameraManager.CameraProxy;
+
 import android.annotation.SuppressLint;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
@@ -31,9 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static com.rockchip.car.recorder.camera2.CameraManager.CameraOpenCallback;
-import static com.rockchip.car.recorder.camera2.CameraManager.CameraProxy;
 
 
 /**
@@ -52,78 +52,9 @@ import static com.rockchip.car.recorder.camera2.CameraManager.CameraProxy;
 public class CameraHolder {
     private static final String TAG = "CAM_CameraHolder";
     private static final int KEEP_CAMERA_TIMEOUT = 3000; // 3 seconds
-    private CameraProxy[] mCameraDevice;
-    private boolean[] mCameraOpened;  // true if camera_surfaceview is opened
-    private int mNumberOfCameras;
-    private int[] mCameraId;  // current camera_surfaceview id
-    private int mBackCameraId = -1;
-    private int mFrontCameraId = -1;
-    private final CameraInfo[] mInfo;
-    private static CameraProxy mMockCamera[];
-    private static CameraInfo mMockCameraInfo[];
-    private SurfaceHolder[] mSurfaceHolder = new SurfaceHolder[CameraSettings.MAX_SUPPORT_CAMERAS];
-
-    public SurfaceHolder getHolder(int cameraId) {
-        if (cameraId > -1 && cameraId < mSurfaceHolder.length) {
-            return mSurfaceHolder[cameraId];
-        } else {
-            return null;
-        }
-    }
-
-    public void setHolder(SurfaceHolder holder, int cameraId) {
-        if (cameraId > -1 && cameraId < mSurfaceHolder.length) mSurfaceHolder[cameraId] = holder;
-    }
-
     /* Debug double-open issue */
     private static final boolean DEBUG_OPEN_RELEASE = true;
-
-    private static class OpenReleaseState {
-        long time;
-        int id;
-        String device;
-        String[] stack;
-    }
-
-    private static ArrayList<OpenReleaseState> sOpenReleaseStates = new ArrayList<OpenReleaseState>();
-    private static SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-
-    private static synchronized void collectState(int id, CameraProxy device) {
-        OpenReleaseState s = new OpenReleaseState();
-        s.time = System.currentTimeMillis();
-        s.id = id;
-        if (device == null) {
-            s.device = "(null)";
-        } else {
-            s.device = device.toString();
-        }
-
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        String[] lines = new String[stack.length];
-        for (int i = 0; i < stack.length; i++) {
-            lines[i] = stack[i].toString();
-        }
-        s.stack = lines;
-
-        if (sOpenReleaseStates.size() > 10) {
-            sOpenReleaseStates.remove(0);
-        }
-        sOpenReleaseStates.add(s);
-    }
-
-    private static synchronized void dumpStates() {
-        for (int i = sOpenReleaseStates.size() - 1; i >= 0; i--) {
-            OpenReleaseState s = sOpenReleaseStates.get(i);
-            String date = sDateFormat.format(new Date(s.time));
-            Log.d(TAG, "State " + i + " at " + date);
-            Log.d(TAG, "mCameraId = " + s.id + ", mCameraDevice = " + s.device);
-            Log.d(TAG, "Stack:");
-            for (int j = 0; j < s.stack.length; j++) {
-                Log.d(TAG, "  " + s.stack[j]);
-            }
-        }
-    }
-
+    private static final int RELEASE_CAMERA = 1;
     public static List<String> mBackCameraSupportWhiteBalances = new ArrayList<String>();
     public static List<String> mBackCameraSupportColorEffects = new ArrayList<String>();
     public static List<Size> mBackCameraSupportVideoSizes = new ArrayList<Size>();
@@ -131,31 +62,25 @@ public class CameraHolder {
     public static int mBackCameraMaxExposure;
     public static int mBackCameraMinExposure;
     public static float mBackCameraExposureStep;
-
+    private static CameraProxy mMockCamera[];
+    private static CameraInfo mMockCameraInfo[];
+    private static ArrayList<OpenReleaseState> sOpenReleaseStates = new ArrayList<OpenReleaseState>();
+    private static SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    // Use a singleton.
+    private static CameraHolder sHolder;
+    private final CameraInfo[] mInfo;
+    private CameraProxy[] mCameraDevice;
+    private boolean[] mCameraOpened;  // true if camera_surfaceview is opened
+    private int mNumberOfCameras;
+    private int[] mCameraId;  // current camera_surfaceview id
+    private int mBackCameraId = -1;
+    private int mFrontCameraId = -1;
+    private SurfaceHolder[] mSurfaceHolder = new SurfaceHolder[CameraSettings.MAX_SUPPORT_CAMERAS];
     // We store the camera_surfaceview parameters when we actually open the device,
     // so we can restore them in the subsequent open() requests by the user.
     // This prevents the parameters set by PhotoModule used by VideoModule
     // inadvertently.
     private Parameters[] mParameters;
-
-    // Use a singleton.
-    private static CameraHolder sHolder;
-
-    public static synchronized CameraHolder instance() {
-        if (sHolder == null) {
-            sHolder = new CameraHolder(CameraSettings.MAX_SUPPORT_CAMERAS);
-        }
-        return sHolder;
-    }
-
-    private static final int RELEASE_CAMERA = 1;
-
-    public static void injectMockCamera(CameraInfo[] info, CameraProxy[] camera) {
-        mMockCameraInfo = info;
-        mMockCamera = camera;
-        sHolder = new CameraHolder(CameraSettings.MAX_SUPPORT_CAMERAS);
-    }
-
     private CameraHolder() {
         if (mMockCameraInfo != null) {
             mNumberOfCameras = mMockCameraInfo.length;
@@ -191,7 +116,6 @@ public class CameraHolder {
             }
         }
     }
-
     private CameraHolder(int numbers) {
         if (mMockCameraInfo != null) {
             mNumberOfCameras = mMockCameraInfo.length;
@@ -229,6 +153,67 @@ public class CameraHolder {
                 mFrontCameraId = i;
             }
         }
+    }
+
+    private static synchronized void collectState(int id, CameraProxy device) {
+        OpenReleaseState s = new OpenReleaseState();
+        s.time = System.currentTimeMillis();
+        s.id = id;
+        if (device == null) {
+            s.device = "(null)";
+        } else {
+            s.device = device.toString();
+        }
+
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String[] lines = new String[stack.length];
+        for (int i = 0; i < stack.length; i++) {
+            lines[i] = stack[i].toString();
+        }
+        s.stack = lines;
+
+        if (sOpenReleaseStates.size() > 10) {
+            sOpenReleaseStates.remove(0);
+        }
+        sOpenReleaseStates.add(s);
+    }
+
+    private static synchronized void dumpStates() {
+        for (int i = sOpenReleaseStates.size() - 1; i >= 0; i--) {
+            OpenReleaseState s = sOpenReleaseStates.get(i);
+            String date = sDateFormat.format(new Date(s.time));
+            Log.d(TAG, "State " + i + " at " + date);
+            Log.d(TAG, "mCameraId = " + s.id + ", mCameraDevice = " + s.device);
+            Log.d(TAG, "Stack:");
+            for (int j = 0; j < s.stack.length; j++) {
+                Log.d(TAG, "  " + s.stack[j]);
+            }
+        }
+    }
+
+    public static synchronized CameraHolder instance() {
+        if (sHolder == null) {
+            sHolder = new CameraHolder(CameraSettings.MAX_SUPPORT_CAMERAS);
+        }
+        return sHolder;
+    }
+
+    public static void injectMockCamera(CameraInfo[] info, CameraProxy[] camera) {
+        mMockCameraInfo = info;
+        mMockCamera = camera;
+        sHolder = new CameraHolder(CameraSettings.MAX_SUPPORT_CAMERAS);
+    }
+
+    public SurfaceHolder getHolder(int cameraId) {
+        if (cameraId > -1 && cameraId < mSurfaceHolder.length) {
+            return mSurfaceHolder[cameraId];
+        } else {
+            return null;
+        }
+    }
+
+    public void setHolder(SurfaceHolder holder, int cameraId) {
+        if (cameraId > -1 && cameraId < mSurfaceHolder.length) mSurfaceHolder[cameraId] = holder;
     }
 
     public int getNumberOfCameras() {
@@ -373,5 +358,12 @@ public class CameraHolder {
 
     public int getFrontCameraId() {
         return mFrontCameraId;
+    }
+
+    private static class OpenReleaseState {
+        long time;
+        int id;
+        String device;
+        String[] stack;
     }
 }

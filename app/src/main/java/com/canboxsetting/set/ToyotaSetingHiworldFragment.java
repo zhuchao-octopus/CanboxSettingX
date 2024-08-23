@@ -1,5 +1,6 @@
 package com.canboxsetting.set;
 
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,35 +8,24 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 
 public class ToyotaSetingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "ToyotaSetingHiworldFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
             //空调&灯光
             new Node("inner_outer_auto", 0x6A0107, 0x62010000, 0x0100, 0, Node.TYPE_BUFF1),
@@ -86,14 +76,27 @@ public class ToyotaSetingHiworldFragment extends PreferenceFragmentCompat implem
             new Node("speed_linkage_volume", 0xAD07, 0xA6020000, 0x020000, 0, Node.TYPE_BUFF1),
 
             new Node("surround_volume", 0xAD08, 0xA6020000, 0x010000, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
              */};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,8 +120,6 @@ public class ToyotaSetingHiworldFragment extends PreferenceFragmentCompat implem
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -148,15 +149,6 @@ public class ToyotaSetingHiworldFragment extends PreferenceFragmentCompat implem
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -433,8 +425,6 @@ public class ToyotaSetingHiworldFragment extends PreferenceFragmentCompat implem
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

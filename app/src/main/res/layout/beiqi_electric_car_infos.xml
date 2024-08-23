@@ -47,16 +47,16 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/baic_energy_fragment_leaf" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/baic_energy_fragment_tree" />
                 </RelativeLayout>
@@ -142,8 +142,8 @@
                         style="@style/BaicEnvironmentalStyelTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/environmental_grade"
                         android:layout_alignLeft="@id/kg_tv"
+                        android:layout_alignBottom="@id/environmental_grade"
                         android:text="@string/tree" />
 
                     <TextView
@@ -159,8 +159,8 @@
                         style="@style/BaicEnvironmentalStyelDtv"
                         android:layout_width="100.0dip"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/environmental_grade"
-                        android:layout_alignLeft="@id/co2" />
+                        android:layout_alignLeft="@id/co2"
+                        android:layout_alignBottom="@id/environmental_grade" />
                 </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
@@ -175,10 +175,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5px"
                 android:paddingLeft="20px"
+                android:paddingTop="5px"
                 android:paddingRight="15px"
-                android:paddingTop="5px">
+                android:paddingBottom="5px">
 
                 <TextView
                     style="@style/CarInfoTextView1"
@@ -198,10 +198,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5px"
                 android:paddingLeft="20px"
+                android:paddingTop="5px"
                 android:paddingRight="15px"
-                android:paddingTop="5px">
+                android:paddingBottom="5px">
 
                 <TextView
                     android:id="@+id/gs4_energy_recovery_title"
@@ -224,10 +224,10 @@
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingBottom="5px"
                 android:paddingLeft="20px"
+                android:paddingTop="5px"
                 android:paddingRight="15px"
-                android:paddingTop="5px">
+                android:paddingBottom="5px">
 
                 <LinearLayout
                     android:id="@+id/warning_layout"
@@ -284,10 +284,10 @@
                         android:layout_centerInParent="true"
                         android:background="@drawable/baic_energy"
                         android:max="10"
-                        android:paddingBottom="5px"
                         android:paddingLeft="5px"
-                        android:paddingRight="15px"
                         android:paddingTop="5px"
+                        android:paddingRight="15px"
+                        android:paddingBottom="5px"
                         android:progress="0"
                         android:progressDrawable="@drawable/seekbar"
                         android:scaleType="centerInside"
@@ -307,22 +307,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:paddingBottom="5px"
                 android:paddingLeft="80px"
+                android:paddingTop="5px"
                 android:paddingRight="80px"
-                android:paddingTop="5px">
+                android:paddingBottom="5px">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="360px">
 
-                    <com.car.view.LineGraphicView
+                    <com.common.view.LineGraphicView
                         android:id="@+id/line_graphic"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:layout_marginTop="20px"
                         android:layout_marginLeft="40px"
+                        android:layout_marginTop="20px"
                         android:layout_marginBottom="50px" />
 
                     <LinearLayout
@@ -496,13 +496,13 @@
             android:id="@+id/energy_statistics"
             style="@style/CommonButtonStyle"
             android:layout_width="0px"
-            android:visibility="gone"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/energy_statistics"
-            android:textSize="24px"></TextView>
+            android:textSize="24px"
+            android:visibility="gone"></TextView>
 
         <View
             android:layout_width="1px"

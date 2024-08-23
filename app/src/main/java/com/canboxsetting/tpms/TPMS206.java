@@ -2,30 +2,27 @@ package com.canboxsetting.tpms;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-import com.common.view.MyPreference2;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 public class TPMS206 extends PreferenceFragment {
 
+    private View mTpmsView;
+    private BroadcastReceiver mReceiver;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         mTpmsView = inflater.inflate(R.layout.type_info4, container, false);
         return mTpmsView;
     }
@@ -51,9 +48,6 @@ public class TPMS206 extends PreferenceFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private View mTpmsView;
-
-
     private void setTpmsTextInfo(int id, int value) {
 
         String text = "";
@@ -68,7 +62,6 @@ public class TPMS206 extends PreferenceFragment {
 
         tv.setText(text);
     }
-
 
     private void setTpmsTextValue(int id, int value) {
 
@@ -114,8 +107,6 @@ public class TPMS206 extends PreferenceFragment {
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

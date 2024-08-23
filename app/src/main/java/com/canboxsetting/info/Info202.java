@@ -18,12 +18,31 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 public class Info202 extends PreferenceFragmentCompat {
     private static final String TAG = "GMInfoSimpleFragment";
+    private View mMainView;
+    private boolean mRudder = false;
+    private int mFlashLight = 0;
+    private int mFrontDoor = 0;
+    private int mBackDoor = 0;
+    private int mLightStringId = 0;
+    private boolean mFlashing = true;
+    private BroadcastReceiver mReceiver;    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+
+            sendCanboxInfo(msg.what);
+            //			if (msg.what == 2) {
+            //				mHandler.sendEmptyMessageDelayed(2, 1500);
+            //			}
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +56,6 @@ public class Info202 extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -92,25 +109,6 @@ public class Info202 extends PreferenceFragmentCompat {
         byte[] buf = new byte[]{(byte) 0x90, 0x02, 0x41, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-
-            sendCanboxInfo(msg.what);
-            //			if (msg.what == 2) {
-            //				mHandler.sendEmptyMessageDelayed(2, 1500);
-            //			}
-        }
-    };
-
-    private boolean mRudder = false;
-    private int mFlashLight = 0;
-
-    private int mFrontDoor = 0;
-    private int mBackDoor = 0;
 
     private void getCanboxSetting() {
         mFrontDoor = 0;
@@ -550,17 +548,12 @@ public class Info202 extends PreferenceFragmentCompat {
             s = getActivity().getString(string_id) + "\n" + s;
         }
         setText(id, s);
-    }
-
-    private int mLightStringId = 0;
-    private Handler mHandlerFlash = new Handler() {
+    }    private Handler mHandlerFlash = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             flashLight(mFlashLight, true);
         }
     };
-
-    private boolean mFlashing = true;
 
     private void flashLight(int b, boolean auto) {
         View v;
@@ -611,8 +604,6 @@ public class Info202 extends PreferenceFragmentCompat {
         mHandlerFlash.sendEmptyMessageDelayed(0, 500);
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -646,5 +637,9 @@ public class Info202 extends PreferenceFragmentCompat {
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
+
+
 
 }

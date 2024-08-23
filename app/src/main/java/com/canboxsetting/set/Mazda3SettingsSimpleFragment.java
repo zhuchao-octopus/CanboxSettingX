@@ -7,21 +7,20 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 
 public class Mazda3SettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Mazda3BinarytekFragment";
@@ -35,6 +34,18 @@ public class Mazda3SettingsSimpleFragment extends PreferenceFragmentCompat imple
     private final static int[] INIT_CMDS = {0x9040};
 
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
+                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x02, (byte) (msg.what & 0xff), 0};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,8 +69,6 @@ public class Mazda3SettingsSimpleFragment extends PreferenceFragmentCompat imple
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -88,17 +97,6 @@ public class Mazda3SettingsSimpleFragment extends PreferenceFragmentCompat imple
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                // sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
-                byte[] buf = new byte[]{(byte) ((msg.what & 0xff00) >> 8), 0x02, (byte) (msg.what & 0xff), 0};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -251,8 +249,6 @@ public class Mazda3SettingsSimpleFragment extends PreferenceFragmentCompat imple
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

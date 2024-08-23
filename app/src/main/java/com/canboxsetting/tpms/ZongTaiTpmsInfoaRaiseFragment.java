@@ -7,30 +7,29 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 public class ZongTaiTpmsInfoaRaiseFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "VWMQBInfoRaiseFragment";
-
     PreferenceScreen mTpms;
+    private View mTpmsView;
+    private byte[] mTpmsWarning = new byte[4];
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
@@ -66,8 +65,6 @@ public class ZongTaiTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impl
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private View mTpmsView;
-
     public boolean onPreferenceClick(Preference arg0) {
 
         return false;
@@ -83,9 +80,6 @@ public class ZongTaiTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impl
         TextView tv = ((TextView) mTpmsView.findViewById(id));
         tv.setText(s);
     }
-
-    private byte[] mTpmsWarning = new byte[4];
-
 
     private void setTpmsWarningText(int id, int text, int text2) {
         String s = "";
@@ -257,8 +251,6 @@ public class ZongTaiTpmsInfoaRaiseFragment extends PreferenceFragmentCompat impl
             ad.show();
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

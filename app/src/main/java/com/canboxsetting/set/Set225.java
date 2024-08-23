@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -15,13 +16,11 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceSeekBar;
 
 public class Set225 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
@@ -48,8 +47,22 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
     private final static int[] INIT_CMDS = {0x40
 
     };
-
+    private final static byte[] SPEED = new byte[]{(byte) 0xFE, (byte) 0x5a, (byte) 0x64, (byte) 0x6e, (byte) 0x78, (byte) 0x82};
+    private final static int SET_EQ_STEP = 1;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+
+                byte[] buf = new byte[]{(byte) 0x90, (byte) 2, (byte) (msg.what & 0xff), 0};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,8 +111,6 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -129,18 +140,6 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-
-                byte[] buf = new byte[]{(byte) 0x90, (byte) 2, (byte) (msg.what & 0xff), 0};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
 
@@ -150,8 +149,6 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
         sendCanboxInfo(((cmd & 0xff0000) >> 16), ((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0));
 
     }
-
-    private final static byte[] SPEED = new byte[]{(byte) 0xFE, (byte) 0x5a, (byte) 0x64, (byte) 0x6e, (byte) 0x78, (byte) 0x82};
 
     private void udpatePreferenceValue(Preference preference, Object newValue) {
         String key = preference.getKey();
@@ -191,10 +188,7 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
         if (step != 0) {
             mHandlerEQ.sendMessageDelayed(mHandlerEQ.obtainMessage(SET_EQ_STEP, id, step), 200);
         }
-    }
-
-    private final static int SET_EQ_STEP = 1;
-    private Handler mHandlerEQ = new Handler() {
+    }    private Handler mHandlerEQ = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SET_EQ_STEP:
@@ -326,8 +320,6 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -360,5 +352,7 @@ public class Set225 extends PreferenceFragmentCompat implements Preference.OnPre
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

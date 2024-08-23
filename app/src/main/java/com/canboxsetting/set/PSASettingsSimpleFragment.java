@@ -20,30 +20,16 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 import com.common.view.MyPreference2;
 import com.common.view.MyPreferenceEdit;
 import com.common.view.MyPreferenceEdit.IButtonCallBack;
 
 public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "PSASimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-        // if (mType == 1) {
-        // PreferenceScreen p = (PreferenceScreen)
-        // findPreference("driving_mode");
-        // if (p != null) {
-        // setPreferenceScreen(p);
-        // }
-        // }
-    }
-
     private static final Node[] NODES = {
 
 
@@ -76,7 +62,13 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
 
 
     };
-
+    private final static int[] INIT_CMDS = {0x38, 0x3B,
+            /*0x4010, 0x4020, 0x4030,
+            0x4031, 0x4040, 0x4050, 0x4051,
+            0x4060, 0x4070, 0x4080, 0x4090,
+            */};
+    private final static int[][] BUTTON_ID = {{R.id.mode, 0x2}, {R.id.up, 0x7}, {R.id.menu, 0x4}, {R.id.left, 0x6}, {R.id.right, 0x5}, {R.id.ok, 0x9}, {R.id.dark, 0x1}, {R.id.down, 0x8}, {R.id.esc, 0x3},};
+    private int mType = 0;
     private byte[] mData3B = new byte[6];
     private IButtonCallBack mButtonCallBack = new IButtonCallBack() {
         @Override
@@ -115,14 +107,59 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
             }
         }
     };
-
-    private final static int[] INIT_CMDS = {0x38, 0x3B,
-            /*0x4010, 0x4020, 0x4030,
-            0x4031, 0x4040, 0x4050, 0x4051,
-            0x4060, 0x4070, 0x4080, 0x4090,
-            */};
-
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                byte[] buf = new byte[]{(byte) 0x90, 0x04, (byte) msg.what, 0, 0, 0};
+                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+
+            }
+        }
+    };
+    private int mKeyId;
+    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+        public boolean onTouch(View v, android.view.MotionEvent event) {
+            //			Log.d("allen3", "onKey!!");
+            mKeyId = getKey(v.getId());
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                mHandler.removeMessages(0);
+                if (mKeyId != 0) {
+                    sendCanboxInfo(0x8c, mKeyId);
+                }
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                mHandler.removeMessages(0);
+                sendCanboxInfo(0x8c, 0);
+                mKeyId = 0;
+            }
+
+            return false;
+        }
+
+        ;
+    };
+    private Handler mHandlerKey = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                initKeyBoard();
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+        // if (mType == 1) {
+        // PreferenceScreen p = (PreferenceScreen)
+        // findPreference("driving_mode");
+        // if (p != null) {
+        // setPreferenceScreen(p);
+        // }
+        // }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,7 +182,7 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
         }
 
         //		Preference p = findPreference("eq");
-        //		int caneq = SystemConfig.getIntProperty(getActivity(), SystemConfig.KEY_CANBOX_EQ);
+        //		int caneq = SettingProperties.getIntProperty(getActivity(), SettingProperties.KEY_CANBOX_EQ);
         //		if (caneq == 0){
         //			((SwitchPreference)p).setChecked(false);
         //		} else {
@@ -158,8 +195,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -197,17 +232,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                byte[] buf = new byte[]{(byte) 0x90, 0x04, (byte) msg.what, 0, 0, 0};
-                BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
 
@@ -219,7 +243,7 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
     }
 
     private void updateEQSet(boolean b) {
-        //		SystemConfig.setIntProperty(getActivity(), SystemConfig.KEY_CANBOX_EQ, b?1:0); //why is cannt set?
+        //		SettingProperties.setIntProperty(getActivity(), SettingProperties.KEY_CANBOX_EQ, b?1:0); //why is cannt set?
 
         BroadcastUtil.sendToCarService(getActivity(), MyCmd.Cmd.SEND_UPDATE_CANBOX_SET, b ? 1 : 0);
     }
@@ -303,37 +327,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private int mKeyId;
-    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
-        public boolean onTouch(View v, android.view.MotionEvent event) {
-            //			Log.d("allen3", "onKey!!");
-            mKeyId = getKey(v.getId());
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                mHandler.removeMessages(0);
-                if (mKeyId != 0) {
-                    sendCanboxInfo(0x8c, mKeyId);
-                }
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                mHandler.removeMessages(0);
-                sendCanboxInfo(0x8c, 0);
-                mKeyId = 0;
-            }
-
-            return false;
-        }
-
-        ;
-    };
-
-    private Handler mHandlerKey = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                initKeyBoard();
-            }
-        }
-    };
-
     private int getKey(int id) {
         int ret = 0;
         for (int i = 0; i < BUTTON_ID.length; ++i) {
@@ -344,8 +337,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
         }
         return ret;
     }
-
-    private final static int[][] BUTTON_ID = {{R.id.mode, 0x2}, {R.id.up, 0x7}, {R.id.menu, 0x4}, {R.id.left, 0x6}, {R.id.right, 0x5}, {R.id.ok, 0x9}, {R.id.dark, 0x1}, {R.id.down, 0x8}, {R.id.esc, 0x3},};
 
     private void sendCanboxInfo(int d0, int d1) {
         byte[] buf = new byte[]{(byte) d0, 0x01, (byte) d1};
@@ -449,7 +440,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
         return ((value & mask) >> start);
     }
 
-
     private void updateView(byte[] buf) {
         if (buf[0] == 0x3b) {
             Util.byteArrayCopy(mData3B, buf, 0, 2, mData3B.length);
@@ -506,7 +496,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
 
     }
 
-
     private void updateVisible(byte[] buf) {
         switch (buf[2]) {
             case 0x10:
@@ -552,8 +541,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
         showPreference(id, show, null);
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

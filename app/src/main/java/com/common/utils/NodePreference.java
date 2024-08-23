@@ -1,4 +1,4 @@
-package com.common.util;
+package com.common.utils;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,14 +14,6 @@ import com.common.view.MyPreferenceSeekBar;
 
 public class NodePreference {
 
-    public String mKey;
-    public int mStatus; // canbox return status
-    public int mMask;// canbox return mask
-    public int mCmd; // cmd set to canbox
-    public int mType;
-    public int mEntry;
-    public int mEntryValue;
-
     public final static int PREFERENCE_MASK = 0xff000000;
     public final static int SCREENPREFERENCE = 0x1000000;
     public final static int SWITCHPREFERENCE = 0x2000000;
@@ -30,6 +22,13 @@ public class NodePreference {
     public final static int EDITPREFERNCE = 0x5000000;
     public final static int PREFERENCECATEGORY = 0x6000000;
     public final static int MYPREFERENCE = 0x7000000;
+    public String mKey;
+    public int mStatus; // canbox return status
+    public int mMask;// canbox return mask
+    public int mCmd; // cmd set to canbox
+    public int mType;
+    public int mEntry;
+    public int mEntryValue;
 
     public NodePreference(String id) {
         mKey = id;

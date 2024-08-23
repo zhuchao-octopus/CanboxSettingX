@@ -1,4 +1,4 @@
-package com.common.util;
+package com.common.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,12 @@ public class AuxInService extends ServiceBase {
     public static final String TAG = "RadioService";
 
     private static AuxInService mThis;
+    private static Handler[] mHandlerUICallBack = new Handler[2];
+    private int mReoverSource = -1;
+
+    public AuxInService(Context context) {
+        super(context);
+    }
 
     public static AuxInService getInstanse(Context context) {
         if (mThis == null) {
@@ -19,23 +25,6 @@ public class AuxInService extends ServiceBase {
         }
         return mThis;
     }
-
-    public AuxInService(Context context) {
-        super(context);
-    }
-
-    public void onDestroy() {
-    }
-
-    public void onCreate() {
-
-    }
-
-    public void doKeyControl(int code) {
-
-    }
-
-    private static Handler[] mHandlerUICallBack = new Handler[2];
 
     public static void setUICallBack(Handler cb, int index) {
         mHandlerUICallBack[index] = cb;
@@ -49,7 +38,16 @@ public class AuxInService extends ServiceBase {
         }
     }
 
-    private int mReoverSource = -1;
+    public void onDestroy() {
+    }
+
+    public void onCreate() {
+
+    }
+
+    public void doKeyControl(int code) {
+
+    }
 
     public void doCmd(int cmd, Intent intent) {
         switch (cmd) {

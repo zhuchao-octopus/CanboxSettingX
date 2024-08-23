@@ -451,7 +451,6 @@
 
             <ImageView
                 android:id="@+id/pp"
-                android:visibility="gone"
                 style="@style/ButtonStyle1"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
@@ -459,7 +458,8 @@
                 android:clickable="true"
                 android:onClick="onClick"
                 android:scaleType="center"
-                android:src="@drawable/pp" />
+                android:src="@drawable/pp"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/next"

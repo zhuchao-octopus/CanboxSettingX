@@ -9,11 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
@@ -21,21 +16,60 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.SystemConfig;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.SettingProperties;
 import com.common.view.MyPreference2;
 
 public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "ToyotaInfoSimpleFragment";
+    private final static int[] INIT_CMDS = {0x4101, 0x4102, 0x4103, 0x2400, 0x1f00, 0x2300,
+            /*
+             * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
+             * 0x4080, 0x4090,
+             */};
+    private static final Node[] NODES = {
 
+            new Node("tpms", 0x0), new Node("hybrid", 0x0), new Node("carbodyinfo", 0x0), new Node("car_amplifier_volume", 0x0)
+
+    };
+    TextView mTextVolume;
+    SeekBar mLevel;
+    boolean mShowHybird = false;
     private boolean mRudder = false;
     private int mFlashLight = 0;
+    private int mFrontDoor = 0;
+    private int mBackDoor = 0;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                if ((msg.what & 0xff00) == 0xff00) {
+                    sendCanboxInfo0xff(msg.what & 0xff);
+                } else {
+
+                    sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
+                }
+            }
+        }
+    };
+    private Preference[] mPreferences = new Preference[NODES.length];
+    private byte mHybrid;
+    private View mTpmsView;
+    private View mBatteryView;
+    private View mCar;
+    private int mLightStringId = 0;
+    private boolean mFlashing = true;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,9 +117,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
 
     }
 
-    private int mFrontDoor = 0;
-    private int mBackDoor = 0;
-
     private void getCanboxSetting() {
         mFrontDoor = 0;
         mBackDoor = 0;
@@ -108,12 +139,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         }
     }
 
-    private final static int[] INIT_CMDS = {0x4101, 0x4102, 0x4103, 0x2400, 0x1f00, 0x2300,
-            /*
-             * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
-             * 0x4080, 0x4090,
-             */};
-
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
         for (int i = 0; i < INIT_CMDS.length; ++i) {
@@ -121,20 +146,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         }
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                if ((msg.what & 0xff00) == 0xff00) {
-                    sendCanboxInfo0xff(msg.what & 0xff);
-                } else {
-
-                    sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
-                }
-            }
-        }
-    };
 
     private void sendCanboxInfo0xff(int d1) {// no canbox cmd.
         byte[] buf = new byte[]{(byte) 0xff, (byte) d1};
@@ -170,9 +181,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         return false;
     }
 
-    TextView mTextVolume;
-    SeekBar mLevel;
-
     private void showVolumeDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -188,7 +196,7 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         if (mLevel != null) {
             mLevel.setMax(63);
 
-            int volume = MachineConfig.getIntProperty2(SystemConfig.CANBOX_EQ_VOLUME);
+            int volume = MachineConfig.getIntProperty2(SettingProperties.CANBOX_EQ_VOLUME);
             if (volume == -1) {
                 volume = 45;
             }
@@ -213,15 +221,13 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
                             byte[] buf = new byte[]{(byte) 0x84, 0x2, 0x07, (byte) progress};
                             BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
-                            MachineConfig.setIntProperty(SystemConfig.CANBOX_EQ_VOLUME, progress);
+                            MachineConfig.setIntProperty(SettingProperties.CANBOX_EQ_VOLUME, progress);
                         }
                     }
                 }
             });
         }
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -250,7 +256,26 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         if (p != null) {
             p.setSummary(s);
         }
-    }
+    }    private Handler mHandlerHybird = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                mHandlerHybird.removeMessages(0);
+                if (mShowHybird) {
+                    clearHybird();
+                    mShowHybird = false;
+                    mHandlerHybird.sendEmptyMessageDelayed(0, 1000);
+                } else {
+                    showHyBird(mHybrid);
+                }
+            } else if (msg.what == 1) {
+                mHandlerHybird.removeMessages(1);
+                sendCanboxInfo0x90(0x1f, msg.what & 0xff);
+                mHandlerHybird.sendEmptyMessageDelayed(1, 1000);
+            }
+
+        }
+    };
 
     private void updateVisible(byte[] buf) {
 
@@ -274,13 +299,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         showPreference("cell_back_door", buf[3] & 0x80, null);
 
     }
-
-    private static final Node[] NODES = {
-
-            new Node("tpms", 0x0), new Node("hybrid", 0x0), new Node("carbodyinfo", 0x0), new Node("car_amplifier_volume", 0x0)
-
-    };
-    private Preference[] mPreferences = new Preference[NODES.length];
 
     private void showPreference(String id, int show, String parant) {
         Preference preference = null;
@@ -314,34 +332,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         }
 
     }
-
-    private byte mHybrid;
-    private View mTpmsView;
-    private View mBatteryView;
-    private View mCar;
-
-    boolean mShowHybird = false;
-
-    private Handler mHandlerHybird = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                mHandlerHybird.removeMessages(0);
-                if (mShowHybird) {
-                    clearHybird();
-                    mShowHybird = false;
-                    mHandlerHybird.sendEmptyMessageDelayed(0, 1000);
-                } else {
-                    showHyBird(mHybrid);
-                }
-            } else if (msg.what == 1) {
-                mHandlerHybird.removeMessages(1);
-                sendCanboxInfo0x90(0x1f, msg.what & 0xff);
-                mHandlerHybird.sendEmptyMessageDelayed(1, 1000);
-            }
-
-        }
-    };
 
     private void clearHybird() {
         mBatteryView.findViewById(R.id.canbus8_wheel_motor).setVisibility(View.GONE);
@@ -431,17 +421,12 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
             mCar = p.getMainView();
         }
         //}
-    }
-
-    private int mLightStringId = 0;
-    private Handler mHandlerFlash = new Handler() {
+    }    private Handler mHandlerFlash = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             flashLight(mFlashLight, true);
         }
     };
-
-    private boolean mFlashing = true;
 
     private void flashLight(int b, boolean auto) {
         View v;
@@ -978,8 +963,6 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -1012,5 +995,9 @@ public class ToyotaInfoSimpleFragment extends PreferenceFragmentCompat implement
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
+
+
 
 }

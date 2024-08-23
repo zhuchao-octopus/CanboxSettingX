@@ -16,11 +16,23 @@ import java.nio.ByteOrder;
  * 4. drawFrame()<br/>
  */
 public class GLProgramJava implements GLProgram {
+    private static final String VERTEX_SHADER = "attribute vec4 vPosition;\n" + "attribute vec2 a_texCoord;\n" + "varying vec2 tc;\n" + "void main() {\n" + "gl_Position = vPosition;\n" + "tc = a_texCoord;\n" + "}\n";
+    private static final String FRAGMENT_SHADER = "precision mediump float;\n" + "uniform sampler2D tex_y;\n" + "uniform sampler2D tex_u;\n" + "uniform sampler2D tex_v;\n" + "varying vec2 tc;\n" + "void main() {\n" + "vec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\n" + "vec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\n" + "vec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\n" + "c += V * vec4(1.596, -0.813, 0, 0);\n" + "c += U * vec4(0, -0.392, 2.017, 0);\n" + "c.a = 1.0;\n" + "gl_FragColor = c;\n" + "}\n";
+    private static final String FRAGMENT_BIND_UV_SHADER = "precision mediump float;\n" + "uniform sampler2D tex_y;\n" + "uniform sampler2D tex_uv;\n" + "varying vec2 tc;\n" + "void main() {\n" +
+    			/*
+    			"vec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\n" +
+    			"vec4 U = vec4(texture2D(tex_uv, tc).r - 128./255.);\n" +
+    			"vec4 V = vec4(texture2D(tex_uv, tc).a - 128./255.);\n" +
+    			"c += V * vec4(1.596, -0.813, 0, 0);\n" +
+    			"c += U * vec4(0, -0.392, 2.017, 0);\n" +
+    			"c.a = 1.0;\n" +
+    			*/
+            "vec3 yuv;\n" + "vec3 rgb;\n" + "yuv.x = texture2D(tex_y, tc).r;\n" + "yuv.y = texture2D(tex_uv, tc).r - 0.5;\n" + "yuv.z = texture2D(tex_uv, tc).a - 0.5;\n" + "rgb = mat3( 1,       1,         1,\n" + "        0,     -0.344,  1.772,\n" + "        1.402, -0.714,   0) * yuv;\n" + "gl_FragColor = vec4(rgb.z, rgb.y, rgb.x, 1);\n" + "}\n";
+    // window position
+    public final int mWinPosition;
     private String TAG = "CAM_GLProgramJava";
     // program id
     private int _program;
-    // window position
-    public final int mWinPosition;
     // texture id
     private int _textureI;
     private int _textureII;
@@ -181,7 +193,6 @@ public class GLProgramJava implements GLProgram {
         }
         isProgBuilt = true;
     }
-
 
     @Override
     public boolean buildTextures(byte[] y, byte[] u, byte[] v, byte[] uv, int width, int height, int format) {
@@ -520,19 +531,5 @@ public class GLProgramJava implements GLProgram {
             throw new RuntimeException(op + ": glError " + error);
         }
     }
-
-    private static final String VERTEX_SHADER = "attribute vec4 vPosition;\n" + "attribute vec2 a_texCoord;\n" + "varying vec2 tc;\n" + "void main() {\n" + "gl_Position = vPosition;\n" + "tc = a_texCoord;\n" + "}\n";
-
-    private static final String FRAGMENT_SHADER = "precision mediump float;\n" + "uniform sampler2D tex_y;\n" + "uniform sampler2D tex_u;\n" + "uniform sampler2D tex_v;\n" + "varying vec2 tc;\n" + "void main() {\n" + "vec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\n" + "vec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\n" + "vec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\n" + "c += V * vec4(1.596, -0.813, 0, 0);\n" + "c += U * vec4(0, -0.392, 2.017, 0);\n" + "c.a = 1.0;\n" + "gl_FragColor = c;\n" + "}\n";
-    private static final String FRAGMENT_BIND_UV_SHADER = "precision mediump float;\n" + "uniform sampler2D tex_y;\n" + "uniform sampler2D tex_uv;\n" + "varying vec2 tc;\n" + "void main() {\n" +
-    			/*
-    			"vec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\n" +
-    			"vec4 U = vec4(texture2D(tex_uv, tc).r - 128./255.);\n" +
-    			"vec4 V = vec4(texture2D(tex_uv, tc).a - 128./255.);\n" +
-    			"c += V * vec4(1.596, -0.813, 0, 0);\n" +
-    			"c += U * vec4(0, -0.392, 2.017, 0);\n" + 
-    			"c.a = 1.0;\n" +
-    			*/
-            "vec3 yuv;\n" + "vec3 rgb;\n" + "yuv.x = texture2D(tex_y, tc).r;\n" + "yuv.y = texture2D(tex_uv, tc).r - 0.5;\n" + "yuv.z = texture2D(tex_uv, tc).a - 0.5;\n" + "rgb = mat3( 1,       1,         1,\n" + "        0,     -0.344,  1.772,\n" + "        1.402, -0.714,   0) * yuv;\n" + "gl_FragColor = vec4(rgb.z, rgb.y, rgb.x, 1);\n" + "}\n";
 
 }

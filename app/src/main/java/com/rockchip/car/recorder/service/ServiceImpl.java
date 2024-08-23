@@ -1,11 +1,7 @@
 package com.rockchip.car.recorder.service;
 
-import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -16,24 +12,18 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.os.Process;
-import android.os.SystemClock;
 import android.view.OrientationEventListener;
 import android.view.SurfaceHolder;
-import android.view.View;
-import android.widget.Toast;
 
 import com.rockchip.car.recorder.camera2.CameraHolder;
 import com.rockchip.car.recorder.camera2.CameraManager;
 import com.rockchip.car.recorder.model.CameraInfo;
 import com.rockchip.car.recorder.utils.SLog;
-import com.rockchip.car.recorder.utils.SystemProperties;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,27 +47,139 @@ public abstract class ServiceImpl implements IService {
     private static final int MSG_UPDATE_RECORD_ICON = 0x00000002;
     private static final int MSG_USB_HOTPLUG_ADD = 0x00000003;
     private static final int MSG_USB_HOTPLUG_REMOVE = 0x00000004;
-
-    private int mOrientation = OrientationEventListener.ORIENTATION_UNKNOWN;
     protected static Map<Integer, CameraInfo> mCameraInfos;
-
-    private CameraBinder mCameraBinder;
-
-    private boolean mAllowedTakePictureOnRecording = true;
-
     protected CameraCallback mCameraCallback;
+    protected CameraManager.CameraOpenCallback mCameraOpenErrorCallback = new CameraManager.CameraOpenCallback() {
 
+
+        @Override
+        public <T> void onSuccess(int cameraId, boolean preview, boolean recorder, T t) {
+            SLog.d(TAG, "ServiceImpl.mCameraOpenErrorCallback::onSuccess. cameraId:" + cameraId + "; preview:" + preview + "; recorder:" + recorder);
+            //            if (preview) {
+            //                afterOpenedBeforePreview();
+            //                startPreview(cameraId, t == null ? true : false, recorder, t);
+            //            }
+        }
+
+        @Override
+        public void onFailure(int cameraId, int what) {
+
+        }
+    };
+    protected boolean mIsChannelChanged = false;
+    private int mOrientation = OrientationEventListener.ORIENTATION_UNKNOWN;
+    private CameraBinder mCameraBinder;
+    private boolean mAllowedTakePictureOnRecording = true;
     private ContentResolver mContentResolver;
-
     private LocationManager mLocationManager;
-
     private Map<Integer, Integer> mSurfaceToCamera;
     private Map<Integer, Integer> mCameraToSurface;
-
     private boolean mTakePicture;
     private long mStartRecordTime;
-
     private boolean mNeedScanFile = true;
+    private Handler mMainHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_UPDATE_RECORD_TIME:
+
+                    break;
+                case MSG_UPDATE_RECORD_ICON:
+                    mCameraCallback.updateRecordIcon(isRecording(0), false);
+                    break;
+
+                case MSG_USB_HOTPLUG_ADD:
+                    execUsbHotplug(true);
+                    break;
+
+                case MSG_USB_HOTPLUG_REMOVE:
+                    execUsbHotplug(false);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    private boolean mIsUsbHotpluging;
+    private CameraManager.CameraStartPreviewCallback mCameraStartPreivewCallback = new CameraManager.CameraStartPreviewCallback() {
+        @Override
+        public void onSuccess(int cameraId, boolean record) {
+            SLog.d(TAG, "ServiceImpl.mCameraStartPreivewCallback::onSuccess. cameraId:" + cameraId + "; recorder:" + record);
+            if (!mTakePicture) {
+                mCameraInfos.get(cameraId).setCameraStatus(CAMERA_PREVIEWING);
+            }
+            if (record) {
+                afterPreviewedBeforeRecord();
+                startRecord(cameraId);
+            } else {
+                mIsUsbHotpluging = false;
+            }
+        }
+
+        @Override
+        public void onFailure(int cameraId, int reason) {
+
+        }
+    };
+
+    //    @Override
+    //    public IBinder onBind(Intent intent) {
+    //        SLog.d(TAG, "ServiceImpl::onBind.");
+    //        return mCameraBinder;
+    //    }
+    //
+    //    @Override
+    //    public void onRebind(Intent intent) {
+    //        super.onRebind(intent);
+    //        SLog.d(TAG, "ServiceImpl::onRebind.");
+    //    }
+    private int mLastUsbStatus = -1;
+    private Object mChannelLock = new Object();
+    private BroadcastReceiver mUnmountReceiver = null;
+    private LocationListener mLocationListener = new LocationListener() {
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            // TODO Auto-generated method stub
+            switch (status) {
+                case LocationProvider.AVAILABLE:
+                    SLog.d(TAG, "gps status: available");
+                    break;
+
+                case LocationProvider.OUT_OF_SERVICE:
+                    SLog.d(TAG, "gps status: out of service");
+                    break;
+
+                case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                    SLog.d(TAG, "gps status: temporarily unavailable");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            // TODO Auto-generated method stub
+            SLog.d(TAG, "GPS onProviderEnabled");
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            // TODO Auto-generated method stub
+            SLog.d(TAG, "GPS onProviderDisabled");
+            updateLocation(null);
+        }
+
+        @Override
+        public void onLocationChanged(Location location) {
+            // TODO Auto-generated method stub
+            SLog.d(TAG, "GPS location changed");
+            updateLocation(location);
+        }
+    };
 
     public ServiceImpl() {
         if (mCameraInfos == null) {
@@ -113,43 +215,6 @@ public abstract class ServiceImpl implements IService {
         initLocationManager();
         //        CameraSettings.setObserver(this);
     }
-
-    //    @Override
-    //    public IBinder onBind(Intent intent) {
-    //        SLog.d(TAG, "ServiceImpl::onBind.");
-    //        return mCameraBinder;
-    //    }
-    //
-    //    @Override
-    //    public void onRebind(Intent intent) {
-    //        super.onRebind(intent);
-    //        SLog.d(TAG, "ServiceImpl::onRebind.");
-    //    }
-
-    private Handler mMainHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_UPDATE_RECORD_TIME:
-
-                    break;
-                case MSG_UPDATE_RECORD_ICON:
-                    mCameraCallback.updateRecordIcon(isRecording(0), false);
-                    break;
-
-                case MSG_USB_HOTPLUG_ADD:
-                    execUsbHotplug(true);
-                    break;
-
-                case MSG_USB_HOTPLUG_REMOVE:
-                    execUsbHotplug(false);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
     @Override
     public int getNumberOfCameras() {
@@ -807,6 +872,8 @@ public abstract class ServiceImpl implements IService {
     public void switchPreview() {
     }
 
+    ;
+
     public void registerCallback(CameraCallback callback) {
         this.mCameraCallback = callback;
     }
@@ -814,6 +881,48 @@ public abstract class ServiceImpl implements IService {
     public void unregisterCallback() {
         this.mCameraCallback = null;
     }
+
+    //    @Override
+    //    public void onInfoRecord(int id, int what, int extra, long time) {
+    //        SLog.d(TAG, "ServiceImpl::onInfoRecord(" + id + ", " + what + ", " + extra + ", " + time + ")");
+    //        switch (what) {
+    //            case MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED:
+    //                setNextRecord(id);
+    //                break;
+    //        }
+    //    }
+    //
+    //    @Override
+    //    public void onErrorCamera(int id, int error) {
+    //        SLog.d(TAG, "ServiceImpl.onErrorCamera(" + id + ", " + error + ")");
+    //        final boolean isPreview = true;
+    //        final boolean isRecording = isRecording();
+    //
+    //        new Thread(new Runnable() {
+    //            @Override
+    //            public void run() {
+    //                //Intent intent = new Intent(Config.ACTION_RECORD_RESTART);
+    //                //intent.putExtra(Config.EXTRA_PREVIEWING, isPreview);
+    //                //intent.putExtra(Config.EXTRA_RECORDING, isRecording);
+    //                //sendBroadcast(intent);
+    //                //Utils.killProcess(ServiceImpl.this, ServiceImpl.this.getPackageName());
+    //            }
+    //        }).start();
+    //    }
+    //
+    //    @Override
+    //    public void onErrorMedia(int id, int what, int extra) {
+    //        SLog.d(TAG, "ServiceImpl.onErrorMedia(" + id + ", " + what + ", " + extra + ")");
+    //    }
+    //
+    //    private int mLastUsbId = -1;
+    //    private Object mUsbHotPlugLock = new Object();
+    //    @Override
+    //    public void onUsbHotplug(final boolean add) {
+    //        mMainHandler.removeMessages(MSG_USB_HOTPLUG_ADD);
+    //        mMainHandler.removeMessages(MSG_USB_HOTPLUG_REMOVE);
+    //        mMainHandler.sendEmptyMessageDelayed(add ? MSG_USB_HOTPLUG_ADD : MSG_USB_HOTPLUG_REMOVE, 100);
+    //    }
 
     private void setNextRecord(int id) {
         //        SLog.d(TAG, "ServiceImpl::setNextRecord(" + id + ")");
@@ -881,44 +990,323 @@ public abstract class ServiceImpl implements IService {
         return generateName(id, System.currentTimeMillis(), type);
     }
 
-    protected CameraManager.CameraOpenCallback mCameraOpenErrorCallback = new CameraManager.CameraOpenCallback() {
+    public void execUsbHotplug(final boolean add) {
+        //        new Thread(new Runnable() {
+        //            @Override
+        //            public void run() {
+        //                synchronized (mUsbHotPlugLock) {
+        //                    SLog.d(TAG, "ServiceImpl::onUsbHotplug. state:" + (add ? "ADD" : "REMOVE"));
+        //                    if (mIsUsbHotpluging) {
+        //                        SLog.w(TAG, "ServiceImpl::onUsbHotplug. It's hotpluging, please wait!");
+        //                        mMainHandler.removeMessages(MSG_USB_HOTPLUG_ADD);
+        //                        mMainHandler.removeMessages(MSG_USB_HOTPLUG_REMOVE);
+        //                        mMainHandler.sendEmptyMessageDelayed(add ? MSG_USB_HOTPLUG_ADD : MSG_USB_HOTPLUG_REMOVE, 100);
+        //                        return;
+        //                    }
+        //                    mIsUsbHotpluging = true;
+        //                    if (mCameraCallback != null) {
+        //                        mCameraCallback.usbHotPlugEvent(1);
+        //                    }
+        //                    if (add) {
+        //                        if (mLastUsbStatus == 1) {
+        //                            SLog.w(TAG, "ServiceImpl::onUsbHotplug. Last Status is this, ignore this!");
+        //                            mIsUsbHotpluging = false;
+        //                            return;
+        //                        }
+        //                        mLastUsbStatus = 1;
+        //                        if (mLastUsbId == -1) {
+        //                            mLastUsbId = getNumberOfCameras() - 1;
+        //                            mLastUsbId = (mLastUsbId < 0 ? 0 : mLastUsbId);
+        //                        }
+        //                        if (mCameraCallback != null ) {
+        //                            mCameraCallback.surfaceVisible(1, View.VISIBLE);
+        //                        }
+        //                        if (isRecording()) {
+        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. It's Recording!");
+        //                            boolean result = startRecordingDirect(mLastUsbId, null);
+        //                            if (!result) {
+        //                                SLog.d(TAG, "ServiceImpl::onUsbHotplug. Start record direct failed!");
+        //                                mIsUsbHotpluging = false;
+        //                            }
+        //                        } else {
+        //                            if (mCameraCallback != null) {
+        //                                SLog.d(TAG, "ServiceImpl::onUsbHotplug. It's Previewing!");
+        //                                boolean result = startPreviewDirect(mLastUsbId, null);
+        //                                if (!result) {
+        //                                    SLog.d(TAG, "ServiceImpl::onUsbHotplug. Start preview direct failed!");
+        //                                    mIsUsbHotpluging = false;
+        //                                }
+        //                            } else {
+        //                                mIsUsbHotpluging = false;
+        //                            }
+        //                        }
+        //                    } else {
+        //                        if (mLastUsbStatus == 0) {
+        //                            SLog.w(TAG, "ServiceImpl::onUsbHotplug. Last Status is this, ignore this!");
+        //                            mIsUsbHotpluging = false;
+        //                            return;
+        //                        }
+        //                        mLastUsbStatus = 0;
+        //                        int usbId = getUsbId();
+        //                        mLastUsbId = usbId;
+        //                        if (mCameraCallback != null) {
+        //                            mCameraCallback.surfaceVisible(1, View.GONE);
+        //                        }
+        //                        if (isRecording(usbId)) {
+        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. it is recording");
+        //                            stopRecord(usbId);
+        //                        }
+        //                        if (isPreviewing(usbId)) {
+        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. it is preview");
+        //                            stopPreview(usbId);
+        //                        }
+        //                        if (isOpended(usbId)) {
+        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. it is opened");
+        //                            release(usbId);
+        //                        }
+        //                        mIsUsbHotpluging = false;
+        //                    }
+        //                    SLog.d(TAG, "ServiceImpl::onUsbHotplug. end");
+        //                    if (mCameraCallback != null) {
+        //                        mCameraCallback.usbHotPlugEvent(0);
+        //                    }
+        //                }
+        //            }
+        //        }).start();
+    }
 
+    private void registerExternalStorageListener() {
+        //        if (mUnmountReceiver == null) {
+        //            mUnmountReceiver = new BroadcastReceiver() {
+        //                @Override
+        //                public void onReceive(Context context, Intent intent) {
+        //                    String action = intent.getAction();
+        //                    SLog.i(TAG, "onReceive action = " + action);
+        //                    if(action.equals(Intent.ACTION_MEDIA_UNMOUNTED)
+        //                            && Config.EXTENAL_SD.equals(intent.getData().getPath())){
+        //                        if(isRecording(0) || isRecording(1))
+        //                            stopRecord();
+        //                        if (mCameraCallback != null)
+        //                            mCameraCallback.updateRecordIcon(false, false);
+        //                        Toast.makeText(getApplicationContext(), R.string.msg_sd_ummounted, Toast.LENGTH_SHORT).show();
+        //                        BaseApplication.getInstance().getSDCard();
+        //                    } else if(action.equals(Intent.ACTION_MEDIA_UNMOUNTED)) {
+        //                        Toast.makeText(getApplicationContext(), R.string.msg_sd_ummounted, Toast.LENGTH_SHORT).show();
+        //                        BaseApplication.getInstance().getSDCard();
+        //                    } else if(action.equals(Intent.ACTION_MEDIA_MOUNTED)) {
+        //                        Toast.makeText(getApplicationContext(), R.string.msg_sd_mounted, Toast.LENGTH_SHORT).show();
+        //                        BaseApplication.getInstance().getSDCard();
+        //                    }
+        //                }
+        //            };
+        //            IntentFilter iFilter = new IntentFilter();
+        //            iFilter.addAction(Intent.ACTION_MEDIA_EJECT);
+        //            iFilter.addAction(Intent.ACTION_MEDIA_UNMOUNTED);
+        //            iFilter.addAction(Intent.ACTION_MEDIA_MOUNTED);
+        //            iFilter.addAction(Intent.ACTION_MEDIA_REMOVED);
+        //            iFilter.addDataScheme("file");
+        //            registerReceiver(mUnmountReceiver, iFilter);
+        //        }
+    }
+    //    @Override
+    //    public void changedNotify(String key) {
+    //        if (key.equals(Config.KEY_CVBS_CHANNEL)) {
+    //            new Thread(new Runnable() {
+    //                @Override
+    //                public void run() {
+    //                    synchronized (mChannelLock) {
+    //                        int id = getSocId();
+    //                        if (id >= 0) {
+    //                            mIsChannelChanged = true;
+    //                            if (mCameraInfos.get(id) != null) {
+    //                                if (mCameraInfos.get(id).getCameraStateId() >= IService.I_CAMERA_PREVIEWING) {
+    //                                    stopPreview(id);
+    //                                }
+    //                                release(id);
+    //                                try {
+    //                                    //Thread.sleep(1500);
+    //                                    open(id);
+    //                                    //startPreview(id);
+    //                                } catch (/*Interrupted*/Exception e) {
+    //                                    e.printStackTrace();
+    //                                }
+    //                            }
+    //                        }
+    //                    }
+    //                }
+    //            }).start();
+    //        }
+    //    }
 
-        @Override
-        public <T> void onSuccess(int cameraId, boolean preview, boolean recorder, T t) {
-            SLog.d(TAG, "ServiceImpl.mCameraOpenErrorCallback::onSuccess. cameraId:" + cameraId + "; preview:" + preview + "; recorder:" + recorder);
-            //            if (preview) {
-            //                afterOpenedBeforePreview();
-            //                startPreview(cameraId, t == null ? true : false, recorder, t);
-            //            }
-        }
+    private void updateLocation(Location location) {
+        /*if (location == null) {
+            realLocation = false;
+            location = new Location(LocationManager.GPS_PROVIDER);
+            location.setLongitude(180.0 * Math.random());
+            location.setLatitude(90.0 * Math.random());
+            location.setSpeed((float) (30.0 * Math.random()));
+        }*/
+        if (location != null) {
+            double Longituded = location.getLongitude(); //jingdu
+            double Latituded = location.getLatitude(); //weidu
+            double Altituded = location.getAltitude(); //haiba
+            float CarSpeed = location.getSpeed() * 3600 / 1000f; //sudu
+            SLog.d(TAG, "location = " + Longituded + "," + Latituded + "," + Altituded + "," + CarSpeed);
 
-        @Override
-        public void onFailure(int cameraId, int what) {
+            DecimalFormat df = new DecimalFormat("#.00");
+            String Longitudedstr = df.format(Math.abs(Longituded));
+            String Latitudedstr = df.format(Math.abs(Latituded));
+            String CarSpeedstr = CarSpeed >= 1.0f ? df.format(CarSpeed) : "0.00";
 
-        }
-    };
-
-    private CameraManager.CameraStartPreviewCallback mCameraStartPreivewCallback = new CameraManager.CameraStartPreviewCallback() {
-        @Override
-        public void onSuccess(int cameraId, boolean record) {
-            SLog.d(TAG, "ServiceImpl.mCameraStartPreivewCallback::onSuccess. cameraId:" + cameraId + "; recorder:" + record);
-            if (!mTakePicture) {
-                mCameraInfos.get(cameraId).setCameraStatus(CAMERA_PREVIEWING);
-            }
-            if (record) {
-                afterPreviewedBeforeRecord();
-                startRecord(cameraId);
+            if (Longituded < 0) {
+                Longitudedstr = "W" + Longitudedstr;
             } else {
-                mIsUsbHotpluging = false;
+                Longitudedstr = "E" + Longitudedstr;
+            }
+            if (Latituded < 0) {
+                Latitudedstr = "S" + Latitudedstr;
+            } else {
+                Latitudedstr = "N" + Latitudedstr;
+            }
+
+            String gpsinfo;
+            boolean hasLatLon = (Latituded != 0.0d) || (Longituded != 0.0d);
+            if (hasLatLon) {
+                gpsinfo = Longitudedstr + " " + Latitudedstr + " " + CarSpeedstr + "km/h";
+            } else {
+                location = null;
+                gpsinfo = "";
+            }
+            if (isRecording()) {
+                for (int i = 0; i < CameraHolder.instance().getNumberOfCameras(); i++) {
+                    ParametersSet.setWaterMark(i, gpsinfo);
+                }
+            }
+
+        } else {
+            if (isRecording()) {
+                for (int i = 0; i < CameraHolder.instance().getNumberOfCameras(); i++) {
+                    ParametersSet.setWaterMark(i, "");
+                }
             }
         }
+    }
 
-        @Override
-        public void onFailure(int cameraId, int reason) {
+    private Criteria getCriteria() {
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setSpeedRequired(true);
+        criteria.setCostAllowed(false);
+        criteria.setBearingRequired(false);
+        criteria.setAltitudeRequired(true);
+        criteria.setPowerRequirement(Criteria.POWER_LOW);
+        return criteria;
+    }
 
+    private void initLocationManager() {
+        if (mLocationManager == null) {
+            //            mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            //            if (mLocationManager == null) return;
+            /*mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                    3000, 0, mLocationListener);
+            if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                SLog.e(TAG, "gps disabled");
+                return;
+            }
+            String bestProvider = mLocationManager.getBestProvider(getCriteria(),
+                    true);
+            Location location = mLocationManager.getLastKnownLocation(bestProvider);
+            SLog.d(TAG, "getLastKnownLocation = " + location);
+            if (location != null) {
+                location.setSpeed(0.0f);
+                updateLocation(location);
+            }
+            SLog.i(TAG, "gps location init");*/
         }
-    };
+    }
+
+    private void disconnectLocationManager() {
+        if (mLocationManager != null) {
+            try {
+                mLocationManager.removeUpdates(mLocationListener);
+            } catch (Exception ex) {
+                SLog.i(TAG, "fail to remove location listners, ignore" + ex);
+            }
+            mLocationManager = null;
+            SLog.i(TAG, "gps location disconnect");
+        }
+    }
+
+    public void activityExisted() {
+        int id;
+        for (CameraInfo info : mCameraInfos.values()) {
+            id = info.getCameraId();
+            if (isRecording(id)) {
+                if (info.getCameraManager() != null) {
+                    info.getCameraManager().setPreviewCallbackWithBuffer(null, null);
+                }
+            } else {
+                if (info.getCameraStateId() >= IService.I_CAMERA_PREVIEWING) {
+                    stopPreview(id);
+                }
+                release(id);
+            }
+        }
+    }
+
+    public void onDestroy() {
+
+
+        //        BaseApplication.getInstance().setService(null);
+        //        if (mUnmountReceiver != null) {
+        //            try {
+        //                unregisterReceiver(mUnmountReceiver);
+        //            } catch (Exception e) {
+        //                SLog.e(TAG, "unregister mUnmountReceiver error:" + e);
+        //            }
+        //            mUnmountReceiver = null;
+        //        }
+        //        CameraEvent.UsbHotPlugReceiver.getInstance(this).unregister();
+        disconnectLocationManager();
+    }
+
+    public void addCallbackBuffer(int id, byte[] data) {
+        try {
+            if (mCameraInfos.get(id) != null && mCameraInfos.get(id).getCameraManager() != null) {
+                mCameraInfos.get(id).getCameraManager().addCallbackBuffer(data);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public CameraInfo getCameraInfo(int id) {
+
+        getCameraInfos().get(id);
+
+        return null;
+    }
+
+    public interface CameraCallback {
+        void setPreviewFormat(int id, int format);
+
+        void setRenderSize(int id, int width, int height);
+
+        void requestRender(int id, byte[] data);
+
+        void updateRecordIcon(boolean recording, boolean lock);
+
+        void updateRecordTime(long start, long max);
+
+        void surfaceVisible(int id, int visible);
+
+        void finishActivity();
+
+        void usbHotPlugEvent(int state);
+
+        void drawAdasResult(Bitmap bitmap);
+    }
+    /////////////
 
     private class JpegPictureCallback implements CameraManager.CameraPictureCallback {
 
@@ -957,8 +1345,6 @@ public abstract class ServiceImpl implements IService {
         //            }
         //        }
     }
-
-    ;
 
     public class CameraBinder extends Binder {
         WeakReference<ServiceImpl> mWeakService;
@@ -1151,419 +1537,5 @@ public abstract class ServiceImpl implements IService {
         public boolean isHotPluging() {
             return mIsUsbHotpluging;
         }
-    }
-
-    public interface CameraCallback {
-        void setPreviewFormat(int id, int format);
-
-        void setRenderSize(int id, int width, int height);
-
-        void requestRender(int id, byte[] data);
-
-        void updateRecordIcon(boolean recording, boolean lock);
-
-        void updateRecordTime(long start, long max);
-
-        void surfaceVisible(int id, int visible);
-
-        void finishActivity();
-
-        void usbHotPlugEvent(int state);
-
-        void drawAdasResult(Bitmap bitmap);
-    }
-
-    //    @Override
-    //    public void onInfoRecord(int id, int what, int extra, long time) {
-    //        SLog.d(TAG, "ServiceImpl::onInfoRecord(" + id + ", " + what + ", " + extra + ", " + time + ")");
-    //        switch (what) {
-    //            case MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED:
-    //                setNextRecord(id);
-    //                break;
-    //        }
-    //    }
-    //
-    //    @Override
-    //    public void onErrorCamera(int id, int error) {
-    //        SLog.d(TAG, "ServiceImpl.onErrorCamera(" + id + ", " + error + ")");
-    //        final boolean isPreview = true;
-    //        final boolean isRecording = isRecording();
-    //
-    //        new Thread(new Runnable() {
-    //            @Override
-    //            public void run() {
-    //                //Intent intent = new Intent(Config.ACTION_RECORD_RESTART);
-    //                //intent.putExtra(Config.EXTRA_PREVIEWING, isPreview);
-    //                //intent.putExtra(Config.EXTRA_RECORDING, isRecording);
-    //                //sendBroadcast(intent);
-    //                //Utils.killProcess(ServiceImpl.this, ServiceImpl.this.getPackageName());
-    //            }
-    //        }).start();
-    //    }
-    //
-    //    @Override
-    //    public void onErrorMedia(int id, int what, int extra) {
-    //        SLog.d(TAG, "ServiceImpl.onErrorMedia(" + id + ", " + what + ", " + extra + ")");
-    //    }
-    //
-    //    private int mLastUsbId = -1;
-    //    private Object mUsbHotPlugLock = new Object();
-    //    @Override
-    //    public void onUsbHotplug(final boolean add) {
-    //        mMainHandler.removeMessages(MSG_USB_HOTPLUG_ADD);
-    //        mMainHandler.removeMessages(MSG_USB_HOTPLUG_REMOVE);
-    //        mMainHandler.sendEmptyMessageDelayed(add ? MSG_USB_HOTPLUG_ADD : MSG_USB_HOTPLUG_REMOVE, 100);
-    //    }
-
-    private boolean mIsUsbHotpluging;
-    private int mLastUsbStatus = -1;
-
-    public void execUsbHotplug(final boolean add) {
-        //        new Thread(new Runnable() {
-        //            @Override
-        //            public void run() {
-        //                synchronized (mUsbHotPlugLock) {
-        //                    SLog.d(TAG, "ServiceImpl::onUsbHotplug. state:" + (add ? "ADD" : "REMOVE"));
-        //                    if (mIsUsbHotpluging) {
-        //                        SLog.w(TAG, "ServiceImpl::onUsbHotplug. It's hotpluging, please wait!");
-        //                        mMainHandler.removeMessages(MSG_USB_HOTPLUG_ADD);
-        //                        mMainHandler.removeMessages(MSG_USB_HOTPLUG_REMOVE);
-        //                        mMainHandler.sendEmptyMessageDelayed(add ? MSG_USB_HOTPLUG_ADD : MSG_USB_HOTPLUG_REMOVE, 100);
-        //                        return;
-        //                    }
-        //                    mIsUsbHotpluging = true;
-        //                    if (mCameraCallback != null) {
-        //                        mCameraCallback.usbHotPlugEvent(1);
-        //                    }
-        //                    if (add) {
-        //                        if (mLastUsbStatus == 1) {
-        //                            SLog.w(TAG, "ServiceImpl::onUsbHotplug. Last Status is this, ignore this!");
-        //                            mIsUsbHotpluging = false;
-        //                            return;
-        //                        }
-        //                        mLastUsbStatus = 1;
-        //                        if (mLastUsbId == -1) {
-        //                            mLastUsbId = getNumberOfCameras() - 1;
-        //                            mLastUsbId = (mLastUsbId < 0 ? 0 : mLastUsbId);
-        //                        }
-        //                        if (mCameraCallback != null ) {
-        //                            mCameraCallback.surfaceVisible(1, View.VISIBLE);
-        //                        }
-        //                        if (isRecording()) {
-        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. It's Recording!");
-        //                            boolean result = startRecordingDirect(mLastUsbId, null);
-        //                            if (!result) {
-        //                                SLog.d(TAG, "ServiceImpl::onUsbHotplug. Start record direct failed!");
-        //                                mIsUsbHotpluging = false;
-        //                            }
-        //                        } else {
-        //                            if (mCameraCallback != null) {
-        //                                SLog.d(TAG, "ServiceImpl::onUsbHotplug. It's Previewing!");
-        //                                boolean result = startPreviewDirect(mLastUsbId, null);
-        //                                if (!result) {
-        //                                    SLog.d(TAG, "ServiceImpl::onUsbHotplug. Start preview direct failed!");
-        //                                    mIsUsbHotpluging = false;
-        //                                }
-        //                            } else {
-        //                                mIsUsbHotpluging = false;
-        //                            }
-        //                        }
-        //                    } else {
-        //                        if (mLastUsbStatus == 0) {
-        //                            SLog.w(TAG, "ServiceImpl::onUsbHotplug. Last Status is this, ignore this!");
-        //                            mIsUsbHotpluging = false;
-        //                            return;
-        //                        }
-        //                        mLastUsbStatus = 0;
-        //                        int usbId = getUsbId();
-        //                        mLastUsbId = usbId;
-        //                        if (mCameraCallback != null) {
-        //                            mCameraCallback.surfaceVisible(1, View.GONE);
-        //                        }
-        //                        if (isRecording(usbId)) {
-        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. it is recording");
-        //                            stopRecord(usbId);
-        //                        }
-        //                        if (isPreviewing(usbId)) {
-        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. it is preview");
-        //                            stopPreview(usbId);
-        //                        }
-        //                        if (isOpended(usbId)) {
-        //                            SLog.d(TAG, "ServiceImpl::onUsbHotplug. it is opened");
-        //                            release(usbId);
-        //                        }
-        //                        mIsUsbHotpluging = false;
-        //                    }
-        //                    SLog.d(TAG, "ServiceImpl::onUsbHotplug. end");
-        //                    if (mCameraCallback != null) {
-        //                        mCameraCallback.usbHotPlugEvent(0);
-        //                    }
-        //                }
-        //            }
-        //        }).start();
-    }
-
-
-    protected boolean mIsChannelChanged = false;
-    private Object mChannelLock = new Object();
-    //    @Override
-    //    public void changedNotify(String key) {
-    //        if (key.equals(Config.KEY_CVBS_CHANNEL)) {
-    //            new Thread(new Runnable() {
-    //                @Override
-    //                public void run() {
-    //                    synchronized (mChannelLock) {
-    //                        int id = getSocId();
-    //                        if (id >= 0) {
-    //                            mIsChannelChanged = true;
-    //                            if (mCameraInfos.get(id) != null) {
-    //                                if (mCameraInfos.get(id).getCameraStateId() >= IService.I_CAMERA_PREVIEWING) {
-    //                                    stopPreview(id);
-    //                                }
-    //                                release(id);
-    //                                try {
-    //                                    //Thread.sleep(1500);
-    //                                    open(id);
-    //                                    //startPreview(id);
-    //                                } catch (/*Interrupted*/Exception e) {
-    //                                    e.printStackTrace();
-    //                                }
-    //                            }
-    //                        }
-    //                    }
-    //                }
-    //            }).start();
-    //        }
-    //    }
-
-    private BroadcastReceiver mUnmountReceiver = null;
-
-    private void registerExternalStorageListener() {
-        //        if (mUnmountReceiver == null) {
-        //            mUnmountReceiver = new BroadcastReceiver() {
-        //                @Override
-        //                public void onReceive(Context context, Intent intent) {
-        //                    String action = intent.getAction();
-        //                    SLog.i(TAG, "onReceive action = " + action);
-        //                    if(action.equals(Intent.ACTION_MEDIA_UNMOUNTED)
-        //                            && Config.EXTENAL_SD.equals(intent.getData().getPath())){
-        //                        if(isRecording(0) || isRecording(1))
-        //                            stopRecord();
-        //                        if (mCameraCallback != null)
-        //                            mCameraCallback.updateRecordIcon(false, false);
-        //                        Toast.makeText(getApplicationContext(), R.string.msg_sd_ummounted, Toast.LENGTH_SHORT).show();
-        //                        BaseApplication.getInstance().getSDCard();
-        //                    } else if(action.equals(Intent.ACTION_MEDIA_UNMOUNTED)) {
-        //                        Toast.makeText(getApplicationContext(), R.string.msg_sd_ummounted, Toast.LENGTH_SHORT).show();
-        //                        BaseApplication.getInstance().getSDCard();
-        //                    } else if(action.equals(Intent.ACTION_MEDIA_MOUNTED)) {
-        //                        Toast.makeText(getApplicationContext(), R.string.msg_sd_mounted, Toast.LENGTH_SHORT).show();
-        //                        BaseApplication.getInstance().getSDCard();
-        //                    }
-        //                }
-        //            };
-        //            IntentFilter iFilter = new IntentFilter();
-        //            iFilter.addAction(Intent.ACTION_MEDIA_EJECT);
-        //            iFilter.addAction(Intent.ACTION_MEDIA_UNMOUNTED);
-        //            iFilter.addAction(Intent.ACTION_MEDIA_MOUNTED);
-        //            iFilter.addAction(Intent.ACTION_MEDIA_REMOVED);
-        //            iFilter.addDataScheme("file");
-        //            registerReceiver(mUnmountReceiver, iFilter);
-        //        }
-    }
-
-    private LocationListener mLocationListener = new LocationListener() {
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-            // TODO Auto-generated method stub
-            switch (status) {
-                case LocationProvider.AVAILABLE:
-                    SLog.d(TAG, "gps status: available");
-                    break;
-
-                case LocationProvider.OUT_OF_SERVICE:
-                    SLog.d(TAG, "gps status: out of service");
-                    break;
-
-                case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                    SLog.d(TAG, "gps status: temporarily unavailable");
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-            // TODO Auto-generated method stub
-            SLog.d(TAG, "GPS onProviderEnabled");
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-            // TODO Auto-generated method stub
-            SLog.d(TAG, "GPS onProviderDisabled");
-            updateLocation(null);
-        }
-
-        @Override
-        public void onLocationChanged(Location location) {
-            // TODO Auto-generated method stub
-            SLog.d(TAG, "GPS location changed");
-            updateLocation(location);
-        }
-    };
-
-    private void updateLocation(Location location) {
-        /*if (location == null) {
-            realLocation = false;
-            location = new Location(LocationManager.GPS_PROVIDER);
-            location.setLongitude(180.0 * Math.random());
-            location.setLatitude(90.0 * Math.random());
-            location.setSpeed((float) (30.0 * Math.random()));
-        }*/
-        if (location != null) {
-            double Longituded = location.getLongitude(); //jingdu
-            double Latituded = location.getLatitude(); //weidu
-            double Altituded = location.getAltitude(); //haiba
-            float CarSpeed = location.getSpeed() * 3600 / 1000f; //sudu
-            SLog.d(TAG, "location = " + Longituded + "," + Latituded + "," + Altituded + "," + CarSpeed);
-
-            DecimalFormat df = new DecimalFormat("#.00");
-            String Longitudedstr = df.format(Math.abs(Longituded));
-            String Latitudedstr = df.format(Math.abs(Latituded));
-            String CarSpeedstr = CarSpeed >= 1.0f ? df.format(CarSpeed) : "0.00";
-
-            if (Longituded < 0) {
-                Longitudedstr = "W" + Longitudedstr;
-            } else {
-                Longitudedstr = "E" + Longitudedstr;
-            }
-            if (Latituded < 0) {
-                Latitudedstr = "S" + Latitudedstr;
-            } else {
-                Latitudedstr = "N" + Latitudedstr;
-            }
-
-            String gpsinfo;
-            boolean hasLatLon = (Latituded != 0.0d) || (Longituded != 0.0d);
-            if (hasLatLon) {
-                gpsinfo = Longitudedstr + " " + Latitudedstr + " " + CarSpeedstr + "km/h";
-            } else {
-                location = null;
-                gpsinfo = "";
-            }
-            if (isRecording()) {
-                for (int i = 0; i < CameraHolder.instance().getNumberOfCameras(); i++) {
-                    ParametersSet.setWaterMark(i, gpsinfo);
-                }
-            }
-
-        } else {
-            if (isRecording()) {
-                for (int i = 0; i < CameraHolder.instance().getNumberOfCameras(); i++) {
-                    ParametersSet.setWaterMark(i, "");
-                }
-            }
-        }
-    }
-
-    private Criteria getCriteria() {
-        Criteria criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_FINE);
-        criteria.setSpeedRequired(true);
-        criteria.setCostAllowed(false);
-        criteria.setBearingRequired(false);
-        criteria.setAltitudeRequired(true);
-        criteria.setPowerRequirement(Criteria.POWER_LOW);
-        return criteria;
-    }
-
-    private void initLocationManager() {
-        if (mLocationManager == null) {
-            //            mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            //            if (mLocationManager == null) return;
-            /*mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    3000, 0, mLocationListener);
-            if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                SLog.e(TAG, "gps disabled");
-                return;
-            }
-            String bestProvider = mLocationManager.getBestProvider(getCriteria(),
-                    true);
-            Location location = mLocationManager.getLastKnownLocation(bestProvider);
-            SLog.d(TAG, "getLastKnownLocation = " + location);
-            if (location != null) {
-                location.setSpeed(0.0f);
-                updateLocation(location);
-            }
-            SLog.i(TAG, "gps location init");*/
-        }
-    }
-
-    private void disconnectLocationManager() {
-        if (mLocationManager != null) {
-            try {
-                mLocationManager.removeUpdates(mLocationListener);
-            } catch (Exception ex) {
-                SLog.i(TAG, "fail to remove location listners, ignore" + ex);
-            }
-            mLocationManager = null;
-            SLog.i(TAG, "gps location disconnect");
-        }
-    }
-
-    public void activityExisted() {
-        int id;
-        for (CameraInfo info : mCameraInfos.values()) {
-            id = info.getCameraId();
-            if (isRecording(id)) {
-                if (info.getCameraManager() != null) {
-                    info.getCameraManager().setPreviewCallbackWithBuffer(null, null);
-                }
-            } else {
-                if (info.getCameraStateId() >= IService.I_CAMERA_PREVIEWING) {
-                    stopPreview(id);
-                }
-                release(id);
-            }
-        }
-    }
-
-    public void onDestroy() {
-
-
-        //        BaseApplication.getInstance().setService(null);
-        //        if (mUnmountReceiver != null) {
-        //            try {
-        //                unregisterReceiver(mUnmountReceiver);
-        //            } catch (Exception e) {
-        //                SLog.e(TAG, "unregister mUnmountReceiver error:" + e);
-        //            }
-        //            mUnmountReceiver = null;
-        //        }
-        //        CameraEvent.UsbHotPlugReceiver.getInstance(this).unregister();
-        disconnectLocationManager();
-    }
-    /////////////
-
-    public void addCallbackBuffer(int id, byte[] data) {
-        try {
-            if (mCameraInfos.get(id) != null && mCameraInfos.get(id).getCameraManager() != null) {
-                mCameraInfos.get(id).getCameraManager().addCallbackBuffer(data);
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public CameraInfo getCameraInfo(int id) {
-
-        getCameraInfos().get(id);
-
-        return null;
     }
 }

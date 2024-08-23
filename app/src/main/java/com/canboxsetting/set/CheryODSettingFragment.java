@@ -5,21 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.preference.ListPreference;
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 
 public class CheryODSettingFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "CheryODSettingFragment";
@@ -27,6 +26,8 @@ public class CheryODSettingFragment extends PreferenceFragmentCompat implements 
     private static final Node[] NODES = {new Node("langauage5", 0xc600, 0x7100, 0x2), new Node("fort_tips", 0xc601, 0x7100, 0x2), new Node("brake_alarm", 0xc602, 0x7100, 0x2), new Node("driving_auto", 0xc603, 0x7100, 0x2), new Node("headlight_delay", 0xc604, 0x7100, 0x2), new Node("running_lights", 0xc605, 0x7100, 0x2), new Node("over_speed", 0xc609, 0x7100, 0x2),};
 
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,6 @@ public class CheryODSettingFragment extends PreferenceFragmentCompat implements 
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -169,8 +168,6 @@ public class CheryODSettingFragment extends PreferenceFragmentCompat implements 
             Log.d(TAG, "err" + e);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

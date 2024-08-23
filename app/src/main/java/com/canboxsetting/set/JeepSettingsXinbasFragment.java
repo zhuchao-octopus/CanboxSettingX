@@ -7,32 +7,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
-
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 
 public class JeepSettingsXinbasFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
 
             new Node("for_warning", 0x8a01, 0x0c000000, 0x0001, 0x0, Node.TYPE_BUFF1_INDEX), new Node("for_outo_warning", 0x8a02, 0x0c000000, 0x0002, 0x0, Node.TYPE_BUFF1_INDEX), new Node("lane_warning", 0x8a03, 0x0c000000, 0x000c, 0x0, Node.TYPE_BUFF1_INDEX), new Node("deviation_correction", 0x8a04, 0x0c000000, 0x0030, 0x0, Node.TYPE_BUFF1_INDEX), new Node("parksense", 0x8a05, 0x0c000000, 0x00c0, 0x0, Node.TYPE_BUFF1_INDEX),
@@ -58,10 +49,24 @@ public class JeepSettingsXinbasFragment extends PreferenceFragmentCompat impleme
             new Node("unit_set", 0x8a51, 0x0c000000, 0x0a01, 0x0, Node.TYPE_BUFF1_INDEX), new Node("range", 0x8a52, 0x0c000000, 0x0a02, 0x0, Node.TYPE_BUFF1_INDEX), new Node("fulecons", 0x8a53, 0x0c000000, 0x0a04, 0x0, Node.TYPE_BUFF1_INDEX), new Node("tireunit", 0x8a54, 0x0c000000, 0x0a18, 0x0, Node.TYPE_BUFF1_INDEX), new Node("temperature", 0x8a55, 0x0c000000, 0x0a20, 0x0, Node.TYPE_BUFF1_INDEX),
 
     };
-
     private final static int[] INIT_CMDS = {0x0c00};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0xff(msg.what & 0xff00);
+            }
+        }
+    };
+    private int mSetCTM = -1;
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,8 +99,6 @@ public class JeepSettingsXinbasFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -132,15 +135,6 @@ public class JeepSettingsXinbasFragment extends PreferenceFragmentCompat impleme
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0xff(msg.what & 0xff00);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -186,8 +180,6 @@ public class JeepSettingsXinbasFragment extends PreferenceFragmentCompat impleme
             }
         }
     }
-
-    private int mSetCTM = -1;
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
@@ -383,8 +375,6 @@ public class JeepSettingsXinbasFragment extends PreferenceFragmentCompat impleme
         showPreference(id, show, "driving_mode");
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

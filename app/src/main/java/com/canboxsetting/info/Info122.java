@@ -7,23 +7,32 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.view.MyPreference2;
 
 public class Info122 extends PreferenceFragmentCompat {
     private static final String TAG = "KadjarRaiseFragment";
+    private final static int[] INIT_CMDS = {0x14, 0x15};
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +45,6 @@ public class Info122 extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private final static int[] INIT_CMDS = {0x14, 0x15};
 
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
@@ -52,21 +59,10 @@ public class Info122 extends PreferenceFragmentCompat {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxInfo0x90(int d0, int d1) {
         byte[] buf = new byte[]{(byte) 0x83, 0x2, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -132,6 +128,8 @@ public class Info122 extends PreferenceFragmentCompat {
         }
         return ret;
     }
+
+    // private byte mWarningMsg = 0;
 
     private void updateView(byte[] buf) {
 
@@ -260,8 +258,6 @@ public class Info122 extends PreferenceFragmentCompat {
         }
     }
 
-    // private byte mWarningMsg = 0;
-
     private void updateWarningView(byte b) {
         // mWarningMsg = b;
         String s = "";
@@ -293,8 +289,6 @@ public class Info122 extends PreferenceFragmentCompat {
             }
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

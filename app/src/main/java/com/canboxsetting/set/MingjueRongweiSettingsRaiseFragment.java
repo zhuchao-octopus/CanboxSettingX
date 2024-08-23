@@ -7,33 +7,24 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 import com.common.view.MyPreferenceSeekBar;
 
 public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "MingjueRongweiSettingsRaiseFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
 
             new Node("key_driving_lock", 0xc60101, 0x39, 0x0, 0x0), new Node("key_unlock", 0xc60102, 0x39, 0x0, 0x0), new Node("key_unlock_mode", 0xc60103, 0x39, 0x0, 0x0), new Node("key_unlock_near_car", 0xc60104, 0x39, 0x0, 0x0), new Node("key_flow_me_home", 0xc60201, 0x39, 0x0, 0x0), new Node("key_flow_me_home_times", 0xc60202, 0x4001, 0xf, 0x0), new Node("key_search_car_indicator", 0xc60203, 0x39, 0x0, 0x0), new Node("key_search_car_indicator_times", 0xc60204, 0x4002, 0xf, 0x0),
@@ -67,10 +58,32 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompa
 
 
     };
-
     private final static int[] INIT_CMDS = {0x5300, 0x5100};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private Handler mHandler2 = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private byte mCustomDriverMode = 0;
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,8 +121,6 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompa
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -145,24 +156,6 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompa
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
-    private Handler mHandler2 = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff0000) >> 16), ((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -249,7 +242,6 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompa
         return false;
     }
 
-
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{(byte) d0, 0x03, (byte) d1, (byte) d2, 0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -332,8 +324,6 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompa
         return ((value & mask) >> start);
     }
 
-    private byte mCustomDriverMode = 0;
-
     private void updateView(byte[] buf) {
 
         int mask;
@@ -392,9 +382,6 @@ public class MingjueRongweiSettingsRaiseFragment extends PreferenceFragmentCompa
         }
 
     }
-
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

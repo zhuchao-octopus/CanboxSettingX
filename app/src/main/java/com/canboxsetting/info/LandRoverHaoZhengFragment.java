@@ -6,17 +6,18 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
-import androidx.preference.Preference;
-
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class LandRoverHaoZhengFragment extends PreferenceFragmentCompat {
     private static final String TAG = "Golf7InfoSimpleFragment";
+    private int mUnit = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,6 @@ public class LandRoverHaoZhengFragment extends PreferenceFragmentCompat {
         byte[] buf = new byte[]{(byte) 0xff, 0x01, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private int mUnit = 0;
 
     private void updateView(byte[] buf) {
         int index;
@@ -187,8 +186,6 @@ public class LandRoverHaoZhengFragment extends PreferenceFragmentCompat {
                 break;
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

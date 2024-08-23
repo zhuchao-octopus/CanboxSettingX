@@ -38,7 +38,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
-
 import com.rockchip.car.recorder.utils.SLog;
 
 import java.io.IOException;
@@ -49,11 +48,6 @@ import java.io.IOException;
 @SuppressLint("NewApi")
 class AndroidCameraManagerImpl implements CameraManager {
     private static final String TAG = "CAM_" + AndroidCameraManagerImpl.class.getSimpleName();
-
-    private Parameters mParameters;
-    private boolean mParametersIsDirty;
-    private IOException mReconnectIOException;
-
     /* Messages used in CameraHandler. */
     // Camera initialization/finalization
     private static final int OPEN_CAMERA = 1;
@@ -87,7 +81,9 @@ class AndroidCameraManagerImpl implements CameraManager {
     // Presentation
     private static final int ENABLE_SHUTTER_SOUND = 501;
     private static final int SET_DISPLAY_ORIENTATION = 502;
-
+    private Parameters mParameters;
+    private boolean mParametersIsDirty;
+    private IOException mReconnectIOException;
     private CameraHandler mCameraHandler;
     private Camera mCamera;
 
@@ -103,6 +99,353 @@ class AndroidCameraManagerImpl implements CameraManager {
         ht.start();
         mCameraHandler = new CameraHandler(ht.getLooper());
         this.mCameraId = id;
+    }
+
+    public CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback) {
+        return cameraOpen(handler, callback, false, false, null);
+    }
+
+    @Override
+    public <T> CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback, boolean preview, boolean record, T t) {
+        Log.d(TAG, "AndroidCameraManagerImpl::cameraOpen. preview:" + preview);
+        if (preview) {
+            mSurface = t;
+        }
+        mCameraHandler.obtainMessage(OPEN_CAMERA, preview ? 1 : 0, record ? 1 : 0, CameraOpenErrorCallbackForward.getNewInstance(handler, callback)).sendToTarget();
+        mCameraHandler.waitDone();
+        if (mCamera != null) {
+            return new AndroidCameraProxyImpl(mCameraId);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * A helper class to forward AutoFocusCallback to another thread.
+     */
+    private static class AFCallbackForward implements AutoFocusCallback {
+        private final Handler mHandler;
+        private final CameraProxy mCamera;
+        private final CameraAFCallback mCallback;
+
+        private AFCallbackForward(Handler h, CameraProxy camera, CameraAFCallback cb) {
+            mHandler = h;
+            mCamera = camera;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link AFCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param camera  The {@link CameraProxy} which the callback is from.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link AFCallbackForward},
+         * or null if any parameter is null.
+         */
+        public static AFCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraAFCallback cb) {
+            if (handler == null || camera == null || cb == null) return null;
+            return new AFCallbackForward(handler, camera, cb);
+        }
+
+        @Override
+        public void onAutoFocus(final boolean b, Camera camera) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onAutoFocus(b, mCamera);
+                }
+            });
+        }
+    }
+
+    /**
+     * A helper class to forward AutoFocusMoveCallback to another thread.
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private static class AFMoveCallbackForward implements AutoFocusMoveCallback {
+        private final Handler mHandler;
+        private final CameraAFMoveCallback mCallback;
+        private final CameraProxy mCamera;
+
+        private AFMoveCallbackForward(Handler h, CameraProxy camera, CameraAFMoveCallback cb) {
+            mHandler = h;
+            mCamera = camera;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link AFMoveCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param camera  The {@link CameraProxy} which the callback is from.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link AFMoveCallbackForward},
+         * or null if any parameter is null.
+         */
+        public static AFMoveCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraAFMoveCallback cb) {
+            if (handler == null || camera == null || cb == null) return null;
+            return new AFMoveCallbackForward(handler, camera, cb);
+        }
+
+        @Override
+        public void onAutoFocusMoving(final boolean moving, Camera camera) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onAutoFocusMoving(moving, mCamera);
+                }
+            });
+        }
+    }
+
+    /**
+     * A helper class to forward ShutterCallback to to another thread.
+     */
+    private static class ShutterCallbackForward implements ShutterCallback {
+        private final Handler mHandler;
+        private final CameraShutterCallback mCallback;
+        private final CameraProxy mCamera;
+
+        private ShutterCallbackForward(Handler h, CameraProxy camera, CameraShutterCallback cb) {
+            mHandler = h;
+            mCamera = camera;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link ShutterCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param camera  The {@link CameraProxy} which the callback is from.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link ShutterCallbackForward},
+         * or null if any parameter is null.
+         */
+        public static ShutterCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraShutterCallback cb) {
+            if (handler == null || camera == null || cb == null) return null;
+            return new ShutterCallbackForward(handler, camera, cb);
+        }
+
+        @Override
+        public void onShutter() {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onShutter(mCamera);
+                }
+            });
+        }
+    }
+
+    /**
+     * A helper class to forward PictureCallback to another thread.
+     */
+    private static class PictureCallbackForward implements PictureCallback {
+        private final Handler mHandler;
+        private final CameraPictureCallback mCallback;
+        private final CameraProxy mCamera;
+
+        private PictureCallbackForward(Handler h, CameraProxy camera, CameraPictureCallback cb) {
+            mHandler = h;
+            mCamera = camera;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link PictureCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param camera  The {@link CameraProxy} which the callback is from.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link PictureCallbackForward},
+         * or null if any parameters is null.
+         */
+        public static PictureCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraPictureCallback cb) {
+            if (handler == null || camera == null || cb == null) return null;
+            return new PictureCallbackForward(handler, camera, cb);
+        }
+
+        @Override
+        public void onPictureTaken(final byte[] data, Camera camera) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onPictureTaken(data, mCamera);
+                }
+            });
+        }
+    }
+
+    /**
+     * A helper class to forward PreviewCallback to another thread.
+     */
+    private static class PreviewCallbackForward implements PreviewCallback {
+        private final Handler mHandler;
+        private final CameraPreviewDataCallback mCallback;
+        private final CameraProxy mCamera;
+
+        private PreviewCallbackForward(Handler h, CameraProxy camera, CameraPreviewDataCallback cb) {
+            mHandler = h;
+            mCamera = camera;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link PreviewCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param camera  The {@link CameraProxy} which the callback is from.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link PreviewCallbackForward},
+         * or null if any parameters is null.
+         */
+        public static PreviewCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraPreviewDataCallback cb) {
+            if (handler == null || camera == null || cb == null) return null;
+            return new PreviewCallbackForward(handler, camera, cb);
+        }
+
+        @Override
+        public void onPreviewFrame(final byte[] data, Camera camera) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onPreviewFrame(data, mCamera);
+                }
+            });
+        }
+    }
+
+    private static class FaceDetectionCallbackForward implements FaceDetectionListener {
+        private final Handler mHandler;
+        private final CameraFaceDetectionCallback mCallback;
+        private final CameraProxy mCamera;
+
+        private FaceDetectionCallbackForward(Handler h, CameraProxy camera, CameraFaceDetectionCallback cb) {
+            mHandler = h;
+            mCamera = camera;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link FaceDetectionCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param camera  The {@link CameraProxy} which the callback is from.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link FaceDetectionCallbackForward},
+         * or null if any parameter is null.
+         */
+        public static FaceDetectionCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraFaceDetectionCallback cb) {
+            if (handler == null || camera == null || cb == null) return null;
+            return new FaceDetectionCallbackForward(handler, camera, cb);
+        }
+
+        @Override
+        public void onFaceDetection(final Camera.Face[] faces, Camera camera) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onFaceDetection(faces, mCamera);
+                }
+            });
+        }
+    }
+
+    /**
+     * A callback helps to invoke the original callback on another
+     * {@link Handler}.
+     */
+    private static class CameraOpenErrorCallbackForward implements CameraOpenCallback {
+        private final Handler mHandler;
+        private final CameraOpenCallback mCallback;
+
+        private CameraOpenErrorCallbackForward(Handler h, CameraOpenCallback cb) {
+            mHandler = h;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link FaceDetectionCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link FaceDetectionCallbackForward}, or
+         * null if any parameter is null.
+         */
+        public static CameraOpenErrorCallbackForward getNewInstance(Handler handler, CameraOpenCallback cb) {
+            if (handler == null || cb == null) {
+                return null;
+            }
+            return new CameraOpenErrorCallbackForward(handler, cb);
+        }
+
+        @Override
+        public <T> void onSuccess(final int cameraId, final boolean preview, final boolean record, final T t) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onSuccess(cameraId, preview, record, t);
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(final int cameraId, final int what) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onFailure(cameraId, what);
+                }
+            });
+        }
+    }
+
+    private static class CameraStartPreviewCallbackForward implements CameraStartPreviewCallback {
+        private final Handler mHandler;
+        private final CameraStartPreviewCallback mCallback;
+
+        private CameraStartPreviewCallbackForward(Handler h, CameraStartPreviewCallback cb) {
+            mHandler = h;
+            mCallback = cb;
+        }
+
+        /**
+         * Returns a new instance of {@link FaceDetectionCallbackForward}.
+         *
+         * @param handler The handler in which the callback will be invoked in.
+         * @param cb      The callback to be invoked.
+         * @return The instance of the {@link FaceDetectionCallbackForward}, or
+         * null if any parameter is null.
+         */
+        public static CameraStartPreviewCallbackForward getNewInstance(Handler handler, CameraStartPreviewCallback cb) {
+            if (handler == null || cb == null) {
+                return null;
+            }
+            return new CameraStartPreviewCallbackForward(handler, cb);
+        }
+
+        @Override
+        public void onSuccess(final int cameraId, final boolean record) {
+            // TODO Auto-generated method stub
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onSuccess(cameraId, record);
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(final int cameraId, final int reason) {
+            // TODO Auto-generated method stub
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onFailure(cameraId, reason);
+                }
+            });
+        }
     }
 
     private class CameraHandler extends Handler {
@@ -442,25 +785,6 @@ class AndroidCameraManagerImpl implements CameraManager {
         }
     }
 
-    public CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback) {
-        return cameraOpen(handler, callback, false, false, null);
-    }
-
-    @Override
-    public <T> CameraProxy cameraOpen(Handler handler, CameraOpenCallback callback, boolean preview, boolean record, T t) {
-        Log.d(TAG, "AndroidCameraManagerImpl::cameraOpen. preview:" + preview);
-        if (preview) {
-            mSurface = t;
-        }
-        mCameraHandler.obtainMessage(OPEN_CAMERA, preview ? 1 : 0, record ? 1 : 0, CameraOpenErrorCallbackForward.getNewInstance(handler, callback)).sendToTarget();
-        mCameraHandler.waitDone();
-        if (mCamera != null) {
-            return new AndroidCameraProxyImpl(mCameraId);
-        } else {
-            return null;
-        }
-    }
-
     /**
      * A class which implements {@link CameraProxy} and
      * camera_surfaceview handler thread.
@@ -645,6 +969,14 @@ class AndroidCameraManagerImpl implements CameraManager {
         }
 
         @Override
+        public Parameters getParameters() {
+            mCameraHandler.obtainMessage(GET_PARAMETERS).sendToTarget();
+            //mCameraHandler.sendEmptyMessage(GET_PARAMETERS);
+            mCameraHandler.waitDone();
+            return mParameters;
+        }
+
+        @Override
         public void setParameters(Parameters params) {
             if (params == null) {
                 Log.v(TAG, "null parameters in setParameters()");
@@ -652,14 +984,6 @@ class AndroidCameraManagerImpl implements CameraManager {
             }
             mCameraHandler.obtainMessage(SET_PARAMETERS, params.flatten()).sendToTarget();
             mCameraHandler.waitDone();
-        }
-
-        @Override
-        public Parameters getParameters() {
-            mCameraHandler.obtainMessage(GET_PARAMETERS).sendToTarget();
-            //mCameraHandler.sendEmptyMessage(GET_PARAMETERS);
-            mCameraHandler.waitDone();
-            return mParameters;
         }
 
         @Override
@@ -673,335 +997,6 @@ class AndroidCameraManagerImpl implements CameraManager {
         public void enableShutterSound(boolean enable) {
             mCameraHandler.obtainMessage(ENABLE_SHUTTER_SOUND, (enable ? 1 : 0), mId).sendToTarget();
             mCameraHandler.waitDone();
-        }
-    }
-
-    /**
-     * A helper class to forward AutoFocusCallback to another thread.
-     */
-    private static class AFCallbackForward implements AutoFocusCallback {
-        private final Handler mHandler;
-        private final CameraProxy mCamera;
-        private final CameraAFCallback mCallback;
-
-        /**
-         * Returns a new instance of {@link AFCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param camera  The {@link CameraProxy} which the callback is from.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link AFCallbackForward},
-         * or null if any parameter is null.
-         */
-        public static AFCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraAFCallback cb) {
-            if (handler == null || camera == null || cb == null) return null;
-            return new AFCallbackForward(handler, camera, cb);
-        }
-
-        private AFCallbackForward(Handler h, CameraProxy camera, CameraAFCallback cb) {
-            mHandler = h;
-            mCamera = camera;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onAutoFocus(final boolean b, Camera camera) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onAutoFocus(b, mCamera);
-                }
-            });
-        }
-    }
-
-    /**
-     * A helper class to forward AutoFocusMoveCallback to another thread.
-     */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private static class AFMoveCallbackForward implements AutoFocusMoveCallback {
-        private final Handler mHandler;
-        private final CameraAFMoveCallback mCallback;
-        private final CameraProxy mCamera;
-
-        /**
-         * Returns a new instance of {@link AFMoveCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param camera  The {@link CameraProxy} which the callback is from.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link AFMoveCallbackForward},
-         * or null if any parameter is null.
-         */
-        public static AFMoveCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraAFMoveCallback cb) {
-            if (handler == null || camera == null || cb == null) return null;
-            return new AFMoveCallbackForward(handler, camera, cb);
-        }
-
-        private AFMoveCallbackForward(Handler h, CameraProxy camera, CameraAFMoveCallback cb) {
-            mHandler = h;
-            mCamera = camera;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onAutoFocusMoving(final boolean moving, Camera camera) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onAutoFocusMoving(moving, mCamera);
-                }
-            });
-        }
-    }
-
-    /**
-     * A helper class to forward ShutterCallback to to another thread.
-     */
-    private static class ShutterCallbackForward implements ShutterCallback {
-        private final Handler mHandler;
-        private final CameraShutterCallback mCallback;
-        private final CameraProxy mCamera;
-
-        /**
-         * Returns a new instance of {@link ShutterCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param camera  The {@link CameraProxy} which the callback is from.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link ShutterCallbackForward},
-         * or null if any parameter is null.
-         */
-        public static ShutterCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraShutterCallback cb) {
-            if (handler == null || camera == null || cb == null) return null;
-            return new ShutterCallbackForward(handler, camera, cb);
-        }
-
-        private ShutterCallbackForward(Handler h, CameraProxy camera, CameraShutterCallback cb) {
-            mHandler = h;
-            mCamera = camera;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onShutter() {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onShutter(mCamera);
-                }
-            });
-        }
-    }
-
-    /**
-     * A helper class to forward PictureCallback to another thread.
-     */
-    private static class PictureCallbackForward implements PictureCallback {
-        private final Handler mHandler;
-        private final CameraPictureCallback mCallback;
-        private final CameraProxy mCamera;
-
-        /**
-         * Returns a new instance of {@link PictureCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param camera  The {@link CameraProxy} which the callback is from.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link PictureCallbackForward},
-         * or null if any parameters is null.
-         */
-        public static PictureCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraPictureCallback cb) {
-            if (handler == null || camera == null || cb == null) return null;
-            return new PictureCallbackForward(handler, camera, cb);
-        }
-
-        private PictureCallbackForward(Handler h, CameraProxy camera, CameraPictureCallback cb) {
-            mHandler = h;
-            mCamera = camera;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onPictureTaken(final byte[] data, Camera camera) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onPictureTaken(data, mCamera);
-                }
-            });
-        }
-    }
-
-    /**
-     * A helper class to forward PreviewCallback to another thread.
-     */
-    private static class PreviewCallbackForward implements PreviewCallback {
-        private final Handler mHandler;
-        private final CameraPreviewDataCallback mCallback;
-        private final CameraProxy mCamera;
-
-        /**
-         * Returns a new instance of {@link PreviewCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param camera  The {@link CameraProxy} which the callback is from.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link PreviewCallbackForward},
-         * or null if any parameters is null.
-         */
-        public static PreviewCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraPreviewDataCallback cb) {
-            if (handler == null || camera == null || cb == null) return null;
-            return new PreviewCallbackForward(handler, camera, cb);
-        }
-
-        private PreviewCallbackForward(Handler h, CameraProxy camera, CameraPreviewDataCallback cb) {
-            mHandler = h;
-            mCamera = camera;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onPreviewFrame(final byte[] data, Camera camera) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onPreviewFrame(data, mCamera);
-                }
-            });
-        }
-    }
-
-
-    private static class FaceDetectionCallbackForward implements FaceDetectionListener {
-        private final Handler mHandler;
-        private final CameraFaceDetectionCallback mCallback;
-        private final CameraProxy mCamera;
-
-        /**
-         * Returns a new instance of {@link FaceDetectionCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param camera  The {@link CameraProxy} which the callback is from.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link FaceDetectionCallbackForward},
-         * or null if any parameter is null.
-         */
-        public static FaceDetectionCallbackForward getNewInstance(Handler handler, CameraProxy camera, CameraFaceDetectionCallback cb) {
-            if (handler == null || camera == null || cb == null) return null;
-            return new FaceDetectionCallbackForward(handler, camera, cb);
-        }
-
-        private FaceDetectionCallbackForward(Handler h, CameraProxy camera, CameraFaceDetectionCallback cb) {
-            mHandler = h;
-            mCamera = camera;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onFaceDetection(final Camera.Face[] faces, Camera camera) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onFaceDetection(faces, mCamera);
-                }
-            });
-        }
-    }
-
-    /**
-     * A callback helps to invoke the original callback on another
-     * {@link Handler}.
-     */
-    private static class CameraOpenErrorCallbackForward implements CameraOpenCallback {
-        private final Handler mHandler;
-        private final CameraOpenCallback mCallback;
-
-        /**
-         * Returns a new instance of {@link FaceDetectionCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link FaceDetectionCallbackForward}, or
-         * null if any parameter is null.
-         */
-        public static CameraOpenErrorCallbackForward getNewInstance(Handler handler, CameraOpenCallback cb) {
-            if (handler == null || cb == null) {
-                return null;
-            }
-            return new CameraOpenErrorCallbackForward(handler, cb);
-        }
-
-        private CameraOpenErrorCallbackForward(Handler h, CameraOpenCallback cb) {
-            mHandler = h;
-            mCallback = cb;
-        }
-
-        @Override
-        public <T> void onSuccess(final int cameraId, final boolean preview, final boolean record, final T t) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onSuccess(cameraId, preview, record, t);
-                }
-            });
-        }
-
-        @Override
-        public void onFailure(final int cameraId, final int what) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onFailure(cameraId, what);
-                }
-            });
-        }
-    }
-
-    private static class CameraStartPreviewCallbackForward implements CameraStartPreviewCallback {
-        private final Handler mHandler;
-        private final CameraStartPreviewCallback mCallback;
-
-        /**
-         * Returns a new instance of {@link FaceDetectionCallbackForward}.
-         *
-         * @param handler The handler in which the callback will be invoked in.
-         * @param cb      The callback to be invoked.
-         * @return The instance of the {@link FaceDetectionCallbackForward}, or
-         * null if any parameter is null.
-         */
-        public static CameraStartPreviewCallbackForward getNewInstance(Handler handler, CameraStartPreviewCallback cb) {
-            if (handler == null || cb == null) {
-                return null;
-            }
-            return new CameraStartPreviewCallbackForward(handler, cb);
-        }
-
-        private CameraStartPreviewCallbackForward(Handler h, CameraStartPreviewCallback cb) {
-            mHandler = h;
-            mCallback = cb;
-        }
-
-        @Override
-        public void onSuccess(final int cameraId, final boolean record) {
-            // TODO Auto-generated method stub
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onSuccess(cameraId, record);
-                }
-            });
-        }
-
-        @Override
-        public void onFailure(final int cameraId, final int reason) {
-            // TODO Auto-generated method stub
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onFailure(cameraId, reason);
-                }
-            });
         }
     }
 }

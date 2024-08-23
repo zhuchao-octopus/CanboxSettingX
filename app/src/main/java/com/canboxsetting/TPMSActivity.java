@@ -20,9 +20,9 @@ import com.canboxsetting.tpms.MazdTpmsInfoaRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoSimpleFragment;
 import com.canboxsetting.tpms.ZhongXingFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.GlobalDef;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -37,9 +37,11 @@ import android.os.Bundle;
  */
 public class TPMSActivity extends AppCompatActivity {
     private static final String TAG = "CanboxSetting";
+    public static int mCmd = 0;
+    public static byte[] mBuf;
+    //	public static String mCanboxType = null;
     private FragmentManager mFragmentManager;
     private Fragment mSetting;
-    //	public static String mCanboxType = null;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -124,9 +126,6 @@ public class TPMSActivity extends AppCompatActivity {
             transation.commit();
         }
     }
-
-    public static int mCmd = 0;
-    public static byte[] mBuf;
 
     private void upateIntent(Intent it) {
         if (it != null) {

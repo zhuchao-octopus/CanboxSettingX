@@ -23,16 +23,8 @@ public class VerticalSeekBar extends AbsSeekBar {
     private int height;
     private int width;
     private int mThumbWidth;
-
-    public interface OnSeekBarChangeListener {
-        void onProgressChanged(VerticalSeekBar VerticalSeekBar, int progress, boolean fromUser);
-
-        void onStartTrackingTouch(VerticalSeekBar VerticalSeekBar);
-
-        void onStopTrackingTouch(VerticalSeekBar VerticalSeekBar);
-    }
-
     private OnSeekBarChangeListener mOnSeekBarChangeListener;
+    private int mPreProgress = -1;
 
     public VerticalSeekBar(Context context) {
         this(context, null);
@@ -97,8 +89,6 @@ public class VerticalSeekBar extends AbsSeekBar {
             mOnSeekBarChangeListener.onProgressChanged(this, getProgress(), fromUser);
         }
     }
-
-    private int mPreProgress = -1;
 
     void onProgressRefresh() {
         if (mOnSeekBarChangeListener != null) {
@@ -250,5 +240,13 @@ public class VerticalSeekBar extends AbsSeekBar {
             return newEvent.dispatch(this);
         }
         return false;
+    }
+
+    public interface OnSeekBarChangeListener {
+        void onProgressChanged(VerticalSeekBar VerticalSeekBar, int progress, boolean fromUser);
+
+        void onStartTrackingTouch(VerticalSeekBar VerticalSeekBar);
+
+        void onStopTrackingTouch(VerticalSeekBar VerticalSeekBar);
     }
 }

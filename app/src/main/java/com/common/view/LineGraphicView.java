@@ -1,4 +1,4 @@
-package com.car.view;
+package com.common.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,21 +19,14 @@ public class LineGraphicView extends View {
      * 公共部分
      */
     private static final int CIRCLE_SIZE = 10;
-
-    private static enum Linestyle {
-        Line, Curve
-    }
-
     private Context mContext;
     private Paint mPaint;
     private Resources res;
     private DisplayMetrics dm;
-
     /**
      * data
      */
     private Linestyle mStyle = Linestyle.Line;
-
     private int canvasHeight;
     private int canvasWidth;
     private int bheight = 0;
@@ -49,7 +42,6 @@ public class LineGraphicView extends View {
     private int averageValue;
     private int marginTop = 0;
     private int marginBottom = 0;
-
     /**
      * 曲线上总点数
      */
@@ -64,7 +56,6 @@ public class LineGraphicView extends View {
     private ArrayList<String> xRawDatas;
     private ArrayList<Integer> xList = new ArrayList<Integer>();// 记录每个x的值
     private int spacingHeight;
-
     public LineGraphicView(Context context) {
         this(context, null);
     }
@@ -256,6 +247,10 @@ public class LineGraphicView extends View {
      */
     private int dip2px(float dpValue) {
         return (int) (dpValue * dm.density + 0.5f);
+    }
+
+    private static enum Linestyle {
+        Line, Curve
     }
 
 }

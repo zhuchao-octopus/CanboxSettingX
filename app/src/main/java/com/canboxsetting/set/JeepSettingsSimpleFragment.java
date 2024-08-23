@@ -18,20 +18,14 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.SystemConfig;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.SettingProperties;
+
 
 public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
 
 
@@ -104,10 +98,25 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
 
 
     };
-
     private final static int[] INIT_CMDS = {0x40ff,};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private int mSetCTM = -1;
+    private ListPreference mTempDis;
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -143,8 +152,6 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -182,15 +189,6 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -236,8 +234,6 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
             }
         }
     }
-
-    private int mSetCTM = -1;
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
@@ -431,9 +427,6 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
 
     }
 
-
-    private ListPreference mTempDis;
-
     private void setTempUnit(String value) {
 
         if (mTempDis == null) {
@@ -441,10 +434,10 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
         }
 
         Log.d("fkc", "setTempUnit:" + value);
-        SystemConfig.setProperty(getActivity(), SystemConfig.CANBOX_TEMP_UNIT, value);
+        SettingProperties.setProperty(getActivity(), SettingProperties.CANBOX_TEMP_UNIT, value);
 
         Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SystemConfig.CANBOX_TEMP_UNIT);
+        it.putExtra(MyCmd.EXTRA_COMMON_CMD, SettingProperties.CANBOX_TEMP_UNIT);
         it.putExtra(MyCmd.EXTRA_COMMON_DATA, value);
         getActivity().sendBroadcast(it);
 
@@ -457,7 +450,7 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
         if (mTempDis == null) {
             return;
         }
-        String value = SystemConfig.getProperty(getActivity(), SystemConfig.CANBOX_TEMP_UNIT);
+        String value = SettingProperties.getProperty(getActivity(), SettingProperties.CANBOX_TEMP_UNIT);
 
         if (value == null) {
             value = "0";
@@ -465,8 +458,6 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
         mTempDis.setValue(value);
         mTempDis.setSummary(mTempDis.getEntry());
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

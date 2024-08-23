@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -15,13 +16,11 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
-import android.util.Log;
-
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.Util;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.Util;
 
 public class Set184 extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "KadjarRaiseSettingFragment";
@@ -47,6 +46,16 @@ public class Set184 extends PreferenceFragmentCompat implements Preference.OnPre
     private final static int[] INIT_CMDS = {0x9031};
 
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxData2(msg.what, 0);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,8 +82,6 @@ public class Set184 extends PreferenceFragmentCompat implements Preference.OnPre
 
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -97,15 +104,6 @@ public class Set184 extends PreferenceFragmentCompat implements Preference.OnPre
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], i * 100);
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxData2(msg.what, 0);
-            }
-        }
-    };
 
     private void sendCanboxData2(int cmd, int value) {
 
@@ -277,8 +275,6 @@ public class Set184 extends PreferenceFragmentCompat implements Preference.OnPre
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

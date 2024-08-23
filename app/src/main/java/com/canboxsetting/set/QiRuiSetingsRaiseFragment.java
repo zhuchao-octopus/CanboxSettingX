@@ -7,29 +7,26 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
-import androidx.annotation.Nullable;
-
-import android.util.Log;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodePreference;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceDialog;
 import com.common.view.MyPreferenceSeekBar;
 
 public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
 
     private static final NodePreference[] NODES = {
-
 
             new NodePreference("fortification_prompt", 0xc6, 0x40, 0x1, 0, R.array.chery_notification_entries, R.array.three_values),
 
@@ -70,7 +67,16 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
 
 
             new NodePreference("language", 0xc6, 0x40, 0x0, 0, R.array.chery_language_status_entries, R.array.two_values),};
-
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, 0x52, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,8 +113,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -138,15 +142,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
             }
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, 0x52, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd) {
         sendCanboxInfo(((cmd & 0xff0000) >> 16), ((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0));
@@ -254,8 +249,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

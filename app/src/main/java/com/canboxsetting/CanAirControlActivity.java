@@ -16,11 +16,6 @@
 
 package com.canboxsetting;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +24,10 @@ import android.os.Message;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.canboxsetting.MyFragment.MsgInterface;
 import com.canboxsetting.ac.GMAirODFragment;
@@ -43,10 +42,10 @@ import com.canboxsetting.ac.TouaregHiworldACFragment;
 import com.canboxsetting.ac.ToyotaRaiseAirControlFragment;
 import com.canboxsetting.ac.VWMQBAirControlFragment;
 import com.canboxsetting.set.X30RaiseAirControlFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.MMLog;
 
 import java.util.Objects;
@@ -55,9 +54,31 @@ import java.util.Objects;
  * This activity plays a video from a specified URI.
  */
 public class CanAirControlActivity extends AppCompatActivity {
+    public final static int CMD_GROUP_AC = 0x200;
+    public final static int AC_CMD_REQUEST_INFO = 1;
+    public static final int AC_ISNOT_FINISH = 0x7fffff00;
     private static final String TAG = "CanAirControlActivity";
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            finish();
+        }
+    };
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
+    private int mFinishDelayTime = 6000;
+    MsgInterface mMsgInterface = new MsgInterface() {
+        @Override
+        public void callBack(int msg) {
+            // TODO Auto-generated method stub
+            if ((msg & 0xffffff00) == 0x7fffff00) {
+                mFinishDelayTime = (msg & 0xff) * 100;
+            }
+            prepareFinish();
+        }
+    };
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -201,10 +222,6 @@ public class CanAirControlActivity extends AppCompatActivity {
         }
     }
 
-    public final static int CMD_GROUP_AC = 0x200;
-
-    public final static int AC_CMD_REQUEST_INFO = 1;
-
     private void requestACInfo() {
         Intent i = new Intent(MyCmd.BROADCAST_SEND_TO_CAN);
         i.putExtra(MyCmd.EXTRA_COMMON_CMD, AC_CMD_REQUEST_INFO | CMD_GROUP_AC);
@@ -227,34 +244,11 @@ public class CanAirControlActivity extends AppCompatActivity {
         mHandler.removeMessages(0);
     }
 
-    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            // TODO Auto-generated method stub
-            super.handleMessage(msg);
-            finish();
-        }
-    };
-
-    private int mFinishDelayTime = 6000;
-
     private void prepareFinish() {
         mHandler.removeMessages(0);
         if (mFinishDelayTime != 0) {
             mHandler.sendEmptyMessageDelayed(0, mFinishDelayTime);
         }
     }
-
-    public static final int AC_ISNOT_FINISH = 0x7fffff00;
-    MsgInterface mMsgInterface = new MsgInterface() {
-        @Override
-        public void callBack(int msg) {
-            // TODO Auto-generated method stub
-            if ((msg & 0xffffff00) == 0x7fffff00) {
-                mFinishDelayTime = (msg & 0xff) * 100;
-            }
-            prepareFinish();
-        }
-    };
 
 }

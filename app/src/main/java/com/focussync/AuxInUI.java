@@ -1,16 +1,5 @@
 package com.focussync;
 
-import java.util.List;
-import java.util.Timer;
-
-import com.common.camera.CameraHolder;
-import com.common.ui.UIBase;
-import com.common.util.Kernel;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-import com.common.utils.BroadcastUtil;
-import com.common.utils.ParkBrake;
-
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Camera;
@@ -24,16 +13,54 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.car.ui.GlobalDef;
-import com.my.gl.MyGLSurfaceView;
 import com.canboxsetting.R;
+import com.common.camera.CameraHolder;
+import com.common.ui.UIBase;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.Kernel;
+import com.common.utils.MyCmd;
+import com.common.utils.ParkBrake;
+import com.common.utils.Util;
+import com.my.gl.MyGLSurfaceView;
+
+import java.util.List;
+import java.util.Timer;
 
 public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHolder.Callback {
 
-    private static final String TAG = "AuxInUI";
     public static final int SOURCE = MyCmd.SOURCE_AUX;
-
+    private static final String TAG = "AuxInUI";
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.camera_surfaceview};
+    private static final int MSG_CHECK_BRAKE = 13;
+    private static final int MSG_CHECK_SIGNAL = 14;
+    private static final int MSG_REMOVE_BLACK = 15;
+    private static final int MSG_DELAY_RESTART_CAMERA = 16;
+    private static final int MSG_DELAY_RESTART_CAMERA_FOR_FAIL = 17;
+    private static final int TIME_CHECK_BRAKE = 1000;
+    private static final int TIME_CHECK_SIGNAL = 900;
     public static AuxInUI[] mUI = new AuxInUI[MAX_DISPLAY];
+    private static MyGLSurfaceView mMyGLSurfaceView;
+    private static android.hardware.Camera mCameraDevice;
+    private static boolean mStartPreviewFail = false;
+    private static boolean mPreviewing;
+    private static boolean mPrearePreview = false;
+    public boolean mWillDestory = false;
+    private boolean mCloseByReverse = false;
+    private int mCameraOpenIndex = 0;
+    private SurfaceHolder mSurfaceHolder = null;
+    private SurfaceView mSurfaceView;
+    private Timer mTimer;
+    private boolean mIsFullScrean = true;
+    private View mSignalView;
+    private int mBrake;
+    private int mSignal = -1;
+    private int mPreSignal = -1;
+
+    public AuxInUI(Context context, View view, int index) {
+        super(context, view, index);
+        mSource = SOURCE;
+    }
 
     public static AuxInUI getInstanse(Context context, View view, int index) {
         if (index >= MAX_DISPLAY) {
@@ -45,12 +72,40 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
         return mUI[index];
     }
 
-    public AuxInUI(Context context, View view, int index) {
-        super(context, view, index);
-        mSource = SOURCE;
+    private static void ensureCameraDevice() throws Exception {
+        if (mCameraDevice == null) {
+            mCameraDevice = CameraHolder.instance().open();
+        }
     }
 
-    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.camera_surfaceview};
+    private static void stopPreview() {
+        if (mCameraDevice != null && mPreviewing) {
+            mCameraDevice.stopPreview();
+        }
+        mPreviewing = false;
+    }
+
+    private static void closeCamera() {
+        if (mCameraDevice != null) {
+            try {
+                CameraHolder.instance().release();
+            } catch (Exception e) {
+
+            }
+            mCameraDevice = null;
+            mPreviewing = false;
+        }
+
+    }
+
+    private static void setPreviewDisplay(SurfaceHolder holder) {
+        try {
+            mCameraDevice.setPreviewDisplay(holder);
+        } catch (Throwable ex) {
+            closeCamera();
+            throw new RuntimeException("setPreviewDisplay failed", ex);
+        }
+    }
 
     public void updateFullUI() {
 
@@ -87,15 +142,9 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
         }
     }
 
-    private static MyGLSurfaceView mMyGLSurfaceView;
-
     public void onClick(View v) {
         toggleFullScreen();
     }
-
-    public boolean mWillDestory = false;
-
-    private boolean mCloseByReverse = false;
 
     public void reverseStart() {
         if (mPrearePreview || mPreviewing) {
@@ -123,7 +172,26 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
 
         Log.d(TAG, "reverseStop setCameraSource" + MyCmd.CAMERA_SOURCE_AUX);
         GlobalDef.setCameraSource(MyCmd.CAMERA_SOURCE_AUX);
-    }
+    }    private final Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_CHECK_BRAKE:
+                    startCheckBrakeCar();
+                    break;
+                case MSG_CHECK_SIGNAL:
+                    startCheckSignal(true);
+                    break;
+                case MSG_REMOVE_BLACK:
+                    showBlack(false);
+                    break;
+                case MSG_DELAY_RESTART_CAMERA:
+                    restartPreviewEx();
+                    break;
+                case MSG_DELAY_RESTART_CAMERA_FOR_FAIL:
+                    break;
+            }
+        }
+    };
 
     @Override
     public void onPause() {
@@ -191,16 +259,6 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
 
     }
 
-    private static android.hardware.Camera mCameraDevice;
-    private static boolean mStartPreviewFail = false;
-    private static boolean mPreviewing;
-    private int mCameraOpenIndex = 0;
-    private static boolean mPrearePreview = false;
-
-    private SurfaceHolder mSurfaceHolder = null;
-    private SurfaceView mSurfaceView;
-    private Timer mTimer;
-
     private void setFullScreen() {
 
         // if (this.mDisplayIndex == SCREEN0) {
@@ -209,8 +267,6 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
         // WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // }
     }
-
-    private boolean mIsFullScrean = true;
 
     private void quitFullScreen() {
 
@@ -243,40 +299,6 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
     private void showBlack(boolean on) {
         showBlackEx(on, 0);
     }
-
-    private static final int MSG_CHECK_BRAKE = 13;
-
-    private static final int MSG_CHECK_SIGNAL = 14;
-
-    private static final int MSG_REMOVE_BLACK = 15;
-
-    private static final int MSG_DELAY_RESTART_CAMERA = 16;
-    private static final int MSG_DELAY_RESTART_CAMERA_FOR_FAIL = 17;
-
-    private static final int TIME_CHECK_BRAKE = 1000;
-
-    private static final int TIME_CHECK_SIGNAL = 900;
-
-    private final Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_CHECK_BRAKE:
-                    startCheckBrakeCar();
-                    break;
-                case MSG_CHECK_SIGNAL:
-                    startCheckSignal(true);
-                    break;
-                case MSG_REMOVE_BLACK:
-                    showBlack(false);
-                    break;
-                case MSG_DELAY_RESTART_CAMERA:
-                    restartPreviewEx();
-                    break;
-                case MSG_DELAY_RESTART_CAMERA_FOR_FAIL:
-                    break;
-            }
-        }
-    };
 
     private Size getOptimalPreviewSize(List<Size> sizes, int w, int h) {
         final double ASPECT_TOLERANCE = 0.05;
@@ -494,48 +516,6 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
 
     }
 
-    private static void ensureCameraDevice() throws Exception {
-        if (mCameraDevice == null) {
-            mCameraDevice = CameraHolder.instance().open();
-        }
-    }
-
-    private static void stopPreview() {
-        if (mCameraDevice != null && mPreviewing) {
-            mCameraDevice.stopPreview();
-        }
-        mPreviewing = false;
-    }
-
-    private static void closeCamera() {
-        if (mCameraDevice != null) {
-            try {
-                CameraHolder.instance().release();
-            } catch (Exception e) {
-
-            }
-            mCameraDevice = null;
-            mPreviewing = false;
-        }
-
-    }
-
-    private static void setPreviewDisplay(SurfaceHolder holder) {
-        try {
-            mCameraDevice.setPreviewDisplay(holder);
-        } catch (Throwable ex) {
-            closeCamera();
-            throw new RuntimeException("setPreviewDisplay failed", ex);
-        }
-    }
-
-    private View mSignalView;
-
-    private int mBrake;
-
-    private int mSignal = -1;
-    private int mPreSignal = -1;
-
     private void noSignalShowText(int s) {
         if (mSignalView != null) {
             if (s == 1) {
@@ -605,4 +585,6 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
         // mHandler.sendEmptyMessageDelayed(MSG_CHECK_BRAKE, TIME_CHECK_BRAKE);
 
     }
+
+
 }

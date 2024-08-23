@@ -13,14 +13,15 @@ import java.util.ArrayList;
 
 public class MyListViewAdapterRadio extends ArrayAdapter<String> {
 
+    LayoutInflater mInflater;
     private int mLayout;
     private Context mActivity;
-    private int mTextId;
 
     // private String mTrack;
-
-    LayoutInflater mInflater;
+    private int mTextId;
     private int mCustomListFocusColor;
+    private ArrayList<TextShow> mItem = new ArrayList<TextShow>();
+    private int mPos = -1;
 
     public MyListViewAdapterRadio(Context context, int layout) {
         super(context, layout);
@@ -53,22 +54,6 @@ public class MyListViewAdapterRadio extends ArrayAdapter<String> {
         return ret;
     }
 
-    public static class TextShow {
-        public String text;
-        public int index;
-        public int freq;
-
-    }
-
-    public static class ViewHolder {
-        public TextView text;
-        // public ImageView playing;
-        public int index;
-
-    }
-
-    private ArrayList<TextShow> mItem = new ArrayList<TextShow>();
-
     public View getView(int position, View convertView, ViewGroup parent) {
         if (mItem.size() == 0 || position > mItem.size()) return null;
 
@@ -95,8 +80,6 @@ public class MyListViewAdapterRadio extends ArrayAdapter<String> {
         return convertView;
 
     }
-
-    private int mPos = -1;
 
     public void setSelectItem(int pos) {
 
@@ -142,6 +125,20 @@ public class MyListViewAdapterRadio extends ArrayAdapter<String> {
 
             notifyDataSetChanged();
         }
+
+    }
+
+    public static class TextShow {
+        public String text;
+        public int index;
+        public int freq;
+
+    }
+
+    public static class ViewHolder {
+        public TextView text;
+        // public ImageView playing;
+        public int index;
 
     }
 

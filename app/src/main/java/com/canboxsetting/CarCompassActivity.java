@@ -16,21 +16,20 @@
 
 package com.canboxsetting;
 
-import com.car.ui.GlobalDef;
-import com.common.util.MachineConfig;
+import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.View;
+import com.common.utils.GlobalDef;
+import com.common.utils.MachineConfig;
 
 
 public class CarCompassActivity extends AppCompatActivity {
     private static final String TAG = "CanAirControlActivity";
-
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
 

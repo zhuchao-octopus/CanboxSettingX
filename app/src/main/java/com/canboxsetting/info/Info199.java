@@ -1,84 +1,83 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.Intent;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Color;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
 import android.text.InputType;
-import android.text.format.DateFormat;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.AppConfig;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
-
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 public class Info199 extends MyFragment {
     private static final String TAG = "GMInfoSimpleFragment";
+    private final static String TITLE[] = {" ", "BC:", "Settings:", "Sound:", "stations:", "store:", "Tracks:", "Extras:",};
+    private View mMainView;
+    private int cmd82 = 0;
+    OnClickListener mOnClickClearListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+
+            int id = v.getId();
+            if (id == R.id.fuelclear1) {// cmd82 |= 0x40;
+                // cmd82 &= ~0x20;
+                cmd82 = 3;
+            } else if (id == R.id.fuelclear2) {
+                cmd82 = 4;
+                // cmd82 |= 0x20;
+                // cmd82 &= ~0x40;
+            } else if (id == R.id.booking_mileage) {
+                showBookingMileageDialog();
+
+                return;
+            }
+            sendCanboxInfo82((byte) cmd82);
+        }
+    };
+    private int mCurUI = 0;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo90(msg.what);
+        }
+    };
+    OnClickListener mOnClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+
+            showUI(v.getId());
+        }
+    };
+    private String mTitle0 = "";
+    // private boolean isEmtpy(byte buf, int s, int e){
+    // if (){
+    //
+    // }
+    // }
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,8 +86,6 @@ public class Info199 extends MyFragment {
         // addPreferencesFromResource(R.xml.gm_simple_info);
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -178,39 +175,6 @@ public class Info199 extends MyFragment {
         });
     }
 
-    OnClickListener mOnClickClearListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-
-            int id = v.getId();
-            if (id == R.id.fuelclear1) {// cmd82 |= 0x40;
-                // cmd82 &= ~0x20;
-                cmd82 = 3;
-            } else if (id == R.id.fuelclear2) {
-                cmd82 = 4;
-                // cmd82 |= 0x20;
-                // cmd82 &= ~0x40;
-            } else if (id == R.id.booking_mileage) {
-                showBookingMileageDialog();
-
-                return;
-            }
-            sendCanboxInfo82((byte) cmd82);
-        }
-    };
-    OnClickListener mOnClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-
-            showUI(v.getId());
-        }
-    };
-
-    private int cmd82 = 0;
-    private int mCurUI = 0;
-
     private void showUI(int id) {
         // int cmd82 = 0;
         int cmd90 = 0;
@@ -253,19 +217,6 @@ public class Info199 extends MyFragment {
         // byte[] buf = new byte[] { (byte) 0x90, 0x4, (byte) d0, 0, 0, 0 };
         // BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo90(msg.what);
-        }
-    };
-
-    private final static String TITLE[] = {" ", "BC:", "Settings:", "Sound:", "stations:", "store:", "Tracks:", "Extras:",};
-
-    private String mTitle0 = "";
 
     private String getBufString(byte[] buf, int s, int len) {
         byte b[] = new byte[len];
@@ -382,13 +333,6 @@ public class Info199 extends MyFragment {
             Log.e(TAG, "updateView" + e);
         }
     }
-
-    // private boolean isEmtpy(byte buf, int s, int e){
-    // if (){
-    //
-    // }
-    // }
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

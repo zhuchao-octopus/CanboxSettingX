@@ -16,11 +16,6 @@
 
 package com.canboxsetting;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,26 +24,30 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.canboxsetting.cd.GMODCarCDFragment;
 import com.canboxsetting.cd.JeepCarCDFragment;
 import com.canboxsetting.cd.JeepCarCDXinbasFragment;
 import com.canboxsetting.cd.MazdaBinarytekCarCDFragment;
 import com.canboxsetting.cd.MazdaSimpleCarCDFragment;
 import com.canboxsetting.cd.RX330HZCarCDFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class JeepCarCDPlayerActivity extends AppCompatActivity {
     private static final String TAG = "HondaAirControl";
-
     private FragmentManager mFragmentManager;
-
     private MyFragment mSetting;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -248,8 +247,6 @@ public class JeepCarCDPlayerActivity extends AppCompatActivity {
             }
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

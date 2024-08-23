@@ -16,47 +16,23 @@
 
 package com.canboxsetting.cd;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
@@ -65,6 +41,9 @@ public class CD223 extends MyFragment {
     private static final String TAG = "JeepCarCDFragment";
 
     private View mMainView;
+    private int mPlayStatus = 0;
+    private int mRepeatMode = 0;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,6 +51,12 @@ public class CD223 extends MyFragment {
 
         return mMainView;
     }
+
+
+    //	private void sendCanboxInfo0x8f(int d0) {
+    //		byte[] buf = new byte[] { (byte) 0x8f, 0x3, 0x2, (byte) d0, 0 };
+    //		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    //	}
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
         byte[] buf = new byte[]{0x2, (byte) d0, (byte) d1, (byte) d2};
@@ -85,7 +70,6 @@ public class CD223 extends MyFragment {
         return false;
     }
 
-
     private void sendCanboxInfo0x90(int d0) {
 
         byte[] buf;
@@ -98,15 +82,6 @@ public class CD223 extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
     }
-
-
-    //	private void sendCanboxInfo0x8f(int d0) {
-    //		byte[] buf = new byte[] { (byte) 0x8f, 0x3, 0x2, (byte) d0, 0 };
-    //		BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    //	}
-
-    private int mPlayStatus = 0;
-    private int mRepeatMode = 0;
 
     public void onClick(View v) {
         int id = v.getId();//		case R.id.disk_icon1:
@@ -330,8 +305,6 @@ public class CD223 extends MyFragment {
         mPlayStatus = 1;
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

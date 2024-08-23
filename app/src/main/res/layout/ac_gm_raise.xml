@@ -52,10 +52,10 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0px"
-        android:layout_marginBottom="5px"
         android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
         android:layout_marginTop="5px"
+        android:layout_marginRight="20px"
+        android:layout_marginBottom="5px"
         android:layout_weight="3"
         android:background="@drawable/air_back2"
         android:orientation="vertical"
@@ -64,9 +64,9 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0px"
-            android:layout_marginEnd="1.0dip"
             android:layout_marginStart="1.0dip"
             android:layout_marginTop="1.0dip"
+            android:layout_marginEnd="1.0dip"
             android:layout_weight="2"
             android:orientation="horizontal">
 
@@ -203,27 +203,27 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:visibility="gone"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_9"
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:visibility="gone"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_a"
                                 android:layout_width="0px"
-                                android:visibility="gone"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_b"
@@ -231,35 +231,35 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:visibility="gone"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_c"
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:visibility="gone"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_d"
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:visibility="gone"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_e"
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:visibility="gone"
                                 android:scaleType="centerInside"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
 
                             <ImageView
                                 android:id="@id/wind_rate_f"
@@ -267,8 +267,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:scaleType="centerInside"
-                                android:visibility="gone"
-                                android:src="@drawable/air_wind"></ImageView>
+                                android:src="@drawable/air_wind"
+                                android:visibility="gone"></ImageView>
                         </LinearLayout>
 
                         <ImageView

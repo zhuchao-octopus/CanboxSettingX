@@ -16,127 +16,42 @@
 
 package com.canboxsetting.cd;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.common.util.AuxInUI;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.KeyEvent;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.WindowManager;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.canboxsetting.R.id;
+import com.common.utils.AuxInUI;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class GMODCarCDFragment extends MyFragment {
     private static final String TAG = "JeepCarCDFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-        // setContentView(R.layout.jeep_car_cd_player);
-
-    }
-
-    private View mMainView;
-
-    int mCarType = 0;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-        mMainView = inflater.inflate(R.layout.gm_od_player, container, false);
-
-
-        showCamera();
-        initPresentationUI();
-        return mMainView;
-    }
-
-    private void initCarType() {
-        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
-
-        String[] ss = mCanboxType.split(",");
-        String value = ss[0];
-        for (int i = 1; i < ss.length; ++i) {
-            if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
-                try {
-                    mCarType = Integer.valueOf(ss[i].substring(1));
-                } catch (Exception e) {
-
-                }
-            }
-        }
-
-        if (mCarType == 1) {
-
-            mMainView.findViewById(R.id.dvd_menu).setVisibility(View.GONE);
-        }
-    }
-
     private static final int[] BUTTON_ON_CLICK = new int[]{R.id.home, R.id.navi, R.id.radio, R.id.back, R.id.bt, R.id.power, R.id.prev, R.id.next, R.id.key_vol_a, R.id.key_vol_m, R.id.key_sel_a, R.id.key_sel_m, R.id.ok, R.id.music};
-
-    private void initPresentationUI() {
-        for (int i : BUTTON_ON_CLICK) {
-            View v = mMainView.findViewById(i);
-            if (v != null) {
-                v.setOnTouchListener(mOnTouchListener);
-            }
-        }
-
-        mGestureDetector = new GestureDetector(mOnGestureListener);
-        mGestureDetector.setOnDoubleTapListener(mOnDoubleTapListener);
-
-        mMainView.findViewById(R.id.aux_main).setOnTouchListener(mCameraOnTouchListener);
-    }
-
+    int mCarType = 0;
+    private View mMainView;
     private GestureDetector mGestureDetector;
-
     private OnGestureListener mOnGestureListener = new OnGestureListener() {
         public void onLongPress(MotionEvent e) {
         }
@@ -172,6 +87,17 @@ public class GMODCarCDFragment extends MyFragment {
 
         ;
     };
+    private OnTouchListener mCameraOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO Auto-generated method stub
+            if (mGestureDetector != null) {
+                return mGestureDetector.onTouchEvent(event);
+            }
+            return false;
+        }
+    };
+    private boolean mFull = false;
     private OnDoubleTapListener mOnDoubleTapListener = new OnDoubleTapListener() {
         public boolean onDoubleTap(MotionEvent e) {
             toggleFullScreen();
@@ -194,31 +120,11 @@ public class GMODCarCDFragment extends MyFragment {
             return false;
         }
     };
-
-    private void sendXY(int x, int y) {
-        int w = mMainView.findViewById(R.id.aux_main).getWidth();
-        int h = mMainView.findViewById(R.id.aux_main).getHeight();
-        if (w != 0 && h != 0) {
-            x = x * 0x3fff / w;
-            y = y * 0x3fff / h;
-        }
-        Log.d("ccf", x + ":" + y);
-        byte[] buf = new byte[]{(byte) 0x75, 0x5, 0x1, (byte) (x & 0xff), (byte) ((x & 0xff00) >> 8), (byte) (y & 0xff), (byte) ((y & 0xff00) >> 8)};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private OnTouchListener mCameraOnTouchListener = new OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
-            if (mGestureDetector != null) {
-                return mGestureDetector.onTouchEvent(event);
-            }
-            return false;
-        }
-    };
-
-    private OnTouchListener mOnTouchListener = new OnTouchListener() {
+    private int m6DiskStatus = 0;
+    private int mPauseUI = 0;
+    private BroadcastReceiver mReceiver;
+    private AuxInUI mAuxInUI;
+    private int mSource = MyCmd.SOURCE_NONE;    private OnTouchListener mOnTouchListener = new OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             // TODO Auto-generated method stub
@@ -242,7 +148,13 @@ public class GMODCarCDFragment extends MyFragment {
         }
     };
 
-    private Handler mHandler = new Handler() {
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+        // setContentView(R.layout.jeep_car_cd_player);
+
+    }    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             mHandler.removeMessages(0);
@@ -250,6 +162,65 @@ public class GMODCarCDFragment extends MyFragment {
             sendCanboxInfo0x74(msg.arg1, 2);
         }
     };
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+        mMainView = inflater.inflate(R.layout.gm_od_player, container, false);
+
+
+        showCamera();
+        initPresentationUI();
+        return mMainView;
+    }
+
+    private void initCarType() {
+        String mCanboxType = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
+
+        String[] ss = mCanboxType.split(",");
+        String value = ss[0];
+        for (int i = 1; i < ss.length; ++i) {
+            if (ss[i].startsWith(MachineConfig.KEY_SUB_CANBOX_CAR_TYPE)) {
+                try {
+                    mCarType = Integer.valueOf(ss[i].substring(1));
+                } catch (Exception e) {
+
+                }
+            }
+        }
+
+        if (mCarType == 1) {
+
+            mMainView.findViewById(R.id.dvd_menu).setVisibility(View.GONE);
+        }
+    }
+
+    private void initPresentationUI() {
+        for (int i : BUTTON_ON_CLICK) {
+            View v = mMainView.findViewById(i);
+            if (v != null) {
+                v.setOnTouchListener(mOnTouchListener);
+            }
+        }
+
+        mGestureDetector = new GestureDetector(mOnGestureListener);
+        mGestureDetector.setOnDoubleTapListener(mOnDoubleTapListener);
+
+        mMainView.findViewById(R.id.aux_main).setOnTouchListener(mCameraOnTouchListener);
+    }
+
+    private void sendXY(int x, int y) {
+        int w = mMainView.findViewById(R.id.aux_main).getWidth();
+        int h = mMainView.findViewById(R.id.aux_main).getHeight();
+        if (w != 0 && h != 0) {
+            x = x * 0x3fff / w;
+            y = y * 0x3fff / h;
+        }
+        Log.d("ccf", x + ":" + y);
+        byte[] buf = new byte[]{(byte) 0x75, 0x5, 0x1, (byte) (x & 0xff), (byte) ((x & 0xff00) >> 8), (byte) (y & 0xff), (byte) ((y & 0xff00) >> 8)};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
 
     private void sendCanboxInfo0x74(String tag, int d1) {
 
@@ -271,8 +242,6 @@ public class GMODCarCDFragment extends MyFragment {
         if (v.getId() == id.pp) {
         }
     }
-
-    private boolean mFull = false;
 
     private void setFullScreen() {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -301,8 +270,6 @@ public class GMODCarCDFragment extends MyFragment {
             quitFullScreen();
         }
     }
-
-    private int m6DiskStatus = 0;
 
     private void hideCamera() {
         if (mAuxInUI != null) {
@@ -338,8 +305,6 @@ public class GMODCarCDFragment extends MyFragment {
         }
     }
 
-    private int mPauseUI = 0;
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -365,8 +330,6 @@ public class GMODCarCDFragment extends MyFragment {
         initCarType();
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {
@@ -417,12 +380,12 @@ public class GMODCarCDFragment extends MyFragment {
         }
     }
 
-    private AuxInUI mAuxInUI;
-
-    private int mSource = MyCmd.SOURCE_NONE;
-
     public boolean isCurrentSource() {
         return (mSource == MyCmd.SOURCE_AUX);
     }
+
+
+
+
 
 }

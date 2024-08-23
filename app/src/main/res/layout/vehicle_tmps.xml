@@ -3,9 +3,9 @@
     android:id="@id/vehicle_tmps"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="20px"
     android:paddingLeft="@dimen/content_padding_left"
-    android:paddingTop="40px">
+    android:paddingTop="40px"
+    android:paddingBottom="20px">
 
     <TextView
         android:id="@id/tmps"
@@ -20,8 +20,8 @@
         android:id="@id/set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:drawableLeft="@drawable/warning"
         android:minWidth="@dimen/btn_width"
         android:text="@string/set"

@@ -16,33 +16,37 @@ import java.util.Locale;
 public class SLog {
     public static final String PROPITY_DEBUG = "car.recorder.debug";
     public static final String PROPITY_DEBUG_LEVEL = "car.recorder.debug.level";
+    public static final String ROOT = Environment.getExternalStorageDirectory().getPath() + "/finddreams/";
+    private static final boolean isSaveLog = false;
+    private static final String PATH_LOG_INFO = ROOT + "info/";
+    /**
+     * custom logger
+     */
+    public static CustomLogger customLogger;
     private static boolean DEBUG = true;
     private static int DEBUG_LEVEL = 0;
     private static String TAG_PREFIX = "";
     private static String TAG_POSTFIX = "";
     private static String MSG_PREFIX = "";
     private static String MSG_POSTFIX = "";
-    private static final boolean isSaveLog = false;
-    public static final String ROOT = Environment.getExternalStorageDirectory().getPath() + "/finddreams/";
-    private static final String PATH_LOG_INFO = ROOT + "info/";
 
     private SLog() {
-    }
-
-    public static void setDebug(boolean debug) {
-        DEBUG = debug;
     }
 
     public static boolean isDebug() {
         return DEBUG;
     }
 
-    public static void setDebugLevel(int debugLevel) {
-        DEBUG_LEVEL = debugLevel;
+    public static void setDebug(boolean debug) {
+        DEBUG = debug;
     }
 
     public static int getDebugLevel() {
         return DEBUG_LEVEL;
+    }
+
+    public static void setDebugLevel(int debugLevel) {
+        DEBUG_LEVEL = debugLevel;
     }
 
     public static String getTagPrefix() {
@@ -95,41 +99,6 @@ public class SLog {
             msg += TAG_POSTFIX;
         }
         return msg;
-    }
-
-    /**
-     * custom logger
-     */
-    public static CustomLogger customLogger;
-
-    public interface CustomLogger {
-        void d(String tag, String content);
-
-        void d(String tag, String content, Throwable tr);
-
-        void e(String tag, String content);
-
-        void e(String tag, String content, Throwable tr);
-
-        void i(String tag, String content);
-
-        void i(String tag, String content, Throwable tr);
-
-        void v(String tag, String content);
-
-        void v(String tag, String content, Throwable tr);
-
-        void w(String tag, String content);
-
-        void w(String tag, String content, Throwable tr);
-
-        void w(String tag, Throwable tr);
-
-        void wtf(String tag, String content);
-
-        void wtf(String tag, String content, Throwable tr);
-
-        void wtf(String tag, Throwable tr);
     }
 
     private static boolean checkNeedLog(int level) {
@@ -229,7 +198,6 @@ public class SLog {
             Log.e(tag, content, tr);
         }
     }
-
 
     public static void i(String content) {
         if (!checkNeedLog(Log.INFO)) return;
@@ -442,6 +410,14 @@ public class SLog {
         }
     }
 
+    public static boolean isStorageAvailable() {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) || Environment.getExternalStorageDirectory().exists()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // /**
     // * A little trick to reuse a formatter in the same thread
     // */
@@ -474,14 +450,6 @@ public class SLog {
     // ReusableFormatter formatter = thread_local_formatter.get();
     // return formatter.format(msg, args);
     // }
-
-    public static boolean isStorageAvailable() {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) || Environment.getExternalStorageDirectory().exists()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     /**
      * Return a String describing the calling method and location at a
@@ -558,5 +526,35 @@ public class SLog {
      */
     public static String getCaller() {
         return getCaller(Thread.currentThread().getStackTrace(), 0);
+    }
+
+    public interface CustomLogger {
+        void d(String tag, String content);
+
+        void d(String tag, String content, Throwable tr);
+
+        void e(String tag, String content);
+
+        void e(String tag, String content, Throwable tr);
+
+        void i(String tag, String content);
+
+        void i(String tag, String content, Throwable tr);
+
+        void v(String tag, String content);
+
+        void v(String tag, String content, Throwable tr);
+
+        void w(String tag, String content);
+
+        void w(String tag, String content, Throwable tr);
+
+        void w(String tag, Throwable tr);
+
+        void wtf(String tag, String content);
+
+        void wtf(String tag, String content, Throwable tr);
+
+        void wtf(String tag, Throwable tr);
     }
 }

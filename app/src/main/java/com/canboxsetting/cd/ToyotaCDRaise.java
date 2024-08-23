@@ -16,70 +16,30 @@
 
 package com.canboxsetting.cd;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class ToyotaCDRaise extends MyFragment {
     private static final String TAG = "JeepCarCDFragment";
-
-    private View mMainView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.crown12_car_cd_player, container, false);
-        ((TextView) mMainView.findViewById(R.id.str_total_song_title)).setText(R.string.track);
-        mMainView.findViewById(R.id.layout_song_singer).setVisibility(View.VISIBLE);
-        mMainView.findViewById(R.id.pp).setVisibility(View.VISIBLE);
-        mMainView.findViewById(R.id.ff).setOnTouchListener(mTouchFF);
-        mMainView.findViewById(R.id.fr).setOnTouchListener(mTouchFR);
-        mMainView.findViewById(R.id.gac_cd_state_scan).setVisibility(View.GONE);
-        mMainView.findViewById(R.id.disk_shuffle).setVisibility(View.GONE);
-        mMainView.findViewById(R.id.disk_scan).setVisibility(View.GONE);
-        mMainView.findViewById(R.id.gac_cd_state_scan).setVisibility(View.GONE);
-        return mMainView;
-    }
-
     View.OnTouchListener mTouchFF = new View.OnTouchListener() {
 
         @Override
@@ -106,6 +66,25 @@ public class ToyotaCDRaise extends MyFragment {
             return false;
         }
     };
+    private View mMainView;
+    private int mPlayStatus = 0;
+    private int mRepeatMode = 0;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mMainView = inflater.inflate(R.layout.crown12_car_cd_player, container, false);
+        ((TextView) mMainView.findViewById(R.id.str_total_song_title)).setText(R.string.track);
+        mMainView.findViewById(R.id.layout_song_singer).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.pp).setVisibility(View.VISIBLE);
+        mMainView.findViewById(R.id.ff).setOnTouchListener(mTouchFF);
+        mMainView.findViewById(R.id.fr).setOnTouchListener(mTouchFR);
+        mMainView.findViewById(R.id.gac_cd_state_scan).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.disk_shuffle).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.disk_scan).setVisibility(View.GONE);
+        mMainView.findViewById(R.id.gac_cd_state_scan).setVisibility(View.GONE);
+        return mMainView;
+    }
 
     private void sendCanboxInfo(int d) {
         byte[] buf = new byte[]{(byte) 0x85, 0x2, (byte) d, 0};
@@ -126,9 +105,6 @@ public class ToyotaCDRaise extends MyFragment {
         byte[] buf = new byte[]{(byte) 0x8f, 0x3, 0x2, (byte) d0, 0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private int mPlayStatus = 0;
-    private int mRepeatMode = 0;
 
     public void onClick(View v) {
         int id = v.getId();
@@ -287,8 +263,6 @@ public class ToyotaCDRaise extends MyFragment {
 
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

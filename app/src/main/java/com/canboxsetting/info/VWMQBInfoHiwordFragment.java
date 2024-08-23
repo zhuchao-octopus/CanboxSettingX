@@ -11,15 +11,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.annotation.Nullable;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,40 +23,31 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+
 import com.canboxsetting.R;
 import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.NodeDrivingHiworldData;
-import com.common.util.UtilSystem;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.NodeDrivingHiworldData;
+import com.common.utils.UtilSystem;
 import com.common.view.MyPopDialog;
 
 import java.util.Locale;
 
 public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "VWMQBInfoHiwordFragment";
-
+    private static final NodeDrivingHiworldData[] NODES_DRIVINGDATA = {new NodeDrivingHiworldData(R.string.since_start), new NodeDrivingHiworldData(R.string.long_term), new NodeDrivingHiworldData(R.string.since_refuelling)};
+    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.setting, R.id.views, R.id.set,};
+    private static final int[] POP_LIST = new int[]{R.string.driving_data, R.string.conv_consumers, R.string.vehicle_status, R.string.energy_flow_view};
+    private final static int[] INIT_CMDS = {0x13, 0x14, 0x15, 0x16, 0x17, 0x18};
+    ArrayAdapter<String> mAdapter;
+    ListView mLv;
     private View mMainView;
-
-    @Override
-    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mMainView = inflater.inflate(R.layout.vw_hiworld_info, container, false);
-
-        initPresentationUI();
-
-        showUI(R.string.driving_data);
-
-        return mMainView;
-    }
-
     private MyPopDialog mDialog;
-
     private View.OnClickListener mOnClick = new View.OnClickListener() {
         public void onClick(View v) {
             Log.d("ccfk", "" + v.getId());
@@ -79,24 +61,7 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
 
         ;
     };
-
-    private View.OnClickListener mOnClickDrivingData = new View.OnClickListener() {
-        public void onClick(View v) {
-            int id = v.getId();
-            if (id == R.id.bt_left) {
-                mDrivingDataPage = (mDrivingDataPage + 1) % NODES_DRIVINGDATA.length;
-                showDrivingData();
-            } else if (id == R.id.bt_right) {
-                mDrivingDataPage = (mDrivingDataPage + NODES_DRIVINGDATA.length - 1) % NODES_DRIVINGDATA.length;
-                showDrivingData();
-            }
-        }
-
-        ;
-    };
-
-    private static final NodeDrivingHiworldData[] NODES_DRIVINGDATA = {new NodeDrivingHiworldData(R.string.since_start), new NodeDrivingHiworldData(R.string.long_term), new NodeDrivingHiworldData(R.string.since_refuelling)};
-
+    private int mVehiclePage = 0;
     private View.OnClickListener mOnClickVehicleStatus = new View.OnClickListener() {
         public void onClick(View v) {
             int id = v.getId();
@@ -115,8 +80,57 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
 
         ;
     };
-    ArrayAdapter<String> mAdapter;
-    ListView mLv;
+    private int mDrivingDataPage = 0;
+    private View.OnClickListener mOnClickDrivingData = new View.OnClickListener() {
+        public void onClick(View v) {
+            int id = v.getId();
+            if (id == R.id.bt_left) {
+                mDrivingDataPage = (mDrivingDataPage + 1) % NODES_DRIVINGDATA.length;
+                showDrivingData();
+            } else if (id == R.id.bt_right) {
+                mDrivingDataPage = (mDrivingDataPage + NODES_DRIVINGDATA.length - 1) % NODES_DRIVINGDATA.length;
+                showDrivingData();
+            }
+        }
+
+        ;
+    };
+    private int mCurPage = -1;
+    private Handler mHandlerDialog = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            showUI(POP_LIST[msg.what]);
+        }
+    };
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
+
+            }
+        }
+    };
+    private View mTpmsView;
+    private BroadcastReceiver mReceiver;
+
+    @Override
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mMainView = inflater.inflate(R.layout.vw_hiworld_info, container, false);
+
+        initPresentationUI();
+
+        showUI(R.string.driving_data);
+
+        return mMainView;
+    }
 
     private void showStopStartStatusDialog() {
 
@@ -155,8 +169,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
 
     }
 
-    private int mVehiclePage = 0;
-
     private void showVehicletatus() {
         int id = R.string.vehicle_status;
         switch (mVehiclePage) {
@@ -174,8 +186,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
         setTextViewStringEx(mMainView.findViewById(R.id.vehicle_status), R.id.title, id);
 
     }
-
-    private int mDrivingDataPage = 0;
 
     private void showDrivingData() {
 
@@ -199,10 +209,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
             v.setVisibility(value != 0 ? View.VISIBLE : View.GONE);
         }
     }
-
-    private static final int[] BUTTON_ON_CLICK = new int[]{R.id.setting, R.id.views, R.id.set,};
-
-    private static final int[] POP_LIST = new int[]{R.string.driving_data, R.string.conv_consumers, R.string.vehicle_status, R.string.energy_flow_view};
 
     private void initPresentationUI() {
         //注册按钮回调函数
@@ -229,15 +235,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
         // setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
-    private Handler mHandlerDialog = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            showUI(POP_LIST[msg.what]);
-        }
-    };
-
-    private int mCurPage = -1;
-
     private void showUI(int id) {
         if (mCurPage != id) {
             mCurPage = id;
@@ -258,8 +255,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
         }
     }
 
-    private boolean mPaused = true;
-
     @Override
     public void onPause() {
         super.onPause();
@@ -275,9 +270,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
         requestInitData();
     }
 
-    private final static int[] INIT_CMDS = {0x13, 0x14, 0x15, 0x16, 0x17, 0x18};
-
-
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
         for (int i = 0; i < INIT_CMDS.length; ++i) {
@@ -285,16 +277,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
         }
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
-
-            }
-        }
-    };
 
     private void sendCanboxInfo0x90(int d0, int d1) {
         byte[] buf = new byte[]{0x2, (byte) 0xa, 0x1, (byte) d1};
@@ -312,8 +294,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
             p.setSummary(s);
         }
     }
-
-    private View mTpmsView;
 
     public boolean onPreferenceClick(Preference arg0) {
 
@@ -547,8 +527,6 @@ public class VWMQBInfoHiwordFragment extends PreferenceFragmentCompat implements
             }
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

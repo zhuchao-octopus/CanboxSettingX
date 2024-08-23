@@ -16,92 +16,26 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC174 extends MyFragment {
     private static final String TAG = "JeepAirControlFragment";
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-    }
-
-    private View mMainView;
-
-    private CommonUpdateView mCommonUpdateView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mMainView = inflater.inflate(R.layout.ac_spirior_daojun, container, false);
-
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
-
-        return mMainView;
-    }
-
-
-    private void sendCanboxInfo0x90(int d0) {
-        byte[] buf = new byte[]{(byte) 0x90, 0x1, (byte) d0,};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendCanboxInfo0x95(int d0, int d1) {
-        byte[] buf = new byte[]{(byte) 0xA8, 0x2, (byte) d0, (byte) d1};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendKey(int key) {
-        sendCanboxInfo0x95(key, 1);
-    }
-
     private final static int[][] CMD_ID = new int[][]{
 
 
@@ -125,7 +59,41 @@ public class AC174 extends MyFragment {
 
 
     };
+    private View mMainView;
 
+    private CommonUpdateView mCommonUpdateView;
+    private BroadcastReceiver mReceiver;
+    private int power = 0;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mMainView = inflater.inflate(R.layout.ac_spirior_daojun, container, false);
+
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface);
+
+        return mMainView;
+    }
+
+    private void sendCanboxInfo0x90(int d0) {
+        byte[] buf = new byte[]{(byte) 0x90, 0x1, (byte) d0,};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCanboxInfo0x95(int d0, int d1) {
+        byte[] buf = new byte[]{(byte) 0xA8, 0x2, (byte) d0, (byte) d1};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendKey(int key) {
+        sendCanboxInfo0x95(key, 1);
+    }
 
     public void onClick(View v) {
         int id = v.getId();
@@ -146,7 +114,6 @@ public class AC174 extends MyFragment {
         }
     }
 
-
     @Override
     public void onPause() {
         unregisterListener();
@@ -161,16 +128,12 @@ public class AC174 extends MyFragment {
         sendCanboxInfo0x90(0x21);
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             getActivity().unregisterReceiver(mReceiver);
             mReceiver = null;
         }
     }
-
-    private int power = 0;
 
     private void registerListener() {
         if (mReceiver == null) {

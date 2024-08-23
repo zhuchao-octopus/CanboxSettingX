@@ -16,97 +16,61 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.MyFragment.MsgInterface;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class AC141 extends MyFragment {
     private static final String TAG = "JeepAirControlFragment";
+    private final static int[][] CMD_ID = new int[][]{
 
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+            {R.id.power, 0x80}, {R.id.mode, 0x40}, {R.id.ac_auto, 0x20}, {R.id.rear, 0x8}, {R.id.ac, 0x2},
 
-    }
+            {R.id.air_fwindow_heat, 0x380}, {R.id.max, 0x4},
 
-    private View mMainView;
+            {R.id.inner_loop, 0x201},
 
-    private CommonUpdateView mCommonUpdateView;
+            {R.id.wind_minus, 0x104}, {R.id.wind_add, 0x108},
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mMainView = inflater.inflate(R.layout.ac_beiqiecc180_raise, container, false);
-
-        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface2);
+            {R.id.con_left_temp_up, 0x102}, {R.id.con_left_temp_down, 0x101},
 
 
-        if (GlobalDef.getModelId() == 26) {
-            (mMainView.findViewById(R.id.left_temp2)).setVisibility(View.VISIBLE);
-            (mMainView.findViewById(R.id.left_temp_layout)).setVisibility(View.GONE);
-        } else {
-            (mMainView.findViewById(R.id.left_temp2)).setVisibility(View.GONE);
-            (mMainView.findViewById(R.id.left_temp_layout)).setVisibility(View.VISIBLE);
-        }
-        init();
-        return mMainView;
-    }
+    };
+    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO Auto-generated method stub
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    sendCmd(v.getId(), (byte) 1);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    sendCmd(v.getId(), (byte) 0);
+                    break;
 
-    private void init() {
-        for (int i = 0; i < CMD_ID.length; ++i) {
-            View v = mMainView.findViewById(CMD_ID[i][0]);
-            if (v != null) {
-                v.setOnTouchListener(mOnTouchListener);
             }
+            return false;
         }
-    }
-
+    };
+    private View mMainView;
+    private CommonUpdateView mCommonUpdateView;
     MsgInterface mMsgInterface2 = new MsgInterface() {
         @Override
         public void callBack(int msg) {
@@ -159,44 +123,46 @@ public class AC141 extends MyFragment {
             }
         }
     };
+    private BroadcastReceiver mReceiver;
 
-    View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    sendCmd(v.getId(), (byte) 1);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    sendCmd(v.getId(), (byte) 0);
-                    break;
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-            }
-            return false;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mMainView = inflater.inflate(R.layout.ac_beiqiecc180_raise, container, false);
+
+        mCommonUpdateView = new CommonUpdateView(mMainView, mMsgInterface2);
+
+
+        if (GlobalDef.getModelId() == 26) {
+            (mMainView.findViewById(R.id.left_temp2)).setVisibility(View.VISIBLE);
+            (mMainView.findViewById(R.id.left_temp_layout)).setVisibility(View.GONE);
+        } else {
+            (mMainView.findViewById(R.id.left_temp2)).setVisibility(View.GONE);
+            (mMainView.findViewById(R.id.left_temp_layout)).setVisibility(View.VISIBLE);
         }
-    };
+        init();
+        return mMainView;
+    }
+
+    private void init() {
+        for (int i = 0; i < CMD_ID.length; ++i) {
+            View v = mMainView.findViewById(CMD_ID[i][0]);
+            if (v != null) {
+                v.setOnTouchListener(mOnTouchListener);
+            }
+        }
+    }
 
     private void sendCanboxInfo0x90(int d0) {
         byte[] buf = new byte[]{(byte) 0x90, 0x1, (byte) d0,};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-
-    private final static int[][] CMD_ID = new int[][]{
-
-            {R.id.power, 0x80}, {R.id.mode, 0x40}, {R.id.ac_auto, 0x20}, {R.id.rear, 0x8}, {R.id.ac, 0x2},
-
-            {R.id.air_fwindow_heat, 0x380}, {R.id.max, 0x4},
-
-            {R.id.inner_loop, 0x201},
-
-            {R.id.wind_minus, 0x104}, {R.id.wind_add, 0x108},
-
-            {R.id.con_left_temp_up, 0x102}, {R.id.con_left_temp_down, 0x101},
-
-
-    };
 
     private void sendCanboxInf(int d0, int d1) {
         byte[] buf = new byte[]{(byte) 0xa8, 0x2, (byte) d0, (byte) d1};
@@ -234,8 +200,6 @@ public class AC141 extends MyFragment {
 
         sendCanboxInfo0x90(0x23);
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

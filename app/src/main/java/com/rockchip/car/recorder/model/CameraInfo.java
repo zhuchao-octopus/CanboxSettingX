@@ -64,32 +64,39 @@ public class CameraInfo {
         return mCameraStateId;
     }
 
-    public void setCameraType(String cameraType) {
-        this.mCameraType = cameraType;
-    }
-
     public String getCameraType() {
         return mCameraType;
     }
 
-    public void setCameraFacing(int facing) {
-        this.mFacing = facing;
+    public void setCameraType(String cameraType) {
+        this.mCameraType = cameraType;
     }
 
     public int getCameraFacing() {
         return mFacing;
     }
 
-    public void setRecording(boolean recording) {
-        this.mIsRecording = recording;
+    public void setCameraFacing(int facing) {
+        this.mFacing = facing;
     }
 
     public boolean isRecording() {
         return mIsRecording;
     }
 
+    public void setRecording(boolean recording) {
+        this.mIsRecording = recording;
+    }
+
     public CameraManager.CameraProxy getCameraManager() {
         return mCamera;
+    }
+
+    public MediaRecorder getMediaRecorder() {
+        if (mMediaRecorder == null) {
+            mMediaRecorder = new MediaRecorder();
+        }
+        return mMediaRecorder;
     }
 
     public void setMediaRecorder(MediaRecorder recorder) {
@@ -98,13 +105,6 @@ public class CameraInfo {
             this.mMediaRecorder = null;
         }
         this.mMediaRecorder = recorder;
-    }
-
-    public MediaRecorder getMediaRecorder() {
-        if (mMediaRecorder == null) {
-            mMediaRecorder = new MediaRecorder();
-        }
-        return mMediaRecorder;
     }
 
     public void startRecord() {

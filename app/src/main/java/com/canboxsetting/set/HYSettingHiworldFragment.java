@@ -7,31 +7,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.annotation.Nullable;
-
-import android.util.Log;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 
 public class HYSettingHiworldFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HYSettingHiworldFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
             //车辆设置
             new Node("air_circulation_activated_according_to_external_dust_conditions", 0x6F01, 0x61010000, 0x80, 0, Node.TYPE_BUFF1),
@@ -48,14 +40,27 @@ public class HYSettingHiworldFragment extends PreferenceFragmentCompat implement
             //					Node.TYPE_BUFF1),
 
             new Node("mute_status", 0xAD07, 0xA6020000, 0xFF0000, 0, Node.TYPE_BUFF1),};
-
     private final static int[] INIT_CMDS = {
             /*
              * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
              * 0x4080, 0x4090,
              */};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,8 +84,6 @@ public class HYSettingHiworldFragment extends PreferenceFragmentCompat implement
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -110,15 +113,6 @@ public class HYSettingHiworldFragment extends PreferenceFragmentCompat implement
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -389,8 +383,6 @@ public class HYSettingHiworldFragment extends PreferenceFragmentCompat implement
             ps.setEnabled(enabled);
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

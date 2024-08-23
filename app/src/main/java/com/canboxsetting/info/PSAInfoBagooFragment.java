@@ -27,11 +27,26 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class PSAInfoBagooFragment extends PreferenceFragmentCompat {
     private static final String TAG = "GMInfoSimpleFragment";
+    private View mMainView;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // mHandler.removeMessages(msg.what);
+            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
+            sendCanboxInfo(msg.what);
+        }
+    };
+    // private boolean isEmtpy(byte buf, int s, int e){
+    // if (){
+    //
+    // }
+    // }
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +60,6 @@ public class PSAInfoBagooFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private View mMainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,7 +147,6 @@ public class PSAInfoBagooFragment extends PreferenceFragmentCompat {
         });
     }
 
-
     @Override
     public void onPause() {
         super.onPause();
@@ -156,15 +168,6 @@ public class PSAInfoBagooFragment extends PreferenceFragmentCompat {
         byte[] buf = new byte[]{(byte) 0xf1, 0x01, (byte) d0};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // mHandler.removeMessages(msg.what);
-            // mHandler.sendEmptyMessageDelayed(msg.what, 700);
-            sendCanboxInfo(msg.what);
-        }
-    };
 
     private void updateView(byte[] buf) {
 
@@ -433,13 +436,6 @@ public class PSAInfoBagooFragment extends PreferenceFragmentCompat {
         }
         tv.setText(text_id);
     }
-
-    // private boolean isEmtpy(byte buf, int s, int e){
-    // if (){
-    //
-    // }
-    // }
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

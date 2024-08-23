@@ -3,9 +3,9 @@
     android:id="@id/vehicle_reports"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="30px"
     android:paddingLeft="@dimen/content_padding_left"
-    android:paddingTop="30px">
+    android:paddingTop="30px"
+    android:paddingBottom="30px">
 
     <Button
         android:id="@id/more_report"
@@ -33,8 +33,8 @@
         android:id="@id/start_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:drawableLeft="@drawable/info"
         android:gravity="center"
         android:minWidth="@dimen/btn_width"

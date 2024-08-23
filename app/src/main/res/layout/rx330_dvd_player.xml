@@ -33,8 +33,8 @@
                     android:background="#ff000000"
                     android:orientation="vertical"
                     android:paddingLeft="20px"
-                    android:visibility="gone"
-                    android:paddingTop="70px">
+                    android:paddingTop="70px"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/dvd_lang"

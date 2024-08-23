@@ -1,13 +1,5 @@
 package com.rockchip.car.recorder.render;
 
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
-import android.opengl.GLES20;
-import android.os.SystemClock;
-import android.util.Log;
-
 import com.rockchip.car.recorder.utils.SLog;
 
 /**
@@ -43,6 +35,8 @@ public class GLProgramNative implements GLProgram {
         mId = id;
     }
 
+    public static native void nativeRGAyuv2rgba(byte[] input, int[] output, int srcWidth, int srcHeight, int dstWidth, int dstHeight);
+
     /**
      * prepared for later use
      */
@@ -75,7 +69,7 @@ public class GLProgramNative implements GLProgram {
         if (!isProgBuilt) {
             SLog.d(TAG, "EGL not initialized.");
         }
-		
+
 		/*if (yuv == null || width == 0 || height == 0) {
 			Utils.LOGD("texture data is null.");
 			return false;
@@ -135,6 +129,4 @@ public class GLProgramNative implements GLProgram {
     public native boolean UpdateTextures(int id, byte[] data, int width, int height);
 
     public native void nativeDestroyGL(int id);
-
-    public static native void nativeRGAyuv2rgba(byte[] input, int[] output, int srcWidth, int srcHeight, int dstWidth, int dstHeight);
 }

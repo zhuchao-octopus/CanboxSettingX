@@ -16,19 +16,7 @@
 
 package com.focussync;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -37,35 +25,32 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
-import android.preference.PreferenceFragment;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.Gallery;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class MainActivity extends Activity {
     private static final String TAG = "FocusSyncMainActivity";
+    WakeLock mWakeLock;
+    private int mCarType = 0;
+    private AuxInUI mUI;
+    private boolean mSyncVisible = false;
+    private int mKeyboardIndex = 0;
+    private int[] mIcon = new int[256];
+    private BroadcastReceiver mReceiver;
 
     @Override
     protected void onDestroy() {
@@ -73,8 +58,6 @@ public class MainActivity extends Activity {
         unregisterListener();
         sendCanboxControl(0x82);
     }
-
-    private int mCarType = 0;
 
     private void updateCarType() {
         String value = MachineConfig.getPropertyForce(MachineConfig.KEY_CAN_BOX);
@@ -95,8 +78,6 @@ public class MainActivity extends Activity {
             }
         }
     }
-
-    private AuxInUI mUI;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -127,8 +108,6 @@ public class MainActivity extends Activity {
         initIcon();
     }
 
-    WakeLock mWakeLock;
-
     @Override
     public void onResume() {
         if (mSyncVisible) {
@@ -142,8 +121,6 @@ public class MainActivity extends Activity {
             mWakeLock = pManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, this.getPackageName());
             mWakeLock.acquire();
         }
-
-
     }
 
     @Override
@@ -156,8 +133,6 @@ public class MainActivity extends Activity {
             mWakeLock.release();
         }
     }
-
-    private boolean mSyncVisible = false;
 
     private void syncVisisble(boolean b) {
         if (b) {
@@ -266,8 +241,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    private int mKeyboardIndex = 0;
-
     private void toggleKeyboard() {
         if (mKeyboardIndex == 0) {
             mKeyboardIndex = 1;
@@ -282,6 +255,13 @@ public class MainActivity extends Activity {
         }
     }
 
+    // private void sendCanboxInfo(int d0, int d1, int d2) {
+    //
+    // byte[] buf = new byte[] { (byte) 0xc6, 0x02, (byte) d0, (byte) d1,
+    // (byte) d2 };
+    // BroadcastUtil.sendCanboxInfo(this, buf);
+    // }
+
     private void sendCanboxControl(int d1) {
 
         byte[] buf = new byte[]{(byte) 0xc6, 0x02, (byte) 0xa1, (byte) d1};
@@ -293,13 +273,6 @@ public class MainActivity extends Activity {
         byte[] buf = new byte[]{(byte) 0x90, 0x02, (byte) d0, (byte) d1};
         BroadcastUtil.sendCanboxInfo(this, buf);
     }
-
-    // private void sendCanboxInfo(int d0, int d1, int d2) {
-    //
-    // byte[] buf = new byte[] { (byte) 0xc6, 0x02, (byte) d0, (byte) d1,
-    // (byte) d2 };
-    // BroadcastUtil.sendCanboxInfo(this, buf);
-    // }
 
     private void doData(byte[] buf) {
         switch (buf[0]) {
@@ -697,8 +670,6 @@ public class MainActivity extends Activity {
         Log.d("sync", index + " icon " + (buf[4] & 0xff) + ":" + (buf[5] & 0xff));
     }
 
-    private int[] mIcon = new int[256];
-
     private void initIcon() {
 
         mIcon[40] = R.drawable.icon_01;
@@ -803,8 +774,6 @@ public class MainActivity extends Activity {
         // mIcon[77] = R.drawable.icon_24;
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

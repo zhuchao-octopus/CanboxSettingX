@@ -8,21 +8,23 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class FocusRaiseFragment extends PreferenceFragmentCompat {
     private static final String TAG = "Golf7InfoSimpleFragment";
+    private final static int[] INIT_CMDS = {0x6300};
+    boolean mPaused = true;
+    private View mTpmsView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,6 @@ public class FocusRaiseFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -54,8 +54,6 @@ public class FocusRaiseFragment extends PreferenceFragmentCompat {
         requestInitData();
     }
 
-    private final static int[] INIT_CMDS = {0x6300};
-
     private void requestInitData() {
         //		for (int i = 0; i < INIT_CMDS.length; ++i) {
         //			mHandler.sendMessageDelayed(
@@ -64,15 +62,7 @@ public class FocusRaiseFragment extends PreferenceFragmentCompat {
         sendCanboxInfo(INIT_CMDS[0]);
         mHandler.removeMessages(1);
         mHandler.sendEmptyMessageDelayed(1, 1000);
-    }
-
-    private void sendCanboxInfo(int d0) {
-
-        byte[] buf = new byte[]{(byte) 0x90, 0x02, (byte) ((d0 & 0xff00) >> 8), (byte) (d0 & 0xff)};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private Handler mHandler = new Handler() {
+    }    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
@@ -91,14 +81,18 @@ public class FocusRaiseFragment extends PreferenceFragmentCompat {
         }
     };
 
+    private void sendCanboxInfo(int d0) {
+
+        byte[] buf = new byte[]{(byte) 0x90, 0x02, (byte) ((d0 & 0xff00) >> 8), (byte) (d0 & 0xff)};
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
     private void setPreference(String key, String s) {
         Preference p = findPreference(key);
         if (p != null) {
             p.setSummary(s);
         }
     }
-
-    private View mTpmsView;
 
     private void setTpmsTextValue(int id, int value, int color) {
 
@@ -210,8 +204,6 @@ public class FocusRaiseFragment extends PreferenceFragmentCompat {
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -244,5 +236,7 @@ public class FocusRaiseFragment extends PreferenceFragmentCompat {
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

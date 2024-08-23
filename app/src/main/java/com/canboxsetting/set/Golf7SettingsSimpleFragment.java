@@ -20,26 +20,12 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 
 public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "Golf7SettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-        // if (mType == 1) {
-        // PreferenceScreen p = (PreferenceScreen)
-        // findPreference("driving_mode");
-        // if (p != null) {
-        // setPreferenceScreen(p);
-        // }
-        // }
-    }
-
     private static final Node[] NODES = {
 
             new Node("langauage", 0xc600, 0x400000ff, 0xff, 0x0), new Node("actionstate", 0xc610, 0x40100001, 0x3, 0x0),
@@ -85,14 +71,42 @@ public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implem
             new Node("normal", 0xc6d0, 0x0, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("sport", 0xc6d0, 0x1, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("driv_eco", 0xc6d0, 0x2, 0x0, 0x0, Node.TYPE_CUSTOM), new Node("individual", 0xc6d0, 0x3, 0x0, 0x0, Node.TYPE_CUSTOM),
 
             new Node("individual_steering", 0xc6d1, 0x40a00000, 0x100), new Node("individual_engine", 0xc6d2, 0x40a00000, 0x1000), new Node("individual_climate", 0xc6d3, 0x40a00000, 0x30000), new Node("individual_reset", 0xc6d4, 0x0, 0x0),};
-
     private final static int[] INIT_CMDS = {0x41ff, 0x40ff,
             /*0x4010, 0x4020, 0x4030,
             0x4031, 0x4040, 0x4050, 0x4051,
             0x4060, 0x4070, 0x4080, 0x4090,
             */};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandlerFinish = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                getActivity().finish();
+            }
+        }
+    };
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+        // if (mType == 1) {
+        // PreferenceScreen p = (PreferenceScreen)
+        // findPreference("driving_mode");
+        // if (p != null) {
+        // setPreferenceScreen(p);
+        // }
+        // }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,8 +132,6 @@ public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implem
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -148,15 +160,6 @@ public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implem
         }
     }
 
-    private Handler mHandlerFinish = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                getActivity().finish();
-            }
-        }
-    };
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -169,15 +172,6 @@ public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implem
             mHandler.sendEmptyMessageDelayed(INIT_CMDS[i], (i * 500));
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo(0x90, (msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
 
     private void sendCanboxData(int cmd, int value) {
         sendCanboxInfo(((cmd & 0xff00) >> 8), ((cmd & 0xff) >> 0), value);
@@ -539,8 +533,6 @@ public class Golf7SettingsSimpleFragment extends PreferenceFragmentCompat implem
         showPreference(id, show, "driving_mode");
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

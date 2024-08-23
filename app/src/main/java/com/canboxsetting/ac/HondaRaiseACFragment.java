@@ -16,60 +16,39 @@
 
 package com.canboxsetting.ac;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.canboxsetting.MyFragment;
-import com.canboxsetting.R;
-import com.canboxsetting.R.drawable;
-import com.canboxsetting.R.id;
-import com.canboxsetting.R.layout;
-import com.canboxsetting.R.string;
-import com.car.ui.GlobalDef;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Util;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.canboxsetting.MyFragment;
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.GlobalDef;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class HondaRaiseACFragment extends MyFragment {
 
-    private View mMainView;
+    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x1}, {R.id.ac, 0x17}, {R.id.ac_auto, 0x15}, {R.id.rear, 0x14}, {R.id.inner_loop, 0x19}, {R.id.max, 0x13}, {R.id.dual, 0x10}, {R.id.wind_minus, 0x9}, {R.id.wind_add, 0xa}, {R.id.mode, 0x0040},
 
+            {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},
+
+
+            {R.id.left_seat_heat, 0xb}, {R.id.right_seat_heat, 0xd}, {R.id.left_seat_refrigeration, 0xc}, {R.id.right_seat_refrigeration, 0xe},
+
+    };
+    private View mMainView;
     private CommonUpdateView mCommonUpdateView;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,15 +62,6 @@ public class HondaRaiseACFragment extends MyFragment {
 
         return mMainView;
     }
-
-    private final static int[][] CMD_ID = new int[][]{{R.id.power, 0x1}, {R.id.ac, 0x17}, {R.id.ac_auto, 0x15}, {R.id.rear, 0x14}, {R.id.inner_loop, 0x19}, {R.id.max, 0x13}, {R.id.dual, 0x10}, {R.id.wind_minus, 0x9}, {R.id.wind_add, 0xa}, {R.id.mode, 0x0040},
-
-            {R.id.con_left_temp_up, 0x3}, {R.id.con_left_temp_down, 0x2}, {R.id.con_right_temp_up, 0x5}, {R.id.con_right_temp_down, 0x4},
-
-
-            {R.id.left_seat_heat, 0xb}, {R.id.right_seat_heat, 0xd}, {R.id.left_seat_refrigeration, 0xc}, {R.id.right_seat_refrigeration, 0xe},
-
-    };
 
     private int getCmd(int id) {
         for (int i = 0; i < CMD_ID.length; ++i) {
@@ -202,8 +172,6 @@ public class HondaRaiseACFragment extends MyFragment {
         sendCanboxInfo0x90(0x21);
         super.onResume();
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

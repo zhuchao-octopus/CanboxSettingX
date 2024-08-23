@@ -16,41 +16,89 @@
 
 package com.canboxsetting.eqset;
 
-import com.canboxsetting.FragmentPro;
-import com.canboxsetting.R;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.utils.BroadcastUtil;
-
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.TextUtils.TruncateAt;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsoluteLayout;
-import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+
+import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 /**
  * This activity plays a video from a specified URI.
  */
 public class EQActivity extends Activity {
 
+    public final static int CMD_GROUP_EQ = 0x100;
+    // sub cmd <= 0xff
+    public final static int EQ_CMD_SET_HIGH = 1;
+    public final static int EQ_CMD_SET_MIDDLE = 2;
+    public final static int EQ_CMD_SET_LOW = 3;
+    public final static int EQ_CMD_SET_ZONE_FR = 4;
+    public final static int EQ_CMD_SET_ZONE_LR = 5;
+    public final static int EQ_CMD_SET_VOLUME = 6;
+    public final static int EQ_CMD_SET_ALL_DATA = 0xf0;
+    public final static int EQ_REQUEST_ALL_MAX = 0xff;
     private static final String[] SHOW_VOLUME_PRO = {"11", "2", "9", "280", "274", "255", "25", "66", "68", "72", "74", "3", "37", "76", "80", "89", "107", "108", "109", "110", "117", "119", "120", "122", "125", "149", "150", "154", "156", "157", "173", "184", "186", "200", "213", "52", "222", "223", "216", "54", "59", "227", "239", "253", "284", "285"
 
     };
-
     private static final String[] HIDE_MIDDLE_PRO = {"72", "3", "37", "122", "173", "284"
 
     };
+    OnSeekBarChangeListener mOnSeekBarChangeListener = new OnSeekBarChangeListener() {
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // TODO Auto-generated method stub
+            if (fromUser) {
+                int id = seekBar.getId();
+                if (id == R.id.seekbar_treble) {
+                    sendEQCmd(EQ_CMD_SET_HIGH, progress);
+                } else if (id == R.id.seekbar_middle) {
+                    sendEQCmd(EQ_CMD_SET_MIDDLE, progress);
+                } else if (id == R.id.seekbar_bass) {
+                    sendEQCmd(EQ_CMD_SET_LOW, progress);
+                } else if (id == R.id.seekbar_volume) {
+                    sendEQCmd(EQ_CMD_SET_VOLUME, progress);
+                }
+            }
+        }
+    };
+    SeekBar mSeekBarLow;
+    SeekBar mSeekBarMiddle;
+    SeekBar mSeekBarHigh;
+    SeekBar mSeekVolume;
+    private int mZoneMax;
+    private int mVolumeMax;
+    private int mEQMax;
+    private int mLRValue = 0;
+    private int mFRValue = 0;
+    private float mCrossStepX = 0;
+    private float mCrossStepY = 0;
+    private BroadcastReceiver mReceiver;
 
     private boolean getShowVolumeBar(String pro) {
 
@@ -81,7 +129,6 @@ public class EQActivity extends Activity {
 
         init();
     }
-
 
     private void init() {
 
@@ -136,43 +183,6 @@ public class EQActivity extends Activity {
         BroadcastUtil.sendToCarService(this, i);
     }
 
-    OnSeekBarChangeListener mOnSeekBarChangeListener = new OnSeekBarChangeListener() {
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            // TODO Auto-generated method stub
-            if (fromUser) {
-                int id = seekBar.getId();
-                if (id == R.id.seekbar_treble) {
-                    sendEQCmd(EQ_CMD_SET_HIGH, progress);
-                } else if (id == R.id.seekbar_middle) {
-                    sendEQCmd(EQ_CMD_SET_MIDDLE, progress);
-                } else if (id == R.id.seekbar_bass) {
-                    sendEQCmd(EQ_CMD_SET_LOW, progress);
-                } else if (id == R.id.seekbar_volume) {
-                    sendEQCmd(EQ_CMD_SET_VOLUME, progress);
-                }
-            }
-        }
-    };
-
-    SeekBar mSeekBarLow;
-    SeekBar mSeekBarMiddle;
-    SeekBar mSeekBarHigh;
-    SeekBar mSeekVolume;
-
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
@@ -187,19 +197,6 @@ public class EQActivity extends Activity {
         super.onPause();
         unregisterListener();
     }
-
-    public final static int CMD_GROUP_EQ = 0x100;
-
-    // sub cmd <= 0xff
-    public final static int EQ_CMD_SET_HIGH = 1;
-    public final static int EQ_CMD_SET_MIDDLE = 2;
-    public final static int EQ_CMD_SET_LOW = 3;
-    public final static int EQ_CMD_SET_ZONE_FR = 4;
-    public final static int EQ_CMD_SET_ZONE_LR = 5;
-    public final static int EQ_CMD_SET_VOLUME = 6;
-
-    public final static int EQ_CMD_SET_ALL_DATA = 0xf0;
-    public final static int EQ_REQUEST_ALL_MAX = 0xff;
 
     private void requestMax() {
         Intent i = new Intent(MyCmd.BROADCAST_SEND_TO_CAN);
@@ -249,15 +246,6 @@ public class EQActivity extends Activity {
             sendEQCmd(EQ_CMD_SET_ZONE_LR, mLRValue);
         }
     }
-
-    private int mZoneMax;
-    private int mVolumeMax;
-    private int mEQMax;
-    private int mLRValue = 0;
-    private int mFRValue = 0;
-
-    private float mCrossStepX = 0;
-    private float mCrossStepY = 0;
 
     private void updateCross(int fr, int lr) {
         mFRValue = fr;
@@ -340,14 +328,11 @@ public class EQActivity extends Activity {
         }
     }
 
-
     private void setEQText(int id, int v) {
         int h = (mEQMax / 2);
         v = v - h;
         ((TextView) findViewById(id)).setText(v + "");
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

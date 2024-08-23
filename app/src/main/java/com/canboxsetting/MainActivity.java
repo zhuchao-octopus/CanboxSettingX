@@ -40,7 +40,6 @@ import com.canboxsetting.set.HondaSettingsSimpleFragment;
 import com.canboxsetting.set.JeepSettingsSimpleFragment;
 import com.canboxsetting.set.JeepSettingsXinbasFragment;
 import com.canboxsetting.set.KadjarRaiseSettingFragment;
-import com.canboxsetting.set.LandRoverHaoZhengSettingsFragment;
 import com.canboxsetting.set.Mazda3BinarytekSettingsFragment;
 import com.canboxsetting.set.Mazda3SettingsSimpleFragment;
 import com.canboxsetting.set.Mazda3XinbasiSettingsFragment;
@@ -58,10 +57,9 @@ import com.canboxsetting.set.SubaruSimpleSettingFragment;
 import com.canboxsetting.set.TouaregHiworldSettingFragment;
 import com.canboxsetting.set.ToyotaSettingsSimpleFragment;
 import com.canboxsetting.set.VWMQBSettingsRaiseFragment;
-import com.canboxsetting.set.SlimSettingsFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.GlobalDef;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.MMLog;
 
 import java.util.Objects;
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-//        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight_NoActionBar);
+        //setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight_NoActionBar);
         setContentView(R.layout.main);
         mFragmentManager = getSupportFragmentManager();// getFragmentManager();
         int mProVersion = 0;
@@ -172,14 +170,12 @@ public class MainActivity extends AppCompatActivity {
         switch (Objects.requireNonNull(value)) {
             case MachineConfig.VALUE_CANBOX_GM_SIMPLE:
             case MachineConfig.VALUE_CANBOX_GM_RAISE:
+            case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                 mSetting = new GMSettingsSimpleFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_FORD_SIMPLE:
             case MachineConfig.VALUE_CANBOX_FORD_RAISE:
                 mSetting = new FocusSettingsFragment();
-                break;
-            case MachineConfig.VALUE_CANBOX_SLIMKEY2:
-                mSetting = new SlimSettingsFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_PSA_BAGOO:
                 if (mCarType == 2) {

@@ -8,33 +8,64 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceScreen;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.Node;
-import com.common.util.SystemConfig;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
+import com.common.utils.SettingProperties;
 import com.common.view.MyPreference2;
 
 public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "ToyotaInfoSimpleFragment";
+    private final static int[] INIT_CMDS = {0x2300, 0x2a00, 0x2b00, 0x1f00,
+            /*
+             * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
+             * 0x4080, 0x4090,
+             */};
+    private static final Node[] NODES = {
 
+            new Node("tpms", 0x0), new Node("hybrid", 0x0), new Node("carbodyinfo", 0x0), new Node("car_amplifier_volume", 0x0)
+
+    };
+    TextView mTextVolume;
+    SeekBar mLevel;
     private boolean mRudder = false;
     private int mFlashLight = 0;
+    private int mFrontDoor = 0;
+    private int mBackDoor = 0;
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                if ((msg.what & 0xff00) == 0xff00) {
+                    sendCanboxInfo0xff(msg.what & 0xff);
+                } else {
+
+                    sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
+                }
+            }
+        }
+    };
+    private Preference[] mPreferences = new Preference[NODES.length];
+    private View mBatteryView;
+    private View mCar;
+    private int mLightStringId = 0;
+    private boolean mFlashing = true;
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,9 +112,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
 
     }
 
-    private int mFrontDoor = 0;
-    private int mBackDoor = 0;
-
     private void getCanboxSetting() {
         mFrontDoor = 0;
         mBackDoor = 0;
@@ -106,12 +134,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private final static int[] INIT_CMDS = {0x2300, 0x2a00, 0x2b00, 0x1f00,
-            /*
-             * 0x4010, 0x4020, 0x4030, 0x4031, 0x4040, 0x4050, 0x4051, 0x4060, 0x4070,
-             * 0x4080, 0x4090,
-             */};
-
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
         for (int i = 0; i < INIT_CMDS.length; ++i) {
@@ -119,20 +141,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
         }
 
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                if ((msg.what & 0xff00) == 0xff00) {
-                    sendCanboxInfo0xff(msg.what & 0xff);
-                } else {
-
-                    sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
-                }
-            }
-        }
-    };
 
     private void sendCanboxInfo0xff(int d1) {// no canbox cmd.
         byte[] buf = new byte[]{(byte) 0xff, (byte) d1};
@@ -166,9 +174,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
         return false;
     }
 
-    TextView mTextVolume;
-    SeekBar mLevel;
-
     private void showVolumeDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -184,7 +189,7 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
         if (mLevel != null) {
             mLevel.setMax(63);
 
-            int volume = MachineConfig.getIntProperty2(SystemConfig.CANBOX_EQ_VOLUME);
+            int volume = MachineConfig.getIntProperty2(SettingProperties.CANBOX_EQ_VOLUME);
             if (volume == -1) {
                 volume = 45;
             }
@@ -209,15 +214,13 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
                             byte[] buf = new byte[]{(byte) 0x84, 0x2, 0x07, (byte) progress};
                             BroadcastUtil.sendCanboxInfo(getActivity(), buf);
 
-                            MachineConfig.setIntProperty(SystemConfig.CANBOX_EQ_VOLUME, progress);
+                            MachineConfig.setIntProperty(SettingProperties.CANBOX_EQ_VOLUME, progress);
                         }
                     }
                 }
             });
         }
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -269,13 +272,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
 
     }
 
-    private static final Node[] NODES = {
-
-            new Node("tpms", 0x0), new Node("hybrid", 0x0), new Node("carbodyinfo", 0x0), new Node("car_amplifier_volume", 0x0)
-
-    };
-    private Preference[] mPreferences = new Preference[NODES.length];
-
     private void showPreference(String id, int show, String parant) {
         Preference preference = null;
 
@@ -309,9 +305,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
 
     }
 
-    private View mBatteryView;
-    private View mCar;
-
     private void setText(int id, String s) {
 
         if (mCar != null) {
@@ -324,7 +317,12 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
             s = getActivity().getString(string_id) + "\n" + s;
         }
         setText(id, s);
-    }
+    }    private Handler mHandlerFlash = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            flashLight(mFlashLight, true);
+        }
+    };
 
     private void checkCarView() {
         if (mCar == null) {
@@ -334,16 +332,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
             }
         }
     }
-
-    private int mLightStringId = 0;
-    private Handler mHandlerFlash = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            flashLight(mFlashLight, true);
-        }
-    };
-
-    private boolean mFlashing = true;
 
     private void flashLight(int b, boolean auto) {
         View v;
@@ -502,8 +490,6 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
         }
     }
 
-    private BroadcastReceiver mReceiver;
-
     private void unregisterListener() {
         if (mReceiver != null) {
             this.getActivity().unregisterReceiver(mReceiver);
@@ -536,5 +522,7 @@ public class ToyotaInfoLuZhengFragment extends PreferenceFragmentCompat implemen
             this.getActivity().registerReceiver(mReceiver, iFilter);
         }
     }
+
+
 
 }

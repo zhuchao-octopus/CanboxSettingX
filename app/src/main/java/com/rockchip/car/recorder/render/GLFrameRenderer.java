@@ -14,6 +14,10 @@ import javax.microedition.khronos.opengles.GL10;
 public class GLFrameRenderer implements Renderer {
 
     private static final String TAG = "CAM_GLFrameRenderer";
+    private final int mId;
+    public boolean mRenderCreated = false;
+    public long oldTime0;
+    public int frameCount0;
     private ISimplePlayer mParentAct;
     private IRawDataCallback mRawDataCallback;
     private GLSurfaceView mTargetSurface;
@@ -21,9 +25,7 @@ public class GLFrameRenderer implements Renderer {
     private int mScreenWidth, mScreenHeight;
     private int mVideoWidth, mVideoHeight;
     private boolean renderState = true;
-    public boolean mRenderCreated = false;
     private boolean mRequestRenderDestroy = false;
-    private final int mId;
     private int mFormat = GLProgram.FORMAT_NV12;
     private float mRatio = 3 / 2.0f;
     private boolean isRequestRender = true;
@@ -134,6 +136,19 @@ public class GLFrameRenderer implements Renderer {
         frameRate0();
     }
 
+    public int getFormat() {
+        synchronized (this) {
+            if (mFormat == GLProgram.FORMAT_NV12) {
+                return ImageFormat.NV21;
+            } else if (mFormat == GLProgram.FORMAT_YV12) {
+                return ImageFormat.YV12;
+            } else if (mFormat == GLProgram.FORMAT_RGB) {
+                return ImageFormat.RGB_565;
+            }
+        }
+        return ImageFormat.NV21;
+    }
+
     public void setFormat(int format) {
         SLog.d(TAG, "setFormat = " + format);
         synchronized (this) {
@@ -147,19 +162,6 @@ public class GLFrameRenderer implements Renderer {
             mRatio = 3 / 2.0f;
             if (mFormat == GLProgram.FORMAT_RGB) mRatio = 3.0f;
         }
-    }
-
-    public int getFormat() {
-        synchronized (this) {
-            if (mFormat == GLProgram.FORMAT_NV12) {
-                return ImageFormat.NV21;
-            } else if (mFormat == GLProgram.FORMAT_YV12) {
-                return ImageFormat.YV12;
-            } else if (mFormat == GLProgram.FORMAT_RGB) {
-                return ImageFormat.RGB_565;
-            }
-        }
-        return ImageFormat.NV21;
     }
 
     public void updateSurfaceSize(int w, int h) {
@@ -249,9 +251,6 @@ public class GLFrameRenderer implements Renderer {
             mRequestRenderDestroy = true;
         }
     }
-
-    public long oldTime0;
-    public int frameCount0;
 
     public void frameRate0() {
         double rate;

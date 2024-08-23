@@ -18,102 +18,9 @@ import java.util.Locale;
 public class XlmParser {
 
     private ArrayList<Translation> mTranslations;
-
-    class Translation {
-        public String mZH;
-        public String mEN;
-
-        public Translation(String z, String e) {
-            mZH = z;
-            mEN = e;
-        }
-    }
-
     private ArrayList<Category> mCategorys;
     private ArrayList<Node> mCarConfig;
-
-    class Node {
-        int mValue;
-        String mName;
-
-        public Node(String n, int v) {
-            mValue = v;
-            mName = n;
-        }
-
-    }
-
-    class Category {
-        ArrayList<Node> mNode;
-        String mName;
-        int mValue;
-
-        public Category(String n, int v) {
-            mNode = new ArrayList<Node>();
-            mName = n;
-            mValue = v;
-        }
-
-        public void add(Node n) {
-            mNode.add(n);
-        }
-
-        public int getCount() {
-            return mNode.size();
-        }
-
-        public Node get(int index) {
-            return mNode.get(index);
-        }
-    }
-
     private ArrayList<Menu> mMenus;
-
-    class Menu {
-        ArrayList<Sub> mNode;
-        String mName;
-        int mValue;
-
-        public Menu(String n, int v) {
-            mNode = new ArrayList<Sub>();
-            mName = n;
-            mValue = v;
-        }
-
-        public void add(Sub n) {
-            mNode.add(n);
-        }
-
-        public int getCount() {
-            return mNode.size();
-        }
-
-        public Sub get(int index) {
-            return mNode.get(index);
-        }
-    }
-
-    class Sub {
-        ArrayList<String> mNode;
-        String mName;
-
-        public Sub(String n) {
-            mNode = new ArrayList<String>();
-            mName = n;
-        }
-
-        public void add(String n) {
-            mNode.add(n);
-        }
-
-        public int getCount() {
-            return mNode.size();
-        }
-
-        public String get(int index) {
-            return mNode.get(index);
-        }
-    }
 
     public void parserCarMenuXml(XmlResourceParser xml) {
 
@@ -515,6 +422,97 @@ public class XlmParser {
             }
         }
         return null;
+    }
+
+    class Translation {
+        public String mZH;
+        public String mEN;
+
+        public Translation(String z, String e) {
+            mZH = z;
+            mEN = e;
+        }
+    }
+
+    class Node {
+        int mValue;
+        String mName;
+
+        public Node(String n, int v) {
+            mValue = v;
+            mName = n;
+        }
+
+    }
+
+    class Category {
+        ArrayList<Node> mNode;
+        String mName;
+        int mValue;
+
+        public Category(String n, int v) {
+            mNode = new ArrayList<Node>();
+            mName = n;
+            mValue = v;
+        }
+
+        public void add(Node n) {
+            mNode.add(n);
+        }
+
+        public int getCount() {
+            return mNode.size();
+        }
+
+        public Node get(int index) {
+            return mNode.get(index);
+        }
+    }
+
+    class Menu {
+        ArrayList<Sub> mNode;
+        String mName;
+        int mValue;
+
+        public Menu(String n, int v) {
+            mNode = new ArrayList<Sub>();
+            mName = n;
+            mValue = v;
+        }
+
+        public void add(Sub n) {
+            mNode.add(n);
+        }
+
+        public int getCount() {
+            return mNode.size();
+        }
+
+        public Sub get(int index) {
+            return mNode.get(index);
+        }
+    }
+
+    class Sub {
+        ArrayList<String> mNode;
+        String mName;
+
+        public Sub(String n) {
+            mNode = new ArrayList<String>();
+            mName = n;
+        }
+
+        public void add(String n) {
+            mNode.add(n);
+        }
+
+        public int getCount() {
+            return mNode.size();
+        }
+
+        public String get(int index) {
+            return mNode.get(index);
+        }
     }
 
 }

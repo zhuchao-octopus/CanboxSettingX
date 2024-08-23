@@ -1,74 +1,59 @@
 package com.canboxsetting.info;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.charset.Charset;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.StatFs;
-import android.os.storage.StorageManager;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TimePicker;
 
 import com.canboxsetting.R;
-import com.canboxsetting.R.xml;
-import com.canboxsetting.ac.CommonUpdateView;
-import com.common.util.BroadcastUtil;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
-import com.common.util.SystemConfig;
-import com.common.util.Util;
-import com.common.util.shell.ShellUtils;
-
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Util;
 
 public class Info196 extends PreferenceFragment {
     private static final String TAG = "Golf7InfoSimpleFragment";
-
+    private final static int[] INIT_CMDS = {0x7700, 0x7c00, 0x7b00,};
+    boolean mPaused = true;
     private View mMainView;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0x90(msg.what);
+
+            }
+
+        }
+    };
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            int id = v.getId();
+            if (id == R.id.source1) {
+                sendCmd(0x0);
+            } else if (id == R.id.source2) {
+                sendCmd(0x1);
+            } else {
+                return;
+            }
+
+            mHandler.removeMessages(0);
+            mHandler.sendEmptyMessageDelayed(0, 5000);
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,8 +63,6 @@ public class Info196 extends PreferenceFragment {
         setOnClick(R.id.source2);
         return mMainView;
     }
-
-    boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -106,8 +89,6 @@ public class Info196 extends PreferenceFragment {
 
         BroadcastUtil.sendToCarServiceSetSource(getActivity(), MyCmd.SOURCE_MX51);
     }
-
-    private final static int[] INIT_CMDS = {0x7700, 0x7c00, 0x7b00,};
 
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
@@ -276,36 +257,6 @@ public class Info196 extends PreferenceFragment {
         }
     }
 
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            int id = v.getId();
-            if (id == R.id.source1) {
-                sendCmd(0x0);
-            } else if (id == R.id.source2) {
-                sendCmd(0x1);
-            } else {
-                return;
-            }
-
-            mHandler.removeMessages(0);
-            mHandler.sendEmptyMessageDelayed(0, 5000);
-        }
-    };
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0x90(msg.what);
-
-            }
-
-        }
-    };
-
     private void setOnClick(int index) {
         if (index != 0) {
             View v = mMainView.findViewById(index);
@@ -314,8 +265,6 @@ public class Info196 extends PreferenceFragment {
             }
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

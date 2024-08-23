@@ -7,21 +7,31 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 
 public class OBDBinarytekFragment extends PreferenceFragmentCompat implements OnPreferenceClickListener {
     private static final String TAG = "OBDBinarytekFragment";
+    private final static int[] INIT_CMDS = {0x8905, 0x8a05, 0x8b0a};
+    private final static int[] DEINIT_CMDS = {0x8900, 0x8a00, 0x8b00};
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused || ((msg.what & 0xff) == 0)) {
+                sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,9 +43,6 @@ public class OBDBinarytekFragment extends PreferenceFragmentCompat implements On
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private final static int[] INIT_CMDS = {0x8905, 0x8a05, 0x8b0a};
-    private final static int[] DEINIT_CMDS = {0x8900, 0x8a00, 0x8b00};
 
     private void requestInitData() {
         // mHandler.sendEmptyMessageDelayed(INIT_CMDS[0], 0);
@@ -53,15 +60,6 @@ public class OBDBinarytekFragment extends PreferenceFragmentCompat implements On
 
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused || ((msg.what & 0xff) == 0)) {
-                sendCanboxInfo((msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxInfo(int d0, int d1) {
         byte[] buf = new byte[]{(byte) d0, 0x1, (byte) d1};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
@@ -71,8 +69,6 @@ public class OBDBinarytekFragment extends PreferenceFragmentCompat implements On
 
         return false;
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -132,8 +128,6 @@ public class OBDBinarytekFragment extends PreferenceFragmentCompat implements On
 
         }
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

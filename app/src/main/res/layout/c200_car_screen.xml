@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="20px"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20px">
 
     <View
         android:layout_width="fill_parent"
@@ -14,10 +14,10 @@
         android:id="@+id/screen_text"
         android:layout_width="fill_parent"
         android:layout_height="0px"
-        android:textColor="#ffffff"
-        android:gravity="center"
-        android:background="@drawable/button_air3"
         android:layout_weight="1"
+        android:background="@drawable/button_air3"
+        android:gravity="center"
+        android:textColor="#ffffff"
         android:textSize="26sp"></TextView>
 
     <View

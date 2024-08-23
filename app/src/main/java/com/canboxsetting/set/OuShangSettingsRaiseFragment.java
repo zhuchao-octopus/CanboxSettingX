@@ -7,31 +7,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.preference.ListPreference;
-import androidx.annotation.Nullable;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragmentCompat;
-
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+
 import com.canboxsetting.R;
-import com.common.util.BroadcastUtil;
-import com.common.util.MyCmd;
-import com.common.util.Node;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
+import com.common.utils.Node;
 
 public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
-
-    private int mType = 0;
-
-    public void setType(int t) {
-        mType = t;
-    }
-
     private static final Node[] NODES = {
 
             new Node("default_all", 0x83, 0x52, 0x00), new Node("rear_view", 0x83, 0x52, 0x01), new Node("wipers", 0x83, 0x52, 0x02), new Node("remote_unlock", 0x83, 0x52, 0x03), new Node("driving_auto", 0x83, 0x52, 0x04), new Node("oushang_1", 0x83, 0x52, 0x05), new Node("oushang_2", 0x83, 0x52, 0x06), new Node("oushang_3", 0x83, 0x52, 0x07), new Node("oushang_4", 0x83, 0x52, 0x08), new Node("oushang_5", 0x83, 0x52, 0x09), new Node("headlight_delay", 0x83, 0x52, 0x0a), new Node("turn_signal", 0x83, 0x52, 0x0b), new Node("oushang_6", 0x83, 0x52, 0x0d), new Node("information_tone", 0x83, 0x52, 0x0e), new Node("warning_tone", 0x83, 0x52, 0x0f), new Node("parkunlock", 0x83, 0x52, 0x10), new Node("oushang_7", 0x83, 0x52, 0x11), new Node("oushang_8", 0x83, 0x52, 0x12), new Node("oushang_9", 0x83, 0x52, 0x13), new Node("oushang_10", 0x83, 0x52, 0x14), new Node("oushang_11", 0x83, 0x52, 0x15), new Node("oushang_12", 0x83, 0x52, 0x16),
@@ -41,10 +33,24 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat imple
 
 
     };
-
     private final static int[] INIT_CMDS = {0x5201, 0x5202, 0x5203, 0x5204, 0x5205, 0x5206, 0x5207, 0x5208, 0x5209, 0x520a, 0x5201, 0x5201, 0x5201, 0x5201,};
-
+    private int mType = 0;
     private Preference[] mPreferences = new Preference[NODES.length];
+    private boolean mPaused = true;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (!mPaused) {
+                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
+            }
+        }
+    };
+    private int mSetCTM = -1;
+    private BroadcastReceiver mReceiver;
+
+    public void setType(int t) {
+        mType = t;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,8 +75,6 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat imple
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
 
     }
-
-    private boolean mPaused = true;
 
     @Override
     public void onPause() {
@@ -108,15 +112,6 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat imple
         }
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (!mPaused) {
-                sendCanboxInfo0x90((msg.what & 0xff00) >> 8, msg.what & 0xff);
-            }
-        }
-    };
-
     private void sendCanboxData(int cmd, int mask, int value) {
         sendCanboxInfo(((cmd & 0xff)), ((mask & 0xff)), value);
 
@@ -151,8 +146,6 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat imple
             }
         }
     }
-
-    private int mSetCTM = -1;
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
@@ -309,8 +302,6 @@ public class OuShangSettingsRaiseFragment extends PreferenceFragmentCompat imple
         showPreference(id, show, "driving_mode");
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

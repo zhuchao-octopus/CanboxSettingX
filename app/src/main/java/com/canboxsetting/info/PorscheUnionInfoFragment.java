@@ -14,10 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.canboxsetting.R;
-import com.common.util.MyCmd;
+import com.common.utils.MyCmd;
 
 public class PorscheUnionInfoFragment extends PreferenceFragmentCompat {
     private static final String TAG = "KadjarRaiseFragment";
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,8 +66,6 @@ public class PorscheUnionInfoFragment extends PreferenceFragmentCompat {
         }
 
     }
-
-    private BroadcastReceiver mReceiver;
 
     private void unregisterListener() {
         if (mReceiver != null) {

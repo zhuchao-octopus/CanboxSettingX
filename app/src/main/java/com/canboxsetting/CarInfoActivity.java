@@ -48,9 +48,9 @@ import com.canboxsetting.info.ToyotaInfoSimpleFragment;
 import com.canboxsetting.info.VWInfoSimpleFragment;
 import com.canboxsetting.info.VWMQBInfoRaiseFragment;
 import com.canboxsetting.info.ZhongXingFragment;
-import com.car.ui.GlobalDef;
-import com.common.util.MachineConfig;
-import com.common.util.MyCmd;
+import com.common.utils.GlobalDef;
+import com.common.utils.MachineConfig;
+import com.common.utils.MyCmd;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -67,7 +67,7 @@ import android.view.View;
  */
 public class CarInfoActivity extends AppCompatActivity {
     private static final String TAG = "CanboxSetting";
-
+    public static int mCmd = 0;
     private FragmentManager mFragmentManager;
     private Fragment mSetting;
 
@@ -278,8 +278,6 @@ public class CarInfoActivity extends AppCompatActivity {
             transation.commit();
         }
     }
-
-    public static int mCmd = 0;
 
     private void upateIntent(Intent it) {
         if (it != null) {
