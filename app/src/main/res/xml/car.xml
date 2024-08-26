@@ -4053,34 +4053,6 @@
                 value="1" />
         </category>
 
-        <category
-            name="日产锐琪"
-            value="100">
-            <model
-                name="锐祺6"
-                value="0" />
-            <model
-                name="锐祺7"
-                value="1" />
-            <model
-                name="S15"
-                value="2" />
-            <model
-                name="S15高配自动空调"
-                value="3" />
-            <model
-                name="锐祺6(电车版)"
-                value="4" />
-            <model
-                name="锐祺6(定速巡航)"
-                value="5" />
-            <model
-                name="P15MC EV(锐祺 7EV)"
-                value="6" />
-            <model
-                name="19~22款风光IX5"
-                value="7" />
-        </category>
 
     </categorys>
 

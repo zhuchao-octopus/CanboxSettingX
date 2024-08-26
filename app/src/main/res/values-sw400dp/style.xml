@@ -46,7 +46,7 @@
         <item name="android:gravity">left|center_vertical</item>
     </style>
 
-    <style name="TranslucentTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+    <style name="TranslucentTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- API 19 theme customizations can go here. -->
         <!-- <item name="android:windowContentOverlay">@null</item> -->
         <!-- <item name="android:windowTranslucentStatus">true</item> -->
