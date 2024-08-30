@@ -95,13 +95,6 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
     CanboxSettings mThis;
     int max = 0;
     int volume = -1;
-    // private String getKeyType(String s) {
-    // String ss[] = s.split(",");
-    // if (ss.length > 1) {
-    // return ss[1];
-    // }
-    // return null;
-    // }
     private String mCarType2 = null;
     private String mCarEQ = null;
     private String mCarOtherSettings = null;
@@ -170,8 +163,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_PEUGEOT307_UNION, // 41
             MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_RX330_HAOZHENG, // 41
-            MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 41
-            MachineConfig.VALUE_CANBOX_X30_RAISE, // 41
+            MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 60
+            MachineConfig.VALUE_CANBOX_X30_RAISE, // 61
             MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, //
             MachineConfig.VALUE_CANBOX_JEEP_XINBAS, //
             MachineConfig.VALUE_CANBOX_OUSHANG_RAISE, //
@@ -180,13 +173,13 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_ALPHA_BAGOO, //
             MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, //
             MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, //
-            MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, //
+            MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE, //70
             MachineConfig.VALUE_CANBOX_GM_OD, //
             MachineConfig.VALUE_CANBOX_MAZDA_RAISE, //
             MachineConfig.VALUE_CANBOX_GM_RAISE,//
-            //MachineConfig.VALUE_CANBOX_AUDI_RAISE,
-            MachineConfig.VALUE_CANBOX_ZHONGXING_OD,//
-            MachineConfig.VALUE_CANBOX_SLIMKEY2//
+            MachineConfig.VALUE_CANBOX_AUDI_RAISE,//74
+            MachineConfig.VALUE_CANBOX_ZHONGXING_OD,//75
+            MachineConfig.VALUE_CANBOX_SLIMKEY2//76
     };
 
     private final String[] mCanboxValueSimple = {//
@@ -241,8 +234,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_HY_RAISE, //
             MachineConfig.VALUE_CANBOX_TOYOTA_RAISE, //
             MachineConfig.VALUE_CANBOX_MAZDA_RAISE, //
-            MachineConfig.VALUE_CANBOX_SLIMKEY2,//75
             MachineConfig.VALUE_CANBOX_GM_RAISE,//
+		    MachineConfig.VALUE_CANBOX_SLIMKEY2,//76
     };
 
     private final String[] mCanboxValuebagoo = {//
@@ -271,7 +264,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_CHERY_OD, // 41
             MachineConfig.VALUE_CANBOX_RX330_HAOZHENG, // 41
             MachineConfig.VALUE_CANBOX_MONDEO_DAOJUN, // 41
-            MachineConfig.VALUE_CANBOX_MINI_HAOZHENG, MachineConfig.VALUE_CANBOX_GM_OD, //
+            MachineConfig.VALUE_CANBOX_MINI_HAOZHENG,//
+		    MachineConfig.VALUE_CANBOX_GM_OD, //
             MachineConfig.VALUE_CANBOX_ZHONGXING_OD};
 
     private final String[] mCanboxValueBinarytek = {//
@@ -288,7 +282,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_MAZDA_XINBAS, // 28
             MachineConfig.VALUE_CANBOX_HAFER_H2, // 51
             MachineConfig.VALUE_CANBOX_JEEP_XINBAS,};
-    private final String[] mCanboxValueHiworld = {MachineConfig.VALUE_CANBOX_NONE, //
+    private final String[] mCanboxValueHiworld = {//
+			MachineConfig.VALUE_CANBOX_NONE, //
             MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD, // 35
             MachineConfig.VALUE_CANBOX_MINI_HIWORD // 43
     };
@@ -1771,12 +1766,11 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                 updateCanboxEQValue((String) newValue);
                 setCanboxEQSetting((String) newValue);
                 break;
-            //		else if ("canbox_key_change".equals(key)) {
-            //			((ListPreference) preference).setValue((String) newValue);
-            //			((ListPreference) preference)
-            //					.setSummary(((ListPreference) preference).getEntry());
-            //			mChangeKey = (String) newValue;
-            //		}
+            //else if ("canbox_key_change".equals(key)) {
+            //	((ListPreference) preference).setValue((String) newValue);
+            //	((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
+            //	mChangeKey = (String) newValue;
+            //	}
             case "canbox_front_door":
                 ((ListPreference) preference).setValue((String) newValue);
                 ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());

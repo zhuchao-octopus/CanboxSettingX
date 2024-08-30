@@ -78,7 +78,8 @@
         <item>"72:Mazda(Raise)"</item>
         <item>"73:GM(Raise)"</item>
         <item>"74:Audi(Raise)"</item>
-        <item>"75:CF006(SLIMKEY)"</item>
+	    <item>"75:ZhongXing(OD)"</item>
+        <item>"76:CF006(SLIMKEY)"</item>
     </string-array>
 
     <string-array name="canbox_manufacturer_values" translatable="false">
@@ -189,6 +190,7 @@
         <item>"62:Mondeo(DaoJun)"</item>
         <item>"69.Mini(HaoZheng)"</item>
         <item>"71:GM(OD)"</item>
+        <item>"75:ZhongXing(OD)"</item>
     </string-array>
     <string-array name="canbox_select_binarytek">
         <item>"0:NONE"</item>
@@ -9135,6 +9137,7 @@
         <item>@string/yellow</item>
         <item>@string/instrum_show_color_orange</item>
     </string-array>
+    
     <string-array name="tata_2">
         <item>0s</item>
         <item>5s</item>

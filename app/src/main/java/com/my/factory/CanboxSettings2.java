@@ -79,7 +79,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     private String[] mModelValue;
     private String[] mConfiguration;
     private String[] mConfigurationValue;
-
     // private String mManufacturerName;
     private String mManufacturerName;
     private String mCategoryName;
@@ -92,46 +91,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     private String mModelId = null;
     private String mKeyType = null;
     private String mChangeKey = null;
-
-
-    //	private void initExternalBoxes() {
-    //
-    //		int i = MachineConfig.getIntProperty2(MachineConfig.KEY_EXTERNAL_BOX);
-    //		String[] ss = getResources().getStringArray(
-    //				R.array.obd_view_spinner_values);
-    //		String s;
-    //		if (i < 0 || i >= ss.length) {
-    //			i = 0;
-    //		}
-    //		s = ss[i];
-    //
-    //		((TextView) findViewById(R.id.external_boxes)).setText(s);
-    //	}
-    //
-    //	private void setExternalBoxes(int index) {
-    //		MachineConfig.setProperty(MachineConfig.KEY_EXTERNAL_BOX, "" + index);
-    //
-    //		Intent it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-    //		it.putExtra(MyCmd.EXTRA_COMMON_CMD,
-    //				MachineConfig.KEY_CAN_BOX);
-    //		sendBroadcast(it);
-    //
-    //		initExternalBoxes();
-    //	}
-    //
-    //	private void showExternalBoxes(){
-    //		AlertDialog ad = new AlertDialog.Builder(this).
-    //				setItems(getResources().getStringArray(R.array.obd_view_spinner_values),
-    //						new DialogInterface.OnClickListener() {
-    //					public void onClick(DialogInterface dialog,
-    //							int whichButton) {
-    //						setExternalBoxes(whichButton);
-    //					}
-    //
-    //				}).setNegativeButton(R.string.cancel,null).create();
-    //
-    //		ad.show();
-    //	}
     private String mFrontDoor = null;
     private String mBackDoor = null;
     private String mAirCondition = null;
@@ -142,6 +101,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     private String mCarConfig = null;
     private String mAppShow = null;
     private String mCarSettingsValue = null;
+	
     private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         public void handleMessage(@NonNull Message msg) {
             setCanSettings();
@@ -336,10 +296,9 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             ((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
             mBackDoor = (String) newValue;
         } else if ("canbox_air_ex".equals(key)) {
-            //			((ListPreference) preference).setValue((String) newValue);
-            //			((ListPreference) preference)
-            //					.setSummary(((ListPreference) preference).getEntry());
-            //			mAirCondition = (String) newValue;
+            //	((ListPreference) preference).setValue((String) newValue);
+            //	((ListPreference) preference).setSummary(((ListPreference) preference).getEntry());
+            //	mAirCondition = (String) newValue;
 
             Set<String> s = (Set<String>) newValue;
             ((MultiSelectListPreference) preference).setValues(s);
@@ -456,11 +415,12 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     @Override
     public void onClick(View arg0) {
         int id = arg0.getId();
-        if (id == R.id.btn_ok) {
+        if (id == R.id.btn_ok)
+		 {
             mHandler.removeMessages(0);
             mHandler.sendEmptyMessageDelayed(0, 500);
             //setCanSettngs();
-        } else if (id == R.id.btn_cancel) {
+         } else if (id == R.id.btn_cancel) {
             finish();
             ///	case R.id.external_boxes:
             ///	showExternalBoxes();
@@ -564,8 +524,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
 
     }
 
-    //	AlertDialog.Builder mDialogResult = new AlertDialog.Builder(
-    //			getContext());
+    //	AlertDialog.Builder mDialogResult = new AlertDialog.Builder(getContext());
     private String getTotalName() {
         return mManufacturerName + mCategoryName + mModelName;
     }
@@ -759,15 +718,13 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                     break;
             }
 
-            //			MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, s);
-            //			MachineConfig.setProperty(
-            //					MachineConfig.KEY_CAN_BOX_SHOW_APP, null);
-            //
-            //			it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
-            //			it.putExtra(MyCmd.EXTRA_COMMON_CMD,
-            //					MachineConfig.KEY_CAN_BOX);
-            //
-            //			sendBroadcast(it);
+            //	MachineConfig.setProperty(MachineConfig.KEY_CAN_BOX, s);
+            //	MachineConfig.setProperty(
+            //	MachineConfig.KEY_CAN_BOX_SHOW_APP, null);
+            //	it = new Intent(MyCmd.BROADCAST_MACHINECONFIG_UPDATE);
+            //	it.putExtra(MyCmd.EXTRA_COMMON_CMD,
+            //	MachineConfig.KEY_CAN_BOX);
+            //	sendBroadcast(it);
             MMLog.d(TAG, "canboxUpdate=" + s + ":" + AppConfig.getCarServicePackageName(this));
             Intent it = new Intent(MyCmd.BROADCAST_CMD_TO_CAR_SERVICE);
             it.putExtra(MyCmd.EXTRA_COMMON_CMD, MyCmd.Cmd.UPDATE_CANBOX);
@@ -831,9 +788,9 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             if (mKeyChangeSettings != null) {
                 getPreferenceScreen().removePreference(mKeyChangeSettings);
             }
-            //			if (mCarSettings != null) {
-            //				getPreferenceScreen().removePreference(mCarSettings);
-            //			}
+            // if (mCarSettings != null) {
+            //		getPreferenceScreen().removePreference(mCarSettings);
+            //	}
             if (mOtherSettings != null) {
                 getPreferenceScreen().removePreference(mOtherSettings);
             }
@@ -924,7 +881,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             mCarSettings.setOnPreferenceClickListener(this);
         }
 
-        //		getPreferenceScreen().addPreference(mOtherSettings);
+        //	getPreferenceScreen().addPreference(mOtherSettings);
         String[] entry2 = { //getResources().getString(R.string.reverse_by_canbox),
                 getResources().getString(R.string.lr_turner_by_canbox), getResources().getString(R.string.brake_by_canbox)};
         String[] value2 = {"2", "3"};
@@ -933,11 +890,10 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         mCarSettings.setEntryValues(value2);
 
         String summary = "";
-        //		for (int i = 0; i < entry2.length; ++i) {
-        //			summary += entry2[i] + " ";
-        //		}
-
-        //		mCarSettings.setSummary(summary);
+        //	for (int i = 0; i < entry2.length; ++i) {
+        //		summary += entry2[i] + " ";
+        //	}
+        //	mCarSettings.setSummary(summary);
 
         HashSet<String> ss = new HashSet<String>();
 
@@ -951,7 +907,6 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
                     }
                 }
             } catch (Exception e) {
-
             }
         }
         mCarSettings.setValues(ss);
@@ -969,7 +924,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
             mOtherSettings.setOnPreferenceClickListener(this);
         }
 
-        //		getPreferenceScreen().addPreference(mOtherSettings);
+        //getPreferenceScreen().addPreference(mOtherSettings);
         String[] entry2 = {
                 //getResources().getString(R.string.radar_volume),
                 //getResources().getString(R.string.radar_ui) ,
@@ -992,11 +947,11 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         mOtherSettings.setEntryValues(value2);
 
         StringBuilder summary = new StringBuilder();
-        //		for (int i = 0; i < entry2.length; ++i) {
-        //			summary += entry2[i] + " ";
-        //		}
+        //	for (int i = 0; i < entry2.length; ++i) {
+        //		summary += entry2[i] + " ";
+        //	}
 
-        //		mOtherSettings.setSummary(summary);
+        //	mOtherSettings.setSummary(summary);
 
         HashSet<String> ss = new HashSet<String>();
 
