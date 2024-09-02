@@ -187,7 +187,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             //MachineConfig.VALUE_CANBOX_AUDI_RAISE,
             MachineConfig.VALUE_CANBOX_ZHONGXING_OD,//
             MachineConfig.VALUE_CANBOX_SLIMKEY2,//
-            "hiworld_df08"
+            MachineConfig.VALUE_CANBOX_HIWORLD_DF08
     };
 
     private final String[] mCanboxValueSimple = {//
@@ -292,7 +292,7 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
     private final String[] mCanboxValueHiworld = {MachineConfig.VALUE_CANBOX_NONE, //
             MachineConfig.VALUE_CANBOX_TOUAREG_HIWORLD, // 35
             MachineConfig.VALUE_CANBOX_MINI_HIWORD,  // 43
-            "hiworld_df08"
+            MachineConfig.VALUE_CANBOX_HIWORLD_DF08
     };
 
 
@@ -360,8 +360,13 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                     hideCanboxCarInfo = false;
                     hideCanboxAirControl = false;
                     break;
-                case "hiworld_df08":
+                case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
+                    hideSync = false;
+                    hideConboxSetting = false;
+                    hideCanboxCarInfo = false;
                     hideCanboxAirControl = false;
+                    hideTpms = false;
+                    hideCarCD = false;
                     break;
                 case MachineConfig.VALUE_CANBOX_VW:
                 case MachineConfig.VALUE_CANBOX_PEUGEOT206:

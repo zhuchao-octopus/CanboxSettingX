@@ -1269,6 +1269,7 @@
     <string name="oushang_47">灯光设置 氛围灯功能</string>
     <string name="oushang_48">灯光设置 氛围灯音乐随动功能</string>
     <string name="oushang_49">车身设置 无线充电开关功能</string>
+    <string name="wireless_charging_switch">无线充电开关</string>
 
 
     <string name="oil_temp">机油温度</string>
@@ -2878,6 +2879,7 @@
     <string name="gac_corner_lamp">转角辅助灯</string>
     <string name="gac_current_fold">当前文件夹序号</string>
     <string name="gac_dashboard_area">仪表盘区域</string>
+    <string name="discharge_level_setting">放电电量设置</string>
     <string name="gac_distance">距离</string>
     <string name="gac_door_all">所有</string>
     <string name="gac_door_driver">驾驶室</string>
@@ -4450,7 +4452,11 @@
     <string name="smartwindow">遥控车窗控制</string>
     <string name="smoked_type">香熏类型</string>
     <string name="smoking_mode">抽烟模式</string>
+    <string name="standard_mode">标准模式</string>
     <string name="snow_pattern">雪地模式</string>
+    <string name="manual_mode">手动模式</string>
+    <string name="dirt_mode">泥地模式</string>
+    <string name="sand_mode">沙地模式</string>
     <string name="soc_balance">SOC平衡点</string>
     <string name="soft_blue">柔和蓝色</string>
     <string name="sonar_sensitivity">声纳灵敏度</string>
@@ -4541,6 +4547,7 @@
     <string name="sport_suspension">运动模式自定义:运动型悬挂</string>
     <string name="sport_taxiing_energy_regeneration">SPORT模式-滑行能源再生</string>
     <string name="stability_control_mode">稳定控制模式</string>
+    <string name="power_steering_mode">助力转向模式(ESP)</string>
     <string name="standard">标准</string>
     <string name="standard_brake">标准制动</string>
     <string name="standard_distance">标准车距</string>
@@ -4962,6 +4969,7 @@
     <string name="str_tire_error">异常报警</string>
     <string name="str_tire_pressure_calibration">胎压标定</string>
     <string name="str_title">标题</string>
+    <string name="glonass">格洛纳斯</string>
     <string name="str_total_song">总曲目:</string>
     <string name="str_turn_mode">转向模式</string>
     <string name="str_unlock_all_doors">所有门都不能解锁</string>
@@ -4982,6 +4990,8 @@
     <string name="str_yes">是</string>
     <string name="strobe_flashing_light">变道闪灯</string>
     <string name="stroke_fuel_consumption">行程油耗界面</string>
+    <string name="horn_test_switch">喇叭测试开关</string>
+    <string name="low_speed_buzzer_control">低速蜂鸣器控制</string>
     <string name="strong">强风</string>
     <string name="style1">style1</string>
     <string name="style2">style2</string>
@@ -5653,4 +5663,46 @@
     <string name="mobile_forgotten_tips">手机遗忘提示</string>
     <string name="clock_format">时间格式</string>
     <string name="theme">主题</string>
+    <string name="forward_impact_sensitivity">前碰撞预警灵敏度</string>
+    <string name="closer">较近</string>
+    <string name="farther_away">较远</string>
+    <string name="safety_distance_alarm">安全距离报警</string>
+    <string name="energy_recovery_control">能量回收控制</string>
+    <string name="range_mode">续航里程模式</string>
+    <string name="lka_mode_switching_signal">LKA 模式开关信号</string>
+
+    <string name="ldw_lka_sensitivity">LDW/LKA 灵敏度</string>
+    <string name="aeb_switch">AEB 开关</string>
+    <string name="fcw_aeb_sensitivity">FCW/AEB 灵敏度</string>
+    <string name="remote_control_windows">遥控钥匙控制车窗</string>
+    <string name="out_sync">不同步</string>
+    <string name="sync_only_enabled">仅同步开启</string>
+    <string name="sync_only_off">仅同步关闭</string>
+    <string name="v2l_switch_status">V2L 开关状态</string>
+
+    <string name="ruiqi_6">锐祺 6</string>
+    <string name="ruiqi_7">锐祺 7</string>
+    <string name="s15">S15</string>
+    <string name="s15_high">S15 高配自动空调</string>
+    <string name="ruiqi_6_tram">锐祺 6(电车版)</string>
+    <string name="ruiqi_6_cruise">锐祺 6(定速巡航)</string>
+    <string name="p15_mc_ev">P15 MC EV(锐祺 7EV)</string>
+    <string name="ix5">19~22 款风光 IX5</string>
+    <string name="front_cover">前盖</string>
+    <string name="tail_box">尾箱</string>
+    <string name="passenger_door">乘客门</string>
+    <string name="driver_s_door">司机门</string>
+    <string name="double_flashing_lights">双闪灯</string>
+    <string name="steering_wheel_corners">方向盘转角</string>
+    <string name="s_gear">S 档</string>
+    <string name="l_gear">L 档</string>
+    <string name="manual_1st_gear">手动1档</string>
+    <string name="manual_2st_gear">手动2档</string>
+    <string name="manual_3st_gear">手动3档</string>
+    <string name="manual_4st_gear">手动4档</string>
+    <string name="manual_5st_gear">手动5档</string>
+    <string name="manual_6st_gear">手动6档</string>
+    <string name="go_straight">直行</string>
+    <string name="turn_right">右转 </string>
+    <string name="turn_left">左转 </string>
 </resources>

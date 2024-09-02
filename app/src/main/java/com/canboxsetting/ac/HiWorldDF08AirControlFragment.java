@@ -92,6 +92,14 @@ public class HiWorldDF08AirControlFragment extends MyFragment {
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
+    private void updateInfo() {
+        byte[] buf = new byte[]{
+                0x00, (byte) 0x5A, (byte) 0xA5, 0x03, 0x6A, 0x05, 0x01, (byte) 0x31, (byte) 0xA3
+        };
+        MMLog.d(TAG, "updateInfo: buf = " + ByteUtils.BuffToHexStr(buf));
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
     private void sendCanboxHiworld(byte d0, byte d1) {
         byte[] buf = new byte[]{
                 0x00, (byte) 0x5A, (byte) 0xA5, 0x02, 0x3D, d0, d1,0x00
@@ -292,6 +300,7 @@ public class HiWorldDF08AirControlFragment extends MyFragment {
         mHandler.sendEmptyMessageDelayed(0, 500);
         mHandler.sendEmptyMessageDelayed(0, 1000);
         super.onResume();
+        updateInfo();
     }
 
     private BroadcastReceiver mReceiver;

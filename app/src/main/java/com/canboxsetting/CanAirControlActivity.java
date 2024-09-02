@@ -196,7 +196,7 @@ public class CanAirControlActivity extends AppCompatActivity {
                     case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                         mSetting = new SlimKeyAirControlFragment();
                         break;
-                    case "hiworld_df08":
+                    case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
                         mSetting = new HiWorldDF08AirControlFragment();
                         break;
                 }

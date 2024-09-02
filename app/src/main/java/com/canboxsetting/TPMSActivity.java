@@ -16,6 +16,7 @@
 
 package com.canboxsetting;
 
+import com.canboxsetting.tpms.HiworldDF08TPMSFragment;
 import com.canboxsetting.tpms.MazdTpmsInfoaRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoRaiseFragment;
 import com.canboxsetting.tpms.VWMQBTpmsInfoSimpleFragment;
@@ -101,6 +102,9 @@ public class TPMSActivity extends AppCompatActivity {
                         break;
                     case MachineConfig.VALUE_CANBOX_ZHONGXING_OD:
                         mSetting = new ZhongXingFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
+                        mSetting = new HiworldDF08TPMSFragment();
                         break;
                 }
             }
