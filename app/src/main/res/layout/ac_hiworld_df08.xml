@@ -208,9 +208,11 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:id="@+id/air_title_sync"
             style="@style/AirButtonStyle1"
+            android:text="PTC"
+            android:textSize="16sp"
             android:src="@drawable/air_icon_ptc" />
 
         <ImageView

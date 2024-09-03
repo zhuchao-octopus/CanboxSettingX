@@ -75,6 +75,19 @@ public class DF08SettingsFragment extends PreferenceFragmentCompat implements Pr
         low_speed_buzzer_control = initPreference("low_speed_buzzer_control");
         compass_offset_setting = initPreference("compass_offset_setting");
         v2l_switch_status = findPreference("v2l_switch_status");
+
+        remote_control_windows.setSummary(remote_control_windows.getEntry());
+        driving_mode.setSummary(driving_mode.getEntry());
+        power_steering_mode.setSummary(power_steering_mode.getEntry());
+        range_mode.setSummary(range_mode.getEntry());
+        welcome_lamp.setSummary(welcome_lamp.getEntry());
+        energy_recovery_control.setSummary(energy_recovery_control.getEntry());
+        v2l_switch_status.setSummary(v2l_switch_status.getSummary());
+        forward_impact_sensitivity.setSummary(forward_impact_sensitivity.getEntry());
+        lka_mode_switching_signal.setSummary(lka_mode_switching_signal.getEntry());
+        ldw_lka_sensitivity.setSummary(ldw_lka_sensitivity.getEntry());
+        fcw_aeb_sensitivity.setSummary(fcw_aeb_sensitivity.getEntry());
+        car_type_setting.setSummary(car_type_setting.getEntry());
     }
 
     public <T extends Preference> T initPreference(@NonNull CharSequence key) {
@@ -173,7 +186,9 @@ public class DF08SettingsFragment extends PreferenceFragmentCompat implements Pr
                 sendCanboxInfo((byte) 0x6F, (byte) 0x1B, (byte) (Integer.parseInt((String) newValue)));
                 break;
             case "car_type_setting":
-                sendCanboxInfo((byte) 0x24, (byte) (Integer.parseInt((String) newValue)), (byte) 0x26);
+                sendCarSetting((byte) (Integer.parseInt((String) newValue)), (byte) 0x26);
+                car_type_setting.setValue((String) newValue);
+                car_type_setting.setSummary(car_type_setting.getEntry());
                 break;
             case "low_speed_buzzer_control":
                 sendCanboxInfo((byte) 0x6F, (byte) 0x0C, (byte) ((boolean) newValue ? 0x01 : 0x00));
@@ -206,7 +221,16 @@ public class DF08SettingsFragment extends PreferenceFragmentCompat implements Pr
         byte[] buf = new byte[]{
                 0x00, (byte) 0x5A, (byte) 0xA5, 0x04, cmd, d0, d1, (byte) 0xFF, (byte) 0xFF, 0x00
         };
-        buf[buf.length - 1] = (byte) ((0x08 + cmd + d0 + d1 + 0xFF + 0xFF) & 0xFF);
+        buf[buf.length - 1] = (byte) ((0x03 + cmd + d0 + d1 + 0xFF + 0xFF) & 0xFF);
+        MMLog.d(TAG, "sendCanboxInfo: buf = " + ByteUtils.BuffToHexStr(buf));
+        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+    }
+
+    private void sendCarSetting(byte d0, byte d1) {
+        byte[] buf = new byte[]{
+                0x00, (byte) 0x5A, (byte) 0xA5, 0x04, 0x24, d0, d1, 0x00
+        };
+        buf[buf.length - 1] = (byte) ((0x03 + 0x24 + d0 + d1 + 0xFF + 0xFF) & 0xFF);
         MMLog.d(TAG, "sendCanboxInfo: buf = " + ByteUtils.BuffToHexStr(buf));
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }

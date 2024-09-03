@@ -361,12 +361,12 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
                     hideCanboxAirControl = false;
                     break;
                 case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
-                    hideSync = false;
+                    hideSync = true;
                     hideConboxSetting = false;
                     hideCanboxCarInfo = false;
                     hideCanboxAirControl = false;
                     hideTpms = false;
-                    hideCarCD = false;
+                    hideCarCD = true;
                     break;
                 case MachineConfig.VALUE_CANBOX_VW:
                 case MachineConfig.VALUE_CANBOX_PEUGEOT206:

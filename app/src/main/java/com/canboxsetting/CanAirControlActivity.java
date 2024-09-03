@@ -69,7 +69,7 @@ public class CanAirControlActivity extends AppCompatActivity {
     };
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
-    private int mFinishDelayTime = 600000;
+    private int mFinishDelayTime = 6000;
     MsgInterface mMsgInterface = new MsgInterface() {
         @Override
         public void callBack(int msg) {
