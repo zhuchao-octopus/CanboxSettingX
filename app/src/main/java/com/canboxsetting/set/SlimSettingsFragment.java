@@ -81,6 +81,13 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
         clock_format.setOnPreferenceChangeListener(this);
         theme = findPreference("theme");
         theme.setOnPreferenceChangeListener(this);
+        avm_quitting_speed.setSummary(avm_quitting_speed.getEntry());
+        backlight_level.setSummary(backlight_level.getEntry());
+        over_speed_alarm.setSummary(over_speed_alarm.getEntry());
+        fatigue_driving.setSummary(fatigue_driving.getEntry());
+        security_tips.setSummary(security_tips.getEntry());
+        clock_format.setSummary(clock_format.getEntry());
+        theme.setSummary(theme.getEntry());
     }
 
     @Override

@@ -35,6 +35,7 @@
         <ImageView
             android:id="@+id/air_title_ce_auto_large"
             style="@style/AirButtonStyle1"
+            android:visibility="gone"
             android:src="@drawable/air_title_ce_auto" />
 
         <ImageView
@@ -212,6 +213,7 @@
         <ImageView
             android:id="@+id/air_title_sync"
             style="@style/AirButtonStyle1"
+            android:visibility="gone"
             android:src="@drawable/air_title_ce_dual" />
 
         <ImageView
