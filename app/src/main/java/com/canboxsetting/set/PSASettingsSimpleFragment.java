@@ -81,7 +81,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
             new Node("speed3", 0x03, 0x3b000000, 0x03ff),
             new Node("speed4", 0x04, 0x3b000000, 0x04ff),
             new Node("speed5", 0x05, 0x3b000000, 0x05ff),
-
     };
     private final static int[] INIT_CMDS = {0x38, 0x3B,
             /*0x4010, 0x4020, 0x4030,
@@ -165,8 +164,6 @@ public class PSASettingsSimpleFragment extends PreferenceFragmentCompat implemen
 
             return false;
         }
-
-        ;
     };
     private final Handler mHandlerKey = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
