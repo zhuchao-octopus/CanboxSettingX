@@ -191,7 +191,7 @@ public class DF08SettingsFragment extends PreferenceFragmentCompat implements Pr
                 car_type_setting.setSummary(car_type_setting.getEntry());
                 break;
             case "low_speed_buzzer_control":
-                sendCanboxInfo((byte) 0x6F, (byte) 0x0C, (byte) ((boolean) newValue ? 0x01 : 0x00));
+//                sendCanboxInfo((byte) 0x6F, (byte) 0x0C, (byte) ((boolean) newValue ? 0x01 : 0x00));
                 break;
             case "compass_offset_setting":
                 sendCanboxInfo((byte) 0x6F, (byte) 0x0D, (byte) (Integer.parseInt((String) newValue)));

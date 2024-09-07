@@ -4,7 +4,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
 //        maven { url '\\\\DESKTOP-7HI3PEQ\\OctopusFrameworkLibs'}
-        maven { url '\\\\192.168.10.93\\smb\\OctopusFrameworkLibs'}
+        maven { url '\\\\192.168.10.12\\smb\\OctopusFrameworkLibs'}
     }
 }
 dependencyResolutionManagement {
@@ -13,7 +13,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 //        maven { url '\\\\DESKTOP-7HI3PEQ\\OctopusFrameworkLibs'}
-        maven { url '\\\\192.168.10.93\\smb\\OctopusFrameworkLibs'}
+        maven { url '\\\\192.168.10.12\\smb\\OctopusFrameworkLibs'}
     }
 }
 

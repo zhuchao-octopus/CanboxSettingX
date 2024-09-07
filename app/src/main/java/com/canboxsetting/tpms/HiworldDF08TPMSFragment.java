@@ -55,9 +55,13 @@ public class HiworldDF08TPMSFragment extends PreferenceFragmentCompat implements
 
     private void initView(View mTpmsView) {
         frontLiftTemp = mTpmsView.findViewById(R.id.type11_info);
+        frontLiftTemp.setTextColor(Color.WHITE);
         frontRightTemp = mTpmsView.findViewById(R.id.type12_info);
+        frontRightTemp.setTextColor(Color.WHITE);
         behindLiftTemp = mTpmsView.findViewById(R.id.type21_info);
+        behindLiftTemp.setTextColor(Color.WHITE);
         behindRightTemp = mTpmsView.findViewById(R.id.type22_info);
+        behindRightTemp.setTextColor(Color.WHITE);
         frontLiftPressure = mTpmsView.findViewById(R.id.type11_num);
         frontRightPressure = mTpmsView.findViewById(R.id.type12_num);
         behindLiftPressure = mTpmsView.findViewById(R.id.type21_num);
