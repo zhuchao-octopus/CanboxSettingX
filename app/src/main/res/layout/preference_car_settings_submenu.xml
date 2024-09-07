@@ -27,7 +27,7 @@
     android:paddingEnd="?android:attr/scrollbarSize">
 
     <ImageView
-        android:id="@+android:id/icon"
+        android:id="@android:id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -44,7 +44,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+android:id/title"
+            android:id="@android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
@@ -55,7 +55,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+android:id/summary"
+            android:id="@android:id/summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@android:id/title"
@@ -69,7 +69,7 @@
 
     <!-- Preference should place its actual preference widget here. -->
     <LinearLayout
-        android:id="@+android:id/widget_frame"
+        android:id="@android:id/widget_frame"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
