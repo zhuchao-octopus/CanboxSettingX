@@ -80,6 +80,7 @@
         <item>"74:Audi(Raise)"</item>
 	    <item>"75:ZhongXing(OD)"</item>
         <item>"76:CF006(SLIMKEY)"</item>
+        <item>"77:DF08(Hiworld)"</item>
     </string-array>
 
     <string-array name="canbox_manufacturer_values" translatable="false">
@@ -1801,7 +1802,15 @@
         <item>Russian</item>
         <item>French</item>
         <item>Germa</item>
+        <item>Spanish</item>
+        <item>Italian</item>
+        <item>Dutch</item>
+        <item>Polish</item>
+        <item>Turkish</item>
+        <item>Portuguese</item>
+        <item>Portuguese(Brazil)</item>
     </string-array>
+
     <string-array name="enlanguages71">
         <item>English</item>
         <item>Chinese</item>

@@ -179,7 +179,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_GM_RAISE,//
             MachineConfig.VALUE_CANBOX_AUDI_RAISE,//74
             MachineConfig.VALUE_CANBOX_ZHONGXING_OD,//75
-            MachineConfig.VALUE_CANBOX_SLIMKEY2//76
+            MachineConfig.VALUE_CANBOX_SLIMKEY2,//76
+            MachineConfig.VALUE_CANBOX_HIWORLD_DF08//77
     };
 
     private final String[] mCanboxValueSimple = {//

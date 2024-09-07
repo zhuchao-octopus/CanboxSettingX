@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +31,8 @@ import com.common.utils.Util;
 import com.common.view.MyPreference2;
 import com.common.view.MyPreferenceEdit;
 import com.common.view.MyPreferenceEdit.IButtonCallBack;
+
+import java.util.Objects;
 
 public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "PSASimpleFragment";
@@ -116,7 +119,7 @@ public class PSASettingsRaiseFragment extends PreferenceFragmentCompat implement
     private Preference[] mPreferences = new Preference[NODES.length];
     private View mControlSetView;
     private boolean mPaused = true;
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
