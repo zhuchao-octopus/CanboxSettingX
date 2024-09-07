@@ -179,7 +179,6 @@
         android:persistent="false"
         android:title="@string/speed5" />
 
-
     <SwitchPreference
         android:key="oushang_1d"
         android:persistent="false"

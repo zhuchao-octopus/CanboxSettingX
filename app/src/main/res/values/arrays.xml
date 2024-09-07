@@ -78,8 +78,9 @@
         <item>"72:Mazda(Raise)"</item>
         <item>"73:GM(Raise)"</item>
         <item>"74:Audi(Raise)"</item>
-        <item>"75:CF006(SLIMKEY)"</item>
-        <item>"76:DF08(Hiworld)"</item>
+	    <item>"75:ZhongXing(OD)"</item>
+        <item>"76:CF006(SLIMKEY)"</item>
+        <item>"77:DF08(Hiworld)"</item>
     </string-array>
 
     <string-array name="canbox_manufacturer_values" translatable="false">
@@ -190,6 +191,7 @@
         <item>"62:Mondeo(DaoJun)"</item>
         <item>"69.Mini(HaoZheng)"</item>
         <item>"71:GM(OD)"</item>
+        <item>"75:ZhongXing(OD)"</item>
     </string-array>
     <string-array name="canbox_select_binarytek">
         <item>"0:NONE"</item>
@@ -209,7 +211,6 @@
         <item>"0:NONE"</item>
         <item>"35:Touarg(Hiworld)"</item>
         <item>"43:Mini(Hiworld)"</item>
-        <item>"76:DF08(Hiworld)"</item>
     </string-array>
     <string-array name="enwarning_control">
         <item>Closed</item>
@@ -1801,7 +1802,15 @@
         <item>Russian</item>
         <item>French</item>
         <item>Germa</item>
+        <item>Spanish</item>
+        <item>Italian</item>
+        <item>Dutch</item>
+        <item>Polish</item>
+        <item>Turkish</item>
+        <item>Portuguese</item>
+        <item>Portuguese(Brazil)</item>
     </string-array>
+
     <string-array name="enlanguages71">
         <item>English</item>
         <item>Chinese</item>
@@ -9137,6 +9146,7 @@
         <item>@string/yellow</item>
         <item>@string/instrum_show_color_orange</item>
     </string-array>
+    
     <string-array name="tata_2">
         <item>0s</item>
         <item>5s</item>
@@ -9240,84 +9250,5 @@
     <string-array name="slim_time_format">
         <item>12</item>
         <item>24</item>
-    </string-array>
-    <string-array name="df08_driving_mode">
-        <item>@string/standard_mode</item>
-        <item>@string/snow_pattern</item>
-        <item>@string/manual_mode</item>
-        <item>@string/dirt_mode</item>
-        <item>@string/sport_model</item>
-        <item>@string/str_economic_model</item>
-        <item>@string/sand_mode</item>
-    </string-array>
-    <string-array name="power_steering_mode">
-        <item>@string/sensitivity_standard</item>
-        <item>@string/str_comfort</item>
-        <item>@string/str_sport</item>
-        <item>@string/invalid</item>
-    </string-array>
-
-    <string-array name="forward_impact_sensitivity">
-        <item>@string/closer</item>
-        <item>@string/throughout</item>
-        <item>@string/farther_away</item>
-    </string-array>
-
-    <string-array name="off_low_mid_high">
-        <item>@string/air_heat_off</item>
-        <item>@string/air_heat_low</item>
-        <item>@string/brightness_mid</item>
-        <item>@string/air_heat_high</item>
-    </string-array>
-    <string-array name="range_mode">
-        <item>CLTC</item>
-        <item>WLTC</item>
-    </string-array>
-    <string-array name="lka_mode_switching_signal">
-        <item>@string/abc_capital_off</item>
-        <item>LDW</item>
-        <item>LKA&amp;LDW</item>
-    </string-array>
-    <string-array name="ldw_lka_sensitivity">
-        <item>Normal</item>
-        <item>Late</item>
-        <item>Early</item>
-    </string-array>
-    <string-array name="remote_control_windows">
-        <item>@string/out_sync</item>
-        <item>@string/sync_only_enabled</item>
-        <item>@string/sync_only_off</item>
-        <item>@string/synchronize</item>
-    </string-array>
-
-    <string-array name="welcome_lamp">
-        <item>@string/close</item>
-        <item>30s</item>
-        <item>1min</item>
-        <item>2min</item>
-        <item>5min</item>
-    </string-array>
-
-    <string-array name="df08_car_type_setting">
-        <item>@string/bwm_invalid</item>
-        <item>@string/ruiqi_6</item>
-        <item>@string/ruiqi_7</item>
-        <item>@string/s15</item>
-        <item>@string/s15_high</item>
-        <item>@string/ruiqi_6_tram</item>
-        <item>@string/ruiqi_6_cruise</item>
-        <item>@string/p15_mc_ev</item>
-        <item>@string/ix5</item>
-    </string-array>
-    <string-array name="df08_car_type_setting_value">
-        <item>0</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
     </string-array>
 </resources>
