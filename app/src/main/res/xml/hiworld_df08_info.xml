@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res-auto"
+    android:title="@string/controlset">
+
+    <com.common.view.MyPreference
+        android:key="averagefuel"
+        android:persistent="false"
+        android:title="@string/averagefuel24" />
+
+    <com.common.view.MyPreference
+        android:key="total_mileage"
+        android:persistent="false"
+        android:title="@string/total_mileage" />
+
+    <com.common.view.MyPreference
+        android:key="averagespeed"
+        android:persistent="false"
+        android:title="@string/averagespeed" />
+    <!--<com.common.view.MyPreference
+        android:key="engine_speed"
+        android:persistent="false"
+        android:title="@string/engine_speed55" />
+    <com.common.view.MyPreference
+        android:key="instantaneous_speed"
+        android:persistent="false"
+        android:title="@string/instantaneous_speed" />-->
+    <com.common.view.MyPreference
+        android:key="battery_voltage"
+        android:persistent="false"
+        android:title="@string/battery_voltage" />
+    <com.common.view.MyPreference
+        android:key="dongfeng_current"
+        android:persistent="false"
+        android:title="@string/dongfeng_current" />
+
+    <com.common.view.MyPreference
+        android:key="temp"
+        android:persistent="false"
+        android:title="@string/temp47" />
+
+    <com.common.view.MyPreference
+        android:key="sos"
+        android:persistent="false"
+        android:title="SOS" />
+
+    <com.common.view.MyPreference
+        android:key="acc"
+        android:persistent="false"
+        android:title="ACC" />
+    <com.common.view.MyPreference
+        android:key="rev"
+        android:persistent="false"
+        android:title="REV" />
+    <com.common.view.MyPreference
+        android:key="front_cover"
+        android:persistent="false"
+        android:title="@string/front_cover" />
+    <com.common.view.MyPreference
+        android:key="tail_box"
+        android:persistent="false"
+        android:title="@string/tail_box" />
+    <com.common.view.MyPreference
+        android:key="ribackdoor"
+        android:persistent="false"
+        android:title="@string/ribackdoor" />
+    <com.common.view.MyPreference
+        android:key="lfbackdoor"
+        android:persistent="false"
+        android:title="@string/lfbackdoor" />
+    <com.common.view.MyPreference
+        android:key="driver_s_door"
+        android:persistent="false"
+        android:title="@string/driver_s_door" />
+    <com.common.view.MyPreference
+        android:key="passenger_door"
+        android:persistent="false"
+        android:title="@string/passenger_door" />
+    <com.common.view.MyPreference
+        android:key="double_flashing_lights"
+        android:persistent="false"
+        android:title="@string/double_flashing_lights" />
+    <com.common.view.MyPreference
+        android:key="left_turnning_light"
+        android:persistent="false"
+        android:title="@string/left_turnning_light" />
+    <com.common.view.MyPreference
+        android:key="right_turnning_light"
+        android:persistent="false"
+        android:title="@string/right_turnning_light" />
+    <com.common.view.MyPreference
+        android:key="instantaneous_speed"
+        android:persistent="false"
+        android:title="@string/instantaneous_speed" />
+    <com.common.view.MyPreference
+        android:key="gear"
+        android:persistent="false"
+        android:title="@string/gear" />
+    <com.common.view.MyPreference
+        android:key="steering_wheel_corners"
+        android:persistent="false"
+        android:title="@string/steering_wheel_corners" />
+    <com.common.view.MyPreference
+        android:key="enginespeed"
+        android:persistent="false"
+        android:title="@string/enginespeed" />
+
+</PreferenceScreen>

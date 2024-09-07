@@ -21,7 +21,10 @@
             android:id="@+id/air_title_ce_rear"
             style="@style/AirButtonStyle1"
             android:src="@drawable/air_title_ce_rear" />
-
+        <ImageView
+            android:id="@+id/air_title_ce_ac_max"
+            style="@style/AirButtonStyle1"
+            android:src="@drawable/air_mirrors_hot" />
         <ImageView
             android:id="@+id/air_title_ce_ac_1"
             style="@style/AirButtonStyle1"
@@ -35,13 +38,7 @@
         <ImageView
             android:id="@+id/air_title_ce_auto_large"
             style="@style/AirButtonStyle1"
-            android:visibility="gone"
             android:src="@drawable/air_title_ce_auto" />
-
-        <ImageView
-            android:id="@+id/air_title_ce_ac_max"
-            style="@style/AirButtonStyle1"
-            android:src="@drawable/air_title_ce_ac_max" />
 
         <ImageView
             android:id="@+id/wheel"
@@ -137,7 +134,7 @@
                     android:id="@+id/canbus21_mode5"
                     style="@style/AirButtonStyle1"
                     android:src="@drawable/canbus21_mode5"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout
@@ -167,6 +164,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="1.0dip"
             android:layout_weight="1.5"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <ImageButton
@@ -210,11 +208,12 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:id="@+id/air_title_sync"
             style="@style/AirButtonStyle1"
-            android:visibility="gone"
-            android:src="@drawable/air_title_ce_dual" />
+            android:text="PTC"
+            android:textSize="16sp"
+            android:src="@drawable/air_icon_ptc" />
 
         <ImageView
             android:id="@+id/wind_minus"
@@ -245,7 +244,7 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/point1"
@@ -257,7 +256,7 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/point2"
@@ -269,7 +268,7 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/point3"
@@ -281,7 +280,7 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/point4"
@@ -293,7 +292,7 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/point5"
@@ -305,7 +304,7 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/point6"
@@ -317,7 +316,19 @@
                     android:onClick="onClick"
                     android:scaleType="center"
                     android:src="@drawable/point"
-                    android:visibility="invisible"></ImageView>
+                    android:visibility="invisible"/>
+`
+                <ImageView
+                    android:id="@+id/point7"
+                    android:layout_width="0px"
+                    android:layout_height="105px"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_air2"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:scaleType="center"
+                    android:src="@drawable/point"
+                    android:visibility="invisible"/>
             </LinearLayout>
         </LinearLayout>
 

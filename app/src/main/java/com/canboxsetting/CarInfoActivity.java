@@ -25,6 +25,7 @@ import com.canboxsetting.info.FocusRaiseFragment;
 import com.canboxsetting.info.GMInfoSimpleFragment;
 import com.canboxsetting.info.Golf7InfoSimpleFragment;
 import com.canboxsetting.info.HYRaiseFragment;
+import com.canboxsetting.info.HiworldDF08InfoFragment;
 import com.canboxsetting.info.HondaInfoSimpleFragment;
 import com.canboxsetting.info.JeepInfoSimpleFragment;
 import com.canboxsetting.info.KadjarRaiseFragment;
@@ -249,6 +250,9 @@ public class CarInfoActivity extends AppCompatActivity {
                         break;
                     case MachineConfig.VALUE_CANBOX_ZHONGXING_OD:
                         mSetting = new ZhongXingFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
+                        mSetting = new HiworldDF08InfoFragment();
                         break;
                 }
             }

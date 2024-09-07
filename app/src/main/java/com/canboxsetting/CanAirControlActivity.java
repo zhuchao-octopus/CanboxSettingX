@@ -32,6 +32,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.canboxsetting.MyFragment.MsgInterface;
 import com.canboxsetting.ac.GMAirODFragment;
 import com.canboxsetting.ac.Golf7SimpleAirControlFragment;
+import com.canboxsetting.ac.HiWorldDF08AirControlFragment;
 import com.canboxsetting.ac.HondaSimpleACFragment;
 import com.canboxsetting.ac.JeepAirControlFragment;
 import com.canboxsetting.ac.JeepAirControlXinbasFragment;
@@ -194,6 +195,9 @@ public class CanAirControlActivity extends AppCompatActivity {
                         break;
                     case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                         mSetting = new SlimKeyAirControlFragment();
+                        break;
+                    case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
+                        mSetting = new HiWorldDF08AirControlFragment();
                         break;
                 }
             }

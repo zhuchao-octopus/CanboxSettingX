@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vehicle="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="speed_locking"
+        android:title="@string/vehicle_speed_automatic_locking" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="flame_out_unlock"
+        android:title="@string/flameout_automatic_latch" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="flow_me_home"
+        android:title="@string/flow_me_home" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="steering_lighting"
+        android:title="@string/steering_auxiliary_lighting" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="rearview_folding"
+        android:title="@string/automatic_folding_of_rearview_mirror" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="wireless_charging_switch"
+        android:title="@string/wireless_charging_switch" />
+    <ListPreference
+        android:defaultValue="@string/standard_mode"
+        android:entries="@array/df08_driving_mode"
+        android:entryValues="@array/volbackdoor_entryValues"
+        android:key="driving_mode"
+        android:title="@string/driving_mode" />
+
+    <ListPreference
+        android:defaultValue="@string/sensitivity_standard"
+        android:entries="@array/power_steering_mode"
+        android:entryValues="@array/closedoortime_entryValues"
+        android:key="power_steering_mode"
+        android:title="@string/power_steering_mode" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="glonass"
+        android:title="@string/glonass" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="horn_test_switch"
+        android:title="@string/horn_test_switch" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="low_speed_buzzer_control"
+        android:title="@string/low_speed_buzzer_control" />
+    <Preference
+        android:key="v2l_switch_status"
+        android:summary="@string/abc_capital_off"
+        android:title="@string/v2l_switch_status" />
+    <com.common.view.MyPreferenceSeekBar
+        android:key="compass_offset_setting"
+        android:persistent="false"
+        android:title="@string/discharge_level_setting"
+        vehicle:max="100"
+        vehicle:min="20"
+        vehicle:step="1" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="precollision_warning"
+        android:title="@string/precollision_warning" />
+    <ListPreference
+        android:defaultValue="@string/throughout"
+        android:entries="@array/forward_impact_sensitivity"
+        android:entryValues="@array/speedunits_entryValues"
+        android:key="forward_impact_sensitivity"
+        android:title="@string/forward_impact_sensitivity" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="safety_distance_alarm"
+        android:title="@string/safety_distance_alarm" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="automatic_emergency_braking"
+        android:title="@string/automatic_emergency_braking" />
+    <ListPreference
+        android:defaultValue="@string/air_heat_off"
+        android:entries="@array/off_low_mid_high"
+        android:entryValues="@array/accvehicle_entryValues"
+        android:key="energy_recovery_control"
+        android:title="@string/energy_recovery_control" />
+    <ListPreference
+        android:defaultValue="CLTC"
+        android:entries="@array/range_mode"
+        android:entryValues="@array/travlemode_entryValues"
+        android:key="range_mode"
+        android:title="@string/range_mode" />
+    <ListPreference
+        android:defaultValue="@string/abc_capital_off"
+        android:entries="@array/lka_mode_switching_signal"
+        android:entryValues="@array/automatic_vaues"
+        android:key="lka_mode_switching_signal"
+        android:title="@string/lka_mode_switching_signal" />
+    <ListPreference
+        android:defaultValue="Normal"
+        android:entries="@array/ldw_lka_sensitivity"
+        android:entryValues="@array/accrdriveprogram_entryValues"
+        android:key="ldw_lka_sensitivity"
+        android:title="@string/ldw_lka_sensitivity" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="aeb_switch"
+        android:title="@string/aeb_switch" />
+    <ListPreference
+        android:defaultValue="Normal"
+        android:entries="@array/ldw_lka_sensitivity"
+        android:entryValues="@array/accrdriveprogram_entryValues"
+        android:key="fcw_aeb_sensitivity"
+        android:title="@string/fcw_aeb_sensitivity" />
+    <ListPreference
+        android:defaultValue="@string/out_sync"
+        android:entries="@array/remote_control_windows"
+        android:entryValues="@array/en_remote_lock_vaues"
+        android:key="remote_control_windows"
+        android:title="@string/remote_control_windows" />
+    <ListPreference
+        android:defaultValue="@string/close"
+        android:entries="@array/welcome_lamp"
+        android:entryValues="@array/enignition_conditions_vaues"
+        android:key="welcome_lamp"
+        android:title="@string/welcome_lamp" />
+    <ListPreference
+        android:defaultValue="@string/ruiqi_6"
+        android:entries="@array/df08_car_type_setting"
+        android:entryValues="@array/df08_car_type_setting_value"
+        android:key="car_type_setting"
+        android:title="@string/car_type64" />
+</PreferenceScreen>

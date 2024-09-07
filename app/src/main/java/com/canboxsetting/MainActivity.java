@@ -30,6 +30,7 @@ import com.canboxsetting.set.Accord2013SettingsSimpleFragment;
 import com.canboxsetting.set.AccordSettingsBinaryTekFragment;
 import com.canboxsetting.set.BMWE90X1UnionSettingsFragment;
 import com.canboxsetting.set.CheryODSettingFragment;
+import com.canboxsetting.set.DF08SettingsFragment;
 import com.canboxsetting.set.FiatEGEARaiseSettingFragment;
 import com.canboxsetting.set.FocusSettingsFragment;
 import com.canboxsetting.set.FordExplorerSimpleSettingsFragment;
@@ -52,6 +53,7 @@ import com.canboxsetting.set.PSASettingsBagooFragment;
 import com.canboxsetting.set.PSASettingsRaiseFragment;
 import com.canboxsetting.set.PSASettingsSimpleFragment;
 import com.canboxsetting.set.RAMFiatSettingSimpleFragment;
+import com.canboxsetting.set.SlimSettingsFragment;
 import com.canboxsetting.set.SmartHaoZhengSettingsFragment;
 import com.canboxsetting.set.SubaruSimpleSettingFragment;
 import com.canboxsetting.set.TouaregHiworldSettingFragment;
@@ -170,8 +172,10 @@ public class MainActivity extends AppCompatActivity {
         switch (Objects.requireNonNull(value)) {
             case MachineConfig.VALUE_CANBOX_GM_SIMPLE:
             case MachineConfig.VALUE_CANBOX_GM_RAISE:
-            case MachineConfig.VALUE_CANBOX_SLIMKEY2:
                 mSetting = new GMSettingsSimpleFragment();
+                break;
+            case MachineConfig.VALUE_CANBOX_SLIMKEY2:
+                mSetting = new SlimSettingsFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_FORD_SIMPLE:
             case MachineConfig.VALUE_CANBOX_FORD_RAISE:
@@ -281,6 +285,9 @@ public class MainActivity extends AppCompatActivity {
                 mSetting = new SubaruSimpleSettingFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_NONE:
+                break;
+            case MachineConfig.VALUE_CANBOX_HIWORLD_DF08:
+                mSetting = new DF08SettingsFragment();
                 break;
         }
 

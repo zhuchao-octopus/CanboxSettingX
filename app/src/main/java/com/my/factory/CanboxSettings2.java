@@ -556,10 +556,14 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         String manuId = mManufacturerPreference.getValue();
         String mCategory = mXlmParser.getCategorysValue(mCategoryName);
         String mModel = mXlmParser.getModelValue(mCategoryName, mModelName);
-        MMLog.d(TAG, "setCanSettings() manuId=" + manuId + " mCategory=" + mCategory + " mModel=" + mModel);
+        MMLog.d(TAG, "setCanSettings() manuId=" + manuId + " mCategory=" + mCategory + " mModel=" + mModel + "  mCategoryName = " + mCategoryName + "   mModelName = " +mModelName);
         if ("45".equals(mCategory)) { //update
             canboxUpdate(manuId);
             return;
+        }
+
+        if ("100".equals(mCategory)) {
+
         }
 
         if ((mExternalRadar != null) && (!mExternalRadar.equals(mExternalRadarOrg))) {

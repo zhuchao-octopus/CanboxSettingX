@@ -200,4 +200,11 @@ public class MyPreferenceSeekBar extends Preference {
         }
     }
 
+    public int getEntry() {
+        if (mSeekBar != null) {
+            return mSeekBar.getProgress();
+        }
+        return 0;
+    }
+
 }
