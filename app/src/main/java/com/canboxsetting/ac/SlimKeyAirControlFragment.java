@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,27 +72,9 @@ public class SlimKeyAirControlFragment extends MyFragment {
             mMainView.findViewById(id.wheel).setVisibility(View.GONE);
         }
 
-        ///byte[] buf = new byte[]{0x6, (byte) 0xA7, 0x50,0x03,0x00};//去掉原车空调面板
-        //BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-
         MMLog.d(TAG, "SlimKeyAirControlFragment.onCreateView!");
         initSlimKeyACData();
         return mMainView;
-    }
-
-    private void sendCanboxInfo0x82(int d0, int d1) {
-        byte[] buf = new byte[]{(byte) 0x82, 0x2, (byte) d0, (byte) d1,};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendCanboxInfo0x90(int d0) {
-        byte[] buf = new byte[]{(byte) 0x90, 0x4, (byte) d0, 0, 0, 0};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private void sendCanboxInfo0x8A(int d0, int d1) {
-        byte[] buf = new byte[]{0x5, (byte) 0x8A, (byte) d0, (byte) d1};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
     private void sendCanboxSlim(byte d0, byte d1) {
@@ -101,13 +84,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
         MMLog.d(TAG, "sendCanboxInfo: buf = " + ByteUtils.BuffToHexStr(buf));
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
-
-    private void sendCanboxInfo0x8f(int d0) {
-        byte[] buf = new byte[]{0x4, (byte) 0x8f, (byte) d0};
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
-    }
-
-    private final static int[][] CMD_ID = new int[][]{{id.air_title_ce_max, 0x010c}, {id.air_title_ce_rear, 0x010e}, {id.air_title_ce_ac_1, 0x0101}, {id.air_title_ce_inner_loop, 0x0103}, {id.air_title_ce_auto_large, 0x0102}, {id.air_title_ce_ac_max, 0x010f}, {id.wheel, 0x0118}, {id.con_left_temp_up, 0x0104}, {id.con_left_temp_down, 0x0105}, {id.con_right_temp_up, 0x0114}, {id.con_right_temp_down, 0x0115}, {id.canbus21_mode1, 0x0108}, {id.canbus21_mode3, 0x0109}, {id.canbus21_mode2, 0x010a}, {id.canbus21_mode4, 0x010b}, {id.con_seathotleft, 0x0111}, {id.con_seathotright, 0x0112}, {id.air_title_sync, 0x010d}, {id.icon_power, 0x0110}, {id.wind_add, 0x0106}, {id.wind_minus, 0x0107},};
 
     private void updateSelect(int id, int s) {
         View v = mMainView.findViewById(id);
@@ -142,35 +118,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
-    private void setSeatheat(int id, int level) {
-        ImageButton v = (ImageButton) mMainView.findViewById(id);
-        int drawable;
-        if (v != null) {
-            if (id == R.id.con_seathotleft) {
-                drawable = R.drawable.img_air_seathotleft0;
-                switch (level) {
-                    case 1:
-                        drawable = R.drawable.img_air_seathotleft1;
-                        break;
-                    case 2:
-                        drawable = R.drawable.img_air_seathotleft2;
-                        break;
-                }
-            } else {
-                drawable = R.drawable.img_air_seathotright0;
-                switch (level) {
-                    case 1:
-                        drawable = R.drawable.img_air_seathotright1;
-                        break;
-                    case 2:
-                        drawable = R.drawable.img_air_seathotright2;
-                        break;
-                }
-            }
-
-            v.setImageResource(drawable);
-        }
-    }
 
     String getAirTemperature(View view, float temperature, boolean isCentigradeUnit) {
 
@@ -244,33 +191,10 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
-    private void setTempManul(int id, int temperature, int unit) {
-        TextView v = (TextView) mMainView.findViewById(id);
-        String s;
-        if (v != null) {
-            switch ((temperature & 0xc0) >> 6) {
-                case 1:
-                    s = getString(string.air_manual_cryogen);
-                    s += " " + ((temperature & 0x3f));
-                    break;
-                case 2:
-                    s = getString(string.air_manual_heat);
-                    s += " " + ((temperature & 0x3f));
-                    break;
-                default:
-                    s = getString(string.air_manual_normal);
-                    s += " " + ((temperature & 0x3f));
-                    break;
-            }
-
-            v.setText(s);
-        }
-    }
-
     private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            sendCanboxInfo0x8f(0x21);
+            sendCanboxSlim((byte) 0x00, (byte) msg.arg1);
         }
     };
 
@@ -284,9 +208,34 @@ public class SlimKeyAirControlFragment extends MyFragment {
     public void onResume() {
         registerListener();
         //sendCanboxInfo0x90(0x21);
-        mHandler.sendEmptyMessageDelayed(0, 500);
-        mHandler.sendEmptyMessageDelayed(0, 1000);
+//        mHandler.sendEmptyMessageDelayed(0, 500);
+//        mHandler.sendEmptyMessageDelayed(0, 1000);
+        updateACInfo();
         super.onResume();
+    }
+
+    private void updateACInfo() {
+        Message message0 = mHandler.obtainMessage();
+        message0.arg1 = 0;
+        mHandler.sendMessageDelayed(message0,1000);
+        Message message1 = mHandler.obtainMessage();
+        message1.arg1 = 1;
+        mHandler.sendMessageDelayed(message1,3000);
+        Message message2 = mHandler.obtainMessage();
+        message2.arg1 = 2;
+        mHandler.sendMessageDelayed(message2,5000);
+        Message message3 = mHandler.obtainMessage();
+        message3.arg1 = 3;
+        mHandler.sendMessageDelayed(message3,7000);
+        Message message4 = mHandler.obtainMessage();
+        message4.arg1 = 4;
+        mHandler.sendMessageDelayed(message4,9000);
+        Message message5 = mHandler.obtainMessage();
+        message5.arg1 = 5;
+        mHandler.sendMessageDelayed(message5,11000);
+        Message message6 = mHandler.obtainMessage();
+        message6.arg1 = 6;
+        mHandler.sendMessageDelayed(message6,13000);
     }
 
     private BroadcastReceiver mReceiver;
@@ -364,40 +313,6 @@ public class SlimKeyAirControlFragment extends MyFragment {
             }
         }
         super.callBack(0);
-    }
-
-    private void updateView(byte[] buf) {
-        MMLog.d(TAG, "SlimKeyAirControlFragment.updateView buf:" + ByteUtils.BuffToHexStr(buf));
-        if (buf[1] == 0x21) {
-            updateSelect(id.icon_power, buf[2] & 0x80);
-            updateSelect(id.air_title_ce_ac_1, buf[2] & 0x40);
-            setLoop(buf[2] & 0x20);
-            updateSelect(id.air_title_ce_rear, buf[2] & 0x01);//后窗加热
-
-            updateSelect(id.air_title_ce_auto_large, buf[2] & 0x08);
-            updateSelect(id.air_title_sync, buf[2] & 0x04);
-
-            updateSelect(id.canbus21_mode1, buf[3] & 0x40);
-            updateSelect(id.canbus21_mode2, buf[3] & 0x20);
-            updateSelect(id.canbus21_mode3, buf[3] & 0x80);
-
-            //updateSelect(id.canbus21_mode4, 0);
-
-            setSpeed((buf[3] & 0xf));
-
-            setTemp(id.con_txt_left_temp, (buf[4] & 0xff), (buf[4] & 0x01));
-            setTemp(id.con_txt_right_temp, (buf[5] & 0xff), (buf[5] & 0x01));
-            ///setTempManul(id.con_txt_left_temp, (buf[3] & 0xff), (buf[3] & 0x01));
-            ///setTempManul(id.con_txt_right_temp, (buf[4] & 0xff), (buf[4] & 0x01));
-
-            updateSelect(id.air_title_ce_max, buf[6] & 0x80);//前窗除雾
-            updateSelect(id.air_title_ce_ac_max, buf[6] & 0x08);
-
-            ///updateSelect(id.wheel, buf[9] & 0x80);
-            ///setSeatheat(id.con_seathotright, (buf[7] & 0x0f));
-            ///setSeatheat(id.con_seathotleft, (buf[7] & 0xf0) >> 4);
-            super.callBack(0);
-        }
     }
 
     private void controlAirDirection(byte cmd) {
@@ -502,19 +417,14 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
-    private void sendCmd(int id) {
-        ///for (int[] ints : CMD_ID) {
-        ///    if (ints[0] == id) {
-        ///        sendCanboxInfo0x8A((ints[1] & 0xff00) >> 8, (ints[1] & 0xff));
-        ///    }
-        ///}
-    }
 
     private void initSlimKeyACData() {
         String acData = MachineConfig.getProperty("AC_UPDATE_DATA");
         Log.d(TAG, "initSlimKeyACData: acData = " + acData);
-        byte[] slimKeyACData = HexStr2Bytes(acData.replace(" ",""));
-        updateACAllView(slimKeyACData);
+        if (!TextUtils.isEmpty(acData)) {
+            byte[] slimKeyACData = HexStr2Bytes(acData.replace(" ", ""));
+            updateACAllView(slimKeyACData);
+        }
     }
 
     private void updateACAllView(byte[] slimKeyACData) {

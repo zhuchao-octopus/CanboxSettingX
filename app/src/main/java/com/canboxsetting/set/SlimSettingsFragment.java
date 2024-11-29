@@ -105,9 +105,9 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
     public void onResume() {
         super.onResume();
         registerListener();
-        sendCanboxInfo(0x90, 0x24, 0);
-        Util.doSleep(200);
-        sendCanboxInfo(0x90, 0x21, 0);
+//        sendCanboxInfo(0x90, 0x24, 0);
+//        Util.doSleep(200);
+//        sendCanboxInfo(0x90, 0x21, 0);
     }
 
     private int mLedSeting = 0;
