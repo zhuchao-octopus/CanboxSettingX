@@ -42,6 +42,8 @@ import com.canboxsetting.R.id;
 import com.canboxsetting.R.layout;
 import com.canboxsetting.R.string;
 
+import com.canboxsetting.view.ACSpeedLevelSelect;
+import com.canboxsetting.view.ACTempLevelSelect;
 import com.common.utils.BroadcastUtil;
 import com.common.utils.GlobalDef;
 import com.common.utils.MachineConfig;
@@ -58,9 +60,15 @@ import java.util.Objects;
 public class SlimKeyAirControlFragment extends MyFragment {
     private static final String TAG = "SlimKeyAirControlFragment";
 
+    private ACTempLevelSelect acTempLevelSelect;
+    private  ACSpeedLevelSelect acSpeedLevelSelect;
+    private ImageView acSpeedUp,acSpeedMiddle,acSpeedDown;
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        getActivity().getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        );
     }
 
     private View mMainView;
@@ -94,16 +102,8 @@ public class SlimKeyAirControlFragment extends MyFragment {
 
     private void setSpeed(int speed) {
         currAirWind = (byte) speed;
-        for (int i = 0; i <= 7; ++i) {
-            View v = mMainView.findViewById(id.point0 + i);
-            if (v != null) {
-                if (i < speed) {
-                    v.setVisibility(View.VISIBLE);
-                } else {
-                    v.setVisibility(View.INVISIBLE);
-                }
-            }
-        }
+        ACSpeedLevelSelect acSpeedLevelSelect = mMainView.findViewById(id.ac_speed_level);
+        acSpeedLevelSelect.setLevel(speed);
     }
 
     private void setLoop(int loop) {
@@ -118,57 +118,12 @@ public class SlimKeyAirControlFragment extends MyFragment {
         }
     }
 
-
-    String getAirTemperature(View view, float temperature, boolean isCentigradeUnit) {
-
-        if (GlobalDef.mTempUnit == 1) {
-            if (!isCentigradeUnit) {
-                temperature = ((temperature) - 32) / 1.8f;
-                isCentigradeUnit = true;
-            }
-        } else if (GlobalDef.mTempUnit == 2) {
-            if (isCentigradeUnit) {
-                temperature = ((temperature / 2) * 1.8f + 32);
-                isCentigradeUnit = false;
-            }
-        }
-
-        if (isCentigradeUnit) {
-            return String.format(Locale.ENGLISH, "%.1f%s", temperature / 2, view.getResources().getString(string.temp_unic_centigrade));
-        } else {
-            return String.format(Locale.ENGLISH, "%d%s", (int) temperature, view.getResources().getString(string.temp_unic_fahrenheit));
-        }
-    }
-
-    private void setTemp(int id, int temperature, int unit) {
-        TextView v = (TextView) mMainView.findViewById(id);
-        String s;
-        if (v != null) {
-            if (temperature == 0) {
-                s = "LOW";
-            } else if (temperature == 0xff) {
-                s = "HI";
-
-            } else {
-                s = getAirTemperature(mMainView, temperature, unit == 0);
-                //				if (unit == 0) {
-                //					s = String.format(Locale.ENGLISH, "%.1f%s",
-                //							((float) temperature) / 2, getResources()
-                //									.getString(R.string.temp_unic));
-                //				} else {
-                //					s = String.format(Locale.ENGLISH, "%dF", (int) temperature);
-                //				}
-            }
-            v.setText(s);
-        }
-    }
-
     private byte currTemp = 1;
     private void setSlimTemp(byte temp) {
         Log.d(TAG, "setSlimTemp: temp " + temp);
         if (temp > 0 && temp <= 16) {
             sendCanboxSlim((byte) 0x83, temp);
-            updateTempView(temp);
+//            updateTempView(temp);
 
         } else if (temp < 1) {
             setSlimTemp((byte) 1);
@@ -179,15 +134,9 @@ public class SlimKeyAirControlFragment extends MyFragment {
 
     private void updateTempView(byte temp) {
         currTemp = temp;
-        TextView leftT = mMainView.findViewById(id.con_txt_left_temp);
-        TextView rightT = mMainView.findViewById(id.con_txt_right_temp);
-        if (leftT != null) {
-            Log.d(TAG, "updateTempView: leftT");
-            leftT.setText(String.valueOf(temp));
-        }
-        if (rightT != null) {
-            Log.d(TAG, "updateTempView: rightT");
-            rightT.setText(String.valueOf(temp));
+        ACTempLevelSelect acTempLevelSelect = mMainView.findViewById(id.ac_temp_level);
+        if (acTempLevelSelect != null) {
+            acTempLevelSelect.setLevel(temp);
         }
     }
 
@@ -218,24 +167,24 @@ public class SlimKeyAirControlFragment extends MyFragment {
         Message message0 = mHandler.obtainMessage();
         message0.arg1 = 0;
         mHandler.sendMessageDelayed(message0,1000);
-        Message message1 = mHandler.obtainMessage();
-        message1.arg1 = 1;
-        mHandler.sendMessageDelayed(message1,3000);
-        Message message2 = mHandler.obtainMessage();
-        message2.arg1 = 2;
-        mHandler.sendMessageDelayed(message2,5000);
-        Message message3 = mHandler.obtainMessage();
-        message3.arg1 = 3;
-        mHandler.sendMessageDelayed(message3,7000);
-        Message message4 = mHandler.obtainMessage();
-        message4.arg1 = 4;
-        mHandler.sendMessageDelayed(message4,9000);
-        Message message5 = mHandler.obtainMessage();
-        message5.arg1 = 5;
-        mHandler.sendMessageDelayed(message5,11000);
-        Message message6 = mHandler.obtainMessage();
-        message6.arg1 = 6;
-        mHandler.sendMessageDelayed(message6,13000);
+//        Message message1 = mHandler.obtainMessage();
+//        message1.arg1 = 1;
+//        mHandler.sendMessageDelayed(message1,3000);
+//        Message message2 = mHandler.obtainMessage();
+//        message2.arg1 = 2;
+//        mHandler.sendMessageDelayed(message2,5000);
+//        Message message3 = mHandler.obtainMessage();
+//        message3.arg1 = 3;
+//        mHandler.sendMessageDelayed(message3,7000);
+//        Message message4 = mHandler.obtainMessage();
+//        message4.arg1 = 4;
+//        mHandler.sendMessageDelayed(message4,9000);
+//        Message message5 = mHandler.obtainMessage();
+//        message5.arg1 = 5;
+//        mHandler.sendMessageDelayed(message5,11000);
+//        Message message6 = mHandler.obtainMessage();
+//        message6.arg1 = 6;
+//        mHandler.sendMessageDelayed(message6,13000);
     }
 
     private BroadcastReceiver mReceiver;
@@ -309,24 +258,57 @@ public class SlimKeyAirControlFragment extends MyFragment {
                 updateTempView(buf[4]);
             } else if (buf[3] == 0x04 && (buf[4] == 0x00 || buf[4] == 0x01)) {
                 MMLog.d(TAG, "updateSlimView: 空调开关 = " + buf[4]);
-                updateSelect(id.icon_power, buf[4]);
+                updatePower(buf[4] == 0x01);
             }
         }
         super.callBack(0);
     }
 
-    private void controlAirDirection(byte cmd) {
-        sendCanboxSlim((byte) 0x81, cmd);
-        updateAirDirection(cmd);
+    private void updatePower(boolean isPower) {
+        byte[] slimKeyACData = new byte[]{0x00,0,0,0,0,0,1,0,0};
+        if (isPower) {
+            String acData = MachineConfig.getProperty("AC_UPDATE_DATA");
+            if (!TextUtils.isEmpty(acData)) {
+                slimKeyACData = HexStr2Bytes(acData.replace(" ", ""));
+                updateACAllView(slimKeyACData);
+//                updateSelect(id.icon_power, 0x01);
+            }
+        } else {
+            slimKeyACData = new byte[]{0x00,0,0,0,0,0,0,0,0};
+//            updateSelect(id.icon_power, 0x00);
+        }
+        updateACAllView(slimKeyACData);
+
     }
 
+    private void controlAirDirection(byte cmd) {
+        sendCanboxSlim((byte) 0x81, cmd);
+//        updateAirDirection(cmd);
+    }
     private void updateAirDirection(byte cmd) {
         updateSelect(id.canbus21_mode1, cmd == 0x00 ? 1 : 0);
         updateSelect(id.canbus21_mode2, cmd == 0x02 ? 1 : 0);
         updateSelect(id.canbus21_mode3, cmd == 0x01 ? 1 : 0);
         updateSelect(id.canbus21_mode4, cmd == 0x03 ? 1 : 0);
-        updateSelect(id.canbus21_mode5, cmd == 0x04 ? 1 : 0);
+        //updateSelect(id.canbus21_mode5, cmd == 0x04 ? 1 : 0);
         updateSelect(id.air_title_ce_max, cmd == 0x04 ? 1 : 0);
+        if (cmd == 0x03 || cmd == 0x04) {
+            acSpeedUp.setImageResource(R.mipmap.slim_speed_up_on);
+        } else {
+            acSpeedUp.setImageResource(R.mipmap.slim_speed_up_off);
+        }
+
+        if (cmd == 0x00 || cmd == 0x01) {
+            acSpeedMiddle.setImageResource(R.mipmap.slim_speed_middle_on);
+        } else {
+            acSpeedMiddle.setImageResource(R.mipmap.slim_speed_middle_off);
+        }
+
+        if (cmd == 0x02 || cmd == 0x01 || cmd == 0x03) {
+            acSpeedDown.setImageResource(R.mipmap.slim_speed_down_on);
+        } else {
+            acSpeedDown.setImageResource(R.mipmap.slim_speed_down_off);
+        }
     }
 
     public void onClick(View v) {
@@ -372,10 +354,10 @@ public class SlimKeyAirControlFragment extends MyFragment {
             }
         } else if (v.getId() == id.air_title_ce_rear) {//后窗
             if (v.isSelected()) {
-                updateSelect(id.air_title_ce_rear, 0);
+//                updateSelect(id.air_title_ce_rear, 0);
                 sendCanboxSlim((byte) 0x80, (byte) 0x04);
             } else {
-                updateSelect(id.air_title_ce_rear, 1);
+//                updateSelect(id.air_title_ce_rear, 1);
                 sendCanboxSlim((byte) 0x80, (byte) 0x05);
             }
         } else if (v.getId() == id.air_title_ce_inner_loop) {
@@ -383,11 +365,14 @@ public class SlimKeyAirControlFragment extends MyFragment {
             int level = vv.getDrawable().getLevel();
             if (level == 0) {
                 sendCanboxSlim((byte) 0x80, (byte) 0x03);
-                vv.getDrawable().setLevel(1);
+//                vv.getDrawable().setLevel(1);
             } else {
                 sendCanboxSlim((byte) 0x80, (byte) 0x02);
-                vv.getDrawable().setLevel(0);
+//                vv.getDrawable().setLevel(0);
             }
+        } else if (v.getId() == id.close_ac) {
+//            getActivity().finish();
+            getActivity().onBackPressed();  // 发送返回事件
         }
     }
 
@@ -397,7 +382,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
         MMLog.d(TAG, "airWindControl: windValue = " + windValue);
         if (windValue > 0 && windValue <= 7) {
             sendCanboxSlim((byte) 0x82, windValue);
-            setSpeed(windValue);
+//            setSpeed(windValue);
 
         } else if (windValue < 1){
             airWindControl((byte) 1);
@@ -410,10 +395,10 @@ public class SlimKeyAirControlFragment extends MyFragment {
     private void switchStatus(View v, byte id) {
         if (v.isSelected()) {
             sendCanboxSlim(id, (byte) 0x00);
-            v.setSelected(false);
+//            v.setSelected(false);
         } else {
             sendCanboxSlim(id, (byte) 0x01);
-            v.setSelected(true);
+//            v.setSelected(true);
         }
     }
 
@@ -421,10 +406,27 @@ public class SlimKeyAirControlFragment extends MyFragment {
     private void initSlimKeyACData() {
         String acData = MachineConfig.getProperty("AC_UPDATE_DATA");
         Log.d(TAG, "initSlimKeyACData: acData = " + acData);
+        acSpeedUp = mMainView.findViewById(id.ac_speed_up);
+        acSpeedMiddle = mMainView.findViewById(id.ac_speed_middle);
+        acSpeedDown = mMainView.findViewById(id.ac_speed_down);
         if (!TextUtils.isEmpty(acData)) {
             byte[] slimKeyACData = HexStr2Bytes(acData.replace(" ", ""));
             updateACAllView(slimKeyACData);
         }
+        acTempLevelSelect = mMainView.findViewById(id.ac_temp_level);
+        acTempLevelSelect.setListener(new ACSpeedLevelSelect.OnACLevelClickListener() {
+            @Override
+            public void onACLevelClickListener(int level) {
+                setSlimTemp((byte) level);
+            }
+        });
+        acSpeedLevelSelect = mMainView.findViewById(id.ac_speed_level);
+        acSpeedLevelSelect.setListener(new ACSpeedLevelSelect.OnACLevelClickListener() {
+            @Override
+            public void onACLevelClickListener(int level) {
+                airWindControl((byte) level);
+            }
+        });
     }
 
     private void updateACAllView(byte[] slimKeyACData) {

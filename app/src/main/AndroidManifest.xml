@@ -40,6 +40,21 @@
 
     <application android:label="@string/app_name">
         <activity
+            android:name="com.canboxsetting.CanAirControlActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:icon="@drawable/app_ac"
+            android:label="@string/app_name_ac"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.canboxsetting.FloatActivity"
             android:exported="false" />
         <activity
@@ -193,21 +208,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.canboxsetting.CanAirControlActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:icon="@drawable/app_ac"
-            android:label="@string/app_name_ac"
-            android:launchMode="singleInstance"
-            android:screenOrientation="landscape"
-            android:theme="@style/TranslucentTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="com.canboxsetting.ac.HondaAirControl"
             android:configChanges="orientation|keyboardHidden"

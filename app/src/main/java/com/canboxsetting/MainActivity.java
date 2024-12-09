@@ -53,6 +53,7 @@ import com.canboxsetting.set.PSASettingsBagooFragment;
 import com.canboxsetting.set.PSASettingsRaiseFragment;
 import com.canboxsetting.set.PSASettingsSimpleFragment;
 import com.canboxsetting.set.RAMFiatSettingSimpleFragment;
+import com.canboxsetting.set.SlimKeyControlSettingFragment;
 import com.canboxsetting.set.SlimSettingsFragment;
 import com.canboxsetting.set.SmartHaoZhengSettingsFragment;
 import com.canboxsetting.set.SubaruSimpleSettingFragment;
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 mSetting = new GMSettingsSimpleFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_SLIMKEY2:
-                mSetting = new SlimSettingsFragment();
+                mSetting = new SlimKeyControlSettingFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_FORD_SIMPLE:
             case MachineConfig.VALUE_CANBOX_FORD_RAISE:

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -69,7 +70,7 @@ public class CanAirControlActivity extends AppCompatActivity {
     };
     private FragmentManager mFragmentManager;
     private MyFragment mSetting;
-    private int mFinishDelayTime = 6000;
+    private int mFinishDelayTime = 600000;
     MsgInterface mMsgInterface = new MsgInterface() {
         @Override
         public void callBack(int msg) {
@@ -84,6 +85,7 @@ public class CanAirControlActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        Log.d(TAG, "onCreate: start testTime = " + System.currentTimeMillis());
         GlobalDef.init(this);
         setContentView(R.layout.main);
         mFragmentManager = getSupportFragmentManager();
@@ -208,6 +210,7 @@ public class CanAirControlActivity extends AppCompatActivity {
 
         mSetting.setCallback(mMsgInterface);
         replaceFragment(R.id.main, mSetting, false);
+        Log.d(TAG, "onCreate: end testTime = " + System.currentTimeMillis());
     }
 
     public void onClick(View v) {
