@@ -1,4 +1,4 @@
-package com.canboxsetting.set;
+package com.canboxsetting.set.slim;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -22,8 +22,6 @@ import com.canboxsetting.R;
 import com.common.utils.BroadcastUtil;
 import com.common.utils.MyCmd;
 import com.common.utils.SettingProperties;
-import com.common.utils.SystemProperties;
-import com.common.utils.Util;
 import com.zhuchao.android.fbase.ByteUtils;
 import com.zhuchao.android.fbase.MMLog;
 
@@ -297,10 +295,10 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
     private void updateView(byte[] buf) {
         if (buf != null && buf.length == 6 && buf[0] == 0x00 && buf[1] == 0x00 && buf[2] == 0x02) {
             switch (buf[3]) {
-                case 0x10:
+                case 0x10://车道偏离警告
                     lane_departure_warning.setChecked(buf[4] == 0x01 ? true : false);
                     break;
-                case 0x11:
+                case 0x11://Avm退出速度
                     avm_quitting_speed.setValue(String.valueOf(buf[4]));
                     avm_quitting_speed.setSummary(avm_quitting_speed.getEntry());
                     break;

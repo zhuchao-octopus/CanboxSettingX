@@ -39,6 +39,23 @@
         android:smallScreens="false" />
 
     <application android:label="@string/app_name">
+
+        <activity
+            android:name="com.canboxsetting.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:icon="@drawable/icon"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/TranslucentThemeX"
+            tools:ignore="DiscouragedApi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.canboxsetting.CanAirControlActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -98,22 +115,6 @@
             android:launchMode="singleInstance"
             android:screenOrientation="landscape"
             android:theme="@style/TranslucentTheme"
-            tools:ignore="DiscouragedApi">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.canboxsetting.MainActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:icon="@drawable/icon"
-            android:label="@string/app_name"
-            android:launchMode="singleInstance"
-            android:screenOrientation="landscape"
-            android:theme="@style/TranslucentThemeX"
             tools:ignore="DiscouragedApi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

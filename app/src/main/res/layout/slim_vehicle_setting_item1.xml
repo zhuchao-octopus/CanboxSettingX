@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp">
+
+    <ImageView
+        android:id="@+id/show_setting_icon"
+        android:layout_marginLeft="50dp"
+        android:src="@mipmap/slim_vehicle_time_icon"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/show_setting_title"
+        android:textColor="@color/slim_vehicle_setting_title_color"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/show_setting_icon"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        android:text="@string/wireless_charging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Switch
+        android:id="@+id/slim_select_switch"
+        android:track="@drawable/slim_setting_track"
+        android:thumb="@drawable/slim_setting_thumb"
+        android:checked="true"
+        android:layout_marginRight="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/show_vehicle_tv"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="Light+horn"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/slim_select_bt"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/slim_select_bt"
+        android:layout_marginRight="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/slim_vehicle_extend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/show_vehicle_tv2"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="English"
+        android:gravity="center"
+        android:background="@mipmap/slim_vehicle_setting_time_frame_on"
+        android:layout_marginRight="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:src="@mipmap/slim_vehicle_setting_line"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

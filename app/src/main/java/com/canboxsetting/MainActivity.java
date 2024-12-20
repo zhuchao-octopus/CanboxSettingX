@@ -18,6 +18,7 @@ package com.canboxsetting;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -53,8 +54,7 @@ import com.canboxsetting.set.PSASettingsBagooFragment;
 import com.canboxsetting.set.PSASettingsRaiseFragment;
 import com.canboxsetting.set.PSASettingsSimpleFragment;
 import com.canboxsetting.set.RAMFiatSettingSimpleFragment;
-import com.canboxsetting.set.SlimKeyControlSettingFragment;
-import com.canboxsetting.set.SlimSettingsFragment;
+import com.canboxsetting.set.slim.SlimSettingFragment;
 import com.canboxsetting.set.SmartHaoZhengSettingsFragment;
 import com.canboxsetting.set.SubaruSimpleSettingFragment;
 import com.canboxsetting.set.TouaregHiworldSettingFragment;
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 mSetting = new GMSettingsSimpleFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_SLIMKEY2:
-                mSetting = new SlimKeyControlSettingFragment();
+                mSetting = new SlimSettingFragment();
                 break;
             case MachineConfig.VALUE_CANBOX_FORD_SIMPLE:
             case MachineConfig.VALUE_CANBOX_FORD_RAISE:
@@ -326,6 +326,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         // finish();
+    }
+
+    public void onClick(View v) {
+        if (mSetting instanceof SlimSettingFragment) {
+            SlimSettingFragment fragment = (SlimSettingFragment) mSetting;
+            fragment.onClick(v);
+        }
     }
 
     @Override

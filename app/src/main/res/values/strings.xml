@@ -1170,6 +1170,7 @@
     <string name="steer_heat">Steering wheel heating</string>
 
     <string name="background_lighting">Background Lighting</string>
+    <string name="back_light">Background Lighting</string>
     <string name="background_lighting1">Ambient lighting tones</string>
     <string name="background_lighting2">All area lighting</string>
     <string name="background_lighting3">Roof space lighting</string>
@@ -3738,7 +3739,8 @@
     <string name="lane_departrue_prevention">lane departrue prevention</string>
     <string name="lane_departure_advance">lane departure advance</string>
     <string name="lane_departure_sensitivity">Lane Departure Sensitivity</string>
-    <string name="lane_departure_warning">lane departure warning</string>
+    <string name="lane_departure_warning">Lane Departure Warning</string>
+    <string name="speed_for_quitting_avm">Speed For Quitting AVM</string>
     <string name="lane_departure_warning_sound_effects">Lane departure warning-Sound effects</string>
     <string name="lane_departure_warning_system_intervention">lane departure warning system intervention</string>
     <string name="lane_departure_warning_system_lane_departure_system">lane departure warning system lane departure system</string>
@@ -3808,6 +3810,7 @@
     <string name="levelzero">levelzero</string>
     <string name="lift_100_km">Lift/100 km</string>
     <string name="light">Light</string>
+    <string name="light_horn">Light+horn</string>
     <string name="light_and_horn">light and horn</string>
     <string name="light_assist">Light assistance</string>
     <string name="light_bg_fog">Rear fog lamp</string>
@@ -6370,6 +6373,7 @@ information?"</string>
     <string name="power_down_auto_unlock">Power Down Auto Unlock</string>
     <string name="driving_auto_lock">Driving Auto Lock</string>
     <string name="approaching_lock">Approaching Lock</string>
+    <string name="approaching_unlock">Approaching Unlock/Leave Lock</string>
     <string name="backlight_level">Backlight Level</string>
     <string name="over_speed_alarm">Over Speed Alarm</string>
     <string name="fatigue_driving">Fatigue Driving</string>
@@ -6418,5 +6422,30 @@ information?"</string>
     <string name="turn_right">TurnRight </string>
     <string name="turn_left">TurnLeft </string>
     <string name="air_condition_simple_508">2012 Peugeot 508 high match</string>
+
+
+    <string name="around_view_monitor">Around View Monitor</string>
+    <string name="smart_car_door_lock">Smart Car Door Lock</string>
+    <string name="auto_folding_of_outer_reaview_mirror">Auto Folding of Outer Reaview Mirror</string>
+    <string name="aemergency_brake_warning_light">AEmergency Brake Warning Light</string>
+    <string name="aySecurity_tips">Security Tips</string>
+    <string name="meter_setting">Meter Setting</string>
+    <string name="clock_setting">Clock Setting</string>
+    <string name="car_language">Car Language</string>
+    <string name="turned_off">Turned off</string>
+    <string name="manial_adjustment">Manial Adjustment</string>
+
+    <string name="month_1">Jan</string>
+    <string name="month_2">Feb</string>
+    <string name="month_3">Mar</string>
+    <string name="month_4">Apr</string>
+    <string name="month_5">May</string>
+    <string name="month_6">Jun</string>
+    <string name="month_7">jul</string>
+    <string name="month_8">Aug</string>
+    <string name="month_9">Sep</string>
+    <string name="month_10">Oct</string>
+    <string name="month_11">Nov</string>
+    <string name="month_12">Dec</string>
 
 </resources>

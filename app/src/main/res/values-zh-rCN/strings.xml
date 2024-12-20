@@ -1125,7 +1125,7 @@
     <string name="car_key_activate">汽车钥匙已激活</string>
     <string name="steer_heat">方向盘加热</string>
 
-
+    <string name="back_light">背光亮度</string>
     <string name="background_lighting">环境照明设置</string>
     <string name="background_lighting1">环境照明色调</string>
     <string name="background_lighting2">所有区域照明</string>
@@ -3311,6 +3311,7 @@
     <string name="lane_departure_advance">车道偏离预警</string>
     <string name="lane_departure_sensitivity">车道偏离灵敏度</string>
     <string name="lane_departure_warning">车道偏离警告</string>
+    <string name="speed_for_quitting_avm">退出AVM的速度</string>
     <string name="lane_departure_warning_sound_effects">车道偏离预警-音效</string>
     <string name="lane_departure_warning_system_intervention">车道偏离警告系统干预</string>
     <string name="lane_departure_warning_system_lane_departure_system">车道偏离系统</string>
@@ -5647,7 +5648,7 @@
     <string name="skyworth5">放电允许</string>
     <string name="luggage_lock">行李箱常锁</string>
 
-
+    <string name="light_horn">灯光+喇叭</string>
     <string name="info_key">原车INFO按键</string>
 
     <string name="main_lane_assist">主动车道保持辅助系统</string>
@@ -5656,6 +5657,7 @@
     <string name="power_down_auto_unlock">关机自动解锁</string>
     <string name="driving_auto_lock">自动驾驶锁</string>
     <string name="approaching_lock">接近锁</string>
+    <string name="approaching_unlock">接近解锁/离开锁定</string>
     <string name="backlight_level">背光强度</string>
     <string name="over_speed_alarm">超速报警</string>
     <string name="fatigue_driving">疲劳驾驶</string>
@@ -5705,4 +5707,28 @@
     <string name="go_straight">直行</string>
     <string name="turn_right">右转 </string>
     <string name="turn_left">左转 </string>
+
+    <string name="around_view_monitor">AVM</string>
+    <string name="smart_car_door_lock">智能汽车门锁</string>
+    <string name="auto_folding_of_outer_reaview_mirror">自动折叠外视镜</string>
+    <string name="aemergency_brake_warning_light">紧急制动警告灯</string>
+    <string name="aySecurity_tips">安全提示</string>
+    <string name="meter_setting">仪表设置</string>
+    <string name="clock_setting">时钟设置</string>
+    <string name="car_language">汽车语言</string>
+    <string name="turned_off">关闭</string>
+    <string name="manial_adjustment">手动调整</string>
+
+    <string name="month_1">1</string>
+    <string name="month_2">2</string>
+    <string name="month_3">3</string>
+    <string name="month_4">4</string>
+    <string name="month_5">5</string>
+    <string name="month_6">6</string>
+    <string name="month_7">7</string>
+    <string name="month_8">8</string>
+    <string name="month_9">9</string>
+    <string name="month_10">10</string>
+    <string name="month_11">11</string>
+    <string name="month_12">12</string>
 </resources>
