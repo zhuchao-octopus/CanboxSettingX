@@ -110,6 +110,7 @@ public class SlimAVM360SettingFragment extends MyFragment implements View.OnClic
                 SlimCanUtils.getInstance().sendCanboxInfo(getContext(), (byte) 0x91, (byte) (position +1));
             }
         });
+        dialog.setTitle(getString(R.string.speed_for_quitting_avm));
     }
 
     @Override

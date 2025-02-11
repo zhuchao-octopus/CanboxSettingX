@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ import com.zhuchao.android.fbase.MMLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class SlimVehicleSetting extends MyFragment {
@@ -114,6 +117,7 @@ public class SlimVehicleSetting extends MyFragment {
         sendCanMessage((byte) 0x1B,400);
         sendCanMessage((byte) 0x1F,600);
         sendCanMessage((byte) 0x20,800);
+        updateLanguage();
     }
 
     private void sendCanMessage(byte a,int time) {
@@ -162,6 +166,17 @@ public class SlimVehicleSetting extends MyFragment {
         lightBean.setSelect(isOpen);
         settingItemBeanMap.put(getString(R.string.aemergency_brake_warning_light),lightBean);
         settingAdapter.setSettingItemBeanList(settingItemBeanMap);
+    }
+
+    private void updateLanguage() {
+        Locale locale = Locale.getDefault();
+        String currLanguage = locale.getDisplayLanguage();
+        if (!TextUtils.isEmpty(currLanguage)) {
+            SlimVehicleSettingItemBean lightBean = settingItemBeanMap.get(getString(R.string.car_language));
+            lightBean.setSettingValue(currLanguage);
+            settingItemBeanMap.put(getString(R.string.car_language),lightBean);
+            settingAdapter.setSettingItemBeanList(settingItemBeanMap);
+        }
     }
 
     public void updateView(byte[] buf) {
@@ -237,7 +252,8 @@ public class SlimVehicleSetting extends MyFragment {
                     }
                 });
             }
-            updateSecurityTips(settingAllData[11]);
+            lightSelectDialog.setDialogTitle(getString(R.string.security_tips));
+//            updateSecurityTips(settingAllData[11]);
             lightSelectDialog.show();
         } else if (getString(R.string.wireless_charging).equals(bean.getTitleName())) {
             if (settingItemBeanMap.get(getString(R.string.wireless_charging)).isSelect()) sendCanboxInfo((byte) 0x9A, (byte) 0);
@@ -256,7 +272,8 @@ public class SlimVehicleSetting extends MyFragment {
             startClock.putExtra(SlimSettingFragment.DATA_OPEN_PAGE,SlimSettingFragment.PAGE_CLOCK);
             mContext.sendBroadcast(startClock);
         } else if (getString(R.string.car_language).equals(bean.getTitleName())) {
-
+            Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(intent);
         }
     };
 

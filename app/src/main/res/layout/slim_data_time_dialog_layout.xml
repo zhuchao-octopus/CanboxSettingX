@@ -48,6 +48,7 @@
                 android:track="@drawable/slim_setting_track"
                 android:thumb="@drawable/slim_setting_thumb"
                 android:checked="true"
+                android:visibility="gone"
                 android:layout_marginRight="30dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"

@@ -22,6 +22,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
 import com.canboxsetting.R;
+import com.zhuchao.android.fbase.MMLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -933,11 +934,12 @@ public class WheelView extends View {
    * 设置默认选项
    */
   public void setDefault(int index) {
-    defaultIndex = index;
+    MMLog.d(TAG, "setDefault: index = " + index);
     if (itemList.isEmpty()) {
       return;
     }
-    if (index > itemList.size() - 1) return;
+    if (index < 0 || index > itemList.size() - 1) return;
+    defaultIndex = index;
     moveDistance = 0;
     for (ItemObject item : itemList) {
       item.move = 0;

@@ -725,6 +725,9 @@
     <string name="adaptiv">"Impostazione adattiva della guida di corsia"</string>
     <string name="traffice">"Opzione di riconoscimento"</string>
     <string name="system">"Opzione di sistema"</string>
+    <string name="system_text">"Sistema"</string>
+    <string name="connected">Connessione</string>
+    <string name="vehicle_text">Veicolo</string>
     <string name="protection">"opzione di protezione"</string>
     <string name="lastselect">"Ultima distanza selezionata"</string>
     <string name="distance">"Distanza del veicolo"</string>
@@ -1231,6 +1234,30 @@
     <string name="left_drive">"Guidare a sinistra"</string>
     <string name="intelligent_driving">"Guida intelligente"</string>
     <string name="remote_start_system">"Sistema di avvio remoto"</string>
-
+    <string name="around_view_monitor">"Vista panoramica AVM"</string>
+    <string name="smart_car_door_lock">"Chiusure centralizzate"</string>
+    <string name="auto_folding_of_outer_reaview_mirror">"Chiusura automatica degli specchietti"</string>
+    <string name="aemergency_brake_warning_light">"Lampeggio su frenata di emergenza"</string>
+    <string name="aySecurity_tips">"Avvisi di sicurezza"</string>
+    <string name="security_tips">"Avvisi di sicurezza"</string>
+    <string name="wireless_charging">"Ricarica wireless"</string>
+    <string name="mobile_forgotten_tips">"Avviso per non dimenticare il cellulare"</string>
+    <string name="meter_setting">"Impostazioni del cruscotto"</string>
+    <string name="clock_setting">"Impostazione dell'Orologio"</string>
+    <string name="car_language">"Lingua"</string>
+    <string name="lane_departure_warning">"Assistenza mantenimento di corsia"</string>
+    <string name="speed_for_quitting_avm">"Velocità per uscire da visuale AVM"</string>
+    <string name="power_down_auto_unlock">"Apertura su mancanza alimentazione"</string>
+    <string name="driving_auto_lock">"Chiusura automatica in movimento"</string>
+    <string name="approaching_lock">Approaching Lock</string>
+    <string name="approaching_unlock">"Apertura su avvicinamento/Chiusura su allontanamento"</string>
+    <string name="light">"Luci"</string>
+    <string name="light_horn">"Luci + Clacson"</string>
+    <string name="back_light">"Luminosità"</string>
+    <string name="over_speed_alarm">"Allarme eccesso di velocità"</string>
+    <string name="fatigue_driving">Avviso guida prolungata</string>
+    <string name="turned_off">Disattivato</string>
+    <string name="time12">12 ore</string>
+    <string name="time24">24 ore</string>
 
 </resources>

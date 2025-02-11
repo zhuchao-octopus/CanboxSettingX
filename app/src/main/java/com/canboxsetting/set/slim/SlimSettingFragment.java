@@ -1,6 +1,7 @@
 package com.canboxsetting.set.slim;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -39,15 +43,17 @@ public class SlimSettingFragment extends MyFragment {
     private View mMainView;
     private FragmentManager mFragmentManager;
     private SlimVehicleSetting slimVehicleSetting;
+    private SlimConnectSetting slimConnectSetting;
     private Fragment currFragment;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        );
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         mFragmentManager = getActivity().getSupportFragmentManager();
         slimVehicleSetting = new SlimVehicleSetting();
+        slimConnectSetting = new SlimConnectSetting();
     }
 
     @NonNull
@@ -64,6 +70,11 @@ public class SlimSettingFragment extends MyFragment {
     @Override
     public void onResume() {
         super.onResume();
+//        getActivity().getWindow().getDecorView().setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//        );
+//        getActivity().requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         registerListener();
     }
 
@@ -76,9 +87,10 @@ public class SlimSettingFragment extends MyFragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.slim_setting_vehicle:
-                replaceFragment(R.id.show_slim_setting,slimVehicleSetting,true);
+                replaceFragment(R.id.show_slim_setting,slimVehicleSetting,false);
                 break;
             case R.id.slim_setting_connection:
+                replaceFragment(R.id.show_slim_setting,slimConnectSetting,false);
                 break;
             case R.id.slim_setting_display:
                 break;
@@ -97,7 +109,9 @@ public class SlimSettingFragment extends MyFragment {
     }
 
     public void replaceFragment(int layoutId, Fragment fragment, boolean isAddStack) {
-        if (fragment != null) {
+        FragmentActivity fragmentActivity = getActivity();
+        if (fragment != null && fragmentActivity != null) {
+            mFragmentManager = fragmentActivity.getSupportFragmentManager();
             currFragment = fragment;
             FragmentTransaction transaction = mFragmentManager.beginTransaction();
             transaction.replace(layoutId, fragment);
@@ -210,9 +224,12 @@ public class SlimSettingFragment extends MyFragment {
                 case 0x1B://手机遗忘提示
                 case 0x1F://自动折叠后视镜
                 case 0x20://紧急制动警告灯
-                    if (currFragment != null && currFragment instanceof SlimVehicleSetting) {
-                        SlimVehicleSetting slimVehicleSetting1 = (SlimVehicleSetting) currFragment;
-                        slimVehicleSetting1.updateView(buf);
+//                    if (currFragment != null && currFragment instanceof SlimVehicleSetting) {
+//                        SlimVehicleSetting slimVehicleSetting1 = (SlimVehicleSetting) currFragment;
+//                        slimVehicleSetting1.updateView(buf);
+//                    }
+                    if (slimVehicleSetting != null) {
+                        slimVehicleSetting.updateView(buf);
                     }
                     break;
             }

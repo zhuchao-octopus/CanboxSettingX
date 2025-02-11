@@ -81,6 +81,7 @@ public class SlimMeterSettingFragment extends MyFragment implements View.OnClick
                 sendCanboxInfo((byte) 0x97, (byte) position);
             }
         });
+        speedDialog.setDialogTitle(getString(R.string.over_speed_alarm));
         timeDialog = new SlimStringSelectDialog(getActivity(), timeList, 0, new SlimStringSelectDialog.OnAVMDialogStateListener() {
             @Override
             public void onAVMDialogStateListener(boolean isOpen, int position, String value) {
@@ -88,6 +89,7 @@ public class SlimMeterSettingFragment extends MyFragment implements View.OnClick
                 sendCanboxInfo((byte) 0x98, (byte) position);
             }
         });
+        timeDialog.setDialogTitle(getString(R.string.fatigue_driving));
         currLightView = view.findViewById(R.id.curr_value);
         lightSeekBar = view.findViewById(R.id.back_light_bar);
         lightSeekBar.setMax(9);

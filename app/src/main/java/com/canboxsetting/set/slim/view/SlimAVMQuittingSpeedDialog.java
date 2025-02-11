@@ -2,11 +2,13 @@ package com.canboxsetting.set.slim.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +25,7 @@ public class SlimAVMQuittingSpeedDialog extends Dialog implements View.OnClickLi
     private WheelView selectSpeed;
     private List<String> selectSpeedData;
     private OnAVMDialogStateListener listener;
+    private TextView dialogTitle;
     private int currSelect = 0;
     public SlimAVMQuittingSpeedDialog(@NonNull Context context,OnAVMDialogStateListener listener) {
         this(context,R.style.dialog,listener);
@@ -80,6 +83,15 @@ public class SlimAVMQuittingSpeedDialog extends Dialog implements View.OnClickLi
             case R.id.dialog_cancel:
                 dismiss();
                 break;
+        }
+    }
+
+    public void setTitle(String title) {
+        if (dialogTitle == null) {
+            dialogTitle = findViewById(R.id.avm_dialog_title);
+        }
+        if (!TextUtils.isEmpty(title)) {
+            dialogTitle.setText(title);
         }
     }
 

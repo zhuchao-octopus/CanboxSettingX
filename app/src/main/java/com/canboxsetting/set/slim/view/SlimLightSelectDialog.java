@@ -2,6 +2,7 @@ package com.canboxsetting.set.slim.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -10,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -22,6 +24,7 @@ public class SlimLightSelectDialog extends Dialog implements View.OnClickListene
     private RelativeLayout light, lightHorn;
     private OnLightSelectListener listener;
     private int currState;
+    private TextView dialogTitle;
     public SlimLightSelectDialog(@NonNull Context context, int state, OnLightSelectListener listener) {
         this(context,R.style.dialog,listener,state);
         this.listener = listener;
@@ -88,6 +91,15 @@ public class SlimLightSelectDialog extends Dialog implements View.OnClickListene
                 light.setSelected(true);
                 lightHorn.setSelected(false);
                 break;
+        }
+    }
+
+    public void setDialogTitle(String title) {
+        if (dialogTitle == null) {
+            dialogTitle = findViewById(R.id.avm_dialog_title);
+        }
+        if (!TextUtils.isEmpty(title)) {
+            dialogTitle.setText(title);
         }
     }
 

@@ -554,6 +554,7 @@
     <string name="conv_consumers">Conv.consumers</string>
     <string name="instant">Instantaneous fuel consumption</string>
     <string name="vehicle">Vehicle NO</string>
+    <string name="vehicle_text">Vehicle</string>
     <string name="vi_days">Volkswagen inspection days</string>
     <string name="vi_distance">Volkswagen inspection distance</string>
     <string name="oil_days">Oil change service days</string>
@@ -814,6 +815,7 @@
     <string name="adaptiv">Adaptive lane guidance setting</string>
     <string name="traffice">Recognition option</string>
     <string name="system">System option</string>
+    <string name="system_text">System</string>
     <string name="protection">protection option</string>
     <string name="lastselect">Last distance selected</string>
     <string name="distance">Vehicle distance</string>
@@ -6427,13 +6429,15 @@ information?"</string>
     <string name="around_view_monitor">Around View Monitor</string>
     <string name="smart_car_door_lock">Smart Car Door Lock</string>
     <string name="auto_folding_of_outer_reaview_mirror">Auto Folding of Outer Reaview Mirror</string>
-    <string name="aemergency_brake_warning_light">AEmergency Brake Warning Light</string>
+    <string name="aemergency_brake_warning_light">Emergency Brake Warning Light</string>
     <string name="aySecurity_tips">Security Tips</string>
     <string name="meter_setting">Meter Setting</string>
     <string name="clock_setting">Clock Setting</string>
     <string name="car_language">Car Language</string>
     <string name="turned_off">Turned off</string>
     <string name="manial_adjustment">Manial Adjustment</string>
+    <string name="wifi">WiFi</string>
+    <string name="bluetooth">BlueTooth</string>
 
     <string name="month_1">Jan</string>
     <string name="month_2">Feb</string>

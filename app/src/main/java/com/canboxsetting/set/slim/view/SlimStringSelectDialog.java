@@ -2,6 +2,7 @@ package com.canboxsetting.set.slim.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -9,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -25,6 +27,7 @@ public class SlimStringSelectDialog extends Dialog implements View.OnClickListen
     private List<String> selectSpeedData;
     private OnAVMDialogStateListener listener;
     private int defPosition;
+    private TextView dialogTitle;
     public SlimStringSelectDialog(@NonNull Context context, List<String> showData, int selectPosition, OnAVMDialogStateListener listener) {
         this(context,R.style.dialog,showData,selectPosition,listener);
         this.listener = listener;
@@ -86,7 +89,14 @@ public class SlimStringSelectDialog extends Dialog implements View.OnClickListen
                 break;
         }
     }
-
+    public void setDialogTitle(String title) {
+        if (dialogTitle == null) {
+            dialogTitle = findViewById(R.id.avm_dialog_title);
+        }
+        if (!TextUtils.isEmpty(title)) {
+            dialogTitle.setText(title);
+        }
+    }
     public void setDefPosition(int position) {
         if (selectSpeed != null) selectSpeed.setDefault(position);
     }

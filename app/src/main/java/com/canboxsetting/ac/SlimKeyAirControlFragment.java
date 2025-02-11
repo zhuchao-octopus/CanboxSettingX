@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,9 +67,12 @@ public class SlimKeyAirControlFragment extends MyFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        getActivity().getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        );
+//        getActivity().getWindow().getDecorView().setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//        );
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
     }
 
     private View mMainView;
@@ -90,7 +94,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
                 0x00, (byte) 0xA4, 0x01, 0x00, 0x02, d0, d1, (byte) (0xA7 + d0 + d1)
         };
         MMLog.d(TAG, "sendCanboxInfo: buf = " + ByteUtils.BuffToHexStr(buf));
-        BroadcastUtil.sendCanboxInfo(getActivity(), buf);
+        BroadcastUtil.sendCanboxInfo(requireActivity(), buf);
     }
 
     private void updateSelect(int id, int s) {
@@ -150,6 +154,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
     @Override
     public void onPause() {
         unregisterListener();
+        sendCanboxSlim((byte) 0x80, (byte) 0x00);
         super.onPause();
     }
 
@@ -164,6 +169,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
     }
 
     private void updateACInfo() {
+        sendCanboxSlim((byte) 0x80, (byte) 0x01);
         Message message0 = mHandler.obtainMessage();
         message0.arg1 = 0;
         mHandler.sendMessageDelayed(message0,1000);
@@ -235,9 +241,12 @@ public class SlimKeyAirControlFragment extends MyFragment {
             } else if (buf[3] == 0x06 && (buf[4] == 0x00 || buf[4] == 0x01)) {
                 MMLog.d(TAG, "updateSlimView: AC MAX = " + buf[4]);
                 updateSelect(id.air_title_ce_ac_max, buf[4]);
-            } else if (buf[3] == 0x00 && buf[4] == 0x02) {
+            }else if (buf[3] == 0x00 && buf[4] == 0x02) {
                 MMLog.d(TAG, "updateSlimView: 打开外循环");
                 setLoop(0);
+            } else if (buf[3] == 0x00 && buf[4] == 0x00) {
+                MMLog.d(TAG, "updateSlimView: 关闭View");
+                getActivity().finish();
             } else if (buf[3] == 0x00 && buf[4] == 0x03) {
                 MMLog.d(TAG, "updateSlimView: 打开内循环");
                 setLoop(1);

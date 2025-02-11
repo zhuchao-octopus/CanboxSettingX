@@ -476,6 +476,7 @@
     <string name="conv_consumers">舒适性用电器</string>
     <string name="instant">瞬时油耗</string>
     <string name="vehicle">汽车编号</string>
+    <string name="vehicle_text">车辆</string>
     <string name="vi_days">车况检查天数</string>
     <string name="vi_distance">车况检查里程</string>
     <string name="oil_days">更换机油保养天数</string>
@@ -738,6 +739,7 @@
     <string name="adaptiv">自适应车道导向</string>
     <string name="traffice">Recognition选项</string>
     <string name="system">System选项</string>
+    <string name="system_text">系统</string>
     <string name="protection">protection选项</string>
     <string name="lastselect">上次选择的车距</string>
     <string name="distance">车距</string>
@@ -5718,6 +5720,8 @@
     <string name="car_language">汽车语言</string>
     <string name="turned_off">关闭</string>
     <string name="manial_adjustment">手动调整</string>
+    <string name="wifi">WiFi</string>
+    <string name="bluetooth">蓝牙</string>
 
     <string name="month_1">1</string>
     <string name="month_2">2</string>
