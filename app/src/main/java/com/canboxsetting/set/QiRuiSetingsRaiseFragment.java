@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -24,24 +25,34 @@ import com.common.utils.NodePreference;
 import com.common.view.MyPreferenceDialog;
 import com.common.view.MyPreferenceSeekBar;
 
+import java.util.Objects;
+
 public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
 
     private static final NodePreference[] NODES = {
 
             new NodePreference("fortification_prompt", 0xc6, 0x40, 0x1, 0, R.array.chery_notification_entries, R.array.three_values),
 
-            new NodePreference("str_daytime_running_lamp", 0xc6, 0x40, 0x5, 0), new NodePreference("brake_alarm", 0xc6, 0x40, 0x2, 0), new NodePreference("zhonghua_xx", 0xc6, 0x40, 0x3, 0),
+            new NodePreference("str_daytime_running_lamp", 0xc6, 0x40, 0x5, 0),
+            new NodePreference("brake_alarm", 0xc6, 0x40, 0x2, 0),
+            new NodePreference("zhonghua_xx", 0xc6, 0x40, 0x3, 0),
 
 
             new NodePreference("headlight_delay1", 0xc6, 0x40, 0x4, 0),
 
             new NodePreference("over_speed", 0xc6, 0x40, 0x9, 0, R.array.over_speed, R.array.thirty_values),
 
-
             new NodePreference("backlighting", 0xc6, 0x40, 0xa, 0, R.array.dashboard_brightness_value, R.array.dashboard_brightness_value),
+            ////new NodePreference("backlighting", 0xc6, 0x40, 0xa, 0, 1, 10),
 
-            new NodePreference("steering_auxiliary_lighting", 0xc6, 0x40, 0xb, 0), new NodePreference("str_auto_unlock", 0xc6, 0x40, 0xc, 0), new NodePreference("remote_open_trunk", 0xc6, 0x40, 0xd, 0), new NodePreference("blind_spot_monitoring", 0xc6, 0x40, 0xf, 0), new NodePreference("lane_offset_warning", 0xc6, 0x40, 0x10, 0), new NodePreference("rear_view", 0xc6, 0x40, 0x11, 0), new NodePreference("gesture_enable", 0xc6, 0x40, 0x12, 0), new NodePreference("gesture_skylight", 0xc6, 0x40, 0x13, 0),
-
+            new NodePreference("steering_auxiliary_lighting", 0xc6, 0x40, 0xb, 0),
+            new NodePreference("str_auto_unlock", 0xc6, 0x40, 0xc, 0),
+            new NodePreference("remote_open_trunk", 0xc6, 0x40, 0xd, 0),
+            new NodePreference("blind_spot_monitoring", 0xc6, 0x40, 0xf, 0),
+            new NodePreference("lane_offset_warning", 0xc6, 0x40, 0x10, 0),
+            new NodePreference("rear_view", 0xc6, 0x40, 0x11, 0),
+            new NodePreference("gesture_enable", 0xc6, 0x40, 0x12, 0),
+            new NodePreference("gesture_skylight", 0xc6, 0x40, 0x13, 0),
 
             new NodePreference("accompany_me_home", 0xc6, 0x40, 0x14, 0, R.array.qirui1, R.array.eleven_values),
 
@@ -58,17 +69,26 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
             new NodePreference("ambient_light_brightness", 0xc6, 0x40, 0x20, 0, R.array.chery_ambient_light_brightness_entries, R.array.eleven_values),
 
 
-            new NodePreference("delayed_closure_of_blower", 0xc6, 0x40, 0x1a, 0), new NodePreference("greeting_lights", 0xc6, 0x40, 0x1c, 0), new NodePreference("intelligent_key_sensor_unlock_unlock_lock", 0xc6, 0x40, 0x1d, 0), new NodePreference("ambient_related_driving_modes", 0xc6, 0x40, 0x1e, 0), new NodePreference("ambient_light_music_rhythm", 0xc6, 0x40, 0x1f, 0), new NodePreference("steering_force_mode_associated_driving_mode", 0xc6, 0x40, 0x22, 0), new NodePreference("display_distance_waring", 0xc6, 0x40, 0x24, 0), new NodePreference("gwm_automatic_emergency_braking_system", 0xc6, 0x40, 0x25, 0),
+            new NodePreference("delayed_closure_of_blower", 0xc6, 0x40, 0x1a, 0),
+            new NodePreference("greeting_lights", 0xc6, 0x40, 0x1c, 0),
+            new NodePreference("intelligent_key_sensor_unlock_unlock_lock", 0xc6, 0x40, 0x1d, 0),
+            new NodePreference("ambient_related_driving_modes", 0xc6, 0x40, 0x1e, 0),
+            new NodePreference("ambient_light_music_rhythm", 0xc6, 0x40, 0x1f, 0),
+            new NodePreference("steering_force_mode_associated_driving_mode", 0xc6, 0x40, 0x22, 0),
+            new NodePreference("display_distance_waring", 0xc6, 0x40, 0x24, 0),
+            new NodePreference("gwm_automatic_emergency_braking_system", 0xc6, 0x40, 0x25, 0),
 
 
             new NodePreference("adaptive_cruise_system", 0xc6, 0x40, 0x27, 0, R.array.adaptive_cruise_system_entries, R.array.eleven_values),
 
-            new NodePreference("adaptive_cruise_system_last_distance_selected", 0xc6, 0x40, 0x28, 0), new NodePreference("smart_key_sensor_tailgate_opens", 0xc6, 0x40, 0x29, 0), new NodePreference("air_purification", 0xc6, 0x40, 0x2a, 0),
+            new NodePreference("adaptive_cruise_system_last_distance_selected", 0xc6, 0x40, 0x28, 0),
+            new NodePreference("smart_key_sensor_tailgate_opens", 0xc6, 0x40, 0x29, 0),
+            new NodePreference("air_purification", 0xc6, 0x40, 0x2a, 0),
 
 
             new NodePreference("language", 0xc6, 0x40, 0x0, 0, R.array.chery_language_status_entries, R.array.two_values),};
     private boolean mPaused = true;
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
@@ -76,6 +96,7 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
             }
         }
     };
+
     private BroadcastReceiver mReceiver;
 
     @Override
@@ -154,8 +175,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
             if (NODES[i].mKey.equals(key)) {
                 if (preference instanceof ListPreference) {
                     int value = Integer.parseInt((String) newValue);
-
-
                     if ("backlighting".equals(key)) {
                         value++;
                     }
@@ -166,7 +185,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
                     // if (NODES[i].mShow == 0) {
                     // value ++;
                     // }
-
                     sendCanboxInfo(NODES[i].mCmd, NODES[i].mMask, value);
                 } else if (preference instanceof PreferenceScreen) {
                     sendCanboxData(NODES[i].mCmd);
@@ -175,7 +193,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
 
                 } else if (preference instanceof MyPreferenceDialog) {
                     sendCanboxInfo(NODES[i].mCmd, NODES[i].mMask, 0xff);
-
                 }
                 break;
             }
@@ -186,7 +203,6 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         try {
             udpatePreferenceValue(preference, newValue);
         } catch (Exception e) {
-
         }
         return false;
     }
@@ -199,8 +215,7 @@ public class QiRuiSetingsRaiseFragment extends PreferenceFragmentCompat implemen
         } else {
             try {
                 udpatePreferenceValue(arg0, null);
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
         }
         return false;

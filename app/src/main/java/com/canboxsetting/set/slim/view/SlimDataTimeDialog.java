@@ -6,25 +6,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 
 import com.canboxsetting.R;
-import com.zhuchao.android.fbase.MMLog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
     private static final String TAG = "SlimAVMQuittingSpeedDia";
-    private ImageButton ok,cancel;
+    private ImageButton ok, cancel;
     private Calendar calendar;
     private WheelView selectYear;
     private WheelView selectMonth;
@@ -37,8 +33,9 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
     private List<String> hourList;
     private List<String> minuteList;
     private OnDataTimeListener listener;
+
     public SlimDataTimeDialog(@NonNull Context context, OnDataTimeListener listener) {
-        this(context,R.style.dialog,listener);
+        this(context, R.style.dialog, listener);
         this.listener = listener;
     }
 
@@ -47,6 +44,7 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
         this.listener = listener;
         init();
     }
+
     private void init() {
         setContentView(R.layout.slim_data_time_dialog_layout);
         Window window = getWindow();
@@ -59,15 +57,15 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
         }
         calendar = Calendar.getInstance();
         yearList = new ArrayList<>();
-        for (int i = 2019;i<= 2078;i++) {
+        for (int i = 2019; i <= 2078; i++) {
             yearList.add(i + "");
         }
         monthList = new ArrayList<>();
-//        for (int i = 1;i<= 12;i++) {
-//            String month = getContext().getString(getContext().getResources().getIdentifier("month_" + i,"id",getContext().getPackageName()));
-//            MMLog.d(TAG, "init: month = " + month);
-//            monthList.add(month);
-//        }
+        //        for (int i = 1;i<= 12;i++) {
+        //            String month = getContext().getString(getContext().getResources().getIdentifier("month_" + i,"id",getContext().getPackageName()));
+        //            MMLog.d(TAG, "init: month = " + month);
+        //            monthList.add(month);
+        //        }
         monthList.add(getContext().getString(R.string.month_1));
         monthList.add(getContext().getString(R.string.month_2));
         monthList.add(getContext().getString(R.string.month_3));
@@ -81,15 +79,15 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
         monthList.add(getContext().getString(R.string.month_11));
         monthList.add(getContext().getString(R.string.month_12));
         dayList = new ArrayList<>();
-        for (int i = 1;i<=31;i++) {
+        for (int i = 1; i <= 31; i++) {
             dayList.add(i + "");
         }
         hourList = new ArrayList<>();
-        for (int i = 0;i < 24;i++) {
+        for (int i = 0; i < 24; i++) {
             hourList.add(i + "");
         }
         minuteList = new ArrayList<>();
-        for (int i =0;i < 60;i++) {
+        for (int i = 0; i < 60; i++) {
             minuteList.add(i + "");
         }
         selectYear = findViewById(R.id.data_yeas);
@@ -126,15 +124,15 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
         if (yearList.size() > calendar.get(Calendar.YEAR) - 2019 && calendar.get(Calendar.YEAR) - 2019 >= 0) selectYear.setDefault(calendar.get(Calendar.YEAR) - 2019);
         int currMonth = calendar.get(Calendar.MONTH);
         selectMonth.setDefault(currMonth);
-//        Log.d(TAG, "updateDate: month = " + currMonth);
-//        Log.d(TAG, "updateDate: countDay = " + countDay);
+        //        Log.d(TAG, "updateDate: month = " + currMonth);
+        //        Log.d(TAG, "updateDate: countDay = " + countDay);
         selectDay.setData(dayList);
-        selectDay.setDefault(calendar.get(Calendar.DAY_OF_MONTH)-1);
-//        Log.d(TAG, "updateDate: day = " + calendar.get(Calendar.DAY_OF_MONTH));
+        selectDay.setDefault(calendar.get(Calendar.DAY_OF_MONTH) - 1);
+        //        Log.d(TAG, "updateDate: day = " + calendar.get(Calendar.DAY_OF_MONTH));
         selectHour.setDefault(calendar.get(Calendar.HOUR_OF_DAY));
-//        Log.d(TAG, "updateDate: hour = " + calendar.get(Calendar.HOUR_OF_DAY));
+        //        Log.d(TAG, "updateDate: hour = " + calendar.get(Calendar.HOUR_OF_DAY));
         selectMinute.setDefault(calendar.get(Calendar.MINUTE));
-//        Log.d(TAG, "updateDate: Minute = " + calendar.get(Calendar.MINUTE));
+        //        Log.d(TAG, "updateDate: Minute = " + calendar.get(Calendar.MINUTE));
     }
 
     @Override
@@ -142,12 +140,12 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.dialog_ok:
                 if (listener != null) {
-                    calendar.set(Calendar.YEAR,selectYear.getSelected() + 2019);
-                    calendar.set(Calendar.MONTH,selectMonth.getSelected());
-                    calendar.set(Calendar.DAY_OF_MONTH,selectDay.getSelected() + 1);
-                    calendar.set(Calendar.HOUR_OF_DAY,selectHour.getSelected());
-                    calendar.set(Calendar.MINUTE,selectMinute.getSelected());
-                    listener.onDataTimeListener(false,calendar);
+                    calendar.set(Calendar.YEAR, selectYear.getSelected() + 2019);
+                    calendar.set(Calendar.MONTH, selectMonth.getSelected());
+                    calendar.set(Calendar.DAY_OF_MONTH, selectDay.getSelected() + 1);
+                    calendar.set(Calendar.HOUR_OF_DAY, selectHour.getSelected());
+                    calendar.set(Calendar.MINUTE, selectMinute.getSelected());
+                    listener.onDataTimeListener(false, calendar);
                 }
                 dismiss();
                 break;
@@ -162,7 +160,7 @@ public class SlimDataTimeDialog extends Dialog implements View.OnClickListener {
         updateDate(calendar);
     }
 
-    public interface OnDataTimeListener{
+    public interface OnDataTimeListener {
         void onDataTimeListener(boolean isOpen, Calendar calendar);
     }
 

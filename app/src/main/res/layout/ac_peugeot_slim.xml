@@ -225,7 +225,7 @@
             android:id="@+id/air_title_ce_max"
             style="@style/AirButtonStyle3"
             android:layout_weight="1"
-            android:src="@drawable/slim_ac_defogging_bt" />
+            android:src="@drawable/slim_ac_defogging_after_bt" />
         <ImageView
             android:src="@mipmap/slim_dividing"
             android:layout_width="wrap_content"
@@ -234,7 +234,7 @@
             android:id="@+id/air_title_ce_rear"
             style="@style/AirButtonStyle3"
             android:layout_weight="1"
-            android:src="@drawable/slim_ac_defogging_after_bt" />
+            android:src="@drawable/slim_ac_defogging_bt" />
 
 
     </LinearLayout>

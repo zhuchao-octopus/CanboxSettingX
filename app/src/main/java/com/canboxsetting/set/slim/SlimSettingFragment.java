@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,9 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -27,6 +31,9 @@ import com.canboxsetting.adapter.bean.SlimVehicleSettingItemBean;
 import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.ByteUtils;
 import com.zhuchao.android.fbase.MMLog;
+import com.zhuchao.android.fbase.TAppUtils;
+
+import java.util.Objects;
 
 public class SlimSettingFragment extends MyFragment {
     private BroadcastReceiver mReceiver;
@@ -95,8 +102,10 @@ public class SlimSettingFragment extends MyFragment {
             case R.id.slim_setting_display:
                 break;
             case R.id.slim_setting_sound:
+                TAppUtils.startApp(getActivity(),"com.eqset");
                 break;
             case R.id.slim_setting_system:
+                showSystemVersionMessage();
                 break;
             case R.id.close_ac:
                 getActivity().finish();
@@ -104,6 +113,29 @@ public class SlimSettingFragment extends MyFragment {
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    private void showSystemVersionMessage()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_system_info, null);
+        builder.setView(dialogView);
+        builder.setTitle("System Version Information");
+        TextView versionTextView = dialogView.findViewById(R.id.version_manufacturer_view);
+        versionTextView.setText(Build.MANUFACTURER);
+        TextView device_view = dialogView.findViewById(R.id.device_view);
+        device_view.setText(Build.MODEL);
+        TextView android_view = dialogView.findViewById(R.id.android_view);
+        android_view.setText(Build.VERSION.RELEASE);
+        TextView sdk_view = dialogView.findViewById(R.id.sdk_view);
+        sdk_view.setText(Build.VERSION.SDK_INT+"");
+        TextView number_view = dialogView.findViewById(R.id.number_view);
+        number_view.setText(Build.VERSION.INCREMENTAL);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss()); // 设置确定按钮并关闭对话框
+
+        // 显示对话框
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
     public void popBackStack() {
         mFragmentManager.popBackStack();
     }

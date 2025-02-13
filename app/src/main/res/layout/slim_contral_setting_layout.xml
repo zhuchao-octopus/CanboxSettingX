@@ -52,21 +52,23 @@
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
             <TextView
                 android:id="@+id/slim_setting_display"
-                android:background="@drawable/slim_setting_bt_bg"
-                android:drawableLeft="@mipmap/slim_setting_display_icon"
-                android:text="@string/display"
-                android:textSize="22sp"
-                android:textColor="@color/white"
-                android:onClick="onClick"
-                android:drawablePadding="20dp"
-                android:paddingLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/slim_setting_bt_bg"
+                android:drawableLeft="@mipmap/slim_setting_display_icon"
+                android:drawablePadding="20dp"
                 android:gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:onClick="onClick"
+                android:paddingLeft="40dp"
+                android:text="@string/display"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/slim_setting_sound"
                 android:background="@drawable/slim_setting_bt_bg"

@@ -34,15 +34,17 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="60sp">
+
             <TextView
                 android:id="@+id/avm_dialog_title"
-                android:textSize="24sp"
-                android:text="OverSpeed Alarm"
-                android:layout_marginLeft="30dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="@string/time_and_date_settings"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
             <Switch
                 android:id="@+id/slim_select_speed"
                 android:track="@drawable/slim_setting_track"

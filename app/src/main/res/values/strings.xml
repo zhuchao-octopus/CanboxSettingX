@@ -5791,7 +5791,7 @@
     <string name="time12">12 hours</string>
     <string name="time24">24 hours</string>
     <string name="time_adjustment_menu_list">Time adjustment menu list</string>
-    <string name="time_and_date_settings">time and date settings</string>
+    <string name="time_and_date_settings">Time and date settings</string>
     <string name="time_elapsed_hour">time_elapsed-hour</string>
     <string name="time_elapsed_minute">time_elapsed-minute</string>
     <string name="time_format">Time format</string>
@@ -6435,7 +6435,7 @@ information?"</string>
     <string name="clock_setting">Clock Setting</string>
     <string name="car_language">Car Language</string>
     <string name="turned_off">Turned off</string>
-    <string name="manial_adjustment">Manial Adjustment</string>
+    <string name="manial_adjustment">Manual Adjustment</string>
     <string name="wifi">WiFi</string>
     <string name="bluetooth">BlueTooth</string>
 

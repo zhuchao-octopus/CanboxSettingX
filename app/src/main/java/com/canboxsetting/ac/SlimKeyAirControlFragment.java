@@ -280,19 +280,18 @@ public class SlimKeyAirControlFragment extends MyFragment {
             if (!TextUtils.isEmpty(acData)) {
                 slimKeyACData = HexStr2Bytes(acData.replace(" ", ""));
                 updateACAllView(slimKeyACData);
-//                updateSelect(id.icon_power, 0x01);
+                //updateSelect(id.icon_power, 0x01);
             }
         } else {
-            slimKeyACData = new byte[]{0x00,0,0,0,0,0,0,0,0};
-//            updateSelect(id.icon_power, 0x00);
+               slimKeyACData = new byte[]{0x00,0,0,0,0,0,0,0,0};
+               //updateSelect(id.icon_power, 0x00);
         }
         updateACAllView(slimKeyACData);
-
     }
 
     private void controlAirDirection(byte cmd) {
         sendCanboxSlim((byte) 0x81, cmd);
-//        updateAirDirection(cmd);
+        //updateAirDirection(cmd);
     }
     private void updateAirDirection(byte cmd) {
         updateSelect(id.canbus21_mode1, cmd == 0x00 ? 1 : 0);

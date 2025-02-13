@@ -101,7 +101,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     private String mCarConfig = null;
     private String mAppShow = null;
     private String mCarSettingsValue = null;
-	
+
     private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         public void handleMessage(@NonNull Message msg) {
             setCanSettings();
@@ -415,12 +415,11 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
     @Override
     public void onClick(View arg0) {
         int id = arg0.getId();
-        if (id == R.id.btn_ok)
-		 {
+        if (id == R.id.btn_ok) {
             mHandler.removeMessages(0);
             mHandler.sendEmptyMessageDelayed(0, 500);
             //setCanSettngs();
-         } else if (id == R.id.btn_cancel) {
+        } else if (id == R.id.btn_cancel) {
             finish();
             ///	case R.id.external_boxes:
             ///	showExternalBoxes();
@@ -556,7 +555,7 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         String manuId = mManufacturerPreference.getValue();
         String mCategory = mXlmParser.getCategorysValue(mCategoryName);
         String mModel = mXlmParser.getModelValue(mCategoryName, mModelName);
-        MMLog.d(TAG, "setCanSettings() manuId=" + manuId + " mCategory=" + mCategory + " mModel=" + mModel + "  mCategoryName = " + mCategoryName + "   mModelName = " +mModelName);
+        MMLog.d(TAG, "setCanSettings() manuId=" + manuId + " mCategory=" + mCategory + " mModel=" + mModel + "  mCategoryName = " + mCategoryName + "   mModelName = " + mModelName);
         if ("45".equals(mCategory)) { //update
             canboxUpdate(manuId);
             return;
@@ -940,7 +939,10 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
         if (mCategoryName != null) {
             String mCategory = mXlmParser.getCategorysValue(mCategoryName);
             if ("6".equals(mCategory)) {
-                String[] entry3 = {getResources().getString(R.string.time_hour_add_1), getResources().getString(R.string.time_hour_minus_1), getResources().getString(R.string.right_camera), getResources().getString(R.string.data_distribution)};
+                String[] entry3 = {getResources().getString(R.string.time_hour_add_1),
+                        getResources().getString(R.string.time_hour_minus_1),
+                        getResources().getString(R.string.right_camera),
+                        getResources().getString(R.string.data_distribution)};
                 String[] value3 = { /*"1", "2", "3",*/ "4", "5", "6", "7"};
                 entry2 = entry3;
                 value2 = value3;
@@ -1068,10 +1070,16 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
 
         if (forceShowAC) {
 
-            entry2 = new String[]{getString(R.string.temp_change), getString(R.string.hide), getString(R.string.hide_ourdoor_temp), getString(R.string.display) + getString(R.string.air_control)};
+            entry2 = new String[]{getString(R.string.temp_change),
+                    getString(R.string.hide),
+                    getString(R.string.hide_ourdoor_temp),
+                    getString(R.string.display) + getString(R.string.air_control)};
         } else {
 
-            entry2 = new String[]{getString(R.string.temp_change), getString(R.string.hide), getString(R.string.hide_ourdoor_temp), getString(R.string.hide) + getString(R.string.air_control)};
+            entry2 = new String[]{getString(R.string.temp_change),
+                    getString(R.string.hide),
+                    getString(R.string.hide_ourdoor_temp),
+                    getString(R.string.hide) + getString(R.string.air_control)};
         }
 
         //
@@ -1105,7 +1113,10 @@ public class CanboxSettings2 extends PreferenceActivity implements Preference.On
 
         boolean add = true;
         if ("通用".equals(mCategoryName) && "睿志诚".equals(mManufacturerName)) {
-            String[] entry2 = {getString(R.string.str_auto), getString(R.string.canbox_key_mode) + "1", getString(R.string.canbox_key_mode) + "2", getString(R.string.canbox_key_mode) + "3"};
+            String[] entry2 = {getString(R.string.str_auto),
+                    getString(R.string.canbox_key_mode) + "1",
+                    getString(R.string.canbox_key_mode) + "2",
+                    getString(R.string.canbox_key_mode) + "3"};
             String[] value2 = {"0", "1", "2", "3"};
 
             mLPCarType2.setEntries(entry2);

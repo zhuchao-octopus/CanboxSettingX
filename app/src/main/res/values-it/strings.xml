@@ -981,7 +981,7 @@
     <string name="blind_spot">"Rilevamento del punto cieco"</string>
     <string name="moving_object">"Rilevamento di oggetti in movimento"</string>
     <string name="electronic_park">"Freno di stazionamento elettronico"</string>
-    <string name="welcome_light">"benvenutoluce"</string>
+    <string name="welcome_light">"Luce di benvenuto"</string>
     <string name="car_in_light">"Illuminazione dell'ambiente"</string>
     <string name="front_light">"Sensibilità del faro"</string>
     <string name="lock_beep">"Viene emesso il tono di blocco auto"</string>
@@ -1259,5 +1259,6 @@
     <string name="turned_off">Disattivato</string>
     <string name="time12">12 ore</string>
     <string name="time24">24 ore</string>
-
+    <string name="clock_format">Formato</string>
+    <string name="manial_adjustment">Regolazione</string>
 </resources>

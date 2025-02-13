@@ -109,7 +109,6 @@ public class NodePreference {
     }
 
     public Preference createPreference(Context c) {
-
         try {
             if ((mType & PREFERENCE_MASK) == SWITCHPREFERENCE) {
                 SwitchPreference sp = new SwitchPreference(c);
