@@ -1,10 +1,8 @@
 package com.canboxsetting.set.slim;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
@@ -13,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -27,13 +24,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.canboxsetting.MyFragment;
 import com.canboxsetting.R;
-import com.canboxsetting.adapter.bean.SlimVehicleSettingItemBean;
 import com.common.utils.MyCmd;
 import com.zhuchao.android.fbase.ByteUtils;
-import com.zhuchao.android.fbase.MMLog;
 import com.zhuchao.android.fbase.TAppUtils;
-
-import java.util.Objects;
 
 public class SlimSettingFragment extends MyFragment {
     private BroadcastReceiver mReceiver;
@@ -52,6 +45,7 @@ public class SlimSettingFragment extends MyFragment {
     private SlimVehicleSetting slimVehicleSetting;
     private SlimConnectSetting slimConnectSetting;
     private Fragment currFragment;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +57,25 @@ public class SlimSettingFragment extends MyFragment {
         slimConnectSetting = new SlimConnectSetting();
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @NonNull
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mMainView = inflater.inflate(R.layout.slim_contral_setting_layout, container, false);
-        replaceFragment(R.id.show_slim_setting,slimVehicleSetting,false);
+        replaceFragment(R.id.show_slim_setting, slimVehicleSetting, false);
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_VEHICLE_OPEN_PAGE);
-        getActivity().registerReceiver(receiver,filter);
+        getActivity().registerReceiver(receiver, filter);
         return mMainView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-//        getActivity().getWindow().getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//        );
-//        getActivity().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //        getActivity().getWindow().getDecorView().setSystemUiVisibility(
+        //                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        //        );
+        //        getActivity().requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         registerListener();
     }
@@ -94,15 +89,15 @@ public class SlimSettingFragment extends MyFragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.slim_setting_vehicle:
-                replaceFragment(R.id.show_slim_setting,slimVehicleSetting,false);
+                replaceFragment(R.id.show_slim_setting, slimVehicleSetting, false);
                 break;
             case R.id.slim_setting_connection:
-                replaceFragment(R.id.show_slim_setting,slimConnectSetting,false);
+                replaceFragment(R.id.show_slim_setting, slimConnectSetting, false);
                 break;
             case R.id.slim_setting_display:
                 break;
             case R.id.slim_setting_sound:
-                TAppUtils.startApp(getActivity(),"com.eqset");
+                TAppUtils.startApp(getActivity(), "com.eqset");
                 break;
             case R.id.slim_setting_system:
                 showSystemVersionMessage();
@@ -114,20 +109,22 @@ public class SlimSettingFragment extends MyFragment {
     }
 
     @SuppressLint("SetTextI18n")
-    private void showSystemVersionMessage()
-    {
+    private void showSystemVersionMessage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_system_info, null);
         builder.setView(dialogView);
-        builder.setTitle("System Version Information");
+        builder.setTitle(R.string.system_version_dialog_title);
         TextView versionTextView = dialogView.findViewById(R.id.version_manufacturer_view);
         versionTextView.setText(Build.MANUFACTURER);
         TextView device_view = dialogView.findViewById(R.id.device_view);
         device_view.setText(Build.MODEL);
+
         TextView android_view = dialogView.findViewById(R.id.android_view);
-        android_view.setText(Build.VERSION.RELEASE);
+        android_view.setText("12");//(Build.VERSION.RELEASE);
+
         TextView sdk_view = dialogView.findViewById(R.id.sdk_view);
-        sdk_view.setText(Build.VERSION.SDK_INT+"");
+        sdk_view.setText("31");//(Build.VERSION.SDK_INT+"");
+
         TextView number_view = dialogView.findViewById(R.id.number_view);
         number_view.setText(Build.VERSION.INCREMENTAL);
         builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss()); // 设置确定按钮并关闭对话框
@@ -136,6 +133,7 @@ public class SlimSettingFragment extends MyFragment {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     public void popBackStack() {
         mFragmentManager.popBackStack();
     }
@@ -163,16 +161,16 @@ public class SlimSettingFragment extends MyFragment {
                     String page = intent.getStringExtra(DATA_OPEN_PAGE);
                     if (page.equals(PAGE_AVM360)) {
                         if (avm360SettingFragment == null) avm360SettingFragment = new SlimAVM360SettingFragment();
-                        replaceFragment(R.id.show_slim_setting,avm360SettingFragment,true);
+                        replaceFragment(R.id.show_slim_setting, avm360SettingFragment, true);
                     } else if (page.equals(PAGE_DOOR)) {
                         if (slimDoorSettingFragment == null) slimDoorSettingFragment = new SlimDoorSettingFragment();
-                        replaceFragment(R.id.show_slim_setting,slimDoorSettingFragment,true);
+                        replaceFragment(R.id.show_slim_setting, slimDoorSettingFragment, true);
                     } else if (page.equals(PAGE_METER)) {
                         if (slimMeterSettingFragment == null) slimMeterSettingFragment = new SlimMeterSettingFragment();
-                        replaceFragment(R.id.show_slim_setting,slimMeterSettingFragment,true);
+                        replaceFragment(R.id.show_slim_setting, slimMeterSettingFragment, true);
                     } else if (page.equals(PAGE_CLOCK)) {
                         if (slimClockSettingFragment == null) slimClockSettingFragment = new SlimClockSettingFragment();
-                        replaceFragment(R.id.show_slim_setting,slimClockSettingFragment,true);
+                        replaceFragment(R.id.show_slim_setting, slimClockSettingFragment, true);
                     }
                     break;
             }
@@ -222,7 +220,7 @@ public class SlimSettingFragment extends MyFragment {
             switch (buf[3]) {
                 case 0x10:
                 case 0x11:
-//                    lane_departure_warning.setChecked(buf[4] == 0x01 ? true : false);
+                    //                    lane_departure_warning.setChecked(buf[4] == 0x01 ? true : false);
                     if (currFragment != null && currFragment instanceof SlimAVM360SettingFragment) {
                         avm360SettingFragment.updateView(buf);
                     }
@@ -256,10 +254,10 @@ public class SlimSettingFragment extends MyFragment {
                 case 0x1B://手机遗忘提示
                 case 0x1F://自动折叠后视镜
                 case 0x20://紧急制动警告灯
-//                    if (currFragment != null && currFragment instanceof SlimVehicleSetting) {
-//                        SlimVehicleSetting slimVehicleSetting1 = (SlimVehicleSetting) currFragment;
-//                        slimVehicleSetting1.updateView(buf);
-//                    }
+                    //                    if (currFragment != null && currFragment instanceof SlimVehicleSetting) {
+                    //                        SlimVehicleSetting slimVehicleSetting1 = (SlimVehicleSetting) currFragment;
+                    //                        slimVehicleSetting1.updateView(buf);
+                    //                    }
                     if (slimVehicleSetting != null) {
                         slimVehicleSetting.updateView(buf);
                     }

@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.canboxsetting.R;
+import com.common.utils.BroadcastUtil;
+import com.common.utils.MyCmd;
 import com.common.utils.UtilSystem;
 
 public class SlimBottomShortcut extends LinearLayout implements View.OnClickListener {
@@ -59,6 +61,7 @@ public class SlimBottomShortcut extends LinearLayout implements View.OnClickList
                 UtilSystem.doRunActivity(getContext(), "com.octopus.android.carapps", "com.octopus.android.carapps.audio.MusicActivity");
                 break;
             case R.id.slim_bottom_360:
+                BroadcastUtil.sendToCarServiceCmd(getContext(), MyCmd.Cmd.KEY_ENTER_REVERSE);
                 break;
             case R.id.slim_bottom_ac:
             case R.id.slim_bottom_wind:

@@ -1261,4 +1261,8 @@
     <string name="time24">24 ore</string>
     <string name="clock_format">Formato</string>
     <string name="manial_adjustment">Regolazione</string>
+
+    <string name="system_version_dialog_title">Informazioni sulla versione del sistema</string>
+
+    <string name="time_and_date_settings">Impostazioni data e ora</string>
 </resources>
