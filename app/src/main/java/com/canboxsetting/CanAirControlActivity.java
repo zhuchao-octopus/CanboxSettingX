@@ -35,7 +35,6 @@ import com.canboxsetting.ac.GMAirODFragment;
 import com.canboxsetting.ac.Golf7SimpleAirControlFragment;
 import com.canboxsetting.ac.HiWorldDF08AirControlFragment;
 import com.canboxsetting.ac.HondaSimpleACFragment;
-import com.canboxsetting.ac.JeepAirControlFragment;
 import com.canboxsetting.ac.JeepAirControlXinbasFragment;
 import com.canboxsetting.ac.RX330HZAirControlFragment;
 import com.canboxsetting.ac.RaiseAirControlFragment;
@@ -162,8 +161,11 @@ public class CanAirControlActivity extends AppCompatActivity {
                 finish();
                 return;
             }
-        } else {
-            if (value != null) {
+        }
+        else
+        {
+            if (value != null)
+            {
                 switch (value) {
                     case MachineConfig.VALUE_CANBOX_VW_MQB_RAISE:
                         mSetting = new VWMQBAirControlFragment();
@@ -203,14 +205,15 @@ public class CanAirControlActivity extends AppCompatActivity {
                         break;
                 }
             }
+
             if (mSetting == null) {
-                mSetting = new JeepAirControlFragment();
+                mSetting = new SlimKeyAirControlFragment();
             }
         }
 
         mSetting.setCallback(mMsgInterface);
         replaceFragment(R.id.main, mSetting, false);
-        Log.d(TAG, "onCreate: end testTime = " + System.currentTimeMillis());
+        ///Log.d(TAG, "onCreate: end testTime = " + System.currentTimeMillis());
     }
 
     public void onClick(View v) {

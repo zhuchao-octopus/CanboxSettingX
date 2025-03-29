@@ -579,11 +579,9 @@ public class AuxInUI extends UIBase implements View.OnClickListener, SurfaceHold
         int brake1 = brake ? 1 : 0;
         if (brake1 != mBrake) {
             brakeCarShowText(brake);
-
             mBrake = brake1;
         }
         // mHandler.sendEmptyMessageDelayed(MSG_CHECK_BRAKE, TIME_CHECK_BRAKE);
-
     }
 
 

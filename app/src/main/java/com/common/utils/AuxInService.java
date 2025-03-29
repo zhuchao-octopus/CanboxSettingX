@@ -1,5 +1,6 @@
 package com.common.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -8,11 +9,10 @@ import com.common.service.ServiceBase;
 
 public class AuxInService extends ServiceBase {
     public static final String TAG = "RadioService";
-
+    @SuppressLint("StaticFieldLeak")
     private static AuxInService mThis;
-    private static Handler[] mHandlerUICallBack = new Handler[2];
+    private static final Handler[] mHandlerUICallBack = new Handler[2];
     private int mReoverSource = -1;
-
     public AuxInService(Context context) {
         super(context);
     }
@@ -31,9 +31,9 @@ public class AuxInService extends ServiceBase {
     }
 
     private static void callBackToUI(int what, int status, Object obj) {
-        for (int i = 0; i < mHandlerUICallBack.length; ++i) {
-            if (mHandlerUICallBack[i] != null) {
-                mHandlerUICallBack[i].sendMessageDelayed(mHandlerUICallBack[i].obtainMessage(what, status, 0, obj), 20);
+        for (Handler handler : mHandlerUICallBack) {
+            if (handler != null) {
+                handler.sendMessageDelayed(handler.obtainMessage(what, status, 0, obj), 20);
             }
         }
     }
@@ -42,11 +42,9 @@ public class AuxInService extends ServiceBase {
     }
 
     public void onCreate() {
-
     }
 
     public void doKeyControl(int code) {
-
     }
 
     public void doCmd(int cmd, Intent intent) {
@@ -79,7 +77,6 @@ public class AuxInService extends ServiceBase {
                 }
                 break;
         }
-
     }
 
     public int getSource() {

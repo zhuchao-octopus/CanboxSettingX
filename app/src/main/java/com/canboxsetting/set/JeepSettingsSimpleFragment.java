@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -23,48 +24,72 @@ import com.common.utils.MyCmd;
 import com.common.utils.Node;
 import com.common.utils.SettingProperties;
 
+import java.util.Objects;
+
 
 public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "HondaSettingsSimpleFragment";
     private static final Node[] NODES = {
 
+            new Node("parksense", 0xC6A0, 0x40A00000, 0x1, 0x0),
+            new Node("f_parksense", 0xC6A1, 0x40A00000, 0x300, 0x0),
+            new Node("b_parksense", 0xC6A2, 0x40A00000, 0xc00, 0x0),
 
-            new Node("parksense", 0xC6A0, 0x40A00000, 0x1, 0x0), new Node("f_parksense", 0xC6A1, 0x40A00000, 0x300, 0x0), new Node("b_parksense", 0xC6A2, 0x40A00000, 0xc00, 0x0),
+            new Node("backview", 0xC6AD, 0x40A00000, 0x8000, 0x0),
+            new Node("parkView", 0xC6A4, 0x40A00000, 0x4, 0x0),
 
-
-            new Node("backview", 0xC6AD, 0x40A00000, 0x8000, 0x0), new Node("parkView", 0xC6A4, 0x40A00000, 0x4, 0x0),
-
-            new Node("wipers_induction", 0xC6Af, 0x40A00000, 0x40000, 0x0), new Node("ramp", 0xC6A6, 0x40A00000, 0x10, 0x0), new Node("image_parkView", 0xC6A5, 0x40A00000, 0x8, 0x0),
-
-
-            new Node("radar_parking", 0xC6f0, 0x40A00000, 0x80000, 0x0), new Node("parking_brake", 0xC6f1, 0x40A00000, 0x100000, 0x0),
-
-
-            new Node("lane_warning", 0xC6A9, 0x40A00000, 0xc00000, 0x0), new Node("deviation_correction", 0xC6Ae, 0x40A00000, 0x30000, 0x0),
+            new Node("wipers_induction", 0xC6Af, 0x40A00000, 0x40000, 0x0),
+            new Node("ramp", 0xC6A6, 0x40A00000, 0x10, 0x0),
+            new Node("image_parkView", 0xC6A5, 0x40A00000, 0x8, 0x0),
 
 
-            new Node("busy_warning", 0xC6Ac, 0x40A00000, 0xc0, 0x0), new Node("for_outo_warning", 0xC6Ab, 0x40A00000, 0x2000, 0x0),
+            new Node("radar_parking", 0xC6f0, 0x40A00000, 0x80000, 0x0),
+            new Node("parking_brake", 0xC6f1, 0x40A00000, 0x100000, 0x0),
 
 
-            new Node("for_warning", 0xC6Aa, 0x40A00000, 0x1000, 0x0), new Node("rear_parkSense", 0xC6A3, 0x40A00000, 0x2, 0x0),
+            new Node("lane_warning", 0xC6A9, 0x40A00000, 0xc00000, 0x0),
+            new Node("deviation_correction", 0xC6Ae, 0x40A00000, 0x30000, 0x0),
+
+
+            new Node("busy_warning", 0xC6Ac, 0x40A00000, 0xc0, 0x0),
+            new Node("for_outo_warning", 0xC6Ab, 0x40A00000, 0x2000, 0x0),
+
+
+            new Node("for_warning", 0xC6Aa, 0x40A00000, 0x1000, 0x0),
+            new Node("rear_parkSense", 0xC6A3, 0x40A00000, 0x2, 0x0),
 
 
             //		new Node("image_parkView", 0xC6A5, 0x40A00000, 0x8, 0x0),
 
-            new Node("headlights_off", 0xC620, 0x40200000, 0x7f, 0x0), new Node("bright_headlights", 0xC621, 0x40200000, 0x7f00, 0x0),
+            new Node("headlights_off", 0xC620, 0x40200000, 0x7f, 0x0),
+            new Node("bright_headlights", 0xC621, 0x40200000, 0x7f00, 0x0),
 
-            new Node("wipers_start", 0xC626, 0x40200000, 0x40000, 0x0), new Node("running_lights", 0xC624, 0x40200000, 0x10000, 0x0), new Node("lights_flash", 0xC623, 0x40200000, 0x8000, 0x0), new Node("outhigh_beam", 0xC628, 0x40200000, 0x100000, 0x0),
+            new Node("wipers_start", 0xC626, 0x40200000, 0x40000, 0x0),
+            new Node("running_lights", 0xC624, 0x40200000, 0x10000, 0x0),
+            new Node("lights_flash", 0xC623, 0x40200000, 0x8000, 0x0),
+            new Node("outhigh_beam", 0xC628, 0x40200000, 0x100000, 0x0),
 
-            new Node("welcome_light", 0xC62a, 0x40200000, 0x800000, 0x0), new Node("turn_lights_set", 0xC625, 0x40200000, 0x20000, 0x0), new Node("rearview_dimming", 0xC627, 0x40200000, 0x80000, 0x0), new Node("rearview_auto_folding", 0xC69d, 0x40a00000, 0x200000, 0x0), new Node("high_beam_control", 0xC62c, 0x40200000, 0x80, 0x0), new Node("front_light", 0xC629, 0x40200000, 0x600000, 0x0),
+            new Node("welcome_light", 0xC62a, 0x40200000, 0x800000, 0x0),
+            new Node("turn_lights_set", 0xC625, 0x40200000, 0x20000, 0x0),
+            new Node("rearview_dimming", 0xC627, 0x40200000, 0x80000, 0x0),
+            new Node("rearview_auto_folding", 0xC69d, 0x40a00000, 0x200000, 0x0),
+            new Node("high_beam_control", 0xC62c, 0x40200000, 0x80, 0x0),
+            new Node("front_light", 0xC629, 0x40200000, 0x600000, 0x0),
 
             //		new Node("headlights_off", 0xC620, 0x40200000, 0x7f, 0x0),
 
-            new Node("driving_auto", 0xC630, 0x40300000, 0x1, 0x0), new Node("unlock_driving", 0xC631, 0x40300000, 0x2, 0x0), new Node("door_lights_flash", 0xC632, 0x40300000, 0x4, 0x0), new Node("beep_lock", 0xC637, 0x40300000, 0x18, 0x0),
+            new Node("driving_auto", 0xC630, 0x40300000, 0x1, 0x0),
+            new Node("unlock_driving", 0xC631, 0x40300000, 0x2, 0x0),
+            new Node("door_lights_flash", 0xC632, 0x40300000, 0x4, 0x0),
+            new Node("beep_lock", 0xC637, 0x40300000, 0x18, 0x0),
 
 
-            new Node("key_unlock", 0xC634, 0x40300000, 0x100, 0x0), new Node("keyless_entry", 0xC636, 0x40300000, 0x400, 0x0),
+            new Node("key_unlock", 0xC634, 0x40300000, 0x100, 0x0),
+            new Node("keyless_entry", 0xC636, 0x40300000, 0x400, 0x0),
 
-            new Node("personalise", 0xC638, 0x40300000, 0x20, 0x0), new Node("door_alarm", 0xC63a, 0x40300000, 0x80, 0x0), new Node("remote_lock", 0xC63b, 0x40300000, 0x10000, 0x0),
+            new Node("personalise", 0xC638, 0x40300000, 0x20, 0x0),
+            new Node("door_alarm", 0xC63a, 0x40300000, 0x80, 0x0),
+            new Node("remote_lock", 0xC63b, 0x40300000, 0x10000, 0x0),
 
 
             new Node("remote_unlock", 0xC63c, 0x40300000, 0x20000, 0x0),
@@ -73,36 +98,36 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
             //		new Node("remote_unlock", 0xC63c, 0x40200000, 0x20, 0x0),
 
 
-            new Node("tail_headlights_off", 0xC640, 0x40400000, 0xff, 0x0), new Node("seat", 0xC642, 0x40400000, 0x10000, 0x0), new Node("power_off", 0xC641, 0x40400000, 0xff00, 0x0),
+            new Node("tail_headlights_off", 0xC640, 0x40400000, 0xff, 0x0),
+            new Node("seat", 0xC642, 0x40400000, 0x10000, 0x0),
+            new Node("power_off", 0xC641, 0x40400000, 0xff00, 0x0),
 
+            //new Node("power_off", 0xC641, 0x40400000, 0x10000, 0x0),
 
-            //		new Node("power_off", 0xC641, 0x40400000, 0x10000, 0x0),
-
-
-            new Node("auto_adjustment", 0xC6d0, 0x40d00000, 0x1, 0x0), new Node("tire_mode", 0xC6d1, 0x40d00000, 0x2, 0x0), new Node("transport_mode", 0xC6d2, 0x40d00000, 0x4, 0x0), new Node("wheel_mode", 0xC6d3, 0x40d00000, 0x8, 0x0), new Node("dis_suspension", 0xC6d4, 0x40d00000, 0x10, 0x0),
-
+            new Node("auto_adjustment", 0xC6d0, 0x40d00000, 0x1, 0x0),
+            new Node("tire_mode", 0xC6d1, 0x40d00000, 0x2, 0x0),
+            new Node("transport_mode", 0xC6d2, 0x40d00000, 0x4, 0x0),
+            new Node("wheel_mode", 0xC6d3, 0x40d00000, 0x8, 0x0),
+            new Node("dis_suspension", 0xC6d4, 0x40d00000, 0x10, 0x0),
 
             new Node("unit_set", 0xC601, 0x40010000, 0x1, 0x0),
 
-            new Node("outseat_heating", 0xC690, 0x40900000, 0x3, 0x0), new Node("fulecons", 0xC605, 0x40010000, 0x6, 0x0), new Node("tireunit", 0xC607, 0x40010000, 0x60, 0x0), new Node("range", 0xC603, 0x40010000, 0x8, 0x0),
-            //		new Node("temperature", 0xC604, 0x40010000, 0x10, 0x0),
-
+            new Node("outseat_heating", 0xC690, 0x40900000, 0x3, 0x0),
+            new Node("fulecons", 0xC605, 0x40010000, 0x6, 0x0),
+            new Node("tireunit", 0xC607, 0x40010000, 0x60, 0x0),
+            new Node("range", 0xC603, 0x40010000, 0x8, 0x0),
+            //	new Node("temperature", 0xC604, 0x40010000, 0x10, 0x0),
             new Node("auto_parking", 0xC6c1, 0x40c00000, 0x2, 0x0),
-
-
             new Node("car_type", 0xca01, 0x0, 0x0, 0x0),
-            //		new Node("wheel_mode", 0xC6c0, 0x40c00000, 0x10000, 0x0)
-
-
+            //	new Node("wheel_mode", 0xC6c0, 0x40c00000, 0x10000, 0x0)
             new Node("langauage5", 0xC600, 0x40000000, 0xff, 0x0),
-
-
     };
+
     private final static int[] INIT_CMDS = {0x40ff,};
     private int mType = 0;
-    private Preference[] mPreferences = new Preference[NODES.length];
+    private final Preference[] mPreferences = new Preference[NODES.length];
     private boolean mPaused = true;
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(Message msg) {
             if (!mPaused) {
@@ -343,12 +368,8 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
     }
 
     private void updateView(byte[] buf) {
-
-        //		if ((buf[0] & 0xff) == 0xd0) {
-        //		} else
-
-        if ((buf[0] & 0xff) == 0x40) {
-
+        if ((buf[0] & 0xff) == 0x40)
+        {
             int cmd;
             int mask;
             int value;
@@ -424,7 +445,6 @@ public class JeepSettingsSimpleFragment extends PreferenceFragmentCompat impleme
 
     private void showPreference(String id, int show) {
         showPreference(id, show, "driving_mode");
-
     }
 
     private void setTempUnit(String value) {
