@@ -36,13 +36,9 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
 
         addPreferencesFromResource(R.xml.slim_settings);
         initView();
-        updateView(new byte[]{
-                0x24, 0, 0, 0, 0, 0, 0, 0
-        });
+        updateView(new byte[]{0x24, 0, 0, 0, 0, 0, 0, 0});
 
-        updateView(new byte[]{
-                0x21, 0, 0, 0, 0, 0, 0, 0
-        });
+        updateView(new byte[]{0x21, 0, 0, 0, 0, 0, 0, 0});
         registerListener();
 
         updateLedSetting();
@@ -103,9 +99,9 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
     public void onResume() {
         super.onResume();
         registerListener();
-//        sendCanboxInfo(0x90, 0x24, 0);
-//        Util.doSleep(200);
-//        sendCanboxInfo(0x90, 0x21, 0);
+        //        sendCanboxInfo(0x90, 0x24, 0);
+        //        Util.doSleep(200);
+        //        sendCanboxInfo(0x90, 0x21, 0);
     }
 
     private int mLedSeting = 0;
@@ -141,9 +137,8 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
         int show = Settings.System.getInt(getActivity().getContentResolver(), SettingProperties.SHOW_FOCUS_CAR_WARNING_MSG, 0);
 
         if (show != 0) {
-//            ((SwitchPreference) findPreference("off_Warning_info")).setChecked(true);
+            //((SwitchPreference) findPreference("off_Warning_info")).setChecked(true);
         }
-
     }
 
     private void setWarningSetting(boolean b) {
@@ -277,18 +272,14 @@ public class SlimSettingsFragment extends PreferenceFragmentCompat implements Pr
     }
 
     private void sendCanboxInfo(byte d0, byte d1) {
-        byte[] buf = new byte[]{
-                0x00, (byte) 0xA4, 0x01, 0x00, 0x02, d0, d1, (byte) (0xA7 + d0 + d1)
-        };
+        byte[] buf = new byte[]{0x00, (byte) 0xA4, 0x01, 0x00, 0x02, d0, d1, (byte) (0xA7 + d0 + d1)};
         MMLog.d(TAG, "sendCanboxInfo: buf = " + ByteUtils.BuffToHexStr(buf));
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 
     private void sendCanboxInfo(int d0, int d1, int d2) {
 
-        byte[] buf = new byte[]{
-                (byte) 0xc6, 0x02, (byte) d0, (byte) d1, (byte) d2
-        };
+        byte[] buf = new byte[]{(byte) 0xc6, 0x02, (byte) d0, (byte) d1, (byte) d2};
         BroadcastUtil.sendCanboxInfo(getActivity(), buf);
     }
 

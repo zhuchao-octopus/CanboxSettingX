@@ -43,7 +43,8 @@ public class SlimVehicleSetting extends MyFragment {
     private SlimAVM360SettingFragment avm360SettingFragment;
     private byte securityState = 0;
     private byte[] settingAllData;
-    private static final int[] iconIds = new int[]{R.mipmap.slim_vehicle_360_icon,
+    private static final int[] iconIds = new int[]{
+            R.mipmap.slim_vehicle_360_icon,
             R.mipmap.slim_vehicle_lock_icon,
             R.mipmap.slim_vehicle_back_vision_icon,
             R.mipmap.slim_vehicle_warning_light_icon,
@@ -77,7 +78,7 @@ public class SlimVehicleSetting extends MyFragment {
     private SlimLightSelectDialog lightSelectDialog;
     private ImageView backPage;
     private static final int SEND_CAN = 0x01;
-    private Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
+    private final Handler mHandler = new Handler(Objects.requireNonNull(Looper.myLooper())) {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);

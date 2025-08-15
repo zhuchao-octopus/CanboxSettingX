@@ -123,8 +123,7 @@ public class SlimKeyAirControlFragment extends MyFragment {
         Log.d(TAG, "setSlimTemp: temp " + temp);
         if (temp > 0 && temp <= 16) {
             sendCanboxSlim((byte) 0x83, temp);
-            //            updateTempView(temp);
-
+            //updateTempView(temp);
         } else if (temp < 1) {
             setSlimTemp((byte) 1);
         } else if (temp > 16) {

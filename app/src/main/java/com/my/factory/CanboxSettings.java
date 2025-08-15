@@ -214,7 +214,8 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
             MachineConfig.VALUE_CANBOX_MAZDA3_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_MAZDA_CX5_SIMPLE, // 41
             MachineConfig.VALUE_CANBOX_PSA206_SIMPLE, // 41
-            MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE};
+            MachineConfig.VALUE_CANBOX_SUBARU_SIMPLE
+    };
 
     private final String[] mCanboxValueRaise = {//
             MachineConfig.VALUE_CANBOX_NONE, //
@@ -683,7 +684,6 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
 
     private void updateOtherSettings(String can) {
         if (mOtherSettings == null) {
-
             mOtherSettings = (MultiSelectListPreference) findPreference("canbox_other_settings");
             mOtherSettings.setOnPreferenceChangeListener(this);
             mOtherSettings.setOnPreferenceClickListener(this);
@@ -727,7 +727,6 @@ public class CanboxSettings extends PreferenceActivity implements Preference.OnP
 
     private void updateKeysChageSettings(String can) {
         if (mKeyChangeSettings == null) {
-
             mKeyChangeSettings = (MultiSelectListPreference) findPreference("canbox_key_change_ex");
             mKeyChangeSettings.setOnPreferenceChangeListener(this);
             mKeyChangeSettings.setOnPreferenceClickListener(this);
